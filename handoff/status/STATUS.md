@@ -77,6 +77,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `vault-single-repo-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `vault-layout-root-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `vault-layout-and-git-bootstrap-2026-10-24` | 2026-10-24 | mateusz | opencode |
+| `gate-vault-owned-xor-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `test-memory-index-format-restored-2026-10-23` | 2026-10-23 | opencode | opencode |
 | `session-digest-ab-2026-10-23` | 2026-10-23 | opencode | opencode |
 | `session-brief-valuable-2026-10-23` | 2026-10-23 | opencode | opencode |

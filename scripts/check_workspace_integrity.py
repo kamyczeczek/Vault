@@ -164,7 +164,7 @@ ALLOWED_ROOT = {
     "library",          # raw source documents; content-addressed, bytes never committed
     "scripts",          # this gate and its siblings
     "__pycache__",
-    ".git",             # the root is versioned (D6)
+    # `.git` is vault-owned (ADR-006): see VAULT_OWNED below, not a workspace entry.
     ".gitignore",
     ".gitattributes",
     ".pi",              # pi coding-agent harness working dir (settings.json); runtime artifact, declared not tracked
@@ -185,15 +185,18 @@ ALLOWED_ROOT = {
     "brain",
     "wayfinder",
     "logs",
-    ".obsidian",      # Obsidian per-device state (plugins tracked, cache/workspace gitignored); declared in CLAUDE.md
-    ".smart-env",     # Smart Connections vector index (gitignored except smart_env.json); declared in CLAUDE.md
-    "Notes",          # User notes in vault (untracked); declared in CLAUDE.md
+    # `.obsidian`, `.smart-env`, `Notes` are vault-owned (ADR-006): VAULT_OWNED.
     # Commit-approval token: minted by scripts/close.py immediately before its
     # own commit, consumed by scripts/commit_gate_guard.py from the pre-commit
     # hook. Runtime artifact — declared in CLAUDE.md, listed in .gitignore, never
     # committed. Without this entry R1 would fail the moment close.py mints it.
     ".commit-approved",
 }
+
+# R1b: entries owned by the vault root, not the workspace root (ADR-006). Each
+# must exist in exactly one of ROOT / VAULT — "both" and "neither" are failures.
+VAULT = ROOT.parent
+VAULT_OWNED = {".git", ".obsidian", ".smart-env", "Notes"}
 
 # Live projects live one level down in `projects/research/` (the research
 # group); `projects/_archive/` stays directly under `projects/` and is
@@ -229,7 +232,10 @@ WARNS: list[str] = []
 def check_r1_root_shape() -> None:
     """The root holds only what the catalog declares. Stray files are failures."""
     actual = {p.name for p in ROOT.iterdir() if p.name not in RESIDUE_DIRS}
-    unexpected = actual - ALLOWED_ROOT
+    # Vault-owned entries are governed by R1b (exactly one of ROOT / VAULT), so
+    # R1 must not report them as strays in either location — only as "wrong place"
+    # when both copies exist, which R1b owns.
+    unexpected = actual - ALLOWED_ROOT - VAULT_OWNED
     # Declared but legitimately absent. __pycache__ exists only after a Python
     # run; scripts/ is tooling-created; .commit-approved exists only while a
     # close.py commit is in flight — it is minted immediately before that commit
@@ -242,6 +248,25 @@ def check_r1_root_shape() -> None:
         FAILS.append(f"unexpected {kind} at workspace root: {name!r}")
     for name in sorted(missing):
         FAILS.append(f"missing required root entry: {name!r}")
+
+
+def check_r1b_vault_owned() -> None:
+    """R1b: vault-owned entries live in exactly one of ROOT and VAULT.
+
+    ADR-006 makes `Desktop\\vault` the vault and repository root; `root_workspace`
+    is a subfolder. `.git`, `.obsidian`, `.smart-env` and `Notes` therefore belong
+    to one of the two levels and to exactly one: a copy in both is the split-brain
+    this decision removed, and a copy in neither means the layout regressed.
+    """
+    for name in sorted(VAULT_OWNED):
+        here = (ROOT / name).exists()
+        there = (VAULT / name).exists()
+        if here == there:
+            where = "both" if here else "neither"
+            FAILS.append(
+                f"vault-owned entry {name!r} is present in {where} of "
+                f"{ROOT.name}/ and {VAULT.name}/ — it must live in exactly one (ADR-006)"
+            )
 
 
 def check_r2_reference_integrity() -> None:
@@ -1265,6 +1290,7 @@ def check_r23_flag_model_contract() -> None:
 
 def main() -> int:
     check_r1_root_shape()
+    check_r1b_vault_owned()
     check_r2_reference_integrity()
     check_r3_hygiene()
     check_r4_grade_declared()

@@ -70,6 +70,13 @@ not checked:
   sanctions it) — and `git commit -F` carried this exact subject and body.
   `hooks/pre-commit` still ran the full gate and every guard unchanged.
 
+<!-- handoff/flags/gate-vault-owned-xor-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
+`gate-vault-owned-xor-2026-10-24` — 2026-10-24: bramka przestaje traktować `.git`, `.obsidian`, `.smart-env` i `Notes` jako wpisy workspace'u. Nowy zbiór `VAULT_OWNED` + R1b egzekwuje dokładnie jedno miejsce (ROOT albo VAULT — „oba" i „żaden" to FAIL); R1 nie zgłasza ich już jako stray w żadnym z dwóch miejsc, bo miejsce jest własnością R1b. `CLAUDE.md` deklaruje cztery wiersze `../` (bez tego druga połowa kontraktu R1 nie istnieje), a `test_gate_allowlist_parity.py` sprawdza teraz także deklarację vault-owned. To zaostrzenie, nie wyciszenie: przed migracją wszystkie cztery leżą w ROOT i XOR przechodzi, po migracji w VAULT i XOR nadal przechodzi — nie ma okna z czerwoną bramką. Stub `root_workspace\.obsidian` (untracked, pusta karta) usunięty przed commitem, żeby `.obsidian` występował tylko w vaulcie.
+
+not checked:
+- R16 advisory: ten commit dotyka `scripts/**`, a `queries.jsonl` w `_scratch/sessions/05_store` jest starszy niż 30 min — ostrzeżenie zostaje otwarte do czasu realnego zapytania do pamięci sesji.
+- czy inne skrypty czytają `ALLOWED_ROOT` i zakładają w nim `.git` — sprawdzone tylko `test_gate_allowlist_parity.py`; pełny przegląd należy do commita `_repo_rel()`.
+
 <!-- handoff/flags/test-memory-index-format-restored-2026-10-23.md · owner: opencode · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `test-memory-index-format-restored-2026-10-23` — 2026-10-23: **`test_memory_index.py` is green (33/33).** The 2026-10-21 restructure removed `format_results`, `format_brief`, `get_chunk` and `print_usage` from `memory_index.py` but left the regression file importing them, so the suite died at import and its four guards were dead. Restored all four helpers and wired them back into `query --full` / default `query`, `get`, and `stats --usage`; `--with-context` now renders again as `(+Nctx)` in the brief view, which the inline rewrite had silently dropped.
 

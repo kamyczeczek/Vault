@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 # Import ALLOWED_ROOT from check_workspace_integrity.py
 sys.path.insert(0, str(ROOT / "scripts"))
-from check_workspace_integrity import ALLOWED_ROOT
+from check_workspace_integrity import ALLOWED_ROOT, VAULT_OWNED
 
 def is_declared_in_claude_table(entry, claude_content):
     clean_entry = entry.strip('/')
@@ -21,6 +21,11 @@ def is_declared_in_claude_table(entry, claude_content):
         f"| {clean_entry}/ |",
     ]
     return any(p in claude_content for p in patterns)
+
+def is_declared_as_vault_row(entry, claude_content):
+    """Vault-owned entries (ADR-006) are declared one level up: `| `../name/` |`."""
+    clean = entry.strip('/')
+    return any(p in claude_content for p in (f"| `../{entry}` |", f"| `../{clean}/` |"))
 
 def parity_ok(allowed_entries, claude_content, gitignore_content):
     system_entries = {
@@ -95,6 +100,13 @@ def test_parity():
                 print(f"FAIL: Structural ALLOWED_ROOT entry '{entry}' lacks table row declaration in CLAUDE.md!")
             else:
                 print(f"PASS: Structural entry '{entry}' found as table row in CLAUDE.md")
+
+    for entry in sorted(VAULT_OWNED):
+        if is_declared_as_vault_row(entry, claude_content):
+            print(f"PASS: vault-owned entry '{entry}' declared as a `../` row in CLAUDE.md")
+        else:
+            failed.append(f"../{entry}")
+            print(f"FAIL: vault-owned entry '{entry}' lacks a `../{entry}/` row in CLAUDE.md")
 
     if failed:
         print(f"\nERROR: {len(failed)} ALLOWED_ROOT entries lack CLAUDE.md table declaration: {failed}")

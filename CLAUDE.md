@@ -47,9 +47,10 @@ file routes; it holds no content.
 | `agents/` | Registry | Where every AI agent's config, data and secrets live on this machine: `agents/REGISTRY.md` (path table per agent), `agents/RESTORE.md`, `agents/backup-agents.ps1` + the `agents/backup/` snapshot dir. Bookkeeping, not source; created 2026-10-04. **Docs are tracked; `agents/backup/` (snapshot zips containing live agent configs + auth) is gitignored and never committed** |
 | `brain/` | Database | Project Brain SQLite FTS5 database (derived, gitignored) + the curated layer: scars/decisions/lessons, rebuilt from `SCARS.md`/`DECISIONS.md`/`brain/lessons.md` by `python.exe scripts/ingest_brain.py`. Door: `python.exe scripts/brain.py "<topic>"` — answers *what is the rule about X?*; the other layer (session memory, *did I try this before?*) is `scripts/memory/`. Contract: `brain/CONTEXT.md`; gate: R21 |
 | `wayfinder/` | Planning | Wayfinder maps and architecture plans |
-| `.obsidian/` | Obsidian state | Obsidian per-device workspace/cache state (community plugins and configs tracked, workspace/cache gitignored) |
-| `.smart-env/` | Smart Connections | Smart Connections vector index and cache (gitignored except `smart_env.json`) |
-| `Notes/` | Vault notes | User notes in the Obsidian vault (untracked) |
+| `../.obsidian/` | Obsidian state (vault) | Obsidian per-device state at the vault root, beside the workspace folder; community plugins and configs tracked, workspace/cache/graph gitignored (ADR-006) |
+| `../.smart-env/` | Smart Connections (vault) | Smart Connections vector index at the vault root; derived, gitignored except `smart_env.json`, regenerated after the plugin is installed (ADR-006) |
+| `../Notes/` | Vault notes (vault) | User notes at the vault root; tracked in the private repo (ADR-006) |
+| `../.git/` | Repo root (vault) | One repository for the whole vault; the workspace is a subfolder of it, not its own repo (ADR-006, ADR-007) |
 | `PLAN.md` | Plan | Workspace reorganization master plan |
 | `TASKS.md` | Tasks | Reorganization ticket list (TASKS.md) |
 
