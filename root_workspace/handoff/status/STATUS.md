@@ -76,6 +76,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | --- | --- | --- | --- |
 | `vault-single-repo-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `vault-repo-rel-paths-2026-10-24` | 2026-10-24 | mateusz | opencode |
+| `vault-migrated-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `vault-layout-root-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `vault-layout-and-git-bootstrap-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `obsidian-repro-needed-2026-10-24` | 2026-10-24 | mateusz | opencode |
