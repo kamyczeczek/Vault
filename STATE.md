@@ -1,17 +1,20 @@
 # STATE — root workspace (generated)
 
-> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-10-24 18:43 · HEAD `d1231b5` (master).
+> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-10-24 18:47 · HEAD `a4c5c3a` (master).
 
 ## Drzewo
 
-brudne pliki (11):
-- `M  CLAUDE.md`
+brudne pliki (14):
 - `M  HANDOFF.md`
 - `M  STATE.md`
-- `A  handoff/flags/gate-vault-owned-xor-2026-10-24.md`
+- `A  handoff/flags/vault-repo-rel-paths-2026-10-24.md`
 - `M  handoff/status/STATUS.md`
 - `M  scripts/check_workspace_integrity.py`
-- `M  scripts/test_gate_allowlist_parity.py`
+- `M  scripts/close.py`
+- `A  scripts/git_paths.py`
+- `M  scripts/pre_close_check.py`
+- `M  scripts/scan_secrets.py`
+- `A  scripts/test_git_paths.py`
 - `?? .smart-env/`
 - `?? Notes/`
 - `?? brain/decisions/ADR-006-single-vault-single-repo.md`
@@ -19,6 +22,7 @@ brudne pliki (11):
 
 ## Ostatnie commity
 
+- `a4c5c3a gate-vault-owned-xor-2026-10-24: `gate-vault-owned-xor-2026-10-24` — 2026-10-24: bramka przestaje traktować `.git`, `.obsidian`,`
 - `d1231b5 vault-single-repo-2026-10-24: `vault-single-repo-2026-10-24` — 2026-10-24: rozstrzygnięty spór o root vaulta. `Desktop\vault``
 - `59faa7d vault-layout-and-git-bootstrap-2026-10-24: `vault-layout-and-git-bootstrap-2026-10-24` — 2026-10-24: root workspace re-bootstrapped after t`
 

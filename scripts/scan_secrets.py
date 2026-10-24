@@ -16,6 +16,10 @@ import subprocess
 import sys
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from git_paths import repo_prefix, repo_rel  # noqa: E402
+
 PATTERNS: list[tuple[str, re.Pattern]] = [
     ("sk-ant", re.compile(r"sk-ant-[A-Za-z0-9_-]{8,}")),
     ("sk-proj", re.compile(r"sk-proj-[A-Za-z0-9_-]{8,}")),
@@ -39,11 +43,14 @@ MAX_BYTES = 10 * 1024 * 1024
 
 
 def staged_files() -> list[str]:
+    """Staged files as paths relative to ROOT (`--name-only` is repo-relative, ADR-006)."""
     p = subprocess.run(
         ["git", "diff", "--cached", "--name-only"],
-        capture_output=True, text=True,
+        capture_output=True, text=True, cwd=str(ROOT),
     )
-    return [l.strip() for l in p.stdout.splitlines() if l.strip()]
+    prefix = repo_prefix(ROOT)
+    rel = (repo_rel(line, prefix) for line in p.stdout.splitlines() if line.strip())
+    return [r for r in rel if r is not None]
 
 
 def scan_file(path: Path, explicit: bool) -> list[str]:

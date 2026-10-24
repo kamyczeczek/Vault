@@ -71,6 +71,9 @@ from pathlib import Path
 from typing import NamedTuple
 
 ROOT = Path(__file__).resolve().parent.parent
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from git_paths import repo_prefix, repo_rel  # noqa: E402
 FLAGS = ROOT / "handoff" / "flags"
 HANDOFF = ROOT / "HANDOFF.md"
 STATE = ROOT / "STATE.md"
@@ -420,12 +423,28 @@ def load_body(a: argparse.Namespace) -> str | None:
 
 
 def find_strays(root: Path, allowed: set[str]) -> list[str]:
-    """Tracked worktree modifications outside the declared close set."""
+    """Tracked worktree modifications outside the declared close set.
+
+    `git status --short` prints paths relative to the REPO root, not to `root`
+    (ADR-006: `root` is a subfolder of the repo). `repo_rel()` maps them back;
+    a path outside `root` is a vault-level change and not this close's business.
+    An `allowed` entry that names a directory allows everything under it, so
+    `--include some/dir` covers the files it holds.
+    """
+    prefix = repo_prefix(root)
     p = subprocess.run(["git", "status", "--short"],
                        capture_output=True, text=True, cwd=str(root))
-    return [l for l in p.stdout.splitlines() if l.strip()
-            and l[3:].strip().strip('"') not in allowed
-            and not l.startswith("??")]
+    strays: list[str] = []
+    for line in p.stdout.splitlines():
+        if not line.strip() or line.startswith("??"):
+            continue
+        rel = repo_rel(line[3:], prefix)
+        if rel is None:
+            continue
+        if rel in allowed or any(rel.startswith(a.rstrip("/") + "/") for a in allowed):
+            continue
+        strays.append(line)
+    return strays
 
 
 def explain() -> None:
@@ -443,7 +462,11 @@ def explain() -> None:
 
 
 def _is_staged_deletion(path: str) -> bool:
-    """True if `path` is staged for deletion (git rm), so it is a valid --include."""
+    """True if `path` is staged for deletion (git rm), so it is a valid --include.
+
+    `git diff --cached --name-only` prints repo-relative paths (ADR-006), so the
+    comparison normalizes them to `ROOT`-relative before matching.
+    """
     rel = Path(path).as_posix()
     r = subprocess.run(
         ["git", "diff", "--cached", "--name-only", "--diff-filter=D", "--", rel],
@@ -454,7 +477,9 @@ def _is_staged_deletion(path: str) -> bool:
     )
     if r.returncode != 0:
         return False
-    return rel in {line.strip() for line in r.stdout.splitlines()}
+    prefix = repo_prefix(ROOT)
+    staged = {repo_rel(line, prefix) for line in r.stdout.splitlines() if line.strip()}
+    return rel in staged
 
 
 def _validate_correction_target(a: argparse.Namespace, flag_path: Path,
@@ -483,6 +508,10 @@ def check_includes(includes: list[str]) -> str | None:
     and `git add`/commit in close.py will record it. Treat a staged deletion
     (status `D ` in `git status --porcelain`, equivalently present in
     `git diff --cached --diff-filter=D`) as a valid --include target.
+
+    A **directory** is a valid target too: it passes `exists_on_disk` and
+    `find_strays` matches its contents by prefix, so `--include some/dir` covers
+    every file under it without expanding 686 paths into one command line.
     """
     for raw in includes:
         if "projects/research/" in raw or raw.startswith("projects/research/") or raw.startswith("projects\\research\\"):

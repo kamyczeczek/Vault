@@ -145,6 +145,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from git_paths import repo_prefix, repo_rel  # noqa: E402
+
 # R1: the exact set the root is allowed to contain. Adding a root-level folder is
 # a structural decision and belongs in the root CLAUDE.md project table, not in
 # someone's shell history.
@@ -1070,15 +1073,17 @@ def check_r19_new_flag_provenance() -> None:
     import datetime
 
     candidates: set[str] = set()
+    prefix = repo_prefix(ROOT)
     out = subprocess.run(
         ["git", "diff", "--cached", "--name-only", "--diff-filter=A"],
         capture_output=True, text=True, check=False, cwd=str(ROOT),
     )
     if out.returncode == 0:
-        candidates.update(
-            ln.strip() for ln in out.stdout.splitlines()
-            if ln.strip().startswith("handoff/flags/") and ln.strip().endswith(".md")
-        )
+        # `--name-only` is repo-relative; R19 compares with ROOT-relative paths (ADR-006).
+        for ln in out.stdout.splitlines():
+            rel = repo_rel(ln, prefix)
+            if rel and rel.startswith("handoff/flags/") and rel.endswith(".md"):
+                candidates.add(rel)
     out = subprocess.run(
         ["git", "status", "--short", "--", "handoff/flags/"],
         capture_output=True, text=True, check=False, cwd=str(ROOT),
@@ -1086,8 +1091,10 @@ def check_r19_new_flag_provenance() -> None:
     if out.returncode == 0:
         for ln in out.stdout.splitlines():
             parts = ln.strip().split(None, 1)
-            if len(parts) == 2 and parts[0] == "??" and parts[1].endswith(".md"):
-                candidates.add(parts[1].strip('"'))
+            if len(parts) == 2 and parts[0] == "??":
+                rel = repo_rel(parts[1], prefix)
+                if rel and rel.endswith(".md"):
+                    candidates.add(rel)
     today = datetime.date.today()
     for rel in sorted(candidates):
         path = ROOT / rel

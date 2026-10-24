@@ -21,6 +21,9 @@ ROOT = Path(__file__).resolve().parent.parent
 FLAGS = ROOT / "handoff" / "flags"
 PY = sys.executable
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from git_paths import repo_prefix, repo_rel  # noqa: E402
+
 results: list[tuple[str, str]] = []  # (status, message)
 
 
@@ -128,9 +131,15 @@ def main() -> int:
     modified = [l for l in lines if not l.startswith("??")]
     untracked = [l for l in lines if l.startswith("??")]
     allowed = {Path(i).as_posix() for i in includes}
-    outside = [l for l in modified
-               if l[3:].strip().strip('"') not in allowed
-               and l[3:].strip().strip('"') not in ("HANDOFF.md", "STATE.md")]
+    prefix = repo_prefix(ROOT)
+
+    def outside_include(line: str) -> bool:
+        rel = repo_rel(line[3:], prefix)  # repo-relative -> ROOT-relative (ADR-006)
+        if rel is None:                   # vault-level change, not this close's business
+            return False
+        return rel not in allowed and rel not in ("HANDOFF.md", "STATE.md")
+
+    outside = [l for l in modified if outside_include(l)]
     print(f"INFO: modified={len(modified)} untracked={len(untracked)} "
           f"outside-include={len(outside)}")
     if outside and len(modified) > len(includes) + 1:
