@@ -1,0 +1,1 @@
+- `handoff/flags/e6-verify-claims-session-2026-10-16.md` — `test/model` → `opencode/deepseek-v4.1-flash-free`.

@@ -1,0 +1,65 @@
+version: 1
+# Single source of truth for forge-guardrails.
+# Consumed by: goose SessionStart hook (context.md), forge_hook.py (enforcement),
+# and CI (same file). The model cannot "convince" the system it did the work;
+# forge verifies from artifacts.
+
+repository:
+  required_files:
+    - CONTRIBUTING.md
+    - .forge/policy.yaml
+
+rules:
+  tests:
+    require_behavioral_tests: true
+    forbid_tautological_tests: true
+    require_test_before_implementation: true
+    require_test_fails_first: true
+  verification:
+    require_targeted_tests: true
+    require_full_suite: true
+  git:
+    forbid_force_push: true
+    forbid_destructive_commands: true
+    destructive_patterns:
+      - 'git\s+push\s+.*--force'
+      - 'git\s+reset\s+--hard'
+      - 'git\s+clean\s+-[a-z]*f[a-z]*d'
+      - 'git\s+clean\s+.*\s-fdx'
+      - 'git\s+filter-branch'
+      - 'git\s+branch\s+-D'
+
+workflow:
+  terminal_tools:
+    - done
+  required_steps:
+    - read_repo_rules
+    - understand_task
+    - write_test
+    - verify_test_fails
+    - implement
+    - run_targeted_tests
+    - run_full_tests
+    - inspect_diff
+    - final_review
+  tool_prerequisites:
+    implement:
+      - write_test
+    run_targeted_tests:
+      - implement
+    run_full_tests:
+      - run_targeted_tests
+    final_review:
+      - run_full_tests
+
+escalation:
+  low_max_retries: 2
+  medium_max_retries: 3
+  tiers:
+    - LOW
+    - MEDIUM
+    - HIGH
+  escalate_on:
+    - repeated_test_failure
+    - step_enforcement_violation
+    - context_overflow

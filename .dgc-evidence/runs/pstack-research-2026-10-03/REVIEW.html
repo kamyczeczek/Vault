@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>REVIEW pstack-research-2026-10-03</title>
+<style>body{font-family:Segoe UI,system-ui,sans-serif;max-width:60em;margin:2em auto;padding:0 1em;color:#1a1a1a;background:#fff;line-height:1.55}pre{background:#f4f4f4;padding:1em;overflow-x:auto;border-radius:6px}code{background:#f4f4f4;padding:.1em .3em;border-radius:4px}pre code{background:none;padding:0}table{border-collapse:collapse;margin:1em 0;width:100%}th,td{border:1px solid #ccc;padding:.4em .7em;text-align:left}th{background:#f0f0f0}blockquote{border-left:3px solid #888;margin:1em 0;padding:.2em 1em;color:#444}.meta{color:#666;font-size:.9em}h1{border-bottom:2px solid #333}h2{border-bottom:1px solid #ccc}.vbanner{padding:.8em 1em;border-radius:8px;margin:0 0 1em 0;font-weight:bold}.vbanner.ok{background:#e6f4ea;border:2px solid #1e8e3e;color:#0d652d}.vbanner.bad{background:#fce8e6;border:2px solid #c5221f;color:#a50e0e}.vbanner.verdict{background:#e8f0fe;border:2px solid #1a73e8;color:#174ea6}.decide-cmd{background:#f4f4f4;padding:1em;border-radius:6px}</style>
+</head>
+<body>
+<div class="vbanner ok">RE-WERYFIKACJA: PASS (research-only — brak claimów pytest, verify nie ma czego sprawdzać).</div><p class="meta">run: <code>pstack-research-2026-10-03</code> · HEAD: <code>6460c7b</code> · REVIEW z: 2026-10-03 17:45</p><div class="vbanner verdict">WERDYKT: PASS<span style="font-weight:normal"> (2026-10-03 18:34 — research-only: format OK, zrodla realne, ograniczenia uczciwe; otwarta decyzja upstream-vs-porty)</span></div>
+<h1>pstack od poteto — research REVIEW</h1>
+<p>Pytanie: czym jest „pstack od poteto&quot;, jak działa i czy ma sens poza Cursorem?</p>
+<p>Krótka odpowiedź: to zestaw gotowych procedur dla agentów kodujących —</p>
+<p>piszesz krótko „napraw błąd X&quot;, a system sam dobiera checklistę (odtwórz błąd,</p>
+<p>znajdź przyczynę, napraw, udowodnij na żywym systemie). Autorką jest</p>
+<p>Lauren Tan (@poteto, zespół core Reacta, wcześniej Meta/Netflix, obecnie</p>
+<p>Cursor) [1][2]. Działa najlepiej w Cursorze, ale same procedury da się</p>
+<p>przenieść gdzie indziej — istnieją gotowe porty [3][4].</p>
+<p>Uwaga o wersjach (czytaj przed instalacją): liczby skilli/playbooków różnią</p>
+<p>się między portami, bo upstream to v0.14.x vs v0.15.0 — sprawdź <code>UPSTREAM_COMMIT</code></p>
+<p>portu, zanim go weźmiesz [6].</p>
+<h2>Przebieg etapów (kontrakt §08)</h2>
+<table>
+<tr><th>Etap</th><th>Status</th><th>Uwaga</th></tr>
+<tr><td>00_prepare</td><td>N/A</td><td>run sprzed pipeline — brak manifestu/HEAD</td></tr>
+<tr><td>01_web_research</td><td>PASS</td><td>źródła [1]–[6] realne, w tabeli poniżej</td></tr>
+<tr><td>02_ingest</td><td>N/A</td><td>notatki researchowe, bez ingestu do korpusu</td></tr>
+<tr><td>03_graph</td><td>N/A</td><td>graf nie był budowany</td></tr>
+<tr><td>04_retrieval</td><td>N/A</td><td>dowody z webu, nie z grafu</td></tr>
+<tr><td>05_reflection</td><td>PASS</td><td>synteza + 2 decyzje na końcu</td></tr>
+<tr><td>06_implementation</td><td>N/A</td><td>research-only, bez implementacji</td></tr>
+<tr><td>07_verification</td><td>N/A</td><td>research-only, brak claimów pytest (banner: PASS research-only)</td></tr>
+<tr><td>08_review</td><td>PASS</td><td>niniejszy dokument</td></tr>
+</table>
+<p>Proponowany werdykt: <strong>PASS (research-only)</strong>.</p>
+<h2>Kim jest poteto (prostymi słowami)</h2>
+<p>Lauren Tan, znana jako @poteto — programistka z zespołu Reacta, pracowała</p>
+<p>w Meta i Netfliksie, teraz w Cursorze [2]. Zanim dołączyła do Cursora,</p>
+<p>sama budowała sobie warstwę orkiestracji agentów wokół Claude Code —</p>
+<p>pstack to spakowanie tych wewnętrznych nawyków w publiczną wtyczkę [2].</p>
+<p>Na starcie jej skille miały 9000 użyć w tydzień wewnątrz Cursora [2].</p>
+<h2>Co to jest pstack (prostymi słowami)</h2>
+<p>Zwykły agent dostaje polecenie i pisze kod. pstack dokłada resztę roboty</p>
+<p>inżynierskiej: zrozumienie systemu przed zmianą, projekt kształtu,</p>
+<p>weryfikację na prawdziwym artefakcie, recenzję i wysyłkę [2].</p>
+<p>Używasz zwykle jednej komendy:</p>
+<pre><code>/poteto-mode napraw X; najpierw odtwórz błąd i udowodnij poprawkę</code></pre>
+<p>System (tzw. tryb poteto) dobiera gotową checklistę — playbook — do rodzaju</p>
+<p>zadania (błąd, funkcja, refaktoring, śledztwo, wolne działanie), kopiuje ją</p>
+<p>do listy zadań i wzywa mniejsze skille, gdy ich krok nadejdzie [1][2].</p>
+<p>Tryb jest „lepki&quot;: kolejne wiadomości typu „ciągnij dalej&quot; zostają w tym</p>
+<p>samym planie [5].</p>
+<h2>Najważniejsze klocki</h2>
+<p><strong>Zrozum, zanim zmienisz.</strong> <code>/how</code> śledzi, jak system działa w runtime</p>
+<p>(ktoś czyta kod, inny request path, wyniki składa jeden opis) [2].</p>
+<p><code>/why</code> szuka, <em>dlaczego</em> coś tak wygląda — w historii Gita, ticketach,</p>
+<p>czacie zespołu; puste wyniki też raportuje, zamiast zmyślać powód [2].</p>
+<p><strong>Projektuj przed kodem.</strong> <code>/architect</code> zaczyna od miejsca użycia</p>
+<p>(typy i granice modułów wynikają z wołacza), a gdy implementacja zaczyna</p>
+<p>„zgrzytać&quot; (casty, wyjątki spoza szkicu), wyrzuca szkic i projektuje od nowa [2].</p>
+<p><code>/arena</code> daje to samo zadanie kilku modelom i składa jeden wynik</p>
+<p>(porównanie projektów); <code>/swarm</code> dzieli zadanie na kawałki dla pokrycia —</p>
+<p>mylenie ich to typowy błąd [1][2].</p>
+<p><strong>Recenzja z kilku modeli.</strong> <code>/interrogate</code> wysyła ten sam diff do kilku</p>
+<p>modeli; prowadzący grupuje uwagi (do zrobienia / do rozważenia /</p>
+<p>odnotowane / odrzucone) — odrzucone widać z powodem, więc możesz zweryfikować</p>
+<p>osąd zamiast dostawać tajemniczo przefiltrowaną listę [2].</p>
+<p><strong>Dowód zamiast „build przeszedł&quot;.</strong> pstack odrzuca zielony build jako dowód.</p>
+<p>Weryfikacja zależy od tego, co się zmieniło: zmiana w CLI odpala prawdziwą</p>
+<p>komendę, zmiana UI przechodzi zmieniony flow, migracja odtwarza prawdziwe</p>
+<p>dane, zmiana wydajności porównuje tracy [1][2]. Gdy repo nie ma jak tego</p>
+<p>robić, komenda <code>/create-verification-skill</code> generuje lokalny skrypt weryfikacji</p>
+<p>i sama go raz odpala od deski do deski [2].</p>
+<p><strong>Długa praca nocna.</strong> Warunek końca musi być sprawdzalny („zero starych</p>
+<p>wołaczy + wszystkie fixtury zielone&quot;), nie czasowy („pracuj 4 godziny&quot;).</p>
+<p>Każda iteracja: sprawdź warunek → jedna uzasadniona zmiana → weryfikacja →</p>
+<p>zostaw albo odrzuć → jeden wiersz dziennika decyzji (TSV) [2][5].</p>
+<h2>Czy działa poza Cursorem</h2>
+<p>Tak, z zastrzeżeniami. Skille to pliki <code>SKILL.md</code> — ten sam format ładują</p>
+<p>Claude Code, Codex i inne harnessy, więc procedury (playbooki, zasady,</p>
+<p><code>/how</code>, <code>/why</code>, <code>/interrogate</code>) przenoszą się jako instrukcje [2].</p>
+<p>Gubisz kawałki tylko-Cursorowe: przypisywanie różnych modeli do podagentów,</p>
+<p><code>/setup-pstack</code> z zapisem do <code>~/.cursor/rules</code>, <code>/loop</code>, automatyzacje [2].</p>
+<p>Gotowe porty (przykłady, stan na research):</p>
+<table>
+<tr><th>Port</th><th>Platforma</th><th>Uwagi</th><th>Sprawdzone</th></tr>
+<tr><td>michael-denyer/pstack-claude</td><td>Claude Code, Codex, OpenCode, Gemini</td><td>650 gwiazdek, 77 forków; tłumaczy prymitywy Cursora, zasady MIT [3]</td><td>2026-10-03</td></tr>
+<tr><td>potetos-for-everyone</td><td>uniwersalny (npx)</td><td>deklaruje 100% zgodności z upstream v0.15.0+ (47 skilli, 23 playbooki, 23 zasady) [4]</td><td>2026-10-03</td></tr>
+<tr><td>HustleCoding/pstack-codex</td><td>Codex</td><td>44 skille, skrypt <code>check-upstream.sh</code> do śledzenia upstream [6]</td><td>2026-10-03</td></tr>
+</table>
+<p>Uwaga o liczbach: źródła podają różne rozmiary (np. 23 vs 24 skille,</p>
+<p>22 vs 23 playbooki), bo opisują różne wersje upstream (v0.14.x vs v0.15.0).</p>
+<p>To dryf wersji, nie sprzeczność — przy instalacji sprawdź <code>UPSTREAM_COMMIT</code></p>
+<p>portu [6].</p>
+<h2>Kiedy to ma sens, a kiedy nie</h2>
+<p>Autor deep dive&#x27;a: bierz pstack tam, gdzie sensowny diff to za mało —</p>
+<p>webhook z podwójnym mailem, migracja, twardy problem wydajnościowy, nocny</p>
+<p>run z testowalnym warunkiem końca [2]. Nie bierz do przesunięcia daty</p>
+<p>o jedno pole ani małej zmiany konfiguracji — kilka modeli, arena i dziennik</p>
+<p>decyzji kosztują tokeny [2]. Do drobiazgów ten sam autor woli krótszą pętlę</p>
+<p>(fstack): człowiek blisko każdej decyzji [2].</p>
+<h2>Źródła</h2>
+<table>
+<tr><th>#</th><th>Co</th><th>Adres</th></tr>
+<tr><td>[1]</td><td>daily.dev: A deep dive into pstack (streszczenie + FAQ: arena vs swarm, weryfikacja)</td><td>https://daily.dev/posts/a-deep-dive-into-pstack-evqbnto9j</td></tr>
+<tr><td>[2]</td><td>Flavio Copes: A deep dive into pstack (pełny, ~22 min: architektura, wszystkie playbooki, zasady, błędy, ocena)</td><td>https://flaviocopes.com/pstack</td></tr>
+<tr><td>[3]</td><td>michael-denyer/pstack-claude (port: 650★, instalacja, zakres)</td><td>https://github.com/michael-denyer/pstack-claude</td></tr>
+<tr><td>[4]</td><td>potetos-for-everyone (port uniwersalny, parzystość v0.15.0+)</td><td>https://www.npmjs.com/package/potetos-for-everyone (repo: TheOnlyFusionCube/potetos-for-everyone)</td></tr>
+<tr><td>[5]</td><td>Cloeille/pstack — fork dla Hermes Agent (playbooki: investigation, bug-fix, feature, perf-issue, autonomous-run…)</td><td>https://github.com/Cloeille/pstack (README z raw.githubusercontent, commit ac5e5ab)</td></tr>
+<tr><td>[6]</td><td>HustleCoding/pstack-codex (port Codex: 44 skille, UPSTREAM_COMMIT, audyt)</td><td>https://github.com/HustleCoding/pstack-codex</td></tr>
+</table>
+<p>Upstream (nie otwierany w tym researchu, do następnego kroku):</p>
+<p><code>https://github.com/cursor/plugins/tree/main/pstack</code>.</p>
+<h2>Czego tu nie ma (uczciwe ograniczenia)</h2>
+<ul>
+<li>Nie czytałem upstream <code>cursor/plugins/pstack</code> ani pliku <code>poteto-mode/SKILL.md</code></li>
+</ul>
+<p>— opisy playbooków pochodzą z omówień [1][2][5], nie ze źródła.</p>
+<ul>
+<li>Nie weryfikowałem instalacji żadnego portu (gwiazdki i deklaracje parzystości</li>
+</ul>
+<p>to oświadczenia autorów, nie moje pomiary).</p>
+<ul>
+<li>Liczby skilli/playbooków zależą od wersji — patrz uwaga wyżej.</li>
+</ul>
+<h2>Decyzje dla Ciebie</h2>
+<ol>
+<li>Czy taki format odpowiedzi researchowej jest tym, o co chodziło</li>
+</ol>
+<p>(prosty polski + źródła pod każdym twierdzeniem)?</p>
+<ol>
+<li>Czy iść głębiej: otworzyć upstream i porównać deklaracje portów</li>
+</ol>
+<p>ze źródłem (parzystość, UPSTREAM_COMMIT)?</p>
+</body>
+</html>

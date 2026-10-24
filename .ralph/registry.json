@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-10-01T21:29:00+00:00",
+  "entries": [
+    {
+      "project": "projects\\research\\agentic-research-lab",
+      "status": "DONE",
+      "iteration": 2,
+      "run": ".ralph\\runs\\2026-10-01_trustworthy-agent-tests",
+      "next_frontier": "",
+      "updated_at": "2026-10-01T20:38:18+00:00",
+      "last_iteration": "I-003",
+      "last_decision": "D-002",
+      "handoff_at": "2026-10-02T00:30:00+00:00"
+    }
+  ]
+}

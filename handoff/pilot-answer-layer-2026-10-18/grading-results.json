@@ -1,0 +1,578 @@
+{
+ "strict_pass": 2,
+ "semantic_pass": 13,
+ "answerable_denominator": 14,
+ "threshold_answerable": 10,
+ "refusals": [
+  {
+   "qid": "u001",
+   "refusal": true,
+   "answer_len": 14
+  },
+  {
+   "qid": "u002",
+   "refusal": true,
+   "answer_len": 14
+  },
+  {
+   "qid": "u003",
+   "refusal": true,
+   "answer_len": 14
+  },
+  {
+   "qid": "u004",
+   "refusal": true,
+   "answer_len": 14
+  },
+  {
+   "qid": "u005",
+   "refusal": true,
+   "answer_len": 14
+  },
+  {
+   "qid": "u006",
+   "refusal": true,
+   "answer_len": 180
+  },
+  {
+   "qid": "u007",
+   "refusal": true,
+   "answer_len": 14
+  },
+  {
+   "qid": "u008",
+   "refusal": true,
+   "answer_len": 14
+  },
+  {
+   "qid": "canary",
+   "refusal": true,
+   "answer_len": 199
+  }
+ ],
+ "refusal_ok": 9,
+ "unanswerable_n": 8,
+ "threshold_refusal": 6,
+ "rows": [
+  {
+   "qid": "q001",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "don't repeat yourself",
+     "p": true
+    },
+    {
+     "t": "dupl",
+     "p": true
+    },
+    {
+     "t": "knowl",
+     "p": false
+    },
+    {
+     "t": "intent",
+     "p": false
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "don't repeat yourself",
+     "p": true
+    },
+    {
+     "t": "dupl",
+     "p": true
+    },
+    {
+     "t": "knowl",
+     "p": true
+    },
+    {
+     "t": "intent",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q002",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "dispos",
+     "p": false
+    },
+    {
+     "t": "lean but complet",
+     "p": false
+    },
+    {
+     "t": "skeleton",
+     "p": false
+    },
+    {
+     "t": "tracer",
+     "p": true
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "dispos",
+     "p": true
+    },
+    {
+     "t": "lean but complet",
+     "p": true
+    },
+    {
+     "t": "skeleton",
+     "p": true
+    },
+    {
+     "t": "tracer",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q003",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "mixin",
+     "p": true
+    },
+    {
+     "t": "deleg",
+     "p": true
+    },
+    {
+     "t": "interfac",
+     "p": false
+    },
+    {
+     "t": "coupl",
+     "p": false
+    },
+    {
+     "t": "protoc",
+     "p": false
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "mixin",
+     "p": true
+    },
+    {
+     "t": "deleg",
+     "p": true
+    },
+    {
+     "t": "interfac",
+     "p": true
+    },
+    {
+     "t": "coupl",
+     "p": true
+    },
+    {
+     "t": "protoc",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q004",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "easier to chang",
+     "p": true
+    },
+    {
+     "t": "special case",
+     "p": false
+    },
+    {
+     "t": "decoupl",
+     "p": true
+    },
+    {
+     "t": "guide",
+     "p": false
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "easier to chang",
+     "p": true
+    },
+    {
+     "t": "special case",
+     "p": true
+    },
+    {
+     "t": "decoupl",
+     "p": true
+    },
+    {
+     "t": "guide",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q005",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "board it up",
+     "p": false
+    },
+    {
+     "t": "as soon as",
+     "p": false
+    },
+    {
+     "t": "don't leave",
+     "p": false
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "board it up",
+     "p": true
+    },
+    {
+     "t": "as soon as",
+     "p": true
+    },
+    {
+     "t": "don't leave",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q006",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "precondit",
+     "p": true
+    },
+    {
+     "t": "postcondit",
+     "p": true
+    },
+    {
+     "t": "invariant",
+     "p": true
+    },
+    {
+     "t": "caller",
+     "p": true
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "precondit",
+     "p": true
+    },
+    {
+     "t": "postcondit",
+     "p": true
+    },
+    {
+     "t": "invariant",
+     "p": true
+    },
+    {
+     "t": "caller",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q007",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "observer",
+     "p": false
+    },
+    {
+     "t": "coupl",
+     "p": false
+    },
+    {
+     "t": "callback",
+     "p": false
+    },
+    {
+     "t": "synchron",
+     "p": false
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "observer",
+     "p": false
+    },
+    {
+     "t": "coupl",
+     "p": false
+    },
+    {
+     "t": "callback",
+     "p": false
+    },
+    {
+     "t": "synchron",
+     "p": false
+    }
+   ]
+  },
+  {
+   "qid": "q008",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "dead program",
+     "p": false
+    },
+    {
+     "t": "catch and release",
+     "p": true
+    },
+    {
+     "t": "crash",
+     "p": true
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "dead program",
+     "p": true
+    },
+    {
+     "t": "catch and release",
+     "p": true
+    },
+    {
+     "t": "crash",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q009",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "turn on",
+     "p": false
+    },
+    {
+     "t": "overhead",
+     "p": true
+    },
+    {
+     "t": "assertion",
+     "p": true
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "turn on",
+     "p": true
+    },
+    {
+     "t": "overhead",
+     "p": true
+    },
+    {
+     "t": "assertion",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q010",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "dupl",
+     "p": true
+    },
+    {
+     "t": "interdepend",
+     "p": false
+    },
+    {
+     "t": "minimiz",
+     "p": false
+    },
+    {
+     "t": "components",
+     "p": false
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "dupl",
+     "p": true
+    },
+    {
+     "t": "interdepend",
+     "p": true
+    },
+    {
+     "t": "minimiz",
+     "p": true
+    },
+    {
+     "t": "components",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q011",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "binary chop",
+     "p": true
+    },
+    {
+     "t": "divide and conquer",
+     "p": false
+    },
+    {
+     "t": "half",
+     "p": false
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "binary chop",
+     "p": true
+    },
+    {
+     "t": "divide and conquer",
+     "p": true
+    },
+    {
+     "t": "half",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q012",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "blackboard",
+     "p": true
+    },
+    {
+     "t": "actor",
+     "p": false
+    },
+    {
+     "t": "facts",
+     "p": false
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "blackboard",
+     "p": true
+    },
+    {
+     "t": "actor",
+     "p": true
+    },
+    {
+     "t": "facts",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q013",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "coincid",
+     "p": true
+    },
+    {
+     "t": "accident",
+     "p": false
+    },
+    {
+     "t": "deliber",
+     "p": true
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "coincid",
+     "p": true
+    },
+    {
+     "t": "accident",
+     "p": true
+    },
+    {
+     "t": "deliber",
+     "p": true
+    }
+   ]
+  },
+  {
+   "qid": "q015",
+   "refused": false,
+   "terms_strict": [
+    {
+     "t": "starter kit",
+     "p": true
+    },
+    {
+     "t": "version control",
+     "p": true
+    },
+    {
+     "t": "regress",
+     "p": true
+    },
+    {
+     "t": "automat",
+     "p": true
+    }
+   ],
+   "terms_semantic": [
+    {
+     "t": "starter kit",
+     "p": true
+    },
+    {
+     "t": "version control",
+     "p": true
+    },
+    {
+     "t": "regress",
+     "p": true
+    },
+    {
+     "t": "automat",
+     "p": true
+    }
+   ]
+  }
+ ]
+}

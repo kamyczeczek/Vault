@@ -1,0 +1,2 @@
+{"tool": "read", "args": {"file_path": "AGENTS.md"}}
+{"tool": "glob", "args": {"pattern": "**/*.py"}}

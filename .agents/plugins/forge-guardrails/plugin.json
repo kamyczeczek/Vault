@@ -1,0 +1,5 @@
+{
+  "name": "forge-guardrails",
+  "version": "0.1.0",
+  "description": "Forge guardrails middleware for goose: step enforcement, anti-tautological test validation, destructive-git bans, escalation. State lives in .forge/."
+}

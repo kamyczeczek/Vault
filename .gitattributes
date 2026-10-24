@@ -1,0 +1,17 @@
+# Normalize line endings on checkin; keep LF in the repository. Every project
+# repo in this workspace hit the CRLF warning during the split, and the root
+# should not reintroduce it.
+* text=auto eol=lf
+
+*.md   text diff=markdown
+*.py   text diff=python
+*.yml  text
+*.yaml text
+*.json text
+*.txt  text
+
+# Binary: never touched
+*.db   binary
+*.png  binary
+*.jpg  binary
+*.pdf  binary

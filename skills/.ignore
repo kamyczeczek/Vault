@@ -1,0 +1,2 @@
+# pi skill-scan excludes (respected by pi's scanner; does not affect git)
+archive/

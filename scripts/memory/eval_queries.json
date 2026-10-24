@@ -1,0 +1,143 @@
+[
+  {
+    "name": "provider error",
+    "query": "provider openai responses",
+    "type": "error",
+    "expected_session_ids": [
+      "8ced867d-a73",
+      "c5c82ede-91fc"
+    ],
+    "exclude_session_ids": [
+      "212103a0-392c-47d4-941f-391c05f03c30",
+      "9b838833-1e8d-4b32-af83-42bcd6c6a3c5",
+      "6c6fc914-7b63-4294-a3e9-6cc603e5e68c",
+      "29ef7349-ba67-4e52-901d-6e90ba7ea3a9",
+      "57b869b1-ad78-4b48-8131-b245d1e5e7d8",
+      "20260803_191144_68cf55",
+      "20260803_015305_41ca07",
+      "d05905e7-dbf2-446f-93c3-e591647000e8",
+      "01a03f48-5f1e-7000-aeca-8d3fc936b690",
+      "01a03d43-d21e-7000-b342-748b28289189"
+    ]
+  },
+  {
+    "name": "provider error variant",
+    "query": "custom model provider",
+    "type": "error",
+    "expected_session_ids": [
+      "8ced867d-a73",
+      "c5c82ede-91fc",
+      "061d7295-9263"
+    ],
+    "exclude_session_ids": [
+      "212103a0-392c-47d4-941f-391c05f03c30",
+      "9b838833-1e8d-4b32-af83-42bcd6c6a3c5",
+      "6c6fc914-7b63-4294-a3e9-6cc603e5e68c",
+      "29ef7349-ba67-4e52-901d-6e90ba7ea3a9",
+      "57b869b1-ad78-4b48-8131-b245d1e5e7d8"
+    ]
+  },
+  {
+    "name": "whitespace scar",
+    "query": "git diff whitespace",
+    "expected_session_ids": [
+      "01a0f85b-571d"
+    ]
+  },
+  {
+    "name": "single model decision",
+    "query": "one model per session",
+    "expected_session_ids": [
+      "01a0f438-65ce"
+    ]
+  },
+  {
+    "name": "FTS decision",
+    "query": "FTS5 unicode61",
+    "expected_session_ids": [
+      "fe3a511b-90cd"
+    ],
+    "exclude_session_ids": [
+      "01a0d999",
+      "01a13ce6",
+      "01a14af3",
+      "ses_eb2d1e180",
+      "ses_ebce63c7"
+    ]
+  },
+  {
+    "name": "retrieval benchmark",
+    "query": "retrieval benchmark",
+    "expected_session_ids": [
+      "20260920_7"
+    ]
+  },
+  {
+    "name": "retrieval result",
+    "query": "retrieval currently worse benchmark",
+    "expected_session_ids": [
+      "20260920_7"
+    ]
+  },
+  {
+    "name": "freshness failure",
+    "query": "freshness unverified",
+    "expected_session_ids": [
+      "ses_efbf124ccffe"
+    ]
+  },
+  {
+    "name": "workspace gate",
+    "query": "workspace integrity",
+    "type": "error",
+    "expected_session_ids": [
+      "01a0f9c0-113",
+      "c5914f07-03c",
+      "01a13c24-fff9",
+      "01a13bd8-c860"
+    ]
+  },
+  {
+    "name": "prompt caching",
+    "query": "prompt caching cache ttl",
+    "expected_session_ids": [
+      "20261002_134650"
+    ]
+  },
+  {
+    "name": "session affinity",
+    "query": "session affinity header",
+    "expected_session_ids": [
+      "20261002_134650"
+    ]
+  },
+  {
+    "name": "unicode tokenizer",
+    "query": "unicode61 tokenizer diacritics",
+    "expected_session_ids": [
+      "fe3a511b-90cd"
+    ]
+  },
+  {
+    "name": "content criterion",
+    "query": "non tautological criterion",
+    "expected_session_ids": [
+      "c5c82ede-91fc"
+    ]
+  },
+  {
+    "name": "memory contract",
+    "query": "memory index freshness",
+    "expected_session_ids": [
+      "ses_efbf124c",
+      "c5c82ede-91f"
+    ]
+  },
+  {
+    "name": "agent memory",
+    "query": "How Our Workspace Remembers Everything",
+    "expected_session_ids": [
+      "20260921_8"
+    ]
+  }
+]

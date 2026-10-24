@@ -1,0 +1,55 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          { "type": "command",
+            "command": "python C:/Users/Mateusz/Desktop/root_worksapce/.agents/plugins/forge-guardrails/scripts/forge_hook.py session_start" }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "(shell|bash|terminal|exec|write|edit|apply_patch|text_editor)",
+        "on_failure": "allow",
+        "hooks": [
+          { "type": "command",
+            "command": "python C:/Users/Mateusz/Desktop/root_worksapce/.agents/plugins/forge-guardrails/scripts/forge_hook.py pre_tool" }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "(shell|bash|terminal|exec|write|edit|apply_patch|text_editor)",
+        "hooks": [
+          { "type": "command",
+            "command": "python C:/Users/Mateusz/Desktop/root_worksapce/.agents/plugins/forge-guardrails/scripts/forge_hook.py post_tool" }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          { "type": "command",
+            "command": "python C:/Users/Mateusz/Desktop/root_worksapce/.agents/plugins/forge-guardrails/scripts/forge_hook.py tool_failure" }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          { "type": "command",
+            "command": "python C:/Users/Mateusz/Desktop/root_worksapce/.agents/plugins/forge-guardrails/scripts/forge_hook.py stop" }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          { "type": "command",
+            "command": "python C:/Users/Mateusz/Desktop/root_worksapce/.agents/plugins/forge-guardrails/scripts/forge_hook.py session_end" }
+        ]
+      }
+    ]
+  }
+}

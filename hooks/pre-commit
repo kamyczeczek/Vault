@@ -1,0 +1,63 @@
+#!/bin/sh
+# Repository pre-commit guard. Git for Windows supplies sh.
+set -u
+
+ROOT=$(git rev-parse --show-toplevel) || exit 1
+cd "$ROOT" || exit 1
+
+echo "pre-commit: checking staged whitespace"
+if ! git diff --cached --check; then
+  echo "pre-commit: staged whitespace check failed" >&2
+  exit 1
+fi
+
+echo "pre-commit: rebuilding generated views (HANDOFF.md, STATE.md)"
+PYTHON=${PYTHON:-python.exe}
+echo "pre-commit: scanning staged files for secrets"
+"$PYTHON" scripts/scan_secrets.py --staged || {
+  echo "pre-commit: secrets detected in staged files - commit blocked" >&2
+  exit 1
+}
+"$PYTHON" scripts/build_handoff.py || exit 1
+"$PYTHON" scripts/build_state.py || exit 1
+git add -- HANDOFF.md STATE.md handoff/flags/INDEX.md 2>/dev/null || true
+
+echo "pre-commit: checking stop gate"
+"$PYTHON" scripts/stop_gate_guard.py --check || {
+  echo "pre-commit: stop gate active" >&2
+  exit 2
+}
+
+echo "pre-commit: checking staged deletions of protected root entries"
+"$PYTHON" scripts/root_deletion_guard.py --check-staged || {
+  echo "pre-commit: root deletion guard failed" >&2
+  exit 1
+}
+
+echo "pre-commit: auditing self-modifications"
+"$PYTHON" scripts/self_modification_audit.py --check-staged || {
+  echo "pre-commit: self-modification audit failed" >&2
+  exit 1
+}
+
+echo "pre-commit: checking read-after-edit compliance"
+"$PYTHON" scripts/read_after_edit_guard.py --check || {
+  echo "pre-commit: read-after-edit compliance violation" >&2
+  exit 1
+}
+
+echo "pre-commit: checking commit approval token"
+"$PYTHON" scripts/commit_gate_guard.py --check || {
+  echo "pre-commit: commit not authorized (no fresh .commit-approved token)" >&2
+  exit 1
+}
+
+echo "pre-commit: checking workspace integrity"
+"$PYTHON" scripts/check_workspace_integrity.py
+rc=$?
+if [ "$rc" -ne 0 ]; then
+  echo "pre-commit: workspace integrity failed" >&2
+  exit "$rc"
+fi
+
+exit 0

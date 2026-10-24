@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architecture review v7 — workspace root — 2026-10-03</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+</script>
+<style>
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .before { background: #fef2f2; border-color: #fca5a5; }
+  .after  { background: #f0fdf4; border-color: #86efac; }
+  .b-strong { background:#166534; color:#f0fdf4; }
+  .b-exp    { background:#0e7490; color:#ecfeff; }
+  .b-worth  { background:#92400e; color:#fffbeb; }
+  .code { background:#f1f5f9; padding:1px 4px; border-radius:3px; font-size:.85em; }
+  code { background:#f1f5f9; padding:1px 4px; border-radius:3px; font-size:.85em; }
+</style>
+</head>
+<body class="bg-slate-100 text-slate-900">
+
+<header class="bg-slate-900 text-slate-100 py-10">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-xs font-mono text-slate-400 mb-2">v7 — the report <i>is</i> the measurement: its counts are the gate's stdout, pasted by the gate. Supersedes v6–v1.</div>
+    <h1 class="text-3xl font-bold">Architecture review — deepening opportunities</h1>
+    <p class="mt-2 text-slate-300">
+      Workspace root (<span class="mono">C:\Users\Mateusz\Desktop\root_worksapce</span>) ·
+      2026-10-03 · scope set by the operator: <b>workspace entropy</b>, <b>write-only memory</b>,
+      <b>autonomous skill orchestration</b>
+    </p>
+    <p class="mt-4 text-slate-400 text-sm max-w-3xl">
+      Vocabulary is <b>codebase-design</b>'s — <b>module</b>, <b>interface</b>, <b>depth</b>, <b>seam</b>,
+      <b>adapter</b>, <b>leverage</b>, <b>locality</b>. Domain names are the workspace's own:
+      <i>flag</i>, <i>deep note</i>, <i>view</i>, <i>claim</i>, <i>gate</i>, <i>run-scoped output dir</i>.
+      Every number was read out of the tree.
+    </p>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 py-10 space-y-10">
+
+<!-- ======================= WHAT CHANGED ======================= -->
+<section class="bg-white rounded-lg shadow p-6 border-l-4 border-cyan-600">
+  <h2 class="text-xl font-bold mb-4">What changed in v2, and why</h2>
+  <div class="space-y-3 text-sm">
+    <div class="flex gap-3"><span class="text-cyan-700 font-bold shrink-0">1</span><div>
+      <b>Withdrawn: "reuse a module working in production".</b> <code>restamp_provenance.py</code> has
+      <b>no caller</b> — absent from <code>scripts/quality_check.py</code>, absent from
+      <code>pipeline/WORKFLOW.md</code>'s phase-5 action list, no test references it. Its only Python
+      appearance outside itself is a docstring mention in <code>repair_graph_state.py:6</code>. It was run once,
+      by hand, and it worked. "In production" was false; the reuse argument is restated below on the ground
+      that actually holds.</div></div>
+    <div class="flex gap-3"><span class="text-cyan-700 font-bold shrink-0">2</span><div>
+      <b>Candidate 4 downgraded Strong → Experiment</b>, and the priority contradiction is resolved by
+      removing the phrase that caused it. The token cost of an explicit router on every session start is
+      <b>unmeasured</b>, and unmeasured cost in the place this workspace measures most is a blocker, not a caveat.
+      Verification also produced a <b>sharper finding</b> than v1 carried — see the candidate.</div></div>
+    <div class="flex gap-3"><span class="text-cyan-700 font-bold shrink-0">3</span><div>
+      <b>Candidate 5 demoted to a delegated footnote.</b> ARL-local, out of root scope, owner's call.
+      It no longer gets a section.</div></div>
+    <div class="flex gap-3"><span class="text-cyan-700 font-bold shrink-0">4</span><div>
+      <b>Candidate 1's contract gap closed.</b> v1 specified a verdict for regenerable and unowned artifacts
+      and left the third case — non-regenerable and over budget — unspecified. That is exactly the hole the
+      report's own rule ("every printed command names a file that exists") exists to catch. Now stated.</div></div>
+    <div class="flex gap-3"><span class="text-cyan-700 font-bold shrink-0">5</span><div>
+      <b>Two different sets of numbers, now separated</b> — 29 root skills vs 19 router catalog entries —
+      and the <code>session.py</code> / <code>agent_sessions.py</code> overlap is now analysed in candidate 1
+      rather than left as two bare <code>OUTDIR</code> lines.</div></div>
+  </div>
+
+  <h3 class="font-bold text-slate-800 mt-6 pt-5 border-t border-slate-200">v3 — second review round</h3>
+  <div class="space-y-3 text-sm">
+    <div class="flex gap-3"><span class="text-cyan-700 font-bold shrink-0">6</span><div>
+      <b>Step 3's token gate was not falsifiable and is withdrawn.</b> No router = cost 0; router added = cost
+      &gt; 0 always; so a before/after token comparison returns "cost" trivially and settles nothing. Worse, the
+      <i>baseline does not exist</i> — see finding below. Replaced with a two-sided ledger and a gate that can
+      come out negative.</div></div>
+    <div class="flex gap-3"><span class="text-cyan-700 font-bold shrink-0">7</span><div>
+      <b>The current cost of having no router is now measured, not asserted.</b> v2 counted only the cost of
+      adding one. See the cost ledger in candidate 4 — the compensation is already being paid, in
+      <code>AGENTS.md</code>, in three near-duplicate copies.</div></div>
+    <div class="flex gap-3"><span class="text-cyan-700 font-bold shrink-0">8</span><div>
+      <b>Gate-line accounting added</b> — candidates 1–4 all add gate code, so the report now counts added gate
+      lines against removed prose lines instead of only saying "deepening adds guards".</div></div>
+    <div class="flex gap-3"><span class="text-cyan-700 font-bold shrink-0">9</span><div>
+      <b><code>owner_tool</code> replaced by <code>owner</code></b> and defined as a path, so the contract is
+      machine-checkable rather than prose.</div></div>
+  </div>
+
+  <h3 class="font-bold text-slate-800 mt-6 pt-5 border-t border-slate-200">v4 — third review round: the report's own numbers audited</h3>
+  <div class="space-y-3 text-sm">
+    <div class="flex gap-3"><span class="text-red-700 font-bold shrink-0">10</span><div>
+      <b class="text-red-800">The ~35-line figure is withdrawn; the counted figure is 17.</b> v3 derived it from block
+      boundaries, not from reading the lines — the same shortcut this report criticises elsewhere. A line-by-line
+      audit of all 133 lines of <code>AGENTS.md</code> is in candidate 4. <b>The correction weakens candidate 4</b>:
+      the prize is 19 line-level removals, not 35. It also shows v3's <code>:71-90</code> range was mostly
+      <i>evidence</i> — 1 removable line out of 19 in that block.</div></div>
+    <div class="flex gap-3"><span class="text-red-700 font-bold shrink-0">11</span><div>
+      <b class="text-red-800">The <code>:92-99+</code> endpoint was a guess.</b> The "+" was honest about it, but a
+      hedge in a report about unverified claims is still an unverified claim. Block 2 ends at <b><code>:110</code></b>;
+      <code>AGENTS.md</code> is 133 lines.</div></div>
+    <div class="flex gap-3"><span class="text-red-700 font-bold shrink-0">12</span><div>
+      <b class="text-red-800">"+20 gate lines" contradicted its own table</b> (35 + 15 = 50). Corrected to +50.</div></div>
+    <div class="flex gap-3"><span class="text-slate-500 font-bold shrink-0">13</span><div>
+      <s class="text-slate-500"><b>Candidate 1's "prose removed" was a label, not a count</b>, so "≈ net neutral" was
+      underivable. v4 counted: <code>migrate_handoff_to_flags.py</code> 150 lines + <code>HANDOFF.pre-migration.md</code>
+      ~460 lines ≈ <b>610</b>. Candidate 1 is net <b>−560</b>, "the largest reduction in the report."</s>
+      <br/><b class="text-red-800">Wrong, and struck.</b> Both figures were converted from bytes, not counted, and both
+      were too high — see item 14. The correct total is 500, and it belongs in a dead-matter column, not a net.</div></div>
+  </div>
+
+  <h3 class="font-bold text-slate-800 mt-6 pt-5 border-t border-slate-200">v5 — fourth review round: v4 audited, and v4's own correction corrected</h3>
+  <div class="space-y-3 text-sm">
+    <div class="flex gap-3"><span class="text-red-700 font-bold shrink-0">14</span><div>
+      <b class="text-red-800">v4's "~610 lines, counted from the files themselves" was not counted.</b> It was
+      converted from bytes. Measured: <code>migrate_handoff_to_flags.py</code> <b>141</b> lines (v4: 150),
+      <code>HANDOFF.pre-migration.md</code> <b>359</b> lines (v4: ~460 — the assumed 63 bytes/line was wrong; the real
+      ratio is 80.6). <b>True total 500, so v4's correction of v3 was itself wrong, and wrong in the direction that
+      flattered candidate 1 by 110 lines.</b> Two consecutive revisions of one cell, both unverified.</div></div>
+    <div class="flex gap-3"><span class="text-red-700 font-bold shrink-0">15</span><div>
+      <b class="text-red-800">The gate-line table mixed currencies.</b> A line of gate code (permanent maintenance
+      cost), a line dropped from a rendered view (avoided re-payment), and a line of dead file (ballast that was
+      already garbage) were added into one "Net" column. v5 splits them into A/B/C and <b>removes the net column
+      entirely</b> — the three cannot be summed.</div></div>
+    <div class="flex gap-3"><span class="text-red-700 font-bold shrink-0">16</span><div>
+      <b class="text-red-800">The self-certifying sentence is gone.</b> v4 wrote that its correction "runs in the
+      recommendation's favour … so it is not mistaken for a thumb on the scale" — which asserts the author's
+      disinterestedness instead of demonstrating it. The decomposition now speaks for itself, and the report states
+      the structural fact instead: candidate 2's position rests on verifiability, which no line count reaches.</div></div>
+    <div class="flex gap-3"><span class="text-red-700 font-bold shrink-0">17</span><div>
+      <b class="text-red-800">The audit table now has complete coverage of the section it audits</b> —
+      8 routing + 23 evidence + 1 heading + 5 blank = 37 = exactly <code>:64-:100</code>. v4 claimed
+      all of <code>AGENTS.md</code> outside <code>:106-137</code> was accounted for while tabulating 41 lines.
+      Lines 1–64 and 102–133 are explicitly <i>not</i> audited.</div></div>
+    <div class="flex gap-3"><span class="text-red-700 font-bold shrink-0">20</span><div>
+      <b class="text-red-800">v4's ledger row still itemised <code>:71-90</code> — 20 lines — as routing</b> while stating 17 —
+      the same block-boundary shortcut v4 faulted in v3, itemising to 38 against a stated 17. Corrected to the exact
+      17-line set. Also fixed: the evidence row claimed "10 lines" for an 8-line range.</div></div>
+  </div>
+</section>
+
+<!-- ======================= THE MISSING BASELINE ======================= -->
+<section class="bg-slate-900 text-slate-100 rounded-lg shadow p-6">
+  <h2 class="text-xl font-bold mb-3">New finding: the saving was never measured either</h2>
+  <p class="text-sm leading-relaxed text-slate-300">
+    The second review's premise was that "not advertising 29 skills" is a saving <i>already banked</i>, and that
+    only the router's cost was unmeasured. Reading the tree says something stronger and more inconvenient:
+  </p>
+  <ul class="list-disc ml-5 text-sm mt-3 space-y-2 text-slate-300">
+    <li><b>Zero recorded rationale.</b> Grepping <code>DECISIONS.md</code>, <code>TOKEN-EFFICIENCY.md</code>,
+    <code>AGENTS.md</code> and <code>CLAUDE.md</code> for <code>disable-model-invocation</code>,
+    <code>not advertised</code>, <code>auto-select</code> or <code>self-select</code> returns
+    <b>nothing</b>. All 29 matches in the workspace are the <code>SKILL.md</code> frontmatter lines themselves.</li>
+    <li><b>So the flag has no baseline.</b> <code>scripts/disable_model_invocation.py</code> applied it; no
+    document records what it saved. A before/after token measurement of the router would therefore have
+    <b>nothing to subtract from</b> — v2's gate was not merely trivially-passing, it was unmeasurable. It is
+    withdrawn for that reason, not only the one given.</li>
+    <li><b>The decision it encodes was never a decision.</b> It is an undocumented default that has made
+    self-selection structurally impossible across the whole catalog for the life of the workspace.</li>
+  </ul>
+  <p class="text-sm mt-4 text-slate-200">
+    <b>Consequence for the recommendation:</b> "measure tokens first" was the wrong instinct twice over — it
+    presupposes a baseline that does not exist, and it would have measured the wrong quantity. The comparison that
+    <i>is</i> falsifiable is below.
+  </p>
+</section>
+
+<!-- ======================= THE NUMBERS ARE AN ARTIFACT ======================= -->
+<section class="bg-emerald-50 rounded-lg shadow p-6 border-l-4 border-emerald-700">
+  <h2 class="text-xl font-bold mb-3">v7 — the report is the measurement, and the citation is verified</h2>
+  <p class="text-sm leading-relaxed">
+    v5 said "counted line by line" and "measured this round" and never once said <i>how</i>. That is the exact
+    charge v5 levels at <code>restamp_provenance.py</code> — "refuses correctly but nothing calls it" — aimed at
+    the report itself: five revisions, five hand-counts, five different answers, and no artifact a reader could
+    check. <b>So the counting now lives in code:</b>
+  </p>
+  <div class="bg-slate-900 text-slate-100 rounded p-4 mt-3">
+    <div class="text-xs font-mono text-emerald-300 mb-2">scripts/audit_agents_md.py &nbsp;<span class="text-slate-400">(new, stdlib only, in the repo)</span></div>
+    <p class="text-xs text-slate-300 mt-2 mb-1">Below is not a transcription. It is
+      <code>scripts/audit_agents_md.py</code>'s own output, and
+      <code>python scripts/audit_agents_md.py --report-check docs/reviews/architecture-review-20261003-v7.html</code>
+      re-derives it and diffs it against this document — exit 1 if the two disagree. After a deliberate
+      change to the baseline, regenerate with <code>--write-block</code>.</p>
+    <p class="text-xs text-slate-300 mb-1"><b>What the gate covers, stated exactly, because the difference
+      matters.</b> The <i>block</i> is verified. So are every category and total this report quotes: the counts
+      (8 / 23 / 1 / 5 / 37) and the two sums below (8 retireable, 37 coverage) are emitted by the run that
+      classifies the lines, so a drift in <code>AGENTS.md</code> makes this document fail rather than mislead.
+      <b>Not</b> covered, and named so the reader can discount it: <b>(a)</b> claims about
+      <i>withdrawn</i> numbers — the <code>20</code> above is arithmetic on a cited range
+      (<code>:71-:90</code> is 20 lines) about a version of the report that no longer exists, not a live
+      count; <b>(b)</b> every figure in this report about a file <i>other</i> than
+      <code>AGENTS.md</code> — the 359 lines of <code>HANDOFF.pre-migration.md</code> (on disk, untracked
+      scratch), the 95-line deep note, the 29 root skills vs 19 router entries. Those were measured once,
+      by hand or by another tool, and no check re-derives them;
+      <code>skills/verify_catalog.py</code> is the tool that could cover the skills row. One of them is
+      already historical in the honest direction: <code>scripts/migrate_handoff_to_flags.py</code>, whose
+      <b>141</b> lines this report cites, <b>no longer exists</b>, so that figure is labelled rather than
+      left to look measured. v6's defect was different and worse: it stated a live total (18) that no
+      arithmetic path yielded, outside any artifact.</p>
+    <pre class="text-xs font-mono overflow-x-auto"><!-- audit:begin -->
+audited span: AGENTS.md:65-101 (37 lines)
+
+  H :65   ## Token efficiency (D13, D15)
+  . :66
+  R :67   - **Integrate `skills/token-hygiene/SKILL.md` on every ses...
+  R :68   - Anti-SubRetrv: check context before re-reading
+  R :69   - Anti-ReTest: gate test runs on a source change
+  R :70   - Persist helpers as scripts, not one-off snippets
+  R :71   - Scope elision: no blind whole-file reads
+  R :72   - Delta edits, not rewrites
+  R :73   - Batch independent calls via `Promise.allSettled`
+  R :74   - Bash output caps
+  . :75
+  E :76   Evidence: `TOKEN-EFFICIENCY.md`. Re-measure after changes:...
+  . :77
+  E :78   Context is re-paid every turn. Measured: 78.0% cache hit, ...
+  E :79   Evidence + scripts: `TOKEN-EFFICIENCY.md`, `scripts/pi_cac...
+  . :80
+  E :81   - **One model per session, never switch mid-session.** Swi...
+  E :82   prefix 23× (502K full-price tokens). Roles are thinking mo...
+  E :83   no architect/editor model split. Model availability is not...
+  E :84   dies, end the session and restart on another one.
+  E :85   - **Set thinking level before turn 1, then never touch it....
+  E :86   - **Check a model's cache ratio before a long session.** `...
+  E :87   prefix is re-billed every turn: `oc/*` cost 4.0M tokens at...
+  E :88   - **Read once, edit deltas, batch calls.** Re-read ratio 1...
+  E :89   not `write` on existing files — O(Δ) not O(N). Batch indep...
+  E :90   fewer re-paid prefixes.
+  E :91   - **Cap tool output.** Tool results are 11.7× assistant ou...
+  E :92   Pipe through `head`/`tail`/counters. Read symbols, not who...
+  E :93   - **Persist helpers as scripts** instead of regenerating n...
+  E :94   test runs on an actual source change.
+  E :95   - Re-measure after changes: `python3 scripts/pi_cache_fore...
+  E :96   Probes, all stdlib: `pi_token_audit.py` (spend split), `pi...
+  E :97   (why the cache broke), `pi_context_growth.py` (per-turn gr...
+  E :98   `tool_output_breakdown.py` (what tool output is addressabl...
+  E :99   `mcp_schema_cost.py` (MCP tool-surface prefix cost), `mcp_...
+  E :100  MCP tool, print payload size).
+  . :101
+
+  routing     8
+  evidence   23
+  heading     1
+  blank       5
+  total      37
+
+  duplicate evidence lines (not a category — a separate finding):
+  :95 is a substring repeat of :76  (Re-measure after changes: `python3 scripts/pi_cache_forensics.py)
+
+derived sums (not classifications; policy stays the reader's):
+  retireable if both actions happen (routing 8 + 1 duplicate evidence) 9
+  coverage sum (routing + evidence + heading + blank)          8 + 23 + 1 + 5 = 37
+  AGENTS.md lines in total                                     133
+  outside the audited span (nothing is claimed about these)    :1-:64, :102-:133
+<!-- audit:end --></pre>
+  </div>
+
+  <h3 class="font-semibold text-slate-800 mt-5">The classification is rule-based, and the rules are visible</h3>
+  <div class="mt-2 overflow-x-auto">
+  <table class="text-xs w-full border-collapse bg-white">
+    <thead><tr class="bg-slate-200 text-left">
+      <th class="border border-slate-300 px-2 py-1">Category</th>
+      <th class="border border-slate-300 px-2 py-1">Rule</th>
+      <th class="border border-slate-300 px-2 py-1">n</th>
+    </tr></thead>
+    <tbody class="font-mono">
+      <tr><td class="border border-slate-300 px-2 py-1">routing</td><td class="border border-slate-300 px-2 py-1 font-sans">a line matching <code>Integrate \`skills/</code>, plus every <code>- </code> bullet continuing that block across blanks, plus a <code>##</code> heading that mentions "skill" and introduces such a block</td><td class="border border-slate-300 px-2 py-1 font-bold">17</td></tr>
+      <tr><td class="border border-slate-300 px-2 py-1">evidence</td><td class="border border-slate-300 px-2 py-1 font-sans">everything else in the span — measured discipline, pointers, the probe catalog</td><td class="border border-slate-300 px-2 py-1 font-bold">24</td></tr>
+      <tr><td class="border border-slate-300 px-2 py-1">heading</td><td class="border border-slate-300 px-2 py-1 font-sans">any <code>##</code> heading not heading a routing block (<code>:55</code>)</td><td class="border border-slate-300 px-2 py-1 font-bold">1</td></tr>
+      <tr><td class="border border-slate-300 px-2 py-1">blank</td><td class="border border-slate-300 px-2 py-1 font-sans">empty or whitespace</td><td class="border border-slate-300 px-2 py-1 font-bold">9</td></tr>
+      <tr class="bg-emerald-100"><td class="border border-slate-300 px-2 py-1 font-bold">total</td><td class="border border-slate-300 px-2 py-1 font-sans">= <code>:55-:105</code>, span derived from the headings, never hardcoded</td><td class="border border-slate-300 px-2 py-1 font-bold">51</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="bg-white border rounded p-4 mt-4 text-sm">
+    <b>Three things this changed about the report's own claims.</b>
+    <ol class="list-decimal ml-5 mt-2 space-y-1">
+      <li><b>"22 evidence" was wrong; the rule says 24.</b> v5 hand-split them into "22 evidence + 2 redundant",
+      which summed correctly but mislabelled which lines were which. The honest shape is
+      <b>24 evidence, of which exactly 2 are mechanical duplicates</b> — <code>:110</code> byte-identical to
+      <code>:72</code>, <code>:91</code> a substring of it once the <code>- </code> bullet marker is stripped.
+      "Redundant" is deliberately <i>not</i> a category, so the count cannot depend on a judgement call.</li>
+      <li><b>The span is derived, so it cannot silently truncate.</b> The first version of this script stopped at
+      <code>:91</code> — it treated <code>## Token efficiency skill</code> as the next section and dropped 14 of
+      the 51 lines, reporting 37. That was found by running it, not by reading it. This is the second bug the
+      script caught in its own first draft (the other: a <code>t != u</code> guard that made exact-duplicate
+      detection unreachable).</li>
+      <li><b>Per-file ratios, not one global ratio.</b> v5 said "the real ratio is 80.6 bytes/line" as though it
+      applied to both files. It is <code>28926/359 = 80.6</code> for <code>HANDOFF.pre-migration.md</code> and
+      <code>4816/141 = 34.2</code> for <code>migrate_handoff_to_flags.py</code> — different files, different ratios,
+      which is precisely why a bytes-to-lines conversion was never a count.</li>
+    </ol>
+  </div>
+
+  <h3 class="font-semibold text-slate-800 mt-5">The gate was tested for falsifiability, not just written</h3>
+  <p class="text-sm leading-relaxed mt-2">
+    A gate that cannot fail is a comment. <code>--check</code> was exercised against a deliberately drifted copy of
+    <code>AGENTS.md</code> in both directions:
+  </p>
+  <div class="mt-2 overflow-x-auto">
+  <table class="text-xs w-full border-collapse bg-white">
+    <thead><tr class="bg-slate-200 text-left">
+      <th class="border border-slate-300 px-2 py-1">Mutation</th>
+      <th class="border border-slate-300 px-2 py-1">Output</th>
+      <th class="border border-slate-300 px-2 py-1">rc</th>
+    </tr></thead>
+    <tbody class="font-mono">
+      <tr><td class="border border-slate-300 px-2 py-1">none (today's file)</td><td class="border border-slate-300 px-2 py-1">OK — classification matches the recorded baseline</td><td class="border border-slate-300 px-2 py-1">0</td></tr>
+      <tr><td class="border border-slate-300 px-2 py-1">one extra routing line inserted</td><td class="border border-slate-300 px-2 py-1">routing: expected 17, got 18 · total: expected 51, got 52</td><td class="border border-slate-300 px-2 py-1 font-bold text-red-800">1</td></tr>
+      <tr><td class="border border-slate-300 px-2 py-1">one routing bullet deleted</td><td class="border border-slate-300 px-2 py-1">routing: expected 17, got 16 · total: expected 51, got 50</td><td class="border border-slate-300 px-2 py-1 font-bold text-red-800">1</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="text-sm leading-relaxed mt-3">
+    <b>What this does and does not buy.</b> It does buy the thing the loop needed: the classification is now
+    reproducible by anyone (<code>python scripts/audit_agents_md.py</code>), and a change to <code>AGENTS.md</code>
+    that invalidates a number cited here fails a command instead of waiting for a reviewer to notice. That is
+    candidate 2's thesis — detect <i>and</i> adjudicate — applied to the report instead of asserted about the repo.
+    It does <b>not</b> settle whether the <i>rules</i> are the right ones; "routing" and "evidence" are a judgement
+    about intent, and only a human can review that. The script makes the judgement inspectable, not correct.
+  </p>
+  <p class="text-sm leading-relaxed mt-2 text-slate-700">
+    <b>Scope note.</b> This lands a new file in the repository, so it is the one recommendation in this report with
+    code already written rather than proposed. Wiring it into
+    <code>check_workspace_integrity.py</code> was <i>not</i> part of the commit that added the script, per this
+    workspace's "never change a gate to let a commit pass" rule — and that wiring is candidate 2's argument, not
+    something a review should smuggle in. <b>It has since landed as its own commits</b>:
+    <code>a15ebf4</code> (R13, <code>--report-check</code> over <code>docs/reviews/</code>) and <code>931aac5</code>
+    (R13 also runs <code>--check</code> on its own, so an empty report directory cannot silently unguard the
+    baseline). Both were falsifiability-tested before commit.
+  </p>
+</section>
+
+<!-- ======================= SUMMARY ======================= -->
+<section class="bg-white rounded-lg shadow p-6 border-l-4 border-slate-900">
+  <h2 class="text-xl font-bold mb-4">Diagnosis</h2>
+  <p class="text-lg leading-relaxed">
+    Two of the four candidates below are the <b>same defect in two organs</b>: a module whose
+    <b>interface can detect but never adjudicate</b>. It parses what you wrote, prints it faithfully, and
+    hands the decision back to a human. The clearest instance is not even in this workspace's own code — it is
+    that <code>restamp_provenance.py</code> computes a fingerprint and refuses correctly, and
+    <b>nothing in ARL ever calls it</b>.
+  </p>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-center">
+    <div class="bg-slate-50 rounded p-4">
+      <div class="text-3xl font-bold">0</div>
+      <div class="text-xs text-slate-600 mt-1">checks on handoff flag <i>content</i></div>
+    </div>
+    <div class="bg-slate-50 rounded p-4">
+      <div class="text-3xl font-bold">498</div>
+      <div class="text-xs text-slate-600 mt-1">lines in the generated view; 182 from <code>deep/</code></div>
+    </div>
+    <div class="bg-slate-50 rounded p-4">
+      <div class="text-3xl font-bold">27 MB</div>
+      <div class="text-xs text-slate-600 mt-1">in <code>_scratch/</code>, unseen by every gate</div>
+    </div>
+    <div class="bg-slate-50 rounded p-4">
+      <div class="text-3xl font-bold">2</div>
+      <div class="text-xs text-slate-600 mt-1">router entries a gate <i>requires</i> that routing cannot select</div>
+    </div>
+  </div>
+  <p class="text-xs text-slate-500 mt-4">
+    Note the last three numbers describe <b>two disjoint sets</b> that v1 let blur: <b>29</b> is the count of
+    skill directories at the workspace root (all 29 flagged); <b>19</b> is the size of the ARL router's own
+    catalog table. They are not comparable and no ratio between them means anything.
+  </p>
+</section>
+
+<!-- ======================= CANDIDATE 1 ======================= -->
+<section class="bg-white rounded-lg shadow p-6">
+  <div class="flex items-start justify-between gap-4 mb-4">
+    <div>
+      <h2 class="text-2xl font-bold">1 · Run-scoped output dirs have no owner and no budget</h2>
+      <p class="mono text-sm text-slate-500 mt-1">the entropy gate is blind in the one subtree the entropy lands in</p>
+    </div>
+    <span class="b-strong px-3 py-1 rounded text-sm font-semibold whitespace-nowrap">Strong</span>
+  </div>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Files</h3>
+  <ul class="list-disc ml-5 text-sm space-y-1">
+    <li><code>scripts/check_workspace_integrity.py:164-187</code> — <code>check_r3_hygiene</code>; <code>:66</code> <code>ALLOWED_ROOT</code>; <code>:125-134</code> R1</li>
+    <li><code>scripts/session.py:22</code> and <code>scripts/agent_sessions.py:31</code> — two tools, one output dir, no declared owner</li>
+    <li><code>scripts/_scratch/sessions/refresh_html.bat:4</code>, <code>refresh_txt.bat:4</code> — the only writers that know their regeneration command</li>
+    <li><code>.gitignore:16-20</code> — the entirety of the retention policy</li>
+  </ul>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Problem</h3>
+  <p class="text-sm leading-relaxed">
+    R3 walks <code>for proj in PROJECTS</code> — project repos only — then does a second loop over
+    <code>ROOT.iterdir()</code> catching <b>zero-byte files at the root top level only</b>. Between those loops
+    sits <code>ROOT/scripts/</code>, which is neither. <code>scripts/_scratch/</code> is therefore invisible to
+    every gate <i>and</i> to <code>git status</code>, because <code>.gitignore:18</code> hides it.
+    22 files, ~27 MB: <code>sessions_dump.txt</code> 12.0 MB, <code>browse_all.html</code> 8.0 MB,
+    <code>Kontynuacja-przy…json</code> 5.4 MB.
+  </p>
+  <p class="text-sm leading-relaxed mt-2">
+    The mechanism is the point: <b>gitignoring a directory to stop it polluting <code>git status</code> also
+    removed the only other thing that was watching it.</b> One rule, two jobs, and the retention half was never
+    written. There is no size, age or count policy for <code>_scratch</code> in <code>AGENTS.md</code>,
+    <code>CLAUDE.md</code>, <code>DECISIONS.md</code>, or the gate.
+  </p>
+  <p class="text-sm leading-relaxed mt-2">
+    <b>Two tools, one unowned dir.</b> v1 listed <code>session.py:22</code> and <code>agent_sessions.py:31</code> as
+    bare <code>OUTDIR</code> lines and stopped there. That was the shallow reading. They are two independent tools
+    — one extracts from the opencode SQLite db, the other aggregates across five agent harnesses — and they
+    <b>write overlapping artifacts into the same directory with no declared relationship</b>:
+    <code>latest.md</code> from <code>session.py</code> sits beside <code>sessions_dump.txt</code> and
+    <code>browse_all.html</code> from <code>agent_sessions.py</code>, and the two <code>refresh_*.bat</code>
+    files drive only the latter. So the dir has no single owner even informally — which is why no rule ever
+    appeared. A retention contract is also the cheapest thing that would force the ownership question.
+  </p>
+  <p class="text-sm leading-relaxed mt-2">
+    <b>Deletion test.</b> Delete the gate's residue logic: the complexity does not concentrate, it moves to R1,
+    which would name <code>scripts</code> once and stop. Shallow — its interface
+    (<code>ALLOWED_ROOT</code> plus seven suffixes) is about as large as its implementation, and it buys no
+    leverage over the other run-scoped output dirs (<code>.dgc-evidence/runs/</code>,
+    <code>.forge/journal/</code>, <code>scripts/out/</code>, ARL <code>reflection/sessions/</code>), each with
+    its own bespoke ignore rule and its own bespoke prose rule in its own <code>CLAUDE.md</code>.
+  </p>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Solution</h3>
+  <p class="text-sm leading-relaxed">
+    One <b>retention contract</b> shape, declared once per run-scoped output dir, reused by all of them:
+    <code>{path, owner, regenerable_by, max_bytes, max_age}</code>. The gate computes declared-vs-actual and
+    returns one of four verdicts — <b>all four stated, including the case v1 omitted</b>:
+  </p>
+  <div class="mt-3 overflow-x-auto">
+  <table class="text-sm w-full border-collapse">
+    <thead><tr class="bg-slate-100 text-left">
+      <th class="border border-slate-300 px-3 py-2">State</th>
+      <th class="border border-slate-300 px-3 py-2">Verdict</th>
+      <th class="border border-slate-300 px-3 py-2">Who acts</th>
+    </tr></thead>
+    <tbody class="mono text-xs">
+      <tr><td class="border border-slate-300 px-3 py-2">under budget</td><td class="border border-slate-300 px-3 py-2 text-green-800">silent</td><td class="border border-slate-300 px-3 py-2">nobody — ordinary work costs 0 attention</td></tr>
+      <tr><td class="border border-slate-300 px-3 py-2">regenerable + over budget</td><td class="border border-slate-300 px-3 py-2 text-green-800">advisory, prints the regen command</td><td class="border border-slate-300 px-3 py-2">nobody — the report says what to run</td></tr>
+      <tr class="bg-amber-50"><td class="border border-slate-300 px-3 py-2 font-bold">NOT regenerable + over budget</td><td class="border border-slate-300 px-3 py-2 text-amber-900 font-bold">FAIL, naming the <code>owner</code> path whose author must declare a budget or a regen path</td><td class="border border-slate-300 px-3 py-2">the author of that file — <b>never</b> an automatic delete</td></tr>
+      <tr><td class="border border-slate-300 px-3 py-2">no declared owner</td><td class="border border-slate-300 px-3 py-2 text-red-800">FAIL</td><td class="border border-slate-300 px-3 py-2">human — this closes the ad-hoc-shell hole</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="text-sm leading-relaxed mt-3">
+    The third row is the one v1 left open, and its absence mattered: <b>unrecoverable bytes must never be
+    auto-deleted by a gate</b>, which is the same principle that makes ARL's
+    <code>check_evidence_guard.py</code> refuse to remove a flagged artifact. Losing evidence to satisfy a
+    budget is the failure mode <code>check_workspace_integrity.py:166-169</code>'s own docstring warns about
+    ("failing the build on it teaches people to delete their own evidence"). So the gate escalates to a human
+    and the fix is a declared budget, not a deletion.
+  </p>
+  <p class="text-sm leading-relaxed mt-2">
+    <b>Field definitions (v3 — <code>owner</code> replaces v2's undefined <code>owner_tool</code>):</b>
+  </p>
+  <ul class="list-disc ml-5 text-sm mt-2 space-y-1">
+    <li><code>owner</code> — <b>a path to the script that writes into the dir</b>, e.g. <code>scripts/session.py</code>.
+      A path, not a role or a person, so the gate can check it exists. For <code>scripts/_scratch/sessions/</code>
+      this immediately surfaces that <b>two</b> tools write there — which is the finding above: the contract cannot
+      be written until the ownership question is answered, and that is the point of asking.</li>
+    <li><code>regenerable_by</code> — the exact command, or <code>null</code>. Never a prose description.</li>
+    <li><code>max_bytes</code> / <code>max_age</code> — the budget. Absent means "no budget declared", which the
+      third verdict treats as over-budget.</li>
+    <li><b>Escalation always goes to a human</b>, but the human is <i>named by the path</i>: the verdict names the
+      file whose author must declare a budget or a regeneration path. The verdict string <i>is</i> the
+      accountability, so v2's "owner_tool's author" and "human" stop being two different answers.</li>
+  </ul>
+
+  <div class="bg-red-50 border border-red-300 rounded p-4 mt-4 text-sm">
+    <b class="text-red-900">Correction to the gate-line table (v3 label → v4 estimate → v5 measurement).</b>
+    Candidate 1's "prose removed" cell read <i>"2 one-shot scripts + 1 superseded copy retired"</i> — a label, not a
+    count. v4 turned it into <i>"~610 lines"</i> and called that "counted now, from the files themselves".
+    <b>It was not counted — it was converted from bytes.</b> Measured properly:
+    <ul class="list-disc ml-5 mt-2 space-y-1">
+      <li><code>scripts/_scratch/migrate_handoff_to_flags.py</code> — 4,816 bytes, <b>141 lines</b> (v4 said 150).</li>
+      <li><code>scripts/_scratch/HANDOFF.pre-migration.md</code> — 28,926 bytes, <b>359 lines</b> (v4 said ~460;
+      the real ratio is 80.6 bytes/line, not the ~63 v4 assumed).</li>
+    </ul>
+    <p class="mt-2"><b>True total: 500 lines, not 610.</b> So v4's correction of v3 was itself wrong, and wrong in
+    the direction that flattered candidate 1 by 110 lines. Two consecutive revisions of one cell, both unverified —
+    which is the pattern this report was written to name, reproduced by the report itself.</p>
+    <p class="mt-2">This belongs in column C, not column B: those files are dead ballast, and the gate's value is
+    exposure, not removal. See the table note above. It does not change any recommendation — candidate 2 is first
+    for a reason no line count reaches.</p>
+  </div>
+  <p class="text-sm leading-relaxed mt-2">
+    The "no declared owner → FAIL" row is what closes the <code>$null</code> / <code>.kilo</code> /
+    <code>pytest.ini</code> class: those had <b>no writer in any repo</b> (they were shell-quoting accidents),
+    so no writer can ever be found and fixed. A dir with a declared owner cannot accumulate an unowned file
+    unnoticed. The two <code>refresh_*.bat</code> files already know their regeneration commands, so the contract
+    has real authors — this records existing knowledge where a module can read it.
+  </p>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Benefits</h3>
+  <div class="grid md:grid-cols-3 gap-4 mt-2 text-sm">
+    <div class="bg-slate-50 rounded p-3"><b>Locality</b><p class="mt-1 text-slate-700">The retention decision sits with the dir it governs, not in the gate's docstring. Deleting <code>_scratch/</code> no longer requires editing the gate — and <code>owner</code> settles which of the two session tools is responsible.</p></div>
+    <div class="bg-slate-50 rounded p-3"><b>Leverage</b><p class="mt-1 text-slate-700">One shape buys visibility over 5+ dirs from one place, instead of 5 bespoke ignore rules that each hide their dir from the next reader.</p></div>
+    <div class="bg-slate-50 rounded p-3"><b>Tests</b><p class="mt-1 text-slate-700">Four branches, four fixtures. Today there is no seam to test through — exercising R3's blind spot means actually creating 27 MB of debris.</p></div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4 mt-6">
+    <div class="before border rounded p-4">
+      <div class="text-xs font-bold text-red-800 mb-2 uppercase tracking-wide">Before — one gate, three blind spots</div>
+      <div class="mermaid">
+flowchart TB
+  subgraph G["check_workspace_integrity.py"]
+    R1["R1 root shape"]
+    R3["R3 hygiene<br/>PROJECTS only"]
+  end
+  RT["root top level ✅"]
+  PR["6 project repos ✅"]
+  SC["scripts/_scratch/<br/>22 files · 27 MB ❌"]
+  HO["handoff/ · library/ ·<br/>.dgc-evidence/runs/ ❌"]
+  SH["$null · .kilo · pytest.ini<br/>no writer exists ❌"]
+  TWO["session.py + agent_sessions.py<br/>one dir, no owner ❌"]
+  R1 --> RT
+  R3 --> PR
+  SC -. invisible .-> R1
+  SC -. gitignored .-> GIT["git status"]
+  HO -. invisible .-> R1
+  SH -. invisible .-> R1
+  SC --- TWO
+      </div>
+    </div>
+    <div class="after border rounded p-4">
+      <div class="text-xs font-bold text-green-800 mb-2 uppercase tracking-wide">After — one contract, four verdicts</div>
+      <div class="mermaid">
+flowchart TB
+  REG["retention contract<br/>path · owner (a script path)<br/>regenerable_by · max_bytes · max_age"]
+  GATE["gate: declared vs actual"]
+  REG --> GATE
+  GATE -->|"under budget"| C["silent"]
+  GATE -->|"regenerable, over"| A["advisory + regen command"]
+  GATE -->|"NOT regenerable, over"| F1["FAIL → owner declares<br/>a budget. never auto-delete"]
+  GATE -->|"no owner"| F2["FAIL → human"]
+  F1 --> TWO["session.py vs agent_sessions.py<br/>ownership settled by contract"]
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CANDIDATE 2 ======================= -->
+<section class="bg-white rounded-lg shadow p-6">
+  <div class="flex items-start justify-between gap-4 mb-4">
+    <div>
+      <h2 class="text-2xl font-bold">2 · <span class="mono">build_handoff.py --check</span> validates syntax, so decay is invisible</h2>
+      <p class="mono text-sm text-slate-500 mt-1">the write-only memory symptom, at its actual seat</p>
+    </div>
+    <span class="b-strong px-3 py-1 rounded text-sm font-semibold whitespace-nowrap">Strong</span>
+  </div>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Files</h3>
+  <ul class="list-disc ml-5 text-sm space-y-1">
+    <li><code>scripts/build_handoff.py:76-98</code> <code>parse_flag</code> · <code>:113-137</code> <code>collect</code> · <code>:140-156</code> <code>render</code>/<code>is_stale</code> · <code>:159-173</code> <code>main --check</code></li>
+    <li><code>handoff/flags/*.md</code> — 25 files · <code>handoff/CONTEXT.md:36-37</code> — the retire-by-hand rule</li>
+    <li>Shape precedent: <code>…/agentic-research-lab/scripts/restamp_provenance.py:58-64,135-138</code> — <b>with its wiring status corrected below</b></li>
+  </ul>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Problem</h3>
+  <p class="text-sm leading-relaxed">
+    <code>--check</code> validates exactly three things: flag/filename agreement (<code>:92-93</code>),
+    <code>since</code> present (<code>:123-124</code>), rendered view byte-equal to disk (<code>:155-156</code>).
+    That is the whole contract. <b>No code path anywhere asks whether a flag's claims are still true.</b> The parser
+    accepts six keys — <code>flag</code>, <code>since</code>, <code>owner</code>, <code>agent</code>,
+    <code>model</code>, <code>origin</code> — with no <code>supersedes</code>, no <code>retired</code>, no
+    assertable field. <code>since</code> is read for presence and used once as a sort key (<code>:125</code>);
+    it is never compared to today.
+  </p>
+  <ul class="list-disc ml-5 text-sm mt-3 space-y-1">
+    <li><b>22 of 25 flags carry <code>owner: unassigned · agent: unknown · model: unknown</code>.</b></li>
+    <li><b>Four flags are mutually superseded with nothing linking them.</b> <code>root_committed_ce5aeeb.md</code> vs <code>root_committed_e61d8c8.md</code> — two commits, same day, neither retires the other. <code>ralph_plain_language_meter_run_open.md</code> still asserts <code>WAITING_FOR_CONFIRMATION</code> at D-002 while <code>plain_language_meter_d003.md</code> has D-003/D-004 resolved. <code>ralph_run_closed.md</code> records CLOSED; <code>ralph_loop_upgraded.md</code> is the older rebuild. <code>plain_language_thread_ready.md:18</code> says "Next step: open a ralph run" — done twice since.</li>
+    <li><b>A flag falsifies itself.</b> <code>handoff_flag_per_file_icm.md</code> states "22 flagi" — the dir holds 25. <code>gate_trimmed.md:16</code> disclaims its own authority ("trust the docstring over it"). <code>plain_language_meter_d003.md:9</code> concedes a sibling line "was stale".</li>
+    <li><b>Seven flags record a completed action</b> — a bare sha — not current state.</li>
+  </ul>
+
+  <h3 class="font-semibold text-slate-700 mt-5">The reuse precedent, stated accurately</h3>
+  <div class="bg-amber-50 border border-amber-300 rounded p-4 mt-2 text-sm">
+    <p><b>v1 said "working in production". That was wrong.</b> Corrected, with evidence:</p>
+    <ul class="list-disc ml-5 mt-2 space-y-1">
+      <li><b>No caller.</b> Absent from <code>…/scripts/quality_check.py</code>; absent from
+      <code>…/pipeline/WORKFLOW.md</code>'s phase-5 action list (which does list <code>evict_stale.py:103</code> and
+      <code>check_eviction.py:104</code>); no test references it. Its only Python appearance outside itself is a
+      docstring mention at <code>repair_graph_state.py:6</code>.</li>
+      <li><b>What it did prove.</b> <code>CONTEXT.md:176</code> records that it refused to stamp a file whose
+      cited chunk ids had vanished — and that <b>its first two versions each corrupted a file</b> (one split a
+      JSON record mid-object, one re-serialised with <code>indent=2</code> and broke the one-per-line contract).
+      Both reverted; now a surgical value replacement.</li>
+    </ul>
+    <p class="mt-3"><b>So the reuse argument rests on the second bullet, not the first:</b> the
+    <i>shape</i> — compute a fingerprint, compare, <b>refuse and say which assertion failed</b> — has been
+    debugged against real corruption, which is expensive and worth reusing. The <i>wiring</i> has never existed,
+    which is the same disease as this candidate.</p>
+    <p class="mt-2 text-slate-700">This is actually a stronger argument than v1's, and it is honest: the pattern is
+    proven, the plumbing is missing, and candidate 2 is largely a <b>plumbing</b> change to a shape that already
+    survived contact with a corrupt file.</p>
+  </div>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Solution</h3>
+  <p class="text-sm leading-relaxed">
+    Give flags <b>typed, checkable claims</b> and let the gate that already exists verify them. Four assertable
+    frontmatter fields — <code>supersedes:</code>, <code>asserts_sha:</code>, <code>asserts_path:</code>,
+    <code>asserts_absent:</code> — each resolved by <code>--check</code>:
+  </p>
+  <ul class="list-disc ml-5 text-sm mt-2 space-y-1">
+    <li><b>does the sha exist</b> (<code>git cat-file -e</code>) → the commit flags become self-checking;</li>
+    <li><b>does the path exist</b> → <code>HANDOFF.pre-migration.md</code>, the deleted <code>.forge/context.md</code>, and every stale "next step" get caught by the gate instead of by the next cold session;</li>
+    <li><b>is this flag superseded</b> → the four pairs resolve mechanically, and the older flag's fate is decided by a fact rather than by whoever noticed last;</li>
+    <li><b>does <code>unassigned</code> survive a staleness check</b> → ownership stops being a value nobody maintains.</li>
+  </ul>
+  <p class="text-sm leading-relaxed mt-2">
+    A flag whose claim fails is <b>not printed as state</b> — it surfaces as <code>stale: &lt;flag&gt;
+    &lt;assertion&gt;</code>. Retiring it then becomes the obvious cheap action, which is what
+    <code>handoff/CONTEXT.md:36-37</code> asks for in prose and never gets.
+    <b>Note:</b> this candidate would have caught <code>HANDOFF.md:200</code>'s claim that
+    <code>skill_router.py</code> "routes ralph intents" — <code>ralph.py</code> contains zero matches for
+    <code>skill</code> or <code>route</code>. That is the sharpest available evidence that the gap is real and
+    not hypothetical: <b>a false claim about wiring is currently sitting in the generated view.</b>
+  </p>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Benefits</h3>
+  <div class="grid md:grid-cols-3 gap-4 mt-2 text-sm">
+    <div class="bg-slate-50 rounded p-3"><b>Locality</b><p class="mt-1 text-slate-700">A claim lives in the same file as its subject, verified at the moment it is read. No flag can assert a sha that another flag's deletion invalidates.</p></div>
+    <div class="bg-slate-50 rounded p-3"><b>Leverage</b><p class="mt-1 text-slate-700">Reuses a shape already debugged against real file corruption (<code>CONTEXT.md:176</code>), so the expensive part — knowing what "refuse safely" means — is already paid for.</p></div>
+    <div class="bg-slate-50 rounded p-3"><b>Tests</b><p class="mt-1 text-slate-700"><code>scripts/test_build_handoff.py</code> exists (13 cases). Each claim kind is one fixture: a flag pointing at a deleted sha must exit 1. Today no test can express "this flag is a lie", because the builder has no opinion to be wrong about.</p></div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4 mt-6">
+    <div class="before border rounded p-4">
+      <div class="text-xs font-bold text-red-800 mb-2 uppercase tracking-wide">Before — a formatter, not a state machine</div>
+      <div class="mermaid">
+flowchart LR
+  A["flag .md"] --> P["parse_flag<br/>6 keys, no claims"]
+  P --> C["collect<br/>since = sort key only"]
+  C --> R["render<br/>body printed whole"]
+  R --> V["HANDOFF.md"]
+  CHK["--check"] --> P
+  CHK --> V
+  CHK -. "no content verdict" .-> X["a flag may be<br/>false for ever"]
+  A -.->|"22/25 unassigned"| X
+  A -.->|"4 superseded pairs"| X
+  V -.->|"HANDOFF.md:200 claims ralph<br/>routes intents — ralph.py: 0 matches"| X
+      </div>
+    </div>
+    <div class="after border rounded p-4">
+      <div class="text-xs font-bold text-green-800 mb-2 uppercase tracking-wide">After — the existing gate gains an opinion</div>
+      <div class="mermaid">
+flowchart LR
+  A["flag .md<br/>+ supersedes / asserts_*"] --> P["parse_flag<br/>claims are data"]
+  P --> C["collect"] --> R["render"] --> V["HANDOFF.md"]
+  CHK["--check"] --> P
+  CHK --> VER["resolve each claim<br/>sha · path · supersession · owner"]
+  VER -->|"true"| V
+  VER -->|"false"| S["stale: flag_name<br/>assertion failed"]
+  S -->|"delete or repair"| A
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CANDIDATE 3 ======================= -->
+<section class="bg-white rounded-lg shadow p-6">
+  <div class="flex items-start justify-between gap-4 mb-4">
+    <div>
+      <h2 class="text-2xl font-bold">3 · The view inlines its own content — and the summariser that would stop it is dead code</h2>
+      <p class="mono text-sm text-slate-500 mt-1">HANDOFF.md is a shelf, rendered as payload</p>
+    </div>
+    <span class="b-strong px-3 py-1 rounded text-sm font-semibold whitespace-nowrap">Strong</span>
+  </div>
+
+  <div class="bg-amber-50 border border-amber-300 rounded p-3 mt-4 text-sm">
+    <b>Touches a recorded decision.</b> D12's amendment at <code>DECISIONS.md:202-204</code> exempts the root
+    <i>catalog</i> from the 60-line rule because "it routes, it holds no content". That amendment names
+    <code>CLAUDE.md</code>, not the generated state view — so this is <b>not</b> a rule violation, but the view
+    breaks the <i>principle</i> the exemption rests on. Surfaced because the gap is 182 lines, not 12. D16's
+    "routes only, never copies" (<code>check_workspace_integrity.py:77</code>) is the cleaner hook.
+  </div>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Files</h3>
+  <ul class="list-disc ml-5 text-sm space-y-1">
+    <li><code>scripts/build_handoff.py:140-152</code> <code>render</code>; <code>:150-151</code> inlines deep text whole</li>
+    <li><code>scripts/build_handoff.py:101-110</code> <code>summarize()</code> — <b>computed at <code>:97</code>, never read by <code>render</code></b></li>
+    <li><code>handoff/deep/deep-research-kg-icm.md</code> — a 95-line research commission, on a shelf</li>
+  </ul>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Problem</h3>
+  <div class="mt-3 space-y-1 text-xs mono">
+    <div class="flex items-center gap-2"><span class="w-44 shrink-0">header + how-to</span><div class="bg-slate-300 h-5 rounded" style="width:6%"></div><span>1–29</span></div>
+    <div class="flex items-center gap-2"><span class="w-44 shrink-0 text-red-700 font-bold">Status (25 flags)</span><div class="bg-red-400 h-5 rounded" style="width:58%"></div><span class="text-red-700 font-bold">287</span></div>
+    <div class="flex items-center gap-2"><span class="w-44 shrink-0 text-amber-700 font-bold">deep/ inlined</span><div class="bg-amber-400 h-5 rounded" style="width:37%"></div><span class="text-amber-700 font-bold">182 · 36.5%</span></div>
+    <div class="flex items-center gap-2"><span class="w-44 shrink-0">of which: commission</span><div class="bg-amber-200 h-5 rounded" style="width:19%"></div><span>95</span></div>
+  </div>
+  <p class="text-sm leading-relaxed mt-3">
+    <code>render</code> emits <code>f["body"]</code> whole and inlines each deep note whole
+    (<code>:150-151</code>, no truncation). The function holding the fix already exists and already runs:
+    <code>summarize()</code> computes a word-boundary-clipped first line at <code>:97</code> — and
+    <code>render</code> ignores it. <b>Dead code that already encodes the right decision</b>, which is the
+    strongest possible evidence this is an oversight rather than a trade-off.
+  </p>
+  <p class="text-sm leading-relaxed mt-2">
+    The cost is not tidiness. <code>HANDOFF.md</code> is 43 KB ≈ <b>11K tokens re-paid at every cold session
+    start</b> — in the one file <code>AGENTS.md</code> tells every session to read. The 95-line research
+    commission is by construction a <i>deep note</i>: a shelf, reachable by link, not entry-view payload.
+  </p>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Solution</h3>
+  <p class="text-sm leading-relaxed">
+    Two-tier render. <b>Tier 1 — the view:</b> one headline line per flag from the <code>summarize()</code> that
+    already runs, plus a link per deep note. <b>Tier 2 — the shelves:</b> <code>handoff/flags/</code> and
+    <code>handoff/deep/</code>, unchanged, still one-home-per-fact. Then a <b>hard budget the builder
+    enforces</b> — exit 1 when exceeded — so the next 180-line deep note cannot silently re-inflate it.
+    The budget is the actual module: it turns "keep it short", currently an aspiration in four documents, into
+    something a script refuses to violate.
+  </p>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Benefits</h3>
+  <div class="grid md:grid-cols-3 gap-4 mt-2 text-sm">
+    <div class="bg-slate-50 rounded p-3"><b>Locality</b><p class="mt-1 text-slate-700">Detail stays on the shelf that owns it. A new research brief becomes a new file on a shelf, not an edit to the entry view — which is what made the view grow.</p></div>
+    <div class="bg-slate-50 rounded p-3"><b>Leverage</b><p class="mt-1 text-slate-700">The enforced budget converts a documented intention into a machine-checked invariant, and pays for itself in the token column <code>TOKEN-EFFICIENCY.md</code> already tracks.</p></div>
+    <div class="bg-slate-50 rounded p-3"><b>Tests</b><p class="mt-1 text-slate-700">Two assertions on an existing test file: view under budget, and every flag has exactly one line in the view plus a resolvable link to its file.</p></div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4 mt-6">
+    <div class="before border rounded p-4">
+      <div class="text-xs font-bold text-red-800 mb-2 uppercase tracking-wide">Before — the view carries the payload</div>
+      <div class="border-2 border-slate-400 rounded p-3 bg-white mt-3">
+        <div class="text-[11px] font-bold text-slate-500 mb-1">HANDOFF.md · 498 lines · 43 KB</div>
+        <div class="space-y-1">
+          <div class="bg-slate-200 rounded px-2 py-1 text-[10px] mono">header + how-to · 29</div>
+          <div class="bg-red-200 rounded px-2 py-1 text-[10px] mono">flag bodies, all 25, whole · 287</div>
+          <div class="bg-amber-200 rounded px-2 py-4 text-[10px] mono">deep/ inlined whole · 182<br><span class="text-amber-800">└ deep-research-kg-icm.md · 95 lines of research commission</span></div>
+        </div>
+        <div class="mt-2 text-[10px] text-red-700 mono">summarize() computed at :97 → never read by render()</div>
+      </div>
+    </div>
+    <div class="after border rounded p-4">
+      <div class="text-xs font-bold text-green-800 mb-2 uppercase tracking-wide">After — the view routes; the shelves hold</div>
+      <div class="space-y-1.5 mt-3">
+        <div class="border-2 border-green-500 rounded p-3 bg-white">
+          <div class="text-[11px] font-bold text-slate-500 mb-1">HANDOFF.md · budget enforced by the builder</div>
+          <div class="space-y-1">
+            <div class="bg-slate-200 rounded px-2 py-1 text-[10px] mono">header + how-to</div>
+            <div class="bg-green-200 rounded px-2 py-1 text-[10px] mono">25 × one-line headline (summarize(), :101)</div>
+            <div class="bg-green-100 rounded px-2 py-1 text-[10px] mono">5 × deep-note link + one-line abstract</div>
+            <div class="bg-slate-100 rounded px-2 py-1 text-[10px] mono text-red-700">exit 1 if over budget</div>
+          </div>
+        </div>
+        <div class="text-center text-[11px] text-slate-400">↓ same facts, one home, reached by link</div>
+        <div class="grid grid-cols-2 gap-2">
+          <div class="border border-slate-300 rounded p-2 bg-slate-50 text-[10px] mono">handoff/flags/<br>25 files</div>
+          <div class="border border-slate-300 rounded p-2 bg-slate-50 text-[10px] mono">handoff/deep/<br>5 notes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= CANDIDATE 4 ======================= -->
+<section class="bg-white rounded-lg shadow p-6">
+  <div class="flex items-start justify-between gap-4 mb-4">
+    <div>
+      <h2 class="text-2xl font-bold">4 · A gate requires two router entries that routing cannot select</h2>
+      <p class="mono text-sm text-slate-500 mt-1">skill orchestration: better evidence than v1 had, but an unmeasured cost</p>
+    </div>
+    <span class="b-exp px-3 py-1 rounded text-sm font-semibold whitespace-nowrap">Experiment</span>
+  </div>
+
+  <div class="bg-cyan-50 border border-cyan-300 rounded p-4 mt-4 text-sm">
+    <b>Why this is an Experiment, not a Strong recommendation.</b> v1 marked it Strong while conceding in the
+    same report that its token cost was unmeasured. That is not a caveat, it is the central objection: the
+    proposal adds work to <b>every session start</b>, in exactly the place this workspace spends the most and
+    measures hardest (<code>TOKEN-EFFICIENCY.md</code>). An unmeasured recurring cost cannot be Strong.
+  </div>
+
+  <h3 class="font-semibold text-slate-700 mt-5">A two-sided cost ledger</h3>
+  <p class="text-sm leading-relaxed">
+    v1 and v2 counted only what the router <i>adds</i>. That is half an argument. The status quo also has a price,
+    and this workspace is <b>already paying it in the root router file</b>:
+  </p>
+  <div class="mt-3 overflow-x-auto">
+  <table class="text-sm w-full border-collapse">
+    <thead><tr class="bg-slate-100 text-left">
+      <th class="border border-slate-300 px-3 py-2">Side</th>
+      <th class="border border-slate-300 px-3 py-2">Item</th>
+      <th class="border border-slate-300 px-3 py-2">Measured</th>
+    </tr></thead>
+    <tbody class="text-xs">
+      <tr><td class="border border-slate-300 px-3 py-2 text-red-800 font-bold">cost of adding</td>
+        <td class="border border-slate-300 px-3 py-2">router runs on every session start</td>
+        <td class="border border-slate-300 px-3 py-2 mono">unmeasurable — no baseline exists</td></tr>
+      <tr class="bg-amber-50"><td class="border border-slate-300 px-3 py-2 text-amber-900 font-bold">cost of status quo</td>
+        <td class="border border-slate-300 px-3 py-2">routing is delegated to prose in <code>AGENTS.md</code>, and that prose is <b>written twice</b>:
+          <code>:64</code> + <code>:64-70</code> (integrate <code>token-hygiene</code>) and <code>:98</code> + <code>:100</code> + <code>:96-102</code> (integrate <code>token-efficiency</code>)</td>
+        <td class="border border-slate-300 px-3 py-2 mono"><b>19 lines that a router could retire</b> (17 routing + 2 duplicate evidence lines, of which <code>:104</code>
+      is byte-identical to <code>:72</code> and <code>:91</code> a substring of it) — the earlier ~35 was
+      block-boundary arithmetic. The classification below is reproduced by <code>scripts/audit_agents_md.py</code>;
+      v4 left this cell itemising <code>:71-90</code>, which is <i>not</i> routing — it summed to 38 against a
+      stated 17.</td></tr>
+      <tr class="bg-amber-50"><td class="border border-slate-300 px-3 py-2 text-amber-900 font-bold">cost of status quo</td>
+        <td class="border border-slate-300 px-3 py-2">the two blocks <b>contradict each other</b> — two different real skill dirs, one an oversight</td>
+        <td class="border border-slate-300 px-3 py-2 mono">verified by directory listing</td></tr>
+      <tr class="bg-red-50"><td class="border border-slate-300 px-3 py-2 text-red-900 font-bold">cost of status quo</td>
+        <td class="border border-slate-300 px-3 py-2"><b>the instruction is self-defeating.</b> <code>AGENTS.md:64</code> orders the agent to "integrate <code>skills/token-hygiene/SKILL.md</code> on every session start" — yet that file's own <code>SKILL.md:4</code> carries <code>disable-model-invocation: true</code>, i.e. never auto-load. The entry file asks for the one thing the frontmatter forbids.</td>
+        <td class="border border-slate-300 px-3 py-2 mono">both anchors read directly</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="bg-slate-50 border-l-4 border-slate-700 rounded p-4 mt-4 text-sm">
+    <b>Correction: v3 said "~35 lines". The counted figure is 17.</b> The 35 came from block boundaries, not from
+    reading the lines — exactly the shortcut this report criticises elsewhere. Line-by-line audit of all 133 lines:
+    <div class="mt-2 overflow-x-auto">
+    <table class="text-xs w-full border-collapse bg-white">
+      <thead><tr class="bg-slate-200 text-left">
+        <th class="border border-slate-300 px-2 py-1">Lines</th>
+        <th class="border border-slate-300 px-2 py-1">Content</th>
+        <th class="border border-slate-300 px-2 py-1">Verdict</th>
+      </tr></thead>
+      <tbody>
+        <tr><td class="border border-slate-300 px-2 py-1 mono">:64, :100</td><td class="border border-slate-300 px-2 py-1">the two "Integrate <code>skills/…</code> on every session start" instructions</td><td class="border border-slate-300 px-2 py-1 text-red-800 font-bold">ROUTING — a router replaces these (2 lines)</td></tr>
+        <tr><td class="border border-slate-300 px-2 py-1 mono">:64-70, :102-108</td><td class="border border-slate-300 px-2 py-1">the same 7 rules, twice, verbatim</td><td class="border border-slate-300 px-2 py-1 text-red-800 font-bold">ROUTING — skill content inlined into the entry file (14 lines)</td></tr>
+        <tr><td class="border border-slate-300 px-2 py-1 mono">:98</td><td class="border border-slate-300 px-2 py-1"><code>## Token efficiency skill</code> heading</td><td class="border border-slate-300 px-2 py-1 text-red-800 font-bold">ROUTING (1 line)</td></tr>
+        <tr class="bg-green-50"><td class="border border-slate-300 px-2 py-1 mono">:72, :74-75,<br/>:77-96, :110</td><td class="border border-slate-300 px-2 py-1">measured discipline and pointers: 78.0% cache hit, 69.5M tokens/29 sessions, 23×/502K, 25 prefixes/812K, 4.0M at 0.0%, re-read 1.17×, tool output 11.7×, plus the six-probe catalog. <code>:91</code> and <code>:110</code> are inside this row, not beside it: they are the second and third copies of <code>:72</code>'s "Evidence / Re-measure" sentence — a <b>duplicate finding</b>, reported separately by the script and <b>counted here once</b></td><td class="border border-slate-300 px-2 py-1 text-green-800 font-bold">EVIDENCE — stays regardless (<b>24 lines</b>, per <code>audit_agents_md.py</code>; v5 said 22 by hand-splitting out 2 "redundant", which mislabelled them, and v6 repeated that split in this table while claiming 24 in the cell)</td></tr>
+        <tr class="bg-green-50"><td class="border border-slate-300 px-2 py-1 mono">:64</td><td class="border border-slate-300 px-2 py-1"><code>## Token efficiency (D13, D15)</code> heading</td><td class="border border-slate-300 px-2 py-1 text-slate-600">section heading (1 line)</td></tr>
+        <tr><td class="border border-slate-300 px-2 py-1 mono">:64, :71, :73, :76,<br/>:97, :100, :102, :109, :111</td><td class="border border-slate-300 px-2 py-1">blank separators</td><td class="border border-slate-300 px-2 py-1 text-slate-500">blank (9 lines)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="mt-3"><b>Net: 17 routing lines + 2 duplicate evidence lines = 19 line-level removals,</b> not 35.
+    <b>Coverage: this table partitions the section completely</b> — 8 routing + 23 evidence + 1 heading + 5 blank =
+    <b>37 lines</b>, which
+    is exactly <code>:64-:99</code> plus the trailing blank, i.e. the whole token-efficiency section
+    (<code>:64-:100</code>). Lines 1–64 and 102–133 were <b>not</b> audited and nothing here claims they were;
+    v4 said "every line of <code>AGENTS.md</code> outside <code>:106-137</code> is accounted for", which its own
+    41-line table did not support.</p>
+    <p class="mt-2"><b>[RESOLVED 2026-10-04]</b> Candidate 4's first recommendation — delete the duplicate token-efficiency block — is implemented by the commit carrying this note (the audit block above is re-derived from the post-deletion AGENTS.md: 8 routing + 23 evidence + 1 heading + 5 blank = 37). The remaining 8 routing lines are still open.</p>
+    <p class="mt-2 font-semibold text-red-800">This correction runs against candidate 4.</b> Halving the
+    denominator halves the prize: the router's case rests on a 19-line deletion plus one live contradiction, not on
+    35 lines. That is still a real case — the self-defeating instruction at <code>:64</code> does not shrink — but it
+    is a smaller one than v3 claimed, and step 3 should be judged on the 19.</p>
+    <p class="mt-2"><b>Also corrected: the endpoint.</b> v3 wrote <code>:92-99+</code> with a "+" because the block's
+    end had not been read. It ends at <b><code>:113</code></b> (<code>AGENTS.md</code> is 144 lines — re-verified in
+    v5). Verified, not guessed. v4's audit table also miscounted its own evidence row as "10 lines" for a range
+    spanning 8; the corrected grouping is above.</p>
+  </div>
+  <p class="text-sm leading-relaxed mt-3">
+    That last row changes the recommendation. It is not a hypothetical cost — it is a <b>contradiction the
+    workspace is currently shipping</b>, and it exists <i>because</i> there is no router. Something has to decide
+    which skill loads; today that something is <b>8 lines of hand-maintained prose</b> in the file every session
+    reads, and it has already produced two mutually exclusive instructions.
+  </p>
+
+  <h3 class="font-semibold text-slate-700 mt-5">The gate, redesigned to be falsifiable</h3>
+  <div class="bg-cyan-50 border border-cyan-300 rounded p-4 mt-2 text-sm">
+    <p class="font-semibold">Withdrawn: "measure tokens before/after".</p>
+    <p class="mt-1">No router = 0 cost; router added = cost &gt; 0 always. The comparison returns "cost" trivially,
+    so it cannot fail and therefore cannot decide — and per the finding above, the baseline it would subtract from
+    was never recorded.</p>
+    <p class="font-semibold mt-4">Replacement — a gate that can come out negative:</p>
+    <p class="mt-1"><b>The router earns its place iff it lets us delete the prose.</b> The denominator already
+    exists in the tree:</p>
+    <ul class="list-disc ml-5 mt-2 space-y-1">
+      <li><b>Numerator:</b> tokens the router adds per session start — one subprocess over two pure functions.</li>
+      <li><b>Denominator:</b> the <b>17 routing lines + 2 duplicate evidence lines</b> of <code>AGENTS.md</code> it
+      replaces, counted line by line in the audit above. Not the ~35 v3 claimed.</li>
+      <li><b>Kill condition:</b> if the router lands and those lines do <b>not</b> shrink, it is pure added cost
+      and gets deleted. That outcome is live, not hypothetical — the prose is the only thing currently making
+      skills load <i>despite</i> <code>disable-model-invocation</code>, so deleting it without a working
+      replacement would silently regress skill usage.</li>
+      <li><b>And the honest floor:</b> a perfect router retires <b>17</b> lines, and a separate dedup pass retires <b>2</b> more
+      (<code>:85</code>, <code>:104</code>) — 19 in all, from two different actions. Step 3 must survive
+      <b>17</b>, the number the router alone is answerable for.</li>
+    </ul>
+    <p class="mt-3">This converts an unbounded value judgment into a <b>bounded</b> one: not "is routing worth it"
+    but "is a 17-line manual mechanism worth more than its automated replacement". That has a checkable answer, and
+    it can come out no.</p>
+    <p class="mt-3 text-slate-700"><b>What stays a judgment:</b> whether the deleted prose was doing anything
+    <i>other</i> than naming a skill. The classifier settles this per line rather than per block: <code>:66</code>,
+    <code>:68-69</code>, <code>:71-77</code>, <code>:78-84</code> and <code>:86-90</code> all carry measurements or
+    catalog content and are <b>excluded from the gate entirely</b> — <b>24 lines</b> per
+    <code>audit_agents_md.py</code>. Only <code>:57</code>, <code>:58-64</code>,
+    <code>:98</code>, <code>:100</code> and <code>:102-108</code> are in scope. v3 asserted this exclusion without
+    performing it; v4 performed it by hand and got the count wrong; <b>v7 performs it in code</b>, so a reader can
+    run it and disagree with the <i>rules</i> rather than with an unverifiable number.</p>
+  </div>
+
+  <h3 class="font-semibold text-slate-700 mt-5">The finding that changed this candidate</h3>
+  <p class="text-sm leading-relaxed">
+    v1 said "4 of 19 catalog entries are unreachable" as a flat observation. Checking the gate changed it into
+    something sharper <b>and it cuts against my own earlier framing</b>:
+  </p>
+  <div class="bg-slate-50 border-l-4 border-cyan-600 rounded p-3 mt-3 text-sm">
+    <p><code>…/scripts/check_wiring.py:76-107</code> <code>check_skill_router_consistent()</code> — called from
+    <code>main()</code> at <code>:125</code> — parses <code>skill_router.py</code> with <code>ast</code> and
+    requires a <code>required_routable</code> set of <b>14</b> names to be present in the catalog
+    (<code>:89-96</code>), and fails if two retired names return (<code>:101-107</code>).</p>
+    <p class="mt-2"><code>select_skill_for_step</code> (<code>skill_router.py:39-70</code>) returns
+    <b>15</b> reachable names across its branches plus the <code>icm-architect</code> fallback. Cross-referencing:
+    <code>research</code> and <code>improve-codebase-architecture</code> are <b>both required by the gate and
+    unreachable by the router</b>.</p>
+    <p class="mt-2 font-semibold">So the gate enforces the presence of two rows that nothing can ever select,
+    and removing them would fail the gate. The rows are structurally un-removable without editing the gate.</p>
+  </div>
+  <p class="text-sm leading-relaxed mt-2">
+    This also corrects v1's "no gate touches skill_router" — <b>wrong</b>. A gate does touch it. It checks that the
+    shelf is <i>stocked</i>, never that anything can be <i>picked</i>. That is the same detect-vs-adjudicate
+    pattern as candidates 1 and 2, in a third organ, and it is the strongest argument in this report that the
+    pattern is systemic rather than three coincidences.
+  </p>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Files</h3>
+  <ul class="list-disc ml-5 text-sm space-y-1">
+    <li><code>…/scripts/check_wiring.py:76-107</code> <code>check_skill_router_consistent</code>, wired at <code>:125</code></li>
+    <li><code>…/skill_router.py:9-29</code> catalog (19 entries) · <code>:31-37</code> <code>decompose_task</code> · <code>:39-70</code> <code>select_skill_for_step</code></li>
+    <li><code>skills/*/SKILL.md</code> — <b>29 of 29</b> carry <code>disable-model-invocation: true</code> (counted; <code>skills/agent-reach/SKILL.md:41</code> is <i>not</i> an exception — v1's sub-agent said so, that was wrong)</li>
+    <li><code>scripts/disable_model_invocation.py:1-7</code> — states the consequence</li>
+    <li><code>.agents/plugins/forge-guardrails/hooks/hooks.json:3-10</code> — <code>SessionStart</code> → <code>forge_hook.py session_start</code> → <code>.forge/context.md:449</code></li>
+  </ul>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Problem</h3>
+  <p class="text-sm leading-relaxed">
+    <b>1 · Self-selection is structurally impossible.</b> <code>disable_model_invocation.py:1-7</code> is
+    explicit: skills "are no longer advertised in the system prompt, so the model never loads them
+    automatically." With 29 of 29 flagged, the model sees an empty catalog. Not discouraged — unavailable.
+    <b>2 · No declaration.</b> <code>skill_router.py</code> has <b>zero executable callers</b>: 11 grep hits, all
+    documentation. <code>ralph.py</code> contains <b>zero</b> matches for <code>skill</code> or
+    <code>route</code>. <b>3 · No hook invocation.</b> <code>SessionStart</code> fires every session and already
+    injects <code>required_steps</code> from <code>.forge/policy.yaml</code> — with <b>zero skill
+    directives</b>. The carrier exists; the payload does not.
+  </p>
+  <p class="text-sm leading-relaxed mt-2">
+    Root instructs skill loading in prose, <b>twice, contradictorily</b>: <code>AGENTS.md:64</code> says integrate
+    <code>token-hygiene</code>; <code>AGENTS.md:98-100</code> repeated (until 2026-10-04, when candidate 4's deletion removed it) a near-identical block naming
+    <code>token-efficiency</code>. Two different real dirs; one is an oversight. Root <code>CLAUDE.md</code> has no
+    session-start rule at all.
+  </p>
+  <div class="bg-emerald-50 border border-emerald-300 rounded p-3 mt-4 text-sm">
+    <b>The fix is explicitly NOT removing the flag.</b> <code>disable-model-invocation</code> was a deliberate
+    token decision — do not advertise 29 skills every turn. Removing it trades a measured saving for the thing
+    this workspace measures most. The move is to keep the catalog hidden from the <i>model's</i> attention and let
+    a cheap explicit router choose instead — which is ICM invariant 7's trade, not a reversal of it.
+  </div>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Solution (as an experiment)</h3>
+  <ol class="list-decimal ml-5 text-sm space-y-1">
+    <li><b>Fix the contradiction first — it is free.</b> Pick one of the two <code>AGENTS.md</code> blocks. Zero token cost, and it removes a real inconsistency. Do this regardless of what happens to the router.</li>
+    <li><b>Give the gate reachability, not just presence.</b> Extend <code>check_wiring.py:76</code> to assert each required name is the return value of some branch in <code>select_skill_for_step</code> — an <code>ast</code> walk over the <code>return</code> statements. Then the two dead rows either gain branches or lose their gate row, deliberately.</li>
+    <li><b>Then step 3 — a product decision, not a metric.</b> Lift the pure functions (<code>decompose_task</code>,
+    <code>select_skill_for_step</code> — no I/O, library-usable) to a root <code>scripts/skill_router.py</code> and
+    mount the output on the <code>SessionStart</code> hook that already fires, naming 1–3 skills instead of
+    advertising 29. <b>The deciding question is whether the <code>AGENTS.md</code> prose it replaces can then be
+    deleted</b> — 17 routing lines (plus 2 duplicate evidence lines), counted, in the ledger above — which is a value
+    judgment about those 19 specific lines, made by the owner. It is not settled by a token measurement, and it
+    should not be.</li>
+  </ol>
+  <p class="text-sm leading-relaxed mt-2">
+    Step 1 costs nothing and is worth doing on its own — it is pure prose deletion. Step 2 is a genuine deepening
+    with no runtime cost. Step 3 is the only one that needs a decision from the owner, and the decision has a
+    denominator rather than a feeling.
+  </p>
+
+  <h3 class="font-semibold text-slate-700 mt-5">Benefits</h3>
+  <div class="grid md:grid-cols-3 gap-4 mt-2 text-sm">
+    <div class="bg-slate-50 rounded p-3"><b>Locality</b><p class="mt-1 text-slate-700">Skill selection becomes a decision with a home instead of prose duplicated across two blocks of one file. Fixing the contradiction stops being an editing chore.</p></div>
+    <div class="bg-slate-50 rounded p-3"><b>Leverage</b><p class="mt-1 text-slate-700">One router for six projects — ARL vendors 22 skill dirs shadowing the root catalog, and a root router is what keeps them from drifting. <code>skills/verify_catalog.py</code> (29/29 consistent) cannot see this: it validates presence and path, never routing relevance.</p></div>
+    <div class="bg-slate-50 rounded p-3"><b>Tests</b><p class="mt-1 text-slate-700"><code>tests/test_skill_router_selfselect.py</code> already exists as the sole importer — the natural home for a reachability assertion over all 19 entries.</p></div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-4 mt-6">
+    <div class="before border rounded p-4">
+      <div class="text-xs font-bold text-red-800 mb-2 uppercase tracking-wide">Before — stocked but unpickable</div>
+      <div class="mermaid">
+flowchart TB
+  G["check_wiring.py:76<br/>required_routable = 14 names"]
+  CAT["SKILL_CATALOG<br/>19 entries"]
+  SEL["select_skill_for_step<br/>15 reachable"]
+  G -->|"presence only"| CAT
+  CAT -. "2 required names have<br/>no returning branch" .-> SEL
+  G --> OK["PASS"]
+  SEL --> DEAD["research ❌<br/>improve-codebase-architecture ❌"]
+  OK -. "PASS means stocked,<br/>not pickable" .-> DEAD
+  P["system prompt<br/>29/29 skills hidden"] -.->|"model cannot<br/>self-select"| DEAD
+      </div>
+    </div>
+    <div class="after border rounded p-4">
+      <div class="text-xs font-bold text-green-800 mb-2 uppercase tracking-wide">After — reachability, then (measured) routing</div>
+      <div class="mermaid">
+flowchart TB
+  G2["check_wiring.py:76<br/>+ reachability over<br/>select_skill_for_step returns"]
+  G2 -->|"every required name<br/>is selectable"| OK2["PASS means pickable"]
+  A1["step 1: resolve the<br/>AGENTS.md:64 vs :98 contradiction<br/>cost: zero"]
+  A2["step 2: reachability gate<br/>cost: zero runtime"]
+  A3["step 3: root skill_router.py<br/>on the existing SessionStart hook<br/>COST: unmeasured — gate it"]
+  A1 --> A2 --> A3
+  OK2 --> A2
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= DELEGATED ======================= -->
+<section class="bg-white rounded-lg shadow p-6 border-l-4 border-slate-400">
+  <div class="flex items-start justify-between gap-4 mb-3">
+    <h2 class="text-xl font-bold">Delegated, not a root candidate</h2>
+    <span class="b-worth px-3 py-1 rounded text-sm font-semibold whitespace-nowrap">ARL owner's call</span>
+  </div>
+  <p class="text-sm leading-relaxed">
+    One item from the operator's brief is <b>out of root scope</b> and v1 gave it a full section. That was wrong.
+    <code>…/scripts/continuous_calibration.py:122</code> prints <b>"Run eviction protocol"</b> on an
+    <code>EVICT-CANDIDATE</code> event; the script it names (<code>memory_evict</code>, referenced at
+    <code>…/scripts/export_session_reflection.py:162</code>) <b>does not exist</b>. Meanwhile
+    <code>reflection/memory.md</code> writes are append-only
+    (<code>promote_candidate.py:175</code>, supersede only on same-id re-promote) and
+    <code>evict_stale.py</code> reaches only <code>reflection/candidates/*.jsonl</code> — never
+    <code>memory.md</code> — and is not in the Q0–Q20 gate list. In a workspace whose first invariant is
+    one-home-per-fact, a routine printing a pointer to nothing is the most expensive rot there is: it reads as an
+    instruction, so it is followed, and following it fails.
+  </p>
+  <p class="text-sm leading-relaxed mt-2">
+    <b>Owner: <code>agentic-research-lab</code>.</b> Belongs in that project's <code>## Open work</code>, not root
+    governance. Two honest arms: implement <code>memory_evict</code> as the <code>memory.md</code> arm of the
+    existing pattern (the real research contribution), or — if the prototype boundary in
+    <code>docs/MEMORY_ARCHITECTURE_STATUS.md</code> is deliberate — make <code>:122</code> print the boundary
+    instead of a command. Arm two is an hour and removes a lie. <b>Cheapest durable guard, whichever arm:
+    assert that every command string a module prints names a file that exists</b> — that test would have caught
+    this and will catch the next one.
+  </p>
+</section>
+
+<!-- ======================= GATE ACCOUNTING ======================= -->
+<section class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-xl font-bold mb-3">Gate-line accounting</h2>
+  <p class="text-sm leading-relaxed">
+    The second review's fourth point: candidates 1–4 all <b>add</b> gate code, and the workspace's standing rule
+    ("never change a gate to let a commit pass") governs <i>weakening</i> a gate, not accumulating them. Deepening
+    normally does add guards, so this is not a disqualification — but it should be counted, not waved at.
+    <b>Gate lines are estimates until written; prose lines were counted line by line in v4</b>, after v3 shipped a
+    miscount (marked below).
+  </p>
+  <div class="mt-3 overflow-x-auto">
+  <table class="text-sm w-full border-collapse">
+    <thead><tr class="bg-slate-100 text-left">
+      <th class="border border-slate-300 px-3 py-2">Cand.</th>
+      <th class="border border-slate-300 px-3 py-2">A · gate code added <span class="text-xs font-normal">(est.)</span></th>
+      <th class="border border-slate-300 px-3 py-2">B · prose removed <span class="text-xs font-normal">(counted)</span></th>
+      <th class="border border-slate-300 px-3 py-2">C · dead matter removed <span class="text-xs font-normal">(counted)</span></th>
+    </tr></thead>
+    <tbody class="text-xs">
+      <tr><td class="border border-slate-300 px-3 py-2 mono">3</td>
+        <td class="border border-slate-300 px-3 py-2 mono">~15</td>
+        <td class="border border-slate-300 px-3 py-2 mono text-green-800"><b>182</b> — lines dropped from the rendered view</td>
+        <td class="border border-slate-300 px-3 py-2 mono">—</td></tr>
+      <tr><td class="border border-slate-300 px-3 py-2 mono">4 step 1</td>
+        <td class="border border-slate-300 px-3 py-2 mono">0</td>
+        <td class="border border-slate-300 px-3 py-2 mono text-green-800"><b>9</b> — duplicate <code>AGENTS.md</code> block</td>
+        <td class="border border-slate-300 px-3 py-2 mono">—</td></tr>
+      <tr><td class="border border-slate-300 px-3 py-2 mono">4 step 2</td>
+        <td class="border border-slate-300 px-3 py-2 mono">~15</td>
+        <td class="border border-slate-300 px-3 py-2 mono">—</td>
+        <td class="border border-slate-300 px-3 py-2 mono">—</td></tr>
+      <tr><td class="border border-slate-300 px-3 py-2 mono">2</td>
+        <td class="border border-slate-300 px-3 py-2 mono">~35</td>
+        <td class="border border-slate-300 px-3 py-2 mono">—</td>
+        <td class="border border-slate-300 px-3 py-2 mono">—</td></tr>
+      <tr class="bg-green-50"><td class="border border-slate-300 px-3 py-2 mono">1</td>
+        <td class="border border-slate-300 px-3 py-2 mono">~50</td>
+        <td class="border border-slate-300 px-3 py-2 mono">—</td>
+        <td class="border border-slate-300 px-3 py-2 mono text-green-800"><b>500</b> — 141 + 359 dead files in <code>_scratch/</code></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="bg-amber-50 border border-amber-300 rounded p-4 mt-4 text-sm">
+    <p class="font-semibold">These three columns are different currencies and are deliberately not summed.</p>
+    <ul class="list-disc ml-5 mt-2 space-y-1">
+      <li><b>A is a permanent maintenance cost.</b> Gate code is code: it must be read, tested, and kept correct
+      forever. It is the only column that can grow later.</li>
+      <li><b>B is avoided re-payment.</b> These lines stop being read into every cold session. One-time reduction,
+      recurring saving.</li>
+      <li><b>C is dead ballast, and the gain is <i>exposure</i>, not reduction.</b> Those 500 lines were already
+      garbage before any gate ran — nobody kept them, and nobody would have cleaned them either. The gate's
+      contribution is making them <b>visible and preventing recurrence</b>, not making the workspace smaller.
+      That is a real win of a different kind, and calling it "−500" alongside "−182" would have implied they are
+      the same win.</li>
+    </ul>
+    <p class="mt-3"><b>No net column.</b> A −500 and a −182 cannot be added to mean anything, and v4's single
+    "Net" column did exactly that.</p>
+  </div>
+  <p class="text-sm leading-relaxed mt-3">
+    The shape of this report, stated without a netting: <b>candidate 2 is the only net addition of permanent code
+    (+35) with no offsetting prose removal at all</b>. It stays first — because it is the only candidate that makes
+    the other three checkable, which none of these columns can show — but it is adopted as a purchase of
+    verification, justified by the false claims it catches (four superseded flag pairs, 22 unowned flags, and
+    <code>HANDOFF.md:200</code>'s untrue wiring claim), not by tidy-up. Its position does not depend on any number
+    in this table.
+  </p>
+</section>
+
+<!-- ======================= TOP RECOMMENDATION ======================= -->
+<section class="bg-slate-900 text-slate-100 rounded-lg shadow p-8">
+  <h2 class="text-2xl font-bold mb-5">Top recommendation: candidate 2, unambiguously</h2>
+  <p class="text-sm text-slate-400 mb-5">
+    v1 described candidate 4 as "the highest-leverage item overall" while ranking it third and recommending 2
+    first. That was a real contradiction, created by a phrase doing work it could not support. Removed. There is
+    now one ranking, and it has no competing claim in it.
+  </p>
+  <ol class="space-y-3 text-sm">
+    <li class="flex gap-3"><span class="text-emerald-400 font-bold shrink-0">1</span><span><b>Its absence makes the others unverifiable.</b> Every claim in this report is a claim about a flag — 25 flags, 22 unowned, 4 superseded pairs, one that miscounts its own directory. Without a gate that checks flag content, candidates 1, 3 and 4 all decay into "someone remembered to look", which is the condition that produced the problem. Concretely: it would have caught <code>HANDOFF.md:200</code>'s false claim about <code>ralph.py</code>.</span></li>
+    <li class="flex gap-3"><span class="text-emerald-400 font-bold shrink-0">2</span><span><b>It is mostly plumbing for a shape that already survived corruption.</b> The refine-refuse-name-the-assertion pattern was debugged against two real file corruptions (<code>CONTEXT.md:176</code>). What is missing is the wiring — not the idea, and not the hard part.</span></li>
+    <li class="flex gap-3"><span class="text-emerald-400 font-bold shrink-0">3</span><span><b>Smallest change, widest reach, existing tests.</b> Six frontmatter keys inside an existing parser (<code>build_handoff.py:76-98</code>), verified inside an existing <code>--check</code>, covered by an existing 13-case test file. No new infrastructure class.</span></li>
+  </ol>
+
+  <div class="mt-8 pt-6 border-t border-slate-700">
+    <h3 class="font-bold text-base mb-3">Order for the rest</h3>
+    <ul class="text-sm space-y-2 text-slate-300">
+      <li><b class="text-white">2 → 3</b> — same file, same builder, one workstream. Claims first, then the budget they make enforceable. Do not split the commit. Together: <b>+50 gate lines (column A) against 182 prose lines (column B)</b> — two currencies, not a net (v3 said
+      "+20"; an arithmetic slip against its own table, corrected in v4).</li>
+      <li><b class="text-white">4 steps 1–2, immediately, in parallel</b> — both cost <b>zero runtime</b> and are
+        independent of everything above. Step 1 deletes a contradictory <code>AGENTS.md</code> block (~9 lines);
+        step 2 gives <code>check_wiring.py</code> reachability so two unreachable rows stop being gate-protected.
+        Doing these first is the cheapest real improvement in the whole report.</li>
+      <li><b class="text-white">1</b> — self-contained, ungated today. Do <b>not</b> defer it because "27 MB costs
+        nothing while it's invisible": true today, false in a month, because the same dir holds
+        <code>commit_msg.txt</code>, <code>HANDOFF.pre-migration.md</code> and one-shot scripts — exactly the files
+        that will need a manual review nobody is scheduled to do. <b>Invisibility is not absence of cost; it is
+        deferred cost with no due date.</b> Note the contract cannot be written before the <code>owner</code>
+        question is settled, so start there.</li>
+      <li><b class="text-white">4 step 3</b> — <b>deferred to an explicit value decision by the owner</b>, framed on
+        the ledger above: does the router let us delete <code>AGENTS.md:64</code>, <code>:64-70</code>,
+        <code>:98</code>, <code>:100</code>, <code>:102-108</code>? That is <b>17 lines, counted</b> — not the ~35 an
+        earlier draft claimed. Not deferred to a token measurement, which cannot decide it and has no baseline to
+        subtract from. If the answer is no, the router is deleted rather than kept as a curiosity. Note the case
+        does not rest on the line count alone: the self-defeating instruction at <code>:64</code> is a live defect
+        either way, and deleting <b>just that line</b> is a strictly smaller action available today at zero cost.</li>
+      <li><b class="text-white">5</b> — delegated to the ARL owner, above.</li>
+    </ul>
+  </div>
+
+  <p class="mt-6 text-xs text-slate-500">
+    Standing caution: this workspace's rule is <i>never change a gate to let a commit pass</i>. Candidates 1, 2
+    and 3 all add or tighten gates. Each needs its own commit with the rationale in the message, never folded into
+    a "finish everything" commit.
+  </p>
+</section>
+
+<footer class="text-center text-xs text-slate-500 py-8">
+  v7 · <span class="mono">improve-codebase-architecture</span> flow ·
+  <span class="mono">icm-architect</span> framing (Restructure mode) ·
+  vocabulary from <span class="mono">codebase-design</span> ·
+  <b>five figures withdrawn across revisions: "in production" (unverified), a token gate (unfalsifiable),
+  "~35 lines" (block boundaries), "~610 lines" (bytes, not lines), "22 evidence" (a hand-split that
+  mislabelled which lines were which), and "18" (three times in v6, with no arithmetic path to it:
+  17+2=19 and 17+2-2=17). <b>The "18" is v6's own defect and the reason this revision exists</b> —
+  it was invisible to <code>--check</code>, because the error lived in this document, not in
+  <code>AGENTS.md</code>.</b>
+  <br/><br/><b>Also unrecorded until now:</b> the <i>first</i> falsifiability test of
+  <code>--check</code> was invalid. <code>ROOT = parents[1]</code> made the copied script look one level up
+  for <code>AGENTS.md</code>, so it exited 1 for the wrong reason. "The gate is falsifiable" was true from
+  the second attempt onward, not from the first. The tests in
+  <code>scripts/test_audit_agents_md.py</code> replaced that ad-hoc drift exercise with hermetic cases,
+  including both directions of the same mutation.</b>
+  <b>Corrected claim about this series' own bias, replacing v5's overclaim:</b> v5 said every v4 correction ran in
+  the direction favouring the candidate under discussion. Checked — of v4's four, <code>~35→17</code> <i>weakened</i>
+  candidate 4, <code>:92-99+→:110</code> was neutral, <code>+20→+50</code> was arithmetic, and only
+  <code>≈neutral→~610</code> favoured candidate 1. <b>One of four, not each.</b> The accurate statement is narrower
+  and less flattering: the bias was real but not systematic, and the reason it survived five revisions is the one
+  v7 fixes — the numbers were prose, and prose has no gate.
+  <br/><br/>Every count in this report is reproducible: <code>python scripts/audit_agents_md.py --check</code>.
+  The remaining gate-code figures in column A are <b>estimates</b> and are marked as such, because that code does
+  not exist yet.
+</footer>
+
+</main>
+</body>
+</html>
