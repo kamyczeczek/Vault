@@ -1,35 +1,24 @@
 # STATE — root workspace (generated)
 
-> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-10-24 17:53 · HEAD `?` (?).
+> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-10-24 18:37 · HEAD `59faa7d` (master).
 
 ## Drzewo
 
-brudne pliki (689):
-- `A  .agents/plugins/forge-guardrails/hooks/hooks.json`
-- `A  .agents/plugins/forge-guardrails/plugin.json`
-- `A  .agents/plugins/forge-guardrails/scripts/forge_hook.py`
-- `A  .agents/plugins/forge-guardrails/scripts/policy_loader.py`
-- `A  .agents/plugins/forge-guardrails/scripts/test_active_recall.py`
-- `A  .agents/plugins/forge-guardrails/scripts/test_validator.py`
-- `A  .dgc-evidence/runs/LATEST`
-- `A  .dgc-evidence/runs/goose-pstack-2026-10-03/REVIEW.html`
-- `A  .dgc-evidence/runs/pstack-research-2026-10-03/DECISION.json`
-- `A  .dgc-evidence/runs/pstack-research-2026-10-03/REVIEW.html`
-- `A  .dgc-evidence/runs/pstack-research-2026-10-03/REVIEW.md`
-- `A  .forge/policy.yaml`
-- `A  .gitattributes`
-- `A  .gitignore`
-- `A  .opencode/agents/answerpilot.md`
-- `A  .ralph/INDEX.md`
-- `A  .ralph/registry.json`
-- `A  AGENTS.md`
-- `A  CLAUDE.md`
-- `A  CONTEXT-MAP.md`
-- … +669 więcej
+brudne pliki (10):
+- `M  HANDOFF.md`
+- `M  STATE.md`
+- `M  brain/decisions/index.md`
+- `A  handoff/flags/vault-single-repo-2026-10-24.md`
+- `M  handoff/status/STATUS.md`
+- `?? .obsidian/`
+- `?? .smart-env/`
+- `?? Notes/`
+- `?? brain/decisions/ADR-006-single-vault-single-repo.md`
+- `?? brain/decisions/ADR-007-git-baseline-and-remote.md`
 
 ## Ostatnie commity
 
-- `?`
+- `59faa7d vault-layout-and-git-bootstrap-2026-10-24: `vault-layout-and-git-bootstrap-2026-10-24` — 2026-10-24: root workspace re-bootstrapped after t`
 
 ## Runy (`.dgc-evidence/runs/`)
 LATEST (czeka na werdykt): `goose-pstack-2026-10-03`

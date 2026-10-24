@@ -29,6 +29,14 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/vault-single-repo-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
+`vault-single-repo-2026-10-24` — 2026-10-24: rozstrzygnięty spór o root vaulta. `Desktop\vault` jest jedynym vaultem i jedynym repo; `root_workspace` staje się podfolderem bez własnego `.git`. Cztery wpisy (`.git`, `.obsidian`, `.smart-env`, `Notes`) są vault-owned i bramka egzekwuje dla nich XOR między `ROOT` i `VAULT`. `Notes/` będzie trackowane w prywatnym repo (`kamyczeczek/vault`), `.smart-env/` odtwarzane od nowa, zagnieżdżony `.gitignore` zostaje. Historia: `59faa7d` przyjęty jako baseline, `697b9e3` tagowany jako `archival-697b9e3` **przed** bundle'em. Decyzje: `brain/decisions/ADR-006-single-vault-single-repo.md`, `ADR-007-git-baseline-and-remote.md`. Kolejne kroki: gate XOR (osobny commit), `_repo_rel()` w `scripts/` przed migracją, migracja jako ostatni commit, `gh repo create --push`.
+
+not checked:
+- czy `Desktop\ARCHIVE\ROOT` zawiera cokolwiek, czego nie ma w `59faa7d` — nie porównywano; przyjęto, że to starszy, inny workspace.
+- czy `Notes/` nie zawiera materiału, którego właściciel nie chce w prywatnym repo — decyzja właściciela: trackowane.
+- czy plugin Smart Connections da się zainstalować w tym vaulcie — w żadnym z dwóch vaultów nie ma katalogu `plugins/`, więc `.smart-env/` jest dziś sierotą.
+
 <!-- handoff/flags/vault-layout-root-2026-10-24.md · owner: mateusz · agent: opencode · model: omniroute/gemini/gemini-flash-lite-latest -->
 `vault-layout-root-2026-10-24` — 2026-10-24: adopt vault = root_workspace layout in ALLOWED_ROOT, CLAUDE.md, and STATUS.md; include pending .gitignore + .smart-env/smart_env.json from prior Smart Connections config session. Removes dead `vault` entry; declares `.obsidian`, `.smart-env`, `Notes` as root entries; rebuilds generated views.
 
