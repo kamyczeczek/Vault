@@ -12,6 +12,7 @@ Supports reading, listing, rendering, exporting, and copying sessions across:
 - cursor (SQLite: %APPDATA%/Cursor/User/globalStorage/state.vscdb — composerHeaders + cursorDiskKV)
 - droid (JSONL: %USERPROFILE%/.factory/sessions/**/*.jsonl — Factory AI agent)
 - cline (JSON: %USERPROFILE%/.cline/data/sessions/*/*.messages.json + <id>.json meta)
+- codex (JSONL/Zstandard: %USERPROFILE%/.codex/sessions/YYYY/MM/DD/rollout-*.jsonl[.zst])
 
 Usage:
   python scripts/agent_sessions.py list [--agent AGENT] [--limit N] [--query SEARCH]
@@ -49,8 +50,9 @@ DROID_SESSIONS_DIR = Path.home() / ".factory" / "sessions"
 DEEPSEEK_SESSIONS_DIR = Path.home() / ".deepseek-harness" / "sessions"
 DSH_SESSIONS_DIR = Path.home() / ".dsh" / "sessions"
 CLINE_SESSIONS_DIR = Path.home() / ".cline" / "data" / "sessions"
+CODEX_SESSIONS_DIR = Path.home() / ".codex" / "sessions"
 
-SUPPORTED_AGENTS = ["opencode", "goose", "hermes", "pi", "omp", "jcode", "antigravity", "cursor", "droid", "deepseek", "cline"]
+SUPPORTED_AGENTS = ["opencode", "goose", "hermes", "pi", "omp", "jcode", "antigravity", "cursor", "droid", "deepseek", "cline", "codex"]
 
 # Message/event types that the harness writes next to the conversation. They are
 # audit events, not turns: rendering them as `## [type]` blocks turns a transcript
@@ -513,7 +515,12 @@ def load_goose_sessions(limit: int = 50) -> List[SessionItem]:
 # 3. hermes
 # -------------------------------------------------------------
 def load_hermes_sessions(limit: int = 50) -> List[SessionItem]:
-    if not HERMES_DB.exists():
+    try:
+        db_exists = HERMES_DB.exists()
+    except OSError as e:
+        print(f"Skipping hermes sessions: {e}", file=sys.stderr)
+        return []
+    if not db_exists:
         return []
     items = []
     try:
@@ -674,7 +681,315 @@ def load_omp_sessions(limit: int = 50) -> List[SessionItem]:
 
 
 # -------------------------------------------------------------
-# 5. jcode
+# 5. codex desktop
+# -------------------------------------------------------------
+_CODEX_ZSTD_LIB = None
+_CODEX_ZSTD_LIB_ATTEMPTED = False
+
+
+def _codex_zstd_library():
+    """Find a system/bundled libzstd for hosts without the Python package."""
+    global _CODEX_ZSTD_LIB, _CODEX_ZSTD_LIB_ATTEMPTED
+    if _CODEX_ZSTD_LIB_ATTEMPTED:
+        return _CODEX_ZSTD_LIB
+    _CODEX_ZSTD_LIB_ATTEMPTED = True
+
+    try:
+        import ctypes
+        import ctypes.util
+    except ImportError:
+        return None
+
+    names: List[str] = []
+    try:
+        discovered = ctypes.util.find_library("zstd")
+        if discovered:
+            names.append(discovered)
+    except Exception:
+        pass
+    names.extend(["zstd.dll", "libzstd.dll", "libzstd-1.dll", "libzstd.so.1", "libzstd.so"])
+
+    # Codex Desktop bundles libzstd with its native runtime on Windows.  Keep
+    # this as a fallback only; normal installations use the Python package or
+    # a system library discovered above.
+    for root in (Path.home() / ".cache" / "codex-runtimes", Path.home() / ".codex"):
+        if not root.exists():
+            continue
+        try:
+            for candidate in root.rglob("*"):
+                if candidate.is_file() and candidate.name.lower() in {
+                    "zstd.dll", "libzstd.dll", "libzstd-1.dll", "libzstd.so.1", "libzstd.so"
+                }:
+                    names.append(str(candidate))
+        except OSError:
+            continue
+
+    seen = set()
+    for name in names:
+        if name in seen:
+            continue
+        seen.add(name)
+        try:
+            lib = ctypes.CDLL(name)
+            lib.ZSTD_getFrameContentSize.argtypes = [ctypes.c_void_p, ctypes.c_size_t]
+            lib.ZSTD_getFrameContentSize.restype = ctypes.c_ulonglong
+            lib.ZSTD_decompress.argtypes = [
+                ctypes.c_void_p, ctypes.c_size_t, ctypes.c_void_p, ctypes.c_size_t
+            ]
+            lib.ZSTD_decompress.restype = ctypes.c_size_t
+            lib.ZSTD_isError.argtypes = [ctypes.c_size_t]
+            lib.ZSTD_isError.restype = ctypes.c_uint
+        except (AttributeError, OSError):
+            continue
+        _CODEX_ZSTD_LIB = lib
+        return lib
+    return None
+
+
+def _codex_zstd_decompress(data: bytes) -> Optional[bytes]:
+    """Decompress one zstd frame through libzstd when Python zstandard is absent."""
+    try:
+        import ctypes
+    except ImportError:
+        return None
+    lib = _codex_zstd_library()
+    if lib is None:
+        return None
+
+    source = ctypes.create_string_buffer(data)
+    unknown = (1 << 64) - 1
+    error = (1 << 64) - 2
+    frame_size = int(lib.ZSTD_getFrameContentSize(source, len(data)))
+    if frame_size == error:
+        return None
+    known_size = frame_size != unknown
+    capacity = max(1, frame_size) if known_size else max(len(data) * 4, 1024 * 1024)
+
+    for _ in range(12):
+        try:
+            target = ctypes.create_string_buffer(capacity)
+            written = lib.ZSTD_decompress(target, capacity, source, len(data))
+        except (OSError, ValueError):
+            return None
+        if not lib.ZSTD_isError(written):
+            return target.raw[:int(written)]
+        if known_size:
+            return None
+        capacity *= 2
+    return None
+
+
+def iter_codex_records(path: Path):
+    """Yield decoded records from a Codex rollout JSONL or zstd archive.
+
+    Codex Desktop keeps active rollouts as plain JSONL and older/closed
+    rollouts as ``.jsonl.zst``.  Malformed lines and unavailable optional zstd
+    archives are ignored so one damaged archive cannot hide other sessions.
+    """
+    if path.name.endswith(".jsonl.zst"):
+        try:
+            import zstandard as zstd
+        except ImportError:
+            try:
+                raw = _codex_zstd_decompress(path.read_bytes())
+            except OSError:
+                return
+            if raw is None:
+                return
+            lines = raw.decode("utf-8", errors="replace").splitlines()
+        else:
+            try:
+                with path.open("rb") as fh:
+                    with zstd.ZstdDecompressor().stream_reader(fh) as reader:
+                        lines = reader.read().decode("utf-8", errors="replace").splitlines()
+            except Exception:
+                return
+    else:
+        try:
+            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+        except OSError:
+            return
+
+    for raw in lines:
+        if not raw.strip():
+            continue
+        try:
+            record = json.loads(raw)
+        except (TypeError, json.JSONDecodeError):
+            continue
+        if isinstance(record, dict):
+            yield record
+
+
+def codex_text(value: Any) -> str:
+    """Extract human-readable text without dumping images or encrypted traces."""
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value
+    if isinstance(value, list):
+        return "\n".join(part for part in (codex_text(v) for v in value) if part)
+    if isinstance(value, dict):
+        kind = value.get("type")
+        if kind in {"image", "input_image", "audio", "input_audio"}:
+            return f"[{kind}]"
+        for key in ("text", "output_text", "content", "output", "message", "summary"):
+            if key in value:
+                text = codex_text(value.get(key))
+                if text:
+                    return text
+        safe = {
+            key: item for key, item in value.items()
+            if key not in {"data", "encrypted_content", "internal_chat_message_metadata_passthrough"}
+        }
+        return json.dumps(safe, ensure_ascii=False)
+    return str(value)
+
+
+def codex_tool_input(value: Any) -> str:
+    """Render a Codex tool input while preserving non-JSON JS inputs verbatim."""
+    if value is None:
+        return ""
+    if isinstance(value, str):
+        return value
+    return json.dumps(value, ensure_ascii=False, indent=2)
+
+
+def _codex_code_block(text: str) -> str:
+    runs = re.findall(r"`+", text)
+    width = max([3] + [len(run) + 1 for run in runs])
+    fence = "`" * width
+    return f"{fence}text\n{text}\n{fence}"
+
+
+def load_codex_sessions(limit: int = 50) -> List[SessionItem]:
+    """Read Codex Desktop rollout logs from ``~/.codex/sessions``."""
+    if not CODEX_SESSIONS_DIR.exists():
+        return []
+
+    try:
+        files = list(CODEX_SESSIONS_DIR.rglob("*.jsonl"))
+        files.extend(CODEX_SESSIONS_DIR.rglob("*.jsonl.zst"))
+        files.sort(key=lambda p: p.stat().st_mtime, reverse=True)
+    except OSError:
+        return []
+
+    items: List[SessionItem] = []
+    for path in files[:limit]:
+        records = list(iter_codex_records(path))
+        if not records:
+            continue
+
+        sid = path.name.removesuffix(".jsonl.zst").removesuffix(".jsonl")
+        cwd = ""
+        model = ""
+        created_raw = ""
+        timestamps: List[Any] = []
+        first_user = ""
+        rendered: List[str] = []
+        message_count = 0
+
+        for record in records:
+            stamp = record.get("timestamp")
+            if stamp:
+                timestamps.append(stamp)
+            payload = record.get("payload")
+            if not isinstance(payload, dict):
+                continue
+
+            record_type = record.get("type") or ""
+            kind = payload.get("type") or ""
+            if record_type == "session_meta":
+                sid = str(payload.get("id") or payload.get("session_id") or sid)
+                cwd = str(payload.get("cwd") or cwd)
+                created_raw = payload.get("timestamp") or stamp or created_raw
+                continue
+
+            if kind == "thread_settings_applied":
+                settings = payload.get("thread_settings")
+                if isinstance(settings, dict) and settings.get("model"):
+                    model = str(settings["model"])
+                continue
+
+            if record.get("type") != "response_item":
+                continue
+
+            if kind == "message":
+                role = str(payload.get("role") or "message")
+                if role in {"developer", "system"}:
+                    continue
+                text = codex_text(payload.get("content")).strip()
+                if not text:
+                    continue
+                rendered.extend([f"## [{role}]", text, ""])
+                message_count += 1
+                if not first_user and role == "user":
+                    first_user = text.replace("\n", " ").strip()
+                continue
+
+            if kind in {"custom_tool_call", "function_call"}:
+                name = str(payload.get("name") or kind)
+                call_id = str(payload.get("call_id") or "")
+                raw_input = payload.get("input")
+                if raw_input is None:
+                    raw_input = payload.get("arguments")
+                tool_input = codex_tool_input(raw_input)
+                label = f"`{name}`" + (f" · `{call_id}`" if call_id else "")
+                rendered.extend([
+                    "## [tool]",
+                    f"> **tool call** {label}",
+                    "",
+                    _codex_code_block(tool_input),
+                    "",
+                ])
+                message_count += 1
+                continue
+
+            if kind in {"custom_tool_call_output", "function_call_output"}:
+                call_id = str(payload.get("call_id") or "")
+                output = _truncate_mid(codex_text(payload.get("output")), 20000)
+                label = f" · `{call_id}`" if call_id else ""
+                rendered.extend([
+                    "## [tool_result]",
+                    f"> **tool result**{label}",
+                    "",
+                    _codex_code_block(output),
+                    "",
+                ])
+                message_count += 1
+
+        title = (first_user or sid).replace("\n", " ").strip()[:80] or sid
+        created = fmt_ts(created_raw or (timestamps[0] if timestamps else path.stat().st_ctime))
+        updated = fmt_ts(timestamps[-1] if timestamps else path.stat().st_mtime)
+        header = [
+            f"# [codex] {title}",
+            "",
+            "- **Agent**: `codex`",
+            f"- **ID**: `{sid}`",
+            f"- **Plik**: `{path}`",
+            f"- **Katalog**: `{cwd}`",
+            f"- **Model**: `{model or '?'}`",
+            f"- **Utworzona**: {created} | **Zaktualizowana**: {updated}",
+            f"- **Wiadomości**: {message_count}",
+            "",
+        ]
+        items.append(SessionItem(
+            agent="codex",
+            id=sid,
+            title=title,
+            directory=cwd,
+            created_at=created,
+            updated_at=updated,
+            message_count=message_count,
+            model=model,
+            raw_path=str(path),
+            text_markdown="\n".join(header + rendered),
+        ))
+    return items
+
+
+# -------------------------------------------------------------
+# 6. jcode
 # -------------------------------------------------------------
 def _jcode_activity_mtime(p) -> float:
     """Last-activity mtime for a jcode session file.
@@ -1443,6 +1758,8 @@ def get_all_sessions(agent_filter: Optional[str] = None, limit_per_agent: int = 
         all_sessions.extend(load_deepseek_sessions(limit_per_agent))
     if ag in ("all", "cline"):
         all_sessions.extend(load_cline_sessions(limit_per_agent))
+    if ag in ("all", "codex"):
+        all_sessions.extend(load_codex_sessions(limit_per_agent))
 
     if days is not None and days > 0:
         cutoff = datetime.now() - timedelta(days=days)
@@ -1731,6 +2048,7 @@ BROWSE_HTML_TEMPLATE = """<!doctype html>
   --badge-antigravity: #4ade80;
   --badge-cursor: #818cf8;
   --badge-droid: #fb923c;
+  --badge-codex: #22d3ee;
 }
 * { box-sizing: border-box; }
 body {
@@ -1901,6 +2219,7 @@ body {
 .badge-cursor { background: #3730a3; color: #c7d2fe; }
 .badge-droid { background: #7c2d12; color: #fed7aa; }
 .badge-cline { background: #0e7490; color: #cffafe; }
+.badge-codex { background: #155e75; color: #cffafe; }
 
 .item-date {
   font-size: 0.75rem;

@@ -56,6 +56,118 @@ def test_filter_by_days():
         print("test_agent_sessions.py: filter tests passed.")
 
 
+def test_codex_rollout_loader_and_did():
+    """Codex Desktop JSONL rollouts must feed both the session browser and did export."""
+    import json
+    import shutil
+    import tempfile
+    from collections import Counter
+
+    import extract_did
+
+    failures = []
+    tmp = Path(tempfile.mkdtemp())
+    old_dir = agent_sessions.CODEX_SESSIONS_DIR
+    try:
+        day = tmp / "2026" / "10" / "24"
+        day.mkdir(parents=True)
+        path = day / "rollout-codex-test.jsonl"
+        records = [
+            {
+                "timestamp": "2026-10-24T17:00:00Z",
+                "type": "session_meta",
+                "payload": {
+                    "id": "codex-test",
+                    "session_id": "codex-test",
+                    "cwd": "C:\\repo",
+                    "timestamp": "2026-10-24T17:00:00Z",
+                },
+            },
+            {
+                "timestamp": "2026-10-24T17:00:01Z",
+                "type": "response_item",
+                "payload": {
+                    "type": "message",
+                    "role": "user",
+                    "content": [{"type": "input_text", "text": "Build the report"}],
+                },
+            },
+            {
+                "timestamp": "2026-10-24T17:00:02Z",
+                "type": "thread_settings_applied",
+                "payload": {
+                    "type": "thread_settings_applied",
+                    "thread_settings": {"model": "cx/test-model", "reasoning_effort": "low"},
+                },
+            },
+            {
+                "timestamp": "2026-10-24T17:00:03Z",
+                "type": "response_item",
+                "payload": {
+                    "type": "custom_tool_call",
+                    "name": "exec",
+                    "call_id": "call-1",
+                    "input": "run the command",
+                },
+            },
+            {
+                "timestamp": "2026-10-24T17:00:04Z",
+                "type": "response_item",
+                "payload": {
+                    "type": "custom_tool_call_output",
+                    "call_id": "call-1",
+                    "output": [{"type": "text", "text": "command output"}],
+                },
+            },
+            {
+                "timestamp": "2026-10-24T17:00:05Z",
+                "type": "response_item",
+                "payload": {
+                    "type": "message",
+                    "role": "assistant",
+                    "content": [{"type": "output_text", "text": "Finished"}],
+                },
+            },
+        ]
+        path.write_text("\n".join(json.dumps(r) for r in records) + "\n", encoding="utf-8")
+
+        agent_sessions.CODEX_SESSIONS_DIR = tmp
+        sessions = agent_sessions.load_codex_sessions(limit=5)
+        if "codex" not in agent_sessions.SUPPORTED_AGENTS:
+            failures.append("codex is missing from SUPPORTED_AGENTS")
+        if len(sessions) != 1:
+            failures.append(f"expected one Codex session, got {len(sessions)}")
+        else:
+            session = sessions[0]
+            if session.id != "codex-test":
+                failures.append(f"wrong Codex id: {session.id}")
+            if session.directory != "C:\\repo":
+                failures.append(f"wrong Codex cwd: {session.directory!r}")
+            if session.model != "cx/test-model":
+                failures.append(f"wrong Codex model: {session.model!r}")
+            for marker in ("Build the report", "exec", "command output", "Finished"):
+                if marker not in session.text_markdown:
+                    failures.append(f"{marker!r} missing from Codex transcript")
+
+        stats = Counter()
+        events = extract_did._codex_events(path, agent_sessions, stats)
+        tool_events = [event for event in events if event.get("kind") == "tool"]
+        if len(tool_events) != 1 or tool_events[0].get("name") != "exec":
+            failures.append(f"Codex tool event missing: {tool_events}")
+        elif tool_events[0].get("output") != "command output":
+            failures.append(f"Codex tool output was not joined: {tool_events[0].get('output')!r}")
+    finally:
+        agent_sessions.CODEX_SESSIONS_DIR = old_dir
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    if failures:
+        print("FAIL: test_agent_sessions.py", file=sys.stderr)
+        for f in failures:
+            print("  -", f, file=sys.stderr)
+        sys.exit(1)
+    print("test_agent_sessions.py: Codex loader and did tests passed.")
+
+
 def test_safe_name_and_collision_export():
     """`last --out-dir` must write one file per session, newest first, across
     agents, with a clean folder and Windows-legal filenames.
@@ -97,7 +209,7 @@ def test_safe_name_and_collision_export():
 
     for loader in ("load_opencode_sessions", "load_goose_sessions", "load_hermes_sessions",
                    "load_pi_sessions", "load_omp_sessions", "load_jcode_sessions", "load_antigravity_sessions",
-                   "load_cursor_sessions", "load_droid_sessions"):
+                   "load_cursor_sessions", "load_droid_sessions", "load_codex_sessions"):
         setattr(agent_sessions, loader, lambda limit: [])
     agent_sessions.load_opencode_sessions = lambda limit: [sessions[1], sessions[2]]
     agent_sessions.load_droid_sessions = lambda limit: [sessions[0]]
@@ -494,6 +606,7 @@ def test_reasoning_strip_handles_quoted_headings_and_nesting():
 
 if __name__ == "__main__":
     test_filter_by_days()
+    test_codex_rollout_loader_and_did()
     test_safe_name_and_collision_export()
     test_empty_dir_locked_fallback()
     test_no_clean_keeps_stale()

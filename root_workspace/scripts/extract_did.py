@@ -302,6 +302,62 @@ def _pi_style_events(path: Path, stats: Counter) -> list[dict]:
     return events
 
 
+def _codex_events(path: Path, agent_sessions, stats: Counter) -> list[dict]:
+    """Extract user/assistant text and Codex tool calls from a rollout log."""
+    if not path.is_file():
+        return []
+
+    events: list[dict] = []
+    pending: dict[str, dict] = {}
+    action_tools = set(MUTATING) | {"exec"}
+
+    for record in agent_sessions.iter_codex_records(path):
+        payload = record.get("payload")
+        if not isinstance(payload, dict) or record.get("type") != "response_item":
+            continue
+        kind = payload.get("type") or ""
+
+        if kind == "message":
+            role = str(payload.get("role") or "")
+            if role in HARNESS:
+                continue
+            text = agent_sessions.codex_text(payload.get("content")).strip()
+            if text and role in ("user", "assistant"):
+                events.append(_event_text(role, text))
+            continue
+
+        if kind in {"reasoning", "summary"}:
+            stats["reasoning"] += 1
+            continue
+
+        if kind in {"custom_tool_call", "function_call"}:
+            name = str(payload.get("name") or kind)
+            if name not in action_tools:
+                stats["other"] += 1
+                continue
+            raw_input = payload.get("input")
+            if raw_input is None:
+                raw_input = payload.get("arguments")
+            event = _event_tool(name, "completed", agent_sessions.codex_tool_input(raw_input), "")
+            events.append(event)
+            call_id = str(payload.get("call_id") or "")
+            if call_id:
+                pending[call_id] = event
+            continue
+
+        if kind in {"custom_tool_call_output", "function_call_output"}:
+            call_id = str(payload.get("call_id") or "")
+            output = agent_sessions.codex_text(payload.get("output"))
+            event = pending.get(call_id)
+            if event is not None:
+                event["output"] = output
+                status = str(payload.get("status") or "")
+                if status.lower() in {"error", "failed", "failure"}:
+                    event["status"] = "error"
+
+    return events
+
+
 def _generic_events(session, agent_sessions, stats: Counter) -> list[dict]:
     """Best-effort fallback for agents without a structural reader.
 
@@ -372,6 +428,8 @@ def _events_for(session, agent_sessions, stats: Counter) -> list[dict]:
         return []
     if agent in ("pi", "omp"):
         return _pi_style_events(Path(session.raw_path), stats)
+    if agent == "codex":
+        return _codex_events(Path(session.raw_path), agent_sessions, stats)
     return _generic_events(session, agent_sessions, stats)
 
 

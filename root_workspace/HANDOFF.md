@@ -109,6 +109,9 @@ not checked:
 - czy reguła `direction_changes` jest w ogóle wyprowadzalna z obecnego schematu karty — nie sprawdzono; wymaga przeglądu `make_judgment` i pól `ending_evidence`, co jest osobną sesją.
 - definicja `losses.dup` — brak; bez niej licznik mierzyłby coś innego niż nazwa.
 
+<!-- handoff/flags/codex-loader-2026-10-24.md · owner: mateusz · agent: codex · model: cx/gpt-5.6-luna-max -->
+`codex-loader-2026-10-24` — 2026-10-24: `agent_sessions.py` now reads Codex Desktop rollouts from `%USERPROFILE%/.codex/sessions`, including plain `.jsonl` and archived `.jsonl.zst` through the bundled/system libzstd fallback; `extract_did.py` preserves Codex messages, tool calls, and outputs, so `did_sessions.bat` sees Codex in the unified report. `test_agent_sessions.py` is green and the real batch run exits 0; the Hermes database permission failure is skipped instead of aborting the all-agents export. Next step: review and commit the three tracked source changes when ready.
+
 <!-- handoff/flags/close-include-whole-tree-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `close-include-whole-tree-2026-10-24` — 2026-10-24: `close.py --include` rozumie katalog i całe drzewo. `find_strays` dopasowuje zawartość katalogu po prefiksie (bez rozwijania 686 ścieżek w jeden argv) oraz traktuje `.` jako „cały workspace jest zmianą" — jawnie, nie po cichu: to jedyny sposób, w jaki strukturalna migracja (przeniesienie `.git`, rename 686 plików) może przejść przez transakcję close bez ręcznego mintowania `.commit-approved` (S86). Domyślne zachowanie bez `--include` / z listą plików jest bez zmian — stray nadal blokuje commit. Test w `scripts/test_git_paths.py` buduje repo w tempie: bez `--include` → 2 strays, `--include .` → 0, `--include sub` → tylko plik poza katalogiem.
 
