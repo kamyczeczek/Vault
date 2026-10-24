@@ -74,11 +74,35 @@ def test_rename_and_quoted_paths() -> None:
     assert repo_rel("root_workspace/old.md -> root_workspace/new.md", prefix) == "new.md"
 
 
+def test_find_strays_dir_prefix_and_allow_all() -> None:
+    """`--include <dir>` covers its contents; `--include .` covers the workspace.
+
+    Imported late: close.py is a script, not a library, but its stray predicate
+    is the part that decides whether a commit may proceed.
+    """
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import close  # noqa: E402
+
+    with tempfile.TemporaryDirectory() as td:
+        repo = Path(td)
+        _init(repo)
+        _git(repo, "add", "-A")
+        _git(repo, "commit", "-qm", "init")
+        (repo / "rootfile.txt").write_text("y", encoding="utf-8")
+        (repo / "sub" / "inner.txt").write_text("y", encoding="utf-8")
+
+        assert len(close.find_strays(repo, set())) == 2
+        assert close.find_strays(repo, {"."}) == []
+        only_sub = close.find_strays(repo, {"sub"})
+        assert len(only_sub) == 1 and "rootfile.txt" in only_sub[0], only_sub
+
+
 def main() -> int:
     test_prefix_is_empty_at_repo_root()
     test_status_is_repo_relative_ls_files_is_cwd_relative()
     test_rename_and_quoted_paths()
-    print("PASS: git_paths — prefix, status/ls-files asymmetry, rename/quoted paths")
+    test_find_strays_dir_prefix_and_allow_all()
+    print("PASS: git_paths — prefix, status/ls-files asymmetry, rename/quoted paths, stray prefixes")
     return 0
 
 

@@ -102,6 +102,13 @@ not checked:
 - czy reguła `direction_changes` jest w ogóle wyprowadzalna z obecnego schematu karty — nie sprawdzono; wymaga przeglądu `make_judgment` i pól `ending_evidence`, co jest osobną sesją.
 - definicja `losses.dup` — brak; bez niej licznik mierzyłby coś innego niż nazwa.
 
+<!-- handoff/flags/close-include-whole-tree-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
+`close-include-whole-tree-2026-10-24` — 2026-10-24: `close.py --include` rozumie katalog i całe drzewo. `find_strays` dopasowuje zawartość katalogu po prefiksie (bez rozwijania 686 ścieżek w jeden argv) oraz traktuje `.` jako „cały workspace jest zmianą" — jawnie, nie po cichu: to jedyny sposób, w jaki strukturalna migracja (przeniesienie `.git`, rename 686 plików) może przejść przez transakcję close bez ręcznego mintowania `.commit-approved` (S86). Domyślne zachowanie bez `--include` / z listą plików jest bez zmian — stray nadal blokuje commit. Test w `scripts/test_git_paths.py` buduje repo w tempie: bez `--include` → 2 strays, `--include .` → 0, `--include sub` → tylko plik poza katalogiem.
+
+not checked:
+- `--include .` w realnej migracji — sprawdzony dopiero w commicie migracyjnym; jeśli stray pojawi się mimo to, commit padnie i to jest poprawne zachowanie.
+- czy `git add --intent-to-add .` jest potrzebny (S67 dotyczy untracked plików, nie katalogów) — nie testowano na katalogu z untracked treścią.
+
 <!-- handoff/flags/test-memory-index-format-restored-2026-10-23.md · owner: opencode · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `test-memory-index-format-restored-2026-10-23` — 2026-10-23: **`test_memory_index.py` is green (33/33).** The 2026-10-21 restructure removed `format_results`, `format_brief`, `get_chunk` and `print_usage` from `memory_index.py` but left the regression file importing them, so the suite died at import and its four guards were dead. Restored all four helpers and wired them back into `query --full` / default `query`, `get`, and `stats --usage`; `--with-context` now renders again as `(+Nctx)` in the brief view, which the inline rewrite had silently dropped.
 

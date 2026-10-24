@@ -441,6 +441,8 @@ def find_strays(root: Path, allowed: set[str]) -> list[str]:
         rel = repo_rel(line[3:], prefix)
         if rel is None:
             continue
+        if "." in allowed:  # `--include .`: the whole workspace is the change
+            continue
         if rel in allowed or any(rel.startswith(a.rstrip("/") + "/") for a in allowed):
             continue
         strays.append(line)

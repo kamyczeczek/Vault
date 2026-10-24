@@ -81,6 +81,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `obsidian-repro-needed-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `gate-vault-owned-xor-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `gate-advisories-deferred-2026-10-24` | 2026-10-24 | mateusz | opencode |
+| `close-include-whole-tree-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `test-memory-index-format-restored-2026-10-23` | 2026-10-23 | opencode | opencode |
 | `session-digest-ab-2026-10-23` | 2026-10-23 | opencode | opencode |
 | `session-brief-valuable-2026-10-23` | 2026-10-23 | opencode | opencode |
