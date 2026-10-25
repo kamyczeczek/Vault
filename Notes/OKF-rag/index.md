@@ -19,3 +19,34 @@
 * [ontoship](ontoship.md)
 * [open-knowledge-format](open-knowledge-format.md)
 * [uplink](uplink.md)
+
+# Reports
+
+* [Synteza OKF-rag — od surowego materiału do użytecznej wiedzy](SYNTHESIS.md) - Roboczy model przekształcania materiałów o organizacji workspace i wiedzy w koncepty, decyzje oraz eksperymenty.
+* [Synteza — kompilacja, wyszukiwanie i narzędzia](SYNTHESIS-kompilacja-i-wyszukiwanie.md) - Co naprawdę daje pipeline OKF/llmwiki/okforge oraz które elementy warto odłożyć do czasu potwierdzenia potrzeby.
+* [Eksperyment — ręczne i semantyczne wyszukiwanie w OKF-rag](EXPERIMENT-retrieval-2026-10-25.md) - Pierwszy pięciopytaniowy test tego, czy warstwa syntezy i Smart Connections pomagają znaleźć właściwy materiał.
+* [Benchmark retrieval — 15 pytań z oczekiwanym źródłem](EXPERIMENT-retrieval-benchmark-2026-10-25.md) - Test rankingu Smart Connections po dodaniu warstwy syntez i decyzji nad surowymi materiałami OKF-rag.
+* [Benchmark retrieval — plik i fragment źródłowy](EXPERIMENT-retrieval-benchmark-20-2026-10-25.md) - Dwudziestopytaniowy test Smart Connections po dodaniu precyzyjnych wskazań plików i zakresów źródłowych.
+* [Control raw-only — retrieval bez warstwy kuratorskiej](EXPERIMENT-retrieval-raw-only-2026-10-25.md) - Kontrolny ranking tych samych 20 pytań po odfiltrowaniu syntez, decyzji, raportów i indeksu.
+* [Kontrola brakujących trafień retrieval](EXPERIMENT-retrieval-misses-2026-10-25.md) - Ręczna kontrola dziesięciu pytań oraz test trzech wariantów zapytania dla pięciu missów.
+* [Smoke test kontraktu odpowiedzi retrieval](EXPERIMENT-retrieval-answer-contract-2026-10-25.md) - Pięć pytań sprawdzających przejście od huba semantycznego do źródła, lokalizatora i cytatu.
+* [Source slices dla dużych importów](EXPERIMENT-source-slices-2026-10-25.md) - Test małych, pochodnych slice'ów jako warstwy nawigacyjnej retrieval.
+
+# Decisions
+
+* [Minimalny przepływ od materiału do decyzji](DECISION-minimalny-przeplyw-wiedzy.md) - Roboczy sposób zamieniania surowych materiałów w koncepty, syntezy, decyzje i eksperymenty.
+* [Kontrakt odpowiedzi retrieval](DECISION-kontrakt-odpowiedzi-retrieval.md) - Minimalny format łączący tezę z dowodem, cytatem i poziomem pewności.
+
+# Generated source slices
+
+* [Manifest](_slices/okf-rag/manifest.json) - Hash źródła, zakresy linii i lista wygenerowanych slice'ów.
+* [Proposal to truth](_slices/okf-rag/okf-rag--proposal-to-truth.md) - Granica między propozycją kompilatora a opublikowaną prawdą.
+* [Persistent pipeline state](_slices/okf-rag/okf-rag--pipeline-state.md) - Podział trwałego stanu pipeline'u.
+* [End-to-end knowledge flow](_slices/okf-rag/okf-rag--end-to-end-flow.md) - Przepływ od raw Markdown do hybrid recall.
+* [Benchmark metrics](_slices/okf-rag/okf-rag--benchmark-metrics.md) - Recall/Hit@K, MRR i latencja.
+* [Extraction findings](_slices/okf-rag/okf-rag--extraction-findings.md) - Niedeterministyczna ekstrakcja i niepełne pruning.
+
+# Subdirectories
+
+* [source-slices](source-slices/index.md)
+* [_slices](_slices/index.md)

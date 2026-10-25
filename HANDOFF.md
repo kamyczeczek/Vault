@@ -35,6 +35,24 @@ stopped holding (delete the file), and compress closed threads into
 <!-- handoff/flags/smart-connections-cache-exclusions-2026-10-25.md · owner: mateusz · agent: codex · model: gpt-5 -->
 `smart-connections-cache-exclusions-2026-10-25` — 2026-10-25: corrected Smart Connections folder exclusions for the active vault root by adding the root-level `scripts/`, `projects/`, and `handoff/` paths while preserving the legacy `root_workspace/` paths. Because the old cache continued to load excluded entries, the derived `smart_sources`, `smart_blocks`, `embedding_models`, and `event_logs` directories were moved to `.smart-env/_recovery-2026-10-25`; notes and `smart_env.json` were preserved. Next step: reopen Obsidian and allow Smart Connections to rebuild with the corrected scope.
 
+<!-- handoff/flags/retrieval-answer-contract-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
+`retrieval-answer-contract-2026-10-25` — 2026-10-25: dodano kontrakt odpowiedzi
+retrieval, porównano 15 wariantów zapytań dla pięciu raw-only missów i wdrożono
+generator powtarzalnych source slices z manifestem i `origin_hash`. Slice
+retrieval odzyskał właściwy temat jako top-1 w `5/5` przypadków, a `rg`
+potwierdził źródłowe passage jako `direct`. Next: przetestować generator na
+jednym dużym imporcie `napkin.md`.
+
+not checked:
+- pełny folder `Notes/OKF-rag` nadal ma stare wskaźniki Smart Connections po usuniętych prototypach;
+- benchmark wszystkich 20 pytań nie został jeszcze ponownie uruchomiony na wygenerowanych slice'ach.
+
+<!-- handoff/flags/okf-rag-synthesis-draft-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
+`okf-rag-synthesis-draft-2026-10-25` — 2026-10-25: utworzono syntezy, decyzję i raporty retrieval; dodano zakresy linii źródłowych, wykonano benchmark blokowy 20 pytań, kontrolę raw-only oraz ręczną kontrolę 10 brakujących trafień. Wszystkie brakujące treści istnieją w dużych importach `okf-rag.md`, `napkin.md` i `okforge.md`; problem dotyczy retrieval/segmentacji, nie braku wiedzy. Następny krok: porównać zapytania naturalne, z nazwą narzędzia i z dokładnym nagłówkiem.
+
+<!-- handoff/flags/okf-rag-source-slices-2026-10-25.md · owner: codex · agent: codex · model: openai/gpt-5 -->
+`okf-rag-source-slices-2026-10-25` — 2026-10-25: wdrożono deterministyczny generator source slices dla `okf-rag.md`, manifest z hashami oraz świeży reindeks Smart Connections; po usunięciu starych wektorów scoped retrieval dał `4/5` top-1 i `5/5` top-5, ale globalny folder nadal preferuje syntezy i decyzje. Następny krok: stosować slice'y tylko dla powtarzalnych missów dużych importów i powtórzyć ten sam test na jednym kolejnym imporcie.
+
 <!-- handoff/flags/notes-txt-to-md-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
 `notes-txt-to-md-2026-10-25` — 2026-10-25: renamed all 12 `.txt` files under `Notes/` (including `Notes/OKF-rag/`) to `.md`; no target-name collisions existed. Obsidian updated the affected index links. Next step: review and commit the rename set if desired.
 

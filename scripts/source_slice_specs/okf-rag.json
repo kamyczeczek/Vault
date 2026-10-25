@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "source": "Notes/OKF-rag/okf-rag.md",
+  "slices": [
+    {
+      "id": "okf-rag--proposal-to-truth",
+      "title": "OKF-RAG — proposal-to-truth: compiler proposals, reconciler, final truth",
+      "source_heading": "Generate OKF with llm-wiki-compiler",
+      "start_heading": "Generate OKF with llm-wiki-compiler",
+      "end_marker": "From the source repository:"
+    },
+    {
+      "id": "okf-rag--pipeline-state",
+      "title": "OKF-RAG — persistent pipeline state",
+      "source_heading": "Generate OKF with llm-wiki-compiler",
+      "start_marker": "The persistent state is split by responsibility:",
+      "end_heading": "Stream-Only OpenAI-Compatible Provider",
+      "end_occurrence": 1
+    },
+    {
+      "id": "okf-rag--end-to-end-flow",
+      "title": "OKF-RAG — end-to-end flow: embeddings, hybrid retrieval, lexical reranking",
+      "source_heading": "End-to-End Knowledge Flow",
+      "start_heading": "End-to-End Knowledge Flow",
+      "end_heading": "MCP Startup and Background A/B Refresh"
+    },
+    {
+      "id": "okf-rag--benchmark-metrics",
+      "title": "OKF-RAG — benchmark metrics",
+      "source_heading": "Benchmark",
+      "start_heading": "Benchmark",
+      "start_occurrence": 1,
+      "end_heading": "MCP",
+      "end_occurrence": 1
+    },
+    {
+      "id": "okf-rag--extraction-findings",
+      "title": "OKF-RAG — findings: non-deterministic concept extraction, near-duplicate deduplication, pruning layer",
+      "source_heading": "Findings",
+      "start_marker": "Findings:",
+      "end_heading": "Directed Relationship Benchmark"
+    }
+  ]
+}

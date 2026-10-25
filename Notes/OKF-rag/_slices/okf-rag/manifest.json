@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "generated": true,
+  "generator": {
+    "name": "scripts/generate_source_slices.py",
+    "version": "1"
+  },
+  "origin": {
+    "path": "Notes/OKF-rag/okf-rag.md",
+    "hash": "ef423bb7c17343562e0c514daa1d1338148de49d3046b2bdb4ec44a1c6d831c5",
+    "byte_count": 2416184,
+    "line_count": 58953
+  },
+  "slices": [
+    {
+      "id": "okf-rag--proposal-to-truth",
+      "path": "okf-rag--proposal-to-truth.md",
+      "title": "OKF-RAG — proposal-to-truth: compiler proposals, reconciler, final truth",
+      "source_heading": "Generate OKF with llm-wiki-compiler",
+      "source_lines": [
+        445,
+        448
+      ],
+      "slice_hash": "376acd4e6097cfee2194d77b417df9c864ff09cd18a251792e7e8576c09ee090"
+    },
+    {
+      "id": "okf-rag--pipeline-state",
+      "path": "okf-rag--pipeline-state.md",
+      "title": "OKF-RAG — persistent pipeline state",
+      "source_heading": "Generate OKF with llm-wiki-compiler",
+      "source_lines": [
+        461,
+        475
+      ],
+      "slice_hash": "5913adce1f0e099d71d6629c3095d460e2f6c36f8d2d854f57423d1757ce71c2"
+    },
+    {
+      "id": "okf-rag--end-to-end-flow",
+      "path": "okf-rag--end-to-end-flow.md",
+      "title": "OKF-RAG — end-to-end flow: embeddings, hybrid retrieval, lexical reranking",
+      "source_heading": "End-to-End Knowledge Flow",
+      "source_lines": [
+        231,
+        266
+      ],
+      "slice_hash": "29808293cb694a8405b31477271f88e8d4f9b329c284bf5f9e67751421cc48e0"
+    },
+    {
+      "id": "okf-rag--benchmark-metrics",
+      "path": "okf-rag--benchmark-metrics.md",
+      "title": "OKF-RAG — benchmark metrics",
+      "source_heading": "Benchmark",
+      "source_lines": [
+        573,
+        602
+      ],
+      "slice_hash": "badd1fa6ad4a7787967e0e6eac43dfaa2af14fde60c949099026f6e7ffa72435"
+    },
+    {
+      "id": "okf-rag--extraction-findings",
+      "path": "okf-rag--extraction-findings.md",
+      "title": "OKF-RAG — findings: non-deterministic concept extraction, near-duplicate deduplication, pruning layer",
+      "source_heading": "Findings",
+      "source_lines": [
+        1134,
+        1141
+      ],
+      "slice_hash": "464f7bb992ab0aa0f0cc244e7b99f50fa17247cb96cf083cb2eded1f130892b9"
+    }
+  ]
+}
