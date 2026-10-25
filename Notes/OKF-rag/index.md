@@ -1,6 +1,7 @@
 # Concepts
 
 * [SPEC](SPEC.md)
+* [CONTEXT](CONTEXT.md) - Słownik artefaktów warstwy nawigacji i dowodu nad notatkami OKF-rag.
 
 # Files
 
@@ -64,4 +65,7 @@
 # Subdirectories
 
 * [_slices](_slices/index.md)
-* [source-slices](source-slices/index.md)
+
+# Experiments
+
+* [Scope rule vs leaky related — pre-registered](EXPERIMENT-benchmark-scope-2026-10-25.md) - Zapowiedziany przed przebiegiem test reguły scope i przypadku adwersaryjnego dla metryki related.

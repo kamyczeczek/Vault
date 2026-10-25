@@ -20,3 +20,6 @@ scripts/out/
 
 # Transient commit-authorization token (minted fresh per commit, 300s TTL)
 .commit-approved
+
+# Obsidian auto-recreates this empty folder index; canonical slices live in _slices/
+Notes/OKF-rag/source-slices/index.md

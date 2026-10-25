@@ -6,19 +6,19 @@ generated: { by: okf-enforcer/0.6, at: 2026-10-25T02:18:55Z }
 
 # STATE — root workspace (generated)
 
-> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-10-25 19:19 · HEAD `e356f08` (master).
+> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-10-25 19:22 · HEAD `6890b66` (master).
 
 ## Drzewo
 
-brudne pliki (1144):
+brudne pliki (1018):
 - `M  .gitignore`
 - ` M .obsidian/community-plugins.json`
 - ` D .obsidian/plugins/obsidian-git/data.json`
 - ` M .obsidian/plugins/smart-connections/data.json`
 - ` M .smart-env/smart_env.json`
-- `M  HANDOFF.md`
-- ` M Notes/OKF-rag/index.md`
-- `M  STATE.md`
+- `A  Notes/OKF-rag/CONTEXT.md`
+- `A  Notes/OKF-rag/EXPERIMENT-benchmark-scope-2026-10-25.md`
+- `M  Notes/OKF-rag/index.md`
 - ` M handoff/status/STATUS.md`
 - ` D root_workspace/.agents/plugins/forge-guardrails/hooks/hooks.json`
 - ` D root_workspace/.agents/plugins/forge-guardrails/plugin.json`
@@ -31,15 +31,15 @@ brudne pliki (1144):
 - ` D root_workspace/.dgc-evidence/runs/pstack-research-2026-10-03/DECISION.json`
 - ` D root_workspace/.dgc-evidence/runs/pstack-research-2026-10-03/REVIEW.html`
 - ` D root_workspace/.dgc-evidence/runs/pstack-research-2026-10-03/REVIEW.md`
-- … +1124 więcej
+- … +998 więcej
 
 ## Ostatnie commity
 
+- `6890b66 fix: restore scripts/ toolchain dropped from version control`
 - `e356f08 feat: close OKF-RAG synthesis and evidence layer`
 - `eeba3fc feat: add Napkin source slices and retrieval results`
 - `f1a7fc8 feat: add deterministic source slices for OKF-RAG`
 - `b954b20 chore: preserve Obsidian metadata in generated state`
-- `c04cd83 chore: repair vault gates and migrate notes to markdown`
 
 ## Runy (`.dgc-evidence/runs/`)
 LATEST (czeka na werdykt): `goose-pstack-2026-10-03`
