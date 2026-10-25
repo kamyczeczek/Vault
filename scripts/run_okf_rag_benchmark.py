@@ -47,16 +47,80 @@ def load_json(path: Path) -> Any:
         return json.loads("{" + fragment + "}")
 
 
+def _git(*args: str) -> bytes:
+    result = subprocess.run(["git", *args], cwd=ROOT, capture_output=True)
+    if result.returncode != 0:
+        detail = result.stderr.decode("utf-8", "replace").strip()
+        raise ValueError(f"git {' '.join(args)} failed: {detail}")
+    return result.stdout
+
+
+def corpus_paths() -> list[str]:
+    """Corpus members as committed at HEAD, as repo-relative posix paths.
+
+    The corpus is defined by the repository, not by the filesystem: an
+    untracked or Obsidian-generated note must not be able to change the
+    fingerprint, because a clone cannot reproduce it.
+    """
+    raw = _git("ls-tree", "-r", "-z", "--name-only", "HEAD", "--", "Notes/OKF-rag")
+    names = [name for name in raw.decode("utf-8").split("\0") if name]
+    return sorted(name for name in names if name.lower().endswith(".md"))
+
+
+def corpus_blobs(paths: list[str]) -> dict[str, bytes]:
+    """Read every path as a blob at HEAD through a single cat-file process."""
+    if not paths:
+        return {}
+    request = "".join(f"HEAD:{path}\n" for path in paths).encode("utf-8")
+    result = subprocess.run(["git", "cat-file", "--batch"], cwd=ROOT, input=request, capture_output=True)
+    if result.returncode != 0:
+        detail = result.stderr.decode("utf-8", "replace").strip()
+        raise ValueError(f"git cat-file --batch failed: {detail}")
+    data = result.stdout
+    blobs: dict[str, bytes] = {}
+    position = 0
+    for path in paths:
+        newline = data.index(b"\n", position)
+        header = data[position:newline].decode("utf-8")
+        parts = header.split(" ")
+        if len(parts) != 3:
+            raise ValueError(f"unexpected git cat-file header for {path}: {header!r}")
+        size = int(parts[2])
+        start = newline + 1
+        blobs[path] = data[start : start + size]
+        position = start + size + 1
+    return blobs
+
+
 def corpus_fingerprint() -> tuple[str, int]:
     digest = hashlib.sha256()
-    paths = sorted(NOTES_ROOT.rglob("*.md"), key=lambda path: path.relative_to(ROOT).as_posix())
+    paths = corpus_paths()
+    blobs = corpus_blobs(paths)
     for path in paths:
-        relative = path.relative_to(ROOT).as_posix().encode("utf-8")
-        digest.update(relative)
+        digest.update(path.encode("utf-8"))
         digest.update(b"\0")
-        digest.update(path.read_bytes())
+        digest.update(blobs[path])
         digest.update(b"\0")
     return digest.hexdigest(), len(paths)
+
+
+def corpus_drift() -> list[str]:
+    """Corpus markdown whose working tree differs from HEAD.
+
+    Retrieval reads ``.smart-env``, which indexes the working tree. A dirty
+    corpus therefore means the index may contain material the pinned
+    fingerprint does not cover, so the run would not be reproducible.
+    """
+    raw = _git("status", "--porcelain", "-z", "--", "Notes/OKF-rag")
+    drift: list[str] = []
+    for entry in raw.decode("utf-8").split("\0"):
+        if len(entry) < 4:
+            continue
+        status = entry[:2].strip()
+        path = entry[3:]
+        if path.lower().endswith(".md"):
+            drift.append(f"{path} ({status})")
+    return sorted(drift)
 
 
 def normalize_path(value: str) -> str:
@@ -546,7 +610,15 @@ def run(args: argparse.Namespace) -> int:
     if fingerprint != expected_fingerprint and not args.allow_corpus_drift:
         raise ValueError(
             f"Corpus fingerprint changed: questions={expected_fingerprint}, current={fingerprint}. "
-            "Review the corpus, update its pinned hash, or pass --allow-corpus-drift for an explicit drift run."
+            "This pin is the HEAD tree of Notes/OKF-rag; review the corpus, update the pinned hash, "
+            "or pass --allow-corpus-drift for an explicit drift run."
+        )
+    drift = corpus_drift()
+    if drift and not args.allow_corpus_drift:
+        raise ValueError(
+            "Corpus working tree differs from HEAD, so a clone could not reproduce this run:\n  "
+            + "\n  ".join(drift)
+            + "\nCommit the corpus, or pass --allow-corpus-drift for an explicit drift run."
         )
     questions = dataset.get("questions", [])
     if len(questions) != 20:
@@ -691,6 +763,10 @@ def main() -> int:
         fingerprint, count = corpus_fingerprint()
         print(f"corpus_sha256={fingerprint}")
         print(f"markdown_files={count}")
+        drift = corpus_drift()
+        print(f"corpus_drift={len(drift)}")
+        for entry in drift:
+            print(f"  drift: {entry}")
         return 0
     if args.inspect:
         index = load_json(SOURCE_INDEX_PATH)

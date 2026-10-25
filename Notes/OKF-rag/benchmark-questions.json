@@ -5,7 +5,7 @@
   "query_language": "English",
   "query_origin": "Reconstructed from the recorded gold files and passage ranges because the baseline report did not preserve its full query strings.",
   "corpus_scope": "Notes/OKF-rag/**/*.md",
-  "corpus_sha256": "2f0491bd350a5a5f88738726bb282dd61cfd0800bd8cc23543d333635953f046",
+  "corpus_sha256": "85038826f1286431f528dc1a6a02bbedf314990a9978329ca78e143c65eacc06",
   "settings": {
     "model": "TaylorAI/bge-micro-v2",
     "top_k": 10,
