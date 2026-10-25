@@ -1,0 +1,68 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: The book advises that at the start of a project you should gather complete requirements, write them down in a detailed document, and give the document to the client for signing, to avoid later changes. Is that correct?
+
+Fragments:
+--- Topic 45: The Requirements Pit (id ch_0751) ---
+Submit a 200-page requirements document, and the client will likely heft it to decide if it weighs enough to be important, they may read the first couple of paragraphs (which is why the first two paragraphs are always titled _Management Summary_ ), and they may flick through the rest, sometimes stopping when there's a neat diagram.
+
+This isn't putting the client down. But giving them a large technical document is like giving the average developer a copy of the _Iliad_ in Homeric Greek and asking them to code the video game from it.
+
+##### **Requirements Documents Are for Planning**
+
+--- Topic 45: The Requirements Pit (id ch_0749) ---
+##### **Requirements Documents Are Not for Clients**
+
+In the past, both Andy and Dave have been on projects that produced incredibly detailed requirements. These substantial documents expanded on the client's initial two-minute explanation of what was wanted, producing inch-thick masterpieces full of diagrams and tables. Things were specified to the point where there was almost no room for ambiguity in the implementation. Given sufficiently powerful tools, the document could actually _be_ the final program.
+
+Creating these documents was a mistake for two reasons. First, as we've discussed, the client doesn't really know what they want up front. So when we take what they say and expand it into what is almost a legal document, we are building an incredibly complex castle on quicksand.
+
+--- Topic 45: The Requirements Pit (id ch_0750) ---
+You might say "but then we take the document to the client and they sign off on it. We're getting feedback." And that leads us to the second problem with these requirement specifications: the client never reads them.
+
+The client uses programmers because, while the client is motivated by solving a high-level and somewhat nebulous problem, programmers are interested in all the details and
+
+nuances. The requirements document is written for developers, and contains information and subtleties that are sometimes incomprehensible and frequently boring to the client.
+
+--- Topic 45: The Requirements Pit (id ch_0753) ---
+application. You'd be right. And that's part of the point. By keeping this statement of requirements short, you're encouraging developers to ask clarifying questions. You're enhancing the feedback process between clients and coders before and during the creation of each piece of code.
+
+#### **OVERSPECIFICATION**
+
+Another big danger in producing a requirements document is being too specific. Good requirements are abstract. Where requirements are concerned, the simplest statement that accurately reflects the business need is best. This doesn't mean you can be vague—you must capture the underlying semantic invariants as requirements, and document the specific or current work practices as policy.
+
+--- Topic 14: Domain Languages (id ch_0185) ---
+So when you force a business person to sign off on a requirements document, or get them to agree to a set of Cucumber features, you're doing the equivalent of getting them to check the spelling in an essay written in Sumerian. They'll make some random changes to save face and sign it off to get you out of their office.
+
+Give them code that runs, however, and they can play with it. That's where their real needs will surface.
+
+##### **Phoenix Routes**
+
+Many web frameworks have a routing facility, mapping incoming HTTP requests onto handler functions in the code. Here's an example from Phoenix.[21]
+
+--- Topic 45: The Requirements Pit (id ch_0748) ---
+This example also illustrates our belief that successful tools adapt to the hands that use them. Successful requirements gathering takes this into account. And this is why early feedback, with prototypes or tracer bullets, will let your clients say "yes, it does _what_ I want, but not _how_ I want."
+
+#### **DOCUMENTING REQUIREMENTS**
+
+We believe that the best requirements documentation, perhaps
+
+the _only_ requirements documentation, is working code.
+
+But that doesn't mean that you can get away without documenting your understanding of what the client wants. It just means that those documents are not a deliverable: they are not something that you give to a client to sign off on. Instead, they are simply mileposts to help guide the implementation process.
+
+--- Topic 41: Test to Code (id ch_0649) ---
+- They have lots of redundant tests. For example, before writing a class for the first time, many TDD adherents will first write a failing test that simply references the class's name. It fails, then they write an empty class definition and it passes. But now you have a test that does absolutely nothing; the next test you write will also reference the class, and so it makes the first unnecessary. There's more stuff to change if the class name changes later. And this is just a trivial example.
+
+- Their designs tend to start at the bottom and work their way up. (See _Bottom-Up vs. Top-Down vs. The Way You Should Do It_ .)
+
+###### **Bottom-Up vs. Top-Down vs. The Way You Should Do It**
+
+--- Topic 45: The Requirements Pit (id ch_0752) ---
+So we don't believe in the monolithic, heavy-enough-to-stunan-ox, requirements document. We do, however, know that requirements have to be written down, simply because developers on a team need to know what they'll be doing.
+
+What form does this take? We favor something that can fit on a real (or virtual) index card. These short descriptions are often called _user stories_ . They describe what a small portion of the application should do from the perspective of a user of that functionality.
+
+When written this way, the requirements can be placed on a board and moved around to show both status and priority.
+
+You might think that a single index card can't hold the information needed to implement a component of the

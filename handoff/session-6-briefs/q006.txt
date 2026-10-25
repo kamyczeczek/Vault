@@ -1,0 +1,60 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: What are preconditions, postconditions, and class invariants in Design by Contract, and who is responsible for checking them?
+
+Fragments:
+--- Topic 23: Design by Contract (id ch_0322) ---
+##### _Class invariants_
+
+A class ensures that this condition is always true from the perspective of a caller. During internal processing of a
+
+routine, the invariant may not hold, but by the time the routine exits and control returns to the caller, the invariant must be true. (Note that a class cannot give unrestricted write-access to any data member that participates in the invariant.)
+
+The contract between a routine and any potential caller can thus be read as
+
+If all the routine's preconditions are met by the caller, the routine shall guarantee that all postconditions and invariants will be true when it completes.
+
+--- Topic 23: Design by Contract (id ch_0331) ---
+It's a naming thing. Eiffel is an object-oriented language, so Meyer named this idea "class invariant." But, really, it's more general than that. What this idea really refers to is _state_ . In an object-oriented language, the state is associated with instances of classes. But other languages have state, too.
+
+In a functional language, you typically pass state to functions and receive updated state as a result. The concepts of invariants is just as useful in these circumstances.
+
+#### **IMPLEMENTING DBC**
+
+Simply enumerating what the input domain range is, what the boundary conditions are, and what the routine promises to deliver—or, more importantly, what it _doesn't_ promise to deliver —before you write the code is a huge leap forward in writing
+
+--- Topic 23: Design by Contract (id ch_0338) ---
+By expressing the domain of the square root function in the precondition of the sqrt routine, you shift the burden of correctness to the caller—where it belongs. You can then design the sqrt routine secure in the knowledge that its input will be in range.
+
+#### **DBC AND CRASHING EARLY**
+
+DBC fits in nicely with our concept of crashing early (see Topic 24, _<u>Dead Programs Tell No Lies</u>_ <u>). By using an assert or DBC</u>
+
+mechanism to validate the preconditions, postconditions, and invariants, you can crash early and report more accurate information about the problem.
+
+--- Topic 23: Design by Contract (id ch_0335) ---
+as they existed at the entry to a method. If you're using assertions to enforce contracts, you must add code to the precondition to save any information you'll want to use in the postcondition, if the language will even allow that. In the Eiffel language, where DBC was born, you can just use old _expression_ .
+
+Finally, conventional runtime systems and libraries are not designed to support contracts, so these calls are not checked. This is a big loss, because it is often at the boundary between your code and the libraries it uses that the most problems are detected (see Topic 24, _<u>Dead Programs Tell No Lies</u>_ for a more detailed discussion).
+
+###### **Who's Responsible?**
+
+--- Topic 23: Design by Contract (id ch_0330) ---
+- TDD does not focus on checking internal invariants within the code under test, it's more black-box style to check the public interface
+
+- DBC is more efficient (and DRY-er) than defensive programming, where _everyone_ has to validate data in case no one else does.
+
+TDD is a great technique, but as with many techniques, it might invite you to concentrate on the "happy path," and not the real world full of bad data, bad actors, bad versions, and bad specifications.
+
+##### **Class Invariants and Functional Languages**
+
+--- Topic 23: Design by Contract (id ch_0323) ---
+If either party fails to live up to the terms of the contract, then a remedy (which was previously agreed to) is invoked—maybe an exception is raised, or the program terminates. Whatever happens, make no mistake that failure to live up to the contract is a bug. It is not something that should ever happen, which is why preconditions should not be used to perform things such as user-input validation.
+
+Some languages have better support for these concepts than others. Clojure, for example, supports pre- and post-conditions as well as the more comprehensive instrumentation provided by _specs_ . Here's an example of a banking function to make a deposit using simple pre- and post-conditions:
+
+--- Topic 23: Design by Contract (id ch_0336) ---
+Who is responsible for checking the precondition, the caller or the routine being called? When implemented as part of the language, the answer is neither: the precondition is tested behind the scenes after the caller invokes the routine but before the routine itself is entered. Thus if there is any explicit checking of parameters to be done, it must be performed by the _caller_ , because the routine itself will never see parameters that violate its precondition. (For languages without built-in support, you would need to bracket the _called_ routine with a preamble and/or postamble that checks these assertions.)
+
+--- Topic 42: Property-Based Testing (id ch_0691) ---
+Think about the code you're currently working on. What are the properties: the contracts and invariants? Can you use propertybased testing framework to verify these automatically?

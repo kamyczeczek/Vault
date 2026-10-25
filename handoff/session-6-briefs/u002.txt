@@ -1,0 +1,76 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: What are the best practices for using the useEffect and useMemo hooks in React 18 to prevent unnecessary re-renders?
+
+Fragments:
+--- Topic 29: Juggling the Real World (id ch_0433) ---
+There are many frameworks that can help with this kind of data-level reactivity: in the realm of the browser React and Vue.js are current favorites (but, this being JavaScript, this information will be out-of-date before this book is even printed).
+
+It's clear that events can also be used to trigger reactions in code, but it isn't necessarily easy to plumb them in. That's where _streams_ come in.
+
+--- Topic 44: Naming Things (id ch_0731) ---
+and regardless of which "best practices" it includes, no method can replace _thinking_ . You don't need any particular process or tool, what you do need is the Topic 48, _<u>The Essence of Agility</u>_ .
+
+With these critical issues sorted out _before_ the project gets under way, you can be better positioned to avoid "analysis paralysis" and actually begin—and complete—your successful project.
+
+--- Topic 2: The Cat Ate My Source Code (id ch_0010) ---
+Instead of excuses, provide options. Don't say it can't be done; explain what _can_ be done to salvage the situation. Does code have to be deleted? Tell them so, and explain the value of refactoring (see Topic 40, _<u>Refactoring</u>_ <u>).</u>
+
+Do you need to spend time prototyping to determine the best way to proceed (see Topic 13, _<u>Prototypes and Post-it Notes</u>_ <u>)? Do</u> you need to introduce better testing (see Topic 41, _<u>Test to Code</u>_ <u>,</u> and _<u>Ruthless and Continuous Testing</u>_ ) or automation to prevent it from happening again?
+
+Perhaps you need additional resources to complete this task. Or
+
+--- Topic 29: Juggling the Real World (id ch_0438) ---
+Event streams are normally populated as events occur, which implies that the observables that populate them can run in parallel. Here's an example that fetches information about users from a remote site. For this we'll use <u>https://reqres.in, a public</u> site that provides an open REST interface. As part of its API, we can fetch data on a particular (fake) user by performing a GET request to users/«id». Our code fetches the users with the IDs 3, 2, and 1:
+
+|event/rx1/index.js|
+|---|
+|**import*as**Observable**from** _'rxjs'_|
+|**import**{ mergeMap }**from** _'rxjs/operators'_|
+|**import**{ ajax }**from** _'rxjs/ajax'_|
+
+**import** { logValues } **from** _"../rxcommon/logger.js"_
+
+**<mark>let</mark>** <mark>users = Observable.</mark> **<mark>of</mark>** <mark>(3, 2, 1)</mark>
+
+--- Topic 45: The Requirements Pit (id ch_0753) ---
+application. You'd be right. And that's part of the point. By keeping this statement of requirements short, you're encouraging developers to ask clarifying questions. You're enhancing the feedback process between clients and coders before and during the creation of each piece of code.
+
+#### **OVERSPECIFICATION**
+
+Another big danger in producing a requirements document is being too specific. Good requirements are abstract. Where requirements are concerned, the simplest statement that accurately reflects the business need is best. This doesn't mean you can be vague—you must capture the underlying semantic invariants as requirements, and document the specific or current work practices as policy.
+
+--- Topic 11: Reversibility (id ch_0150) ---
+How can you plan for this kind of architectural volatility? You can't.
+
+What you can do is make it easy to change. Hide third-party APIs behind your own abstraction layers. Break your code into components: even if you end up deploying them on a single massive server, this approach is a lot easier than taking a monolithic application and splitting it. (We have the scars to prove it.)
+
+And, although this isn't particularly a reversibility issue, one final piece of advice.
+
+#### **Tip 19** Forgo Following Fads
+
+No one knows what the future may hold, especially not us! So enable your code to rock-n-roll: to "rock on'' when it can, to roll with the punches when it must.
+
+#### **RELATED SECTIONS INCLUDE**
+
+Topic 8, _The Essence of_ _<u>Good Design</u>_
+
+- Topic 10, _<u>Orthogonality</u>_
+
+--- Topic 50: Coconuts Don’t Cut It (id ch_0819) ---
+Instead, you want to take the best pieces from any particular methodology and adapt them for use. No one size fits all, and current methods are far from complete, so you'll need to look at more than just one popular method.
+
+For example, Scrum defines some project management
+
+practices, but Scrum by itself doesn't provide enough guidance at the technical level for teams or at the portfolio/governance level for leadership. So where do you start?
+
+###### **Be Like Them!**
+
+We frequently hear software development leaders tell their staff, "We should operate like Netflix" (or one of these other leading companies). Of course you _could_ do that.
+
+First, get yourself a few hundred thousand servers and tens of millions of users...
+
+#### **THE REAL GOAL**
+
+--- Topic 35: Actors and Processes (id ch_0546) ---
+concurrency/actors/index.js **const** waiterActor = { _<mark>"order"</mark>_ <mark>: (msg, ctx, state) => {</mark> **if** (msg.wants == _"pie"_ ) { <mark>dispatch(state.pieCase,</mark> { type: _"get slice"_ , customer: msg.customer, waiter: ctx.self }) <mark>}</mark> **else** { <mark>console.dir(</mark> _`_ _<mark>Don't know how to order</mark>_ <mark>${msg.wants}</mark> _`_ <mark>);</mark> } <mark>},</mark> _<mark>"add to order"</mark>_ <mark>: (msg, ctx) =></mark> console.log( _`Waiter adds_ ${msg.food} _to_ ${msg.customer.name} _'s order`_ ), _"error"_ : (msg, ctx) => { <mark>dispatch(msg.customer, { type:</mark> _<mark>'no pie left'</mark>_ <mark>, msg: msg.msg });</mark> console.log( _`\nThe waiter apologizes to_ ${msg.customer.name} _:_ ${msg.msg} _`_ ) <mark>}</mark> <u><mark>};</mark></u>

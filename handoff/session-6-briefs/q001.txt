@@ -1,0 +1,76 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: What exactly is the DRY principle according to The Pragmatic Programmer, and what is the test that lets you check whether code violates it?
+
+Fragments:
+--- Topic 9: DRY—The Evils of Duplication (id ch_0093) ---
+The alternative is to have the same thing expressed in two or more places. If you change one, you have to remember to change the others, or, like the alien computers, your program will be brought to its knees by a contradiction. It isn't a question of whether you'll remember: it's a question of when you'll forget.
+
+You'll find the DRY principle popping up time and time again throughout this book, often in contexts that have nothing to do with coding. We feel that it is one of the most important tools in the Pragmatic Programmer's tool box.
+
+In this section we'll outline the problems of duplication and
+
+suggest general strategies for dealing with it.
+
+#### **DRY IS MORE THAN CODE**
+
+--- Topic 10: Orthogonality (id ch_0139) ---
+Orthogonality is closely related to the DRY principle. With DRY, you're looking to minimize duplication within a system, whereas with orthogonality you reduce the interdependency among the system's components. It may be a clumsy word, but if you use the principle of orthogonality, combined closely with the DRY principle, you'll find that the systems you develop are more flexible, more understandable, and easier to debug, test, and maintain.
+
+If you're brought into a project where people are desperately struggling to make changes, and where every change seems to cause four other things to go wrong, remember the nightmare with the helicopter. The project probably is not orthogonally designed and coded. It's time to refactor.
+
+And, if you're a helicopter pilot, don't eat the fish….
+
+--- Topic 9: DRY—The Evils of Duplication (id ch_0094) ---
+Let's get something out of the way up-front. In the first edition of this book we did a poor job of explaining just what we meant by _Don't Repeat Yourself_ . Many people took it to refer to code only: they thought that DRY means "don't copy-and-paste lines of source."
+
+That _is_ part of DRY, but it's a tiny and fairly trivial part.
+
+DRY is about the duplication of _knowledge_ , of _intent_ . It's about expressing the same thing in two different places, possibly in two totally different ways.
+
+Here's the acid test: when some single facet of the code has to change, do you find yourself making that change in multiple places, and in multiple different formats? Do you have to change code and documentation, or a database schema and a structure that holds it, or…? If so, your code isn't DRY.
+
+--- Topic 51: Pragmatic Starter Kit (id ch_0825) ---
+Although software development is still an industry at the Model-T stage, we can't afford to go through two pages of instructions again and again for some common operation. Whether it is the build and release procedure, testing, project paperwork, or any other recurring task on the project, it has to be automatic and repeatable on any capable machine.
+
+In addition, we want to ensure consistency and repeatability on the project. Manual procedures leave consistency up to chance; repeatability isn't guaranteed, especially if aspects of the procedure are open to interpretation by different people.
+
+After we wrote the first edition of _The Pragmatic Programmer,_ we wanted to create more books to help teams develop software. We figured we should start at the beginning: what are the most
+
+--- Topic 36: Blackboards (id ch_0571) ---
+Pragmatic Programmers think critically about all code, including our own. We constantly see room for improvement in our programs and our designs. In Topic 40, _<u>Refactoring</u>_ , we look at techniques that help us fix up existing code continuously as we go.
+
+Testing is not about finding bugs, it's about getting feedback on your code: aspects of design, the API, coupling, and so on. That means that the major benefits of testing happen when you think about and write the tests, not just when you run them. We'll explore this idea in Topic 41, _<u>Test to Code</u>_ .
+
+--- Topic 41: Test to Code (id ch_0659) ---
+We like to think of unit testing as _testing against contract_ (see Topic 23, _<u>Design by Contract</u>_ <u>). We want to write test cases that</u> ensure that a given unit honors its contract. This will tell us two things: whether the code meets the contract, and whether the contract means what we think it means. We want to test that the module delivers the functionality it promises, over a wide range
+
+of test cases and boundary conditions.
+
+What does this mean in practice? Let's start with a simple, numerical example: a square root routine. Its documented contract is simple:
+
+pre-conditions:
+
+<mark>argument >= 0;</mark>
+
+<mark>post-conditions:</mark> <u>((result * result) - argument).abs <= epsilon*argument;</u>
+
+This tells us what to test:
+
+--- Topic 22: Engineering Daybooks (id ch_0316) ---
+But Pragmatic Programmers take this a step further. _They don't trust themselves, either._ Knowing that no one writes perfect code, including themselves, Pragmatic Programmers build in defenses against their own mistakes. We describe the first defensive measure in Topic 23, _<u>Design by Contract</u>_ : clients and suppliers must agree on rights and responsibilities.
+
+In Topic 24, _<u>Dead Programs Tell No Lies</u>_ <u>, we want to ensure</u> that we do no damage while we're working the bugs out. So we try to check things often and terminate the program if things go awry.
+
+Topic 25, _<u>Assertive Programming</u>_ describes an easy method of checking along the way—write code that actively verifies your assumptions.
+
+--- Topic 51: Pragmatic Starter Kit (id ch_0838) ---
+Use _property-based_ testing techniques to generate test data according to the contracts and invariants of the code under test. We cover this topic in detail in Topic 42, _<u>Property-Based Testing</u>_ <u>.</u>
+
+#### **TIGHTENING THE NET**
+
+Finally, we'd like to reveal the single most important concept in testing. It is an obvious one, and virtually every textbook says to do it this way. But for some reason, most projects still do not.
+
+If a bug slips through the net of existing tests, you need to add a new test to trap it next time.
+
+> **Tip 94** Find Bugs Once

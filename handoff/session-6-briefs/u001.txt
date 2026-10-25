@@ -1,0 +1,86 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: How do you configure an ingress controller and a horizontal pod autoscaler in Kubernetes for a microservices application?
+
+Fragments:
+--- Topic 32: Configuration (id ch_0495) ---
+> **Topic 32** Configuration
+
+When code relies on values that may change after the application has gone live, keep those values external to the app. When your application will run in different environments, and potentially for different customers, keep the environment- and customerspecific values outside the app. In this way, you're parameterizing
+
+_Let all your things have their places; let each part of your business have its time._
+
+> _Benjamin Franklin, Thirteen_ environment- and customer- _Virtues, autobiography_ specific values outside the app. In this way, you're parameterizing your application; the code adapts to the places it runs.
+
+Parameterize Your App Using External **Tip 55** Configuration
+
+Common things you will probably want to put in configuration data include:
+
+--- Topic 19: Version Control (id ch_0264) ---
+The Ansible script used to configure apps All current projects
+
+The machine was restored by the end of the afternoon.
+
+#### **VERSION CONTROL AS A PROJECT HUB**
+
+Although version control is incredibly useful on personal projects, it really comes into its own when working with a team. And much of this value comes from how you host your repository.
+
+Now, many version control systems don't need any hosting. They are completely decentralized, with each developer cooperating on a peer-to-peer basis. But even with these systems, it's worth looking into having a central repository, because once you do, you can take advantage of a ton of integrations to make the project flow easier.
+
+--- Topic 51: Pragmatic Starter Kit (id ch_0842) ---
+Everything depends on automation. You can't build the project on an anonymous cloud server unless the build is fully automatic. You can't deploy automatically if there are manual steps involved. And once you introduce manual steps ("just for this one part…") you've broken a very large window ~~.~~ <u>[83]</u>
+
+With these three legs of version control, ruthless testing, and full automation, your project will have the firm foundation you need so you can concentrate on the hard part: delighting users.
+
+#### **RELATED SECTIONS INCLUDE**
+
+Topic 11, _Reversibility_
+
+- Topic 12, _Tracer Bullets_
+
+- Topic 17, _Shell Games_
+
+- Topic 19, _Version Control_
+
+- Topic 41, _Test to Code_
+
+- Topic 49, _Pragmatic Teams_
+
+- Topic 50, _<u>Coconuts Don't Cut It</u>_
+
+#### **CHALLENGES**
+
+--- Topic 5: Good-Enough Software (id ch_0039) ---
+- Look at the software tools and operating systems that you use regularly. Can you find any evidence that these organizations and/or developers are comfortable shipping software they know is not perfect? As a user, would you rather (1) wait for them to get all the bugs out, (2) have complex software and accept some bugs, or (3) opt for simpler software with fewer defects?
+
+- Consider the effect of modularization on the delivery of software. Will it take more or less time to get a tightly coupled monolithic block of software to the required quality compared with a system designed as very loosely coupled modules or microservices? What are the advantages or disadvantages of each approach?
+
+--- Topic 50: Coconuts Don’t Cut It (id ch_0822) ---
+Once your infrastructure is in order, you need to decide how to
+
+organize the work. Beginners might want to start with Scrum for project management, plus the technical practices from eXtreme Programming (XP). More disciplined and experienced teams might look to Kanban and Lean techniques, both for the team and perhaps for larger governance issues.
+
+But don't take our word for it, investigate and try these approaches for yourself. Be careful, though, in overdoing it. Overly investing in any particular methodology can leave you blind to alternatives. You get used to it. Soon it becomes hard to see any other way. You've become calcified, and now you can't adapt quickly anymore.
+
+Might as well be using coconuts.
+
+#### **RELATED SECTIONS INCLUDE**
+
+- Topic 12, _Tracer Bullets_
+
+--- Topic 12: Tracer Bullets (id ch_0168) ---
+The tracer code approach addresses a different problem. You need to know how the application as a whole hangs together. You want to show your users how the interactions will work in practice, and you want to give your developers an architectural skeleton on which to hang code. In this case, you might construct a tracer consisting of a trivial implementation of the container packing algorithm (maybe something like first-come, first-served) and a simple but working user interface. Once you have all the components in the application plumbed together, you have a framework to show your users and your developers. Over time, you add to this framework with new functionality,
+
+--- Topic 28: Decoupling (id ch_0412) ---
+means that your global data has a bit of intelligence behind it. If you decide to change the representation of log levels, you can maintain compatibility by mapping between the new and old in the Config API. But you still have only the one set of configuration data.
+
+##### **Global Data Includes External Resources**
+
+Any mutable external resource is global data. If your application uses a database, datastore, file system, service API, and so on, it risks falling into the globalization trap. Again, the solution is to make sure you always wrap these resources behind code that you control.
+
+If It's Important Enough to Be Global, Wrap It in **Tip 48** an API
+
+#### **INHERITANCE ADDS COUPLING**
+
+--- Topic 15: Estimating (id ch_0214) ---
+Initially, you may have only a vague idea of how many iterations will be required, or how long they may be. Some methods require you to nail this down as part of the initial plan; however, for all but the most trivial of projects this is a mistake. Unless you are doing an application similar to a previous one, with the same team and the same technology, you'd just be guessing.

@@ -1,0 +1,144 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: What exactly is the DRY principle according to The Pragmatic Programmer, and what is the test that lets you check whether code violates it?
+
+Fragments:
+--- Topic 31: Inheritance Tax (id ch_0474) ---
+**Topic 31**
+
+Inheritance Tax
+
+_You wanted a banana but what you got was a gorilla holding the banana and the entire jungle._
+
+Do you program in an objectoriented language? Do you use inheritance?
+
+If so, stop! It probably isn't what you want to do.
+
+Let's see why.
+
+_Joe Armstrong_
+
+#### **SOME BACKGROUND**
+
+Inheritance first appeared in Simula 67 in 1969. It was an elegant solution to the problem of queuing multiple types of events on the same list. The Simula approach was to use something called _prefix classes_ . You could write something like this:
+
+link CLASS car; <mark>... implementation of car link CLASS bicycle;</mark> ... implementation of bicycle
+
+--- Topic 31: Inheritance Tax (id ch_0481) ---
+> **Tip 51** Don't Pay Inheritance Tax
+
+#### **THE ALTERNATIVES ARE BETTER**
+
+Let us suggest three techniques that mean you should never need to use inheritance again:
+
+Interfaces and protocols
+
+Delegation
+
+Mixins and traits
+
+**Interfaces and Protocols**
+
+Most OO languages allow you to specify that a class implements one or more sets of behaviors. You could say, for example, that a Car class implements the Drivable behavior and the Locatable behavior. The syntax used for doing this varies: in Java, it might look like this:
+
+**public class** Car **implements** Drivable, Locatable { _// Code for class Car. This code must include_ _<mark>// the functionality of both Drivable</mark> // and Locatable_ <u>}</u>
+
+--- Topic 31: Inheritance Tax (id ch_0477) ---
+So, now we're faced with a generation of OO developers who use inheritance for one of two reasons: they don't like typing, or they like types.
+
+Those who don't like typing save their fingers by using
+
+inheritance to add common functionality from a base class into child classes: class User and class Product are both subclasses of ActiveRecord::Base.
+
+Those who like types use inheritance to express the relationship between classes: a Car is-a-kind-of Vehicle.
+
+Unfortunately both kinds of inheritance have problems.
+
+#### **PROBLEMS USING INHERITANCE TO SHARE CODE**
+
+Inheritance _is_ coupling. Not only is the child class coupled to the parent, the parent's parent, and so on, but the code that _uses_ the child is also coupled to all the ancestors. Here's an example:
+
+--- Topic 31: Inheritance Tax (id ch_0493) ---
+Here, both derived classes include validations common to all account objects. The customer variant also includes validations appropriate for the customer-facing APIs, while the admin variant contained (the presumably less restrictive) admin validations.
+
+Now, by passing instances of AccountForCustomer or AccountForAdmin back and forth, our code _automatically_ ensures the correct validation is applied.
+
+> **Tip 54** Use Mixins to Share Functionality
+
+#### **INHERITANCE IS RARELY THE ANSWER**
+
+We've had a quick look at three alternatives to traditional class inheritance:
+
+Interfaces and protocols
+
+- Delegation
+
+Mixins and traits
+
+--- Topic 45: The Requirements Pit (id ch_0737) ---
+Stop for a second and imagine yourself in that position. What's the first thing that comes to mind?
+
+The chances are very good that you had questions:
+
+- Does the $50 include tax?
+
+- Does the $50 include current shipping charges?
+
+- Does the $50 have to be for paper books, or can the order also include ebooks?
+
+- What kind of shipping is offered? Priority? Ground?
+
+- What about international orders?
+
+- How often will the $50 limit change in the future?
+
+That's what we do. When given something that seems simple, we annoy people by looking for edge cases and asking about
+
+them.
+
+The chances are the client will have already thought of some of these, and just assumed that the implementation would work that way. Asking the question just flushes that information out.
+
+--- Topic 10: Orthogonality (id ch_0140) ---
+#### **RELATED SECTIONS INCLUDE**
+
+Topic 3, _Software Entropy_
+
+Topic 8, _The Essence of_ _<u>Good Design</u>_
+
+- Topic 11, _Reversibility_
+
+- Topic 28, _Decoupling_
+
+- Topic 31, _Inheritance Tax_
+
+- Topic 33, _Breaking Temporal Coupling_
+
+- Topic 34, _Shared State Is Incorrect State_
+
+- Topic 36, _Blackboards_
+
+##### **Challenges**
+
+- Consider the difference between tools which have a graphical user interface and small but combinable command-line utilities used at shell prompts. Which set is more orthogonal, and why? Which is easier to use for exactly the purpose for which it was intended? Which set is easier to combine with other tools to meet new challenges? Which set is easier to learn?
+
+--- Topic 7: Communicate! (id ch_0078) ---
+- <u>[9]</u> An _expiring asset_ is something whose value diminishes over time. Examples include a warehouse full of bananas and a ticket to a ball game.
+
+- <u>[10]</u> We may be biased, but there's a fine selection available at https://pragprog.com.
+
+- <u>[11]</u> Never heard of any of these languages? Remember, knowledge is an expiring asset, and so is popular technology. The list of hot new and experimental languages was very different for the first edition, and is probably different again by the time you read this. All the more reason to keep learning.
+
+<u>[12]</u> The word _annoy_ comes from the Old French _enui_ , which also means "to bore.''
+
+Copyright © 2020 Pearson Education, Inc.
+
+## Chapter 2
+
+# **A Pragmatic Approach**
+
+--- Topic 31: Inheritance Tax (id ch_0476) ---
+So when I designed Smalltalk-72—and it was a lark for fun while thinking about Smalltalk-71—I thought it would be fun to use its Lisp-like dynamics to do experiments with "differential programming" (meaning: various ways to accomplish "this is like that except").
+
+This is subclassing purely for behavior.
+
+These two styles of inheritance (which actually had a fair amount in common) developed over the following decades. The Simula approach, which suggested inheritance was a way of combining types, continued in languages such as C++ and Java. The Smalltalk school, where inheritance was a dynamic organization of behaviors, was seen in languages such as Ruby and JavaScript.

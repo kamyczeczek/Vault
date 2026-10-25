@@ -21,5 +21,30 @@ scripts/out/
 # Transient commit-authorization token (minted fresh per commit, 300s TTL)
 .commit-approved
 
+# --- Local / derived / bulk artifacts: never vault content -------------------
+# close.py already refuses `--include projects/research/...` with "nested repo,
+# commit in KR instead"; without a rule here that invariant lived only in the
+# error message, so `--include .` (the sanctioned path for structural
+# migrations) would have tried to add 67 720 files / 2.4 GB of .venv + gitlinks.
+projects/
+# 29 PDFs, 225 MB. Versioning these needs LFS or a real backup, not `git add`.
+library/
+# Agent data backups (24 zips, 13.6 MB) are dumps, not sources.
+agents/backup/
+# Derived FTS5/brain sidecars: rebuilt from sources, churn on every ingest.
+brain/*.db*
+# Generated reports and their throwaway DBs.
+tools/out/
+# Single-file run logs.
+logs/
+# Agent runtime state.
+.pi/
+# One-off Obsidian repair/disable backups taken during the 2026-10-25 migration.
+.obsidian/repair-backup-*/
+.obsidian/plugins.disabled-*/
+.obsidian/*.bak-*
+# Per-plugin scan cache (rebuildable), not settings.
+.obsidian/plugins/*/scan-cache.json
+
 # Obsidian auto-recreates this empty folder index; canonical slices live in _slices/
 Notes/OKF-rag/source-slices/index.md

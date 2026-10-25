@@ -1,0 +1,98 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: How does the ETC principle connect with the other design principles in the book — decoupling, DRY, and orthogonality? Is ETC a rule or a value?
+
+Fragments:
+--- Topic 8: The Essence of Good Design (id ch_0084) ---
+A thing is well designed if it adapts to the people who use it. For code, that means it must adapt by changing. So we believe in the ETC principle: _Easier to Change_ . _ETC_ . That's it.
+
+As far as we can tell, every design principle out there is a special case of ETC.
+
+Why is decoupling good? Because by isolating concerns we make each easier to change. ETC.
+
+Why is the single responsibility principle useful? Because a change in requirements is mirrored by a change in just one module. ETC.
+
+Why is naming important? Because good names make code easier to read, and you have to read it to change it. ETC!
+
+**ETC IS A VALUE, NOT A RULE**
+
+--- Topic 8: The Essence of Good Design (id ch_0087) ---
+Second, treat this as a way to develop instincts. Note the situation in your engineering day book: the choices you have, and some guesses about change. Leave a tag in the source. Then, later, when this code has to change, you'll be able to look back and give yourself feedback. It might help the next time you reach a similar fork in the road.
+
+The rest of the sections in this chapter have specific ideas on design, but all are motivated by this one principle.
+
+#### **RELATED SECTIONS INCLUDE**
+
+- Topic 9, _DRY—The Evils of Duplication_
+
+- Topic 10, _<u>Orthogonality</u>_
+
+- Topic 11, _Reversibility_
+
+- Topic 14, _Domain Languages_
+
+- Topic 28, _Decoupling_
+
+- Topic 30, _Transforming Programming_
+
+- Topic 31, _Inheritance Tax_
+
+#### **CHALLENGES**
+
+--- Topic 8: The Essence of Good Design (id ch_0088) ---
+- Think about a design principle you use regularly. Is it intended to make things easy-to-change?
+
+- Also think about languages and programming paradigms (OO, FP, Reactive, and so on). Do any have either big positives or big negatives when it comes to helping you write ETC code? Do any have both?
+
+When coding, what can you do to eliminate the negatives and <u>[13]</u> accentuate the positives?
+
+Many editors have support (either built-in or via extensions) to run commands when you save a file. Get your editor to popup an _ETC?_ <u>[14]</u> message every time you save and use it as a cue to think about the code you just wrote. Is it easy to change?
+
+--- Topic 10: Orthogonality (id ch_0139) ---
+Orthogonality is closely related to the DRY principle. With DRY, you're looking to minimize duplication within a system, whereas with orthogonality you reduce the interdependency among the system's components. It may be a clumsy word, but if you use the principle of orthogonality, combined closely with the DRY principle, you'll find that the systems you develop are more flexible, more understandable, and easier to debug, test, and maintain.
+
+If you're brought into a project where people are desperately struggling to make changes, and where every change seems to cause four other things to go wrong, remember the nightmare with the helicopter. The project probably is not orthogonally designed and coded. It's time to refactor.
+
+And, if you're a helicopter pilot, don't eat the fish….
+
+--- Topic 7: Communicate! (id ch_0060) ---
+Treat English (or whatever your native tongue may be) as just another programming language. Write natural language as you would write code: honor the DRY principle, ETC, automation, and so on. (We discuss the DRY and ETC design principles in the next chapter.)
+
+> **Tip 11** English is Just Another Programming Language
+
+We've put together a list of additional ideas that we find useful.
+
+#### **KNOW YOUR AUDIENCE**
+
+--- Topic 7: Communicate! (id ch_0072) ---
+However, this doesn't mean we agree with the folks who say that _every_ function, data structure, type declaration, etc., needs its own comment. This kind of mechanical comment writing actually makes it more difficult to maintain code: now there are two things to update when you make a change. So restrict your non-API commenting to discussing _why_ something is done, its purpose and its goal. The code already shows _how_ it is done, so commenting on this is redundant—and is a violation of the DRY principle.
+
+Commenting source code gives you the perfect opportunity to document those elusive bits of a project that can't be documented anywhere else: engineering trade-offs, why decisions were made, what other alternatives were discarded, and so on.
+
+#### **SUMMARY**
+
+--- Topic 28: Decoupling (id ch_0396) ---
+**Topic 28**
+
+#### Decoupling
+
+_When we try to pick out anything by itself, we find it hitched to everything else in the Universe._
+
+_John Muir, My First Summer in the Sierra_
+
+In Topic 8, _<u>The Essence of Good Design</u>_ we claim that using good design principles will make the code you write easy to change. Coupling is the enemy of change, because it links together things that must change in parallel. This makes change more difficult: either you spend time tracking down all the parts that need changing, or you spend time
+
+wondering why things broke when you changed "just one thing" and not the other things to which it was coupled.
+
+When you are designing something you want to be rigid, a bridge or a tower perhaps, you couple the components together:
+
+images/links-01.png
+
+--- Topic 8: The Essence of Good Design (id ch_0083) ---
+> **Topic 8** The Essence of Good Design
+
+The world is full of gurus and pundits, all eager to pass on their hard-earned wisdom when it comes to How to Design Software. There are acronyms, lists (which seem to favor five entries), patterns, diagrams, videos, talks, and (the internet being the internet) probably a cool series on the Law of Demeter explained using interpretive dance.
+
+And we, your gentle authors, are guilty of this too. But we'd like to make amends by explaining something that only became apparent to us fairly recently. First, the general statement:
+
+> **Tip 14** Good Design Is Easier to Change Than Bad Design

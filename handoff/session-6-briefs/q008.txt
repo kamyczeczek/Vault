@@ -1,0 +1,80 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: Why is crashing early better than a program continuing silently after an error is detected? How does this connect with the Catch-and-Release-is-for-Fish approach?
+
+Fragments:
+--- Topic 24: Dead Programs Tell No Lies (id ch_0349) ---
+that the error can't happen, and choose to ignore it. Instead, Pragmatic Programmers tell themselves that if there is an error, something very, very bad has happened. Don't forget to Read the Damn Error Message (see _<u>Coder in a Strange Land</u>_ ).
+
+#### **CATCH AND RELEASE IS FOR FISH**
+
+Some developers feel that is it good style to catch or rescue all exceptions, re-raising them after writing some kind of message. Their code is full of things like this (where a bare raise statement reraises the current exception):
+
+--- Topic 24: Dead Programs Tell No Lies (id ch_0351) ---
+We prefer it for two reasons. First, the application code isn't eclipsed by the error handling. Second, and perhaps more important, the code is less coupled. In the verbose example, we have to list every exception the add_score_to_board method could raise. If the writer of that method adds another exception, our code is subtly out of date. In the more pragmatic second version, the new exception is automatically propagated.
+
+> **Tip 38** Crash Early
+
+#### **CRASH, DON'T TRASH**
+
+One of the benefits of detecting problems as soon as you can is that you can crash earlier, and crashing is often the best thing you can do. The alternative may be to continue, writing corrupted data to some vital database or commanding the washing machine into its twentieth consecutive spin cycle.
+
+--- Topic 23: Design by Contract (id ch_0339) ---
+For example, suppose you have a method that calculates square roots. It needs a DBC precondition that restricts the domain to positive numbers. In languages that support DBC, if you pass sqrt a negative parameter, you'll get an informative error such as sqrt_arg_must_be_positive, along with a stack trace.
+
+This is better than the alternative in other languages such as Java, C, and C++ where passing a negative number to sqrt returns the special value NaN (Not a Number). It may be some time later in the program that you attempt to do some math on NaN, with surprising results.
+
+It's much easier to find and diagnose the problem by crashing early, at the site of the problem.
+
+#### **SEMANTIC INVARIANTS**
+
+--- Topic 38: Programming by Coincidence (id ch_0591) ---
+As developers, we also work in minefields. There are hundreds of traps waiting to catch us each day. Remembering the soldier's tale, we should be wary of drawing false conclusions. We should avoid programming by coincidence—relying on luck and accidental successes—in favor of _programming deliberately_ .
+
+#### **HOW TO PROGRAM BY COINCIDENCE**
+
+Suppose Fred is given a programming assignment. Fred types in some code, tries it, and it seems to work. Fred types in some more code, tries it, and it still seems to work. After several weeks of coding this way, the program suddenly stops working, and after hours of trying to fix it, he still doesn't know why. Fred
+
+--- Topic 20: Debugging (id ch_0296) ---
+more of your assumptions is wrong. Don't gloss over a routine or piece of code involved in the bug because you "know" it works. Prove it. Prove it in _this_ context, with _this_ data, with _these_ boundary conditions.
+
+> **Tip 34** Don't Assume It—Prove It
+
+When you come across a surprise bug, beyond merely fixing it, you need to determine why this failure wasn't caught earlier. Consider whether you need to amend the unit or other tests so that they would have caught it.
+
+Also, if the bug is the result of bad data that was propagated through a couple of levels before causing the explosion, see if better parameter checking in those routines would have isolated it earlier (see the discussions on crashing early and assertions <u>here and here, respectively).</u>
+
+--- Topic 51: Pragmatic Starter Kit (id ch_0829) ---
+Finding bugs is somewhat like fishing with a net. We use fine, small nets (unit tests) to catch the minnows, and big, coarse nets (integration tests) to catch the killer sharks. Sometimes the fish manage to escape, so we patch any holes that we find, in hopes of catching more and more slippery defects that are swimming about in our project pool.
+
+> **Tip 90** Test Early, Test Often, Test Automatically
+
+We want to start testing as soon as we have code. Those tiny minnows have a nasty habit of becoming giant, man-eating sharks pretty fast, and catching a shark is quite a bit harder. So we write unit tests. A lot of unit tests.
+
+--- Topic 24: Dead Programs Tell No Lies (id ch_0353) ---
+In other environments, it may be inappropriate simply to exit a running program. You may have claimed resources that might not get released, or you may need to write log messages, tidy up open transactions, or interact with other processes.
+
+However, the basic principle stays the same—when your code discovers that something that was supposed to be impossible just happened, your program is no longer viable. Anything it does from this point forward becomes suspect, so terminate it
+
+as soon as possible.
+
+A dead program normally does a lot less damage than a crippled one.
+
+#### **RELATED SECTIONS INCLUDE**
+
+Topic 20, _Debugging_
+
+- Topic 23, _Design by_ _<u>Contract</u>_
+
+- Topic 25, _Assertive Programming_
+
+- Topic 26, _How to Balance Resources_
+
+- Topic 43, _Stay Safe Out There_
+
+--- Topic 30: Transforming Programming (id ch_0460) ---
+Yes, there is still a degree of coupling, but in our experience it's more manageable than the OO-style of command and control. And, if you're using a language with type checking, you'll get compile-time warnings when you try to connect two incompatible things.
+
+#### **WHAT ABOUT ERROR HANDLING?**
+
+So far our transforms have worked in a world where nothing goes wrong. How can we use them in the real world, though? If we can only build linear chains, how can we add all that conditional logic that we need for error checking?

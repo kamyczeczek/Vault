@@ -1,0 +1,104 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: How does the actor model differ from the blackboard as a way of dealing with concurrency? When should you use which?
+
+Fragments:
+--- Topic 32: Configuration (id ch_0509) ---
+If that makes you feed sad, _nil desperandum!_ There are better ways to construct concurrent applications. One of these is using the _actor model_ , where independent processes, which share no data, communicate over channels using defined, simple, semantics. We talk about both the theory and practice of this approach in Topic 35, _<u>Actors and Processes</u>_ .
+
+Finally, we'll look at Topic 36, _<u>Blackboards</u>_ . These are systems which act like a combination of an object store and a smart publish/subscribe broker. In their original form, they never really took off. But today we're seeing more and more implementations of middleware layers with blackboard-like semantics. Used correctly, these types of systems offer a serious amount of decoupling.
+
+--- Topic 36: Blackboards (id ch_0564) ---
+The actor and/or blackboard and/or microservice approach to architecture removes a whole class of potential concurrency problems from your applications. But that benefit comes at a cost. These approaches are harder to reason about, because a lot
+
+of the action is indirect. You'll find it helps to keep a central repository of message formats and/or APIs, particularly if the repository can generate the code and documentation for you. You'll also need good tooling to be able to trace messages and facts as they progress through the system. (A useful technique is to add a unique _trace id_ when a particular business function is initiated and then propagate it to all the actors involved. You'll then be able to reconstruct what happens from the log files.)
+
+--- Topic 35: Actors and Processes (id ch_0551) ---
+Waiter adds apple pie slice to customer1's order Waiter adds peach pie slice to customer2's order <mark>customer1 sees "cherry pie slice" appear on the table</mark> Waiter adds cherry pie slice to customer1's order The waiter apologizes to customer1: no pie left <mark>customer1 sulks… The waiter apologizes to customer2: no pie left</mark> customer2 sulks…
+
+**NO EXPLICIT CONCURRENCY**
+
+In the actor model, there's no need to write any code to handle concurrency, as there is no shared state. There's also no need to code in explicit end-to-end "do this, do that" logic, as the actors work it out for themselves based on the messages they receive.
+
+--- Topic 35: Actors and Processes (id ch_0542) ---
+- All messages are one way—there's no concept of replying. If you want an actor to return a response, you include your own mailbox address in the message you send it, and it will (eventually) send the response as just another message to that mailbox.
+
+- An actor processes each message to completion, and only processes one message at a time.
+
+As a result, actors execute concurrently, asynchronously, and share nothing. If you had enough physical processors, you could run an actor on each. If you have a single processor, then some runtime can handle the switching of context between them. Either way, the code running in the actors is the same.
+
+**Tip 59**
+
+Use Actors For Concurrency Without Shared State
+
+#### **A SIMPLE ACTOR**
+
+--- Topic 35: Actors and Processes (id ch_0539) ---
+**Topic 35**
+
+#### Actors and Processes
+
+_Without writers, stories would not be written, Without actors, stories could not be brought to life._
+
+_Angie-Marie Delsante_
+
+Actors and processes offer interesting ways of implementing concurrency without the burden of synchronizing access to shared memory.
+
+Before we get into them, however, we need to define what we mean. And this is going to sound academic. Never fear, we'll be working through it all in a short while.
+
+--- Topic 36: Blackboards (id ch_0566) ---
+_Group calendaring._ You've got people scattered across the globe, in different time zones, and speaking different languages, trying to schedule a meeting.
+
+_Network monitoring tool._ The system gathers performance statistics and collects trouble reports, which agents use to look for trouble in the system.
+
+#### **CHALLENGES**
+
+- Do you use blackboard systems in the real world—the message board by the refrigerator, or the big whiteboard at work? What makes them effective? Are messages ever posted with a consistent format? Does it matter?
+
+###### **Footnotes**
+
+--- Topic 36: Blackboards (id ch_0565) ---
+Finally, these kinds of system can be more troublesome to deploy and manage, as there are more moving parts. To some extent this is offset by the fact that the system is more granular, and can be updated by replacing individual actors, and not the whole system.
+
+#### **RELATED SECTIONS INCLUDE**
+
+- Topic 28, _Decoupling_
+
+- Topic 29, _<u>Juggling the Real World</u>_
+
+- Topic 33, _Breaking Temporal Coupling_
+
+- Topic 35, _Actors and Processes_
+
+#### **EXERCISES**
+
+**Exercise 24** <u>(possible answer)</u>
+
+Would a blackboard-style system be appropriate for the following applications? Why, or why not?
+
+_Image processing._ You'd like to have a number of parallel processes grab chunks of an image, process them, and put the completed chunk back.
+
+--- Topic 35: Actors and Processes (id ch_0549) ---
+- We'll give the waiter a reference to the pie case
+
+- We'll give the customers a reference to the waiter
+
+|concurrency/actors/index.js|
+|---|
+|**const**actorSystem = start();|
+|**let**pieCase = start_actor(|
+|actorSystem,|
+|_'pie-case'_,|
+|pieCaseActor,|
+|{ slices: [_"apple"_,_"peach"_,_"cherry"_] });|
+|**let**waiter = start_actor(|
+|actorSystem,|
+|_'waiter'_,|
+|waiterActor,|
+|{ pieCase:pieCase});|
+|**let**c1 = start_actor(actorSystem,_'customer1'_,|
+|customerActor, { waiter: waiter });|
+|**let**c2 = start_actor(actorSystem,_'customer2'_,|
+|customerActor, {waiter: waiter});|
+
+And finally we kick it off. Our customers are greedy. Customer 1 asks for three slices of pie, and customer 2 asks for two:

@@ -1,0 +1,78 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: What is a binary chop in the context of debugging, and in which three situations does the book recommend using it?
+
+Fragments:
+--- Topic 20: Debugging (id ch_0283) ---
+Every CS undergraduate has been forced to code a binary chop (sometimes called a binary search). The idea is simple. You're looking for a particular value in a sorted array. You could just look at each value in turn, but you'd end up looking at roughly half the entries on average until you either found the value you wanted, or you found a value greater than it, which would mean the value's not in the array.
+
+--- Topic 20: Debugging (id ch_0282) ---
+You can try looking at the place it crashes and work backwards. But sometimes it's easier to start with the data. Get a copy of the dataset and feed it through a locally running copy of the app, making sure it still crashes. Then binary chop the data until you isolate exactly which input values are leading to the crash.
+
+##### **Regressions Across Releases**
+
+You're on a good team, and you release your software into production. At some point a bug pops up in code that worked OK a week ago. Wouldn't it be nice if you could identify the specific change that introduced it? Guess what? Binary chop time.
+
+#### **THE BINARY CHOP**
+
+--- Topic 20: Debugging (id ch_0284) ---
+But it's faster to use a _divide and conquer_ approach. Choose a value in the middle of the array. If it's the one you're looking for, stop. Otherwise you can chop the array in two. If the value you find is greater than the target then you know it must be in the first half of the array, otherwise it's in the second half. Repeat the procedure in the appropriate subarray, and in no time you'll have a result. (As we'll see when we talk about _<u>Big-O Notation</u>_ <u>,</u> a linear search is , and a binary chop is <mark>)</mark> .
+
+So, the binary chop is way, way faster on any decent sized problem. Let's see how to apply it to debugging.
+
+--- Topic 43: Stay Safe Out There (id ch_0700) ---
+_Debugging info is an attack vector_
+
+There's nothing as heartwarming as seeing a full stack trace with data on your local ATM machine, an airport kiosk, or crashing web page. Information designed to make debugging easier can make breaking in easier as well. Make sure any "test window" (discussed here) and runtime exception reporting is protected from spying <u>[64]</u> eyes ~~.~~
+
+**Tip 72**
+
+#### Keep It Simple and Minimize Attack Surfaces
+
+##### **Principle of Least Privilege**
+
+--- Topic 20: Debugging (id ch_0270) ---
+Regrettably, we still have bugs in the system, albeit not the flying kind. But the fourteenth century meaning—a bogeyman— is perhaps even more applicable now than it was then. Software defects manifest themselves in a variety of ways, from misunderstood requirements to coding errors. Unfortunately, modern computer systems are still limited to doing what you _tell_ them to do, not necessarily what you _want_ them to do.
+
+No one writes perfect software, so it's a given that debugging will take up a major portion of your day. Let's look at some of the issues involved in debugging and some general strategies for finding elusive bugs.
+
+#### **PSYCHOLOGY OF DEBUGGING**
+
+--- Topic 16: The Power of Plain Text (id ch_0236) ---
+Topic 17, _Shell Games_
+
+Topic 21, _Text Manipulation_
+
+Topic 32, _<u>Configuration</u>_
+
+#### **CHALLENGES**
+
+- Design a small address book database (name, phone number, and so on) using a straightforward binary representation in your language of choice. Do this before reading the rest of this challenge.
+
+- Translate that format into a plain-text format using XML or JSON.
+
+- For each version, add a new, variable-length field called _directions_ in which you might enter directions to each person's house.
+
+What issues come up regarding versioning and extensibility? Which
+
+form was easier to modify? What about converting existing data?
+
+--- Topic 39: Algorithm Speed (id ch_0625) ---
+We coded a set of simple sort routines[54] in Rust. Run them on various machines available to you. Do your figures follow the expected curves? What can you deduce about the relative speeds of your machines? What are the effects of various compiler optimization settings?
+
+#### **Exercise 29** <u>(possible answer)</u>
+
+In _<u>Common Sense Estimation</u>_ <u>, we claimed that a binary chop is</u> <mark>.</mark> Can you prove this?
+
+#### **Exercise 30** <u>(possible answer)</u>
+
+In Figure 3, _<u>Runtimes of various algorithms</u>_ , we claimed that is the same as (or indeed logarithms to any base). Can
+
+you explain why?
+
+--- Topic 20: Debugging (id ch_0281) ---
+Sometimes you're looking at a stack trace that seems to scroll on forever. In this case, there's often a quicker way to find the problem than examining each and every stack frame: use a _binary chop_ . But before we discuss that, let's look at two other common bug scenarios.
+
+##### **Sensitivity to Input Values**
+
+You've been there. Your program works fine with all the test data, and survives its first week in production with honor. Then it suddenly crashes when fed a particular dataset.

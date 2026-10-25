@@ -1,0 +1,84 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: How do you implement secure authorization with JWT tokens and a refresh-token mechanism in the OAuth 2.0 protocol?
+
+Fragments:
+--- Topic 43: Stay Safe Out There (id ch_0711) ---
+Beyond simple encryption tasks, take a hard look at other security-related features of your site or application. Take authentication, for instance.
+
+In order to implement your own login with password or biometric authentication, you need to understand how hashes and salts work, how crackers use things like Rainbow tables, why you shouldn't use MD5 or SHA1, and a host of other concerns. And even if you get all that right, at the end of the day you're still responsible for holding onto the data and keeping it secure, subject to whatever new legislation and legal obligations come up.
+
+--- Topic 43: Stay Safe Out There (id ch_0712) ---
+Or, you could take the Pragmatic approach and let someone else worry about it and use a third-party authentication provider. This may be an off-the-shelf service you run in-house, or it could be a third party in the cloud. Authentication services are
+
+often available from email, phone, or social media providers, which may or may not be appropriate for your application. In any case, these folks spend all their days keeping their systems secure, and they're better at it than you are.
+
+Stay safe out there.
+
+**RELATED SECTIONS INCLUDE**
+
+- Topic 23, _Design by_ _<u>Contract</u>_
+
+- Topic 24, _Dead Programs Tell No Lies_
+
+- Topic 25, _Assertive Programming_
+
+- Topic 38, _Programming by_ _<u>Coincidence</u>_
+
+- Topic 45, _The Requirements Pit_
+
+--- Topic 23: Design by Contract (id ch_0338) ---
+By expressing the domain of the square root function in the precondition of the sqrt routine, you shift the burden of correctness to the caller—where it belongs. You can then design the sqrt routine secure in the knowledge that its input will be in range.
+
+#### **DBC AND CRASHING EARLY**
+
+DBC fits in nicely with our concept of crashing early (see Topic 24, _<u>Dead Programs Tell No Lies</u>_ <u>). By using an assert or DBC</u>
+
+mechanism to validate the preconditions, postconditions, and invariants, you can crash early and report more accurate information about the problem.
+
+--- Topic 31: Inheritance Tax (id ch_0486) ---
+We now expose _none_ of the framework API to the clients of our Account class: that decoupling is now broken. But there's more. Now that we're no longer constrained by the API of the framework we're using, we're free to create the API we need. Yes, we could do that before, but we always ran the risk that the interface _we_ wrote can be bypassed, and the persistence API used instead. Now we control everything.
+
+> **Tip 53** Delegate to Services: Has-A Trumps Is-A
+
+In fact, we can take this a step further. Why should an Account have to know how to persist itself? Isn't its job to know and enforce the account business rules?
+
+**class** Account _<mark># nothing but account stuff</mark>_
+
+**end**
+
+--- Topic 43: Stay Safe Out There (id ch_0702) ---
+This doesn't just apply to operating system privilege levels. Does your application implement different levels of access? Is it a blunt tool, such as "administrator" vs. "user?" If so, consider something more finely grained, where your sensitive resources are partitioned into different categories, and individual users have permissions for only certain of those categories.
+
+This technique follows the same sort of idea as minimizing surface area—reducing the scope of attack vectors, both by time and by privilege level. In this case, less is indeed more.
+
+##### **Secure Defaults**
+
+--- Topic 43: Stay Safe Out There (id ch_0708) ---
+You want to encourage long, random passwords with a high degree of entropy. Putting artificial constraints limits entropy and encourages bad password habits, leaving your user's accounts vulnerable to takeover.
+
+##### **Maintain Security Updates**
+
+Updating computer systems can be a huge pain. You need that security patch, but as a side effect it breaks some portion of your application. You could decide to wait, and defer the update until later. That's a terrible idea, because now your system is vulnerable to a known exploit.
+
+#### **Tip 73** Apply Security Patches Quickly
+
+--- Topic 31: Inheritance Tax (id ch_0487) ---
+**class** AccountRecord _<mark># wraps an account with the ability</mark> # to be fetched and stored_ **<mark>end</mark>**
+
+Now we're really decoupled, but it has come at a cost. We're having to write more code, and typically some of it will be boilerplate: it's likely that all our record classes will need a find method, for example.
+
+Fortunately, that's what mixins and traits do for us.
+
+**Mixins, Traits, Categories, Protocol Extensions, …** As an industry, we love to give things names. Quite often we'll give the same thing many names. More is better, right?
+
+--- Topic 43: Stay Safe Out There (id ch_0699) ---
+_Authenticated services are an attack vector_
+
+Keep the number of authorized users at an absolute minimum. Cull unused, old, or outdated users and services. Many net-enabled devices have been found to contain simple default passwords or unused, unprotected administrative accounts. If an account with deployment
+
+credentials is compromised, your entire product is compromised.
+
+_Output data is an attack vector_
+
+There's a (possibly apocryphal) story about a system that dutifully reported the error message Password is used by another user. Don't give away information. Make sure that the data you report is appropriate for the authorization of that user. Truncate or obfuscate potentially risky information such as Social Security or other government ID numbers.

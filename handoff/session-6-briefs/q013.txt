@@ -1,0 +1,86 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: What is programming by coincidence and why is it dangerous? What specific types of accidents do the authors list?
+
+Fragments:
+--- Topic 38: Programming by Coincidence (id ch_0591) ---
+As developers, we also work in minefields. There are hundreds of traps waiting to catch us each day. Remembering the soldier's tale, we should be wary of drawing false conclusions. We should avoid programming by coincidence—relying on luck and accidental successes—in favor of _programming deliberately_ .
+
+#### **HOW TO PROGRAM BY COINCIDENCE**
+
+Suppose Fred is given a programming assignment. Fred types in some code, tries it, and it seems to work. Fred types in some more code, tries it, and it still seems to work. After several weeks of coding this way, the program suddenly stops working, and after hours of trying to fix it, he still doesn't know why. Fred
+
+--- Topic 38: Programming by Coincidence (id ch_0592) ---
+may well spend a significant amount of time chasing this piece of code around without ever being able to fix it. No matter what he does, it just doesn't ever seem to work right.
+
+Fred doesn't know why the code is failing because _he didn't know why it worked in the first place_ . It seemed to work, given the limited "testing'' that Fred did, but that was just a coincidence. Buoyed by false confidence, Fred charged ahead into oblivion. Now, most intelligent people may know someone like Fred, but _we_ know better. We don't rely on coincidences— do we?
+
+Sometimes we might. Sometimes it can be pretty easy to confuse a happy coincidence with a purposeful plan. Let's look at a few examples.
+
+##### **Accidents of Implementation**
+
+--- Topic 38: Programming by Coincidence (id ch_0598) ---
+Russian leader being bald or hairy, in some domains we think that way all the time. Gamblers imagine patterns in lottery numbers, dice games, or roulette, when in fact these are statistically independent events. In finance, stock and bond trading are similarly rife with coincidence instead of actual, discernible patterns.
+
+A log file that shows an intermittent error every 1,000 requests may be a difficult-to-diagnose race condition, or may be a plain old bug. Tests that seem to pass on your machine but not on the server might indicate a difference between the two environments, or maybe it's just a coincidence.
+
+Don't assume it, prove it.
+
+##### **Accidents of Context**
+
+--- Topic 38: Programming by Coincidence (id ch_0593) ---
+Accidents of implementation are things that happen simply because that's the way the code is currently written. You end up relying on undocumented error or boundary conditions.
+
+Suppose you call a routine with bad data. The routine responds in a particular way, and you code based on that response. But the author didn't intend for the routine to work that way—it was never even considered. When the routine gets "fixed,'' your code may break. In the most extreme case, the routine you called may not even be designed to do what you want, but it _seems_ to work okay. Calling things in the wrong order, or in the wrong context, is a related problem.
+
+Here it looks like Fred is desperately trying to get something out on the screen using some particular GUI rendering framework:
+
+--- Topic 36: Blackboards (id ch_0570) ---
+But listening to your instincts doesn't mean you can just fly on autopilot. Developers who don't actively think about their code are programming by coincidence—the code might work, but
+
+there's no particular reason why. In Topic 38, _<u>Programming by Coincidence</u>_ <u>, we advocate a more positive involvement with the</u> coding process.
+
+While most of the code we write executes quickly, we occasionally develop algorithms that have the potential to bog down even the fastest processors. In Topic 39, _<u>Algorithm Speed</u>_ , we discuss ways to estimate the speed of code, and we give some tips on how to spot potential problems before they happen.
+
+--- Topic 38: Programming by Coincidence (id ch_0600) ---
+Finding an answer that happens to fit is not the same as the
+
+right answer.
+
+> **Tip 62** Don't Program by Coincidence
+
+##### **Implicit Assumptions**
+
+Coincidences can mislead at all levels—from generating requirements through to testing. Testing is particularly fraught with false causalities and coincidental outcomes. It's easy to assume that _X_ causes _Y_ , but as we said in Topic 20, _<u>Debugging</u>_ <u>:</u> don't assume it, prove it.
+
+At all levels, people operate with many assumptions in mind— but these assumptions are rarely documented and are often in conflict between different developers. Assumptions that aren't based on well-established facts are the bane of all projects.
+
+#### **HOW TO PROGRAM DELIBERATELY**
+
+--- Topic 38: Programming by Coincidence (id ch_0599) ---
+You can have "accidents of context" as well. Suppose you are writing a utility module. Just because you are currently coding for a GUI environment, does the module have to rely on a GUI being present? Are you relying on English-speaking users? Literate users? What else are you relying on that isn't guaranteed?
+
+Are you relying on the current directory being writable? On certain environment variables or configuration files being present? On the time on the server being accurate—within what tolerance? Are you relying on network availability and speed?
+
+When you copied code from the first answer you found on the net, are you sure your context is the same? Or are you building "cargo cult" code, merely imitating form without content?[52]
+
+--- Topic 31: Inheritance Tax (id ch_0474) ---
+**Topic 31**
+
+Inheritance Tax
+
+_You wanted a banana but what you got was a gorilla holding the banana and the entire jungle._
+
+Do you program in an objectoriented language? Do you use inheritance?
+
+If so, stop! It probably isn't what you want to do.
+
+Let's see why.
+
+_Joe Armstrong_
+
+#### **SOME BACKGROUND**
+
+Inheritance first appeared in Simula 67 in 1969. It was an elegant solution to the problem of queuing multiple types of events on the same list. The Simula approach was to use something called _prefix classes_ . You could write something like this:
+
+link CLASS car; <mark>... implementation of car link CLASS bicycle;</mark> ... implementation of bicycle

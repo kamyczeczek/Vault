@@ -1,0 +1,94 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: What four strategies for dealing with events does the book describe, and how do they differ in terms of coupling and asynchronicity?
+
+Fragments:
+--- Topic 27: Don’t Outrun Your Headlights (id ch_0394) ---
+Next, we'll look at different techniques you can use when Topic 29, _<u>Juggling the Real World</u>_ <u>. We'll examine four different</u> strategies to help manage and react to events—a critical aspect of modern software applications.
+
+Traditional procedural and object-oriented code might be too tightly coupled for your purposes. In Topic 30, _<u>Transforming</u>_
+
+_<u>Programming</u>_ <u>, we'll take advantage of the more flexible and</u> clearer style offered by function pipelines, even if your language doesn't support them directly.
+
+Common object-oriented style can tempt you with another trap. Don't fall for it, or you'll end up paying a hefty Topic 31, _<u>Inheritance Tax</u>_ <u>. We'll explore better alternatives to keep your</u> code flexible and easier to change.
+
+--- Topic 14: Domain Languages (id ch_0193) ---
+describe BowlingScore **do** <mark>it</mark> _<mark>"totals 12 if you score 3 four times"</mark>_ **<mark>do</mark>** score = BowlingScore.new <mark>4.times { score.add_pins(3) }</mark>
+
+expect(score.total).to eq(12)
+
+**<mark>end</mark> end**
+
+In this code, describe, it, expect, to, and eq are just Ruby methods. There's a little plumbing behind the scenes in terms of how objects are passed around, but it's all just code. We'll explore that a little in the exercises.
+
+#### **RELATED SECTIONS INCLUDE**
+
+- Topic 8, _The Essence of_ _<u>Good Design</u>_
+
+- Topic 13, _Prototypes and Post-it Notes_
+
+- Topic 32, _<u>Configuration</u>_
+
+#### **CHALLENGES**
+
+--- Topic 29: Juggling the Real World (id ch_0415) ---
+**Topic 29**
+
+#### Juggling the Real World
+
+_Things don't just happen; they are made to happen._
+
+In the old days, when your authors still had their boyish good looks, computers were not particularly flexible. We'd typically organize the way we interacted with them based on their limitations.
+
+_John F. Kennedy_
+
+Today, we expect more: computers have to integrate into _our_ world,
+
+not the other way around. And our world is messy: things are constantly happening, stuff gets moved around, we change our minds, …. And the applications we write somehow have to work out what to do.
+
+This section is all about writing these responsive applications.
+
+We'll start off with the concept of an _event_ .
+
+#### **EVENTS**
+
+--- Topic 51: Pragmatic Starter Kit (id ch_0833) ---
+As soon as you have an executable user interface or prototype, you need to answer an all-important question: the users told you what they wanted, but is it what they need?
+
+Does it meet the functional requirements of the system? This, too, needs to be tested. A bug-free system that answers the wrong question isn't very useful. Be conscious of end-user access patterns and how they differ from developer test data (for an example, see the story about brush strokes <u>here).</u>
+
+##### **Performance Testing**
+
+Performance or stress testing may be important aspects of the project as well.
+
+Ask yourself if the software meets the performance requirements under real-world conditions—with the expected number of users, or connections, or transactions per second. Is it scalable?
+
+--- Topic 29: Juggling the Real World (id ch_0432) ---
+Compared to the observer pattern, pubsub is a great example of reducing coupling by abstracting up through a shared interface (the channel). However, it is still basically just a message passing system. Creating systems that respond to combinations of events will need more than this, so let's look at ways we can add a time dimension to event processing.
+
+**REACTIVE PROGRAMMING, STREAMS, AND EVENTS** If you've ever used a spreadsheet, then you'll be familiar with _reactive programming_ . If a cell contains a formula which refers to a second cell, then updating that second cell causes the first to update as well. The values _react_ as the values they use change.
+
+--- Topic 9: DRY—The Evils of Duplication (id ch_0093) ---
+The alternative is to have the same thing expressed in two or more places. If you change one, you have to remember to change the others, or, like the alien computers, your program will be brought to its knees by a contradiction. It isn't a question of whether you'll remember: it's a question of when you'll forget.
+
+You'll find the DRY principle popping up time and time again throughout this book, often in contexts that have nothing to do with coding. We feel that it is one of the most important tools in the Pragmatic Programmer's tool box.
+
+In this section we'll outline the problems of duplication and
+
+suggest general strategies for dealing with it.
+
+#### **DRY IS MORE THAN CODE**
+
+--- Topic 33: Breaking Temporal Coupling (id ch_0512) ---
+We don't usually approach programming with either of these aspects in mind. When people first sit down to design an architecture or write a program, things tend to be linear. That's the way most people think— _do this_ and then always _do that_ . But thinking this way leads to _temporal coupling_ : coupling in time. Method A must always be called before method B; only one report can be run at a time; you must wait for the screen to redraw before the button click is received. Tick must happen before tock.
+
+This approach is not very flexible, and not very realistic.
+
+--- Topic 31: Inheritance Tax (id ch_0479) ---
+An API change is expected to break clients of Vehicle class. But the top-level is not: as far as it is concerned it is using a Car. What the Car class does in terms of implementation is not the concern of the top-level code, but it still breaks.
+
+Similarly the name of an instance variable is purely an internal implementation detail, but when Vehicle changes it also (silently) breaks Car.
+
+So much coupling.
+
+**Problems Using Inheritance to Build Types** Some folks view inheritance as a way of defining new types. Their favorite design diagram shows class hierarchies. They view problems the way Victorian gentleman scientists viewed nature, as something to be broken down into categories.

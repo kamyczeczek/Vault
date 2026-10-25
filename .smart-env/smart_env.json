@@ -14,8 +14,14 @@
     },
     "excluded_headings": "",
     "file_exclusions": "Untitled",
-    "folder_exclusions": "root_workspace/scripts/_scratch,root_workspace/scripts/out,root_workspace/projects/_archive,root_workspace/projects/research/retrieval-v2/corpus,root_workspace/handoff/flags,root_workspace/handoff/session-6-briefs",
+    "folder_exclusions": "scripts/_scratch,scripts/out,projects/_archive,projects/research/retrieval-v2/corpus,handoff/flags,handoff/session-6-briefs,root_workspace/scripts/_scratch,root_workspace/scripts/out,root_workspace/projects/_archive,root_workspace/projects/research/retrieval-v2/corpus,root_workspace/handoff/flags,root_workspace/handoff/session-6-briefs",
     "folder_exclusions_list": [
+      "scripts/_scratch",
+      "scripts/out",
+      "projects/_archive",
+      "projects/research/retrieval-v2/corpus",
+      "handoff/flags",
+      "handoff/session-6-briefs",
       "root_workspace/scripts/_scratch",
       "root_workspace/scripts/out",
       "root_workspace/projects/_archive",
@@ -31,9 +37,10 @@
     ".obsidian/graph.json",
     ".smart-env/*",
     "!.smart-env/smart_env.json",
-    ".trash/"
+    ".trash/",
+    ".smart-env"
   ],
-  "gitignore_exclusions_updated_at": 1792870028756,
+  "gitignore_exclusions_updated_at": 1792892129671,
   "language": "en",
   "re_import_wait_time": 13,
   "smart_chat_threads": {
@@ -98,6 +105,6 @@
     "template_after": "</context>"
   },
   "embedding_models": {
-    "default_model_key": "transformers#1792870032336"
+    "default_model_key": "transformers#1792890929717"
   }
 }

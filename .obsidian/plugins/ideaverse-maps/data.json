@@ -1,0 +1,65 @@
+{
+  "settings": {
+    "exclude": [],
+    "archive": "",
+    "packs": "",
+    "privateFolders": [],
+    "homeNotes": [],
+    "axisProps": [
+      "year"
+    ],
+    "dateProps": [
+      "created",
+      "createdAt",
+      "created_at",
+      "created on",
+      "date created",
+      "dateCreated",
+      "creation date",
+      "creation_date",
+      "date"
+    ],
+    "mapFolders": [],
+    "mapCollections": [
+      "Maps",
+      "Views"
+    ],
+    "mdLinks": false,
+    "fileDates": true,
+    "l5Top": 0,
+    "l4MapLinks": 3,
+    "l3MinOut": 10,
+    "l3Density": 0.5,
+    "promoteL4": 6.5,
+    "promoteL3": 5.5,
+    "navJaccard": 0.7,
+    "weights": {
+      "body_in": 1,
+      "body_out": 0.6,
+      "up_in": 0.3,
+      "both": 0.8,
+      "coll_in": 0
+    }
+  },
+  "state": {
+    "iv-mig-full": true,
+    "iv-packs1": true,
+    "iv-subsoff": [],
+    "iv-acol": false,
+    "iv-legend": true,
+    "iv-hcol": false,
+    "iv-view": "stars",
+    "iv-g3cam": [
+      -0.256,
+      1.039
+    ],
+    "iv-theme": "obsidian",
+    "iv-sstep": "week",
+    "iv-sfx": "comet",
+    "iv-dome": {
+      "spacetime": false,
+      "gravity": false,
+      "emergence": false
+    }
+  }
+}

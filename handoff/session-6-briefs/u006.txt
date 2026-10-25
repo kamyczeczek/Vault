@@ -1,0 +1,88 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: How do you configure Docker multi-stage builds to minimize the size of the production image of a Node.js application?
+
+Fragments:
+--- Topic 15: Estimating (id ch_0206) ---
+Once you have a model, you can decompose it into components. You'll need to discover the mathematical rules that describe how these components interact. Sometimes a component contributes a single value that is added into the result. Some components may supply multiplying factors, while others may be more complicated (such as those that simulate the arrival of traffic at a node).
+
+You'll find that each component will typically have parameters that affect how it contributes to the overall model. At this stage, simply identify each parameter.
+
+##### **Give Each Parameter a Value**
+
+Once you have the parameters broken out, you can go through and assign each one a value. You expect to introduce some
+
+--- Topic 11: Reversibility (id ch_0150) ---
+How can you plan for this kind of architectural volatility? You can't.
+
+What you can do is make it easy to change. Hide third-party APIs behind your own abstraction layers. Break your code into components: even if you end up deploying them on a single massive server, this approach is a lot easier than taking a monolithic application and splitting it. (We have the scars to prove it.)
+
+And, although this isn't particularly a reversibility issue, one final piece of advice.
+
+#### **Tip 19** Forgo Following Fads
+
+No one knows what the future may hold, especially not us! So enable your code to rock-n-roll: to "rock on'' when it can, to roll with the punches when it must.
+
+#### **RELATED SECTIONS INCLUDE**
+
+Topic 8, _The Essence of_ _<u>Good Design</u>_
+
+- Topic 10, _<u>Orthogonality</u>_
+
+--- Topic 51: Pragmatic Starter Kit (id ch_0843) ---
+- Are your nightly or continuous builds automatic, but deploying to production isn't? Why? What's special about that server?
+
+- Can you automatically test your project completely? Many teams are forced to answer "no." Why? Is it too hard to define the acceptable results? Won't this make it hard to prove to the sponsors that the project is "done"?
+
+- Is it too hard to test the application logic independent of the GUI? What does this say about the GUI? About coupling?
+
+--- Topic 51: Pragmatic Starter Kit (id ch_0842) ---
+Everything depends on automation. You can't build the project on an anonymous cloud server unless the build is fully automatic. You can't deploy automatically if there are manual steps involved. And once you introduce manual steps ("just for this one part…") you've broken a very large window ~~.~~ <u>[83]</u>
+
+With these three legs of version control, ruthless testing, and full automation, your project will have the firm foundation you need so you can concentrate on the hard part: delighting users.
+
+#### **RELATED SECTIONS INCLUDE**
+
+Topic 11, _Reversibility_
+
+- Topic 12, _Tracer Bullets_
+
+- Topic 17, _Shell Games_
+
+- Topic 19, _Version Control_
+
+- Topic 41, _Test to Code_
+
+- Topic 49, _Pragmatic Teams_
+
+- Topic 50, _<u>Coconuts Don't Cut It</u>_
+
+#### **CHALLENGES**
+
+--- Topic 51: Pragmatic Starter Kit (id ch_0827) ---
+First, it allows build machines to be ephemeral. Instead of one hallowed, creaky machine in the corner of the office that everyone is afraid to touch ~~,~~ <u>[80]</u> build machines and/or clusters are created on demand as spot instances in the cloud. Deployment configuration is under version control as well, so releasing to production can be handled automatically.
+
+And that's the important part: at the project level, version control _drives_ the build and release process.
+
+Use Version Control to Drive Builds, Tests, and **Tip 89** Releases
+
+That is, build, test, and deployment are triggered via commits or
+
+--- Topic 49: Pragmatic Teams (id ch_0810) ---
+A great way to ensure both consistency and accuracy is to automate everything the team does. Why struggle with code formatting standards when your editor or IDE can do it for you automatically? Why do manual testing when the continuous build can run tests automatically? Why deploy by hand when automation can do it the same way every time, repeatably and reliably?
+
+Automation is an essential component of every project team. Make sure the team has skills at _tool building_ to construct and deploy the tools that automate the project development and production deployment.
+
+#### **KNOW WHEN TO STOP ADDING PAINT**
+
+--- Topic 13: Prototypes and Post-it Notes (id ch_0180) ---
+**Exercise 3** <u>(possible answer)</u>
+
+Marketing would like to sit down and brainstorm a few web page designs with you. They are thinking of clickable image maps to take you to other pages, and so on. But they can't decide on a model for the image—maybe it's a car, or a phone, or a house. You have a list of target pages and content; they'd like to see a few prototypes. Oh, by the way, you have 15 minutes. What tools might you use?
+
+--- Topic 51: Pragmatic Starter Kit (id ch_0828) ---
+pushes to version control, and built in a container in the cloud. Release to staging or production is specified by using a tag in your version control system. Releases then become a much more low-ceremony part of every day life—true continuous delivery, not tied to any one build machine or developer's machine.
+
+#### **RUTHLESS AND CONTINUOUS TESTING**
+
+Many developers test gently, subconsciously knowing where the code will break and avoiding the weak spots. Pragmatic Programmers are different. We are _driven_ to find our bugs _now_ , so we don't have to endure the shame of others finding our bugs later.

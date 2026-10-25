@@ -1,0 +1,96 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: The book says that when you find a broken window in code, it is best to leave it alone until the end of the project so as not to disrupt the team's flow. Is that correct?
+
+Fragments:
+--- Topic 3: Software Entropy (id ch_0020) ---
+duration of the project—is all it takes to start the decline. If you find yourself working on a project with quite a few broken windows, it's all too easy to slip into the mindset of "All the rest of this code is crap, I'll just follow suit." It doesn't matter if the project has been fine up to this point. In the original experiment leading to the "Broken Window Theory," an abandoned car sat for a week untouched. But once a single window was broken, the car was stripped and turned upside down within _hours_ .
+
+--- Topic 3: Software Entropy (id ch_0021) ---
+By the same token, if you find yourself on a project where the code is pristinely beautiful—cleanly written, well designed, and elegant—you will likely take extra special care not to mess it up, just like the firefighters. Even if there's a fire raging (deadline, release date, trade show demo, etc.), _you_ don't want to be the first one to make a mess and inflict additional damage.
+
+Just tell yourself, "No broken windows."
+
+**RELATED SECTIONS INCLUDE**
+
+- Topic 10, _<u>Orthogonality</u>_
+
+- Topic 40, _Refactoring_
+
+- Topic 44, _Naming Things_
+
+#### **CHALLENGES**
+
+- Help strengthen your team by surveying your project neighborhood. Choose two or three broken windows and discuss with your colleagues what the problems are and what could be done to fix them.
+
+--- Topic 15: Estimating (id ch_0198) ---
+By learning to estimate, and by developing this skill to the point where you have an intuitive feel for the magnitudes of things, you will be able to show an apparent magical ability to determine their feasibility. When someone says "we'll send the backup over a network connection to S3," you'll be able to know intuitively whether this is practical. When you're coding, you'll be able to know which subsystems need optimizing and which ones can be left alone.
+
+> **Tip 23** Estimate to Avoid Surprises
+
+As a bonus, at the end of this section we'll reveal the single correct answer to give whenever anyone asks you for an estimate.
+
+#### **HOW ACCURATE IS ACCURATE ENOUGH?**
+
+--- Topic 3: Software Entropy (id ch_0019) ---
+Now that sounds pretty extreme. Surely the fire department's first priority is to put out the fire, collateral damage be damned. But they clearly had assessed the situation, were confident of their ability to manage the fire, and were careful not to inflict unnecessary damage to the property. That's the way it must be with software: don't cause collateral damage just because there's a crisis of some sort. One broken window is one too many.
+
+One broken window—a badly designed piece of code, a poor management decision that the team must live with for the
+
+--- Topic 24: Dead Programs Tell No Lies (id ch_0353) ---
+In other environments, it may be inappropriate simply to exit a running program. You may have claimed resources that might not get released, or you may need to write log messages, tidy up open transactions, or interact with other processes.
+
+However, the basic principle stays the same—when your code discovers that something that was supposed to be impossible just happened, your program is no longer viable. Anything it does from this point forward becomes suspect, so terminate it
+
+as soon as possible.
+
+A dead program normally does a lot less damage than a crippled one.
+
+#### **RELATED SECTIONS INCLUDE**
+
+Topic 20, _Debugging_
+
+- Topic 23, _Design by_ _<u>Contract</u>_
+
+- Topic 25, _Assertive Programming_
+
+- Topic 26, _How to Balance Resources_
+
+- Topic 43, _Stay Safe Out There_
+
+--- Topic 44: Naming Things (id ch_0724) ---
+- Topic 3, _Software Entropy_ Topic 40, _Refactoring_ Topic 45, _The Requirements Pit_
+
+#### **CHALLENGES**
+
+- When you find a function or method with an overly generic name, try and rename it to express all the things it really does. Now it's an easier target for refactoring.
+
+- In our examples, we suggested using more specific names such as _buyer_ instead of the more traditional and generic _user._ What other names do you habitually use that could be better?
+
+- Are the names in your system congruent with user terms from the domain? If not, why? Does this cause a Stroop-effect style cognitive dissonance for the team?
+
+- Are names in your system hard to change? What can you do to fix that particular broken window?
+
+###### **Footnotes**
+
+--- Topic 3: Software Entropy (id ch_0017) ---
+Don't leave "broken windows'' (bad designs, wrong decisions, or poor code) unrepaired. Fix each one as soon as it is discovered. If there is insufficient time to fix it properly, then _board it up._ Perhaps you can comment out the offending code, or display a "Not Implemented" message, or substitute dummy data instead. Take _some_ action to prevent further damage and to show that you're on top of the situation.
+
+We've seen clean, functional systems deteriorate pretty quickly once windows start breaking. There are other factors that can contribute to software rot, and we'll touch on some of them elsewhere, but neglect _accelerates_ the rot faster than any other factor.
+
+--- Topic 41: Test to Code (id ch_0663) ---
+**Tip 69**
+
+#### Design to Test
+
+#### **AD HOC TESTING**
+
+Not to be confused with "odd hack," _ad-hoc_ testing is when we
+
+run poke at our code manually. This may be as simple as a console.log(), or a piece of code entered interactively in a debugger, IDE environment, or REPL.
+
+At the end of the debugging session, you need to formalize this ad hoc test. If the code broke once, it is likely to break again. Don't just throw away the test you created; add it to the existing unit test arsenal.
+
+#### **BUILD A TEST WINDOW**
+
+Even the best sets of tests are unlikely to find all the bugs; there's something about the damp, warm conditions of a production environment that seems to bring them out of the woodwork.

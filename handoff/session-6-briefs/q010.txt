@@ -1,0 +1,78 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: How does DRY differ from Orthogonality? Are they the same thing, or two different principles? How do they complement each other?
+
+Fragments:
+--- Topic 9: DRY—The Evils of Duplication (id ch_0094) ---
+Let's get something out of the way up-front. In the first edition of this book we did a poor job of explaining just what we meant by _Don't Repeat Yourself_ . Many people took it to refer to code only: they thought that DRY means "don't copy-and-paste lines of source."
+
+That _is_ part of DRY, but it's a tiny and fairly trivial part.
+
+DRY is about the duplication of _knowledge_ , of _intent_ . It's about expressing the same thing in two different places, possibly in two totally different ways.
+
+Here's the acid test: when some single facet of the code has to change, do you find yourself making that change in multiple places, and in multiple different formats? Do you have to change code and documentation, or a database schema and a structure that holds it, or…? If so, your code isn't DRY.
+
+--- Topic 10: Orthogonality (id ch_0117) ---
+**Topic 10**
+
+#### Orthogonality
+
+Orthogonality is a critical concept if you want to produce systems that are easy to design, build, test, and extend. However, the concept of orthogonality is rarely taught directly. Often it is an implicit feature of various other methods and techniques you learn. This is a mistake. Once you learn to apply the principle of orthogonality directly, you'll notice an immediate improvement in the quality of systems you produce.
+
+#### **WHAT IS ORTHOGONALITY?**
+
+"Orthogonality'' is a term borrowed from geometry. Two lines are orthogonal if they meet at right angles, such as the axes on a graph. In vector terms, the two lines are _independent_ . As the
+
+images/orthogonality.png
+
+--- Topic 10: Orthogonality (id ch_0139) ---
+Orthogonality is closely related to the DRY principle. With DRY, you're looking to minimize duplication within a system, whereas with orthogonality you reduce the interdependency among the system's components. It may be a clumsy word, but if you use the principle of orthogonality, combined closely with the DRY principle, you'll find that the systems you develop are more flexible, more understandable, and easier to debug, test, and maintain.
+
+If you're brought into a project where people are desperately struggling to make changes, and where every change seems to cause four other things to go wrong, remember the nightmare with the helicopter. The project probably is not orthogonally designed and coded. It's time to refactor.
+
+And, if you're a helicopter pilot, don't eat the fish….
+
+--- Topic 9: DRY—The Evils of Duplication (id ch_0102) ---
+**def** validate_age(value): <mark>validate_type(value, :integer)</mark> validate_min_integer(value, 0) **def** validate_quantity(value): <mark>validate_type(value, :integer)</mark> validate_min_integer(value, 0)
+
+During code review, the resident know-it-all bounces this code, claiming it's a DRY violation: both function bodies are the same.
+
+They are wrong. The code is the same, but the knowledge they represent is different. The two functions validate two separate things that just happen to have the same rules. That's a coincidence, not a duplication.
+
+#### **DUPLICATION IN DOCUMENTATION**
+
+Somehow the myth was born that you should comment all your functions. Those who believe in this insanity then produce something such as this:
+
+--- Topic 10: Orthogonality (id ch_0142) ---
+class Split2 { <mark>constructor(line)        # splits a line</mark> def getField(n)          # returns nth field in current line <u><mark>}</mark></u>
+
+**Exercise 2** <u>(possible answer)</u>
+
+What are the differences in orthogonality between objectoriented and functional languages? Are these differences inherent in the languages themselves, or just in the way people use them?
+
+--- Topic 51: Pragmatic Starter Kit (id ch_0833) ---
+As soon as you have an executable user interface or prototype, you need to answer an all-important question: the users told you what they wanted, but is it what they need?
+
+Does it meet the functional requirements of the system? This, too, needs to be tested. A bug-free system that answers the wrong question isn't very useful. Be conscious of end-user access patterns and how they differ from developer test data (for an example, see the story about brush strokes <u>here).</u>
+
+##### **Performance Testing**
+
+Performance or stress testing may be important aspects of the project as well.
+
+Ask yourself if the software meets the performance requirements under real-world conditions—with the expected number of users, or connections, or transactions per second. Is it scalable?
+
+--- Topic 7: Communicate! (id ch_0080) ---
+The next two sections, Topic 9, _<u>DRY—The Evils of Duplication</u>_ and Topic 10, _<u>Orthogonality</u>_ <u>, are closely related. The first warns</u> you not to duplicate knowledge throughout your systems, the second not to split any one piece of knowledge across multiple system components.
+
+As the pace of change increases, it becomes harder and harder to keep our applications relevant. In Topic 11, _<u>Reversibility</u>_ <u>,</u> we'll look at some techniques that help insulate your projects from their changing environment.
+
+--- Topic 9: DRY—The Evils of Duplication (id ch_0093) ---
+The alternative is to have the same thing expressed in two or more places. If you change one, you have to remember to change the others, or, like the alien computers, your program will be brought to its knees by a contradiction. It isn't a question of whether you'll remember: it's a question of when you'll forget.
+
+You'll find the DRY principle popping up time and time again throughout this book, often in contexts that have nothing to do with coding. We feel that it is one of the most important tools in the Pragmatic Programmer's tool box.
+
+In this section we'll outline the problems of duplication and
+
+suggest general strategies for dealing with it.
+
+#### **DRY IS MORE THAN CODE**

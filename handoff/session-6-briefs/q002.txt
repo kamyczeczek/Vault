@@ -1,0 +1,104 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: What is the difference between tracer bullets and prototypes, and when should you use which?
+
+Fragments:
+--- Topic 12: Tracer Bullets (id ch_0166) ---
+#### **TRACER CODE VERSUS PROTOTYPING**
+
+You might think that this tracer code concept is nothing more than prototyping under an aggressive name. There is a difference. With a prototype, you're aiming to explore specific aspects of the final system. With a true prototype, you will
+
+throw away whatever you lashed together when trying out the concept, and recode it properly using the lessons you've learned.
+
+For example, say you're producing an application that helps shippers determine how to pack odd-sized boxes into containers. Among other problems, the user interface needs to be intuitive and the algorithms you use to determine optimal packing are very complex.
+
+--- Topic 13: Prototypes and Post-it Notes (id ch_0179) ---
+If you feel there is a strong possibility in your environment or culture that the purpose of prototype code may be misinterpreted, you may be better off with the tracer bullet approach. You'll end up with a solid framework on which to base future development.
+
+Properly used prototypes can save you huge amounts of time, money, and pain by identifying and correcting potential problem spots early in the development cycle—the time when fixing mistakes is both cheap and easy.
+
+#### **RELATED SECTIONS INCLUDE**
+
+- Topic 12, _Tracer Bullets_
+
+- Topic 14, _Domain Languages_
+
+- Topic 17, _Shell Games_
+
+- Topic 27, _Don't Outrun Your Headlights_
+
+- Topic 37, _Listen to Your Lizard Brain_
+
+- Topic 45, _The Requirements Pit_
+
+- Topic 52, _Delight Your Users_
+
+#### **EXERCISES**
+
+--- Topic 12: Tracer Bullets (id ch_0164) ---
+far easier to measure performance and to demonstrate progress to your user. Because each individual development is smaller, you avoid creating those monolithic blocks of code that are reported as 95% complete week after week.
+
+#### **TRACER BULLETS DON'T ALWAYS HIT THEIR TARGET**
+
+Tracer bullets show what you're hitting. This may not always be the target. You then adjust your aim until they're on target. That's the point.
+
+--- Topic 12: Tracer Bullets (id ch_0169) ---
+completing stubbed routines. But the framework stays intact, and you know the system will continue to behave the way it did when your first tracer code was completed.
+
+The distinction is important enough to warrant repeating. Prototyping generates disposable code. Tracer code is lean but complete, and forms part of the skeleton of the final system. Think of prototyping as the reconnaissance and intelligence gathering that takes place before a single tracer bullet is fired.
+
+#### **RELATED SECTIONS INCLUDE**
+
+- Topic 13, _Prototypes and Post-it Notes_
+
+- Topic 27, _Don't Outrun Your Headlights_
+
+- Topic 40, _Refactoring_
+
+- Topic 49, _Pragmatic Teams_
+
+- Topic 50, _<u>Coconuts Don't Cut It</u>_
+
+- Topic 51, _Pragmatic Starter Kit_
+
+- Topic 52, _Delight Your Users_
+
+--- Topic 7: Communicate! (id ch_0081) ---
+The next two sections are also related. In Topic 12, _<u>Tracer Bullets</u>_ <u>, we talk about a style of development that allows you to</u> gather requirements, test designs, and implement code at the same time. It's the only way to keep up with the pace of modern life.
+
+Topic 13, _<u>Prototypes and Post-it Notes</u>_ shows you how to use prototyping to test architectures, algorithms, interfaces, and ideas. In the modern world, it's critical to test ideas and get feedback before you commit to them whole-heartedly.
+
+--- Topic 52: Delight Your Users (id ch_0849) ---
+#### **RELATED SECTIONS INCLUDE**
+
+- Topic 12, _Tracer Bullets_
+
+- Topic 13, _Prototypes and Post-it Notes_
+
+- Topic 45, _The Requirements Pit_
+
+--- Topic 13: Prototypes and Post-it Notes (id ch_0173) ---
+But if you find yourself in an environment where you _cannot_ give up the details, then you need to ask yourself if you are really building a prototype at all. Perhaps a tracer bullet style of development would be more appropriate in this case (see Topic 12, _<u>Tracer Bullets</u>_ ).
+
+#### **THINGS TO PROTOTYPE**
+
+What sorts of things might you choose to investigate with a prototype? Anything that carries risk. Anything that hasn't been tried before, or that is absolutely critical to the final system. Anything unproven, experimental, or doubtful. Anything you aren't comfortable with. You can prototype:
+
+Architecture
+
+New functionality in an existing system
+
+Structure or contents of external data
+
+Third-party tools or components
+
+Performance issues
+
+User interface design
+
+--- Topic 12: Tracer Bullets (id ch_0154) ---
+Tracer bullets are loaded at intervals alongside regular ammunition. When they're fired, their phosphorus ignites and leaves a pyrotechnic trail from the gun to whatever they hit. If the tracers are hitting the target, then so are the regular bullets. Soldiers use these tracer rounds to refine their aim: it's pragmatic, real-time feedback under actual conditions.
+
+That same principle applies to projects, particularly when you're building something that hasn't been built before. We use the
+
+term _tracer bullet development_ to visually illustrate the need for immediate feedback under actual conditions with a moving goal.

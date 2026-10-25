@@ -1,0 +1,74 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: What are the differences between git merge and git rebase, and in which situations is interactive rebase in Git discouraged within teams?
+
+Fragments:
+--- Topic 10: Orthogonality (id ch_0142) ---
+class Split2 { <mark>constructor(line)        # splits a line</mark> def getField(n)          # returns nth field in current line <u><mark>}</mark></u>
+
+**Exercise 2** <u>(possible answer)</u>
+
+What are the differences in orthogonality between objectoriented and functional languages? Are these differences inherent in the languages themselves, or just in the way people use them?
+
+--- Topic 19: Version Control (id ch_0256) ---
+Teams that do this are constantly messing up each other's work, losing changes, breaking builds, and getting into fist fights in the car park. It's like writing concurrent code with shared data and no synchronization mechanism. Use version control.
+
+But there's more! Some folks _do_ use version control, and keep their main repository on a network or cloud drive. They reason that this is the best of both worlds: their files are accessible anywhere and (in the case of cloud storage) it's backed up off-site.
+
+--- Topic 29: Juggling the Real World (id ch_0442) ---
+Which of these technologies (perhaps in combination) would be a good fit for the following situations:
+
+- If you receive three _network interface down_ events within five minutes, notify the operations staff.
+
+- If it is after sunset, and there is motion detected at the bottom of the stairs followed by motion detected at the top of the stairs, turn on the upstairs lights.
+
+- You want to notify various reporting systems that an order was completed.
+
+- In order to determine whether a customer qualifies for a car loan, the application needs to send requests to three backend services and wait for the responses.
+
+--- Topic 19: Version Control (id ch_0266) ---
+Many teams have their VCS configured so that a push to a particular branch will automatically build the system, run the tests, and if successful deploy the new code into production.
+
+Sound scary? Not when you realize you're using version control. You can always roll it back.
+
+#### **RELATED SECTIONS INCLUDE**
+
+- Topic 11, _Reversibility_
+
+- Topic 49, _Pragmatic Teams_
+
+- Topic 51, _Pragmatic Starter Kit_
+
+#### **CHALLENGES**
+
+- Knowing you can roll back to any previous state using the VCS is one thing, but can you actually do it? Do you know the commands to do it properly? Learn them now, not when disaster strikes and you're under pressure.
+
+--- Topic 7: Communicate! (id ch_0059) ---
+As developers, we have to communicate on many levels. We spend hours in meetings, listening and talking. We work with end users, trying to understand their needs. We write code, which communicates our intentions to a machine and documents our thinking for future generations of developers. We write proposals and memos requesting and justifying resources, reporting our status, and suggesting new approaches. And we work daily within our teams to advocate our ideas, modify existing practices, and suggest new ones. A large part of our day is spent communicating, so we need to do it well.
+
+--- Topic 19: Version Control (id ch_0268) ---
+- Consciously explore the features of your current VCS and hosting provider that you're not using. If your team isn't using feature branches, experiment with introducing them. The same with pull/merge requests. Continuous integration. Build pipelines. Even continuous deployment. Look into the team communication tools, too: wikis, Kanban boards, and the like. You don't have to use any of it. But you do need to know what it does so you can make that decision.
+
+Use version control for nonproject things, too.
+
+--- Topic 23: Design by Contract (id ch_0329) ---
+Is Design by Contract needed in a world where developers practice unit testing, testdriven development (TDD), property-based testing, or defensive programming?
+
+The short answer is "yes."
+
+DBC and testing are different approaches to the broader topic of program correctness. They both have value and both have uses in different situations. DBC offers several advantages over specific testing approaches:
+
+DBC doesn't require any setup or mocking
+
+- DBC defines the parameters for success or failure in _all_ cases, whereas testing can only target one specific case at a time
+
+- TDD and other testing happens only at "test time" within the build cycle. But DBC and assertions are forever: during design, development, deployment, and maintenance
+
+--- Topic 19: Version Control (id ch_0262) ---
+One benefit of branches is the isolation they give you. If you develop feature A in one branch, and a teammate works on feature B in another, you're not going to interfere with each other.
+
+A second benefit, which may be surprising, is that branches are often at the heart of a team's project workflow.
+
+And this is where things get a little confusing. Version control branches and test organization have something in common: they both have thousands of people out there telling you how you should do it. And that advice is largely meaningless, because what they're really saying is "this is what worked for me."
+
+So use version control in your project, and if you bump into workflow issues, search for possible solutions. And remember to review and adjust what you're doing as you gain experience.

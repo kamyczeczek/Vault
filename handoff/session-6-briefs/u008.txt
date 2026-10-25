@@ -1,0 +1,88 @@
+Answer in 1-3 sentences in English, based only on the fragments below. If the fragments do not contain the answer, write exactly: NOT IN THE BOOK
+
+Question: How do serverless functions in AWS Lambda work with regard to cold starts and memory limits?
+
+Fragments:
+--- Topic 11: Reversibility (id ch_0149) ---
+While many people try to keep their _code_ flexible, you also need to think about maintaining flexibility in the areas of architecture, deployment, and vendor integration.
+
+We're writing this in 2019. Since the turn of the century we've seen the following "best practice" server-side architectures:
+
+- Big hunk of iron
+
+- Federations of big iron
+
+- Load-balanced clusters of commodity hardware
+
+- Cloud-based virtual machines running applications
+
+- Cloud-based virtual machines running services
+
+- Containerized versions of the above
+
+- Cloud-supported serverless applications
+
+- And, inevitably, an apparent move back to big hunks of iron for some tasks
+
+Go ahead and add the very latest and greatest fads to this list, and then regard it with awe: it's a miracle that anything ever worked.
+
+--- Topic 26: How to Balance Resources (id ch_0383) ---
+At a lower, but no less useful level, you can invest in tools that (among other things) check your running programs for memory leaks.
+
+#### **RELATED SECTIONS INCLUDE**
+
+- Topic 24, _Dead Programs Tell No Lies_ Topic 30, _Transforming Programming_
+
+##### Topic 33, _Breaking Temporal Coupling_
+
+#### **CHALLENGES**
+
+- Although there are no guaranteed ways of ensuring that you always free resources, certain design techniques, when applied consistently, will help. In the text we discussed how establishing a semantic invariant for major data structures could direct memory deallocation decisions. Consider how Topic 23, _Design by_ _<u>Contract</u>_ <u>,</u> could help refine this idea.
+
+#### **Exercise 17** (possible answer)
+
+--- Topic 14: Domain Languages (id ch_0181) ---
+**Topic 14**
+
+#### Domain Languages
+
+_The limits of language are the limits of one's world._
+
+_Ludwig Wittgenstein_
+
+Computer languages influence _how_ you think about a problem, and how you think about communicating. Every language comes with a list of features: buzzwords such as static versus dynamic typing, early versus late binding, functional versus OO, inheritance models, mixins,
+
+macros—all of which may suggest or obscure certain solutions. Designing a solution with C++ in mind will produce different results than a solution based on Haskell-style thinking, and vice versa. Conversely, and we think more importantly, the language of the problem domain may also suggest a programming solution.
+
+--- Topic 29: Juggling the Real World (id ch_0431) ---
+Although you could implement a very basic pubsub system yourself, you probably don't want to. Most cloud service providers have pubsub offerings, allowing you to connect applications around the world. Every popular language will have at least one pubsub library.
+
+Pubsub is a good technology for decoupling the handling of asynchronous events. It allows code to be added and replaced, potentially while the application is running, without altering existing code. The downside is that it can be hard to see what is going on in a system that uses pubsub heavily: you can't look at a publisher and immediately see which subscribers are involved with a particular message.
+
+--- Topic 39: Algorithm Speed (id ch_0610) ---
+The notation puts an upper bound on the value of the thing we're measuring (time, memory, and so on). If we say a function takes time, then we know that the upper bound of the time it takes will not grow faster than <mark>.</mark> Sometimes we come up with fairly complex functions, but because the highest-order term will dominate the value as increases, the convention is to remove all low-order terms, and not to bother showing any constant multiplying factors:
+
+This is actually a feature of the notation—one algorithm may be 1,000 times faster than another algorithm, but you won't know it from the notation. Big-O is never going to give you actual numbers for time or memory or whatever: it simply tells you how these values will change as the input changes.
+
+--- Topic 26: How to Balance Resources (id ch_0373) ---
+In this topic we're mostly looking at ephemeral resources used by your running process. But you might want to consider what other messes you might be leaving behind.
+
+For instance, how are your logging files handled? You are creating data and using up storage space. Is there something in place to rotate the logs and clean them up? How about for your unofficial debug files you're dropping? If you're adding logging records in a database, is there a similar process in place to expire them? For anything that you create that takes up a finite resource, consider how to balance it.
+
+What else are you leaving behind?
+
+#### **NEST ALLOCATIONS**
+
+The basic pattern for resource allocation can be extended for routines that need more than one resource at a time. There are just two more suggestions:
+
+--- Topic 51: Pragmatic Starter Kit (id ch_0837) ---
+In theory, this three-line function has 1,000,000 logical states, 999,999 of which will work correctly and one that will not (when a + b equals zero). Simply knowing that you executed this line of code doesn't tell you that—you would need to identify all possible states of the program. Unfortunately, in general this is a _really hard_ problem. Hard as in, "The sun will be a cold hard lump before you can solve it."
+
+> **Tip 93** Test State Coverage, Not Code Coverage
+
+##### **Property-Based Testing**
+
+A great way to explore how your code handles unexpected states is to have a computer generate those states.
+
+--- Topic 35: Actors and Processes (id ch_0546) ---
+concurrency/actors/index.js **const** waiterActor = { _<mark>"order"</mark>_ <mark>: (msg, ctx, state) => {</mark> **if** (msg.wants == _"pie"_ ) { <mark>dispatch(state.pieCase,</mark> { type: _"get slice"_ , customer: msg.customer, waiter: ctx.self }) <mark>}</mark> **else** { <mark>console.dir(</mark> _`_ _<mark>Don't know how to order</mark>_ <mark>${msg.wants}</mark> _`_ <mark>);</mark> } <mark>},</mark> _<mark>"add to order"</mark>_ <mark>: (msg, ctx) =></mark> console.log( _`Waiter adds_ ${msg.food} _to_ ${msg.customer.name} _'s order`_ ), _"error"_ : (msg, ctx) => { <mark>dispatch(msg.customer, { type:</mark> _<mark>'no pie left'</mark>_ <mark>, msg: msg.msg });</mark> console.log( _`\nThe waiter apologizes to_ ${msg.customer.name} _:_ ${msg.msg} _`_ ) <mark>}</mark> <u><mark>};</mark></u>
