@@ -1,39 +1,45 @@
+---
+type: Concept
+title: STATE
+generated: { by: okf-enforcer/0.6, at: 2026-10-25T02:18:55Z }
+---
+
 # STATE — root workspace (generated)
 
-> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-10-25 03:18 · HEAD `629ee96` (master).
+> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-10-25 03:24 · HEAD `c04cd83` (master).
 
 ## Drzewo
 
-brudne pliki (1133):
+brudne pliki (1110):
 - `M .gitignore`
 - ` D .obsidian/plugins/obsidian-git/data.json`
 - ` M .obsidian/plugins/smart-connections/data.json`
-- `A  .opencode/agents/answerpilot.md`
 - ` M .smart-env/smart_env.json`
-- `A  CLAUDE.md`
-- `A  HANDOFF.md`
-- `M  Notes/OKF-rag/index.md`
-- `R  Notes/OKF-rag/knowledge-catalog.txt -> Notes/OKF-rag/knowledge-catalog.md`
-- `R  Notes/OKF-rag/kosha.txt -> Notes/OKF-rag/kosha.md`
-- `R  Notes/OKF-rag/llm-wiki.txt -> Notes/OKF-rag/llm-wiki.md`
-- `R  Notes/OKF-rag/lore.txt -> Notes/OKF-rag/lore.md`
-- `R  Notes/OKF-rag/napkin.txt -> Notes/OKF-rag/napkin.md`
-- `R  Notes/OKF-rag/okf-generator.txt -> Notes/OKF-rag/okf-generator.md`
-- `R  Notes/OKF-rag/okf-rag.txt -> Notes/OKF-rag/okf-rag.md`
-- `R  Notes/OKF-rag/okforge.txt -> Notes/OKF-rag/okforge.md`
-- `R  Notes/OKF-rag/ontoship.txt -> Notes/OKF-rag/ontoship.md`
-- `R  Notes/OKF-rag/open-knowledge-format.txt -> Notes/OKF-rag/open-knowledge-format.md`
-- `R  Notes/OKF-rag/uplink.txt -> Notes/OKF-rag/uplink.md`
-- `M  Notes/index.md`
-- … +1113 więcej
+- `M  STATE.md`
+- ` D root_workspace/.agents/plugins/forge-guardrails/hooks/hooks.json`
+- ` D root_workspace/.agents/plugins/forge-guardrails/plugin.json`
+- ` D root_workspace/.agents/plugins/forge-guardrails/scripts/forge_hook.py`
+- ` D root_workspace/.agents/plugins/forge-guardrails/scripts/policy_loader.py`
+- ` D root_workspace/.agents/plugins/forge-guardrails/scripts/test_active_recall.py`
+- ` D root_workspace/.agents/plugins/forge-guardrails/scripts/test_validator.py`
+- ` D root_workspace/.dgc-evidence/runs/LATEST`
+- ` D root_workspace/.dgc-evidence/runs/goose-pstack-2026-10-03/REVIEW.html`
+- ` D root_workspace/.dgc-evidence/runs/pstack-research-2026-10-03/DECISION.json`
+- ` D root_workspace/.dgc-evidence/runs/pstack-research-2026-10-03/REVIEW.html`
+- ` D root_workspace/.dgc-evidence/runs/pstack-research-2026-10-03/REVIEW.md`
+- ` D root_workspace/.forge/policy.yaml`
+- ` D root_workspace/.gitattributes`
+- ` D root_workspace/.gitignore`
+- ` D root_workspace/.opencode/agents/answerpilot.md`
+- … +1090 więcej
 
 ## Ostatnie commity
 
+- `c04cd83 chore: repair vault gates and migrate notes to markdown`
 - `629ee96 vault backup: 2026-10-24 22:37:24`
 - `4b624d3 codex: include loader and default five sessions`
 - `c0cd2a5 flag: codex-loader-2026-10-24 not-checked updated`
 - `edba1b8 vault-migrated-2026-10-24: `vault-migrated-2026-10-24` — 2026-10-24: `Desktop\vault` został single-vault single-repo. `.git`
-- `ef25275 close-include-whole-tree-2026-10-24: `close-include-whole-tree-2026-10-24` — 2026-10-24: `close.py --include` rozumie katalog i całe`
 
 ## Runy (`.dgc-evidence/runs/`)
 LATEST (czeka na werdykt): `goose-pstack-2026-10-03`
