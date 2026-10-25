@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source": "Notes/OKF-rag/okforge.md",
+  "slices": [
+    {
+      "id": "okforge--initialize-knowledge-base",
+      "title": "okforge — initialize a knowledge base and ingest a document",
+      "source_heading": "Step 5: Initialize a Knowledge Base (okforge)",
+      "start_heading": "Step 5: Initialize a Knowledge Base (okforge)",
+      "end_heading": "Step 6: Explore Your Wiki"
+    },
+    {
+      "id": "okforge--recompile",
+      "title": "okforge — recompile generated wiki pages and protect manual edits",
+      "source_heading": "`recompile` — regenerate wiki pages",
+      "start_heading": "`recompile` — regenerate wiki pages",
+      "end_heading": "`lint` — check (and fix) wiki integrity"
+    }
+  ]
+}

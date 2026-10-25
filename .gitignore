@@ -5,3 +5,18 @@
 .smart-env/*
 !.smart-env/smart_env.json
 .trash/
+
+
+
+
+# Ignore Smart Environment folder
+.smart-env
+
+# Generated / bulk artifacts (never committed)
+__pycache__/
+*.pyc
+scripts/_scratch/
+scripts/out/
+
+# Transient commit-authorization token (minted fresh per commit, 300s TTL)
+.commit-approved

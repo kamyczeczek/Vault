@@ -50,6 +50,24 @@ not checked:
 <!-- handoff/flags/okf-rag-synthesis-draft-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
 `okf-rag-synthesis-draft-2026-10-25` — 2026-10-25: utworzono syntezy, decyzję i raporty retrieval; dodano zakresy linii źródłowych, wykonano benchmark blokowy 20 pytań, kontrolę raw-only oraz ręczną kontrolę 10 brakujących trafień. Wszystkie brakujące treści istnieją w dużych importach `okf-rag.md`, `napkin.md` i `okforge.md`; problem dotyczy retrieval/segmentacji, nie braku wiedzy. Następny krok: porównać zapytania naturalne, z nazwą narzędzia i z dokładnym nagłówkiem.
 
+<!-- handoff/flags/okf-rag-scope-and-gate-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
+`okf-rag-scope-and-gate-2026-10-25` — 2026-10-25: ustalono, że `Notes/OKF-rag`
+zostaje poza kontraktem projektu (ADR `handoff/decisions/notes-okf-rag-outside-project-contract.md`),
+maszyneria idzie do root `scripts/`, a gate do `check_workspace_integrity.py`
+jako advisory do czasu migracji. Dodano słownik artefaktów `Notes/OKF-rag/CONTEXT.md`,
+wiersz kontekstu w `CONTEXT-MAP.md` i pre-registered
+`EXPERIMENT-benchmark-scope-2026-10-25.md` z realnym przypadkiem adwersaryjnym
+(Q15: blok `napkin.md:3985–3998` zalicza `related`, choć nie zawiera
+odpowiedzi). Plan: 3 commity — (1) te artefakty, (2) migracja 5 notatek
+kuratorskich do strukturalnego `sources: [{file, lines}]` + allowlista 2 decyzji,
+(3) skill `retrieval-two-stage` + check w integrity. Next: dodać tryb `scoped`
+do `scripts/run_okf_rag_benchmark.py`, bo bez niego reguła scope jest
+niemierzalna i eksperyment nie jest uruchamialny jedną komendą.
+
+not checked: nie zmierzono przebiegu ze scope (brak trybu `scoped`); nie
+zmigrowano frontmattera żadnej notatki; gate cytowań nie istnieje; skill
+`retrieval-two-stage` nie istnieje; Q02 i Q20 nadal bez `exact`/`related`.
+
 <!-- handoff/flags/okf-rag-benchmark-local-2026-10-25.md · owner: codex · agent: codex · model: openai/gpt-6 -->
 `okf-rag-benchmark-local-2026-10-25` — 2026-10-25: utrwalono pełne, jawnie zrekonstruowane 20 pytań, hash korpusu i ranking source/passage dla `all` oraz `raw_only`; powtarzalne missy Q17–Q18 dostały dwa slice'y z mapą oryginalnych linii. Next: ręcznie przejrzeć Q02 i Q20 — jedyne pytania bez exact/related w top-10 — przed decyzją o potrzebie OKF-RAG.
 

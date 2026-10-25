@@ -1,0 +1,112 @@
+{
+  "baseline": {
+    "recorded": "2026-10-16",
+    "brain_db": "after scripts/ingest_brain.py rebuilt the layer (46 problems / 22 decisions / 2 lessons)",
+    "hit_ok": 9,
+    "answerable": 10,
+    "refusal_ok": 3,
+    "refusals": 4,
+    "mrr": 0.9,
+    "pre_ingest": "hit@5=2/10 refusal=3/4 MRR=0.200 (the same cases against the pre-ingest brain.db: the scars did not exist there)",
+    "known_gaps": {
+      "new-root-entry-breaks-integrity": "the lesson's own wording is 'Bramka integrity failuje na nowym root entry'; the Polish stem of the question ('integralności' -> integralnośc) does not reach the English token 'integrity' that the row uses. Lexical K1, no stemmer bridging PL/EN compounds. Pre-existing, not caused by ingest.",
+      "refuse-risotto": "'risotto alla milanese' shares an accidental token with the corpus. This is the accepted ceiling of lexical retrieval: 1 of 4 out-of-corpus questions is answered. Recorded, not hidden."
+    }
+  },
+  "cases": [
+    {
+      "name": "msys-python-c-ban",
+      "query": "Dlaczego nie wolno uzywać `python -c` ani `powershell -Command` w powłoce MSYS?",
+      "expect": "problems:1001",
+      "expect_hash": "5c4e0e40a50e062491d43de3d01a44154fcc7808d7fe4e4e1dab862b7530dacf",
+      "type": "scar"
+    },
+    {
+      "name": "shell-timeout",
+      "query": "Co zrobić, gdy w powłoce shell wystąpi błąd timeout?",
+      "expect": "problems:38",
+      "expect_hash": "b71dd6387d84c2f01a0453f03f6f551e94de21c74b40be9e03f924cfff4fd462",
+      "type": "scar"
+    },
+    {
+      "name": "gate-rewritten-after-failure",
+      "query": "Czy wolno zmienić próg bramki po tym, jak test nie przeszedł?",
+      "expect": "problems:62",
+      "expect_hash": "2fc0b7b0ab4edcc9f56fef3e72fa17b22bc6e878cf53fb5c97c8ec953dd85081",
+      "type": "scar"
+    },
+    {
+      "name": "include-untracked-bypasses-diff-check",
+      "query": "Dlaczego `--include` z plikami untracked omija `diff-check` w `close.py`?",
+      "expect": "problems:67",
+      "expect_hash": "d21dfd9bdf3d10ed4f93e6f3e130d17c8b82ba8acda84e3b4f54b9943c148ade",
+      "type": "scar"
+    },
+    {
+      "name": "close-truncates-run-output",
+      "query": "Dlaczego `close.py` obcina output `run()` i pokazuje tylko fragment FAIL?",
+      "expect": "problems:66",
+      "expect_hash": "724d2df1ecbcff768d94abc35d094133f63e67840dab6b894828581967d64367",
+      "type": "scar"
+    },
+    {
+      "name": "ask-user-question-answer-lost",
+      "query": "Dlaczego narzędzie ask_user_question nie przekazuje odpowiedzi użytkownika?",
+      "expect": "problems:42",
+      "expect_hash": "fbd6cb42da8a1f06be7a015338203a771a5df813bbb05b603eb74231738a5e18",
+      "type": "scar"
+    },
+    {
+      "name": "success-count-inflated",
+      "query": "Dlaczego `success_count` zlicza fallback jako sukces i zawyża raport?",
+      "expect": "problems:61",
+      "expect_hash": "450914e3905d999b783885a419adb38b98654088a3e536e67b5500f9214a71dc",
+      "type": "scar"
+    },
+    {
+      "name": "root-delete-to-pass-gate",
+      "query": "Dlaczego nie wolno usuwać katalogów na rootcie, żeby przejść bramkę integrity?",
+      "expect": "problems:1022",
+      "expect_hash": "004ac493e1c293ce88925a2a5436668c938654aae1084dc70aca7495bce8ca6c",
+      "type": "scar"
+    },
+    {
+      "name": "tool-grading-verdicts",
+      "query": "What verdicts do tools get when they are graded?",
+      "expect": "decisions:2",
+      "expect_hash": "e259f085659ed4a2859e2908f17ed1d09e83895b74a6f3c890a04ce6d0283071",
+      "type": "decyzja"
+    },
+    {
+      "name": "new-root-entry-breaks-integrity",
+      "query": "Dlaczego bramka integrity failuje po dodaniu nowego wpisu w root workspace?",
+      "expect": "lessons:1",
+      "expect_hash": "521739d68fd3060a3460dcc1a52e2a5b95dc36f72f7b53c1a417fa665192cecc",
+      "type": "lekcja"
+    },
+    {
+      "name": "refuse-risotto",
+      "query": "Jak ugotować risotto alla milanese?",
+      "expect": null,
+      "type": "nieodpowiadalne"
+    },
+    {
+      "name": "refuse-waterloo",
+      "query": "Kto dowodził wojskami francuskimi pod Waterloo?",
+      "expect": null,
+      "type": "nieodpowiadalne"
+    },
+    {
+      "name": "refuse-mine-safety",
+      "query": "Jakie są przepisy BHP w kopalni węgla kamiennego?",
+      "expect": null,
+      "type": "nieodpowiadalne"
+    },
+    {
+      "name": "refuse-diesel-engine",
+      "query": "Jak działa silnik wysokoprężny z zapłonem samoczynnym?",
+      "expect": null,
+      "type": "nieodpowiadalne"
+    }
+  ]
+}
