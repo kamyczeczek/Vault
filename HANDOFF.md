@@ -35,21 +35,6 @@ stopped holding (delete the file), and compress closed threads into
 <!-- handoff/flags/smart-connections-cache-exclusions-2026-10-25.md · owner: mateusz · agent: codex · model: gpt-5 -->
 `smart-connections-cache-exclusions-2026-10-25` — 2026-10-25: corrected Smart Connections folder exclusions for the active vault root by adding the root-level `scripts/`, `projects/`, and `handoff/` paths while preserving the legacy `root_workspace/` paths. Because the old cache continued to load excluded entries, the derived `smart_sources`, `smart_blocks`, `embedding_models`, and `event_logs` directories were moved to `.smart-env/_recovery-2026-10-25`; notes and `smart_env.json` were preserved. Next step: reopen Obsidian and allow Smart Connections to rebuild with the corrected scope.
 
-<!-- handoff/flags/retrieval-answer-contract-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
-`retrieval-answer-contract-2026-10-25` — 2026-10-25: dodano kontrakt odpowiedzi
-retrieval, porównano 15 wariantów zapytań dla pięciu raw-only missów i wdrożono
-generator powtarzalnych source slices z manifestem i `origin_hash`. Slice
-retrieval odzyskał właściwy temat jako top-1 w `5/5` przypadków, a `rg`
-potwierdził źródłowe passage jako `direct`. Next: przetestować generator na
-jednym dużym imporcie `napkin.md`.
-
-not checked:
-- pełny folder `Notes/OKF-rag` nadal ma stare wskaźniki Smart Connections po usuniętych prototypach;
-- benchmark wszystkich 20 pytań nie został jeszcze ponownie uruchomiony na wygenerowanych slice'ach.
-
-<!-- handoff/flags/okf-rag-synthesis-draft-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
-`okf-rag-synthesis-draft-2026-10-25` — 2026-10-25: utworzono syntezy, decyzję i raporty retrieval; dodano zakresy linii źródłowych, wykonano benchmark blokowy 20 pytań, kontrolę raw-only oraz ręczną kontrolę 10 brakujących trafień. Wszystkie brakujące treści istnieją w dużych importach `okf-rag.md`, `napkin.md` i `okforge.md`; problem dotyczy retrieval/segmentacji, nie braku wiedzy. Następny krok: porównać zapytania naturalne, z nazwą narzędzia i z dokładnym nagłówkiem.
-
 <!-- handoff/flags/okf-rag-scope-and-gate-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `okf-rag-scope-and-gate-2026-10-25` — 2026-10-25: ustalono, że `Notes/OKF-rag`
 zostaje poza kontraktem projektu (ADR `handoff/decisions/notes-okf-rag-outside-project-contract.md`),
@@ -67,6 +52,43 @@ niemierzalna i eksperyment nie jest uruchamialny jedną komendą.
 not checked: nie zmierzono przebiegu ze scope (brak trybu `scoped`); nie
 zmigrowano frontmattera żadnej notatki; gate cytowań nie istnieje; skill
 `retrieval-two-stage` nie istnieje; Q02 i Q20 nadal bez `exact`/`related`.
+
+<!-- handoff/flags/okf-rag-corpus-pin-2026-10-25.md · owner: opencode · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
+`okf-rag-corpus-pin-2026-10-25` — 2026-10-25: historia jest **liniowa, bez
+rozjazdu** — `e356f08` jest dzieckiem `eeba3fc` (nie dwoma równoległymi
+domknięciami); `master` wyprzedza `origin/master` o 3 commity, merge nie jest
+potrzebny. Naprawiono przyczynę „rozgrzebanego repo": `edba1b8`
+(„vault-migrated") usunął **111 plików `scripts/`**, czego message nie
+wspominał, więc HEAD śledził 5 plików przy 98 na dysku — bramki
+(`check_workspace_integrity.py`) i harness (`run_okf_rag_benchmark.py`) były
+nieodtwarzalne z klonu; przywrócone w `6890b66` razem z ignorowaniem
+`_scratch/` (407.7 MB), `out/`, `__pycache__/` i tokenu. `8271f41` wciągnął
+do repo `CONTEXT.md` i `EXPERIMENT-benchmark-scope` oraz rozstrzygnął pusty
+`source-slices/index.md` (generator pisze do `_slices/`, więc katalog był
+samym indeksem folderu Obsidiana). `84ba387` przeniósł pin korpusu z dysku na
+drzewo git: `corpus_paths()`/`corpus_blobs()` liczą z `git ls-tree` +
+`cat-file --batch`, a `corpus_drift()` odmawia przebiegu, gdy korpus roboczy
+różni się od HEAD (retrieval czyta `.smart-env`, czyli drzewo robocze).
+Pin `2f0491bd` **nie odpowiadał żadnemu commitowi** (drzewo HEAD: `d4c2db0d`,
+dysk: `56774761`), więc `benchmark-results-20.json` mierzył korpus
+nieodtwarzalny z repo — nie jest ważną bazą porównawczą. Ten wpis koryguje
+`okf-rag-benchmark-local-2026-10-25` w części „utrwalono hash korpusu": hash
+był utrwalony, ale nie opisywał żadnego stanu repo. Nowy pin:
+`85038826`, 40 plików, `corpus_drift=0`; sprawdzone, że nieśledzona notatka
+nie zmienia pinu, tylko zgłasza drift. Next: dodać tryb `scoped` do
+`run_okf_rag_benchmark.py` (bez niego reguła scope jest niemierzalna), potem
+jeden przebieg 20 pytań jako nowa baza.
+
+not checked: nie uruchomiono benchmarku 20 pytań (wymaga Obsidiana i
+Smart Connections) — nowy pin jest nieprzetestowany na przebiegu; tryb
+`scoped` nadal nie istnieje; 5 notatek nie zmigrowano do
+`sources: [{file, lines}]`; gate cytowań i skill `retrieval-two-stage` nie
+istnieją; Q02 i Q20 nadal bez ręcznego przeglądu. `CONTEXT.md` jest słownikiem
+warstwy nawigacji, ale `CURATED_PREFIXES` go nie obejmuje, więc `raw_only`
+traktuje go jako materiał surowy — otwarta decyzja, świadomie nierozstrzygnięta
+w tym commicie. Proces: `SCARS.md` przeczytany **po** pierwszej edycji
+`scripts/**` (wymóg z `handoff/CONTEXT.md`), oraz jedno użycie `python -c` na
+starcie wbrew scarowi o Windows tooling — oba bez skutku, ale powtarzalne.
 
 <!-- handoff/flags/okf-rag-benchmark-local-2026-10-25.md · owner: codex · agent: codex · model: openai/gpt-6 -->
 `okf-rag-benchmark-local-2026-10-25` — 2026-10-25: utrwalono pełne, jawnie zrekonstruowane 20 pytań, hash korpusu i ranking source/passage dla `all` oraz `raw_only`; powtarzalne missy Q17–Q18 dostały dwa slice'y z mapą oryginalnych linii. Next: ręcznie przejrzeć Q02 i Q20 — jedyne pytania bez exact/related w top-10 — przed decyzją o potrzebie OKF-RAG.
