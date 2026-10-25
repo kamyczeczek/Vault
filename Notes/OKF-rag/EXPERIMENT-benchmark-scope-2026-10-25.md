@@ -43,8 +43,12 @@ Reguła: dla źródła większego niż ~200 KB najpierw pytaj
 Korpus, gold set i hash bez zmian:
 
 - `Notes/OKF-rag/benchmark-questions.json`, 20 pytań + OOC01
-- `corpus_sha256 = 2f0491bd350a5a5f88738726bb282dd61cfd0800bd8cc23543d333635953f046`
-  (39 plików Markdown; runner sam odrzuci przebieg, jeśli hash się rozjedzie)
+- `corpus_sha256 = 85038826f1286431f528dc1a6a02bbedf314990a9978329ca78e143c65eacc06`
+  (40 plików Markdown; runner sam odrzuci przebieg, jeśli hash się rozjedzie).
+  Korekta pinu 2026-10-25 **przed** przebiegiem: poprzedni `2f0491bd` (39 plików)
+  nie opisywał żadnego stanu repo i został zastąpiony; `benchmark-results-20.json`
+  przeliczono pod nowym pinem — metryki pozostały identyczne, zmieniły się tylko
+  `corpus`, `index_inventory` i ogony list kandydatów.
 
 # Metryki pre-registered
 

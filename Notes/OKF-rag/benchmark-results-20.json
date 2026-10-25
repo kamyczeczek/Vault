@@ -5,8 +5,8 @@
   "baseline_report": "EXPERIMENT-retrieval-benchmark-20-2026-10-25.md",
   "corpus": {
     "scope": "Notes/OKF-rag/**/*.md",
-    "sha256": "2f0491bd350a5a5f88738726bb282dd61cfd0800bd8cc23543d333635953f046",
-    "markdown_file_count": 39,
+    "sha256": "85038826f1286431f528dc1a6a02bbedf314990a9978329ca78e143c65eacc06",
+    "markdown_file_count": 40,
     "hash_matches_pinned_questions": true
   },
   "settings": {
@@ -27,14 +27,14 @@
   },
   "index_inventory": {
     "source_records": {
-      "in_scope": 44,
+      "in_scope": 45,
       "missing_files": 5,
-      "without_vector": 2,
-      "rankable": 37
+      "without_vector": 1,
+      "rankable": 39
     },
-    "source_vector_capacity": 478,
-    "passage_vector_capacity": 2506,
-    "live_block_metadata_count": 374,
+    "source_vector_capacity": 510,
+    "passage_vector_capacity": 2600,
+    "live_block_metadata_count": 387,
     "slice_mappings": 10
   },
   "metrics_definition": {
@@ -45,7 +45,7 @@
     "citation_target_correct_at_1": "top passage resolves to the gold file and its mapped lines overlap gold_lines; citation_target_exact_at_1 separately requires full containment. Neither checks generated answer text or quotation wording",
     "ooc_refusal": "retrieval abstention only: no source or passage result clears min_score; no answer-generation/refusal model is tested"
   },
-  "created_at": "2026-10-25T15:32:14.329157+00:00",
+  "created_at": "2026-10-25T19:54:18.147835+00:00",
   "comparison_caveats": [
     "The earlier 20-question report did not preserve its exact prompts; this set labels reconstructed queries and is not a strict prompt-for-prompt replication.",
     "This run includes the current corpus and targeted source slices; compare all and raw_only within this result, not as an exact before/after score against reports with different corpus snapshots."
@@ -54,10 +54,10 @@
     "all": {
       "candidate_counts": {
         "sources": {
-          "rankable": 37
+          "rankable": 39
         },
         "passages": {
-          "rankable": 374
+          "rankable": 387
         }
       },
       "metrics": {
@@ -167,31 +167,31 @@
             },
             {
               "rank": 7,
+              "score": 0.621749,
+              "retrieval_path": "Notes/OKF-rag/index.md",
+              "citation_path": "Notes/OKF-rag/index.md",
+              "file_i": 503
+            },
+            {
+              "rank": 8,
               "score": 0.620908,
               "retrieval_path": "Notes/OKF-rag/knowledge-catalog.md",
               "citation_path": "Notes/OKF-rag/knowledge-catalog.md",
               "file_i": 153
             },
             {
-              "rank": 8,
+              "rank": 9,
               "score": 0.618736,
               "retrieval_path": "Notes/OKF-rag/uplink.md",
               "citation_path": "Notes/OKF-rag/uplink.md",
               "file_i": 168
             },
             {
-              "rank": 9,
+              "rank": 10,
               "score": 0.610129,
               "retrieval_path": "Notes/OKF-rag/open-knowledge-format.md",
               "citation_path": "Notes/OKF-rag/open-knowledge-format.md",
               "file_i": 162
-            },
-            {
-              "rank": 10,
-              "score": 0.60834,
-              "retrieval_path": "Notes/OKF-rag/_slices/napkin/napkin--tend-vault-upkeep.md",
-              "citation_path": "Notes/OKF-rag/napkin.md",
-              "file_i": 466
             }
           ],
           "passage_results": [
@@ -428,45 +428,45 @@
             },
             {
               "rank": 5,
+              "score": 0.640374,
+              "retrieval_path": "Notes/OKF-rag/CONTEXT.md",
+              "citation_path": "Notes/OKF-rag/CONTEXT.md",
+              "file_i": 487
+            },
+            {
+              "rank": 6,
               "score": 0.640056,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/index.md",
               "citation_path": "Notes/OKF-rag/_slices/okf-rag/index.md",
               "file_i": 326
             },
             {
-              "rank": 6,
+              "rank": 7,
               "score": 0.638211,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--proposal-to-truth.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 449
             },
             {
-              "rank": 7,
+              "rank": 8,
               "score": 0.636767,
               "retrieval_path": "Notes/OKF-rag/_slices/okforge/index.md",
               "citation_path": "Notes/OKF-rag/_slices/okforge/index.md",
               "file_i": 474
             },
             {
-              "rank": 8,
+              "rank": 9,
               "score": 0.634849,
               "retrieval_path": "Notes/OKF-rag/_slices/okforge/okforge--initialize-knowledge-base.md",
               "citation_path": "Notes/OKF-rag/okforge.md",
               "file_i": 476
             },
             {
-              "rank": 9,
-              "score": 0.632282,
-              "retrieval_path": "Notes/OKF-rag/uplink.md",
-              "citation_path": "Notes/OKF-rag/uplink.md",
-              "file_i": 168
-            },
-            {
               "rank": 10,
-              "score": 0.631306,
-              "retrieval_path": "Notes/OKF-rag/DECISION-minimalny-przeplyw-wiedzy.md",
-              "citation_path": "Notes/OKF-rag/DECISION-minimalny-przeplyw-wiedzy.md",
-              "file_i": 144
+              "score": 0.632988,
+              "retrieval_path": "Notes/OKF-rag/EXPERIMENT-benchmark-scope-2026-10-25.md",
+              "citation_path": "Notes/OKF-rag/EXPERIMENT-benchmark-scope-2026-10-25.md",
+              "file_i": 489
             }
           ],
           "passage_results": [
@@ -964,17 +964,17 @@
             },
             {
               "rank": 3,
-              "score": 0.686522,
-              "retrieval_path": "Notes/OKF-rag/index.md",
-              "citation_path": "Notes/OKF-rag/index.md",
-              "file_i": 477
-            },
-            {
-              "rank": 4,
               "score": 0.685768,
               "retrieval_path": "Notes/OKF-rag/okforge.md",
               "citation_path": "Notes/OKF-rag/okforge.md",
               "file_i": 160
+            },
+            {
+              "rank": 4,
+              "score": 0.680083,
+              "retrieval_path": "Notes/OKF-rag/index.md",
+              "citation_path": "Notes/OKF-rag/index.md",
+              "file_i": 503
             },
             {
               "rank": 5,
@@ -1013,10 +1013,10 @@
             },
             {
               "rank": 10,
-              "score": 0.652964,
-              "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--proposal-to-truth.md",
-              "citation_path": "Notes/OKF-rag/okf-rag.md",
-              "file_i": 449
+              "score": 0.654538,
+              "retrieval_path": "Notes/OKF-rag/CONTEXT.md",
+              "citation_path": "Notes/OKF-rag/CONTEXT.md",
+              "file_i": 487
             }
           ],
           "passage_results": [
@@ -1239,17 +1239,17 @@
             },
             {
               "rank": 3,
-              "score": 0.710679,
-              "retrieval_path": "Notes/OKF-rag/index.md",
-              "citation_path": "Notes/OKF-rag/index.md",
-              "file_i": 477
-            },
-            {
-              "rank": 4,
               "score": 0.707518,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/index.md",
               "citation_path": "Notes/OKF-rag/_slices/okf-rag/index.md",
               "file_i": 326
+            },
+            {
+              "rank": 4,
+              "score": 0.706203,
+              "retrieval_path": "Notes/OKF-rag/index.md",
+              "citation_path": "Notes/OKF-rag/index.md",
+              "file_i": 503
             },
             {
               "rank": 5,
@@ -1336,12 +1336,12 @@
               "citation_path": "Notes/OKF-rag/index.md",
               "file_i": 816,
               "citation_lines": [
-                11,
-                24
+                12,
+                25
               ],
               "retrieval_lines": [
-                11,
-                24
+                12,
+                25
               ],
               "key": "Notes/OKF-rag/index.md#Untyped",
               "source_hash_matches": true
@@ -1404,12 +1404,12 @@
               "citation_path": "Notes/OKF-rag/index.md",
               "file_i": 2501,
               "citation_lines": [
-                58,
-                63
+                59,
+                64
               ],
               "retrieval_lines": [
-                58,
-                63
+                59,
+                64
               ],
               "key": "Notes/OKF-rag/index.md#Okforge source slices",
               "source_hash_matches": true
@@ -1824,24 +1824,24 @@
             },
             {
               "rank": 8,
+              "score": 0.591745,
+              "retrieval_path": "Notes/OKF-rag/EXPERIMENT-benchmark-scope-2026-10-25.md",
+              "citation_path": "Notes/OKF-rag/EXPERIMENT-benchmark-scope-2026-10-25.md",
+              "file_i": 489
+            },
+            {
+              "rank": 9,
               "score": 0.589526,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--extraction-findings.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 452
             },
             {
-              "rank": 9,
+              "rank": 10,
               "score": 0.588128,
               "retrieval_path": "Notes/OKF-rag/DECISION-kontrakt-odpowiedzi-retrieval.md",
               "citation_path": "Notes/OKF-rag/DECISION-kontrakt-odpowiedzi-retrieval.md",
               "file_i": 143
-            },
-            {
-              "rank": 10,
-              "score": 0.58404,
-              "retrieval_path": "Notes/OKF-rag/_slices/okforge/okforge--recompile.md",
-              "citation_path": "Notes/OKF-rag/okforge.md",
-              "file_i": 475
             }
           ],
           "passage_results": [
@@ -2379,10 +2379,10 @@
             },
             {
               "rank": 10,
-              "score": 0.625703,
-              "retrieval_path": "Notes/OKF-rag/index.md",
-              "citation_path": "Notes/OKF-rag/index.md",
-              "file_i": 477
+              "score": 0.626443,
+              "retrieval_path": "Notes/OKF-rag/EXPERIMENT-benchmark-scope-2026-10-25.md",
+              "citation_path": "Notes/OKF-rag/EXPERIMENT-benchmark-scope-2026-10-25.md",
+              "file_i": 489
             }
           ],
           "passage_results": [
@@ -2619,17 +2619,17 @@
             },
             {
               "rank": 5,
-              "score": 0.611681,
-              "retrieval_path": "Notes/OKF-rag/index.md",
-              "citation_path": "Notes/OKF-rag/index.md",
-              "file_i": 477
-            },
-            {
-              "rank": 6,
               "score": 0.611464,
               "retrieval_path": "Notes/OKF-rag/EXPERIMENT-retrieval-raw-only-2026-10-25.md",
               "citation_path": "Notes/OKF-rag/EXPERIMENT-retrieval-raw-only-2026-10-25.md",
               "file_i": 150
+            },
+            {
+              "rank": 6,
+              "score": 0.610242,
+              "retrieval_path": "Notes/OKF-rag/index.md",
+              "citation_path": "Notes/OKF-rag/index.md",
+              "file_i": 503
             },
             {
               "rank": 7,
@@ -2730,12 +2730,12 @@
               "citation_path": "Notes/OKF-rag/index.md",
               "file_i": 844,
               "citation_lines": [
-                42,
-                50
+                43,
+                51
               ],
               "retrieval_lines": [
-                42,
-                50
+                43,
+                51
               ],
               "key": "Notes/OKF-rag/index.md#Generated source slices",
               "source_hash_matches": true
@@ -3417,10 +3417,10 @@
             },
             {
               "rank": 2,
-              "score": 0.658102,
+              "score": 0.654455,
               "retrieval_path": "Notes/OKF-rag/index.md",
               "citation_path": "Notes/OKF-rag/index.md",
-              "file_i": 477
+              "file_i": 503
             },
             {
               "rank": 3,
@@ -3720,10 +3720,10 @@
             },
             {
               "rank": 6,
-              "score": 0.590833,
+              "score": 0.582227,
               "retrieval_path": "Notes/OKF-rag/index.md",
               "citation_path": "Notes/OKF-rag/index.md",
-              "file_i": 477
+              "file_i": 503
             },
             {
               "rank": 7,
@@ -3989,10 +3989,10 @@
             },
             {
               "rank": 6,
-              "score": 0.604902,
+              "score": 0.604339,
               "retrieval_path": "Notes/OKF-rag/index.md",
               "citation_path": "Notes/OKF-rag/index.md",
-              "file_i": 477
+              "file_i": 503
             },
             {
               "rank": 7,
@@ -4111,6 +4111,23 @@
             },
             {
               "rank": 6,
+              "score": 0.780632,
+              "retrieval_path": "Notes/OKF-rag/EXPERIMENT-benchmark-scope-2026-10-25.md",
+              "citation_path": "Notes/OKF-rag/EXPERIMENT-benchmark-scope-2026-10-25.md",
+              "file_i": 2550,
+              "citation_lines": [
+                64,
+                80
+              ],
+              "retrieval_lines": [
+                64,
+                80
+              ],
+              "key": "Notes/OKF-rag/EXPERIMENT-benchmark-scope-2026-10-25.md#Przypadek adwersaryjny (zapisany przed przebiegiem)#{1}",
+              "source_hash_matches": true
+            },
+            {
+              "rank": 7,
               "score": 0.777846,
               "retrieval_path": "Notes/OKF-rag/_slices/napkin/napkin--tend-vault-upkeep.md",
               "citation_path": "Notes/OKF-rag/napkin.md",
@@ -4127,7 +4144,7 @@
               "source_hash_matches": true
             },
             {
-              "rank": 7,
+              "rank": 8,
               "score": 0.77532,
               "retrieval_path": "Notes/OKF-rag/_slices/napkin/napkin--tend-vault-upkeep.md",
               "citation_path": "Notes/OKF-rag/napkin.md",
@@ -4141,7 +4158,7 @@
               "source_hash_matches": true
             },
             {
-              "rank": 8,
+              "rank": 9,
               "score": 0.769478,
               "retrieval_path": "Notes/OKF-rag/_slices/napkin/napkin--distill-conversation-to-vault.md",
               "citation_path": "Notes/OKF-rag/napkin.md",
@@ -4158,7 +4175,7 @@
               "source_hash_matches": true
             },
             {
-              "rank": 9,
+              "rank": 10,
               "score": 0.76063,
               "retrieval_path": "Notes/OKF-rag/_slices/napkin/napkin--tend-vault-upkeep.md",
               "citation_path": "Notes/OKF-rag/napkin.md",
@@ -4169,23 +4186,6 @@
                 107
               ],
               "key": "Notes/OKF-rag/_slices/napkin/napkin--tend-vault-upkeep.md#Tend — Vault Upkeep#Provenance",
-              "source_hash_matches": true
-            },
-            {
-              "rank": 10,
-              "score": 0.744798,
-              "retrieval_path": "Notes/OKF-rag/_slices/napkin/napkin--distill-conversation-to-vault.md",
-              "citation_path": "Notes/OKF-rag/napkin.md",
-              "file_i": 2439,
-              "citation_lines": [
-                3776,
-                3781
-              ],
-              "retrieval_lines": [
-                21,
-                26
-              ],
-              "key": "Notes/OKF-rag/_slices/napkin/napkin--distill-conversation-to-vault.md#Distill — Conversation to Vault#{1}",
               "source_hash_matches": true
             }
           ]
@@ -5577,12 +5577,12 @@
     "raw_only": {
       "candidate_counts": {
         "sources": {
-          "curated_filtered": 15,
-          "rankable": 22
+          "curated_filtered": 16,
+          "rankable": 23
         },
         "passages": {
-          "curated_filtered": 127,
-          "rankable": 247
+          "curated_filtered": 138,
+          "rankable": 249
         }
       },
       "metrics": {
@@ -5953,45 +5953,45 @@
             },
             {
               "rank": 5,
+              "score": 0.640374,
+              "retrieval_path": "Notes/OKF-rag/CONTEXT.md",
+              "citation_path": "Notes/OKF-rag/CONTEXT.md",
+              "file_i": 487
+            },
+            {
+              "rank": 6,
               "score": 0.638211,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--proposal-to-truth.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 449
             },
             {
-              "rank": 6,
+              "rank": 7,
               "score": 0.634849,
               "retrieval_path": "Notes/OKF-rag/_slices/okforge/okforge--initialize-knowledge-base.md",
               "citation_path": "Notes/OKF-rag/okforge.md",
               "file_i": 476
             },
             {
-              "rank": 7,
+              "rank": 8,
               "score": 0.632282,
               "retrieval_path": "Notes/OKF-rag/uplink.md",
               "citation_path": "Notes/OKF-rag/uplink.md",
               "file_i": 168
             },
             {
-              "rank": 8,
+              "rank": 9,
               "score": 0.630739,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--pipeline-state.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 340
             },
             {
-              "rank": 9,
+              "rank": 10,
               "score": 0.630173,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--benchmark-metrics.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 328
-            },
-            {
-              "rank": 10,
-              "score": 0.62611,
-              "retrieval_path": "Notes/OKF-rag/open-knowledge-format.md",
-              "citation_path": "Notes/OKF-rag/open-knowledge-format.md",
-              "file_i": 162
             }
           ],
           "passage_results": [
@@ -6517,31 +6517,31 @@
             },
             {
               "rank": 7,
+              "score": 0.654538,
+              "retrieval_path": "Notes/OKF-rag/CONTEXT.md",
+              "citation_path": "Notes/OKF-rag/CONTEXT.md",
+              "file_i": 487
+            },
+            {
+              "rank": 8,
               "score": 0.652964,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--proposal-to-truth.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 449
             },
             {
-              "rank": 8,
+              "rank": 9,
               "score": 0.651215,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--end-to-end-flow.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 451
             },
             {
-              "rank": 9,
+              "rank": 10,
               "score": 0.650013,
               "retrieval_path": "Notes/OKF-rag/kosha.md",
               "citation_path": "Notes/OKF-rag/kosha.md",
               "file_i": 154
-            },
-            {
-              "rank": 10,
-              "score": 0.649886,
-              "retrieval_path": "Notes/OKF-rag/ontoship.md",
-              "citation_path": "Notes/OKF-rag/ontoship.md",
-              "file_i": 161
             }
           ],
           "passage_results": [
@@ -7848,66 +7848,66 @@
             },
             {
               "rank": 2,
+              "score": 0.623267,
+              "retrieval_path": "Notes/OKF-rag/CONTEXT.md",
+              "citation_path": "Notes/OKF-rag/CONTEXT.md",
+              "file_i": 487
+            },
+            {
+              "rank": 3,
               "score": 0.607954,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--end-to-end-flow.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 451
             },
             {
-              "rank": 3,
+              "rank": 4,
               "score": 0.606515,
               "retrieval_path": "Notes/OKF-rag/knowledge-catalog.md",
               "citation_path": "Notes/OKF-rag/knowledge-catalog.md",
               "file_i": 153
             },
             {
-              "rank": 4,
+              "rank": 5,
               "score": 0.60342,
               "retrieval_path": "Notes/OKF-rag/okf-rag.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 159
             },
             {
-              "rank": 5,
+              "rank": 6,
               "score": 0.603136,
               "retrieval_path": "Notes/OKF-rag/kosha.md",
               "citation_path": "Notes/OKF-rag/kosha.md",
               "file_i": 154
             },
             {
-              "rank": 6,
+              "rank": 7,
               "score": 0.599181,
               "retrieval_path": "Notes/OKF-rag/open-knowledge-format.md",
               "citation_path": "Notes/OKF-rag/open-knowledge-format.md",
               "file_i": 162
             },
             {
-              "rank": 7,
+              "rank": 8,
               "score": 0.580198,
               "retrieval_path": "Notes/OKF-rag/_slices/napkin/napkin--agent-memory-progressive-disclosure.md",
               "citation_path": "Notes/OKF-rag/napkin.md",
               "file_i": 467
             },
             {
-              "rank": 8,
+              "rank": 9,
               "score": 0.57873,
               "retrieval_path": "Notes/OKF-rag/okforge.md",
               "citation_path": "Notes/OKF-rag/okforge.md",
               "file_i": 160
             },
             {
-              "rank": 9,
+              "rank": 10,
               "score": 0.578365,
               "retrieval_path": "Notes/OKF-rag/uplink.md",
               "citation_path": "Notes/OKF-rag/uplink.md",
               "file_i": 168
-            },
-            {
-              "rank": 10,
-              "score": 0.575652,
-              "retrieval_path": "Notes/OKF-rag/SPEC.md",
-              "citation_path": "Notes/OKF-rag/SPEC.md",
-              "file_i": 163
             }
           ],
           "passage_results": [
@@ -8015,6 +8015,23 @@
             },
             {
               "rank": 7,
+              "score": 0.69189,
+              "retrieval_path": "Notes/OKF-rag/CONTEXT.md",
+              "citation_path": "Notes/OKF-rag/CONTEXT.md",
+              "file_i": 2538,
+              "citation_lines": [
+                10,
+                15
+              ],
+              "retrieval_lines": [
+                10,
+                15
+              ],
+              "key": "Notes/OKF-rag/CONTEXT.md#Notes/OKF-rag — CONTEXT.md#{1}",
+              "source_hash_matches": true
+            },
+            {
+              "rank": 8,
               "score": 0.670972,
               "retrieval_path": "Notes/OKF-rag/ontoship.md",
               "citation_path": "Notes/OKF-rag/ontoship.md",
@@ -8031,7 +8048,7 @@
               "source_hash_matches": true
             },
             {
-              "rank": 8,
+              "rank": 9,
               "score": 0.666696,
               "retrieval_path": "Notes/OKF-rag/SPEC.md",
               "citation_path": "Notes/OKF-rag/SPEC.md",
@@ -8048,7 +8065,7 @@
               "source_hash_matches": true
             },
             {
-              "rank": 9,
+              "rank": 10,
               "score": 0.663827,
               "retrieval_path": "Notes/OKF-rag/ontoship.md",
               "citation_path": "Notes/OKF-rag/ontoship.md",
@@ -8062,23 +8079,6 @@
                 366
               ],
               "key": "Notes/OKF-rag/ontoship.md#kbbench — retrieval benchmark for markdown KBs#QA set#{1}",
-              "source_hash_matches": true
-            },
-            {
-              "rank": 10,
-              "score": 0.662349,
-              "retrieval_path": "Notes/OKF-rag/ontoship.md",
-              "citation_path": "Notes/OKF-rag/ontoship.md",
-              "file_i": 886,
-              "citation_lines": [
-                1091,
-                1098
-              ],
-              "retrieval_lines": [
-                1091,
-                1098
-              ],
-              "key": "Notes/OKF-rag/ontoship.md#Decision: OKF-compatible frontmatter + a benchmark for search#Caveats",
               "source_hash_matches": true
             }
           ]
@@ -8158,31 +8158,31 @@
             },
             {
               "rank": 7,
+              "score": 0.589285,
+              "retrieval_path": "Notes/OKF-rag/CONTEXT.md",
+              "citation_path": "Notes/OKF-rag/CONTEXT.md",
+              "file_i": 487
+            },
+            {
+              "rank": 8,
               "score": 0.588791,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--proposal-to-truth.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 449
             },
             {
-              "rank": 8,
+              "rank": 9,
               "score": 0.588173,
               "retrieval_path": "Notes/OKF-rag/SPEC.md",
               "citation_path": "Notes/OKF-rag/SPEC.md",
               "file_i": 163
             },
             {
-              "rank": 9,
+              "rank": 10,
               "score": 0.587414,
               "retrieval_path": "Notes/OKF-rag/_slices/okforge/okforge--recompile.md",
               "citation_path": "Notes/OKF-rag/okforge.md",
               "file_i": 475
-            },
-            {
-              "rank": 10,
-              "score": 0.585913,
-              "retrieval_path": "Notes/OKF-rag/knowledge-catalog.md",
-              "citation_path": "Notes/OKF-rag/knowledge-catalog.md",
-              "file_i": 153
             }
           ],
           "passage_results": [
@@ -9266,17 +9266,17 @@
             },
             {
               "rank": 9,
+              "score": 0.555107,
+              "retrieval_path": "Notes/OKF-rag/CONTEXT.md",
+              "citation_path": "Notes/OKF-rag/CONTEXT.md",
+              "file_i": 487
+            },
+            {
+              "rank": 10,
               "score": 0.555079,
               "retrieval_path": "Notes/OKF-rag/_slices/okforge/okforge--initialize-knowledge-base.md",
               "citation_path": "Notes/OKF-rag/okforge.md",
               "file_i": 476
-            },
-            {
-              "rank": 10,
-              "score": 0.55324,
-              "retrieval_path": "Notes/OKF-rag/lore.md",
-              "citation_path": "Notes/OKF-rag/lore.md",
-              "file_i": 156
             }
           ],
           "passage_results": [
@@ -10554,45 +10554,45 @@
             },
             {
               "rank": 5,
+              "score": 0.611801,
+              "retrieval_path": "Notes/OKF-rag/CONTEXT.md",
+              "citation_path": "Notes/OKF-rag/CONTEXT.md",
+              "file_i": 487
+            },
+            {
+              "rank": 6,
               "score": 0.599222,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--end-to-end-flow.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 451
             },
             {
-              "rank": 6,
+              "rank": 7,
               "score": 0.594591,
               "retrieval_path": "Notes/OKF-rag/okforge.md",
               "citation_path": "Notes/OKF-rag/okforge.md",
               "file_i": 160
             },
             {
-              "rank": 7,
+              "rank": 8,
               "score": 0.592683,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--extraction-findings.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 452
             },
             {
-              "rank": 8,
+              "rank": 9,
               "score": 0.592176,
               "retrieval_path": "Notes/OKF-rag/_slices/okf-rag/okf-rag--proposal-to-truth.md",
               "citation_path": "Notes/OKF-rag/okf-rag.md",
               "file_i": 449
             },
             {
-              "rank": 9,
+              "rank": 10,
               "score": 0.59167,
               "retrieval_path": "Notes/OKF-rag/knowledge-catalog.md",
               "citation_path": "Notes/OKF-rag/knowledge-catalog.md",
               "file_i": 153
-            },
-            {
-              "rank": 10,
-              "score": 0.589994,
-              "retrieval_path": "Notes/OKF-rag/_slices/napkin/napkin--agent-memory-progressive-disclosure.md",
-              "citation_path": "Notes/OKF-rag/napkin.md",
-              "file_i": 467
             }
           ],
           "passage_results": [
