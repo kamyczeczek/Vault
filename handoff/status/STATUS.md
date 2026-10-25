@@ -94,13 +94,13 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | --- | --- | --- | --- |
 | `vault-root-flatten-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `smart-connections-cache-exclusions-2026-10-25` | 2026-10-25 | mateusz | codex |
+| `research-engine-protocol-2026-10-25` | 2026-10-25 | codex | codex |
 | `okf-rag-scope-and-gate-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `okf-rag-corpus-pin-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `okf-rag-benchmark-rerun-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `okf-rag-benchmark-local-2026-10-25` | 2026-10-25 | codex | codex |
 | `notes-txt-to-md-2026-10-25` | 2026-10-25 | mateusz | codex |
 | `mcp-smart-connections-v4-2026-10-25` | 2026-10-25 | mateusz | codex |
-| `close-py-pathspec-renames-2026-10-25` | 2026-10-25 | mateusz | codex |
 | `vault-single-repo-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `vault-repo-rel-paths-2026-10-24` | 2026-10-24 | mateusz | opencode |
 | `vault-migrated-2026-10-24` | 2026-10-24 | mateusz | opencode |

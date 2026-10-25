@@ -3,7 +3,7 @@ flag: smart-connections-cache-exclusions-2026-10-25
 since: 2026-10-25
 owner: mateusz
 agent: codex
-model: gpt-5
+model: openai/gpt-5
 origin: user-requested Smart Connections startup fix
 ---
 

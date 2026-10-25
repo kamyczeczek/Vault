@@ -4,7 +4,7 @@ flag: mcp-smart-connections-v4-2026-10-25
 since: 2026-10-25
 owner: mateusz
 agent: codex
-model: gpt-5
+model: openai/gpt-5
 title: mcp-smart-connections-v4-2026-10-25
 generated: { by: okf-enforcer/0.6, at: 2026-10-24T23:45:44Z }
 ---
