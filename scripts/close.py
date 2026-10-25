@@ -63,6 +63,7 @@ from __future__ import annotations
 
 import argparse
 import datetime
+import os
 import re
 import sqlite3
 import subprocess
@@ -425,27 +426,43 @@ def load_body(a: argparse.Namespace) -> str | None:
 def find_strays(root: Path, allowed: set[str]) -> list[str]:
     """Tracked worktree modifications outside the declared close set.
 
-    `git status --short` prints paths relative to the REPO root, not to `root`
-    (ADR-006: `root` is a subfolder of the repo). `repo_rel()` maps them back;
-    a path outside `root` is a vault-level change and not this close's business.
+    `git status --short -z` prints paths relative to the REPO root, not to
+    `root` (ADR-006: `root` is a subfolder of the repo). Rename/copy records
+    carry the destination path first and the source path as the next NUL field;
+    `repo_rel()` maps the destination back to `root`.
     An `allowed` entry that names a directory allows everything under it, so
     `--include some/dir` covers the files it holds.
     """
     prefix = repo_prefix(root)
-    p = subprocess.run(["git", "status", "--short"],
-                       capture_output=True, text=True, cwd=str(root))
+    p = subprocess.run(["git", "status", "--short", "-z"],
+                       capture_output=True, cwd=str(root))
     strays: list[str] = []
-    for line in p.stdout.splitlines():
-        if not line.strip() or line.startswith("??"):
+    entries = p.stdout.split(b"\0")
+    i = 0
+    while i < len(entries):
+        record = entries[i]
+        i += 1
+        if len(record) < 3:
             continue
-        rel = repo_rel(line[3:], prefix)
+        status = record[:2].decode("ascii", errors="replace")
+        path = os.fsdecode(record[3:])
+        old_path = None
+        if "R" in status or "C" in status:
+            if i >= len(entries):
+                break
+            old_path = os.fsdecode(entries[i])
+            i += 1
+        if status == "??":
+            continue
+        rel = repo_rel(path, prefix)
         if rel is None:
             continue
         if "." in allowed:  # `--include .`: the whole workspace is the change
             continue
         if rel in allowed or any(rel.startswith(a.rstrip("/") + "/") for a in allowed):
             continue
-        strays.append(line)
+        strays.append(f"{status} {old_path} -> {path}" if old_path is not None
+                      else f"{status} {path}")
     return strays
 
 
@@ -471,7 +488,8 @@ def _is_staged_deletion(path: str) -> bool:
     """
     rel = Path(path).as_posix()
     r = subprocess.run(
-        ["git", "diff", "--cached", "--name-only", "--diff-filter=D", "--", rel],
+        ["git", "--literal-pathspecs", "diff", "--cached", "--name-only",
+         "--diff-filter=D", "--", rel],
         cwd=ROOT,
         capture_output=True,
         text=True,
@@ -481,7 +499,54 @@ def _is_staged_deletion(path: str) -> bool:
         return False
     prefix = repo_prefix(ROOT)
     staged = {repo_rel(line, prefix) for line in r.stdout.splitlines() if line.strip()}
-    return rel in staged
+    return (rel in staged or
+            any(path is not None and path.startswith(rel.rstrip("/") + "/")
+                for path in staged))
+
+
+def _tracked_paths(path: str) -> list[str]:
+    """Tracked index paths matched by an include, including deleted paths."""
+    r = subprocess.run(
+        ["git", "--literal-pathspecs", "ls-files", "-z", "--", path],
+        cwd=ROOT,
+        capture_output=True,
+        check=False,
+    )
+    if r.returncode != 0:
+        return []
+    return [os.fsdecode(item) for item in r.stdout.split(b"\0") if item]
+
+
+def stage_includes(includes: list[str]) -> int | None:
+    """Stage includes that exist normally and expand absent paths from the index.
+
+    Git does not match a removed directory pathspec, even with `-A` or `-u`.
+    Resolve that include to its indexed files and feed those literal paths to
+    `git add -u` through a NUL-delimited pathspec file.
+    """
+    present: list[str] = []
+    missing_tracked: list[str] = []
+    for raw in includes:
+        rel = Path(raw).as_posix()
+        if (ROOT / Path(raw)).exists():
+            present.append(rel)
+        else:
+            missing_tracked.extend(_tracked_paths(rel))
+
+    if present:
+        rc = run("stage", ["git", "add", "--", *dict.fromkeys(present)])
+        if rc is not None:
+            return rc
+    if missing_tracked:
+        cmd = ["git", "--literal-pathspecs", "add", "-u",
+               "--pathspec-from-file=-", "--pathspec-file-nul"]
+        payload = b"".join(os.fsencode(path) + b"\0"
+                           for path in dict.fromkeys(missing_tracked))
+        p = subprocess.run(cmd, input=payload, capture_output=True, cwd=str(ROOT))
+        if p.returncode != 0:
+            output = (p.stdout + p.stderr).decode(errors="replace")
+            return fail("stage", format_failure("stage", cmd, p.returncode, output))
+    return None
 
 
 def _validate_correction_target(a: argparse.Namespace, flag_path: Path,
@@ -695,13 +760,11 @@ def main() -> int:
                     "uncommitted tracked work outside this close:\n"
                     + "\n".join(f"  {s}" for s in strays[:10]) + "\n"
                     "commit or stash it first, or pass it via --include")
-    add = [flag_path.relative_to(ROOT).as_posix(),
-           *GENERATED_VIEWS]
-    for i in a.include:
-        rel_i = Path(i).as_posix()
-        if not _is_staged_deletion(rel_i):
-            add.append(rel_i)
+    add = [flag_path.relative_to(ROOT).as_posix(), *GENERATED_VIEWS]
     rc = run("stage", ["git", "add", "--", *add])
+    if rc is not None:
+        return rc
+    rc = stage_includes(a.include)
     if rc is not None:
         return rc
 

@@ -16,6 +16,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import close as c  # noqa: E402
 
 
+def _init_git_repo(root: Path) -> None:
+    subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+    subprocess.run(["git", "config", "user.email", "t@example.com"], cwd=root, check=True)
+    subprocess.run(["git", "config", "user.name", "t"], cwd=root, check=True)
+
+
+def _commit_all(root: Path, message: str) -> None:
+    subprocess.run(["git", "add", "-A"], cwd=root, check=True)
+    subprocess.run(["git", "commit", "-qm", message], cwd=root, check=True)
+
+
 class CloseTests(unittest.TestCase):
     def test_flag_rx_accepts_ids(self):
         for ok in ("abc", "a1-b2_c3", "0x"):
@@ -332,6 +343,66 @@ class CheckIncludesGitRmTests(unittest.TestCase):
 
             with mock.patch.object(c, "ROOT", root):
                 self.assertIsNone(c.check_includes(["victim.txt"]))
+
+
+class DeletedDirectoryIncludeTests(unittest.TestCase):
+    def test_removed_directory_stages_only_its_tracked_files(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _init_git_repo(root)
+            (root / "gone" / "nested").mkdir(parents=True)
+            (root / "gone" / "a.txt").write_text("a", encoding="utf-8")
+            (root / "gone" / "nested" / "b.txt").write_text("b", encoding="utf-8")
+            (root / "keep.txt").write_text("before", encoding="utf-8")
+            _commit_all(root, "seed")
+
+            shutil.rmtree(root / "gone")
+            (root / "keep.txt").write_text("after", encoding="utf-8")
+            with mock.patch.object(c, "ROOT", root):
+                self.assertIsNone(c.check_includes(["gone"]))
+                self.assertIsNone(c.stage_includes(["gone"]))
+
+            staged = subprocess.run(
+                ["git", "diff", "--cached", "--name-only"], cwd=root,
+                capture_output=True, text=True, check=True).stdout.splitlines()
+            unstaged = subprocess.run(
+                ["git", "diff", "--name-only"], cwd=root,
+                capture_output=True, text=True, check=True).stdout.splitlines()
+            self.assertEqual(set(staged), {"gone/a.txt", "gone/nested/b.txt"})
+            self.assertEqual(unstaged, ["keep.txt"])
+
+    def test_staged_removed_directory_is_a_valid_include(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _init_git_repo(root)
+            (root / "gone").mkdir()
+            (root / "gone" / "a.txt").write_text("a", encoding="utf-8")
+            _commit_all(root, "seed")
+            subprocess.run(["git", "rm", "-qr", "gone"], cwd=root, check=True)
+
+            with mock.patch.object(c, "ROOT", root):
+                self.assertIsNone(c.check_includes(["gone"]))
+                self.assertIsNone(c.stage_includes(["gone"]))
+
+
+class FindStraysRenameTests(unittest.TestCase):
+    def test_staged_rename_to_included_directory_is_not_a_stray(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _init_git_repo(root)
+            old = root / "root_workspace" / "handoff" / "note.md"
+            old.parent.mkdir(parents=True)
+            old.write_text("same content\n", encoding="utf-8")
+            _commit_all(root, "seed")
+            new = root / "handoff" / "note.md"
+            new.parent.mkdir(parents=True)
+            subprocess.run(
+                ["git", "mv", "root_workspace/handoff/note.md", "handoff/note.md"],
+                cwd=root, check=True)
+
+            self.assertEqual(c.find_strays(root, {"elsewhere"}), [
+                "R  root_workspace/handoff/note.md -> handoff/note.md"])
+            self.assertEqual(c.find_strays(root, {"handoff"}), [])
 
 
 if __name__ == "__main__":

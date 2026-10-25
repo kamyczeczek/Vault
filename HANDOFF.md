@@ -29,9 +29,6 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
-<!-- handoff/flags/workspace-gate-repair-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
-`workspace-gate-repair-2026-10-25` — 2026-10-25: repaired root gate data after the Notes extension migration: restored `.opencode/agents/answerpilot.md`, removed the stale `handoff/state_description/` route from `CLAUDE.md`, moved the unexpected `Welcome.md` and `test.md` to the Recycle Bin, rebuilt `handoff/status/STATUS.md`, and rebuilt the seven stale project `MAP.md` views. Next step: run the final gates and commit the complete change set.
-
 <!-- handoff/flags/vault-root-flatten-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `vault-root-flatten-2026-10-25` — 2026-10-25: zawartość `root_workspace/` była
 już przeniesiona do korzenia repo **na dysku**, ale nie w indeksie: HEAD trzymał
@@ -208,6 +205,14 @@ cache modelu. Rejestracja jest poprawna (`codex mcp get`), a tarball uruchamia
 się bez błędu `spawn EPERM`; bieżący proces rozmowy nadal nie ma załadowanych
 narzędzi Smart Connections. Po ponownym restarcie Codexa trzeba potwierdzić
 `index_status` i wykonać wyszukiwanie; pierwszy start wymaga pobrania modelu.
+
+<!-- handoff/flags/close-py-pathspec-renames-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-6 -->
+`close-py-pathspec-renames-2026-10-25` — 2026-10-25: wypchnięto 10 commitów cleanupu; `origin/master` doszedł do `62137c3`.
+Naprawiono `scripts/close.py`: brakujące include rozwija do śledzonych ścieżek z indeksu i stage'uje bez rozszerzania zakresu; status NUL parsuje rename/copy jako osobne ścieżki.
+Dodano regresje dla usuniętego katalogu, staged deletion katalogu i rename'u. `python.exe scripts/test_close.py` — 39 testów OK. `SCARS.md` dostał regułę S70.
+Retired flagę `workspace-gate-repair-2026-10-25`, której następny krok (commit zmian) był już wykonany.
+Next: odświeżyć review research-engine na aktualnym drzewie, potem wdrożyć kierunek A — protokół ewaluacji.
+not checked: nie zmieniano research-engine; nie uruchomiono ani nie oceniano jego benchmarku.
 
 <!-- handoff/flags/vault-single-repo-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `vault-single-repo-2026-10-24` — 2026-10-24: rozstrzygnięty spór o root vaulta. `Desktop\vault` jest jedynym vaultem i jedynym repo; `root_workspace` staje się podfolderem bez własnego `.git`. Cztery wpisy (`.git`, `.obsidian`, `.smart-env`, `Notes`) są vault-owned i bramka egzekwuje dla nich XOR między `ROOT` i `VAULT`. `Notes/` będzie trackowane w prywatnym repo (`kamyczeczek/vault`), `.smart-env/` odtwarzane od nowa, zagnieżdżony `.gitignore` zostaje. Historia: `59faa7d` przyjęty jako baseline, `697b9e3` tagowany jako `archival-697b9e3` **przed** bundle'em. Decyzje: `brain/decisions/ADR-006-single-vault-single-repo.md`, `ADR-007-git-baseline-and-remote.md`. Kolejne kroki: gate XOR (osobny commit), `_repo_rel()` w `scripts/` przed migracją, migracja jako ostatni commit, `gh repo create --push`.
