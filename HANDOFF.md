@@ -106,11 +106,10 @@ not checked: nie zmierzono przebiegu ze scope (brak trybu `scoped`); nie
 zmigrowano frontmattera żadnej notatki; gate cytowań nie istnieje; skill
 `retrieval-two-stage` nie istnieje; Q02 i Q20 nadal bez `exact`/`related`.
 
-<!-- handoff/flags/okf-rag-corpus-pin-2026-10-25.md · owner: opencode · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
+<!-- handoff/flags/okf-rag-corpus-pin-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `okf-rag-corpus-pin-2026-10-25` — 2026-10-25: historia jest **liniowa, bez
 rozjazdu** — `e356f08` jest dzieckiem `eeba3fc` (nie dwoma równoległymi
-domknięciami); `master` wyprzedza `origin/master` o 3 commity, merge nie jest
-potrzebny. Naprawiono przyczynę „rozgrzebanego repo": `edba1b8`
+domknięciami). Naprawiono przyczynę „rozgrzebanego repo": `edba1b8`
 („vault-migrated") usunął **111 plików `scripts/`**, czego message nie
 wspominał, więc HEAD śledził 5 plików przy 98 na dysku — bramki
 (`check_workspace_integrity.py`) i harness (`run_okf_rag_benchmark.py`) były
@@ -121,27 +120,31 @@ do repo `CONTEXT.md` i `EXPERIMENT-benchmark-scope` oraz rozstrzygnął pusty
 samym indeksem folderu Obsidiana). `84ba387` przeniósł pin korpusu z dysku na
 drzewo git: `corpus_paths()`/`corpus_blobs()` liczą z `git ls-tree` +
 `cat-file --batch`, a `corpus_drift()` odmawia przebiegu, gdy korpus roboczy
-różni się od HEAD (retrieval czyta `.smart-env`, czyli drzewo robocze).
-Pin `2f0491bd` **nie odpowiadał żadnemu commitowi** (drzewo HEAD: `d4c2db0d`,
-dysk: `56774761`), więc `benchmark-results-20.json` mierzył korpus
-nieodtwarzalny z repo — nie jest ważną bazą porównawczą. Ten wpis koryguje
-`okf-rag-benchmark-local-2026-10-25` w części „utrwalono hash korpusu": hash
-był utrwalony, ale nie opisywał żadnego stanu repo. Nowy pin:
-`85038826`, 40 plików, `corpus_drift=0`; sprawdzone, że nieśledzona notatka
-nie zmienia pinu, tylko zgłasza drift. Next: dodać tryb `scoped` do
-`run_okf_rag_benchmark.py` (bez niego reguła scope jest niemierzalna), potem
-jeden przebieg 20 pytań jako nowa baza.
+różni się od HEAD. Pin `2f0491bd` **nie odpowiadał żadnemu commitowi** (drzewo
+HEAD: `d4c2db0d`, dysk: `56774761`), więc `benchmark-results-20.json` mierzył
+korpus nieodtwarzalny z repo. Nowy pin: `85038826`, 40 plików,
+`corpus_drift=0`.
 
-not checked: nie uruchomiono benchmarku 20 pytań (wymaga Obsidiana i
-Smart Connections) — nowy pin jest nieprzetestowany na przebiegu; tryb
-`scoped` nadal nie istnieje; 5 notatek nie zmigrowano do
+**Korekta 2026-10-25 (commit `okf-rag-benchmark-rerun`):** przebieg 20 pytań
+pod nowym pinem **został wykonany** — nie było to „nieprzetestowane". Wynik:
+wszystkie metryki identyczne jak w `e356f08` (`exact@10` 10/20,
+`any_exact_or_related@10` 18/20, `source_recall@10` 19/20, OOC01 abstain),
+mimo przebudowanego indeksu wektorowego. Czyli liczby baseline'u były poprawne,
+a nieodtwarzalna była tylko ich proweniencja — i ta jest już naprawiona.
+Next: dodać tryb `scoped` do `run_okf_rag_benchmark.py` (bez niego
+`EXPERIMENT-benchmark-scope` pozostaje `blocked_on`), potem commit 2 (migracja
+5 notatek do `sources: [{file, lines}]`).
+
+not checked: tryb `scoped` nadal nie istnieje; 5 notatek nie zmigrowano do
 `sources: [{file, lines}]`; gate cytowań i skill `retrieval-two-stage` nie
-istnieją; Q02 i Q20 nadal bez ręcznego przeglądu. `CONTEXT.md` jest słownikiem
-warstwy nawigacji, ale `CURATED_PREFIXES` go nie obejmuje, więc `raw_only`
-traktuje go jako materiał surowy — otwarta decyzja, świadomie nierozstrzygnięta
-w tym commicie. Proces: `SCARS.md` przeczytany **po** pierwszej edycji
-`scripts/**` (wymóg z `handoff/CONTEXT.md`), oraz jedno użycie `python -c` na
-starcie wbrew scarowi o Windows tooling — oba bez skutku, ale powtarzalne.
+istnieją; Q02 i Q20 nadal bez ręcznego przeglądu; 10 passage'ów `related` bez
+adnotacji „zawiera zdanie odpowiedzi: tak/nie"; determinizm przebiegu nie
+sprawdzony (jeden przebieg). `CONTEXT.md` jest słownikiem warstwy nawigacji,
+ale `CURATED_PREFIXES` go nie obejmuje, więc `raw_only` traktuje go jako
+materiał surowy — otwarta decyzja, świadomie nierozstrzygnięta. Proces:
+`SCARS.md` przeczytany **po** pierwszej edycji `scripts/**`, oraz jedno użycie
+`python -c` na starcie wbrew scarowi o Windows tooling — oba bez skutku, ale
+powtarzalne.
 
 <!-- handoff/flags/okf-rag-benchmark-rerun-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `okf-rag-benchmark-rerun-2026-10-25` — 2026-10-25: `benchmark-results-20.json`
