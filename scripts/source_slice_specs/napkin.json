@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "source": "Notes/OKF-rag/napkin.md",
+  "slices": [
+    {
+      "id": "napkin--distill-conversation-to-vault",
+      "title": "napkin — distill conversation to vault: gate, extract, merge, create, verify",
+      "source_heading": "Distill — Conversation to Vault",
+      "start_heading": "Distill — Conversation to Vault",
+      "end_heading": "Tend — Vault Upkeep",
+      "end_occurrence": 1
+    },
+    {
+      "id": "napkin--tend-vault-upkeep",
+      "title": "napkin — tend vault upkeep: inspect, prioritize, verify",
+      "source_heading": "Tend — Vault Upkeep",
+      "start_heading": "Tend — Vault Upkeep",
+      "end_marker": "If `NAPKIN.md` mentions anything the tending made untrue"
+    },
+    {
+      "id": "napkin--agent-memory-progressive-disclosure",
+      "title": "napkin — agent memory system: progressive disclosure levels 0–3",
+      "source_heading": "Agent Memory System — Progressive Disclosure",
+      "start_heading": "Agent Memory System — Progressive Disclosure",
+      "end_marker": "### Coding Project Template"
+    }
+  ]
+}

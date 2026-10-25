@@ -133,7 +133,52 @@ powtarzalnym missie, gdy znany jest konkretny temat i stabilny zakres źródła.
   okresowej kontroli;
 - indeks Smart Connections jest warstwą pochodną i nie jest źródłem prawdy.
 
+# Follow-up: Napkin Q14–Q16
+
+Wygenerowano trzy deterministyczne slice'y z `napkin.md`: `Distill —
+Conversation to Vault` (3774–3915), `Tend — Vault Upkeep` (3916–3998) oraz
+`Agent Memory System — Progressive Disclosure` (3094–3147). Wszystkie trzy
+mają aktualny `origin_hash` w manifeście i własne wpisy w indeksie `_slices`.
+
+## Metoda
+
+Dla Q14–Q16 użyto trzech wariantów: pytania naturalnego, pytania z nazwą
+Napkin i terminami sekcji oraz dokładnego nagłówka. Wektory zapytań utworzono
+aktywnym modelem Smart Connections `TaylorAI/bge-micro-v2` (384 wymiary), a
+wyniki policzono cosine similarity nad 364 osadzonymi blokami w
+`Notes/OKF-rag`. Ranking plików to najwyższy wynik bloku danego pliku;
+zastosowano `top 10` i próg `min_score=0.55`.
+
+| Q | Wariant i zapytanie | Ranga pliku docelowego | Score |
+|---|---|---:|---:|
+| Q14 | Naturalne: `How do I distill valuable knowledge from an agent conversation into the vault?` | 1 | 0.7733 |
+| Q14 | Nazwane: `Napkin distill conversation to vault: gate, extract knowledge, cluster by topic, merge an existing note or create a new note, then verify.` | 2 | 0.8583 |
+| Q14 | Nagłówek: `Distill — Conversation to Vault` | 1 | 0.7834 |
+| Q15 | Naturalne: `How should I inspect and conservatively tend a knowledge vault, fix broken links, handle tags and orphans, and verify?` | 1 | 0.7969 |
+| Q15 | Nazwane: `Napkin Tend Vault Upkeep: inspect unresolved links, orphans, tag sprawl, prioritize a few safe issues, and verify changes.` | 1 | 0.8619 |
+| Q15 | Nagłówek: `Tend — Vault Upkeep` | 1 | 0.7424 |
+| Q16 | Naturalne: `How does Napkin keep an agent context small by revealing memory gradually through pinned context, maps, snippets, and full reads?` | 1 | 0.7909 |
+| Q16 | Nazwane: `Napkin agent memory progressive disclosure: level 0 pinned context, level 1 overview map, level 2 search snippets, level 3 read.` | 1 | 0.8684 |
+| Q16 | Nagłówek: `Agent Memory System — Progressive Disclosure` | 1 | 0.8398 |
+
+Wszystkie dziewięć wyników umieściło właściwy slice w top 2 i powyżej progu.
+Wyjątkiem ranką pozostaje Q14 wariant nazwany: lokalny indeks Napkin zajął
+miejsce 1 z wynikiem 0.8607, a właściwy slice miejsce 2 z 0.8583. Q15 i Q16
+trafiły do właściwego slice'a na miejscu 1 we wszystkich wariantach.
+
+## Stan indeksu
+
+W `Notes/OKF-rag` 36/36 plików Markdown ma odpowiadający wpis w Smart Sources;
+nie znaleziono brakujących ani nieistniejących ścieżek. Odczytano poprawnie
+wszystkie 453 zapisane wektory źródeł i 2446 wektorów bloków (384 wymiary,
+0 niepoprawnych). Adapter nie zgłasza aktywnego błędu ani zatrzymanej kolejki.
+W logu zdarzeń został jeden historyczny wpis `embedding:error`; poprzednie
+ostrzeżenie o 15 nieczytelnych wektorach nie powtórzyło się w aktualnym
+odczycie. Nie wykonano pełnego reindeksu, bo kontrola ścieżek i wektorów
+przeszła bez błędów.
+
 # Następny krok
 
-Zastosować tę regułę do jednego innego dużego importu, najlepiej `napkin.md`,
-i sprawdzić, czy jeden lub dwa slice'y wystarczą do odzyskania Q14–Q16.
+Jeśli potrzebne jest porównanie wpływu na cały korpus, powtórzyć benchmark
+20 pytań na aktualnym indeksie. Kolejnych importów nie dzielić bez
+powtarzalnego missu i stabilnego zakresu źródła.

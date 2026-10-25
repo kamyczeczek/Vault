@@ -46,7 +46,14 @@
 * [Benchmark metrics](_slices/okf-rag/okf-rag--benchmark-metrics.md) - Recall/Hit@K, MRR i latencja.
 * [Extraction findings](_slices/okf-rag/okf-rag--extraction-findings.md) - Niedeterministyczna ekstrakcja i niepełne pruning.
 
+# Napkin source slices
+
+* [Manifest](_slices/napkin/manifest.json) - Hash źródła, zakresy linii i lista trzech wygenerowanych slice'ów.
+* [Distill — Conversation to Vault](_slices/napkin/napkin--distill-conversation-to-vault.md) - Gate, ekstrakcja, grupowanie tematów oraz merge lub create.
+* [Tend — Vault Upkeep](_slices/napkin/napkin--tend-vault-upkeep.md) - Inspekcja, bezpieczne priorytety i porządkowanie vaulta.
+* [Agent Memory System — Progressive Disclosure](_slices/napkin/napkin--agent-memory-progressive-disclosure.md) - Cztery poziomy ujawniania kontekstu agentowi.
+
 # Subdirectories
 
-* [source-slices](source-slices/index.md)
 * [_slices](_slices/index.md)
+* [source-slices](source-slices/index.md)

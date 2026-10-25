@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated": true,
+  "generator": {
+    "name": "scripts/generate_source_slices.py",
+    "version": "1"
+  },
+  "origin": {
+    "path": "Notes/OKF-rag/napkin.md",
+    "hash": "efb8aa584a857a3b28207838b0b63386d045aa4cc87e3856a279d2e0e4545aa8",
+    "byte_count": 679973,
+    "line_count": 22247
+  },
+  "slices": [
+    {
+      "id": "napkin--distill-conversation-to-vault",
+      "path": "napkin--distill-conversation-to-vault.md",
+      "title": "napkin — distill conversation to vault: gate, extract, merge, create, verify",
+      "source_heading": "Distill — Conversation to Vault",
+      "source_lines": [
+        3774,
+        3915
+      ],
+      "slice_hash": "779dce0155a05ec1a39fb522044a7d6d7913198b6a8a19be7742610e5f711d80"
+    },
+    {
+      "id": "napkin--tend-vault-upkeep",
+      "path": "napkin--tend-vault-upkeep.md",
+      "title": "napkin — tend vault upkeep: inspect, prioritize, verify",
+      "source_heading": "Tend — Vault Upkeep",
+      "source_lines": [
+        3916,
+        3998
+      ],
+      "slice_hash": "c9ab515dcc44ae9c268f034d21b70a40c2f86225739a4e9fecbdfd8cb1b5b962"
+    },
+    {
+      "id": "napkin--agent-memory-progressive-disclosure",
+      "path": "napkin--agent-memory-progressive-disclosure.md",
+      "title": "napkin — agent memory system: progressive disclosure levels 0–3",
+      "source_heading": "Agent Memory System — Progressive Disclosure",
+      "source_lines": [
+        3094,
+        3147
+      ],
+      "slice_hash": "cd0d4768bcc1a686765a4e5c5dc36a4e0a97e997e3525d8081bb14f6a4ee0e55"
+    }
+  ]
+}
