@@ -1,3 +1,9 @@
+---
+type: Concept
+title: open-knowledge-format
+generated: { by: okf-enforcer/0.6, at: 2026-10-25T01:44:18Z }
+---
+
 Repository: googlecloudplatform/open-knowledge-format
 Files analyzed: 131
 

@@ -1,3 +1,9 @@
+---
+type: Concept
+title: okf-generator
+generated: { by: okf-enforcer/0.6, at: 2026-10-25T01:44:17Z }
+---
+
 Skip to main content
 Security notice: Upgrade certifi, pip, and uv in response to CA certificate incident
 See more

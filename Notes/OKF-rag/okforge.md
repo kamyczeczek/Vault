@@ -1,3 +1,9 @@
+---
+type: Concept
+title: okforge
+generated: { by: okf-enforcer/0.6, at: 2026-10-25T01:44:17Z }
+---
+
 Repository: okforge/okforge
 Files analyzed: 157
 

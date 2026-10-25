@@ -1,3 +1,9 @@
+---
+type: Concept
+title: ontoship
+generated: { by: okf-enforcer/0.6, at: 2026-10-25T01:44:18Z }
+---
+
 Repository: vakovalskii/ontoship
 Files analyzed: 31
 

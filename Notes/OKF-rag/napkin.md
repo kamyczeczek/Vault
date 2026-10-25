@@ -1,3 +1,9 @@
+---
+type: Concept
+title: napkin
+generated: { by: okf-enforcer/0.6, at: 2026-10-25T01:44:17Z }
+---
+
 Repository: shift-labs-ai/napkin
 Files analyzed: 134
 

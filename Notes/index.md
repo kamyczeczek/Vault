@@ -7,6 +7,6 @@
 
 * [OKF-rag](OKF-rag/index.md)
 
-# Files
+# Untyped
 
-* [matt_pocock_skills.txt](matt_pocock_skills.txt)
+* [matt_pocock_skills](matt_pocock_skills.md)

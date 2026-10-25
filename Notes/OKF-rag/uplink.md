@@ -1,3 +1,9 @@
+---
+type: Concept
+title: uplink
+generated: { by: okf-enforcer/0.6, at: 2026-10-25T01:44:18Z }
+---
+
 Repository: evanderpool/uplink
 Files analyzed: 49
 
