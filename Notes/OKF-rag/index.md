@@ -5,6 +5,8 @@
 # Files
 
 * [doctree-mcp](doctree-mcp)
+* [benchmark-questions.json](benchmark-questions.json)
+* [benchmark-results-20.json](benchmark-results-20.json)
 
 # Untyped
 
@@ -52,6 +54,12 @@
 * [Distill — Conversation to Vault](_slices/napkin/napkin--distill-conversation-to-vault.md) - Gate, ekstrakcja, grupowanie tematów oraz merge lub create.
 * [Tend — Vault Upkeep](_slices/napkin/napkin--tend-vault-upkeep.md) - Inspekcja, bezpieczne priorytety i porządkowanie vaulta.
 * [Agent Memory System — Progressive Disclosure](_slices/napkin/napkin--agent-memory-progressive-disclosure.md) - Cztery poziomy ujawniania kontekstu agentowi.
+
+# Okforge source slices
+
+* [Manifest](_slices/okforge/manifest.json) - Hash źródła, zakresy linii i dwa wygenerowane slice'y.
+* [Initialize a Knowledge Base](_slices/okforge/okforge--initialize-knowledge-base.md) - Inicjalizacja bazy i pipeline dodawania dokumentu.
+* [Recompile](_slices/okforge/okforge--recompile.md) - Ponowne generowanie oraz ostrzeżenie o nadpisaniu ręcznych edycji.
 
 # Subdirectories
 

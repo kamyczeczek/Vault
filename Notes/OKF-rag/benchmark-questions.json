@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "dataset": "OKF-RAG Smart Connections retrieval benchmark",
+  "baseline_report": "EXPERIMENT-retrieval-benchmark-20-2026-10-25.md",
+  "query_language": "English",
+  "query_origin": "Reconstructed from the recorded gold files and passage ranges because the baseline report did not preserve its full query strings.",
+  "corpus_scope": "Notes/OKF-rag/**/*.md",
+  "corpus_sha256": "2f0491bd350a5a5f88738726bb282dd61cfd0800bd8cc23543d333635953f046",
+  "settings": {
+    "model": "TaylorAI/bge-micro-v2",
+    "top_k": 10,
+    "min_score": 0.55
+  },
+  "questions": [
+    {"id":"Q01","query":"What is OntoShip idea about Markdown as the source of truth and regenerating derived indexes?","gold_file":"Notes/OKF-rag/ontoship.md","gold_lines":[89,103],"expected_section":"README / The idea"},
+    {"id":"Q02","query":"Which OKF frontmatter fields are mandatory, and which are recommended or optional?","gold_file":"Notes/OKF-rag/SPEC.md","gold_lines":[167,214],"expected_section":"Frontmatter"},
+    {"id":"Q03","query":"How does OKF record provenance, verification, trust levels, and lifecycle status for a concept?","gold_file":"Notes/OKF-rag/SPEC.md","gold_lines":[283,430],"expected_section":"Provenance, trust, and lifecycle"},
+    {"id":"Q04","query":"How should OKF concepts link to other concepts, and what path formats are supported?","gold_file":"Notes/OKF-rag/SPEC.md","gold_lines":[443,495],"expected_section":"Cross-linking and paths"},
+    {"id":"Q05","query":"What is an index.md file for in an OKF bundle, and where can it appear?","gold_file":"Notes/OKF-rag/SPEC.md","gold_lines":[511,538],"expected_section":"Index files"},
+    {"id":"Q06","query":"How does raw Markdown move through the llm-wiki compiler and publication pipeline?","gold_file":"Notes/OKF-rag/okf-rag.md","gold_lines":[445,466],"expected_section":"Generate OKF with llm-wiki compiler"},
+    {"id":"Q07","query":"What does proposal-to-truth mean in the compiler and reconciler flow?","gold_file":"Notes/OKF-rag/okf-rag.md","gold_lines":[445,466],"expected_section":"Generate OKF with llm-wiki compiler — proposal-to-truth"},
+    {"id":"Q08","query":"What are the end-to-end knowledge flow stages from raw source through graph publication to hybrid retrieval?","gold_file":"Notes/OKF-rag/okf-rag.md","gold_lines":[231,260],"expected_section":"End-to-End Knowledge Flow"},
+    {"id":"Q09","query":"Which retrieval benchmark metrics are used, including Recall at k and MRR?","gold_file":"Notes/OKF-rag/okf-rag.md","gold_lines":[573,601],"related_lines":[1005,1056],"expected_section":"Benchmark"},
+    {"id":"Q10","query":"What limitations are reported for concept extraction and near-duplicate pruning?","gold_file":"Notes/OKF-rag/okf-rag.md","gold_lines":[1134,1140],"expected_section":"Findings"},
+    {"id":"Q11","query":"What does llm-wiki do to a repository or knowledge base?","gold_file":"Notes/OKF-rag/llm-wiki.md","gold_lines":[54,78],"expected_section":"What llm-wiki does"},
+    {"id":"Q12","query":"When should someone use the llm-wiki repository?","gold_file":"Notes/OKF-rag/llm-wiki.md","gold_lines":[59,64],"expected_section":"When to use this repo"},
+    {"id":"Q13","query":"How does llm-wiki handle review and freshness of concepts?","gold_file":"Notes/OKF-rag/llm-wiki.md","gold_lines":[75,78],"expected_section":"Review/freshness"},
+    {"id":"Q14","query":"How does Napkin distill a conversation into a durable vault note?","gold_file":"Notes/OKF-rag/napkin.md","gold_lines":[3774,3900],"expected_section":"Distill — Conversation to Vault"},
+    {"id":"Q15","query":"How does Napkin tend vault upkeep and prioritize the issues it finds?","gold_file":"Notes/OKF-rag/napkin.md","gold_lines":[3916,3983],"expected_section":"Tend — Vault Upkeep"},
+    {"id":"Q16","query":"How does the agent memory system use progressive disclosure instead of vector search?","gold_file":"Notes/OKF-rag/napkin.md","gold_lines":[3094,3144],"expected_section":"Agent Memory System — Progressive Disclosure"},
+    {"id":"Q17","query":"What steps does okforge run when a new document is added to a knowledge base?","gold_file":"Notes/OKF-rag/okforge.md","gold_lines":[760,790],"expected_section":"Step 5: Initialize a Knowledge Base (okforge)"},
+    {"id":"Q18","query":"What does recompile regenerate, and what existing edits can it overwrite?","gold_file":"Notes/OKF-rag/okforge.md","gold_lines":[4715,4748],"expected_section":"recompile — regenerate wiki pages"},
+    {"id":"Q19","query":"What did the OntoShip OKF alignment decision settle about frontmatter and retrieval benchmarking?","gold_file":"Notes/OKF-rag/ontoship.md","gold_lines":[985,1062],"expected_section":"Decisions / OKF alignment"},
+    {"id":"Q20","query":"How does okf-generator detect incremental changes and update only affected concepts?","gold_file":"Notes/OKF-rag/okf-generator.md","gold_lines":[71,84],"expected_section":"Incremental updates"}
+  ],
+  "out_of_corpus": [
+    {"id":"OOC01","query":"What are the Louvre opening hours this weekend and the price of a standard adult ticket?","expected_refusal":true}
+  ]
+}

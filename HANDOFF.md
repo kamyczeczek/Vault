@@ -50,15 +50,10 @@ not checked:
 <!-- handoff/flags/okf-rag-synthesis-draft-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
 `okf-rag-synthesis-draft-2026-10-25` — 2026-10-25: utworzono syntezy, decyzję i raporty retrieval; dodano zakresy linii źródłowych, wykonano benchmark blokowy 20 pytań, kontrolę raw-only oraz ręczną kontrolę 10 brakujących trafień. Wszystkie brakujące treści istnieją w dużych importach `okf-rag.md`, `napkin.md` i `okforge.md`; problem dotyczy retrieval/segmentacji, nie braku wiedzy. Następny krok: porównać zapytania naturalne, z nazwą narzędzia i z dokładnym nagłówkiem.
 
-<!-- handoff/flags/okf-rag-source-slices-commit-2026-10-25.md · owner: codex · agent: codex · model: openai/gpt-6 -->
-`okf-rag-source-slices-commit-2026-10-25` — 2026-10-25: commit `f1a7fc8` zapisał generator source slices, testy, specyfikację OKF-rag, wygenerowane slice'y i notatki retrievalowe. Follow-up dodał trzy deterministyczne slice'y Napkin. Q14–Q16 przeszły 9/9 wariantów: właściwy slice zawsze był w top 2 i powyżej 0.55; Q14 wariant nazwany miał lokalny indeks Napkin przed slice'em o 0.0024. `--check` potwierdza manifest i trzy slice'y. Smart Connections: 36/36 plików OKF-RAG obecnych, 453 wektory źródeł i 2446 bloków czytelnych (384 wymiary, 0 błędnych); brak aktywnego błędu adaptera. Nie wykonano pełnego reindeksu, bo kontrole przechodzą; w logu pozostał jeden historyczny `embedding:error`. Następny krok: pełny benchmark 20 pytań tylko jeśli potrzebne jest porównanie wpływu na cały korpus.
+<!-- handoff/flags/okf-rag-benchmark-local-2026-10-25.md · owner: codex · agent: codex · model: openai/gpt-6 -->
+`okf-rag-benchmark-local-2026-10-25` — 2026-10-25: utrwalono pełne, jawnie zrekonstruowane 20 pytań, hash korpusu i ranking source/passage dla `all` oraz `raw_only`; powtarzalne missy Q17–Q18 dostały dwa slice'y z mapą oryginalnych linii. Next: ręcznie przejrzeć Q02 i Q20 — jedyne pytania bez exact/related w top-10 — przed decyzją o potrzebie OKF-RAG.
 
-not checked:
-- pełny benchmark 20 pytań na całym korpusie nie został powtórzony;
-- w Smart Connections pozostaje historyczny wpis `embedding:error`, choć aktualny odczyt ścieżek i wektorów jest czysty.
-
-<!-- handoff/flags/okf-rag-source-slices-2026-10-25.md · owner: codex · agent: codex · model: openai/gpt-5 -->
-`okf-rag-source-slices-2026-10-25` — 2026-10-25: wdrożono deterministyczny generator source slices dla `okf-rag.md`, manifest z hashami oraz świeży reindeks Smart Connections; po usunięciu starych wektorów scoped retrieval dał `4/5` top-1 i `5/5` top-5, ale globalny folder nadal preferuje syntezy i decyzje. Następny krok: stosować slice'y tylko dla powtarzalnych missów dużych importów i powtórzyć ten sam test na jednym kolejnym imporcie.
+not checked: nie oceniano treści generowanej odpowiedzi ani literalnej poprawności cytatu; OOC sprawdza retrieval abstention. Oryginalne prompty baseline nie zachowały się, więc zgodność prompt-for-prompt nie jest potwierdzona.
 
 <!-- handoff/flags/notes-txt-to-md-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
 `notes-txt-to-md-2026-10-25` — 2026-10-25: renamed all 12 `.txt` files under `Notes/` (including `Notes/OKF-rag/`) to `.md`; no target-name collisions existed. Obsidian updated the affected index links. Next step: review and commit the rename set if desired.

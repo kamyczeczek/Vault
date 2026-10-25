@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "generated": true,
+  "generator": {
+    "name": "scripts/generate_source_slices.py",
+    "version": "1"
+  },
+  "origin": {
+    "path": "Notes/OKF-rag/okforge.md",
+    "hash": "3a448dec704beef9ba37f7746e33b110e0c71025c55dd2703930ef91ba81c657",
+    "byte_count": 2216650,
+    "line_count": 42981
+  },
+  "slices": [
+    {
+      "id": "okforge--initialize-knowledge-base",
+      "path": "okforge--initialize-knowledge-base.md",
+      "title": "okforge — initialize a knowledge base and ingest a document",
+      "source_heading": "Step 5: Initialize a Knowledge Base (okforge)",
+      "source_lines": [
+        760,
+        798
+      ],
+      "slice_hash": "bbe2dbb4e66a69803698388d17fa76b1bee9d10d8456a285578e4afa0976d16a"
+    },
+    {
+      "id": "okforge--recompile",
+      "path": "okforge--recompile.md",
+      "title": "okforge — recompile generated wiki pages and protect manual edits",
+      "source_heading": "`recompile` — regenerate wiki pages",
+      "source_lines": [
+        4718,
+        4735
+      ],
+      "slice_hash": "0bdc5204ffe1474634754682ae8b11adc18828ebbfc4c5540fa792cf4450da9c"
+    }
+  ]
+}
