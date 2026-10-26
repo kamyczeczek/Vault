@@ -29,6 +29,11 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/research-engine-s47-2026-10-26.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
+`research-engine-s47-2026-10-26` — 2026-10-26: zagnieżdżone repo `research-engine` jest domknięte (dwa commity: 0b08562, 70ce0eb; drzewo czyste). Q9 rozstrzygnięte regułą zapisaną **przed** odczytem liczb: obie polityki okna (stałe 2000 vs expanding) muszą dać tego samego kandydata i te same bramki. Dały — wybór B, te same rangi, 4/6 zwycięstw, 0/6 zmian zwycięzcy na zadaniach — więc stałe 2000 zostaje protokołem, a expanding jest zapisanym testem wrażliwości (`results_s47_expanding.json`, `compare_window_policies.py` → exit 0). Q10: pięć originów W=5 jest spalone dla potwierdzenia, `all_binding=false`, nic nie awansuje. Q11: 26.7 s fixed / 26.2 s expanding, poniżej `<5 min`. `results_s47.json` w HEAD nie mówi już `PROMOTE` — werdykt jest diagnostyczny. Testy 12/12.
+Next: świeża, nieujawniona ewaluacja w `benchmark-core` na niewidzianych realnych zadaniach (FEV) — tylko ona może cokolwiek promować; S-47 zostaje sondą.
+not checked: nie ruszano `benchmark-core`; `bench.py --fev` nadal ma martwe URL-e i cichy fallback do synthetic, a `main_fev()` dopasowuje raz na pierwszym oknie i ignoruje multivariate.
+
 <!-- handoff/flags/vault-root-flatten-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `vault-root-flatten-2026-10-25` — 2026-10-25: zawartość `root_workspace/` była
 już przeniesiona do korzenia repo **na dysku**, ale nie w indeksie: HEAD trzymał
@@ -84,11 +89,6 @@ trybu `scoped`, gate'u cytowań, migracji 5 notatek, Q02/Q20, 10 passage'ów
 
 <!-- handoff/flags/smart-connections-cache-exclusions-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
 `smart-connections-cache-exclusions-2026-10-25` — 2026-10-25: corrected Smart Connections folder exclusions for the active vault root by adding the root-level `scripts/`, `projects/`, and `handoff/` paths while preserving the legacy `root_workspace/` paths. Because the old cache continued to load excluded entries, the derived `smart_sources`, `smart_blocks`, `embedding_models`, and `event_logs` directories were moved to `.smart-env/_recovery-2026-10-25`; notes and `smart_env.json` were preserved. Next step: reopen Obsidian and allow Smart Connections to rebuild with the corrected scope.
-
-<!-- handoff/flags/research-engine-protocol-2026-10-25.md · owner: codex · agent: codex · model: openai/gpt-6 -->
-`research-engine-protocol-2026-10-25` — 2026-10-25: skorygowano protokół S-47 i uruchomiono rerun; testy 9/9, G1-G3 przechodzą i wybór selekcyjny wskazuje B. G4 jest wyłącznie diagnostyczne, bo wcześniejszy raport ujawnił wszystkie pięć originów; żaden kandydat nie awansuje. Zmiany i wyniki w zagnieżdżonym repo research-engine pozostają niezatwierdzone.
-Next: przygotować świeżą, nieujawnioną ewaluację w benchmark-core na niewidzianych zadaniach rzeczywistych.
-not checked: nie uruchomiono nowej ewaluacji w benchmark-core; zmiany research-engine nie są zatwierdzone.
 
 <!-- handoff/flags/okf-rag-scope-and-gate-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `okf-rag-scope-and-gate-2026-10-25` — 2026-10-25: ustalono, że `Notes/OKF-rag`
@@ -458,81 +458,7 @@ discarded, so the flag claims HEAD, not what an open editor buffer says. Whether
 5 is the right size is a judgement call, not a measurement — no read-time or
 token-spend comparison of 5 vs 10 exists.
 
-<!-- handoff/flags/session-digest-design-2026-10-22.md · owner: opencode · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`session-digest-design-2026-10-22` — 2026-10-22: digest sesji zaprojektowany
-i zbudowany jako druga warstwa nad L2. **Status 2026-10-23: L0 unproven/closed —
-nie jest warstwą analityczną; L1 zostaje selektorem. Wynik A/B:
-`handoff/flags/session-digest-ab-2026-10-23.md`.** Rozdzielone fakt i osąd typem
-(`mechanical_delta | judgment`), evidence tylko `substring_exists`, stabilny
-klucz `agent:session_id`, coverage hash po `coverage_descriptor`.
-
-- Mapa i decyzje: `docs/wayfinder-session-digest.md` (D1, T1–T6 closed, T7 built).
-- ADR: `brain/decisions/ADR-005-session-digest-fact-judgment.md` (schema L1/L0,
-  normalizer, markery, promocja, worked example 9-vs-10).
-- Bramki: `docs/session-digest-GATES.md` G1–G12 — wszystkie `[x]` z evidence.
-- Kod: `scripts/session_facts.py`, `scripts/session_digest.py`,
-  `scripts/verify_session_digest.py`, `scripts/test_session_facts.py`,
-  `scripts/test_session_classify.py`, `scripts/session_digest.bat`.
-
-Pomiar 2026-10-22: 100 sesji głównych + 105 dzieci; L0 788 B; L1 99 277 B;
-`SCHEMA_OK`, `QUOTES_OK`, `STABILITY_OK`, `DETERMINISM_OK`, `BUDGET_OK`,
-negative controls quote/payload/coverage OK, `REFACTOR_SAFETY_OK`,
-`HEADER_OK`, 12 testów ekstraktorów OK. `check_workspace_integrity.py` OK;
-`git diff --check` czysty. Commit: design/docs, potem build kodu (dwie części).
-
-`--classify` wbudowany 2026-10-22 jako rules-v1: cards-only, 0 model calls,
-`judgment_status: candidate`, `promotion: null`; bramka G13. Wrapper:
-`scripts\session_digest.bat N [--classify]`. Pomiar: 40 sesji → 6 kandydatów
-(open_threads=4, contradictions=2), `JUDGMENT_OK`.
-
-Review 2026-10-22 (`judgment-check/candidates/digest.judgment.md`): 0/6
-kandydatów prawdziwych → **bez promocji**. 4 `open_threads` to obowiązkowa
-linia `not checked:` z rytuału `close.py`, nie otwarty wątek (j-0004 ma nawet
-commity 0b97dfb, bf0a2f9). 2 `contradictions` porównują sesję, która ma własne
-commity (j-0001: 0d0a585, 1a5a19d, 4e3b2ed, bac575a), z sąsiednimi sesjami tej
-samej flagi — brak rozjazdu. Przyczyna: `session_facts._marker_scan` bierze
-ostatni marker z całego body (także `not checked:` cytowane w treści flagi),
-a rules-v1 ma `not_checked` w `OPEN_MARKERS`. Następny krok: rules-v2 (marker
-tylko z końcowego bloku, `not_checked` nie jest open) + re-run `--classify`;
-promocja dopiero po kandydatach z niezależnym evidence i `review_ref`.
-
-not checked: backend modelowy dla `--classify` (świadomie rules-v1);
-`losses.dup` (jawnie w L0 `not_checked`);
-stary `tool_calls.jsonl` bez `key` daje `tool_facts.status=missing` do następnego
-runu merged. Memory index: ingest 2026-10-23 ponownie dodał wycofane wcześniej
-meta-sesje i `retrieval_eval` spadł 15/15 → 13/15; A (workaround) zastosowane
-ponownie na minimalnym zbiorze 4 sesji (`ses_ea98f264`, `ses_eb2c4e7e`,
-`01a14d3f`, `01a14d44`) → 15/15. To osobny temat retrieval, nie digestu; trwały
-fix B (lista `EXCLUDED_SESSION_IDS` w `memory_index.py`) jest w
-`handoff/flags/memory-meta-session-exclusion-durable-2026-10-23.md`. Świeżość
-trzyma curated shelf.
-
-<!-- handoff/flags/obsidian-vault-2026-10-22.md · owner: opencode · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`obsidian-vault-2026-10-22` — 2026-10-22: vault Obsidiana zbudowany jako podfolder
-`vault/` z własnym repo git (nie nestowany w root repo — `/vault/` w `.gitignore`
-roota). Plugin Obsidian Git 2.42.0 preinstalowany w `.obsidian/plugins/obsidian-git/`
-z `data.json` (auto-save/pull 10 min, `gitPath` → hermes git).
-
-- Sync: prywatne repo GitHub <https://github.com/kamyczeczek/obsidian-vault> (konto
-  `kamyczeczek`, gh device-flow), push przez Git Credential Manager.
-- Zrobione: `gh auth login` zalogowany, repo utworzone jako PRIVATE z
-  `--source vault --push`, `main` śledzi `origin/main`. Plugin Obsidian Git działa
-  na żywo — trzy auto-commity z szablonu `vault: {{date}} {{hostname}}`
-  (19:58, 20:05) i notatki `123.md`/`124.md` już na remote.
-- Zostaje: nic po stronie workspace'u. Vault otwiera się jako
-  `C:\Users\Mateusz\Desktop\root_workspace\vault`.
-- Mobile (2026-10-22): Obsidian + Obsidian Git, clone do pustego vaulta działa po
-  **classic PAT ze scope `repo`**; fine-grained token dawał HTTP 403 (uprawnienia/
-  forma uwierzytelnienia — nie diagnozowane dalej). Token trzymany w localStorage
-  apki, nie w repo.
-
-not checked:
-- czy drugie urządzenie (mobile/desktop) poprawnie sklonuje vault — test sync
-  jednostronny, tylko z tej maszyny.
-- czy konflikt przy równoległej edycji dwóch urządzeń rozwiązuje się bez utraty
-  notatek — nietestowane.
-
-Starsze flagi (205): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
+Starsze flagi (207): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
 
 ## where-the-work-landed
 

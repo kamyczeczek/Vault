@@ -4,6 +4,8 @@
 
 | flag | since | owner | agent | summary |
 | --- | --- | --- | --- | --- |
+| `session-digest-design-2026-10-22` | 2026-10-22 | opencode | opencode | digest sesji zaprojektowany |
+| `obsidian-vault-2026-10-22` | 2026-10-22 | opencode | opencode | vault Obsidiana zbudowany jako podfolder |
 | `sessions-lab-icm-restructure-2026-10-21` | 2026-10-21 | mateusz | opencode | `scripts/_scratch/sessions/` przebudowane na ICM (one folder, one job), 740 MB → 389 MB, martwizy wyczyszczone,… |
 | `raw-did-session-extractors-2026-10-20` | 2026-10-20 | mateusz | opencode | dwa deterministyczne eksportory sesji agentów dostarczone i zweryfikowane na live store'ach. |
 | `transcript-fix-p1-p6-2026-10-19` | 2026-10-19 | mateusz | opencode | P1–P6 domknięte i rozszerzone o rekomendacje review fazy 3 (R1–R6). Nowe pliki generatora i testów są w repo;… |

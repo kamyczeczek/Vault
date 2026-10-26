@@ -16,6 +16,21 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 ## Stale
 
+- `verify_report_closed` — since 2026-10-11 (older than 14 days)
+- `session-discipline-hardening` — since 2026-10-11 (older than 14 days)
+- `session-decision` — since 2026-10-11 (older than 14 days)
+- `session-3-verification-and-blockage-rule` — since 2026-10-11 (older than 14 days)
+- `session-2c-master-plan` — since 2026-10-11 (older than 14 days)
+- `self_configuration_autonomy_discipline` — since 2026-10-11 (older than 14 days)
+- `phase-9b-outcome` — since 2026-10-11 (older than 14 days)
+- `phase-10a-outcome` — since 2026-10-11 (older than 14 days)
+- `graphrag-session-1-commit-pending` — since 2026-10-11 (older than 14 days)
+- `graphrag-refusal-and-cross-lingual-fixed` — since 2026-10-11 (older than 14 days)
+- `graphrag-phase8-semantic-coverage` — since 2026-10-11 (older than 14 days)
+- `graphrag-frozen` — since 2026-10-11 (older than 14 days)
+- `graphrag-control-result-audit` — since 2026-10-11 (older than 14 days)
+- `goose-iterations-outcome` — since 2026-10-11 (older than 14 days)
+- `ask-user-question-fixed` — since 2026-10-11 (older than 14 days)
 - `research-engine-kg-dead-path` — since 2026-10-10 (older than 14 days)
 - `notebooklm-cannot-verify-retrieval` — since 2026-10-10 (older than 14 days)
 - `memory-r15-drift-fixed` — since 2026-10-10 (older than 14 days)
@@ -92,9 +107,9 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `research-engine-s47-2026-10-26` | 2026-10-26 | mateusz | opencode |
 | `vault-root-flatten-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `smart-connections-cache-exclusions-2026-10-25` | 2026-10-25 | mateusz | codex |
-| `research-engine-protocol-2026-10-25` | 2026-10-25 | codex | codex |
 | `okf-rag-scope-and-gate-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `okf-rag-corpus-pin-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `okf-rag-benchmark-rerun-2026-10-25` | 2026-10-25 | mateusz | opencode |
