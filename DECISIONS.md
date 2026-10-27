@@ -599,3 +599,40 @@ with zero dependents.
 **Rejected.**
 - Merging into `retrieval-v2` (rejected: would pollute `retrieval-v2`'s frozen benchmark and conflicting research goals — refusal calibration vs dense book extraction and multi-hop synthesis).
 - Modifying `knowledge-retrieval` (rejected: `knowledge-retrieval` only measures the read path of the historical ARL knowledge graph, not ad-hoc book ingestion).
+
+---
+
+## D24 — GitHub carries the whole vault, not a curated subset
+
+**Decision.** `kamyczeczek/Vault` holds every file under the workspace root except
+four declared classes: (1) toolchain (`.venv*`, `node_modules`, `__pycache__`,
+1 041 MB of installed third-party code), (2) secrets (`.env*`, `secrets.json`,
+`agents/backup/`), (3) third-party books (`library/*` bytes, `datasets/INBOX/`,
+`knowledge/raw*/` — 350 MB, much of it z-library), and (4) files GitHub rejects
+outright (any file >100 MB). Measured: 72 821 files / 3.3 GB on disk became 4 638
+tracked / 189 MB packed.
+
+**Why.** The 2026-10-24 `.gitignore` excluded `projects/` (2.4 GB) and `library/`
+(225 MB) to make one structural commit possible, and HANDOFF recorded that as a
+conscious choice rather than an oversight. That made the remote a partial copy:
+a fresh clone could not answer "what is in this vault". The owner asked for a
+full copy, so the exclusion set is now derived from three provable constraints
+(size, secrets, copyright) instead of from commit mechanics.
+
+**Nested repos.** Twelve `projects/**` git repos (1.24 GB of the 1.37 GB under
+`projects/`, minus `.venv`) were absorbed: each got `history.bundle` beside its
+files (`git clone history.bundle` restores the repo with history), then its
+`.git` was moved out of the tree. A gitlink would have shown an empty directory
+on GitHub; keeping `.git` and committing files is not expressible in git. D12
+(polyrepo, one project per session) still governs how work is split; what changed
+is that the split is no longer visible to git in this tree.
+
+**Rejected.**
+- LFS for the full 3.3 GB (rejected: Free quota is 1 GB; 405 MB `memory.db`,
+  292 MB torch DLL and three graph DBs are derived anyway — the producers rebuild
+  them, so paying to version them buys nothing).
+- Publishing the book bytes to a public repo (rejected: DMCA exposure on content
+  that cannot be scrubbed from history; `library/index.json` already makes the
+  library reviewable and re-downloadable).
+- Gitlinks for the absorbed projects (rejected: satisfies neither "files on
+  GitHub" nor "history preserved").

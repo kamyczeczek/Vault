@@ -44,3 +44,4 @@ SENSITIVE_MODIFICATION: A	scripts/read_after_edit_guard.py
 SENSITIVE_MODIFICATION: A	scripts/root_deletion_guard.py
 SENSITIVE_MODIFICATION: A	scripts/self_modification_audit.py
 SENSITIVE_MODIFICATION: A	scripts/stop_gate_guard.py
+SENSITIVE_MODIFICATION: M	CLAUDE.md
