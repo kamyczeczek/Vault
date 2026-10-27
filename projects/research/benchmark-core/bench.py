@@ -350,24 +350,41 @@ def pool_blend_mae(P_dict, A, names):
                 blended[w,h]=float(m.predict(Ph[w:w+1])[0])
     return float(np.mean(np.abs(blended-A)))
 def extract_series_from_window(window):
-    """Return past 1-D float array and horizon length for fev window."""
+    """Return past float array(s) and horizon length for fev window.
+
+    Multivariate targets are returned as a list of 1-D arrays (one per target
+    column) so callers can forecast each target independently and average the
+    error across targets.  Univariate tasks yield a single-element list.
+    """
     past, future = window.get_input_data()
-    # fev past/future are pandas/gluonts-ish; normalize to 1-D float
     import pandas as pd
-    def to_1d(df):
+    def to_arrays(df):
         if isinstance(df, pd.DataFrame):
-            # target column is usually first or named; take first numeric column
+            cols = []
             for c in df.columns:
-                try: arr=np.asarray(df[c],dtype=float);
-                except: continue
-                if arr.ndim==1 and np.isfinite(arr).any(): return arr
-            return np.asarray(df.iloc[:,0],dtype=float)
-        try: return np.asarray(df,dtype=float).ravel()
-        except: return np.asarray(list(df),dtype=float)
-    past_s = to_1d(past)
-    fut_s = to_1d(future)
-    H=len(fut_s)
-    return past_s, fut_s, H
+                try:
+                    arr = np.asarray(df[c], dtype=float)
+                except (ValueError, TypeError):
+                    continue
+                if arr.ndim == 1 and np.isfinite(arr).any():
+                    cols.append(arr)
+            if not cols:
+                cols = [np.asarray(df.iloc[:, 0], dtype=float)]
+            return cols
+        arr = np.asarray(df, dtype=float)
+        if arr.ndim == 1:
+            return [arr]
+        if arr.ndim == 2:
+            return [arr[:, j] for j in range(arr.shape[1])]
+        return [arr.ravel()]
+    past_cols = to_arrays(past)
+    fut_cols = to_arrays(future)
+    # Ensure same number of target columns in past and future
+    n_targets = min(len(past_cols), len(fut_cols))
+    past_cols = past_cols[:n_targets]
+    fut_cols = fut_cols[:n_targets]
+    H = len(fut_cols[0]) if fut_cols else 0
+    return past_cols, fut_cols, H, n_targets
 
 def main_fev(bench, out_dir=None):
     t0=time.time(); log=[]
@@ -390,52 +407,74 @@ def main_fev(bench, out_dir=None):
         windows=list(task.iter_windows())
         if len(windows)>5: windows=windows[:5]
         # Use H from first window's future length
-        _, fut0, H = extract_series_from_window(windows[0])
+        past0_cols, fut0_cols, H, n_targets = extract_series_from_window(windows[0])
+        if n_targets == 0:
+            out("  skip: no target columns")
+            continue
         out(f"\n-- task {ti+1}/{len(bench.tasks)} {task.dataset_path}:{task.dataset_config} H={H} W={len(windows)}")
-        # Fit members on first window's past (frozen)
-        past0,_ ,_ = extract_series_from_window(windows[0])
-        # Ensure past0 long enough; pad/truncate to 2000 or available
-        train=past0[-2000:] if len(past0)>=96 else past0
-        P_dict={}; A_list=[]
-        # Also collect per-window predictions
-        for wi,w in enumerate(windows):
-            past, fut, _ = extract_series_from_window(w)
-            A_list.append(fut)
-        A_true=np.array(A_list) if A_list and len(set(len(a) for a in A_list))==1 else None
-        if A_true is None:
+        # Ensure past0 long enough; pad/truncate to 2000 or available (per target)
+        train_cols = [p[-2000:] if len(p) >= 96 else p for p in past0_cols]
+        # Collect per-window futures (per target)
+        A_list_per_target = [[] for _ in range(n_targets)]
+        for wi, w in enumerate(windows):
+            past_cols, fut_cols, _, _ = extract_series_from_window(w)
+            for t_idx in range(n_targets):
+                A_list_per_target[t_idx].append(fut_cols[t_idx])
+        A_true_per_target = []
+        for t_idx in range(n_targets):
+            cols = A_list_per_target[t_idx]
+            if cols and len(set(len(a) for a in cols)) == 1:
+                A_true_per_target.append(np.array(cols))
+            else:
+                A_true_per_target.append(None)
+        if any(a is None for a in A_true_per_target):
             out("  skip: variable horizon across windows")
             continue
-        for name,(ff,pf) in fits_simple.items():
+        P_dict = {}
+        for name, (ff, pf) in fits_simple.items():
             try:
-                model=ff(train,H)
-                preds=[]
+                # Fit one model per target column (univariate models)
+                models = [ff(train_cols[t_idx], H) for t_idx in range(n_targets)]
+                preds_per_target = [[] for _ in range(n_targets)]
                 for w in windows:
-                    past,fut,_=extract_series_from_window(w)
-                    # history is past tail (fev past is the training context)
-                    hist=past[-96:] if len(past)>=96 else past
-                    # pred_fn expects history of length 96
-                    p=pf(model, hist) if name!="wavelet_pooled" else pf(model, hist)
-                    preds.append(np.asarray(p).ravel()[:H])
-                P=np.stack(preds,axis=0)
-                P_dict[name]=P
-                mae=float(np.mean(np.abs(P-A_true)))
-                out(f"  {name:22s} MAE {mae:.4f}")
+                    past_cols, fut_cols, _, _ = extract_series_from_window(w)
+                    for t_idx in range(n_targets):
+                        past = past_cols[t_idx]
+                        hist = past[-96:] if len(past) >= 96 else past
+                        p = pf(models[t_idx], hist) if name != "wavelet_pooled" else pf(models[t_idx], hist)
+                        preds_per_target[t_idx].append(np.asarray(p).ravel()[:H])
+                # Stack predictions per target, compute MAE per target, average
+                maes_per_target = []
+                for t_idx in range(n_targets):
+                    P = np.stack(preds_per_target[t_idx], axis=0)
+                    maes_per_target.append(float(np.mean(np.abs(P - A_true_per_target[t_idx]))))
+                # Store P_dict as the first target's predictions (for pool blending)
+                P = np.stack(preds_per_target[0], axis=0)
+                P_dict[name] = P
+                mae = float(np.mean(maes_per_target))
+                out(f"  {name:22s} MAE {mae:.4f}" + (f" (avg over {n_targets} targets)" if n_targets > 1 else ""))
             except Exception as e:
                 out(f"  {name:22s} FAIL {type(e).__name__}: {e}")
-                import traceback as tb; tb.print_exc()
+                import traceback as tb
+                tb.print_exc()
         # pools as before
-        poolA=["nlinear_a1","nlinear_a10","rff_h64"]
-        poolI=poolA+["knn_forecaster"] if _HAS_KNN else poolA
-        poolI=[n for n in poolI if n in P_dict]
-        poolB=poolA+["subband_cA1","subband_d1"]
-        poolC=poolA+["wavelet_pooled"]
-        poolC=[n for n in poolC if n in P_dict]
-        poolA=[n for n in poolA if n in P_dict]; poolB=[n for n in poolB if n in P_dict]; poolC=[n for n in poolC if n in P_dict]
-        maeA=pool_blend_mae(P_dict,A_true,poolA); maeB=pool_blend_mae(P_dict,A_true,poolB); maeC=pool_blend_mae(P_dict,A_true,poolC)
-        maeI=pool_blend_mae(P_dict,A_true,poolI) if "knn_forecaster" in P_dict else float("nan")
-        if _HAS_KNN and "knn_forecaster" in P_dict: out(f"  Pool I (KNN Feature) blend {maeI:.4f}")
+        poolA = ["nlinear_a1", "nlinear_a10", "rff_h64"]
+        poolI = poolA + ["knn_forecaster"] if _HAS_KNN else poolA
+        poolI = [n for n in poolI if n in P_dict]
+        poolB = poolA + ["subband_cA1", "subband_d1"]
+        poolC = poolA + ["wavelet_pooled"]
+        poolC = [n for n in poolC if n in P_dict]
+        poolA = [n for n in poolA if n in P_dict]
+        poolB = [n for n in poolB if n in P_dict]
+        poolC = [n for n in poolC if n in P_dict]
+        maeA = pool_blend_mae(P_dict, A_true_per_target[0], poolA)
+        maeB = pool_blend_mae(P_dict, A_true_per_target[0], poolB)
+        maeC = pool_blend_mae(P_dict, A_true_per_target[0], poolC)
+        maeI = pool_blend_mae(P_dict, A_true_per_target[0], poolI) if "knn_forecaster" in P_dict else float("nan")
+        if _HAS_KNN and "knn_forecaster" in P_dict:
+            out(f"  Pool I (KNN Feature) blend {maeI:.4f}")
         out(f"  Pool A blend {maeA:.4f}  B {maeB:.4f}  C {maeC:.4f}")
-        task_results.append((maeA,maeB,maeC,maeI))
+        task_results.append((maeA, maeB, maeC, maeI))
     maesA=[a for a,_,_,_ in task_results]; maesB=[b for _,b,_,_ in task_results]; maesC=[c for _,_,c,_ in task_results]; maesI=[i for _,_,_,i in task_results]
     meanA=float(np.nanmean(maesA)) if maesA else float("nan"); meanB=float(np.nanmean(maesB)) if maesB else float("nan"); meanC=float(np.nanmean(maesC)) if maesC else float("nan")
     winsB=sum(1 for a,b in zip(maesA,maesB) if b<a)
