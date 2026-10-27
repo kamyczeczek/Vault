@@ -450,9 +450,13 @@ def main_fev(bench, out_dir=None):
     meanI=float(np.nanmean(maesI)) if maesI else float("nan")
     winsI=sum(1 for a,i in zip(maesA,maesI) if i<a)
     out(f"meanA {meanA:.4f} meanB {meanB:.4f} meanC {meanC:.4f} meanI {meanI:.4f} winsB {winsB}/{len(task_results)} winsI {winsI}/{len(task_results)} rankB {mean_rankB:.2f}")
-    verdict="PROMOTE subband" if (meanB < meanA - 0.005 and mean_rankB<2 and winsB>=len(task_results)//2) else "REJECTED"
+    # G2 per pre-registration (S49): "beat DLinear and SpectralFFT at H720 (raw)" —
+    # in FEV context: Pool B beats Pool A on majority of tasks.
+    g2_pass = winsB >= len(task_results) // 2
+    verdict = "PROMOTE subband" if (meanB < meanA - 0.005 and g2_pass) else "REJECTED"
     out(f"verdict {verdict}")
-    res={"suite":"fev","data_source":"real","confirmatory":True,"fev":dict(_FEV_LOADED),"tasks":len(task_results),"meanA":meanA,"meanB":meanB,"meanC":meanC,"winsB":winsB,"winsI":winsI,"meanI":meanI,"mean_rankB":mean_rankB,"verdict":verdict,"elapsed_s":time.time()-t0}
+    out(f"G2 (Pool B beats A on majority of tasks): {winsB}/{len(task_results)} -> {'PASS' if g2_pass else 'FAIL'}")
+    res={"suite":"fev","data_source":"real","confirmatory":True,"fev":dict(_FEV_LOADED),"tasks":len(task_results),"meanA":meanA,"meanB":meanB,"meanC":meanC,"winsB":winsB,"winsI":winsI,"meanI":meanI,"mean_rankB":mean_rankB,"verdict":verdict,"gates":{"G2_majority_win":g2_pass,"G2_wins":winsB,"G2_total":len(task_results)},"elapsed_s":time.time()-t0}
     outdir = pathlib.Path(out_dir) if out_dir else HERE / "results"
     outdir.mkdir(parents=True, exist_ok=True)
     tag="fev_mini" if len(bench.tasks)<=20 else "fev_full"

@@ -52,6 +52,11 @@ not checked: zachowanie klonu — `preflight.py`, hooki i `core.hooksPath` są p
 
 not checked: pełny sweep G4 (5 seedów) został zaprojektowany z ProcessPoolExecutor i per-cell cache, ale nie został uruchomiony do końca — G1 i G2 padają definitywnie, więc REJECT jest ustalony niezależnie od G4.
 
+<!-- handoff/flags/benchmark-core-fev-g2-fix-2026-10-27.md · owner: mateusz · agent: opencode · model: omniroute/cx-gpt-5.6-luna-medium -->
+`benchmark-core-fev-g2-fix-2026-10-27` — 2026-10-27: FEV protocol G2 gate aligned with S49 pre-registration. W `main_fev()` zmieniono definicję G2 z hardcoded `mean_rankB < 2` na pre-rejestrowaną: "Pool B beats Pool A on majority of tasks" (`winsB >= len(task_results) // 2`). To odpowiada G2 z H720 ("beat DLinear and SpectralFFT at H720 (raw)"). Dodano jawny log `G2 (Pool B beats A on majority of tasks): X/Y -> PASS/FAIL` oraz sekcję `gates.G2_majority_win` w JSON. "Frozen fit on first window" pozostaje (zgodne z protokołem S-47); multivariate zostawione jako osobny ticket (flaga "not checked:"). `python -m py_compile bench.py` OK. Next: multivariante wsparcie w `extract_series_from_window` oraz ewentualnie per-origin fit dla FEV.
+
+not checked: multivariate wsparcie (obecnie `extract_series_from_window` zwraca 1-D array, pierwszą kolumnę); per-origin fit w FEV (obecnie frozen na pierwszym oknie).
+
 <!-- handoff/flags/research-engine-s47-2026-10-26.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `research-engine-s47-2026-10-26` — 2026-10-26: zagnieżdżone repo `research-engine` jest domknięte (dwa commity: 0b08562, 70ce0eb; drzewo czyste). Q9 rozstrzygnięte regułą zapisaną **przed** odczytem liczb: obie polityki okna (stałe 2000 vs expanding) muszą dać tego samego kandydata i te same bramki. Dały — wybór B, te same rangi, 4/6 zwycięstw, 0/6 zmian zwycięzcy na zadaniach — więc stałe 2000 zostaje protokołem, a expanding jest zapisanym testem wrażliwości (`results_s47_expanding.json`, `compare_window_policies.py` → exit 0). Q10: pięć originów W=5 jest spalone dla potwierdzenia, `all_binding=false`, nic nie awansuje. Q11: 26.7 s fixed / 26.2 s expanding, poniżej `<5 min`. `results_s47.json` w HEAD nie mówi już `PROMOTE` — werdykt jest diagnostyczny. Testy 12/12.
 Next: protokół FEV w `benchmark-core` — patrz `benchmark-core-fev-honest-2026-10-26`. S-47 zostaje sondą.
