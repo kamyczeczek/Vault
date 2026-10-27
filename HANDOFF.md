@@ -30,10 +30,12 @@ stopped holding (delete the file), and compress closed threads into
 ## Status
 
 <!-- handoff/flags/unlazy-workflow-closure-2026-10-27.md · owner: mateusz · agent: opencode · model: openai-api/gpt-5.6-luna -->
-`unlazy-workflow-closure-2026-10-27` — 2026-10-27: Unlazy checklist execution completed, workspace integrity verified, FEV multivariate and ETTh1 visualization/G4 artifacts integrated, skill catalog updated.
-Stan: All unlazy priorities (P0-P3) resolved, workspace integrity checks pass, git diff check clean, SKILLS.md catalog updated with retrieval-two-stage, MAP.md updated for benchmark-core and etth1-h720.
-Next: push changes or continue research tasks.
-not checked: remote CI pipeline execution on GitHub Actions (local checks and integrity scripts fully passed).
+`unlazy-workflow-closure-2026-10-27` — 2026-10-27: Unlazy checklist execution partial / corrected status.
+Stan:
+- CLOSED: A (ETTh1-H720 G4 sweep results/etth1_h720_amr24168_g4.json), C (Monorepo D24 workspace integrity), E (S47_DESIGN.md adnotacja), G (retrieval-two-stage skill catalog).
+- STALE / INCOMPLETE: B (FEV multivariate code landed and py_compile passed, but full end-to-end execution/artifact pending due to high fit volume ~21k fits), D (OKF-rag EXPERIENCE.md triage note added, but C2-C6 migration/gate/scoped mode pending), F (workspace hygiene cleanup: close_body.txt artifact dropped, did_sessions.bat reverted/reviewed).
+Next: optimize FEV fit loop / subset origins before full run; migrate OKF-rag C2-C6 notes.
+not checked: FEV multivariate end-to-end artifact generation; OKF-rag C2-C6 notes migration; remote CI pipeline (non-existent).
 
 <!-- handoff/flags/vault-monorepo-import-2026-10-27.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `vault-monorepo-import-2026-10-27` — 2026-10-27: cały vault w jednym repo GitHub.
