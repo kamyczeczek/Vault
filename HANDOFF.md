@@ -40,10 +40,11 @@ not checked: push do GitHuba i świeży `git clone` — dopiero po tym commicie.
 Książki z `library/` i archiwów zostają poza repo (świadoma decyzja, nie przeoczenie).
 
 <!-- handoff/flags/vault-monorepo-decisions-2026-10-27.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`vault-monorepo-decisions-2026-10-27` — 2026-10-27: D24 zapisuje, co repo zawiera i czego nie.
-Stan: `DECISIONS.md` ma wpis D24 (4 wyjątki: toolchain, sekrety, książki, pliki >100 MB;
-12 zagnieżdżonych repo jako pliki + `history.bundle`); log audytu domknięty.
-Next: `git clone` z GitHuba na czysto i `check_workspace_integrity.py` w klonie.
+`vault-monorepo-decisions-2026-10-27` — 2026-10-27: D24 zapisuje, co repo zawiera i jak odtworzyć historię.
+Stan: `DECISIONS.md` D24 wymienia 4 wyjątki (toolchain, sekrety, książki, pliki >100 MB)
+i podaje `git clone --mirror history.bundle` jako jedyny poprawny sposób odtworzenia
+12 wchłoniętych repo — zwykły `clone` gubi `refs/remotes/*` (157 commitów w `ecc`).
+Next: świeży `git clone` z GitHuba i `check_workspace_integrity.py` w klonie.
 not checked: zachowanie klonu — `preflight.py`, hooki i `core.hooksPath` są per-maszyna.
 
 <!-- handoff/flags/research-engine-s47-2026-10-26.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->

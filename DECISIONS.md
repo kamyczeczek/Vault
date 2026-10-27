@@ -621,11 +621,14 @@ full copy, so the exclusion set is now derived from three provable constraints
 
 **Nested repos.** Twelve `projects/**` git repos (1.24 GB of the 1.37 GB under
 `projects/`, minus `.venv`) were absorbed: each got `history.bundle` beside its
-files (`git clone history.bundle` restores the repo with history), then its
-`.git` was moved out of the tree. A gitlink would have shown an empty directory
-on GitHub; keeping `.git` and committing files is not expressible in git. D12
-(polyrepo, one project per session) still governs how work is split; what changed
-is that the split is no longer visible to git in this tree.
+files, then its `.git` was moved out of the tree. Restore with
+`git clone --mirror <path>/history.bundle <dest>` — `--mirror` is required:
+a plain `clone` materializes only the default branch and tags, so the 55
+`refs/remotes/*` commits (157 in `subprojects/ecc`) would fall out of the ref
+graph and be pruned by the next `gc`. A gitlink would have shown an empty
+directory on GitHub; keeping `.git` and committing files is not expressible in
+git. D12 (polyrepo, one project per session) still governs how work is split;
+what changed is that the split is no longer visible to git in this tree.
 
 **Rejected.**
 - LFS for the full 3.3 GB (rejected: Free quota is 1 GB; 405 MB `memory.db`,
