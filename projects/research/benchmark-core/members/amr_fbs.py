@@ -62,6 +62,17 @@ class AMRFBSForecaster:
         self.mu_ = None
         self.sd_ = None
 
+    def _anchor_level(self, window: np.ndarray) -> float:
+        """Base level the forecast delta is expressed relative to.
+
+        Default preserves the base NLinear behavior: the last observed value.
+        Subclasses may override this to change the long-horizon level
+        anchoring (e.g. a 7-day/weekly mean).  It is called identically from
+        both `fit` and `predict_hist`, so train and serve stay consistent no
+        matter which rule a subclass picks.
+        """
+        return float(window[-1])
+
     def _extract_features(self, x: np.ndarray) -> np.ndarray:
         L = len(x)
         feats = [x]
@@ -95,7 +106,7 @@ class AMRFBSForecaster:
         X_list, Y_list = [], []
         for i in range(L, n - horizon + 1):
             window = train[i-L:i]
-            anchor = window[-1]
+            anchor = self._anchor_level(window)
             xa = window - anchor
             F = self._extract_features(xa)
             f_flat = F.reshape(-1)
@@ -124,7 +135,7 @@ class AMRFBSForecaster:
         hist = np.asarray(hist, dtype=float)
         L = min(self.lookback, len(hist))
         window = hist[-L:]
-        anchor = window[-1]
+        anchor = self._anchor_level(window)
         xa = window - anchor
         F = self._extract_features(xa)
         f_flat = F.reshape(-1)

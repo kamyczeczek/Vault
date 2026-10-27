@@ -15,6 +15,7 @@ file routes; it holds no content.
 | Path | Role | Description |
 |---|---|---|
 | `CLAUDE.md` | Catalog (L0) | This file — identity and routing |
+| `README.md` | Human entry point | 30-second workspace orientation and first commands |
 | `AGENTS.md` | Router (L0) | Terse agent entry (<2K tokens): intent → project. Points here for detail |
 | `CONTEXT-MAP.md` | Map (L1) | The portfolio map: bounded contexts, what each project owns, relationships, what is shared, the routing procedure |
 | `TOOLS.md` | Rubric (L1) | Tool lifecycle: the promotion bar and the three verdicts |

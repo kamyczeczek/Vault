@@ -1,0 +1,32 @@
+{
+  "gate": "G3_no_regression_H96_H336",
+  "anchor": "weekly",
+  "ref_source": "results_s47.json etth1_H96 amr_fbs singleton; results_multi_horizon.json H336 amr_fbs",
+  "runs": {
+    "96": {
+      "origins": [
+        8640,
+        8736,
+        8832,
+        8928
+      ],
+      "amr_mae_mean": 2.0132,
+      "s47_ref": 3.2641274145778896,
+      "plus5pct": 3.4273,
+      "pass": true
+    },
+    "336": {
+      "origins": [
+        8640,
+        8976,
+        9312,
+        9648
+      ],
+      "amr_mae_mean": 3.5592,
+      "s47_ref": 6.7378,
+      "plus5pct": 7.0747,
+      "pass": true
+    }
+  },
+  "pass": true
+}

@@ -11,8 +11,9 @@ the set of sibling modules that import it.
 
 | Module | Role | Inputs | Outputs | Used by |
 |---|---|---|---|---|
-| `_workspace_paths.py` | Single place where this project's entry points learn where things are. | bootstrap(); data_csv() | data_csv → DATA_CSV | diag_h2k_ablation, diag_h2k_early_dev, diag_sab_l, diag_sab_l_arch, diag_sabl_early_dev, run_bigdict_std_control, run_etth1_h720_multi_origin, run_h2k_h720_fina… (+1 chars) |
+| `_workspace_paths.py` | Single place where this project's entry points learn where things are. | bootstrap(); data_csv() | data_csv → DATA_CSV | diag_amr_early_dev, diag_h2k_ablation, diag_h2k_early_dev, diag_sab_l, diag_sab_l_arch, diag_sabl_early_dev, run_amr_h720_final, run_amr_h720_g4, run_bigdict_st… (+58 chars) |
 | `conftest.py` | Make this project's tests importable without a manual sys.path dance. | — | — | — |
+| `diag_amr_early_dev.py` | Independent early-origin development selection for AMR-24/168. | run_one(s, o, factory); main() | run_one → dict | — |
 | `diag_h2k_ablation.py` | H2K focused early-dev ablation after the level-relative correction. | — | — | — |
 | `diag_h2k_early_dev.py` | H2K development-only selection on early ETTh1 origins. | load(); main() | load → value | — |
 | `diag_sab_l.py` | Focused, logged SAB-L dev diagnostic. | evaluate(s, origin, make_model); main() | evaluate → dict | — |
@@ -22,11 +23,13 @@ the set of sibling modules that import it.
 | `members/h2k.py` | Corrected H2K: level-relative, damped block continuation with causal scaling. | fit_h2k(train, horizon); pred_h2k(model, hist) | fit_h2k → value; pred_h2k → value | — |
 | `members/sab_l.py` | SAB-L — Signal-Adaptive BigDict Long-horizon forecaster (S49 member 2). | signal_profile(tail); choose_profile(tail, threshold); fit_sab_l(train, H, profile, input_length, seed, alpha); pred_sab_l(model, hist) | signal_profile → dict; choose_profile → expr; fit_sab_l → value; pred_sab_l → value | — |
 | `preflight.py` | Standalone preflight for this project. | main() | main → expr | — |
+| `run_amr_h720_final.py` | AMR-24/168 locked H720 evaluation on the canonical 12-origin sliding suite. | load(); load_selected_anchor(); amr_factory(anchor, seed); deterministic_methods(); seed_methods(anchor, seed); all_methods(anchor, seed); run_locked(anchor); r… (+37 chars) | load → value; load_selected_anchor → expr, value; amr_factory → expr; deterministic_methods → collection, expr, value; seed_methods → collection; all_methods →… (+62 chars) | run_amr_h720_g4 |
+| `run_amr_h720_g4.py` | Shim to run only the G4 5-seed sweep of the AMR-24/168 final runner. | — | — | — |
 | `run_bigdict_std_control.py` | P0 STANDARDIZATION CONTROL - BigDict 'wavelet-detail toxicity' claim. | feats(Xa, use_wav); run(series, H, task, bank, std); main() | feats → value; run → dict | — |
 | `run_etth1_h720_multi_origin.py` | ETTh1 H720 multi-origin test (different starting points) — S49 protocol. | load_data(); drift_pred(ctx, H); nlinear_fit(train, H, L, alpha); make_methods(sabl_alpha, sabl_profile); main() | load_data → collection; drift_pred → expr; nlinear_fit → value; make_methods → collection, expr, value | — |
 | `run_h2k_h720_final.py` | H2K final locked evaluation on the canonical 12-origin sliding suite. | load(); methods(); main() | load → value; methods → collection, expr, value | — |
-| `test_amr_24_168.py` | _(no docstring)_ | test_amr_24168_shapes_and_finite(); test_amr_24168_periodic_features() | — | — |
+| `test_amr_24_168.py` | _(no docstring)_ | test_amr_24168_shapes_and_finite(); test_amr_24168_periodic_features(); test_amr_24168_anchor_rule_levels(); test_amr_24168_anchor_rule_invalid(); test_amr_2416… (+29 chars) | — | — |
 | `test_h2k.py` | Focused correctness and leakage checks for H2K. | test_fit_predict_shape_and_finite(); test_fit_is_anchored_to_training_slice_only(); test_block_boundaries_are_reevaluated_from_previous_prediction(); test_singl… (+48 chars) | — | — |
 | `test_sab_l.py` | Focused SAB-L correctness checks. | test_ema_operates_over_time_not_training_windows(); test_ma_operates_over_time_not_training_windows(); test_single_and_batched_context_transforms_match(); test_… (+99 chars) | — | — |
 
-1 of 17 modules have no docstring, so their role is unknown. That is a real gap, not a rendering failure: add a docstring to the module and re-run.
+1 of 20 modules have no docstring, so their role is unknown. That is a real gap, not a rendering failure: add a docstring to the module and re-run.

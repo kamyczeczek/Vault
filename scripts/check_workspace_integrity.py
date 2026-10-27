@@ -153,6 +153,7 @@ from git_paths import repo_prefix, repo_rel  # noqa: E402
 # someone's shell history.
 ALLOWED_ROOT = {
     "CLAUDE.md",
+    "README.md",
     "AGENTS.md",
     "projects",
     "skills",

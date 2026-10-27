@@ -67,16 +67,20 @@ S49 candidate; `H2K_H720_RESULT.md` repeats that. What exists today is only a
 skeleton — `members/amr_24_168.py` subclasses `AMRFBSForecaster` and has never
 been scored. Nothing in this project has run it. Open, in order:
 
-1. **Finish the model.** `predict_hist` computes the weekly anchor and then
-   returns `p + 0.0 * anchor`; the anchor is multiplied by zero, so the weekly
-   level anchoring the design doc specifies is currently a no-op. `daily_weight`
-   and `weekly_weight` are also accepted but never swept. Decide the real
-   anchor rule and write it down before running anything.
-2. **Add the two missing diagnostics.** There is no `diag_amr_early_dev.py` and
-   no locked final runner — the `SAB_L_H720_RESULT.md` / `H2K_H720_RESULT.md`
-   recipe (early dev origins 8640/9360/10080/10800, then one locked pass over
-   the 12 later origins) is the precedent to copy. The 2-iteration kill budget
-   in the Kill budget section applies to this candidate too.
+1. **Finish the model.** Done 2026-10-27: the no-op weekly anchor
+   (`p + 0.0 * anchor`) is replaced by a real, first-class `anchor_rule`
+   (`last` / `weekly` / `blend`) routed through the base class's
+   `_anchor_level` hook, so the base ELM core, feature bank and random
+   dictionary are reused and the level anchoring is identical in `fit` and
+   `predict_hist` (train/serve consistency). The `weekly` rule (7-day mean) is
+   the design intent. `daily_weight`/`weekly_weight` set the 24h/168h harmonic
+   envelope amplitudes (both default 1.0). Documented in
+   `members/amr_24_168.py` and covered by `test_amr_24_168.py`.
+2. **Add the two missing diagnostics.** Done 2026-10-27:
+   `diag_amr_early_dev.py` (early-origin anchor-rule selection, recipe copied
+   from `diag_sabl_early_dev.py`) and `run_amr_h720_final.py` (one locked pass
+   over the 12 later origins, plus G3/G4 gates). The 2-iteration kill budget in
+   the Kill budget section applies to this candidate too.
 3. **Run it on the same locked suite** and record the per-origin table, not just
    the mean, per the Human check above.
 
@@ -128,14 +132,13 @@ previously resolve its base class.
 
 The canonical run directory is **this project**, not `../benchmark-core`.
 
-### `H2K_H720_RESULT.md` is not in this project
+### `H2K_H720_RESULT.md` is now in this project — RESOLVED 2026-10-27
 
-`LONGTERM_ETTH1_H720_DESIGN.md` and `CONTEXT.md` point at
-`H2K_H720_RESULT.md` for the H2K record, but that file is not here — the copy
-in the workspace is `../../_archive/datasets/INBOX/raw/H2K_H720_RESULT.md`, i.e. filed as a
-dataset inbox item. `SAB_L_H720_RESULT.md` sits here correctly. Consolidate the
-H2K record next to it, or fix the two references to point where the file
-actually is.
+`LONGTERM_ETTH1_H720_DESIGN.md` and `CONTEXT.md` point at `H2K_H720_RESULT.md`
+for the H2K record. It had been filed as a dataset inbox item
+(`the archived dataset inbox`), off-project. It is now
+consolidated next to `SAB_L_H720_RESULT.md` in this project, so both references
+resolve locally.
 
 ### Not open, deliberately
 

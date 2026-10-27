@@ -1,0 +1,798 @@
+{
+  "protocol": {
+    "H": 720,
+    "train_cap_hours": 8640,
+    "mode": "sliding_fixed_360d",
+    "origins": [
+      8640,
+      9360,
+      10080,
+      10800,
+      11520,
+      12240,
+      12960,
+      13680,
+      14400,
+      15120,
+      15840,
+      16560
+    ],
+    "fit": "fit on s[o-CAP:o] only",
+    "context": "full s[:o]",
+    "amr_selection": "anchor_rule=weekly selected on early dev origins",
+    "seed": 42,
+    "incumbent_ref": "S44 H720 MAE 1.9781 raw"
+  },
+  "data": {
+    "file": "ETTh1_h1.csv",
+    "n": 17420
+  },
+  "per_origin": [
+    {
+      "origin_index": 0,
+      "origin": 8640,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 1.9379,
+          "mae_norm": 0.2112,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 3.3816,
+          "mae_norm": 0.3685,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 2.1412,
+          "mae_norm": 0.2333,
+          "wall_s": 0.12
+        },
+        "dlinear": {
+          "mae_raw": 3.2716,
+          "mae_norm": 0.3565,
+          "wall_s": 0.09
+        },
+        "spectral_fft": {
+          "mae_raw": 11.1857,
+          "mae_norm": 1.2189,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 2.1857,
+          "mae_norm": 0.2382,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 3.4398,
+          "mae_norm": 0.3748,
+          "wall_s": 8.06
+        },
+        "knn_96_k24": {
+          "mae_raw": 5.1453,
+          "mae_norm": 0.5607,
+          "wall_s": 2.27
+        },
+        "bigdict_elm": {
+          "mae_raw": 3.4005,
+          "mae_norm": 0.3706,
+          "wall_s": 20.88
+        },
+        "amr_24_168": {
+          "mae_raw": 2.4218,
+          "mae_norm": 0.2639,
+          "wall_s": 23.92
+        }
+      }
+    },
+    {
+      "origin_index": 1,
+      "origin": 9360,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 4.2299,
+          "mae_norm": 0.5497,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 4.3617,
+          "mae_norm": 0.5668,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 5.1471,
+          "mae_norm": 0.6689,
+          "wall_s": 0.9
+        },
+        "dlinear": {
+          "mae_raw": 2.9761,
+          "mae_norm": 0.3868,
+          "wall_s": 1.42
+        },
+        "spectral_fft": {
+          "mae_raw": 8.4105,
+          "mae_norm": 1.093,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 3.9063,
+          "mae_norm": 0.5076,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 3.4561,
+          "mae_norm": 0.4491,
+          "wall_s": 6.94
+        },
+        "knn_96_k24": {
+          "mae_raw": 2.3068,
+          "mae_norm": 0.2998,
+          "wall_s": 2.67
+        },
+        "bigdict_elm": {
+          "mae_raw": 3.0054,
+          "mae_norm": 0.3906,
+          "wall_s": 14.53
+        },
+        "amr_24_168": {
+          "mae_raw": 5.2674,
+          "mae_norm": 0.6845,
+          "wall_s": 21.36
+        }
+      }
+    },
+    {
+      "origin_index": 2,
+      "origin": 10080,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 4.3564,
+          "mae_norm": 0.7164,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 3.857,
+          "mae_norm": 0.6343,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 3.6236,
+          "mae_norm": 0.5959,
+          "wall_s": 0.73
+        },
+        "dlinear": {
+          "mae_raw": 2.8918,
+          "mae_norm": 0.4755,
+          "wall_s": 1.02
+        },
+        "spectral_fft": {
+          "mae_raw": 3.3731,
+          "mae_norm": 0.5547,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 3.9477,
+          "mae_norm": 0.6492,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 2.5131,
+          "mae_norm": 0.4133,
+          "wall_s": 7.09
+        },
+        "knn_96_k24": {
+          "mae_raw": 4.251,
+          "mae_norm": 0.6991,
+          "wall_s": 1.99
+        },
+        "bigdict_elm": {
+          "mae_raw": 2.7005,
+          "mae_norm": 0.4441,
+          "wall_s": 12.95
+        },
+        "amr_24_168": {
+          "mae_raw": 2.9533,
+          "mae_norm": 0.4857,
+          "wall_s": 20.68
+        }
+      }
+    },
+    {
+      "origin_index": 3,
+      "origin": 10800,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 3.4979,
+          "mae_norm": 0.6461,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 4.1634,
+          "mae_norm": 0.769,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 2.8184,
+          "mae_norm": 0.5206,
+          "wall_s": 0.71
+        },
+        "dlinear": {
+          "mae_raw": 2.8,
+          "mae_norm": 0.5172,
+          "wall_s": 0.14
+        },
+        "spectral_fft": {
+          "mae_raw": 2.6237,
+          "mae_norm": 0.4846,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 4.0939,
+          "mae_norm": 0.7562,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 2.4545,
+          "mae_norm": 0.4534,
+          "wall_s": 5.97
+        },
+        "knn_96_k24": {
+          "mae_raw": 2.5849,
+          "mae_norm": 0.4775,
+          "wall_s": 1.81
+        },
+        "bigdict_elm": {
+          "mae_raw": 2.3784,
+          "mae_norm": 0.4393,
+          "wall_s": 15.2
+        },
+        "amr_24_168": {
+          "mae_raw": 3.1072,
+          "mae_norm": 0.574,
+          "wall_s": 19.97
+        }
+      }
+    },
+    {
+      "origin_index": 4,
+      "origin": 11520,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 2.1161,
+          "mae_norm": 0.3932,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 2.0777,
+          "mae_norm": 0.386,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 2.2227,
+          "mae_norm": 0.413,
+          "wall_s": 0.94
+        },
+        "dlinear": {
+          "mae_raw": 2.0606,
+          "mae_norm": 0.3829,
+          "wall_s": 1.5
+        },
+        "spectral_fft": {
+          "mae_raw": 4.6612,
+          "mae_norm": 0.8661,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 1.9598,
+          "mae_norm": 0.3641,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 2.1731,
+          "mae_norm": 0.4038,
+          "wall_s": 7.84
+        },
+        "knn_96_k24": {
+          "mae_raw": 3.433,
+          "mae_norm": 0.6379,
+          "wall_s": 1.94
+        },
+        "bigdict_elm": {
+          "mae_raw": 1.9887,
+          "mae_norm": 0.3695,
+          "wall_s": 11.93
+        },
+        "amr_24_168": {
+          "mae_raw": 2.1679,
+          "mae_norm": 0.4028,
+          "wall_s": 24.8
+        }
+      }
+    },
+    {
+      "origin_index": 5,
+      "origin": 12240,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 1.9545,
+          "mae_norm": 0.3595,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 3.825,
+          "mae_norm": 0.7035,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 1.3963,
+          "mae_norm": 0.2568,
+          "wall_s": 0.83
+        },
+        "dlinear": {
+          "mae_raw": 1.3993,
+          "mae_norm": 0.2574,
+          "wall_s": 0.11
+        },
+        "spectral_fft": {
+          "mae_raw": 16.026,
+          "mae_norm": 2.9477,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 1.5031,
+          "mae_norm": 0.2765,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 1.5221,
+          "mae_norm": 0.28,
+          "wall_s": 5.71
+        },
+        "knn_96_k24": {
+          "mae_raw": 1.8159,
+          "mae_norm": 0.334,
+          "wall_s": 1.71
+        },
+        "bigdict_elm": {
+          "mae_raw": 1.5101,
+          "mae_norm": 0.2778,
+          "wall_s": 16.74
+        },
+        "amr_24_168": {
+          "mae_raw": 1.4886,
+          "mae_norm": 0.2738,
+          "wall_s": 18.93
+        }
+      }
+    },
+    {
+      "origin_index": 6,
+      "origin": 12960,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 2.2061,
+          "mae_norm": 0.3845,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 2.0169,
+          "mae_norm": 0.3515,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 2.1247,
+          "mae_norm": 0.3703,
+          "wall_s": 1.14
+        },
+        "dlinear": {
+          "mae_raw": 1.9436,
+          "mae_norm": 0.3387,
+          "wall_s": 1.42
+        },
+        "spectral_fft": {
+          "mae_raw": 18.7103,
+          "mae_norm": 3.261,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 1.9438,
+          "mae_norm": 0.3388,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 1.8886,
+          "mae_norm": 0.3292,
+          "wall_s": 5.68
+        },
+        "knn_96_k24": {
+          "mae_raw": 2.1549,
+          "mae_norm": 0.3756,
+          "wall_s": 1.95
+        },
+        "bigdict_elm": {
+          "mae_raw": 1.7978,
+          "mae_norm": 0.3133,
+          "wall_s": 11.98
+        },
+        "amr_24_168": {
+          "mae_raw": 1.9921,
+          "mae_norm": 0.3472,
+          "wall_s": 22.67
+        }
+      }
+    },
+    {
+      "origin_index": 7,
+      "origin": 13680,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 2.8619,
+          "mae_norm": 0.4661,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 1.7965,
+          "mae_norm": 0.2926,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 2.5124,
+          "mae_norm": 0.4091,
+          "wall_s": 0.62
+        },
+        "dlinear": {
+          "mae_raw": 2.7263,
+          "mae_norm": 0.444,
+          "wall_s": 0.83
+        },
+        "spectral_fft": {
+          "mae_raw": 14.6958,
+          "mae_norm": 2.3932,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 2.4106,
+          "mae_norm": 0.3926,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 2.4265,
+          "mae_norm": 0.3952,
+          "wall_s": 6.33
+        },
+        "knn_96_k24": {
+          "mae_raw": 2.1695,
+          "mae_norm": 0.3533,
+          "wall_s": 1.98
+        },
+        "bigdict_elm": {
+          "mae_raw": 2.1292,
+          "mae_norm": 0.3467,
+          "wall_s": 14.21
+        },
+        "amr_24_168": {
+          "mae_raw": 2.1904,
+          "mae_norm": 0.3567,
+          "wall_s": 18.2
+        }
+      }
+    },
+    {
+      "origin_index": 8,
+      "origin": 14400,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 3.1988,
+          "mae_norm": 0.4868,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 3.0547,
+          "mae_norm": 0.4649,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 2.9986,
+          "mae_norm": 0.4564,
+          "wall_s": 0.07
+        },
+        "dlinear": {
+          "mae_raw": 2.8444,
+          "mae_norm": 0.4329,
+          "wall_s": 0.08
+        },
+        "spectral_fft": {
+          "mae_raw": 5.0091,
+          "mae_norm": 0.7623,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 3.8129,
+          "mae_norm": 0.5803,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 3.5964,
+          "mae_norm": 0.5473,
+          "wall_s": 6.49
+        },
+        "knn_96_k24": {
+          "mae_raw": 3.8699,
+          "mae_norm": 0.589,
+          "wall_s": 2.24
+        },
+        "bigdict_elm": {
+          "mae_raw": 3.6832,
+          "mae_norm": 0.5605,
+          "wall_s": 11.36
+        },
+        "amr_24_168": {
+          "mae_raw": 6.1881,
+          "mae_norm": 0.9418,
+          "wall_s": 19.28
+        }
+      }
+    },
+    {
+      "origin_index": 9,
+      "origin": 15120,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 2.4705,
+          "mae_norm": 0.3643,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 3.4981,
+          "mae_norm": 0.5159,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 2.867,
+          "mae_norm": 0.4228,
+          "wall_s": 0.69
+        },
+        "dlinear": {
+          "mae_raw": 2.8395,
+          "mae_norm": 0.4188,
+          "wall_s": 0.58
+        },
+        "spectral_fft": {
+          "mae_raw": 3.0586,
+          "mae_norm": 0.4511,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 2.4767,
+          "mae_norm": 0.3652,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 2.5859,
+          "mae_norm": 0.3813,
+          "wall_s": 5.43
+        },
+        "knn_96_k24": {
+          "mae_raw": 3.3693,
+          "mae_norm": 0.4969,
+          "wall_s": 1.67
+        },
+        "bigdict_elm": {
+          "mae_raw": 3.0431,
+          "mae_norm": 0.4488,
+          "wall_s": 12.27
+        },
+        "amr_24_168": {
+          "mae_raw": 2.5503,
+          "mae_norm": 0.3761,
+          "wall_s": 18.94
+        }
+      }
+    },
+    {
+      "origin_index": 10,
+      "origin": 15840,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 2.5697,
+          "mae_norm": 0.3836,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 2.9296,
+          "mae_norm": 0.4373,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 2.4318,
+          "mae_norm": 0.363,
+          "wall_s": 0.09
+        },
+        "dlinear": {
+          "mae_raw": 2.5942,
+          "mae_norm": 0.3873,
+          "wall_s": 0.11
+        },
+        "spectral_fft": {
+          "mae_raw": 3.0897,
+          "mae_norm": 0.4612,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 2.6978,
+          "mae_norm": 0.4027,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 2.6296,
+          "mae_norm": 0.3926,
+          "wall_s": 5.39
+        },
+        "knn_96_k24": {
+          "mae_raw": 3.0834,
+          "mae_norm": 0.4603,
+          "wall_s": 1.65
+        },
+        "bigdict_elm": {
+          "mae_raw": 2.7086,
+          "mae_norm": 0.4043,
+          "wall_s": 14.8
+        },
+        "amr_24_168": {
+          "mae_raw": 3.0855,
+          "mae_norm": 0.4606,
+          "wall_s": 18.51
+        }
+      }
+    },
+    {
+      "origin_index": 11,
+      "origin": 16560,
+      "train_len": 8640,
+      "methods": {
+        "persistence": {
+          "mae_raw": 3.1232,
+          "mae_norm": 0.4864,
+          "wall_s": 0.0
+        },
+        "drift_linear": {
+          "mae_raw": 1.3344,
+          "mae_norm": 0.2078,
+          "wall_s": 0.0
+        },
+        "nlinear_L96": {
+          "mae_raw": 1.6998,
+          "mae_norm": 0.2647,
+          "wall_s": 0.19
+        },
+        "dlinear": {
+          "mae_raw": 2.1129,
+          "mae_norm": 0.329,
+          "wall_s": 0.08
+        },
+        "spectral_fft": {
+          "mae_raw": 4.9795,
+          "mae_norm": 0.7755,
+          "wall_s": 0.0
+        },
+        "theta": {
+          "mae_raw": 3.6071,
+          "mae_norm": 0.5617,
+          "wall_s": 0.0
+        },
+        "amr_fbs": {
+          "mae_raw": 1.6676,
+          "mae_norm": 0.2597,
+          "wall_s": 6.93
+        },
+        "knn_96_k24": {
+          "mae_raw": 2.2297,
+          "mae_norm": 0.3472,
+          "wall_s": 2.21
+        },
+        "bigdict_elm": {
+          "mae_raw": 1.3865,
+          "mae_norm": 0.2159,
+          "wall_s": 13.41
+        },
+        "amr_24_168": {
+          "mae_raw": 4.3636,
+          "mae_norm": 0.6796,
+          "wall_s": 22.75
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "persistence": {
+      "mae_raw_mean": 2.8769,
+      "mae_raw_std": 0.7953,
+      "mae_norm_mean": 0.454,
+      "below_incumbent_1_9781": 2,
+      "n_origins": 12
+    },
+    "drift_linear": {
+      "mae_raw_mean": 3.0247,
+      "mae_raw_std": 0.9599,
+      "mae_norm_mean": 0.4748,
+      "below_incumbent_1_9781": 2,
+      "n_origins": 12
+    },
+    "nlinear_L96": {
+      "mae_raw_mean": 2.6653,
+      "mae_raw_std": 0.9415,
+      "mae_norm_mean": 0.4146,
+      "below_incumbent_1_9781": 2,
+      "n_origins": 12
+    },
+    "dlinear": {
+      "mae_raw_mean": 2.5384,
+      "mae_raw_std": 0.5169,
+      "mae_norm_mean": 0.3939,
+      "below_incumbent_1_9781": 2,
+      "n_origins": 12
+    },
+    "spectral_fft": {
+      "mae_raw_mean": 7.9853,
+      "mae_raw_std": 5.4949,
+      "mae_norm_mean": 1.2724,
+      "below_incumbent_1_9781": 0,
+      "n_origins": 12
+    },
+    "theta": {
+      "mae_raw_mean": 2.8788,
+      "mae_raw_std": 0.8936,
+      "mae_norm_mean": 0.4528,
+      "below_incumbent_1_9781": 3,
+      "n_origins": 12
+    },
+    "amr_fbs": {
+      "mae_raw_mean": 2.5294,
+      "mae_raw_std": 0.6552,
+      "mae_norm_mean": 0.39,
+      "below_incumbent_1_9781": 3,
+      "n_origins": 12
+    },
+    "knn_96_k24": {
+      "mae_raw_mean": 3.0345,
+      "mae_raw_std": 0.9701,
+      "mae_norm_mean": 0.4693,
+      "below_incumbent_1_9781": 1,
+      "n_origins": 12
+    },
+    "bigdict_elm": {
+      "mae_raw_mean": 2.4777,
+      "mae_raw_std": 0.7051,
+      "mae_norm_mean": 0.3818,
+      "below_incumbent_1_9781": 3,
+      "n_origins": 12
+    },
+    "amr_24_168": {
+      "mae_raw_mean": 3.148,
+      "mae_raw_std": 1.3573,
+      "mae_norm_mean": 0.4872,
+      "below_incumbent_1_9781": 1,
+      "n_origins": 12
+    }
+  },
+  "gates": {
+    "G1_below_incumbent": false,
+    "G1_amr_mean": 3.148,
+    "G2_beat_dlinear_origins": 3,
+    "G2_beat_spectralfft_origins": 10,
+    "G2_pass": false,
+    "G1_amr_mean_vs_dlinear": 2.5384,
+    "G1_amr_mean_vs_spectral": 7.9853
+  },
+  "wall_total_s": 536.65
+}

@@ -1,0 +1,138 @@
+{
+ "purpose": "independent early-origin development selection (AMR-24/168)",
+ "origins": [
+  8640,
+  9360,
+  10080,
+  10800
+ ],
+ "runs": [
+  {
+   "origin": 8640,
+   "date": "2017-06-26",
+   "methods": {
+    "amr_last": {
+     "mae": 2.353769,
+     "mse": 8.715102,
+     "mae_norm": 0.2565,
+     "fit_s": 20.46
+    },
+    "amr_weekly": {
+     "mae": 2.421834,
+     "mse": 9.792928,
+     "mae_norm": 0.263917,
+     "fit_s": 24.33
+    },
+    "amr_blend": {
+     "mae": 2.301406,
+     "mse": 9.019957,
+     "mae_norm": 0.250794,
+     "fit_s": 22.3
+    },
+    "bigdict_L96": {
+     "mae": 3.400466,
+     "mse": 15.640697,
+     "mae_norm": 0.370563,
+     "fit_s": 13.0
+    }
+   }
+  },
+  {
+   "origin": 9360,
+   "date": "2017-07-26",
+   "methods": {
+    "amr_last": {
+     "mae": 4.943331,
+     "mse": 32.434972,
+     "mae_norm": 0.642408,
+     "fit_s": 20.28
+    },
+    "amr_weekly": {
+     "mae": 5.267391,
+     "mse": 36.861567,
+     "mae_norm": 0.684521,
+     "fit_s": 19.29
+    },
+    "amr_blend": {
+     "mae": 4.918363,
+     "mse": 32.263323,
+     "mae_norm": 0.639163,
+     "fit_s": 23.6
+    },
+    "bigdict_L96": {
+     "mae": 3.005373,
+     "mse": 14.03679,
+     "mae_norm": 0.390562,
+     "fit_s": 20.09
+    }
+   }
+  },
+  {
+   "origin": 10080,
+   "date": "2017-08-25",
+   "methods": {
+    "amr_last": {
+     "mae": 3.068087,
+     "mse": 14.303057,
+     "mae_norm": 0.504543,
+     "fit_s": 19.44
+    },
+    "amr_weekly": {
+     "mae": 2.953257,
+     "mse": 13.488127,
+     "mae_norm": 0.485659,
+     "fit_s": 21.72
+    },
+    "amr_blend": {
+     "mae": 3.5527,
+     "mse": 17.204933,
+     "mae_norm": 0.584237,
+     "fit_s": 22.53
+    },
+    "bigdict_L96": {
+     "mae": 2.700546,
+     "mse": 12.091026,
+     "mae_norm": 0.444101,
+     "fit_s": 15.06
+    }
+   }
+  },
+  {
+   "origin": 10800,
+   "date": "2017-09-24",
+   "methods": {
+    "amr_last": {
+     "mae": 3.803465,
+     "mse": 20.461121,
+     "mae_norm": 0.702562,
+     "fit_s": 21.16
+    },
+    "amr_weekly": {
+     "mae": 3.107231,
+     "mse": 14.496346,
+     "mae_norm": 0.573956,
+     "fit_s": 22.19
+    },
+    "amr_blend": {
+     "mae": 3.026812,
+     "mse": 13.268339,
+     "mae_norm": 0.559102,
+     "fit_s": 21.68
+    },
+    "bigdict_L96": {
+     "mae": 2.378448,
+     "mse": 8.646627,
+     "mae_norm": 0.439338,
+     "fit_s": 18.43
+    }
+   }
+  }
+ ],
+ "mean_mae": {
+  "amr_last": 3.542163,
+  "amr_weekly": 3.437428,
+  "amr_blend": 3.44982,
+  "bigdict_L96": 2.871208
+ },
+ "selected": "amr_weekly"
+}

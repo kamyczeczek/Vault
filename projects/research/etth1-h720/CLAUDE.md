@@ -18,6 +18,8 @@ Depends on `../benchmark-core` for the model interface and the evaluation protoc
 | `CONTEXT.md` | Contract (L1) | The H720 protocol, gates, and kill budget |
 | `LONGTERM_ETTH1_H720_DESIGN.md` | Reference (L3) | Pre-registered design: what H720 breaks and why |
 | `SAB_L_H720_RESULT.md` | Reference (L3) | SAB-L rejected — read before reviving it |
+| `H2K_H720_RESULT.md` | Reference (L3) | H2K evaluated, not promoted — the partial-success record |
+| `AMR_24_168_H720_RESULT.md` | Reference (L3) | AMR-24/168 evaluated, rejected — closes the S49 line |
 | `members/` | Factory (L3) | The three long-horizon specialists |
 | `results/` | Product (L4) | H720 metrics per origin |
 | `../benchmark-core/` | Dependency | Model interface, baselines, frozen-fit harness |
@@ -30,7 +32,8 @@ Depends on `../benchmark-core` for the model interface and the evaluation protoc
 |---|---|
 | Run the canonical 12-origin H720 suite | `python run_h2k_h720_final.py` |
 | Multi-origin H720 test (S49) | `python run_etth1_h720_multi_origin.py` |
-| Develop a candidate on early origins only | `diag_h2k_early_dev.py` / `diag_sabl_early_dev.py` |
+| Develop a candidate on early origins only | `diag_h2k_early_dev.py` / `diag_sabl_early_dev.py` / `diag_amr_early_dev.py` |
+| Run the AMR-24/168 locked H720 suite (+G3/G4) | `python run_amr_h720_final.py` (add `--g3`, `--g4`) |
 | Isolate the H2K correction | `python diag_h2k_ablation.py` |
 | Isolate SAB-L architecture (bank vs head) | `python diag_sab_l_arch.py` |
 | Correctness / leakage checks | `test_h2k.py`, `test_sab_l.py`, `test_amr_24_168.py` |

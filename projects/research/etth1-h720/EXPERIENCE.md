@@ -42,7 +42,8 @@ Each lesson names its evidence. Root links here (D11).
   `../datasets/data/ETTh1_h1.csv`), no `results/`, `members/` missing five
   imports that exist only in `../benchmark-core/members/`, no `__init__.py`;
   runs of record were made from `benchmark-core/`, not here.
-- `H2K_H720_RESULT.md` lives in `../datasets/INBOX/raw/`, not beside
+- `H2K_H720_RESULT.md` was formerly filed in `../datasets/INBOX/raw/`; it is now
+  consolidated beside `SAB_L_H720_RESULT.md` in this project.
   `SAB_L_H720_RESULT.md` — consolidate or fix the two references.
 - Meta-H stays unbuilt (two rejected inputs).
 
