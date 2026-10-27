@@ -68,6 +68,10 @@ the root links here (D11).
 
 ## Known-unresolved (not practices yet)
 
+Triage decision (2026-10-27): this project is retained as a measurement
+reference only; the items below are accepted as terminal and will not be
+repaired in this system (superseded by retrieval-v2 / OKF-rag).
+
 - Within-family ranking unmeasured; 8 of 23 annotated questions used; levels 3–5 absent; distractor field unused by harness.
 - p95 latency under token-budgeted gateway unmeasured (`ask.py` 99.4 ms ≠ gateway).
 - Two-hop traversal never run (one-hop +0.0323 recall only).

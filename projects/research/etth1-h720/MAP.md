@@ -11,8 +11,9 @@ the set of sibling modules that import it.
 
 | Module | Role | Inputs | Outputs | Used by |
 |---|---|---|---|---|
-| `_workspace_paths.py` | Single place where this project's entry points learn where things are. | bootstrap(); data_csv() | data_csv → DATA_CSV | diag_amr_early_dev, diag_h2k_ablation, diag_h2k_early_dev, diag_sab_l, diag_sab_l_arch, diag_sabl_early_dev, run_amr_h720_final, run_amr_h720_g4, run_bigdict_st… (+58 chars) |
+| `_workspace_paths.py` | Single place where this project's entry points learn where things are. | bootstrap(); data_csv() | data_csv → DATA_CSV | diag_amr_early_dev, diag_h2k_ablation, diag_h2k_early_dev, diag_sab_l, diag_sab_l_arch, diag_sabl_early_dev, run_amr_h720_final, run_amr_h720_g4, run_bigdict_st… (+74 chars) |
 | `conftest.py` | Make this project's tests importable without a manual sys.path dance. | — | — | — |
+| `create_notebook.py` | Build etth1_model_visualization_notebook.ipynb for etth1-h720 project. | — | — | — |
 | `diag_amr_early_dev.py` | Independent early-origin development selection for AMR-24/168. | run_one(s, o, factory); main() | run_one → dict | — |
 | `diag_h2k_ablation.py` | H2K focused early-dev ablation after the level-relative correction. | — | — | — |
 | `diag_h2k_early_dev.py` | H2K development-only selection on early ETTh1 origins. | load(); main() | load → value | — |
@@ -31,5 +32,6 @@ the set of sibling modules that import it.
 | `test_amr_24_168.py` | _(no docstring)_ | test_amr_24168_shapes_and_finite(); test_amr_24168_periodic_features(); test_amr_24168_anchor_rule_levels(); test_amr_24168_anchor_rule_invalid(); test_amr_2416… (+29 chars) | — | — |
 | `test_h2k.py` | Focused correctness and leakage checks for H2K. | test_fit_predict_shape_and_finite(); test_fit_is_anchored_to_training_slice_only(); test_block_boundaries_are_reevaluated_from_previous_prediction(); test_singl… (+48 chars) | — | — |
 | `test_sab_l.py` | Focused SAB-L correctness checks. | test_ema_operates_over_time_not_training_windows(); test_ma_operates_over_time_not_training_windows(); test_single_and_batched_context_transforms_match(); test_… (+99 chars) | — | — |
+| `viz_etth1_demo.py` | ETTh1 H720 Model Effectiveness & Zero-Leakage Visualization Script. | verify_zero_leakage(train_idx, ctx_idx, target_idx); plot_single_origin(df, origin_idx, lookback_len, horizon, cap, out_path); plot_multi_origin_evaluation(resu… (+32 chars) | verify_zero_leakage → evidence; plot_single_origin → dict; plot_multi_origin_evaluation → None | — |
 
-1 of 20 modules have no docstring, so their role is unknown. That is a real gap, not a rendering failure: add a docstring to the module and re-run.
+1 of 22 modules have no docstring, so their role is unknown. That is a real gap, not a rendering failure: add a docstring to the module and re-run.

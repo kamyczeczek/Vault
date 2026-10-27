@@ -51,6 +51,7 @@ the gate tells you the catalog has drifted — update it in the same change.
 | implement | `skills/implement/` | Implement a piece of work based on a spec or set of tickets. |
 | improve-codebase-architecture | `skills/improve-codebase-architecture/` | Scan a codebase for deepening opportunities, present as HTML report. |
 | karpathy-guidelines | `skills/karpathy-guidelines/` | Behavioral constraints to reduce LLM coding mistakes: think before coding, simplicity first, surgical changes, goal-driven execution. Use before writing, reviewing, or refactoring code. |
+| retrieval-two-stage | `skills/retrieval-two-stage/` | Two-stage retrieval over OKF-rag notes: semantic hub first, then source verification with file+line locators. |
 | planning-with-files | `skills/planning-with-files/` | Manus-style persistent file-based planning: task_plan.md, findings.md, progress.md on disk so work survives context loss. |
 | ponytail | `skills/ponytail/` | Lazy senior dev ladder: check stdlib, native platform, existing deps, one-liners before writing new code. Use for any coding task to prevent over-engineering, bloat, and wrong-abstraction bugs. |
 | ralph-loop | `skills/ralph-loop/` | Run one human-confirmed, evidence-gated iteration using a decision graph, local project state, and a generated root activity index. Small resume-safe sessions: cold-start via `resume` (≤ 8K tokens), one frontier node per session, mandatory stamped `HANDOFF.md`, controller blocks DONE while gates are unmet; learnings promote to project AGENTS.md. |

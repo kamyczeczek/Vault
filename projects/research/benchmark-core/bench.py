@@ -356,30 +356,23 @@ def extract_series_from_window(window):
     column) so callers can forecast each target independently and average the
     error across targets.  Univariate tasks yield a single-element list.
     """
-    past, future = window.get_input_data()
-    import pandas as pd
-    def to_arrays(df):
-        if isinstance(df, pd.DataFrame):
-            cols = []
-            for c in df.columns:
-                try:
-                    arr = np.asarray(df[c], dtype=float)
-                except (ValueError, TypeError):
-                    continue
-                if arr.ndim == 1 and np.isfinite(arr).any():
-                    cols.append(arr)
-            if not cols:
-                cols = [np.asarray(df.iloc[:, 0], dtype=float)]
-            return cols
-        arr = np.asarray(df, dtype=float)
-        if arr.ndim == 1:
-            return [arr]
-        if arr.ndim == 2:
-            return [arr[:, j] for j in range(arr.shape[1])]
-        return [arr.ravel()]
-    past_cols = to_arrays(past)
-    fut_cols = to_arrays(future)
-    # Ensure same number of target columns in past and future
+    past, _ = window.get_input_data()
+    future = window.get_ground_truth()
+    targets = list(getattr(window, "target_columns", []) or [])
+    if not targets:
+        targets = [c for c in past.column_names if c not in ("id", getattr(window, "timestamp_column", "timestamp"))]
+    past_cols = []
+    for c in targets:
+        if c in past.column_names:
+            v = past[c]
+            arr = np.asarray(v[0] if isinstance(v, (list, tuple)) and len(v) == 1 else v, dtype=float)
+            past_cols.append(np.ravel(arr))
+    fut_cols = []
+    for c in targets:
+        if c in future.column_names:
+            v = future[c]
+            arr = np.asarray(v[0] if isinstance(v, (list, tuple)) and len(v) == 1 else v, dtype=float)
+            fut_cols.append(np.ravel(arr))
     n_targets = min(len(past_cols), len(fut_cols))
     past_cols = past_cols[:n_targets]
     fut_cols = fut_cols[:n_targets]
@@ -433,11 +426,12 @@ def main_fev(bench, out_dir=None):
         P_dict = {}
         for name, (ff, pf) in fits_simple.items():
             try:
-                # Fit one model per target column (univariate models)
-                models = [ff(train_cols[t_idx], H) for t_idx in range(n_targets)]
+                # Per-origin fit: fit on each window's own past, then predict its future.
                 preds_per_target = [[] for _ in range(n_targets)]
                 for w in windows:
                     past_cols, fut_cols, _, _ = extract_series_from_window(w)
+                    train_cols_w = [p[-2000:] if len(p) >= 96 else p for p in past_cols]
+                    models = [ff(train_cols_w[t_idx], H) for t_idx in range(n_targets)]
                     for t_idx in range(n_targets):
                         past = past_cols[t_idx]
                         hist = past[-96:] if len(past) >= 96 else past
@@ -489,9 +483,9 @@ def main_fev(bench, out_dir=None):
     meanI=float(np.nanmean(maesI)) if maesI else float("nan")
     winsI=sum(1 for a,i in zip(maesA,maesI) if i<a)
     out(f"meanA {meanA:.4f} meanB {meanB:.4f} meanC {meanC:.4f} meanI {meanI:.4f} winsB {winsB}/{len(task_results)} winsI {winsI}/{len(task_results)} rankB {mean_rankB:.2f}")
-    # G2 per pre-registration (S49): "beat DLinear and SpectralFFT at H720 (raw)" —
-    # in FEV context: Pool B beats Pool A on majority of tasks.
-    g2_pass = winsB >= len(task_results) // 2
+    # G2 per pre-registration: mean rank of Pool B among {A,B,C,I} < 2.0
+    # (average rank), not a majority-win count.
+    g2_pass = bool(mean_rankB < 2.0)
     verdict = "PROMOTE subband" if (meanB < meanA - 0.005 and g2_pass) else "REJECTED"
     out(f"verdict {verdict}")
     out(f"G2 (Pool B beats A on majority of tasks): {winsB}/{len(task_results)} -> {'PASS' if g2_pass else 'FAIL'}")

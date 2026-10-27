@@ -4,7 +4,7 @@ setlocal
 cd /d "%~dp0.."
 
 set COUNT=%1
-if "%COUNT%"=="" set COUNT=5
+if "%COUNT%"=="" set COUNT=10
 set OUT=%2
 if "%OUT%"=="" set OUT=scripts\_scratch\sessions\02_products\did_sessions.md
 

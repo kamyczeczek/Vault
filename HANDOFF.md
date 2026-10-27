@@ -29,6 +29,12 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/unlazy-workflow-closure-2026-10-27.md · owner: mateusz · agent: opencode · model: openai-api/gpt-5.6-luna -->
+`unlazy-workflow-closure-2026-10-27` — 2026-10-27: Unlazy checklist execution completed, workspace integrity verified, FEV multivariate and ETTh1 visualization/G4 artifacts integrated, skill catalog updated.
+Stan: All unlazy priorities (P0-P3) resolved, workspace integrity checks pass, git diff check clean, SKILLS.md catalog updated with retrieval-two-stage, MAP.md updated for benchmark-core and etth1-h720.
+Next: push changes or continue research tasks.
+not checked: remote CI pipeline execution on GitHub Actions (local checks and integrity scripts fully passed).
+
 <!-- handoff/flags/vault-monorepo-import-2026-10-27.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `vault-monorepo-import-2026-10-27` — 2026-10-27: cały vault w jednym repo GitHub.
 Stan: 12 zagnieżdżonych repo zastąpione plikami + `history.bundle` (każde odtwarzalne
@@ -297,101 +303,7 @@ się bez błędu `spawn EPERM`; bieżący proces rozmowy nadal nie ma załadowan
 narzędzi Smart Connections. Po ponownym restarcie Codexa trzeba potwierdzić
 `index_status` i wykonać wyszukiwanie; pierwszy start wymaga pobrania modelu.
 
-<!-- handoff/flags/vault-single-repo-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`vault-single-repo-2026-10-24` — 2026-10-24: rozstrzygnięty spór o root vaulta. `Desktop\vault` jest jedynym vaultem i jedynym repo; `root_workspace` staje się podfolderem bez własnego `.git`. Cztery wpisy (`.git`, `.obsidian`, `.smart-env`, `Notes`) są vault-owned i bramka egzekwuje dla nich XOR między `ROOT` i `VAULT`. `Notes/` będzie trackowane w prywatnym repo (`kamyczeczek/vault`), `.smart-env/` odtwarzane od nowa, zagnieżdżony `.gitignore` zostaje. Historia: `59faa7d` przyjęty jako baseline, `697b9e3` tagowany jako `archival-697b9e3` **przed** bundle'em. Decyzje: `brain/decisions/ADR-006-single-vault-single-repo.md`, `ADR-007-git-baseline-and-remote.md`. Kolejne kroki: gate XOR (osobny commit), `_repo_rel()` w `scripts/` przed migracją, migracja jako ostatni commit, `gh repo create --push`.
-
-not checked:
-- czy `Desktop\ARCHIVE\ROOT` zawiera cokolwiek, czego nie ma w `59faa7d` — nie porównywano; przyjęto, że to starszy, inny workspace.
-- czy `Notes/` nie zawiera materiału, którego właściciel nie chce w prywatnym repo — decyzja właściciela: trackowane.
-- czy plugin Smart Connections da się zainstalować w tym vaulcie — w żadnym z dwóch vaultów nie ma katalogu `plugins/`, więc `.smart-env/` jest dziś sierotą.
-
-<!-- handoff/flags/vault-repo-rel-paths-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`vault-repo-rel-paths-2026-10-24` — 2026-10-24: przygotowanie `scripts/**` na repo, którego root jest o poziom wyżej (ADR-006). Nowy `scripts/git_paths.py` (`repo_prefix`, `repo_rel`) normalizuje wyjście gita: `git status --short` i `--name-only` drukują ścieżki względem **repo root**, a `ls-files` i pathspecs względem **cwd** — dopóki ROOT był repo rootem, obie bazy się pokrywały. Podłączone w `close.py` (`find_strays`, `_is_staged_deletion`), `pre_close_check.py` (uncommitted work vs `--include`), `scan_secrets.py` (`staged_files`) i bramce R19 (nowe flagi). Bez tego po migracji `find_strays` widziałby `root_workspace/handoff/flags/x.md` i każdy commit byłby czerwony, a R19 po cichu przestałby widzieć nowe flagi (advisory, więc bez błędu). Test `scripts/test_git_paths.py` buduje repo z podkatalogiem w tempie i dowodzi asymetrii: z `sub/` status zwraca `rootfile.txt` i `sub/inner.txt`, `ls-files` zwraca `inner.txt`. `--include` przyjmuje teraz katalog: `find_strays` dopasowuje zawartość po prefiksie, więc 686 ścieżek nie musi wejść w jeden argv.
-
-not checked:
-- `build_state.py`, `upgrade_sessions_report.py`, `verify_session_claims.py` czytają `git status` bez normalizacji — używają wyniku tylko do wyświetlania/hasha, nie do porównania ze ścieżką workspace'u; nie ruszane.
-- pełny przebieg `pre_close_check.py` i `scan_secrets.py --staged` na żywym repo po migracji — dopiero po przeniesieniu `.git`, bo dziś prefiks jest pusty i ścieżka nowa i stara dają ten sam wynik.
-
-<!-- handoff/flags/vault-migrated-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`vault-migrated-2026-10-24` — 2026-10-24: `Desktop\vault` został single-vault single-repo. `.git` przeniesiony z `root_workspace/` do `vault/`; `root_workspace` jest teraz podfolderem, nie repozytorium. `Notes/` przeniesiony do vaultha; `.smart-env/` istnieje jako pusty katalog w vaulcie (placeholder na future Smart Connections reinstall — plugin nie jest dziś zainstalowany, więc indeks się nie migruje). Nowy `vault/.gitignore` trzyma tylko wpisy vaulta, zagnieżdżony `root_workspace/.gitignore` pozostawiony (wzorce są poprawne względem workspace'u). `archival-697b9e3` i `baseline-59faa7d` w vaulcie, bundle w `Desktop\`. Następne kroki: gh repo create + push, reinstall obsidian-git, clear embeddings.
-
-not checked:
-- czy smart_env.json (1 plik, wykluczony) istnieje w `.smart-env/` — plik nie został przeniesiony, tylko usunięty; jeśli istnieje na dysku poza repo, nie został utracony.
-- czy `handoff/status/STATUS.md` nie zawiera starej ścieżki `root_workspace` w linkach — wymaga checku po pushu.
-
-<!-- handoff/flags/vault-layout-root-2026-10-24.md · owner: mateusz · agent: opencode · model: omniroute/gemini/gemini-flash-lite-latest -->
-`vault-layout-root-2026-10-24` — 2026-10-24: adopt vault = root_workspace layout in ALLOWED_ROOT, CLAUDE.md, and STATUS.md; include pending .gitignore + .smart-env/smart_env.json from prior Smart Connections config session. Removes dead `vault` entry; declares `.obsidian`, `.smart-env`, `Notes` as root entries; rebuilds generated views.
-
-not checked:
-- whether `.obsidian/` or `Notes/` should be tracked (left untracked per policy; only root layout allowed in ALLOWED_ROOT).
-
-<!-- handoff/flags/vault-layout-and-git-bootstrap-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`vault-layout-and-git-bootstrap-2026-10-24` — 2026-10-24: root workspace re-bootstrapped after the vault move. `.projects/` renamed back to `projects/` (CLAUDE.md, AGENTS.md and all 20 routing links already said `projects/`; no file referenced the dot form), gate went from 25 problems to 3. `git init` plus `core.hooksPath hooks` restore the pre-commit gate; this is the new baseline commit. Memory index re-ingested (lag 1d13h) and `brain.db` rebuilt (R21: 18 sourceless rows cleared). Gate green: 38 declared entries, 7 projects, all routes resolve, retrieval 15/15. Next: decide the single Obsidian vault root, then fix `session_ground_truth.py` at its real path.
-
-History is unrecoverable, verified three ways: `.git/` was an empty hidden
-directory (0 files, emptied 2026-10-24 17:18–17:41), none of the 6 candidate GitHub
-repos holds this tree (`obsidian-vault` is notes only, last push 2026-10-23), and
-`Desktop\ARCHIVE\ROOT` is a different, older workspace (last write 2026-09-17).
-
-not checked:
-- whether `.obsidian/`, `.smart-env/` and `Notes/` belong to this folder at all:
-  a second Obsidian vault appeared one level up (`Desktop\vault`) at 16:39 today,
-  after this folder was opened as a vault at 15:54. Those three were deliberately
-  left UNTRACKED. Decide the single vault root before committing them.
-- `handoff/state_description/` (32 MB of txt dumps from the one-off
-  `scripts/oneoff/move_state_description.py` bridge) is now gitignored, not purged.
-- this commit is a new baseline, not a continuation of the lost history; nothing
-  before it can be recovered from this machine.
-- `scripts/_scratch/sessions/session_ground_truth.py` does not exist; the file the
-  prior plan named is at `scripts/_scratch/sessions/01_tools/session_ground_truth.py`
-  and its 4 defects are still unverified.
-- bootstrap exception, named rather than hidden: `close.py --include` accepts
-  individual files, not directories, and the baseline is 686 files (≈40 KB of
-  argv, over the Windows limit). So the commit was authorized the documented
-  outside-close way — an explicitly minted `.commit-approved` (guard docstring
-  sanctions it) — and `git commit -F` carried this exact subject and body.
-  `hooks/pre-commit` still ran the full gate and every guard unchanged.
-
-<!-- handoff/flags/obsidian-repro-needed-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`obsidian-repro-needed-2026-10-24` — 2026-10-24: trzy awarie po stronie Obsidiana są **nadal niepotwierdzone** i nie są „naprawione”. (1) Grey screen (sesje 6, 8): krok odtworzenia — otworzyć `Desktop\vault` w Obsidianie, otworzyć notatkę i graf, sprawdzić, czy renderuje; przegląd 2026-10-31, właściciel Mateusz. (2) Hybrid Search „server did not start” (sesja 8): odtworzyć przy zainstalowanym pluginie i wkleić pierwszy błąd z konsoli deweloperskiej; ten sam przegląd. (3) Fine-grained PAT → HTTP 403 przy Obsidian Git (sesja 24): odtworzyć **po** reinstalacji obsidian-git — dziś nie ma gdzie, bo w żadnym z dwóch vaultów nie istnieje katalog `plugins/`; klasyczny PAT działa, fine-grained nie, przyczyna nieznana.
-
-Stan poza repo, posprzątany w tej sesji (bez commita, bo to nie pliki repo): usunięty martwy wpis MCP `smart-connections` z `~/.config/opencode/opencode.jsonc` (wskazywał na nieistniejący `vault\.obsidian\plugins\smart-connections\main.js`); `~/.pi/agent/trust.json` ma teraz tylko bieżącą ścieżkę `Desktop\vault\root_workspace` (usunięte `Desktop\root_workspace` i literówka `root_worksapce`); usunięty osierocony worktree `kilo/worktree-pool/.../catnip-mantis` (3,8 MB, 565 plików, `.git` wskazywał na nieistniejące `Desktop\root_workspace`); usunięte `handoff/state_description/` (32,4 MB, 79 plików, w pełni pochodne); obie instalacje opencode to 2.1.4 — rozjazd wersji zniknął sam, hermes wygrywa PATH.
-
-not checked:
-- cztery rzekome błędy w `session_ground_truth.py` — narzędzie odpowiada na `--help`, ścieżka w docstringu poprawiona w miejscu, ale plik jest pod `scripts/_scratch/*` (gitignored), więc poprawka nie ma commita i nie jest wersjonowana.
-- `~/.config/opencode/opencode.jsonc` ma uszkodzoną strukturę w bloku `nara` (dwa klucze `"models"`, wiszący przecinek) — nie naprawiane, bo to nie dotyczy tej sesji; jeśli opencode parsuje plik luźno, część providerów może nie działać.
-- czy grey screen wraca po migracji vaulta — wymaga GUI, data przeglądu wyżej.
-
-<!-- handoff/flags/gate-vault-owned-xor-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`gate-vault-owned-xor-2026-10-24` — 2026-10-24: bramka przestaje traktować `.git`, `.obsidian`, `.smart-env` i `Notes` jako wpisy workspace'u. Nowy zbiór `VAULT_OWNED` + R1b egzekwuje dokładnie jedno miejsce (ROOT albo VAULT — „oba" i „żaden" to FAIL); R1 nie zgłasza ich już jako stray w żadnym z dwóch miejsc, bo miejsce jest własnością R1b. `CLAUDE.md` deklaruje cztery wiersze `../` (bez tego druga połowa kontraktu R1 nie istnieje), a `test_gate_allowlist_parity.py` sprawdza teraz także deklarację vault-owned. To zaostrzenie, nie wyciszenie: przed migracją wszystkie cztery leżą w ROOT i XOR przechodzi, po migracji w VAULT i XOR nadal przechodzi — nie ma okna z czerwoną bramką. Stub `root_workspace\.obsidian` (untracked, pusta karta) usunięty przed commitem, żeby `.obsidian` występował tylko w vaulcie.
-
-not checked:
-- R16 advisory: ten commit dotyka `scripts/**`, a `queries.jsonl` w `_scratch/sessions/05_store` jest starszy niż 30 min — ostrzeżenie zostaje otwarte do czasu realnego zapytania do pamięci sesji.
-- czy inne skrypty czytają `ALLOWED_ROOT` i zakładają w nim `.git` — sprawdzone tylko `test_gate_allowlist_parity.py`; pełny przegląd należy do commita `_repo_rel()`.
-
-<!-- handoff/flags/gate-advisories-deferred-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`gate-advisories-deferred-2026-10-24` — 2026-10-24: pięć otwartych pozycji zostaje **świadomie odłożonych**, nie zamkniętych. (1) R16 advisory: commit dotykający `scripts/**` bez świeżego `queries.jsonl` i bez „query” w temacie — jedyne uczciwe domknięcie to realne zapytanie do pamięci sesji, więc advisory zostaje do najbliższej sesji, która tej bramy faktycznie użyje. (2) R19 `did-sessions-default-5`: commit `1f1937f` ma temat bez roku, więc dopasowanie tokenów nie łapie go; bramka **nie jest** zmieniana (S62), a przepisanie historii byłoby droższe niż ostrzeżenie. (3) `direction_changes` w `session_digest.py:542` zwraca `brak reguły w rules-v1`, bo `classify_cards` nie ma dla niego gałęzi — sekcja istnieje i nigdy się nie wypełni; dopóki nie ma reguły opartej na polach karty i cytacie z `ending_evidence`, jawne `not_checked` jest uczciwsze niż dorabianie osądu. (4) `losses.dup` jest jawnie `not_extracted` (`session_digest.py:697`), zgodnie z ADR-005 — ciche zero byłoby kłamstwem; ekstrakcja wymaga definicji „dupa” w transkrypcie. (5) `--classify` działa tylko na rules-v1 (`CLASSIFIER_BACKEND="rules"`, `model_calls: 0`); backend modelowy odłożony świadomie.
-
-not checked:
-- czy R19 da się wyciszyć bez zmiany progu — nie: jedyne legalne wyjście to commit z tematem zawierającym token flagi, a `1f1937f` jest już w historii.
-- czy reguła `direction_changes` jest w ogóle wyprowadzalna z obecnego schematu karty — nie sprawdzono; wymaga przeglądu `make_judgment` i pól `ending_evidence`, co jest osobną sesją.
-- definicja `losses.dup` — brak; bez niej licznik mierzyłby coś innego niż nazwa.
-
-<!-- handoff/flags/codex-loader-2026-10-24.md · owner: mateusz · agent: codex · model: cx/gpt-5.6-luna-max -->
-`codex-loader-2026-10-24` — 2026-10-24: `scripts/agent_sessions.py` rozszerza loader o Codex Desktop (`~/.codex/sessions/`, JSONL + Zstandard fallback), `scripts/extract_did.py` zachowuje wiadomości/narzędzia/outputs z Codex, `scripts/did_sessions.bat` domyślnie zlicza 5 sesji zamiast 1. Test `test_agent_sessions.py` zielony; failure na Hermes DB jest ignorowany zamiast przerywać eksport. Również w `agent_sessions.py`: zabezpieczono `HERMES_DB.exists()` przed OSError — bez tego uprawnieniowy błąd na niektórych maszynach przerywałby cały loader. `codex` dodany do `SUPPORTED_AGENTS`.
-
-not checked:
-- czy pliki `.jsonl.zst` z Codex mają pełny schemat sesji (opencode-style) — wymaga audytu przykładowego pliku na maszynie właściciela.
-- czy `extract_did.py` obsługuje zrosty z wieloma plikami w jednej sesji — nie testowano przypadku, w którym jeden dzień ma >1 rollout.
-
-<!-- handoff/flags/close-include-whole-tree-2026-10-24.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`close-include-whole-tree-2026-10-24` — 2026-10-24: `close.py --include` rozumie katalog i całe drzewo. `find_strays` dopasowuje zawartość katalogu po prefiksie (bez rozwijania 686 ścieżek w jeden argv) oraz traktuje `.` jako „cały workspace jest zmianą" — jawnie, nie po cichu: to jedyny sposób, w jaki strukturalna migracja (przeniesienie `.git`, rename 686 plików) może przejść przez transakcję close bez ręcznego mintowania `.commit-approved` (S86). Domyślne zachowanie bez `--include` / z listą plików jest bez zmian — stray nadal blokuje commit. Test w `scripts/test_git_paths.py` buduje repo w tempie: bez `--include` → 2 strays, `--include .` → 0, `--include sub` → tylko plik poza katalogiem.
-
-not checked:
-- `--include .` w realnej migracji — sprawdzony dopiero w commicie migracyjnym; jeśli stray pojawi się mimo to, commit padnie i to jest poprawne zachowanie.
-- czy `git add --intent-to-add .` jest potrzebny (S67 dotyczy untracked plików, nie katalogów) — nie testowano na katalogu z untracked treścią.
-
-Starsze flagi (212): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
+Starsze flagi (222): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
 
 ## where-the-work-landed
 

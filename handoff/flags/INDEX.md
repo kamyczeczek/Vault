@@ -4,6 +4,16 @@
 
 | flag | since | owner | agent | summary |
 | --- | --- | --- | --- | --- |
+| `vault-single-repo-2026-10-24` | 2026-10-24 | mateusz | opencode | rozstrzygnięty spór o root vaulta. `Desktop\vault` jest jedynym vaultem i jedynym repo; `root_workspace` staje się… |
+| `vault-repo-rel-paths-2026-10-24` | 2026-10-24 | mateusz | opencode | przygotowanie `scripts/**` na repo, którego root jest o poziom wyżej (ADR-006). Nowy `scripts/git_paths.py`… |
+| `vault-migrated-2026-10-24` | 2026-10-24 | mateusz | opencode | `Desktop\vault` został single-vault single-repo. `.git` przeniesiony z `root_workspace/` do `vault/`; `root_workspace`… |
+| `vault-layout-root-2026-10-24` | 2026-10-24 | mateusz | opencode | adopt vault = root_workspace layout in ALLOWED_ROOT, CLAUDE.md, and STATUS.md; include pending .gitignore +… |
+| `vault-layout-and-git-bootstrap-2026-10-24` | 2026-10-24 | mateusz | opencode | root workspace re-bootstrapped after the vault move. `.projects/` renamed back to `projects/` (CLAUDE.md, AGENTS.md and… |
+| `obsidian-repro-needed-2026-10-24` | 2026-10-24 | mateusz | opencode | trzy awarie po stronie Obsidiana są **nadal niepotwierdzone** i nie są „naprawione”. (1) Grey screen (sesje 6, 8): krok… |
+| `gate-vault-owned-xor-2026-10-24` | 2026-10-24 | mateusz | opencode | bramka przestaje traktować `.git`, `.obsidian`, `.smart-env` i `Notes` jako wpisy workspace'u. Nowy zbiór `VAULT_OWNED`… |
+| `gate-advisories-deferred-2026-10-24` | 2026-10-24 | mateusz | opencode | pięć otwartych pozycji zostaje **świadomie odłożonych**, nie zamkniętych. (1) R16 advisory: commit dotykający… |
+| `codex-loader-2026-10-24` | 2026-10-24 | mateusz | codex | `scripts/agent_sessions.py` rozszerza loader o Codex Desktop (`~/.codex/sessions/`, JSONL + Zstandard fallback),… |
+| `close-include-whole-tree-2026-10-24` | 2026-10-24 | mateusz | opencode | `close.py --include` rozumie katalog i całe drzewo. `find_strays` dopasowuje zawartość katalogu po prefiksie (bez… |
 | `test-memory-index-format-restored-2026-10-23` | 2026-10-23 | opencode | opencode | **`test_memory_index.py` is green (33/33).** The 2026-10-21 restructure removed `format_results`, `format_brief`,… |
 | `session-digest-ab-2026-10-23` | 2026-10-23 | opencode | opencode | **L0 unproven/closed; L1 is a |
 | `session-brief-valuable-2026-10-23` | 2026-10-23 | opencode | opencode | **`session_brief.py` built; |

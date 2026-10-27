@@ -16,6 +16,33 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 ## Stale
 
+- `workflow-verification-retired-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `workflow-verification-fix-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `workflow-fix-hardening-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `workflow-enforcement-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `workflow-debt-verification-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `workflow-debt-closure-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `state-export-levels-fix` — since 2026-10-13 (older than 14 days)
+- `state-export-levels` — since 2026-10-13 (older than 14 days)
+- `state-export-and-t18` — since 2026-10-13 (older than 14 days)
+- `kr-t3-verification-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-t3-false-refusals-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-t2-measure-script-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-t13-gold-id-verification-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-t1-rerank-baseline-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-t1-debt-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-stage-isolation-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-simplification-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-security-hype-real-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-retrieval-map-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-lqr-hyrag-pilot-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-hype-real-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-hype-final-r19-closed-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `kr-baseline-diagnosis-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `graphrag-1to1-report-fix-retired-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `graphrag-1to1-report-fix-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `graphrag-1to1-flag-number-debt-2026-10-13` — since 2026-10-13 (older than 14 days)
+- `graphrag-1to1-diagnosis-fix-and-close-py-debt-2026-10-13` — since 2026-10-13 (older than 14 days)
 - `graphrag-trust-set-natural-questions` — since 2026-10-12 (older than 14 days)
 - `graphrag-trust-set-freeze` — since 2026-10-12 (older than 14 days)
 - `graphrag-1to1-interpretation-2026-10-12` — since 2026-10-12 (older than 14 days)
@@ -113,6 +140,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `unlazy-workflow-closure-2026-10-27` | 2026-10-28 | mateusz | opencode |
 | `vault-monorepo-import-2026-10-27` | 2026-10-27 | mateusz | opencode |
 | `vault-monorepo-decisions-2026-10-27` | 2026-10-27 | mateusz | opencode |
 | `etth1-h720-s49-closeout-2026-10-27` | 2026-10-27 | mateusz | opencode |

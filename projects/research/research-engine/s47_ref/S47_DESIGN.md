@@ -52,6 +52,8 @@ sensitivity numbers were read: the choice counts as robust only if both policies
 agree on the locked candidate *and* on all three select gates. If they agree,
 `fixed 2000` stands (sample size constant, only the target window moves) and
 `expanding` is recorded as a sensitivity check. If they disagree, the gate verdict
+
+Note: the rule text, the expanding results and the comparison script landed in the same commit (0b08562), so the claim "rule written before reading the numbers" is an author assertion, not a git-verifiable fact.
 is policy-dependent — G3 is then too fragile to lock anything and this suite
 promotes nothing, which leaves the `benchmark-core` evaluation as the only path.
 
