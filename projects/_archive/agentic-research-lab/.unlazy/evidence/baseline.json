@@ -1,0 +1,115 @@
+{
+  "generated_at": "2026-09-25T22:30:32.430197+00:00",
+  "gates": [
+    {
+      "id": "Q1",
+      "name": "state_freshness",
+      "exit": 0,
+      "fingerprint": "b716cc7dbed8d61c84",
+      "passed": true
+    },
+    {
+      "id": "Q2",
+      "name": "wiring",
+      "exit": 0,
+      "fingerprint": "8b8239f7470921ea52",
+      "passed": true
+    },
+    {
+      "id": "Q3",
+      "name": "manifest",
+      "exit": 0,
+      "fingerprint": "e05be15c74b867fd230",
+      "passed": true
+    },
+    {
+      "id": "Q4",
+      "name": "stage_contracts",
+      "exit": 0,
+      "fingerprint": "c3526844c3ab535862",
+      "passed": true
+    },
+    {
+      "id": "Q5",
+      "name": "graph_watch",
+      "exit": 0,
+      "fingerprint": "ea991098922bbcd168",
+      "passed": true
+    },
+    {
+      "id": "Q6",
+      "name": "topic_coverage",
+      "exit": 0,
+      "fingerprint": "49c80a08671e6af341",
+      "passed": true
+    },
+    {
+      "id": "Q7",
+      "name": "reflection",
+      "exit": 0,
+      "fingerprint": "bfa8b866bf9cae60249",
+      "passed": true
+    },
+    {
+      "id": "Q8",
+      "name": "slop",
+      "exit": 0,
+      "fingerprint": "077aaa4bd35e463c69",
+      "passed": true
+    },
+    {
+      "id": "Q9",
+      "name": "reachability",
+      "exit": 0,
+      "fingerprint": "5c724afbe7f4dcab52",
+      "passed": true
+    },
+    {
+      "id": "Q10",
+      "name": "promotion",
+      "exit": 0,
+      "fingerprint": "ff4c410e640dd0d8134",
+      "passed": true
+    },
+    {
+      "id": "Q11",
+      "name": "eviction",
+      "exit": 0,
+      "fingerprint": "2e550192b4a5203177",
+      "passed": true
+    },
+    {
+      "id": "Q12",
+      "name": "research_quality",
+      "exit": 0,
+      "fingerprint": "35381332cbb62cad34",
+      "passed": true
+    },
+    {
+      "id": "Q13",
+      "name": "heuristic_usage",
+      "exit": 0,
+      "fingerprint": "583b80b5830cb91f63",
+      "passed": true
+    },
+    {
+      "id": "Q14",
+      "name": "guardrails",
+      "exit": 0,
+      "fingerprint": "961802c58bcca81a56",
+      "passed": true
+    },
+    {
+      "id": "Q15",
+      "name": "frontier",
+      "exit": 0,
+      "fingerprint": "deba6dd4f8a74fee22",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0
+  }
+}

@@ -1,0 +1,467 @@
+{
+  "slice": "H2-wavelet-nlinear",
+  "harness_command": "python projects/ts-ml-experiments/h720/sub_experiments/wavelet_nlinear_h2/rolling_arm.py",
+  "harness_log": "C:\\Users\\Mateusz\\Desktop\\ROOT\\projects\\ts-ml-experiments\\h720\\sub_experiments\\wavelet_nlinear_h2\\harness.log",
+  "pool": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "w_haar_base100_r3",
+    "w_haar_base10_r30",
+    "w_db2_base100_r3",
+    "w_db2_base10_r30",
+    "w_haar_base100_r10",
+    "w_db2_base100_r10",
+    "w_haar_base1000_r10"
+  ],
+  "wavelet_profiles": [
+    {
+      "name": "w_haar_base100_r3",
+      "wavelet": "haar",
+      "base": 100.0,
+      "ratio": 3.0
+    },
+    {
+      "name": "w_haar_base10_r30",
+      "wavelet": "haar",
+      "base": 10.0,
+      "ratio": 30.0
+    },
+    {
+      "name": "w_db2_base100_r3",
+      "wavelet": "db2",
+      "base": 100.0,
+      "ratio": 3.0
+    },
+    {
+      "name": "w_db2_base10_r30",
+      "wavelet": "db2",
+      "base": 10.0,
+      "ratio": 30.0
+    },
+    {
+      "name": "w_haar_base100_r10",
+      "wavelet": "haar",
+      "base": 100.0,
+      "ratio": 10.0
+    },
+    {
+      "name": "w_db2_base100_r10",
+      "wavelet": "db2",
+      "base": 100.0,
+      "ratio": 10.0
+    },
+    {
+      "name": "w_haar_base1000_r10",
+      "wavelet": "haar",
+      "base": 1000.0,
+      "ratio": 10.0
+    }
+  ],
+  "levels": 3,
+  "trace": [
+    {
+      "iter": 0,
+      "cur": [
+        "w_db2_base100_r10",
+        "w_haar_base1000_r10"
+      ],
+      "fast": 2.5188058963449405,
+      "true": 2.515401427434914,
+      "alpha": 10000.0,
+      "best_fast": 2.5188058963449405,
+      "best_set": [
+        "w_db2_base100_r10",
+        "w_haar_base1000_r10"
+      ]
+    },
+    {
+      "iter": 1,
+      "cur": [
+        "w_db2_base10_r30",
+        "w_haar_base1000_r10"
+      ],
+      "fast": 2.518882555411156,
+      "true": 2.518882555411156,
+      "alpha": 3000.0,
+      "best_fast": 2.5188058963449405,
+      "best_set": [
+        "w_db2_base100_r10",
+        "w_haar_base1000_r10"
+      ]
+    },
+    {
+      "iter": 2,
+      "cur": [
+        "w_haar_base100_r10",
+        "w_haar_base1000_r10"
+      ],
+      "fast": 2.5189474153182703,
+      "true": 2.5189474153182703,
+      "alpha": 3000.0,
+      "best_fast": 2.5188058963449405,
+      "best_set": [
+        "w_db2_base100_r10",
+        "w_haar_base1000_r10"
+      ]
+    },
+    {
+      "iter": 3,
+      "cur": [
+        "w_haar_base10_r30",
+        "w_haar_base1000_r10"
+      ],
+      "fast": 2.5190203063106993,
+      "true": 2.515601500863876,
+      "alpha": 10000.0,
+      "best_fast": 2.5188058963449405,
+      "best_set": [
+        "w_db2_base100_r10",
+        "w_haar_base1000_r10"
+      ]
+    },
+    {
+      "iter": 4,
+      "cur": [
+        "w_haar_base100_r3",
+        "w_haar_base1000_r10"
+      ],
+      "fast": 2.5193185339213646,
+      "true": 2.5193185339213646,
+      "alpha": 3000.0,
+      "best_fast": 2.5188058963449405,
+      "best_set": [
+        "w_db2_base100_r10",
+        "w_haar_base1000_r10"
+      ]
+    },
+    {
+      "iter": 5,
+      "cur": [
+        "w_db2_base100_r3",
+        "w_haar_base1000_r10"
+      ],
+      "fast": 2.5193190056052512,
+      "true": 2.5193190056052512,
+      "alpha": 3000.0,
+      "best_fast": 2.5188058963449405,
+      "best_set": [
+        "w_db2_base100_r10",
+        "w_haar_base1000_r10"
+      ]
+    }
+  ],
+  "best_subset": [
+    "w_db2_base100_r10",
+    "w_haar_base1000_r10"
+  ],
+  "best_idx": [
+    7,
+    8
+  ],
+  "best_fast": 2.5188058963449405,
+  "best_alpha": 10000.0,
+  "held_out_select_mae": 2.515401427434914,
+  "val_full": 2.8502702544501073,
+  "metrics": {
+    "singleton_wavelet": {
+      "nlinear_L336_a1": {
+        "mae": 2.057118861745735,
+        "rmse": 2.5623904079498168
+      },
+      "nlinear_L336_a10": {
+        "mae": 2.0571160498462784,
+        "rmse": 2.5623859881665143
+      },
+      "w_haar_base100_r3": {
+        "mae": 2.0569012761163545,
+        "rmse": 2.562023996036516
+      },
+      "w_haar_base10_r30": {
+        "mae": 2.0569603687810236,
+        "rmse": 2.5619032758506273
+      },
+      "w_db2_base100_r3": {
+        "mae": 2.0569326624006794,
+        "rmse": 2.562061580700437
+      },
+      "w_db2_base10_r30": {
+        "mae": 2.0570421019449587,
+        "rmse": 2.5620136201838672
+      },
+      "w_haar_base100_r10": {
+        "mae": 2.056889297955564,
+        "rmse": 2.561804966194385
+      },
+      "w_db2_base100_r10": {
+        "mae": 2.0569570177581205,
+        "rmse": 2.561900010115297
+      },
+      "w_haar_base1000_r10": {
+        "mae": 2.056648380429187,
+        "rmse": 2.5613151003423464
+      }
+    },
+    "singleton_val_held_out": {
+      "nlinear_L336_a1": 2.5787170463903792,
+      "nlinear_L336_a10": 2.5787020217602157,
+      "w_haar_base100_r3": 2.577441856565058,
+      "w_haar_base10_r30": 2.576064838444749,
+      "w_db2_base100_r3": 2.5775229709316645,
+      "w_db2_base10_r30": 2.576218217102646,
+      "w_haar_base100_r10": 2.5758732260571384,
+      "w_db2_base100_r10": 2.576007639233145,
+      "w_haar_base1000_r10": 2.574910416320866
+    },
+    "best_ensemble": {
+      "members": [
+        "w_db2_base100_r10",
+        "w_haar_base1000_r10"
+      ],
+      "val_full_mae": 2.8502702544501073,
+      "full_mae": 1.9906212761326707,
+      "full_rmse": 2.470327874860377,
+      "full_n": 2161,
+      "disjoint4_mae": 1.9655735737655844,
+      "disjoint4_rmse": 2.4820315763413974,
+      "held_out_select_mae": 2.515401427434914,
+      "alpha": 10000.0
+    },
+    "subband_stability": {
+      "w_haar_base100_r3": {
+        "subband_lens": [
+          42,
+          42,
+          84,
+          168
+        ],
+        "norm_A3D3D2D1_0": {
+          "frozen": 0.01889600006512091,
+          "refit": 0.01746294991043962,
+          "ratio": 0.9241611902126061
+        },
+        "norm_A3D3D2D1_1": {
+          "frozen": 0.01586680305285656,
+          "refit": 0.014227887467914495,
+          "ratio": 0.8967078888240813
+        },
+        "norm_A3D3D2D1_2": {
+          "frozen": 0.012705817270316432,
+          "refit": 0.0112518010609263,
+          "ratio": 0.8855629529013429
+        },
+        "norm_A3D3D2D1_3": {
+          "frozen": 0.007119052107456019,
+          "refit": 0.006862673510976213,
+          "ratio": 0.9639869757082841
+        },
+        "stable": true
+      },
+      "w_haar_base10_r30": {
+        "subband_lens": [
+          42,
+          42,
+          84,
+          168
+        ],
+        "norm_A3D3D2D1_0": {
+          "frozen": 0.01927343937927617,
+          "refit": 0.01780839625276092,
+          "ratio": 0.9239864199801027
+        },
+        "norm_A3D3D2D1_1": {
+          "frozen": 0.016926426378125147,
+          "refit": 0.015117733246956096,
+          "ratio": 0.8931438278367775
+        },
+        "norm_A3D3D2D1_2": {
+          "frozen": 0.0071825333144035905,
+          "refit": 0.0072852721501927625,
+          "ratio": 1.0143039831897673
+        },
+        "norm_A3D3D2D1_3": {
+          "frozen": 0.00019296963428636988,
+          "refit": 0.00022210854633738188,
+          "ratio": 1.1510025769534777
+        },
+        "stable": true
+      },
+      "w_db2_base100_r3": {
+        "subband_lens": [
+          42,
+          42,
+          84,
+          168
+        ],
+        "norm_A3D3D2D1_0": {
+          "frozen": 0.01933159589738359,
+          "refit": 0.017622888085269794,
+          "ratio": 0.9116106181205113
+        },
+        "norm_A3D3D2D1_1": {
+          "frozen": 0.01652624582026209,
+          "refit": 0.014657905797947988,
+          "ratio": 0.8869470996235931
+        },
+        "norm_A3D3D2D1_2": {
+          "frozen": 0.01260876753288422,
+          "refit": 0.011232787249019884,
+          "ratio": 0.8908711513416582
+        },
+        "norm_A3D3D2D1_3": {
+          "frozen": 0.006753359599166176,
+          "refit": 0.006562790668461431,
+          "ratio": 0.9717816106329842
+        },
+        "stable": true
+      },
+      "w_db2_base10_r30": {
+        "subband_lens": [
+          42,
+          42,
+          84,
+          168
+        ],
+        "norm_A3D3D2D1_0": {
+          "frozen": 0.01954404974005997,
+          "refit": 0.017749805713239523,
+          "ratio": 0.9081948700149521
+        },
+        "norm_A3D3D2D1_1": {
+          "frozen": 0.017202338692934024,
+          "refit": 0.01514942667989045,
+          "ratio": 0.8806608770069839
+        },
+        "norm_A3D3D2D1_2": {
+          "frozen": 0.006827283731233336,
+          "refit": 0.006981548309603165,
+          "ratio": 1.022595307950086
+        },
+        "norm_A3D3D2D1_3": {
+          "frozen": 0.00017408237318847214,
+          "refit": 0.00020274198388060824,
+          "ratio": 1.1646324677634505
+        },
+        "stable": true
+      },
+      "w_haar_base100_r10": {
+        "subband_lens": [
+          42,
+          42,
+          84,
+          168
+        ],
+        "norm_A3D3D2D1_0": {
+          "frozen": 0.01926019608217739,
+          "refit": 0.017793316889937058,
+          "ratio": 0.9238388235518681
+        },
+        "norm_A3D3D2D1_1": {
+          "frozen": 0.016376530654215366,
+          "refit": 0.014757907398783653,
+          "ratio": 0.9011620171812719
+        },
+        "norm_A3D3D2D1_2": {
+          "frozen": 0.006848526144399265,
+          "refit": 0.006981876990517219,
+          "ratio": 1.0194714663135234
+        },
+        "norm_A3D3D2D1_3": {
+          "frozen": 0.0005113630883029517,
+          "refit": 0.0005820299030973267,
+          "ratio": 1.1381930303747485
+        },
+        "stable": true
+      },
+      "w_db2_base100_r10": {
+        "subband_lens": [
+          42,
+          42,
+          84,
+          168
+        ],
+        "norm_A3D3D2D1_0": {
+          "frozen": 0.019498766219549806,
+          "refit": 0.0177303317156622,
+          "ratio": 0.9093053127579661
+        },
+        "norm_A3D3D2D1_1": {
+          "frozen": 0.01666495681748125,
+          "refit": 0.014825421631548711,
+          "ratio": 0.8896165645024114
+        },
+        "norm_A3D3D2D1_2": {
+          "frozen": 0.006522798454857893,
+          "refit": 0.006708166241987939,
+          "ratio": 1.0284184446925524
+        },
+        "norm_A3D3D2D1_3": {
+          "frozen": 0.00045858282494439515,
+          "refit": 0.0005284525664853593,
+          "ratio": 1.1523601359240527
+        },
+        "stable": true
+      },
+      "w_haar_base1000_r10": {
+        "subband_lens": [
+          42,
+          42,
+          84,
+          168
+        ],
+        "norm_A3D3D2D1_0": {
+          "frozen": 0.019513533522790564,
+          "refit": 0.018048415607014964,
+          "ratio": 0.92491785692917
+        },
+        "norm_A3D3D2D1_1": {
+          "frozen": 0.013192464396839068,
+          "refit": 0.012725638159773199,
+          "ratio": 0.9646141749544747
+        },
+        "norm_A3D3D2D1_2": {
+          "frozen": 0.0017099640962852348,
+          "refit": 0.0020643125452401,
+          "ratio": 1.2072256661555993
+        },
+        "norm_A3D3D2D1_3": {
+          "frozen": 7.086612738646694e-05,
+          "refit": 8.470004140564526e-05,
+          "ratio": 1.1952119373439916
+        },
+        "stable": true
+      }
+    },
+    "verdict": "REJECT"
+  },
+  "test_disjoint": {
+    "mae": 1.9655735737655844,
+    "rmse": 2.4820315763413974
+  },
+  "test_full": {
+    "mae": 1.9906212761326707,
+    "rmse": 2.470327874860377,
+    "n": 2161,
+    "delta_vs_s26": -0.0002787238673291892
+  },
+  "accept": false,
+  "acceptance_criteria": {
+    "full_mae_threshold": 1.9859,
+    "disjoint_mae_cap": 1.9696,
+    "incumbent_full": 1.9909,
+    "incumbent_disjoint": 1.9696,
+    "nlinear_L336_a1_singleton": 2.0571
+  },
+  "plan_impact": {
+    "invalidates": [
+      "H2 hypothesis (dyadic J=3 wavelet decomposition with subband-dependent Ridge shrinkage beats the S-26 incumbent under S-20-clean): REJECTED \u2014 full rolling MAE 1.9906 vs threshold 1.9859 (S-26 1.9909), disjoint-4 1.9656 vs cap 1.9696. Per the CONTEXT.md stop rule, the univariate linear family is declared saturated under current protocol limits; next gains require leaving the linear/level-free univariate regime (non-linear readouts, exogenous channels, or a protocol change)."
+    ],
+    "confirms": [
+      "Univariate linear family remains the ceiling: the J=3 dyadic orthogonal wavelet basis (Haar/db2, periodization) spans the same 336-dim anchored-window space as NLinear L336 \u2014 a uniform-alpha wavelet Ridge is exactly NLinear(alpha) by rotation invariance, so the family adds no new hypothesis capacity. Observed: best wavelet member held-out val 2.5749 vs best NLinear member 2.5787; best wavelet singleton full-test 2.0566 vs pinned NLinear L336 a=1 singleton 2.0571. Basis change alone cannot move the needle.",
+      "S-26 greedy-tabu protocol reproducibility: chronological val split (stack fit on val[0:1080), held-out select on val[1080:2161)), frozen-8545/refrozen-11425 member factories, disjoint-4 diagnostic and acceptance thresholds transfer unchanged to a new member family."
+    ],
+    "opens": [
+      "Per the CONTEXT.md H2 stop rule, close the univariate-linear frontier line: no further basis/shrinkage variants (wavelet, FITS, per-horizon penalties) on OT alone; redirect to the frontier's remaining steps."
+    ]
+  },
+  "protocol": "S-20-clean: val members frozen on 8545, test members refrozen on 11425; chronological val split fit [0:1080) / select [1080:2161); frozen 11425 test; disjoint-4 diagnostic only"
+}

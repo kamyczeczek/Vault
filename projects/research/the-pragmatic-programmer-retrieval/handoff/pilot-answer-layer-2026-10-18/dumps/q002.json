@@ -1,0 +1,69 @@
+{
+ "id": "q002",
+ "question": "Jaka jest różnica między „tracer bullets” a „prototypami” i kiedy stosować które?",
+ "type": "comparison / multi-chunk (dwa sąsiednie Topics)",
+ "header": "Porównanie (comparison, dwa powiązane chunki)",
+ "gold_topics": [
+  12,
+  13
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 52,
+   "topic_title": "Delight Your Users",
+   "chapter": 9,
+   "page_book": 462,
+   "text": "#### **RELATED SECTIONS INCLUDE**\n\n- Topic 12, _Tracer Bullets_\n\n- Topic 13, _Prototypes and Post-it Notes_\n\n- Topic 45, _The Requirements Pit_"
+  },
+  {
+   "topic": 12,
+   "topic_title": "Tracer Bullets",
+   "chapter": 2,
+   "page_book": 109,
+   "text": "#### **CODE THAT GLOWS IN THE DARK**\n\nTracer bullets work because they operate in the same environment and under the same constraints as the real bullets. They get to the target fast, so the gunner gets immediate feedback. And from a practical standpoint they're a relatively cheap solution.\n\nTo get the same effect in code, we look for something that gets us from a requirement to some aspect of the final system quickly, visibly, and repeatably.\n\nLook for the important requirements, the ones that define the system. Look for the areas where you have doubts, and where you see the biggest risks. Then prioritize your development so that these are the first areas you code.\n\n> **Tip 20** Use Tracer Bullets to Find the Target"
+  },
+  {
+   "topic": 12,
+   "topic_title": "Tracer Bullets",
+   "chapter": 2,
+   "page_book": 109,
+   "text": "far easier to measure performance and to demonstrate progress to your user. Because each individual development is smaller, you avoid creating those monolithic blocks of code that are reported as 95% complete week after week.\n\n#### **TRACER BULLETS DON'T ALWAYS HIT THEIR TARGET**\n\nTracer bullets show what you're hitting. This may not always be the target. You then adjust your aim until they're on target. That's the point."
+  },
+  {
+   "topic": 12,
+   "topic_title": "Tracer Bullets",
+   "chapter": 2,
+   "page_book": 109,
+   "text": "Tracer bullets are loaded at intervals alongside regular ammunition. When they're fired, their phosphorus ignites and leaves a pyrotechnic trail from the gun to whatever they hit. If the tracers are hitting the target, then so are the regular bullets. Soldiers use these tracer rounds to refine their aim: it's pragmatic, real-time feedback under actual conditions.\n\nThat same principle applies to projects, particularly when you're building something that hasn't been built before. We use the\n\nterm _tracer bullet development_ to visually illustrate the need for immediate feedback under actual conditions with a moving goal."
+  },
+  {
+   "topic": 12,
+   "topic_title": "Tracer Bullets",
+   "chapter": 2,
+   "page_book": 109,
+   "text": "In fact, given the complexity of today's project setup, with swarms of external dependencies and tools, tracer bullets become even more important. For us, the very first tracer bullet is simply _create the project, add a \"hello world!,\" and make sure it compiles and runs._ Then we look for areas of uncertainty in the overall application and add the skeleton needed to make it work.\n\nHave a look at the following diagram. This system has five architectural layers. We have some concerns about how they'd integrate, so we look for a simple feature that lets us exercise them together. The diagonal line shows the path that feature takes through the code. To make it work, we just have to implement the solidly shaded areas in each layer: the stuff with the squiggles will be done later."
+  },
+  {
+   "topic": 7,
+   "topic_title": "Communicate!",
+   "chapter": 1,
+   "page_book": 63,
+   "text": "The next two sections are also related. In Topic 12, _<u>Tracer Bullets</u>_ <u>, we talk about a style of development that allows you to</u> gather requirements, test designs, and implement code at the same time. It's the only way to keep up with the pace of modern life.\n\nTopic 13, _<u>Prototypes and Post-it Notes</u>_ shows you how to use prototyping to test architectures, algorithms, interfaces, and ideas. In the modern world, it's critical to test ideas and get feedback before you commit to them whole-heartedly."
+  },
+  {
+   "topic": 13,
+   "topic_title": "Prototypes and Post-it Notes",
+   "chapter": 2,
+   "page_book": 118,
+   "text": "If you feel there is a strong possibility in your environment or culture that the purpose of prototype code may be misinterpreted, you may be better off with the tracer bullet approach. You'll end up with a solid framework on which to base future development.\n\nProperly used prototypes can save you huge amounts of time, money, and pain by identifying and correcting potential problem spots early in the development cycle—the time when fixing mistakes is both cheap and easy.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 12, _Tracer Bullets_\n\n- Topic 14, _Domain Languages_\n\n- Topic 17, _Shell Games_\n\n- Topic 27, _Don't Outrun Your Headlights_\n\n- Topic 37, _Listen to Your Lizard Brain_\n\n- Topic 45, _The Requirements Pit_\n\n- Topic 52, _Delight Your Users_\n\n#### **EXERCISES**"
+  },
+  {
+   "topic": 12,
+   "topic_title": "Tracer Bullets",
+   "chapter": 2,
+   "page_book": 109,
+   "text": "> **Topic 12** Tracer Bullets\n\n_Ready, fire, aim…_\n\n_Anon_\n\nWe often talk about hitting targets when we develop software. We're not actually firing anything at the shooting range, but it's still a useful and very visual metaphor. In particular, it's interesting to\n\nconsider _how_ to hit a target in a complex and shifting world.\n\nThe answer, of course, depends on the nature of the device you're aiming with. With many you only get one chance to aim, and then get to see if you hit the bullseye or not. But there's a better way.\n\nYou know all those movies, TV shows, and video games where people are shooting machine guns? In these scenes, you'll often see the path of bullets as bright streaks in the air. These streaks come from tracer bullets."
+  }
+ ]
+}

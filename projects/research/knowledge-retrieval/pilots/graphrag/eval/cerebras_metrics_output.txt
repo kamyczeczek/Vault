@@ -1,0 +1,71 @@
+=== IN-CORPUS ===
+Q00a: R@1=1.000 R@3=1.000 R@10=1.000 MRR=1.000 MRR@5=1.000 odmowa=False
+Q00b: R@1=1.000 R@3=1.000 R@10=1.000 MRR=1.000 MRR@5=1.000 odmowa=False
+Q00c: R@1=0.250 R@3=0.750 R@10=1.000 MRR=1.000 MRR@5=1.000 odmowa=False
+Q01: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=True
+Q02: R@1=0.000 R@3=1.000 R@10=1.000 MRR=0.500 MRR@5=0.500 odmowa=True
+Q03: R@1=1.000 R@3=1.000 R@10=1.000 MRR=1.000 MRR@5=1.000 odmowa=True
+Q04: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=True
+Q05: R@1=0.000 R@3=1.000 R@10=1.000 MRR=0.333 MRR@5=0.333 odmowa=True
+Q06: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=False
+Q07: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=False
+Q08: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=False
+Q09: R@1=0.000 R@3=1.000 R@10=1.000 MRR=0.500 MRR@5=0.500 odmowa=False
+Q10: R@1=0.000 R@3=1.000 R@10=1.000 MRR=0.500 MRR@5=0.500 odmowa=True
+Q11: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=True
+Q12: R@1=0.000 R@3=1.000 R@10=1.000 MRR=0.333 MRR@5=0.333 odmowa=True
+Q13: R@1=0.000 R@3=1.000 R@10=1.000 MRR=0.333 MRR@5=0.333 odmowa=True
+Q14: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=True
+Q15: R@1=0.000 R@3=0.000 R@10=1.000 MRR=0.250 MRR@5=0.250 odmowa=False
+Q16: R@1=0.000 R@3=1.000 R@10=1.000 MRR=0.500 MRR@5=0.500 odmowa=False
+Q17: R@1=1.000 R@3=1.000 R@10=1.000 MRR=1.000 MRR@5=1.000 odmowa=False
+Q18: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=True
+Q19: R@1=1.000 R@3=1.000 R@10=1.000 MRR=1.000 MRR@5=1.000 odmowa=False
+Q20: R@1=0.000 R@3=1.000 R@10=1.000 MRR=0.500 MRR@5=0.500 odmowa=False
+Q21: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=False
+Q22: R@1=0.000 R@3=0.000 R@10=1.000 MRR=0.111 MRR@5=0.000 odmowa=False
+Q23: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=True
+Q24: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=True
+Q25: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=False
+Q26: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=True
+Q27: R@1=0.000 R@3=0.000 R@10=1.000 MRR=0.125 MRR@5=0.000 odmowa=True
+Q28: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=True
+Q29: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=False
+Q30: R@1=0.000 R@3=0.000 R@10=0.000 MRR=0.000 MRR@5=0.000 odmowa=False
+
+=== OUT-OF-CORPUS ===
+O01: odmowa=True (oczekiwana=True)
+O02: odmowa=True (oczekiwana=True)
+O03: odmowa=True (oczekiwana=True)
+O04: odmowa=True (oczekiwana=True)
+O05: odmowa=True (oczekiwana=True)
+O06: odmowa=True (oczekiwana=True)
+O07: odmowa=True (oczekiwana=True)
+O08: odmowa=True (oczekiwana=True)
+O09: odmowa=True (oczekiwana=True)
+O10: odmowa=True (oczekiwana=True)
+O11: odmowa=True (oczekiwana=True)
+O12: odmowa=True (oczekiwana=True)
+O13: odmowa=True (oczekiwana=True)
+O14: odmowa=True (oczekiwana=True)
+O15: odmowa=True (oczekiwana=True)
+
+=== BOUNDARY ===
+B01: odmowa=True (oczekiwana=True)
+B02: odmowa=True (oczekiwana=True)
+B03: odmowa=False (oczekiwana=True)
+B04: odmowa=True (oczekiwana=True)
+B05: odmowa=False (oczekiwana=True)
+B06: odmowa=True (oczekiwana=True)
+B07: odmowa=False (oczekiwana=True)
+B08: odmowa=True (oczekiwana=True)
+B09: odmowa=False (oczekiwana=True)
+B10: odmowa=False (oczekiwana=True)
+
+=== ZBIORCZO ===
+IN-CORPUS (n=33): Recall@1=0.159 Recall@3=0.417 Recall@10=0.515 MRR=0.303 MRR@5=0.295 Recall@5=0.455
+OOC refusal (n=15): 100.0%
+BOUNDARY refusal (n=10): 50.0%
+FALSE REFUSAL in-corpus (n=33): 48.5%
+
+Zapisano: C:\Users\Mateusz\Desktop\root_worksapce\projects\research\knowledge-retrieval\pilots\graphrag\eval\trust_set_results.json

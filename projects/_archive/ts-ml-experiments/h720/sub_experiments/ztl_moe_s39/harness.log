@@ -1,0 +1,5 @@
+harness_command: python projects/ts-ml-experiments/h720/sub_experiments/ztl_moe_s39/rolling_arm.py
+plan_impact: S-39 ZTL-MoE prototype; 5-expert pool + EWA router; Expert 5 Fourier-lag implemented
+metrics: test_mae=2.016601 test_rmse=2.517493 disjoint_4_mae=1.881198
+acceptance: primary=FAIL stability=PASS transfer_delta=-0.602863
+runtime: 54.622s

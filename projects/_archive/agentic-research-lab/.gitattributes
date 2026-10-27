@@ -1,0 +1,6 @@
+# Normalize line endings so byte-hashed artifacts are platform-stable.
+# knowledge/graph/build_graph.py fingerprint() hashes RAW corpus bytes: mixed
+# CRLF/LF endings make the same corpus hash differently per checkout, which
+# silently invalidates every reflection provenance stamp. Force LF for corpus
+# chunks so worktree, fresh clones (Windows/Linux), and CI all hash identically.
+knowledge/corpus/*.md text eol=lf

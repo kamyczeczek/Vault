@@ -1,1 +1,8 @@
-{}
+{
+  "userIgnoreFilters": [
+    "projects/",
+    "scripts/_scratch/",
+    "logs/",
+    "agents/"
+  ]
+}

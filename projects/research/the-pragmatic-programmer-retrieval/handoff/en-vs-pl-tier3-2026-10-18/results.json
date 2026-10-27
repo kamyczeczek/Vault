@@ -1,0 +1,3322 @@
+{
+  "prereg": {
+    "threshold_delta": 0.02,
+    "redflag_baseline_floor": 0.807,
+    "sanity_median_ms": 500
+  },
+  "timestamp": "2026-10-18",
+  "verdict": "EN enters pipeline (answer-layer EN in session 5)",
+  "A": {
+    "recall": 0.8269,
+    "rows": [
+      {
+        "id": "q001",
+        "query_lang": "pl",
+        "type": "factual / definition",
+        "gold_topics": [
+          9
+        ],
+        "top8topics": [
+          27,
+          9,
+          36,
+          21,
+          49,
+          14,
+          22,
+          9
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 479.32
+      },
+      {
+        "id": "q002",
+        "query_lang": "pl",
+        "type": "comparison / multi-chunk (dwa sąsiednie Topics)",
+        "gold_topics": [
+          12,
+          13
+        ],
+        "top8topics": [
+          52,
+          12,
+          12,
+          12,
+          12,
+          7,
+          13,
+          12
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 100.31
+      },
+      {
+        "id": "q003",
+        "query_lang": "pl",
+        "type": "reasoning / why + enumeration",
+        "gold_topics": [
+          31
+        ],
+        "top8topics": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31,
+          31,
+          28
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 135.9
+      },
+      {
+        "id": "q004",
+        "query_lang": "pl",
+        "type": "relational / multi-hop",
+        "gold_topics": [
+          8,
+          9,
+          10
+        ],
+        "top8topics": [
+          10,
+          7,
+          7,
+          8,
+          28,
+          30,
+          11,
+          30
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 119.7
+      },
+      {
+        "id": "q005",
+        "query_lang": "pl",
+        "type": "false-premise (system powinien skorygować, nie potwierdzić)",
+        "gold_topics": [
+          3
+        ],
+        "top8topics": [
+          4,
+          3,
+          3,
+          3,
+          3,
+          49,
+          3,
+          40
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 111.06
+      },
+      {
+        "id": "q006",
+        "query_lang": "pl",
+        "type": "factual / definition",
+        "gold_topics": [
+          23
+        ],
+        "top8topics": [
+          23,
+          23,
+          23,
+          23,
+          42,
+          23,
+          23,
+          23
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 96.59
+      },
+      {
+        "id": "q007",
+        "query_lang": "pl",
+        "type": "comparison / four-way",
+        "gold_topics": [
+          29
+        ],
+        "top8topics": [
+          33,
+          28,
+          30,
+          33,
+          31,
+          32,
+          28,
+          29
+        ],
+        "hit": true,
+        "hit_rank": 8,
+        "dt_ms": 96.25
+      },
+      {
+        "id": "q008",
+        "query_lang": "pl",
+        "type": "reasoning / why",
+        "gold_topics": [
+          24,
+          25
+        ],
+        "top8topics": [
+          24,
+          20,
+          51,
+          20,
+          23,
+          20,
+          24,
+          24
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 109.56
+      },
+      {
+        "id": "q009",
+        "query_lang": "pl",
+        "type": "false-premise",
+        "gold_topics": [
+          25
+        ],
+        "top8topics": [
+          25,
+          25,
+          23,
+          23,
+          25,
+          25,
+          23,
+          27
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 117.49
+      },
+      {
+        "id": "q010",
+        "query_lang": "pl",
+        "type": "relational / multi-hop",
+        "gold_topics": [
+          9,
+          10
+        ],
+        "top8topics": [
+          10,
+          7,
+          10,
+          28,
+          10,
+          8,
+          10,
+          10
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 100.17
+      },
+      {
+        "id": "q011",
+        "query_lang": "pl",
+        "type": "factual + procedure",
+        "gold_topics": [
+          20
+        ],
+        "top8topics": [
+          20,
+          20,
+          39,
+          20,
+          39,
+          20,
+          20,
+          27
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 97.05
+      },
+      {
+        "id": "q012",
+        "query_lang": "pl",
+        "type": "comparison / two-model",
+        "gold_topics": [
+          35,
+          36
+        ],
+        "top8topics": [
+          15,
+          36,
+          15,
+          41,
+          6,
+          38,
+          15,
+          36
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 126.59
+      },
+      {
+        "id": "q013",
+        "query_lang": "pl",
+        "type": "reasoning / why + enumeration",
+        "gold_topics": [
+          38
+        ],
+        "top8topics": [
+          38,
+          36,
+          38,
+          38,
+          9,
+          38,
+          38,
+          9
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 115.79
+      },
+      {
+        "id": "q014",
+        "query_lang": "pl",
+        "type": "false-premise",
+        "gold_topics": [
+          45
+        ],
+        "top8topics": [
+          27,
+          11,
+          9,
+          52,
+          4,
+          49,
+          8,
+          20
+        ],
+        "hit": false,
+        "hit_rank": null,
+        "dt_ms": 120.56
+      },
+      {
+        "id": "q015",
+        "query_lang": "pl",
+        "type": "relational / multi-hop",
+        "gold_topics": [
+          51,
+          11,
+          12,
+          17,
+          19,
+          41,
+          42,
+          48,
+          50
+        ],
+        "top8topics": [
+          51,
+          51,
+          11,
+          50,
+          21,
+          51,
+          27,
+          51
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 110.98
+      },
+      {
+        "id": "q016",
+        "query_lang": "pl",
+        "type": "factual + rationale",
+        "gold_topics": [
+          16
+        ],
+        "top8topics": [
+          16,
+          16,
+          16,
+          16,
+          21,
+          16,
+          16,
+          7
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 95.35
+      },
+      {
+        "id": "q017",
+        "query_lang": "pl",
+        "type": "reasoning + procedure",
+        "gold_topics": [
+          40
+        ],
+        "top8topics": [
+          23,
+          31,
+          25,
+          36,
+          40,
+          23,
+          7,
+          38
+        ],
+        "hit": true,
+        "hit_rank": 5,
+        "dt_ms": 112.29
+      },
+      {
+        "id": "q018",
+        "query_lang": "pl",
+        "type": "comparison",
+        "gold_topics": [
+          32
+        ],
+        "top8topics": [
+          32,
+          28,
+          23,
+          17,
+          9,
+          31,
+          10,
+          10
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 93.87
+      },
+      {
+        "id": "q019",
+        "query_lang": "pl",
+        "type": "false-premise",
+        "gold_topics": [
+          53
+        ],
+        "top8topics": [
+          53,
+          30,
+          48,
+          14,
+          14,
+          53,
+          45,
+          23
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 101.85
+      },
+      {
+        "id": "q020",
+        "query_lang": "pl",
+        "type": "relational / multi-hop",
+        "gold_topics": [
+          23,
+          26,
+          27,
+          8
+        ],
+        "top8topics": [
+          26,
+          26,
+          22,
+          50,
+          26,
+          33,
+          23,
+          48
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 95.21
+      },
+      {
+        "id": "q021",
+        "query_lang": "pl",
+        "type": "reasoning / enumeration",
+        "gold_topics": [
+          6
+        ],
+        "top8topics": [
+          6,
+          7,
+          6,
+          49,
+          6,
+          6,
+          6,
+          9
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 93.06
+      },
+      {
+        "id": "q022",
+        "query_lang": "pl",
+        "type": "reasoning / why",
+        "gold_topics": [
+          44
+        ],
+        "top8topics": [
+          30,
+          14,
+          27,
+          28,
+          29,
+          38,
+          28,
+          11
+        ],
+        "hit": false,
+        "hit_rank": null,
+        "dt_ms": 96.12
+      },
+      {
+        "id": "q023",
+        "query_lang": "pl",
+        "type": "reasoning / when-not-to",
+        "gold_topics": [
+          39
+        ],
+        "top8topics": [
+          39,
+          44,
+          43,
+          25,
+          43,
+          46,
+          43,
+          37
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 95.03
+      },
+      {
+        "id": "q024",
+        "query_lang": "pl",
+        "type": "factual + procedure",
+        "gold_topics": [
+          43
+        ],
+        "top8topics": [
+          35,
+          38,
+          34,
+          4,
+          34,
+          17,
+          29,
+          38
+        ],
+        "hit": false,
+        "hit_rank": null,
+        "dt_ms": 99.11
+      },
+      {
+        "id": "q025",
+        "query_lang": "pl",
+        "type": "reasoning / why",
+        "gold_topics": [
+          34
+        ],
+        "top8topics": [
+          34,
+          34,
+          32,
+          51,
+          34,
+          23,
+          28,
+          38
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 93.12
+      },
+      {
+        "id": "q026",
+        "query_lang": "pl",
+        "type": "comparison",
+        "gold_topics": [
+          30,
+          28
+        ],
+        "top8topics": [
+          28,
+          30,
+          27,
+          30,
+          30,
+          30,
+          30,
+          30
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 93.47
+      },
+      {
+        "id": "q027",
+        "query_lang": "pl",
+        "type": "factual + procedure",
+        "gold_topics": [
+          7
+        ],
+        "top8topics": [
+          29,
+          35,
+          16,
+          27,
+          11,
+          47,
+          7,
+          29
+        ],
+        "hit": true,
+        "hit_rank": 7,
+        "dt_ms": 100.39
+      },
+      {
+        "id": "q028",
+        "query_lang": "pl",
+        "type": "false-premise",
+        "gold_topics": [
+          5
+        ],
+        "top8topics": [
+          5,
+          5,
+          5,
+          5,
+          48,
+          5,
+          5,
+          49
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 103.25
+      },
+      {
+        "id": "q029",
+        "query_lang": "pl",
+        "type": "reasoning / why",
+        "gold_topics": [
+          19
+        ],
+        "top8topics": [
+          19,
+          19,
+          19,
+          51,
+          51,
+          11,
+          19,
+          19
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 106.25
+      },
+      {
+        "id": "q030",
+        "query_lang": "pl",
+        "type": "relational / multi-hop",
+        "gold_topics": [
+          49,
+          3,
+          4,
+          6,
+          9,
+          12,
+          53
+        ],
+        "top8topics": [
+          11,
+          9,
+          50,
+          28,
+          27,
+          48,
+          49,
+          10
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 100.82
+      },
+      {
+        "id": "fp001",
+        "query_lang": "pl",
+        "type": "false_premise",
+        "gold_topics": [
+          41
+        ],
+        "top8topics": [
+          42,
+          42,
+          23,
+          10,
+          39,
+          42,
+          42,
+          25
+        ],
+        "hit": false,
+        "hit_rank": null,
+        "dt_ms": 95.21
+      },
+      {
+        "id": "fp002",
+        "query_lang": "pl",
+        "type": "false_premise",
+        "gold_topics": [
+          40
+        ],
+        "top8topics": [
+          50,
+          9,
+          49,
+          11,
+          10,
+          11,
+          49,
+          28
+        ],
+        "hit": false,
+        "hit_rank": null,
+        "dt_ms": 96.99
+      },
+      {
+        "id": "fp003",
+        "query_lang": "pl",
+        "type": "false_premise",
+        "gold_topics": [
+          31
+        ],
+        "top8topics": [
+          20,
+          38,
+          23,
+          29,
+          38,
+          20,
+          31,
+          36
+        ],
+        "hit": true,
+        "hit_rank": 7,
+        "dt_ms": 95.02
+      },
+      {
+        "id": "fp004",
+        "query_lang": "pl",
+        "type": "false_premise",
+        "gold_topics": [
+          48
+        ],
+        "top8topics": [
+          50,
+          50,
+          50,
+          50,
+          48,
+          50,
+          48,
+          44
+        ],
+        "hit": true,
+        "hit_rank": 5,
+        "dt_ms": 97.63
+      },
+      {
+        "id": "fp005",
+        "query_lang": "pl",
+        "type": "false_premise",
+        "gold_topics": [
+          37
+        ],
+        "top8topics": [
+          7,
+          35,
+          38,
+          14,
+          37,
+          10,
+          35,
+          35
+        ],
+        "hit": true,
+        "hit_rank": 5,
+        "dt_ms": 112.59
+      },
+      {
+        "id": "fp006",
+        "query_lang": "pl",
+        "type": "false_premise",
+        "gold_topics": [
+          24
+        ],
+        "top8topics": [
+          23,
+          38,
+          9,
+          39,
+          29,
+          28,
+          41,
+          4
+        ],
+        "hit": false,
+        "hit_rank": null,
+        "dt_ms": 122.25
+      },
+      {
+        "id": "fp007",
+        "query_lang": "pl",
+        "type": "false_premise",
+        "gold_topics": [
+          4
+        ],
+        "top8topics": [
+          17,
+          25,
+          38,
+          14,
+          41,
+          23,
+          23,
+          20
+        ],
+        "hit": false,
+        "hit_rank": null,
+        "dt_ms": 102.46
+      },
+      {
+        "id": "q031",
+        "query_lang": "pl",
+        "type": "factual",
+        "gold_topics": [
+          1
+        ],
+        "top8topics": [
+          1,
+          7,
+          23,
+          37,
+          11,
+          23,
+          43,
+          42
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 105.13
+      },
+      {
+        "id": "q032",
+        "query_lang": "pl",
+        "type": "procedural",
+        "gold_topics": [
+          2
+        ],
+        "top8topics": [
+          2,
+          2,
+          2,
+          44,
+          53,
+          2,
+          20,
+          45
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 95.75
+      },
+      {
+        "id": "q033",
+        "query_lang": "pl",
+        "type": "reasoning",
+        "gold_topics": [
+          11
+        ],
+        "top8topics": [
+          11,
+          11,
+          11,
+          7,
+          11,
+          27,
+          28,
+          30
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 100.07
+      },
+      {
+        "id": "q034",
+        "query_lang": "pl",
+        "type": "comparison",
+        "gold_topics": [
+          14
+        ],
+        "top8topics": [
+          32,
+          31,
+          31,
+          38,
+          23,
+          42,
+          49,
+          30
+        ],
+        "hit": false,
+        "hit_rank": null,
+        "dt_ms": 92.28
+      },
+      {
+        "id": "q035",
+        "query_lang": "pl",
+        "type": "factual",
+        "gold_topics": [
+          15
+        ],
+        "top8topics": [
+          38,
+          20,
+          35,
+          29,
+          52,
+          10,
+          27,
+          35
+        ],
+        "hit": false,
+        "hit_rank": null,
+        "dt_ms": 97.83
+      },
+      {
+        "id": "q036",
+        "query_lang": "pl",
+        "type": "reasoning",
+        "gold_topics": [
+          17
+        ],
+        "top8topics": [
+          17,
+          17,
+          51,
+          17,
+          51,
+          17,
+          17,
+          11
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 107.02
+      },
+      {
+        "id": "q037",
+        "query_lang": "pl",
+        "type": "factual",
+        "gold_topics": [
+          18
+        ],
+        "top8topics": [
+          18,
+          18,
+          18,
+          51,
+          14,
+          18,
+          18,
+          49
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 117.53
+      },
+      {
+        "id": "q038",
+        "query_lang": "pl",
+        "type": "reasoning",
+        "gold_topics": [
+          21
+        ],
+        "top8topics": [
+          49,
+          21,
+          11,
+          9,
+          28,
+          14,
+          27,
+          52
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 91.32
+      },
+      {
+        "id": "q039",
+        "query_lang": "pl",
+        "type": "factual",
+        "gold_topics": [
+          22
+        ],
+        "top8topics": [
+          22,
+          22,
+          46,
+          22,
+          8,
+          21,
+          22,
+          22
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 107.96
+      },
+      {
+        "id": "q040",
+        "query_lang": "pl",
+        "type": "factual",
+        "gold_topics": [
+          32
+        ],
+        "top8topics": [
+          23,
+          23,
+          31,
+          23,
+          32,
+          23,
+          23,
+          14
+        ],
+        "hit": true,
+        "hit_rank": 5,
+        "dt_ms": 91.59
+      },
+      {
+        "id": "q041",
+        "query_lang": "pl",
+        "type": "reasoning",
+        "gold_topics": [
+          33
+        ],
+        "top8topics": [
+          32,
+          33,
+          33,
+          28,
+          33,
+          30,
+          10,
+          28
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 97.68
+      },
+      {
+        "id": "q042",
+        "query_lang": "pl",
+        "type": "reasoning",
+        "gold_topics": [
+          37
+        ],
+        "top8topics": [
+          37,
+          37,
+          37,
+          27,
+          37,
+          24,
+          37,
+          37
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 109.93
+      },
+      {
+        "id": "q043",
+        "query_lang": "pl",
+        "type": "procedural",
+        "gold_topics": [
+          46
+        ],
+        "top8topics": [
+          46,
+          41,
+          5,
+          39,
+          39,
+          39,
+          37,
+          24
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 89.84
+      },
+      {
+        "id": "q044",
+        "query_lang": "pl",
+        "type": "procedural",
+        "gold_topics": [
+          47
+        ],
+        "top8topics": [
+          47,
+          47,
+          47,
+          47,
+          47,
+          53,
+          23,
+          44
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 96.48
+      },
+      {
+        "id": "q045",
+        "query_lang": "pl",
+        "type": "factual",
+        "gold_topics": [
+          52
+        ],
+        "top8topics": [
+          52,
+          52,
+          52,
+          12,
+          41,
+          12,
+          29,
+          48
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 105.41
+      }
+    ]
+  },
+  "B": {
+    "recall": 0.9808,
+    "rows": [
+      {
+        "id": "q001",
+        "query_lang": "en",
+        "type": "factual / definition",
+        "gold_topics": [
+          9
+        ],
+        "top8topics": [
+          9,
+          10,
+          9,
+          51,
+          36,
+          41,
+          22,
+          51
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 102.03
+      },
+      {
+        "id": "q002",
+        "query_lang": "en",
+        "type": "comparison / multi-chunk (dwa sąsiednie Topics)",
+        "gold_topics": [
+          12,
+          13
+        ],
+        "top8topics": [
+          12,
+          13,
+          12,
+          12,
+          7,
+          52,
+          13,
+          12
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 113.08
+      },
+      {
+        "id": "q003",
+        "query_lang": "en",
+        "type": "reasoning / why + enumeration",
+        "gold_topics": [
+          31
+        ],
+        "top8topics": [
+          31,
+          31,
+          31,
+          31,
+          45,
+          10,
+          7,
+          31
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 97.34
+      },
+      {
+        "id": "q004",
+        "query_lang": "en",
+        "type": "relational / multi-hop",
+        "gold_topics": [
+          8,
+          9,
+          10
+        ],
+        "top8topics": [
+          8,
+          8,
+          8,
+          10,
+          7,
+          7,
+          28,
+          8
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 95.25
+      },
+      {
+        "id": "q005",
+        "query_lang": "en",
+        "type": "false-premise (system powinien skorygować, nie potwierdzić)",
+        "gold_topics": [
+          3
+        ],
+        "top8topics": [
+          3,
+          3,
+          15,
+          3,
+          24,
+          44,
+          3,
+          41
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 105.48
+      },
+      {
+        "id": "q006",
+        "query_lang": "en",
+        "type": "factual / definition",
+        "gold_topics": [
+          23
+        ],
+        "top8topics": [
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          23,
+          42
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 95.04
+      },
+      {
+        "id": "q007",
+        "query_lang": "en",
+        "type": "comparison / four-way",
+        "gold_topics": [
+          29
+        ],
+        "top8topics": [
+          27,
+          14,
+          29,
+          51,
+          29,
+          9,
+          33,
+          31
+        ],
+        "hit": true,
+        "hit_rank": 3,
+        "dt_ms": 91.06
+      },
+      {
+        "id": "q008",
+        "query_lang": "en",
+        "type": "reasoning / why",
+        "gold_topics": [
+          24,
+          25
+        ],
+        "top8topics": [
+          24,
+          24,
+          23,
+          38,
+          20,
+          51,
+          24,
+          30
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 101.54
+      },
+      {
+        "id": "q009",
+        "query_lang": "en",
+        "type": "false-premise",
+        "gold_topics": [
+          25
+        ],
+        "top8topics": [
+          25,
+          25,
+          25,
+          25,
+          23,
+          38,
+          21,
+          27
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 93.71
+      },
+      {
+        "id": "q010",
+        "query_lang": "en",
+        "type": "relational / multi-hop",
+        "gold_topics": [
+          9,
+          10
+        ],
+        "top8topics": [
+          9,
+          10,
+          10,
+          9,
+          10,
+          51,
+          7,
+          9
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 98.55
+      },
+      {
+        "id": "q011",
+        "query_lang": "en",
+        "type": "factual + procedure",
+        "gold_topics": [
+          20
+        ],
+        "top8topics": [
+          20,
+          20,
+          20,
+          43,
+          20,
+          16,
+          39,
+          20
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 95.97
+      },
+      {
+        "id": "q012",
+        "query_lang": "en",
+        "type": "comparison / two-model",
+        "gold_topics": [
+          35,
+          36
+        ],
+        "top8topics": [
+          32,
+          36,
+          35,
+          35,
+          35,
+          36,
+          36,
+          35
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 107.14
+      },
+      {
+        "id": "q013",
+        "query_lang": "en",
+        "type": "reasoning / why + enumeration",
+        "gold_topics": [
+          38
+        ],
+        "top8topics": [
+          38,
+          38,
+          38,
+          38,
+          36,
+          38,
+          38,
+          31
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 94.94
+      },
+      {
+        "id": "q014",
+        "query_lang": "en",
+        "type": "false-premise",
+        "gold_topics": [
+          45
+        ],
+        "top8topics": [
+          45,
+          45,
+          45,
+          45,
+          14,
+          45,
+          41,
+          45
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 101.56
+      },
+      {
+        "id": "q015",
+        "query_lang": "en",
+        "type": "relational / multi-hop",
+        "gold_topics": [
+          51,
+          11,
+          12,
+          17,
+          19,
+          41,
+          42,
+          48,
+          50
+        ],
+        "top8topics": [
+          51,
+          51,
+          21,
+          48,
+          51,
+          21,
+          49,
+          50
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 104.43
+      },
+      {
+        "id": "q016",
+        "query_lang": "en",
+        "type": "factual + rationale",
+        "gold_topics": [
+          16
+        ],
+        "top8topics": [
+          16,
+          16,
+          16,
+          6,
+          16,
+          16,
+          16,
+          21
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 96.31
+      },
+      {
+        "id": "q017",
+        "query_lang": "en",
+        "type": "reasoning + procedure",
+        "gold_topics": [
+          40
+        ],
+        "top8topics": [
+          40,
+          40,
+          40,
+          46,
+          40,
+          40,
+          21,
+          40
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 126.65
+      },
+      {
+        "id": "q018",
+        "query_lang": "en",
+        "type": "comparison",
+        "gold_topics": [
+          32
+        ],
+        "top8topics": [
+          16,
+          30,
+          10,
+          6,
+          8,
+          51,
+          11,
+          22
+        ],
+        "hit": false,
+        "hit_rank": null,
+        "dt_ms": 109.09
+      },
+      {
+        "id": "q019",
+        "query_lang": "en",
+        "type": "false-premise",
+        "gold_topics": [
+          53
+        ],
+        "top8topics": [
+          53,
+          53,
+          53,
+          1,
+          22,
+          41,
+          22,
+          46
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 127.87
+      },
+      {
+        "id": "q020",
+        "query_lang": "en",
+        "type": "relational / multi-hop",
+        "gold_topics": [
+          23,
+          26,
+          27,
+          8
+        ],
+        "top8topics": [
+          24,
+          28,
+          26,
+          48,
+          26,
+          48,
+          26,
+          41
+        ],
+        "hit": true,
+        "hit_rank": 3,
+        "dt_ms": 107.64
+      },
+      {
+        "id": "q021",
+        "query_lang": "en",
+        "type": "reasoning / enumeration",
+        "gold_topics": [
+          6
+        ],
+        "top8topics": [
+          6,
+          6,
+          6,
+          7,
+          6,
+          6,
+          6,
+          6
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 109.15
+      },
+      {
+        "id": "q022",
+        "query_lang": "en",
+        "type": "reasoning / why",
+        "gold_topics": [
+          44
+        ],
+        "top8topics": [
+          44,
+          44,
+          8,
+          44,
+          44,
+          44,
+          44,
+          36
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 99.85
+      },
+      {
+        "id": "q023",
+        "query_lang": "en",
+        "type": "reasoning / when-not-to",
+        "gold_topics": [
+          39
+        ],
+        "top8topics": [
+          39,
+          39,
+          39,
+          39,
+          15,
+          43,
+          39,
+          41
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 91.5
+      },
+      {
+        "id": "q024",
+        "query_lang": "en",
+        "type": "factual + procedure",
+        "gold_topics": [
+          43
+        ],
+        "top8topics": [
+          43,
+          43,
+          43,
+          6,
+          43,
+          21,
+          43,
+          30
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 94.44
+      },
+      {
+        "id": "q025",
+        "query_lang": "en",
+        "type": "reasoning / why",
+        "gold_topics": [
+          34
+        ],
+        "top8topics": [
+          34,
+          34,
+          34,
+          32,
+          34,
+          28,
+          34,
+          51
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 103.27
+      },
+      {
+        "id": "q026",
+        "query_lang": "en",
+        "type": "comparison",
+        "gold_topics": [
+          30,
+          28
+        ],
+        "top8topics": [
+          28,
+          27,
+          26,
+          30,
+          51,
+          30,
+          44,
+          40
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 94.85
+      },
+      {
+        "id": "q027",
+        "query_lang": "en",
+        "type": "factual + procedure",
+        "gold_topics": [
+          7
+        ],
+        "top8topics": [
+          7,
+          7,
+          7,
+          7,
+          53,
+          46,
+          7,
+          19
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 99.89
+      },
+      {
+        "id": "q028",
+        "query_lang": "en",
+        "type": "false-premise",
+        "gold_topics": [
+          5
+        ],
+        "top8topics": [
+          5,
+          41,
+          48,
+          36,
+          5,
+          5,
+          5,
+          11
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 95.62
+      },
+      {
+        "id": "q029",
+        "query_lang": "en",
+        "type": "reasoning / why",
+        "gold_topics": [
+          19
+        ],
+        "top8topics": [
+          19,
+          19,
+          19,
+          19,
+          19,
+          19,
+          19,
+          19
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 97.48
+      },
+      {
+        "id": "q030",
+        "query_lang": "en",
+        "type": "relational / multi-hop",
+        "gold_topics": [
+          49,
+          3,
+          4,
+          6,
+          9,
+          12,
+          53
+        ],
+        "top8topics": [
+          49,
+          21,
+          49,
+          48,
+          49,
+          49,
+          16,
+          7
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 113.86
+      },
+      {
+        "id": "fp001",
+        "query_lang": "en",
+        "type": "false_premise",
+        "gold_topics": [
+          41
+        ],
+        "top8topics": [
+          51,
+          41,
+          51,
+          42,
+          41,
+          10,
+          51,
+          41
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 104.2
+      },
+      {
+        "id": "fp002",
+        "query_lang": "en",
+        "type": "false_premise",
+        "gold_topics": [
+          40
+        ],
+        "top8topics": [
+          40,
+          40,
+          40,
+          49,
+          50,
+          40,
+          6,
+          40
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 108.29
+      },
+      {
+        "id": "fp003",
+        "query_lang": "en",
+        "type": "false_premise",
+        "gold_topics": [
+          31
+        ],
+        "top8topics": [
+          31,
+          31,
+          31,
+          31,
+          28,
+          31,
+          31,
+          10
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 86.45
+      },
+      {
+        "id": "fp004",
+        "query_lang": "en",
+        "type": "false_premise",
+        "gold_topics": [
+          48
+        ],
+        "top8topics": [
+          50,
+          50,
+          50,
+          48,
+          20,
+          48,
+          44,
+          23
+        ],
+        "hit": true,
+        "hit_rank": 4,
+        "dt_ms": 100.37
+      },
+      {
+        "id": "fp005",
+        "query_lang": "en",
+        "type": "false_premise",
+        "gold_topics": [
+          37
+        ],
+        "top8topics": [
+          37,
+          20,
+          37,
+          30,
+          37,
+          30,
+          37,
+          14
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 102.87
+      },
+      {
+        "id": "fp006",
+        "query_lang": "en",
+        "type": "false_premise",
+        "gold_topics": [
+          24
+        ],
+        "top8topics": [
+          10,
+          24,
+          9,
+          24,
+          30,
+          44,
+          51,
+          36
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 91.04
+      },
+      {
+        "id": "fp007",
+        "query_lang": "en",
+        "type": "false_premise",
+        "gold_topics": [
+          4
+        ],
+        "top8topics": [
+          4,
+          33,
+          7,
+          5,
+          50,
+          49,
+          48,
+          11
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 101.61
+      },
+      {
+        "id": "q031",
+        "query_lang": "en",
+        "type": "factual",
+        "gold_topics": [
+          1
+        ],
+        "top8topics": [
+          1,
+          53,
+          7,
+          29,
+          1,
+          44,
+          2,
+          41
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 103.17
+      },
+      {
+        "id": "q032",
+        "query_lang": "en",
+        "type": "procedural",
+        "gold_topics": [
+          2
+        ],
+        "top8topics": [
+          2,
+          24,
+          2,
+          22,
+          53,
+          45,
+          2,
+          2
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 127.38
+      },
+      {
+        "id": "q033",
+        "query_lang": "en",
+        "type": "reasoning",
+        "gold_topics": [
+          11
+        ],
+        "top8topics": [
+          11,
+          45,
+          11,
+          27,
+          11,
+          11,
+          7,
+          11
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 118.76
+      },
+      {
+        "id": "q034",
+        "query_lang": "en",
+        "type": "comparison",
+        "gold_topics": [
+          14
+        ],
+        "top8topics": [
+          14,
+          43,
+          9,
+          14,
+          14,
+          32,
+          44,
+          10
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 142.69
+      },
+      {
+        "id": "q035",
+        "query_lang": "en",
+        "type": "factual",
+        "gold_topics": [
+          15
+        ],
+        "top8topics": [
+          15,
+          15,
+          15,
+          15,
+          15,
+          38,
+          15,
+          37
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 107.38
+      },
+      {
+        "id": "q036",
+        "query_lang": "en",
+        "type": "reasoning",
+        "gold_topics": [
+          17
+        ],
+        "top8topics": [
+          17,
+          17,
+          22,
+          17,
+          2,
+          18,
+          17,
+          10
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 90.84
+      },
+      {
+        "id": "q037",
+        "query_lang": "en",
+        "type": "factual",
+        "gold_topics": [
+          18
+        ],
+        "top8topics": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          49,
+          18
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 106.08
+      },
+      {
+        "id": "q038",
+        "query_lang": "en",
+        "type": "reasoning",
+        "gold_topics": [
+          21
+        ],
+        "top8topics": [
+          21,
+          21,
+          21,
+          16,
+          21,
+          16,
+          18,
+          21
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 105.44
+      },
+      {
+        "id": "q039",
+        "query_lang": "en",
+        "type": "factual",
+        "gold_topics": [
+          22
+        ],
+        "top8topics": [
+          22,
+          22,
+          46,
+          22,
+          10,
+          6,
+          8,
+          7
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 119.23
+      },
+      {
+        "id": "q040",
+        "query_lang": "en",
+        "type": "factual",
+        "gold_topics": [
+          32
+        ],
+        "top8topics": [
+          32,
+          32,
+          32,
+          32,
+          32,
+          19,
+          16,
+          11
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 109.19
+      },
+      {
+        "id": "q041",
+        "query_lang": "en",
+        "type": "reasoning",
+        "gold_topics": [
+          33
+        ],
+        "top8topics": [
+          33,
+          33,
+          33,
+          32,
+          33,
+          33,
+          33,
+          29
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 106.35
+      },
+      {
+        "id": "q042",
+        "query_lang": "en",
+        "type": "reasoning",
+        "gold_topics": [
+          37
+        ],
+        "top8topics": [
+          37,
+          37,
+          37,
+          37,
+          37,
+          37,
+          46,
+          37
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 106.62
+      },
+      {
+        "id": "q043",
+        "query_lang": "en",
+        "type": "procedural",
+        "gold_topics": [
+          46
+        ],
+        "top8topics": [
+          37,
+          19,
+          22,
+          47,
+          8,
+          44,
+          36,
+          46
+        ],
+        "hit": true,
+        "hit_rank": 8,
+        "dt_ms": 101.25
+      },
+      {
+        "id": "q044",
+        "query_lang": "en",
+        "type": "procedural",
+        "gold_topics": [
+          47
+        ],
+        "top8topics": [
+          47,
+          47,
+          47,
+          47,
+          47,
+          47,
+          18,
+          47
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 88.74
+      },
+      {
+        "id": "q045",
+        "query_lang": "en",
+        "type": "factual",
+        "gold_topics": [
+          52
+        ],
+        "top8topics": [
+          52,
+          5,
+          50,
+          48,
+          7,
+          5,
+          50,
+          47
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 86.13
+      }
+    ]
+  },
+  "C": {
+    "recall": 1.0,
+    "rows": [
+      {
+        "id": "q001",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          9
+        ],
+        "top8topics": [
+          9,
+          36,
+          27,
+          9,
+          10,
+          51,
+          21,
+          49
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 188.13
+      },
+      {
+        "id": "q002",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          12,
+          13
+        ],
+        "top8topics": [
+          12,
+          52,
+          13,
+          12,
+          12,
+          7,
+          12,
+          12
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 182.18
+      },
+      {
+        "id": "q003",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          31
+        ],
+        "top8topics": [
+          31,
+          31,
+          31,
+          31,
+          31,
+          31,
+          31,
+          28
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 190.25
+      },
+      {
+        "id": "q004",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          8,
+          9,
+          10
+        ],
+        "top8topics": [
+          10,
+          8,
+          8,
+          7,
+          8,
+          11,
+          30,
+          30
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 179.84
+      },
+      {
+        "id": "q005",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          3
+        ],
+        "top8topics": [
+          3,
+          3,
+          4,
+          3,
+          3,
+          49,
+          3,
+          40
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 199.25
+      },
+      {
+        "id": "q006",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          23
+        ],
+        "top8topics": [
+          23,
+          23,
+          23,
+          23,
+          23,
+          42,
+          23,
+          23
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 194.46
+      },
+      {
+        "id": "q007",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          29
+        ],
+        "top8topics": [
+          33,
+          28,
+          27,
+          29,
+          32,
+          14,
+          29,
+          51
+        ],
+        "hit": true,
+        "hit_rank": 4,
+        "dt_ms": 183.24
+      },
+      {
+        "id": "q008",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          24,
+          25
+        ],
+        "top8topics": [
+          24,
+          51,
+          24,
+          20,
+          20,
+          24,
+          23,
+          38
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 182.2
+      },
+      {
+        "id": "q009",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          25
+        ],
+        "top8topics": [
+          25,
+          25,
+          23,
+          25,
+          25,
+          25,
+          23,
+          27
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 184.97
+      },
+      {
+        "id": "q010",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          9,
+          10
+        ],
+        "top8topics": [
+          10,
+          7,
+          10,
+          10,
+          9,
+          10,
+          28,
+          9
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 174.2
+      },
+      {
+        "id": "q011",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          20
+        ],
+        "top8topics": [
+          20,
+          20,
+          39,
+          20,
+          20,
+          16,
+          43,
+          20
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 181.03
+      },
+      {
+        "id": "q012",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          35,
+          36
+        ],
+        "top8topics": [
+          32,
+          36,
+          35,
+          6,
+          15,
+          36,
+          15,
+          41
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 180.82
+      },
+      {
+        "id": "q013",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          38
+        ],
+        "top8topics": [
+          38,
+          38,
+          36,
+          38,
+          38,
+          38,
+          38,
+          38
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 166.08
+      },
+      {
+        "id": "q014",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          45
+        ],
+        "top8topics": [
+          45,
+          45,
+          45,
+          45,
+          27,
+          11,
+          9,
+          52
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 181.64
+      },
+      {
+        "id": "q015",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          51,
+          11,
+          12,
+          17,
+          19,
+          41,
+          42,
+          48,
+          50
+        ],
+        "top8topics": [
+          51,
+          51,
+          11,
+          50,
+          21,
+          51,
+          48,
+          21
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 176.17
+      },
+      {
+        "id": "q016",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          16
+        ],
+        "top8topics": [
+          16,
+          16,
+          16,
+          16,
+          16,
+          21,
+          16,
+          6
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 177.24
+      },
+      {
+        "id": "q017",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          40
+        ],
+        "top8topics": [
+          40,
+          40,
+          40,
+          40,
+          23,
+          46,
+          40,
+          31
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 177.16
+      },
+      {
+        "id": "q018",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          32
+        ],
+        "top8topics": [
+          16,
+          10,
+          9,
+          32,
+          30,
+          28,
+          23,
+          6
+        ],
+        "hit": true,
+        "hit_rank": 4,
+        "dt_ms": 192.84
+      },
+      {
+        "id": "q019",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          53
+        ],
+        "top8topics": [
+          53,
+          53,
+          53,
+          48,
+          1,
+          30,
+          14,
+          14
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 174.03
+      },
+      {
+        "id": "q020",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          23,
+          26,
+          27,
+          8
+        ],
+        "top8topics": [
+          26,
+          26,
+          22,
+          26,
+          48,
+          23,
+          50,
+          50
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 195.1
+      },
+      {
+        "id": "q021",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          6
+        ],
+        "top8topics": [
+          6,
+          7,
+          6,
+          6,
+          49,
+          6,
+          6,
+          6
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 191.19
+      },
+      {
+        "id": "q022",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          44
+        ],
+        "top8topics": [
+          44,
+          44,
+          8,
+          30,
+          44,
+          14,
+          27,
+          44
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 183.74
+      },
+      {
+        "id": "q023",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          39
+        ],
+        "top8topics": [
+          39,
+          39,
+          39,
+          43,
+          44,
+          39,
+          43,
+          25
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 178.44
+      },
+      {
+        "id": "q024",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          43
+        ],
+        "top8topics": [
+          43,
+          35,
+          38,
+          43,
+          43,
+          34,
+          6,
+          43
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 175.99
+      },
+      {
+        "id": "q025",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          34
+        ],
+        "top8topics": [
+          34,
+          34,
+          34,
+          32,
+          28,
+          51,
+          23,
+          38
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 183.72
+      },
+      {
+        "id": "q026",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          30,
+          28
+        ],
+        "top8topics": [
+          28,
+          27,
+          30,
+          30,
+          30,
+          28,
+          30,
+          30
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 185.75
+      },
+      {
+        "id": "q027",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          7
+        ],
+        "top8topics": [
+          7,
+          7,
+          7,
+          29,
+          7,
+          35,
+          16,
+          53
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 177.01
+      },
+      {
+        "id": "q028",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          5
+        ],
+        "top8topics": [
+          5,
+          5,
+          5,
+          48,
+          5,
+          5,
+          52,
+          5
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 182.16
+      },
+      {
+        "id": "q029",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          19
+        ],
+        "top8topics": [
+          19,
+          19,
+          19,
+          19,
+          19,
+          51,
+          51,
+          51
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 182.65
+      },
+      {
+        "id": "q030",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          49,
+          3,
+          4,
+          6,
+          9,
+          12,
+          53
+        ],
+        "top8topics": [
+          50,
+          21,
+          48,
+          11,
+          49,
+          9,
+          49,
+          49
+        ],
+        "hit": true,
+        "hit_rank": 5,
+        "dt_ms": 196.21
+      },
+      {
+        "id": "fp001",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          41
+        ],
+        "top8topics": [
+          10,
+          41,
+          51,
+          41,
+          51,
+          42,
+          42,
+          23
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 183.11
+      },
+      {
+        "id": "fp002",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          40
+        ],
+        "top8topics": [
+          50,
+          40,
+          40,
+          40,
+          40,
+          9,
+          49,
+          49
+        ],
+        "hit": true,
+        "hit_rank": 2,
+        "dt_ms": 187.12
+      },
+      {
+        "id": "fp003",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          31
+        ],
+        "top8topics": [
+          31,
+          31,
+          31,
+          20,
+          31,
+          28,
+          38,
+          31
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 172.57
+      },
+      {
+        "id": "fp004",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          48
+        ],
+        "top8topics": [
+          50,
+          50,
+          50,
+          48,
+          44,
+          44,
+          48,
+          50
+        ],
+        "hit": true,
+        "hit_rank": 4,
+        "dt_ms": 179.32
+      },
+      {
+        "id": "fp005",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          37
+        ],
+        "top8topics": [
+          37,
+          7,
+          20,
+          35,
+          37,
+          38,
+          30,
+          37
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 180.85
+      },
+      {
+        "id": "fp006",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          24
+        ],
+        "top8topics": [
+          23,
+          10,
+          24,
+          38,
+          9,
+          24,
+          9,
+          30
+        ],
+        "hit": true,
+        "hit_rank": 3,
+        "dt_ms": 179.15
+      },
+      {
+        "id": "fp007",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          4
+        ],
+        "top8topics": [
+          4,
+          17,
+          33,
+          25,
+          7,
+          5,
+          38,
+          50
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 178.01
+      },
+      {
+        "id": "q031",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          1
+        ],
+        "top8topics": [
+          1,
+          7,
+          53,
+          7,
+          23,
+          29,
+          37,
+          1
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 180.69
+      },
+      {
+        "id": "q032",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          2
+        ],
+        "top8topics": [
+          2,
+          2,
+          2,
+          53,
+          2,
+          45,
+          22,
+          20
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 177.3
+      },
+      {
+        "id": "q033",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          11
+        ],
+        "top8topics": [
+          11,
+          11,
+          7,
+          27,
+          11,
+          45,
+          11,
+          11
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 171.91
+      },
+      {
+        "id": "q034",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          14
+        ],
+        "top8topics": [
+          14,
+          43,
+          9,
+          32,
+          31,
+          14,
+          31,
+          38
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 172.71
+      },
+      {
+        "id": "q035",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          15
+        ],
+        "top8topics": [
+          15,
+          15,
+          15,
+          15,
+          38,
+          15,
+          20,
+          35
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 187.54
+      },
+      {
+        "id": "q036",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          17
+        ],
+        "top8topics": [
+          17,
+          17,
+          17,
+          17,
+          10,
+          17,
+          51,
+          22
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 185.47
+      },
+      {
+        "id": "q037",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          18
+        ],
+        "top8topics": [
+          18,
+          18,
+          18,
+          18,
+          18,
+          18,
+          6,
+          51
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 176.35
+      },
+      {
+        "id": "q038",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          21
+        ],
+        "top8topics": [
+          21,
+          21,
+          21,
+          16,
+          21,
+          49,
+          16,
+          11
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 171.49
+      },
+      {
+        "id": "q039",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          22
+        ],
+        "top8topics": [
+          22,
+          22,
+          46,
+          22,
+          8,
+          6,
+          21,
+          10
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 178.08
+      },
+      {
+        "id": "q040",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          32
+        ],
+        "top8topics": [
+          32,
+          32,
+          32,
+          32,
+          32,
+          23,
+          23,
+          31
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 176.49
+      },
+      {
+        "id": "q041",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          33
+        ],
+        "top8topics": [
+          33,
+          33,
+          32,
+          33,
+          33,
+          28,
+          29,
+          33
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 173.05
+      },
+      {
+        "id": "q042",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          37
+        ],
+        "top8topics": [
+          37,
+          37,
+          37,
+          37,
+          37,
+          37,
+          37,
+          37
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 190.33
+      },
+      {
+        "id": "q043",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          46
+        ],
+        "top8topics": [
+          46,
+          37,
+          5,
+          37,
+          19,
+          22,
+          41,
+          47
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 185.61
+      },
+      {
+        "id": "q044",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          47
+        ],
+        "top8topics": [
+          47,
+          47,
+          47,
+          47,
+          47,
+          47,
+          44,
+          53
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 176.35
+      },
+      {
+        "id": "q045",
+        "query_lang": "pl+en",
+        "gold_topics": [
+          52
+        ],
+        "top8topics": [
+          52,
+          52,
+          48,
+          5,
+          50,
+          52,
+          12,
+          41
+        ],
+        "hit": true,
+        "hit_rank": 1,
+        "dt_ms": 175.76
+      }
+    ]
+  },
+  "delta_B_minus_A": 0.1538,
+  "delta_C_minus_A": 0.1731
+}

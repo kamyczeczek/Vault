@@ -1,0 +1,131 @@
+{
+  "Electricity_Transformer_Load": {
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 70.72980088458371,
+      "mae": 6.74039867855718,
+      "n_samples": 480
+    },
+    "AMR-FBS": {
+      "mse": 71.70164178071586,
+      "mae": 6.790970155178045,
+      "n_samples": 480,
+      "vs_ours_dm_z": 1.4292365183196063,
+      "vs_ours_pval": 0.15293626490516288,
+      "winner": "OUR",
+      "significant": false
+    },
+    "KNNForecaster": {
+      "mse": 80.16465530101173,
+      "mae": 7.287180744327098,
+      "n_samples": 480,
+      "vs_ours_dm_z": 3.4268815182021903,
+      "vs_ours_pval": 0.0006105554068072117,
+      "winner": "OUR",
+      "significant": true
+    },
+    "DLinear": {
+      "mse": 537.7423770869162,
+      "mae": 19.699549661970543,
+      "n_samples": 480,
+      "vs_ours_dm_z": 9.029234565170219,
+      "vs_ours_pval": 0.0,
+      "winner": "OUR",
+      "significant": true
+    },
+    "SpectralFFT": {
+      "mse": 1617.9870629465556,
+      "mae": 33.13849301921913,
+      "n_samples": 480,
+      "vs_ours_dm_z": 8.235085522470358,
+      "vs_ours_pval": 2.220446049250313e-16,
+      "winner": "OUR",
+      "significant": true
+    }
+  },
+  "Traffic_Flow": {
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 1508.6149986433709,
+      "mae": 31.011591779908166,
+      "n_samples": 480
+    },
+    "AMR-FBS": {
+      "mse": 1603.5686549452425,
+      "mae": 31.952014695637274,
+      "n_samples": 480,
+      "vs_ours_dm_z": 4.153757117374384,
+      "vs_ours_pval": 3.270603292082619e-05,
+      "winner": "OUR",
+      "significant": true
+    },
+    "KNNForecaster": {
+      "mse": 1572.3488680820185,
+      "mae": 31.748412502051988,
+      "n_samples": 480,
+      "vs_ours_dm_z": 0.8719822261540422,
+      "vs_ours_pval": 0.3832180739292532,
+      "winner": "OUR",
+      "significant": false
+    },
+    "DLinear": {
+      "mse": 19856.320529367425,
+      "mae": 106.8445296857997,
+      "n_samples": 480,
+      "vs_ours_dm_z": 7.14216623479894,
+      "vs_ours_pval": 9.188205751797796e-13,
+      "winner": "OUR",
+      "significant": true
+    },
+    "SpectralFFT": {
+      "mse": 16102.61965244179,
+      "mae": 102.06219896551984,
+      "n_samples": 480,
+      "vs_ours_dm_z": 7.7614652101772394,
+      "vs_ours_pval": 8.43769498715119e-15,
+      "winner": "OUR",
+      "significant": true
+    }
+  },
+  "Solar_Activity_Cycle": {
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 62.183924175617406,
+      "mae": 4.275780360022462,
+      "n_samples": 480
+    },
+    "AMR-FBS": {
+      "mse": 63.53518588664914,
+      "mae": 4.156403135905614,
+      "n_samples": 480,
+      "vs_ours_dm_z": 0.8554294586607518,
+      "vs_ours_pval": 0.39231344094093545,
+      "winner": "OUR",
+      "significant": false
+    },
+    "KNNForecaster": {
+      "mse": 65.50657184727484,
+      "mae": 4.5561293437519135,
+      "n_samples": 480,
+      "vs_ours_dm_z": 2.227227426149317,
+      "vs_ours_pval": 0.02593207803032782,
+      "winner": "OUR",
+      "significant": true
+    },
+    "DLinear": {
+      "mse": 70.51007064231403,
+      "mae": 4.301035244914145,
+      "n_samples": 480,
+      "vs_ours_dm_z": 3.2014827423885333,
+      "vs_ours_pval": 0.0013672226473762095,
+      "winner": "OUR",
+      "significant": true
+    },
+    "SpectralFFT": {
+      "mse": 261.8962707595698,
+      "mae": 13.93673796445825,
+      "n_samples": 480,
+      "vs_ours_dm_z": 8.369739184796494,
+      "vs_ours_pval": 0.0,
+      "winner": "OUR",
+      "significant": true
+    }
+  }
+}

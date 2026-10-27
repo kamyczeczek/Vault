@@ -1,0 +1,65 @@
+{
+ "generated": "Thu Sep 24 17:02:20 2026",
+ "repro_ok": false,
+ "note": "REPRO_MISMATCH vs root-ablation refs -> directional control, not magnitude",
+ "wall_s": 11.9,
+ "results": [
+  {
+   "task": "thomas_H24",
+   "bank": "full",
+   "std": "none",
+   "D0": 1440,
+   "mae": 0.5434
+  },
+  {
+   "task": "thomas_H24",
+   "bank": "full",
+   "std": "all",
+   "D0": 1440,
+   "mae": 1.597
+  },
+  {
+   "task": "thomas_H24",
+   "bank": "full",
+   "std": "detail_only",
+   "D0": 1440,
+   "mae": 0.5434
+  },
+  {
+   "task": "thomas_H24",
+   "bank": "compact",
+   "std": "none",
+   "D0": 672,
+   "mae": 0.5928
+  },
+  {
+   "task": "trending_H48",
+   "bank": "full",
+   "std": "none",
+   "D0": 1440,
+   "mae": 1.8243
+  },
+  {
+   "task": "trending_H48",
+   "bank": "full",
+   "std": "all",
+   "D0": 1440,
+   "mae": 1.1761
+  },
+  {
+   "task": "trending_H48",
+   "bank": "full",
+   "std": "detail_only",
+   "D0": 1440,
+   "mae": 1.8243
+  },
+  {
+   "task": "trending_H48",
+   "bank": "compact",
+   "std": "none",
+   "D0": 672,
+   "mae": 1.469
+  }
+ ],
+ "verdict": "DETAILS_INTRINSICALLY_TOXIC: even standardized detail coeffs do not fix Thomas; keep the compact/full signal-adaptive split."
+}

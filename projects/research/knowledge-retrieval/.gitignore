@@ -1,0 +1,7 @@
+# Runtime & temporary files
+.ralph/
+__pycache__/
+library/
+_tmp_*
+*.pyc
+.DS_Store

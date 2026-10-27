@@ -1,0 +1,273 @@
+0 persistence 1.9379
+0 drift_linear 3.3816
+0 nlinear_L96 2.1412
+0 dlinear 3.2716
+0 spectral_fft 11.1857
+0 theta 2.1857
+0 amr_fbs 3.4398
+0 knn_96_k24 5.1453
+0 bigdict_elm 3.4005
+0 h2k 2.4146
+1 persistence 4.2299
+1 drift_linear 4.3617
+1 nlinear_L96 5.1471
+1 dlinear 2.9761
+1 spectral_fft 8.4105
+1 theta 3.9063
+1 amr_fbs 3.4561
+1 knn_96_k24 2.3068
+1 bigdict_elm 3.0054
+1 h2k 4.6472
+2 persistence 4.3564
+2 drift_linear 3.857
+2 nlinear_L96 3.6236
+2 dlinear 2.8918
+2 spectral_fft 3.3731
+2 theta 3.9477
+2 amr_fbs 2.5131
+2 knn_96_k24 4.251
+2 bigdict_elm 2.7005
+2 h2k 3.1508
+3 persistence 3.4979
+3 drift_linear 4.1634
+3 nlinear_L96 2.8184
+3 dlinear 2.8
+3 spectral_fft 2.6237
+3 theta 4.0939
+3 amr_fbs 2.4545
+3 knn_96_k24 2.5849
+3 bigdict_elm 2.3784
+3 h2k 4.277
+4 persistence 2.1161
+4 drift_linear 2.0777
+4 nlinear_L96 2.2227
+4 dlinear 2.0606
+4 spectral_fft 4.6612
+4 theta 1.9598
+4 amr_fbs 2.1731
+4 knn_96_k24 3.433
+4 bigdict_elm 1.9887
+4 h2k 2.0428
+5 persistence 1.9545
+5 drift_linear 3.825
+5 nlinear_L96 1.3963
+5 dlinear 1.3993
+5 spectral_fft 16.026
+5 theta 1.5031
+5 amr_fbs 1.5221
+5 knn_96_k24 1.8159
+5 bigdict_elm 1.5101
+5 h2k 1.325
+6 persistence 2.2061
+6 drift_linear 2.0169
+6 nlinear_L96 2.1247
+6 dlinear 1.9436
+6 spectral_fft 18.7103
+6 theta 1.9438
+6 amr_fbs 1.8886
+6 knn_96_k24 2.1549
+6 bigdict_elm 1.7978
+6 h2k 1.7971
+7 persistence 2.8619
+7 drift_linear 1.7965
+7 nlinear_L96 2.5124
+7 dlinear 2.7263
+7 spectral_fft 14.6958
+7 theta 2.4106
+7 amr_fbs 2.4265
+7 knn_96_k24 2.1695
+7 bigdict_elm 2.1292
+7 h2k 2.844
+8 persistence 3.1988
+8 drift_linear 3.0547
+8 nlinear_L96 2.9986
+8 dlinear 2.8444
+8 spectral_fft 5.0091
+8 theta 3.8129
+8 amr_fbs 3.5964
+8 knn_96_k24 3.8699
+8 bigdict_elm 3.6832
+8 h2k 2.3549
+9 persistence 2.4705
+9 drift_linear 3.4981
+9 nlinear_L96 2.867
+9 dlinear 2.8395
+9 spectral_fft 3.0586
+9 theta 2.4767
+9 amr_fbs 2.5859
+9 knn_96_k24 3.3693
+9 bigdict_elm 3.0431
+9 h2k 3.6468
+10 persistence 2.5697
+10 drift_linear 2.9296
+10 nlinear_L96 2.4318
+10 dlinear 2.5942
+10 spectral_fft 3.0897
+10 theta 2.6978
+10 amr_fbs 2.6296
+10 knn_96_k24 3.0834
+10 bigdict_elm 2.7086
+10 h2k 2.6655
+11 persistence 3.1232
+11 drift_linear 1.3344
+11 nlinear_L96 1.6998
+11 dlinear 2.1129
+11 spectral_fft 4.9795
+11 theta 3.6071
+11 amr_fbs 1.6676
+11 knn_96_k24 2.2297
+11 bigdict_elm 1.3865
+11 h2k 1.5584
+{
+  "persistence": {
+    "mae_raw_mean": 2.8769,
+    "mae_raw_std": 0.7953,
+    "mae_norm_mean": 0.454,
+    "horizon_bin_mae": [
+      2.4209,
+      3.3622,
+      2.7308,
+      2.7824,
+      3.0936,
+      2.8715
+    ],
+    "below_incumbent_1_9781_origins": 2,
+    "n_origins": 12
+  },
+  "drift_linear": {
+    "mae_raw_mean": 3.0247,
+    "mae_raw_std": 0.9599,
+    "mae_norm_mean": 0.4748,
+    "horizon_bin_mae": [
+      2.8793,
+      3.2459,
+      2.7172,
+      2.9816,
+      3.4049,
+      2.9193
+    ],
+    "below_incumbent_1_9781_origins": 2,
+    "n_origins": 12
+  },
+  "nlinear_L96": {
+    "mae_raw_mean": 2.6653,
+    "mae_raw_std": 0.9415,
+    "mae_norm_mean": 0.4146,
+    "horizon_bin_mae": [
+      2.1243,
+      2.9597,
+      2.4445,
+      2.6923,
+      2.9968,
+      2.7742
+    ],
+    "below_incumbent_1_9781_origins": 2,
+    "n_origins": 12
+  },
+  "dlinear": {
+    "mae_raw_mean": 2.5384,
+    "mae_raw_std": 0.5169,
+    "mae_norm_mean": 0.3939,
+    "horizon_bin_mae": [
+      2.0381,
+      2.8254,
+      2.3227,
+      2.4595,
+      2.9592,
+      2.6252
+    ],
+    "below_incumbent_1_9781_origins": 2,
+    "n_origins": 12
+  },
+  "spectral_fft": {
+    "mae_raw_mean": 7.9853,
+    "mae_raw_std": 5.4949,
+    "mae_norm_mean": 1.2724,
+    "horizon_bin_mae": [
+      7.2233,
+      8.4612,
+      8.1532,
+      8.069,
+      7.8269,
+      8.178
+    ],
+    "below_incumbent_1_9781_origins": 0,
+    "n_origins": 12
+  },
+  "theta": {
+    "mae_raw_mean": 2.8788,
+    "mae_raw_std": 0.8936,
+    "mae_norm_mean": 0.4528,
+    "horizon_bin_mae": [
+      2.4421,
+      3.3683,
+      2.6745,
+      2.7397,
+      3.1282,
+      2.9199
+    ],
+    "below_incumbent_1_9781_origins": 3,
+    "n_origins": 12
+  },
+  "amr_fbs": {
+    "mae_raw_mean": 2.5294,
+    "mae_raw_std": 0.6552,
+    "mae_norm_mean": 0.39,
+    "horizon_bin_mae": [
+      2.1837,
+      2.5875,
+      2.3307,
+      2.4487,
+      2.6973,
+      2.9288
+    ],
+    "below_incumbent_1_9781_origins": 3,
+    "n_origins": 12
+  },
+  "knn_96_k24": {
+    "mae_raw_mean": 3.0345,
+    "mae_raw_std": 0.9701,
+    "mae_norm_mean": 0.4693,
+    "horizon_bin_mae": [
+      2.5119,
+      3.1067,
+      2.3856,
+      2.9222,
+      3.2632,
+      4.0172
+    ],
+    "below_incumbent_1_9781_origins": 1,
+    "n_origins": 12
+  },
+  "bigdict_elm": {
+    "mae_raw_mean": 2.4777,
+    "mae_raw_std": 0.7051,
+    "mae_norm_mean": 0.3818,
+    "horizon_bin_mae": [
+      2.1745,
+      2.6855,
+      2.1198,
+      2.3595,
+      2.7075,
+      2.8192
+    ],
+    "below_incumbent_1_9781_origins": 3,
+    "n_origins": 12
+  },
+  "h2k": {
+    "mae_raw_mean": 2.727,
+    "mae_raw_std": 1.0014,
+    "mae_norm_mean": 0.426,
+    "horizon_bin_mae": [
+      2.2677,
+      2.9191,
+      2.4263,
+      2.6754,
+      3.0024,
+      3.0711
+    ],
+    "below_incumbent_1_9781_origins": 3,
+    "n_origins": 12
+  }
+}
+DONE C:\Users\Mateusz\Desktop\PROJECTS\ts-diverse\results\etth1_h720_multi_origin_sliding360d_h2k_l168_k48.json 226.31

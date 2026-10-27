@@ -1,0 +1,12 @@
+AnchoredWaveletELM unavailable: cannot import name '_ridge_multioutput' from 'anchored_wavelet_elm' (C:\Users\Mateusz\Desktop\PROJECTS\ts-diverse\members\anchored_wavelet_elm.py)
+FULL vs OPTIMIZED comparison:
+============================================================
+Task                  Full  Optimized      Delta
+--------------------------------------------------
+thomas_H24          0.2281     0.0195     +91.5%
+sunspot_H24        23.1737    24.0706      -3.9%
+trending_H48        0.9465     1.1752     -24.2%
+spiky_H48           0.4234     0.4335      -2.4%
+ou_H24              0.6455     0.7045      -9.1%
+
+Saved results

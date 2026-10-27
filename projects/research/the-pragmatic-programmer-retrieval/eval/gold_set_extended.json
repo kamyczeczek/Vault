@@ -1,0 +1,803 @@
+{
+  "gold_set_id": "gs_extended_60_v1",
+  "book": "The Pragmatic Programmer, 20th Anniversary Edition",
+  "questions_count": 60,
+  "fingerprint": "sha256:43e408d4f5f57230023e10cfa134ecf04f923e6ffecddffdd66030c337daa064",
+  "index_fingerprint": "sha256:e4076daba9b0689a437950a2403f0bb2594a48a37bd1065ad79b0280767613ae",
+  "categories": {
+    "hard_curated": 30,
+    "unanswerable": 8,
+    "false_premise": 7,
+    "additional_topics": 15
+  },
+  "questions": [
+    {
+      "id": "q001",
+      "header": "Definicja (factual, single-chunk)",
+      "question": "Czym dokładnie jest zasada DRY według „The Pragmatic Programmer” i jaki jest test, który pozwala sprawdzić, czy kod ją łamie?",
+      "reference_answer": "DRY (Don't Repeat Yourself) mówi: „Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.” To nie chodzi tylko o kopiowanie linii kodu — chodzi o duplikację **wiedzy i intencji**. Autorzy podają „acid test”: kiedy jakiś pojedynczy aspekt kodu musi się zmienić, czy musisz wprowadzać tę zmianę w wielu miejscach i w wielu różnych formatach? Jeśli tak — kod nie jest DRY. DRY dotyczy też dokumentacji, schematów baz danych i struktur danych.",
+      "source_raw": "Rozdział 2, Topic 9 (DRY—The Evils of Duplication), s. 79–91",
+      "chapter": 2,
+      "topics": [
+        9
+      ],
+      "type": "factual / definition",
+      "difficulty": "łatwa (powinna być złapana przez BM25 i wektory)"
+    },
+    {
+      "id": "q002",
+      "header": "Porównanie (comparison, dwa powiązane chunki)",
+      "question": "Jaka jest różnica między „tracer bullets” a „prototypami” i kiedy stosować które?",
+      "reference_answer": "Tracer code jest „lean but complete” — zawiera całe error checking, strukturyzację, dokumentację i self-checking jak kod produkcyjny, ale nie jest w pełni funkcjonalny. Jest pisany **na stałe** i stanowi szkielet finalnego systemu. Prototyp natomiast służy do zbadania konkretnych aspektów systemu i **jest wyrzucany** po wyciągnięciu wniosków. Tracer bullets odpowiadają na pytanie „jak cała aplikacja się trzyma razem?”, prototyping to „reconnaissance and intelligence gathering that takes place before a single tracer bullet is fired.” Prototypy stosuje się do badania ryzyka: architektury, nowej funkcjonalności, wydajności, UI. Tracer bullets — gdy nie wiesz, jak elementy systemu się integrują.",
+      "source_raw": "Rozdział 2, Topics 12 i 13, s. 109–123",
+      "chapter": 2,
+      "topics": [
+        12,
+        13
+      ],
+      "type": "comparison / multi-chunk (dwa sąsiednie Topics)",
+      "difficulty": "średnia (wymaga złapania obu fragmentów i porównania)"
+    },
+    {
+      "id": "q003",
+      "header": "Rozumowanie (reasoning, single-topic)",
+      "question": "Dlaczego autorzy twierdzą, że dziedziczenie (inheritance) to „tax”, i jakie trzy alternatywy proponują?",
+      "reference_answer": "Autorzy twierdzą, że dziedziczenie to forma **couplingu**: klasa potomna jest sprzężona z rodzicem, dziadkiem i tak dalej, a kod używający potomka jest sprzężony ze wszystkimi przodkami. Zmiana API lub nazwy zmiennej w rodzicu po cichu łamie potomka. Dodatkowo budowanie typów przez dziedziczenie prowadzi do „wall-covering monstrosities” i problemu multiple inheritance. Trzy alternatywy: 1. **Interfaces and protocols** — polimorfizm bez dziedziczenia. 2. **Delegation** — „Has-A trumps Is-A”; klasa deleguje odpowiedzialność do serwisu zamiast dziedziczyć jego API. 3. **Mixins and traits** — łączenie funkcjonalności bez dziedziczenia, nawet bez dostępu do źródła rozszerzanej klasy.",
+      "source_raw": "Rozdział 5, Topic 31 (Inheritance Tax), s. 272–283",
+      "chapter": 5,
+      "topics": [
+        31
+      ],
+      "type": "reasoning / why + enumeration",
+      "difficulty": "średnia (wymaga zrozumienia argumentu, nie tylko faktów)"
+    },
+    {
+      "id": "q004",
+      "header": "Relacyjne / multi-hop (wymaga połączenia faktów z różnych Topiców)",
+      "question": "Jak zasada ETC łączy się z pozostałymi zasadami projektowymi w książce — decouplingiem, DRY i orthogonality? Czy ETC jest regułą, czy wartością?",
+      "reference_answer": "ETC (Easier to Change) jest **wartością, nie regułą** — „a guide, helping you choose between paths”, która powinna „float just behind your conscious thought”. Autorzy twierdzą, że **każda inna zasada projektowa jest szczególnym przypadkiem ETC**: decoupling jest dobry, bo izoluje concerns i czyni każdy z nich łatwiejszym do zmiany; single responsibility principle jest użyteczny, bo zmiana wymagań przekłada się na zmianę tylko jednego modułu; naming jest ważny, bo dobre nazwy ułatwiają czytanie, a trzeba czytać, żeby zmieniać. DRY minimalizuje duplikację wewnątrz systemu, orthogonality redukuje współzależność między komponentami — obie służą ETC, choć działają na różnych osiach.",
+      "source_raw": "Rozdział 2, Topic 8 (The Essence of Good Design) + Topic 9 (DRY) + Topic 10 (Orthogonality), s. 75–104",
+      "chapter": 2,
+      "topics": [
+        8,
+        9,
+        10
+      ],
+      "type": "relational / multi-hop",
+      "difficulty": "trudna (wymaga zsyntetyzowania trzech Topiców; test dla RAPTOR lub grafu)"
+    },
+    {
+      "id": "q005",
+      "header": "False-premise (test korekty błędnego założenia)",
+      "question": "Książka mówi, że gdy znajdziesz „broken window” w kodzie, najlepiej zostawić go w spokoju do końca projektu, żeby nie zakłócać flow zespołu. Czy to prawidłowe?",
+      "reference_answer": "Nie, to nieprawda. Książka mówi dokładnie odwrotnie: „Don't leave 'broken windows' (bad designs, wrong decisions, or poor code) unrepaired. Fix each one as soon as it is discovered.” Jeśli nie ma czasu naprawić properly, należy „board it up” — np. zakomentować kod, wyświetlić „Not Implemented”, podstawić dummy data. Celem jest zapobieżenie dalszym szkodom i pokazanie, że sytuacja jest pod kontrolą. Autorzy ostrzegają, że „neglect accelerates the rot faster than any other factor” i że jeden broken window wystarczy, by rozpocząć decline.",
+      "source_raw": "Rozdział 1, Topic 3 (Software Entropy), s. 42–45",
+      "chapter": 1,
+      "topics": [
+        3
+      ],
+      "type": "false-premise (system powinien skorygować, nie potwierdzić)",
+      "difficulty": "średnia (wymaga złapania właściwego fragmentu i zaprzeczenia)"
+    },
+    {
+      "id": "q006",
+      "header": "Definicja (factual, single-topic)",
+      "question": "Czym są preconditions, postconditions i class invariants w Design by Contract i kto odpowiada za ich sprawdzanie?",
+      "reference_answer": "**Preconditions** — co musi być prawdą, żeby rutyna mogła zostać wywołana; wymagania rutyny. Odpowiedzialność za ich spełnienie leży po stronie **callera** — rutyna nigdy nie powinna zostać wywołana, gdy preconditions są naruszone. **Postconditions** — co rutyna gwarantuje po zakończeniu; stan świata, gdy rutyna się kończy. Fakt, że rutyna ma postcondition, implikuje, że **się zakończy** (nieskończone pętle są niedozwolone). **Class invariants** — warunek, który jest zawsze prawdziwy z perspektywy callera; podczas wewnętrznego przetwarzania rutyny invariant może nie zachodzić, ale po wyjściu z rutyny musi być przywrócony. Kontrakt można streścić: „If all the routine's preconditions are met by the caller, the routine shall guarantee that all postconditions and invariants will be true when it completes.” W implementacjach DBC (np. Eiffel, Clojure) sprawdzanie odbywa się **za kulisami** — caller musi zadbać o parametry, bo rutyna nigdy nie zobaczy danych łamiących precondition.",
+      "source_raw": "Rozdział 4, Topic 23 (Design by Contract), s. 191–199",
+      "chapter": 4,
+      "topics": [
+        23
+      ],
+      "type": "factual / definition",
+      "difficulty": "średnia (trzy pojęcia, trzeba je rozróżnić)"
+    },
+    {
+      "id": "q007",
+      "header": "Porównanie czterech strategii (comparison, multi-chunk w jednym Topicu)",
+      "question": "Jakie cztery strategie radzenia sobie ze zdarzeniami opisuje książka i czym się różnią pod względem couplingu i asynchroniczności?",
+      "reference_answer": "Cztery strategie: 1. **Finite State Machines** — najprostsza; stan + tabela przejść; świetne do parsowania strumieni zdarzeń i workflow; kod wyrażony jako dane. 2. **The Observer Pattern** — observable + lista observerów; callbacki rejestrowane bezpośrednio; **wprowadza coupling** (obserwator musi znać observable) i jest **synchroniczny** — może tworzyć wąskie gardła. 3. **Publish/Subscribe** — generalizuje observer, rozwiązując problem couplingu i wydajności; publisherowie i subskrybenci połączeni przez **kanały** zaimplementowane poza kodem (biblioteka, proces, infrastruktura); komunikacja jest **asynchroniczna**; minus: trudno zobaczyć, kto z kim rozmawia. 4. **Reactive Programming and Streams** — traktuje zdarzenia jak **kolekcję danych**; można je manipulować, łączyć, filtrować tak jak zwykłe kolekcje; dodaje wymiar czasu; przykłady z RxJS (zip, mergeMap) pokazują, że strumienie mogą być **asynchroniczne i równoległe**.",
+      "source_raw": "Rozdział 5, Topic 29 (Juggling the Real World), s. 239–253",
+      "chapter": 5,
+      "topics": [
+        29
+      ],
+      "type": "comparison / four-way",
+      "difficulty": "trudna (cztery strategie, każda z własnymi właściwościami)"
+    },
+    {
+      "id": "q008",
+      "header": "Rozumowanie (reasoning, two related topics)",
+      "question": "Dlaczego „crash early” jest lepsze niż ciche kontynuowanie programu po wykryciu błędu? Jak łączy się to z podejściem „Catch and Release is for Fish”?",
+      "reference_answer": "„Crash early” oznacza: gdy kod odkryje, że stało się coś, co było niemożliwe, program **nie jest już viable** — cokolwiek zrobi od tego momentu, jest podejrzane, więc należy go zakończyć jak najszybciej. „A dead program normally does a lot less damage than a crippled one.” Kontynuowanie grozi zapisaniem uszkodzonych danych do bazy, wysłaniem błędnej komendy, wejściem w kolejny cykl. Autorzy pokazują anty-wzorzec: kod, który łapie każdy możliwy wyjątek, loguje i re-raises („catch and release”) — to jest gorsze niż pozwolenie, by wyjątek się propagował. Powody: (1) logika aplikacji jest **eclipsed** przez error handling, (2) kod jest **sprzężony** z listą wyjątków, które metoda może rzucić — jeśli autor metody doda nowy wyjątek, nasz kod jest subtelnie nieaktualny. W drugiej wersji nowy wyjątek **automatycznie się propaguje**. W środowiskach takich jak Erlang/Elixir filozofia „let it crash” jest zarządzana przez **supervisor trees** — supervisor wie, co zrobić, gdy kod zawiedzie (restart, cleanup).",
+      "source_raw": "Rozdział 4, Topic 24 (Dead Programs Tell No Lies), s. 203–206 + Topic 25 (Assertive Programming), s. 207–211",
+      "chapter": 4,
+      "topics": [
+        24,
+        25
+      ],
+      "type": "reasoning / why",
+      "difficulty": "średnia–trudna (dwa powiązane argumenty)"
+    },
+    {
+      "id": "q009",
+      "header": "False-premise (test korekty)",
+      "question": "Książka sugeruje, że asercje (assertions) powinny być wyłączone w wersji produkcyjnej, bo dodają overhead i spowalniają kod. Czy to prawidłowe?",
+      "reference_answer": "Nie, to nieprawda. Autorzy mówią wprost: „Turning off assertions when you deliver a program to production is like crossing a high wire without a net because you once made it across in practice.” Dwa błędne założenia leżące u podstaw tego mitu: (1) że testy znajdą wszystkie bugi — w rzeczywistości dla złożonego programu testujesz nawet nieznaczny procent permutacji; (2) że program działa w bezpiecznym świecie — w produkcji mogą się zdarzyć rzeczy, które nie zdarzają się w testach (szczury przegryzające kabel, wyczerpanie pamięci, zapełnienie logów). Autorzy dopuszczają wyłączenie **tylko tych konkretnych** asercji, które naprawdę powodują problem wydajnościowy (np. asercja na posortowanym wyniku w krytycznej pętli), ale reszta powinna zostać. Podają przykład sąsiada Andy'ego — startup, który **zostawił asercje w produkcji** i to właśnie dzięki temu feedbackowi od prawdziwych użytkowników naprawił trudne do reprodukcji bugi, osiągnął stabilność i został wykupiony za setki milionów dolarów.",
+      "source_raw": "Rozdział 4, Topic 25 (Assertive Programming), s. 209–210",
+      "chapter": 4,
+      "topics": [
+        25
+      ],
+      "type": "false-premise",
+      "difficulty": "średnia (kontrintuicyjne, ale konkretne)"
+    },
+    {
+      "id": "q010",
+      "header": "Relacyjne / multi-hop (DRY vs Orthogonality)",
+      "question": "Czym różni się DRY od Orthogonality? Czy to to samo, czy dwie różne zasady? Jak się uzupełniają?",
+      "reference_answer": "To **dwie różne, ale ściśle powiązane zasady**, działające na różnych osiach: - **DRY** minimalizuje **duplikację wiedzy** wewnątrz systemu — „Every piece of knowledge must have a single, unambiguous, authoritative representation”. Chodzi o to, żeby ta sama intencja nie była wyrażona dwa razy. - **Orthogonality** redukuje **współzależność między komponentami** — „Two or more things are orthogonal if changes in one do not affect any of the others”. Chodzi o to, żeby zmiana w jednym module nie wymuszała zmian w innych. > Autorzy piszą wprost: „With DRY, you're looking to minimize duplication within a system, whereas with orthogonality you reduce the interdependency among the system's components.” Można mieć kod, który jest DRY, ale nie jest ortogonalny (np. wspólna wiedza, ale moduły wzajemnie się wołają przez łańcuchy metod — train wrecks). Można też mieć kod ortogonalny, ale nie-DRY (dwie niezależne implementacje tej samej reguły biznesowej w różnych modułach). Razem dają systemy „more flexible, more understandable, and easier to debug, test, and maintain”. Obie są szczególnymi przypadkami **ETC** (Easier to Change): DRY usuwa potrzebę zmiany w wielu miejscach, orthogonality sprawia, że zmiana nie propaguje się na niezwiązane komponenty.",
+      "source_raw": "Rozdział 2, Topic 9 (DRY) + Topic 10 (Orthogonality), s. 79–104",
+      "chapter": 2,
+      "topics": [
+        9,
+        10
+      ],
+      "type": "relational / multi-hop",
+      "difficulty": "trudna (wymaga zsyntetyzowania dwóch Topiców i ETC)"
+    },
+    {
+      "id": "q011",
+      "header": "Definicja + procedura (factual, single-topic)",
+      "question": "Czym jest „binary chop” w kontekście debugowania i w jakich trzech sytuacjach książka zaleca jego stosowanie?",
+      "reference_answer": "Binary chop to technika dzielenia i zwyciężania, zapożyczona z wyszukiwania binarnego: zamiast przeglądać elementy po kolei, wybierasz środek, sprawdzasz, czy błąd tam występuje, i zawężasz obszar poszukiwań o połowę. W debugowaniu autorzy zalecają ją w trzech sytuacjach: 1. **Długi stack trace** — zamiast badać każdą ramkę, wybierasz ramkę w środku; jeśli błąd tam jest, skupiasz się na wcześniejszych, jeśli nie — na późniejszych. Dla 64 ramek wystarczy maksymalnie 6 prób. 2. **Problem zależny od danych** — dzielisz zbiór danych na pół i sprawdzasz, czy problem występuje na jednej połowie; powtarzasz, aż dojdziesz do minimalnego zestawu wartości wywołujących błąd. 3. **Regresja między wydaniami** — masz test, który przechodzi w starszej wersji, a nie przechodzi w nowej; wybierasz wersję „w połowie” między działającą a niedziałającą i sprawdzasz test, zawężając przedział. Niektóre systemy kontroli wersji automatyzują ten proces (git bisect).",
+      "source_raw": "Rozdział 3, Topic 20 (Debugging), s. 173–175",
+      "chapter": 3,
+      "topics": [
+        20
+      ],
+      "type": "factual + procedure",
+      "difficulty": "średnia (trzy zastosowania do wymienienia)"
+    },
+    {
+      "id": "q012",
+      "header": "Porównanie modeli współbieżności (comparison, dwa sąsiednie Topics)",
+      "question": "Czym różni się model aktorów od blackboardu jako sposobu radzenia sobie ze współbieżnością? Kiedy stosować który?",
+      "reference_answer": "**Aktorzy** (Topic 35): niezależne wirtualne procesory, każdy z własnym, prywatnym stanem i skrzynką odbiorczą (mailbox). Komunikują się **wiadomościami jeden-do-jednego**, w których nie ma pojęcia „odpowiedzi” — jeśli chcesz odpowiedzi, wysyłasz swój adres w wiadomości. Aktor przetwarza jedną wiadomość naraz, do końca. **Nie ma współdzielonego stanu**, więc nie ma potrzeby synchronizacji. Model świetnie się skaluje: te same aktory działają na jednym procesorze, wielu rdzeniach, albo wielu maszynach w sieci. Erlang/Elixir to klasyczne implementacje z supervisor trees i hot-code loading. > **Blackboard** (Topic 36): inspirowany tablicą w pokoju śledczych. Detektywi (agenci) nie znają się nawzajem — patrzą na tablicę, dodają fakty, obserwacje, spekulacje. Nie ma centralnego kontrolera; koordynacja wynika z tego, kto co dopisze. Blackboard jest szczególnie dobry, gdy: - odpowiedzi przychodzą w **dowolnej kolejności** (np. credit check trwa długo, a dane adresowe są natychmiast), - dane pochodzą od **różnych osób/systemów**, rozproszonych geograficznie, - **nowe dane rodzą nowe pytania** (np. słaby credit check uruchamia dodatkowe formularze). > **Kiedy który:** aktorów — gdy masz niezależne procesy komunikujące się wiadomościami i chcesz uniknąć współdzielonego stanu. Blackboard — gdy problem wymaga **koordynacji wielu niezależnych agentów** i kolejność napływu danych nie jest z góry znana. Blackboard dobrze łączy się z rules engine, który reaguje na nowe fakty. Współczesne systemy messagingowe (Kafka, NATS) mają właściwości blackboardu (persistence, pattern matching), więc często używa się ich jako platformy i dla aktorów, i dla blackboardu.",
+      "source_raw": "Rozdział 6, Topics 35 i 36, s. 309–323",
+      "chapter": 6,
+      "topics": [
+        35,
+        36
+      ],
+      "type": "comparison / two-model",
+      "difficulty": "trudna (dwa modele, ich właściwości i kryteria wyboru)"
+    },
+    {
+      "id": "q013",
+      "header": "Rozumowanie (reasoning, single-topic)",
+      "question": "Czym jest „programming by coincidence” i dlaczego jest niebezpieczne? Jakie konkretne typy przypadków autorzy wymieniają?",
+      "reference_answer": "Programming by coincidence to poleganie na szczęściu i przypadkowych sukcesach zamiast na świadomym rozumieniu, dlaczego kod działa. Fred — przykład z książki — pisze kod, który „jakoś działa”, aż w końcu przestaje, a on nie umie tego naprawić, bo **nigdy nie wiedział, dlaczego to działało**. Autorzy wymieniają cztery typy: 1. **Accidents of implementation** — kod działa, bo tak akurat jest napisany, ale opiera się na nieudokumentowanym zachowaniu. Przykład: Fred wywołuje `paint(); invalidate(); validate(); revalidate(); repaint(); paintImmediately();` — te rutyny nigdy nie były projektowane do wywołania w tej kolejności; to przypadek, że coś się rysuje. Ryzyka: (a) może wcale nie działać, tylko wyglądać, że działa; (b) boundary condition może być przypadkiem; (c) nieudokumentowane zachowanie może się zmienić w kolejnej wersji biblioteki; (d) dodatkowe wywołania spowalniają kod; (e) zwiększają ryzyko nowych bugów. 2. **Close enough isn't** — przykład projektu z hardware'em ustawionym na lokalny czas. Off-by-one wyglądało jak „prawie dobrze”, ale maskowało fundamentalny błąd; kod zdegradował się do masy `+1` i `-1`, aż projekt został porzucony. 3. **Phantom patterns** — ludzie widzą wzorce tam, gdzie ich nie ma (przykład: rosyjscy przywódcy naprzemiennie łysi i owłosieni od 200 lat; wzorce w loterii, ruletce, finansach). W kodzie: błąd co 1000 requestów może być race condition albo zwykłym bugiem; testy przechodzące lokalnie ale nie na serwerze mogą oznaczać różnicę środowisk albo przypadek. 4. **Accidents of context** — kod polega na czymś, co nie jest gwarantowane: obecność GUI, angielski użytkownik, zapisywalny current directory, zmienne środowiskowe, dokładny czas serwera, dostępność sieci. Kopiowanie kodu z netu bez sprawdzenia kontekstu to „cargo cult code”. > **Jak programować świadomie:** zawsze wiedz, co robisz; umiej wyjaśnić kod juniorowi; nie koduj po ciemku; działaj z planem; polegaj tylko na rzeczach reliable; dokumentuj założenia (DBC); testuj założenia, nie tylko kod; priorytetyzuj wysiłek; nie bądź niewolnikiem historii.",
+      "source_raw": "Rozdział 7, Topic 38 (Programming by Coincidence), s. 334–340",
+      "chapter": 7,
+      "topics": [
+        38
+      ],
+      "type": "reasoning / why + enumeration",
+      "difficulty": "trudna (cztery typy, każdy z przykładami)"
+    },
+    {
+      "id": "q014",
+      "header": "False-premise (test korekty)",
+      "question": "Książka radzi, żeby na początku projektu zebrać pełne wymagania, zapisać je w szczegółowym dokumencie i dać klientowi do podpisania, żeby uniknąć późniejszych zmian. Czy to prawidłowe?",
+      "reference_answer": "Nie, to nieprawda. Autorzy mówią wprost: „No One Knows Exactly What They Want” (Tip 75). Wymagania **nie leżą na powierzchni** — są pogrzebane pod warstwami założeń, błędnych przekonań i polityki. Często **w ogóle nie istnieją**, dopóki nie zaczniesz ich odkrywać razem z klientem. Główne argumenty: 1. **Programiści pomagają ludziom zrozumieć, czego chcą** (Tip 76) — to jest nasza najcenniejsza umiejętność, nie „zbieranie” gotowych wymagań. 2. **Wymagania uczą się w pętli feedbacku** (Tip 77) — generujesz feedback (pytania, mockupy, prototypy), klient go używa do doprecyzowania myślenia. 3. **Dokument wymagań nie jest dla klienta** — autorzy opisują z doświadczenia: „inch-thick masterpieces” pełne diagramów i tabel to błąd, bo (a) klient nie wie, czego chce, więc budujesz zamek na piasku, (b) klient **nie czyta** takich dokumentów. „Giving them a large technical document is like giving the average developer a copy of the Iliad in Homeric Greek and asking them to code the video game from it.” 4. **Dokumenty wymagań są do planowania, nie do podpisu** — autorzy preferują **user stories** na kartach indeksowych, które mieszczą się na jednej kartce i zachęcają do zadawania pytań. 5. **Policy is metadata** (Tip 79) — zamiast kodować konkretną regułę („tylko przełożeni i HR widzą akta”), koduj ogólny przypadek („tylko upoważnieni użytkownicy”) z polityką jako metadata. > Zamiast tego autorzy radzą: **pracuj z użytkownikiem, żeby myśleć jak użytkownik** (Tip 78), chodź do klienta, patrz, jak pracuje, buduj prototypy, które klient może dotknąć. Najlepszą dokumentacją wymagań jest **działający kod**.",
+      "source_raw": "Rozdział 8, Topic 45 (The Requirements Pit), s. 405–417",
+      "chapter": 8,
+      "topics": [
+        45
+      ],
+      "type": "false-premise",
+      "difficulty": "średnia (kontruje potoczne przekonanie o „zbieraniu wymagań”)"
+    },
+    {
+      "id": "q015",
+      "header": "Relacyjne / multi-hop (Pragmatic Starter Kit)",
+      "question": "Czym jest „Pragmatic Starter Kit” i dlaczego autorzy twierdzą, że jego trzy elementy są ze sobą nierozerwalnie związane? Jak łączą się z resztą książki?",
+      "reference_answer": "Pragmatic Starter Kit (Topic 51) to trzy filary, na których opiera się każdy projekt: 1. **Version Control** — wszystko, co potrzebne do zbudowania projektu, jest pod kontrolą wersji. To pozwala maszynom build'owym być **ephemeral** (tworzone na żądanie w chmurze), a deployment configuration też jest wersjonowany. 2. **Regression Testing** — „Test Early, Test Often, Test Automatically” (Tip 90), „Coding Ain't Done 'Til All the Tests Run” (Tip 91). Autorzy mówią: projekt może mieć więcej kodu testów niż kodu produkcyjnego. Testuj stan, nie pokrycie kodu (Tip 93 — „Test State Coverage, Not Code Coverage”). Jeśli bug przejdzie przez testy, dodaj nowy test, żeby złapać go następnym razem (Tip 94 — „Find Bugs Once”). 3. **Full Automation** — „Don't Use Manual Procedures” (Tip 95). Ludzie nie są tak repeatable jak komputery. Manualne procedury łamią consistency i repeatability. > **Dlaczego nierozerwalne:** Version control **drive builds, tests, releases** (Tip 89) — build, test i deployment są wyzwalane przez commit'y lub push'e, a nie przez ręczne akcje na czyjejś maszynie. Testy są uruchamiane automatycznie przy każdym buildzie. Bez automatyzacji nie da się zbudować projektu na anonimowym serwerze w chmurze; bez wersjonowania deployment configuration nie da się zautomatyzować releasu; bez testów automatyzacja tylko przyspiesza dostarczanie bugów. > **Powiązania z resztą książki:** - Version control łączy się z Topic 19 (Version Control) i Topic 11 (Reversibility — możliwość cofnięcia decyzji). - Testing łączy się z Topic 41 (Test to Code — testowanie jako feedback dla designu), Topic 42 (Property-Based Testing — generowanie danych testowych), Topic 23 (Design by Contract — testowanie przeciwko kontraktom). - Automation łączy się z Topic 17 (Shell Games — automatyzacja przez shell), Topic 12 (Tracer Bullets — end-to-end feedback), Topic 48 (The Essence of Agility — pętla feedbacku). > Bez tych trzech filarów **continuous delivery** (Topic 50) jest niemożliwe. Celem nie jest „robić Scrum” ani „robić agile”, ale być w pozycji, w której można dostarczyć działające oprogramowanie **na żądanie** — a to wymaga wersjonowania, testów i automatyzacji.",
+      "source_raw": "Rozdział 9, Topic 51 (Pragmatic Starter Kit), s. 452–461 + powiązania z Topic 11, 12, 17, 19, 41, 42, 48, 50",
+      "chapter": 9,
+      "topics": [
+        51,
+        11,
+        12,
+        17,
+        19,
+        41,
+        42,
+        48,
+        50
+      ],
+      "type": "relational / multi-hop",
+      "difficulty": "trudna (wymaga zsyntetyzowania trzech filarów i powiązań z resztą książki)"
+    },
+    {
+      "id": "q016",
+      "header": "Definicja + uzasadnienie (factual, single-topic)",
+      "question": "Dlaczego książka twierdzi, że „plain text” jest najlepszym formatem do przechowywania wiedzy? Jakie trzy konkretne korzyści wymienia?",
+      "reference_answer": "Autorzy: „the best format for storing knowledge persistently is plain text” (Tip 25: Keep Knowledge in Plain Text). Podstawowy problem z formatami binarnymi: **kontekst potrzebny do zrozumienia danych jest oddzielony od samych danych** — „You are artificially divorcing the data from its meaning.” Plain text daje **self-describing data stream** niezależny od aplikacji, która go stworzyła. Trzy konkretne korzyści: 1. **Insurance against obsolescence** — human-readable, self-describing data przeżyje wszystkie inne formaty i aplikacje, które je stworzyły. Możesz parsować plik z częściową wiedzą o formacie; binarnego musisz znać cały. Przykład: `<FIELD10>123-45-6789</FIELD10>` vs `AC27123456789B11P` — pierwsze rozpoznasz od razu, drugie nie. 2. **Leverage existing tools** — praktycznie każde narzędzie w ekosystemie (VCS, edytory, grep, diff, sum, shell) operuje na plain text. Filozofia Unix: małe, ostre narzędzia połączone wspólnym formatem — plikiem linowym. 3. **Easier testing** — syntetyczne dane testowe można łatwo dodawać, aktualizować i modyfikować bez specjalnych narzędzi; output testów regresyjnych można analizować shell commands. > Plain text nie znaczy „bez struktury” — HTML, JSON, YAML, HTTP, SMTP, IMAP to wszystko plain text. W heterogenicznych środowiskach plain text wygrywa z niedogodnościami, bo jest **najniższym wspólnym mianownikiem**.",
+      "source_raw": "Rozdział 3, Topic 16 (The Power of Plain Text), s. 146–150",
+      "chapter": 3,
+      "topics": [
+        16
+      ],
+      "type": "factual + rationale",
+      "difficulty": "średnia (trzy korzyści z uzasadnieniami)"
+    },
+    {
+      "id": "q017",
+      "header": "Procedura + rozumowanie (reasoning, single-topic)",
+      "question": "Kiedy należy refaktoryzować kod według książki? Jakie konkretne sytuacje autorzy wymieniają jako sygnały do refaktoryzacji i jakie zasady bezpieczeństwa podają?",
+      "reference_answer": "Autorzy: **„Refactor Early, Refactor Often”** (Tip 65). Refaktoryzacja to dzień powszedni — „more like weeding and raking”, nie „plowing under the whole garden”. Definicja Fowlera: „disciplined technique for restructuring an existing body of code, altering its internal structure without changing its external behavior.” Kluczowe: (1) działanie jest **disciplined**, nie free-for-all; (2) **external behavior się nie zmienia** — to nie czas na dodawanie features. > **Sygnały do refaktoryzacji:** - **Duplication** — naruszenie DRY. - **Nonorthogonal design** — coś, co można uczynić bardziej ortogonalnym. - **Outdated knowledge** — wymagania dryfują, wiedza o problemie rośnie. - **Usage** — system używany pod prawdziwym obciążeniem pokazuje, że features mają inne priorytety. - **Performance** — funkcjonalność trzeba przenieść, żeby poprawić wydajność. - **The Tests Pass** — „Yes. Seriously.” Po dodaniu małego kawałka kodu i przejściu testu masz świetną okazję, żeby posprzątać. > **Zasady bezpieczeństwa (Fowler):** 1. Nie łącz refaktoryzacji z dodawaniem funkcjonalności. 2. Miej dobre testy **przed** refaktoryzacją; uruchamiaj je często. 3. Rób krótkie, przemyślane kroki: przenieś pole, rozbij metodę, zmień nazwę zmiennej. Refaktoryzacja to wiele zlokalizowanych zmian prowadzących do większej zmiany. > **Uzasadnienie „refactor early”:** presja czasu jest wymówką, która nie działa — jeśli nie zrefaktoryzujesz teraz, później będzie **większy** koszt, bo więcej zależności. Analogia medyczna: „Removing it requires invasive surgery. You can go in now, and take it out while it is still small. Or, you could wait while it grows and spreads — but removing it then will be both more expensive and more dangerous. Wait even longer, and you may lose the patient entirely.”",
+      "source_raw": "Rozdział 7, Topic 40 (Refactoring), s. 354–360",
+      "chapter": 7,
+      "topics": [
+        40
+      ],
+      "type": "reasoning + procedure",
+      "difficulty": "średnia–trudna (dwa wymiary: kiedy i jak)"
+    },
+    {
+      "id": "q018",
+      "header": "Porównanie (comparison, single-topic z dwoma podejściami)",
+      "question": "Jakie dwa podejścia do konfiguracji opisuje książka i czym się różnią? Które autorzy preferują i dlaczego?",
+      "reference_answer": "Autorzy opisują **static configuration** i **configuration-as-a-service**. > **Static configuration** (Topic 32): dane konfiguracyjne trzymane w flat files (YAML, JSON) lub tabelach bazy danych; czytane do struktury danych przy starcie aplikacji. Typowe rzeczy do skonfigurowania: credentials do external services, poziomy logowania, nazwy portów/IP/maszyn/klastrów, parametry walidacji zależne od środowiska, stawki podatkowe, formatowanie, klucze licencyjne. Autorzy ostrzegają przed trzymaniem tego jako **globalnej** struktury — lepiej owinąć w **cienkie API**, żeby oddzielić kod od reprezentacji. > **Configuration-as-a-Service**: dane konfiguracyjne nie w pliku czy bazie, ale za **service API**. Zalety: - wiele aplikacji może dzielić konfigurację (z auth i access control), - zmiany konfiguracji mogą być **globalne**, - dane mogą być utrzymywane przez wyspecjalizowane UI, - konfiguracja staje się **dynamiczna**. > **Dlaczego dynamiczna jest kluczowa:** „The idea that we should have to stop and restart an application to change a single parameter is hopelessly out of touch with modern realities.” Komponenty mogą rejestrować się na powiadomienia o zmianach parametrów, a service wysyła im nowe wartości. > **Preferencja autorów:** obecnie (2019) skłaniają się ku configuration-as-a-service, ale zasada naczelna brzmi: **Parameterize Your App Using External Configuration** (Tip 55) — trzymaj wartości, które mogą się zmienić po wdrożeniu, poza aplikacją. > **Ostrzeżenie (sidebar „Don't Overdo It”):** nie przesadzaj. Jeden z klientów autorów zrobił **40 000 zmiennych konfiguracyjnych** i „a coding nightmare on their hands” — każda zmiana wymagała tygodni. Nie przenoś decyzji do konfiguracji z lenistwa.",
+      "source_raw": "Rozdział 5, Topic 32 (Configuration), s. 284–287",
+      "chapter": 5,
+      "topics": [
+        32
+      ],
+      "type": "comparison",
+      "difficulty": "średnia (dwa podejścia + zasada + ostrzeżenie)"
+    },
+    {
+      "id": "q019",
+      "header": "False-premise (test korekty)",
+      "question": "Książka mówi, że „sign your work” oznacza, że powinieneś bronić swojego kodu przed ingerencją innych i traktować go jak własne terytorium. Czy to prawidłowe?",
+      "reference_answer": "Nie, to nieprawda. Autorzy mówią wprost: **„You shouldn't jealously defend your code against interlopers; by the same token, you should treat other people's code with respect.”** Kontekst Tip 97 („Sign Your Work”) brzmi: „Artisans of an earlier age were proud to sign their work. You should be, too.” Ale autorzy natychmiast ostrzegają: „Project teams are still made up of people, however, and this rule can cause trouble. On some projects, the idea of code ownership can cause cooperation problems. People may become territorial, or unwilling to work on common foundation elements. The project may end up like a bunch of insular little fiefdoms. You become prejudiced in favor of your code and against your coworkers. That's not what we want.” > Kluczowe rozróżnienia: - **Podpis = wskaźnik jakości**, nie własność. „Your signature should come to be recognized as an indicator of quality. People should see your name on a piece of code and expect it to be solid, well written, tested, and documented.” - **Anonimowość jest problemem**, ale nie rozwiązuje się jej przez terytorializm — autorzy cytują Kenta Becka: eXtreme Programming rekomenduje **communal ownership of code** (wymaga dodatkowych praktyk, jak pair programming, żeby zabezpieczyć przed pokusą anonimowości). - **Golden Rule:** „Do unto others as you would have them do unto you” + wzajemny szacunek są kluczowe, żeby tip działał. - **Anonimowość to „breeding ground for sloppiness, mistakes, sloth, and bad code”** — łatwo widzieć się jako „cog in the wheel”. > Zatem „sign your work” to zachęta do **odpowiedzialności i dumy**, nie do terytorializmu.",
+      "source_raw": "Rozdział 9, Topic 53 (Pride and Prejudice), s. 465–466",
+      "chapter": 9,
+      "topics": [
+        53
+      ],
+      "type": "false-premise",
+      "difficulty": "średnia (kontruje potoczne rozumienie „sign your work”)"
+    },
+    {
+      "id": "q020",
+      "header": "Relacyjne / multi-hop (Balance Resources + DBC + Headlights)",
+      "question": "Jak zasada „finish what you start” z „How to Balance Resources” łączy się z Design by Contract i z „Don't Outrun Your Headlights”? Jak te trzy zasady wspólnie wpływają na projektowanie?",
+      "reference_answer": "Trzy zasady tworzą spójny system myślenia o odpowiedzialności i ograniczeniu ryzyka: > 1. **„Finish What You Start”** (Topic 26, Tip 40): rutyna, która alokuje zasób, powinna być odpowiedzialna za jego zwolnienie. Przykład z książki: `read_customer` otwiera plik i trzyma referencję w `@customer_file`, a `write_customer` go zamyka — te dwie rutyny są **sprzężone** przez wspólną zmienną, która nawet nie pojawia się w `update_customer`. Gdy dodasz warunek `if transaction_amount >= 0.00`, w niektórych ścieżkach plik nie zostanie zamknięty → „too many open files”. Rozwiązanie: przekazanie pliku jako parametru i zamknięcie w tej samej rutynie, która go otworzyła. **„When in doubt, it always pays to reduce scope”** (Tip 41: Act Locally). Rozszerzenie: **nest allocations** — dealokuj w odwrotnej kolejności do alokacji; zawsze alokuj w tej samej kolejności, żeby uniknąć deadlocka. > 2. **Design by Contract** (Topic 23): DBC pomaga **doprecyzować pomysł na zasób**. Kiedy definiujesz kontrakt na moduł, musisz wyrazić preconditions (kto dostarcza zasób), postconditions (co gwarantuje zwrot) i invariants (co jest zawsze prawdziwe o stanie). Autorzy piszą w Challenges Topic 26: „Consider how Topic 23, Design by Contract, could help refine this idea.” Kontrakt mówi wyraźnie: **kto jest odpowiedzialny za co**, co przekłada się na to, kto alokuje i kto dealokuje. Bez kontraktu zostajesz z „programming by coincidence” w gospodarce zasobami. > 3. **„Don't Outrun Your Headlights”** (Topic 27, Tip 42): zawsze rób **małe, przemyślane kroki**, sprawdzaj feedback i koryguj, zanim pójdziesz dalej. „Consider that the rate of feedback is your speed limit. You never take on a step or a task that’s ‘too big.’” Headlights mają ograniczony zasięg; dalej robi się ciemno. Zadanie „too big” to takie, które wymaga **fortune telling**: szacowanie daty ukończenia miesięcy w przód, planowanie designu dla przyszłej utrzymywalności, zgadywanie przyszłych potrzeb użytkownika. Lepsze: **design your code to be replaceable** — jeśli nie wiesz, jak zmiana się objawi, spraw, żeby kod można było wymienić. > **Jak się łączą:** - Bez **DBC** nie wiesz, kto jest odpowiedzialny za zasób, więc „finish what you start” nie ma podstawy. - Bez **„finish what you start”** kontrakty są papierowe — zasoby wyciekają, mimo że kontrakt mówi, kto je zwalnia. - Bez **„Don't Outrun Your Headlights”** próbujesz zaprojektować cały system zasobów z góry, co prowadzi do overengineeringu i błędnych założeń o przyszłości. - Razem: **małe kroki + jasne kontrakty + lokalna odpowiedzialność za zasoby** = system, który jest łatwy do zmiany i trudny do zepsucia. > Wszystkie trzy są szczególnymi przypadkami **ETC** (Topic 8): DBC czyni zmiany bezpieczniejszymi przez wyraźne granice; „finish what you start” czyni zmiany lokalnymi; „Don't Outrun Your Headlights” czyni zmiany małymi i odwracalnymi.",
+      "source_raw": "Rozdział 4, Topics 23, 26, 27, s. 191–225 + Topic 8 (ETC)",
+      "chapter": 4,
+      "topics": [
+        23,
+        26,
+        27,
+        8
+      ],
+      "type": "relational / multi-hop",
+      "difficulty": "trudna (trzy zasady z różnych Topiców, wymaga syntezy)"
+    },
+    {
+      "id": "q021",
+      "header": "Reasoning (5 wytycznych + dlaczego działają)",
+      "question": "Jakie pięć wytycznych inwestowania w „knowledge portfolio” podaje książka i dlaczego traktuje wiedzę jako „expiring asset”?",
+      "reference_answer": "Autorzy: **„An investment in knowledge always pays the best interest”** (Franklin). Twoja wiedza i doświadczenie to najważniejsze aktywa zawodowe, ale są **expiring assets** — tracą wartość, gdy pojawiają się nowe techniki, języki i środowiska. Gdy wartość wiedzy spada, spada też twoja wartość dla firmy/klienta. Pięć wytycznych inwestowania (zapożyczone z finansów): 1. **Invest regularly** — jak w finansach, regularnie, nawet małe kwoty. Nawyk jest ważniejszy niż suma. 2. **Diversify** — im więcej różnych rzeczy znasz, tym jesteś cenniejszy. Hot technology dziś może być bezużyteczna jutro. Nie zapominaj o umiejętnościach nietechnicznych. 3. **Manage risk** — spektrum od risky/high-reward do low-risk/low-reward. Nie wkładaj wszystkich technicznych jajek do jednego koszyka. 4. **Buy low, sell high** — nauka technologii, zanim stanie się popularna, jest trudna jak znalezienie niedowartościowanej akcji, ale payoff bywa ogromny (przykład: Java na początku). 5. **Review and rebalance** — dynamiczna branża; hot technology z zeszłego miesiąca może być zimna. Wróć do technologii, których dawno nie używałeś. > Najważniejsza z nich: **Invest Regularly in Your Knowledge Portfolio** (Tip 9). Konkretne cele: ucz się nowego języka co roku, czytaj książkę techniczną miesięcznie, czytaj też książki nietechniczne, bierz kursy, uczestnicz w meetupach, eksperymentuj ze środowiskami, śledź nowości. I najważniejsze: **Critically Analyze What You Read and Hear** (Tip 10) — Five Whys, follow the money, kontekst, kiedy/gdzie to zadziała.",
+      "source_raw": "Rozdział 1, Topic 6 (Your Knowledge Portfolio), s. 54–61",
+      "chapter": 1,
+      "topics": [
+        6
+      ],
+      "type": "reasoning / enumeration",
+      "difficulty": "średnia (pięć wytycznych + uzasadnienie)"
+    },
+    {
+      "id": "q022",
+      "header": "Reasoning (dlaczego nazwy mają znaczenie)",
+      "question": "Dlaczego nazywanie rzeczy jest tak ważne według książki? Co to jest efekt Stroopa i jak wiąże się z nazewnictwem w kodzie?",
+      "reference_answer": "Autorzy: **„What's in a name? When we're programming, the answer is 'everything!'”** Nazwy tworzymy dla aplikacji, podsystemów, modułów, funkcji, zmiennych — i te nazwy **ujawniają intencję i przekonanie**. Rzeczy powinny być nazywane według **roli**, jaką pełnią w kodzie. Zadanie sobie pytania „jaka jest moja motywacja, żeby to stworzyć?” wyrywa z trybu rozwiązywania problemu i każe spojrzeć na większy obraz. Często okazuje się, że to, co chcieliśmy zrobić, nie ma sensu — bo nie umiemy wymyślić odpowiedniej nazwy. > **Efekt Stroopa:** mózg czyta i rozumie słowa naprawdę szybko — szybciej niż wiele innych czynności. W eksperymencie Stroopa widzisz nazwy kolorów napisane w niezgodnych kolorach; łatwo przeczytać słowo, ale trudno powiedzieć kolor, którym jest napisane. „Your brain treats written words as something to be respected.” Nazwy w kodzie mają podobny priorytet — jeśli są mylące, wprowadzają cognitive dissonance. > **Przykłady z książki:** - `let user = authenticate(credentials)` → `user` nic nie znaczy. Lepiej `customer` lub `buyer` — przypomina, co ta osoba próbuje zrobić. - `deductPercent(double amount)` → `applyDiscount(Percentage discount)` — nazwa mówi **po co**, nie **co**; typ `Percentage` dokumentuje oczekiwania (0–100 czy 0.0–1.0?). - `Fib.fib(n)` → `Fib.of(0)` lub `Fib.nth(20)` — kontekst modułu sprawia, że `fib` jest redundantne. > **Renaming:** „No matter how much effort you put in up front, things change... If you aren't vigilant about updating names as you go, you can quickly descend into a nightmare much worse than meaningless names: **misleading names**.” Zasada: **Name Well; Rename When Needed** (Tip 74). Jeśli nie możesz zmienić złej nazwy, masz problem ETC — napraw to najpierw.",
+      "source_raw": "Rozdział 7, Topic 44 (Naming Things), s. 395–400",
+      "chapter": 7,
+      "topics": [
+        44
+      ],
+      "type": "reasoning / why",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q023",
+      "header": "Reasoning (Big-O i praktyka)",
+      "question": "Jak książka radzi szacować złożoność algorytmów „common sense” i kiedy NIE optymalizować?",
+      "reference_answer": "Big-O to matematyczny sposób radzenia sobie z aproksymacjami: mówi, jak czas/pamięć **rosną wraz z rozmiarem inputu**, nie daje konkretnych liczb. Upraszcza się, usuwając niższe rzędy i stałe mnożniki — jedna O(n²) może być 1000× szybsza od innej O(n²), ale z notacji tego nie widać. > **Common sense estimation:** - **Simple loops** → O(n). Wyczerpujące wyszukiwania, znajdowanie maksimum, checksumy. - **Nested loops** → O(n²). Proste sortowania (bubble sort, insertion sort). - **Binary chop** → O(log n). Binary search, przechodzenie drzewa binarnego. - **Divide and conquer** → O(n log n). Quicksort (średnio), mergesort. - **Combinatoric** → silnie rosnące. Permutacje, traveling salesman, pakowanie. > **Kiedy NIE optymalizować:** **„Best Isn't Always Best”** — najszybszy algorytm nie zawsze jest najlepszy dla zadania. Przy małym inpucie insertion sort działa tak samo dobrze jak quicksort, a pisze się go i debuguje szybciej. Uważaj na algorytmy z wysokim **setup cost** — przy małych inputach setup może zdominować runtime. I najważniejsze: **„be wary of premature optimization. It's always a good idea to make sure an algorithm really is a bottleneck before investing your precious time trying to improve it.”** > **Test Your Estimates** (Tip 64): jeśli nie jesteś pewien, uruchom kod z różnymi rozmiarami inputu i narysuj wyniki. Trzy–cztery punkty powinny dać kształt krzywej. Pamiętaj też o praktyce: O(n log n) z drogim inner loopem może przegrać z prostym O(n²) dla małych n; a algorytm, który wygląda liniowo dla małych danych, może zacząć się degradować, gdy system zacznie thrashować. „The only timing that counts is the speed of your code, running in the production environment, with real data.”",
+      "source_raw": "Rozdział 7, Topic 39 (Algorithm Speed), s. 343–351",
+      "chapter": 7,
+      "topics": [
+        39
+      ],
+      "type": "reasoning / when-not-to",
+      "difficulty": "średnia–trudna"
+    },
+    {
+      "id": "q024",
+      "header": "Factual + procedura (5 zasad bezpieczeństwa)",
+      "question": "Jakie pięć podstawowych zasad bezpieczeństwa wymienia książka i co konkretnie radzi w każdej z nich?",
+      "reference_answer": "Pięć zasad (Tip 72: „Keep It Simple and Minimize Attack Surfaces”): 1. **Minimize Attack Surface Area** — suma wszystkich punktów, przez które atakujący może wprowadzić dane, wyciągnąć dane lub wywołać usługę. Przykłady: code complexity (mniej kodu = mniej bugów), input data (nigdy nie ufaj zewnętrznym danym, sanituj przed przekazaniem), unauthenticated services (każdy może wywołać), authenticated services (minimum uprawnionych użytkowników, cull unused accounts), output data (nie ujawniaj informacji — password hints, SSN), debugging info (stack trace na ATM to prezent dla atakującego). 2. **Principle of Least Privilege** — używaj najmniejszej ilości uprawnień przez najkrótszy czas. Nie chwytaj automatycznie roota/Administratora. Jeśli wysoki poziom jest potrzebny — zrób minimum, oddaj uprawnienia szybko. Przykład: `login` na Unix zaczyna z rootem, ale po autentykacji zrzuca uprawnienia do poziomu użytkownika. 3. **Secure Defaults** — domyślne ustawienia powinny być najbezpieczniejsze. Mogą nie być najwygodniejsze, ale każdy może sam zdecydować o trade-offach. Przykład: domyślne ukrywanie hasła jako `*`. 4. **Encrypt Sensitive Data** — nie zostawiaj PII, danych finansowych, haseł w plain text. **Exception do zasady z Topic 19 (Version Control):** NIE commituj sekretów, kluczy API, haseł obok kodu źródłowego. Klucze zarządzane osobno, przez config files lub env variables. 5. **Maintain Security Updates** — **Apply Security Patches Quickly** (Tip 73). Dotyczy każdego urządzenia podłączonego do sieci: telefonów, samochodów, AGD, laptopów, build machines, serwerów produkcyjnych, obrazów cloud. Największe data breachy w historii były spowodowane systemami, które były za późno z aktualizacjami. > **Dodatkowo:** „Common Sense vs. Crypto” — **nigdy nie rób kryptografii sam**. Nawet pozornie nieszkodliwy błąd może skompromitować wszystko. Korzystaj z well-vetted, open source libraries. Sidebar „Password Antipatterns” (NIST): nie ograniczaj długości < 64, nie obcinaj hasła, nie ograniczaj special chars, nie dawaj hintów, nie wyłączaj paste, nie wymuszaj composition rules, nie wymagaj zmiany co X czasu. „You want to encourage long, random passwords with a high degree of entropy.”",
+      "source_raw": "Rozdział 7, Topic 43 (Stay Safe Out There), s. 385–394",
+      "chapter": 7,
+      "topics": [
+        43
+      ],
+      "type": "factual + procedure",
+      "difficulty": "średnia–trudna (pięć zasad, każda z detalami)"
+    },
+    {
+      "id": "q025",
+      "header": "Reasoning (dlaczego shared state jest zły)",
+      "question": "Dlaczego książka twierdzi, że „shared state is incorrect state”? Jakie rozwiązanie proponuje i jakie ma ono wady?",
+      "reference_answer": "Przykład z książki: dwie kelnerki patrzą na tę samą pie case, widzą jeden kawałek ciasta i obie obiecują go swojemu klientowi. Problem nie polega na tym, że dwie procesy mogą pisać do tej samej pamięci — problem polega na tym, że **żaden proces nie może zagwarantować, że jego widok pamięci jest spójny**. Gdy kelnerka wykonuje `display_case.pie_count()`, kopiuje wartość do swojej pamięci. Jeśli wartość w pie case się zmieni, jej pamięć (na której podejmuje decyzje) jest nieaktualna. > **Nonatomic updates** — pobranie i aktualizacja pie count nie jest operacją atomową; wartość może się zmienić w środku. Rozwiązania: 1. **Semaphores / mutual exclusion** — tylko jedna osoba może trzymać semafor. Ale: działa tylko, jeśli **wszyscy** zgadzają się na konwencję; jeśli ktoś zapomni, wracamy do chaosu. 2. **Make the Resource Transactional** — scentralizuj kontrolę. Zmień API tak, żeby sprawdzenie i zabranie ciasta były w jednym wywołaniu: `slice = display_case.get_pie_if_available()`. Ale to nadal wymaga semafora, bo metoda może być wywołana współbieżnie. I nadal trzeba obsłużyć wyjątki (jeśli `update_sales_data` rzuci, semafor nigdy nie zostanie zwolniony — stąd `ensure`/`protect`). 3. **Multiple resource transactions** — jeśli potrzebujesz ciasta i lodów, pojawia się problem: co, jeśli dostaniesz ciasto, ale lody się skończą? Trzeba zwracać zasoby. Autorzy: „apple pie à la mode” to **własny zasób** — stwórz nowy moduł/menu item i niech klient mówi „get me apple pie with ice cream”. > **Wady shared-state approach:** koncurrency w środowisku współdzielonych zasobów jest **trudna**, a zarządzanie nią samodzielnie jest pełne wyzwań. Autorzy: „Doctor, it hurts when I do this. Then don't do that.” Rekomendują **aktorów** (Topic 35) i **blackboardy** (Topic 36) jako alternatywy. > **Tip 57: Shared State Is Incorrect State.** **Tip 58: Random Failures Are Often Concurrency Issues.**",
+      "source_raw": "Rozdział 6, Topic 34 (Shared State Is Incorrect State), s. 299–308",
+      "chapter": 6,
+      "topics": [
+        34
+      ],
+      "type": "reasoning / why",
+      "difficulty": "średnia–trudna"
+    },
+    {
+      "id": "q026",
+      "header": "Comparison (pipelines vs train wrecks, OO vs transformations)",
+      "question": "Czym różni się styl „transforming programming” od podejścia obiektowego? Dlaczego autorzy preferują pipeline'y i czym różnią się one od „train wrecks”?",
+      "reference_answer": "**Transforming programming:** programy przekształcają dane — input → output. Zamiast myśleć o klasach, modułach, strukturach danych i algorytmach, myśl o **transformacjach**. Przykład Unix: `find . -type f | xargs wc -l | sort -n | tail -5` — łańcuch transformacji: directory name → list of files → list with line numbers → sorted list → highest five. Autorzy: **„Programming Is About Code, But Programs Are About Data”** (Tip 49). **„Don't Hoard State; Pass It Around”** (Tip 50). W modelu transformacyjnym dane są **rzeką**, a nie małymi basenami rozsianymi po systemie. Funkcja może być użyta (i ponownie użyta) wszędzie tam, gdzie jej parametry pasują do outputu innej funkcji. To znacząco redukuje coupling. > **OO style:** obiekty chattering back and forth, zmieniając wzajemnie swój stan. To wprowadza dużo couplingu i jest głównym powodem, dlaczego systemy OO są trudne do zmiany. Autorzy: „In the transformational model, we turn that on its head... think of data as a mighty river, a flow. Data becomes a peer to functionality: a pipeline is a sequence of code → data → code → data...” > **Pipelines vs train wrecks (Topic 28):** Oba łańcuchy metod, ale: - **Train wreck** — `customer.orders.find(id).getTotals().applyDiscount(discount)` — opiera się na **ukrytych szczegółach implementacji**. Top-level kod musi wiedzieć, że `customer` ma `orders`, że `orders` ma `find`, że `order` ma `totals` z getters/setters. „That's a lot of implicit knowledge. But worse, that's a lot of things that cannot change in the future.” - **Pipeline** — `word |> all_subsets() |> as_unique_signatures() |> find_in_dictionary() |> group_by_length()` — funkcje **nie polegają na ukrytych szczegółach**; każda przyjmuje output poprzedniej. „This is not the same as a train wreck of method calls, as we are not relying on hidden implementation details.” > Pipeline'y wprowadzają **pewien** coupling (format danych zwracany przez jedną funkcję musi pasować do przyjmowanego przez następną), ale autorzy: „Our experience is that this form of coupling is far less a barrier to changing the code than the form introduced by train wrecks.” Dodatkowo, w językach z type checking dostajesz compile-time warnings, gdy próbujesz połączyć niekompatybilne rzeczy.",
+      "source_raw": "Rozdział 5, Topic 30 (Transforming Programming), s. 255–271 + Topic 28 (Decoupling), s. 228–238",
+      "chapter": 5,
+      "topics": [
+        30,
+        28
+      ],
+      "type": "comparison",
+      "difficulty": "trudna (dwa style + rozróżnienie pipeline vs train wreck)"
+    },
+    {
+      "id": "q027",
+      "header": "Factual + procedura (jak komunikować)",
+      "question": "Jakie konkretne rady dotyczące komunikacji podaje książka? Jak traktować komunikację w kontekście programowania?",
+      "reference_answer": "Autorzy: **„English is Just Another Programming Language”** (Tip 11). Pisz naturalnym językiem tak, jak piszesz kod: honoruj DRY, ETC, automatyzację. **„It's Both What You Say and the Way You Say It”** (Tip 12). Bez komunikacji najlepszy pomysł jest sierotą. > **Konkretne rady:** - **Know your audience** — komunikujesz tylko, jeśli przekazujesz to, co chcesz przekazać. Zrozum potrzeby, zainteresowania i możliwości odbiorcy. Ten sam update można przedstawić inaczej end userom, marketingowi, managerom i developerom. - **Choose your moment** — piątek po południu po wizycie audytorów to zły czas na prośbę o upgrade pamięci. Zrób swoje przesłanie istotne **w czasie**, nie tylko w treści. - **Choose a style** — dostosuj styl do odbiorcy (formal briefing vs długa rozmowa). Jesteś połową transakcji komunikacyjnej — jeśli ktoś prosi o akapit, a ty potrzebujesz kilku stron, powiedz to. - **Make it look good** — twoje pomysły zasługują na dobre opakowanie. Markdown, style sheets, sprawdzanie pisowni (automatyczne, a potem ręczne). - **Involve your audience** — wczesne drafty, feedback. Proces tworzenia dokumentu bywa ważniejszy niż sam dokument. - **Be a listener** — jeśli chcesz, żeby ludzie cię słuchali, słuchaj ich. Nawet jeśli masz wszystkie informacje, nawet jeśli stoisz przed 20 ludźmi w garniturach. - **Get back to people** — zawsze odpowiadaj na maile i voicemaile, choćby „I'll get back to you later”. Utrzymywanie ludzi w informacji czyni ich bardziej wyrozumiałymi. > **Dokumentacja:** **„Build Documentation In, Don't Bolt It On”** (Tip 13). Dokumentacja jako integralna część procesu. Nie komentuj każdej funkcji — komentowanie „how” jest redundantne z kodem i łamie DRY. Komentuj **why**: engineering trade-offs, dlaczego podjęto decyzje, jakie alternatywy odrzucono. > **Online communication:** email/social media są **forever**. Proofread before send, keep format simple, quoting minimum, don't flame, check recipients. „If you wouldn't say it to someone's face, don't say it online.”",
+      "source_raw": "Rozdział 1, Topic 7 (Communicate!), s. 63–71",
+      "chapter": 1,
+      "topics": [
+        7
+      ],
+      "type": "factual + procedure",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q028",
+      "header": "False-premise (test korekty)",
+      "question": "Książka mówi, że „good-enough software” oznacza, że można pisać kod niedbały i słabo zaprojektowany, byleby tylko dowieźć na czas. Czy to prawidłowe?",
+      "reference_answer": "Nie, to nieprawda. Autorzy **wyraźnie kwalifikują**, co znaczy „good enough”: **„The phrase 'good enough' does not imply sloppy or poorly produced code. All systems must meet their users' requirements to be successful, and meet basic performance, privacy, and security standards. We are simply advocating that users be given an opportunity to participate in the process of deciding when what you've produced is good enough for their needs.”** > Kluczowe zasady: - **Make Quality a Requirements Issue** (Tip 8) — zakres i jakość systemu powinny być **dyskutowane jako część wymagań**, nie narzucane z góry. - **Involve your users in the trade-off** — pytaj użytkowników nie tylko **co** chcą, ale **jak dobre** to ma być. Dla rozruszników serca, autopilota czy biblioteki niskopoziomowej wymagania są bardziej rygorystyczne, opcje bardziej ograniczone. Dla brand-new product — inne constraints. - **Know when to stop** — „Don't spoil a perfectly good program by overembellishment and overrefinement.” Programowanie jest jak malowanie: artysta wie, kiedy przestać, bo inaczej obraz „becomes lost in the paint.” - **Profesjonalizm** — „It would be unprofessional to ignore these users' requirements simply to add new features... it is equally unprofessional to promise impossible time scales and to cut basic engineering corners to meet a deadline.” > „Good enough” to **świadomy wybór** oparty na feedbacku i trade-offach, nie wymówka do bylejakości. „Great software today is often preferable to the fantasy of perfect software tomorrow.”",
+      "source_raw": "Rozdział 1, Topic 5 (Good-Enough Software), s. 50–53",
+      "chapter": 1,
+      "topics": [
+        5
+      ],
+      "type": "false-premise",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q029",
+      "header": "Reasoning (dlaczego VCS jest obowiązkowy)",
+      "question": "Dlaczego książka twierdzi, że powinieneś używać version control **zawsze**, nawet w jednoosobowych projektach i nawet dla rzeczy niebędących kodem źródłowym?",
+      "reference_answer": "Autorzy: **„Always Use Version Control”** (Tip 28). **„Always. Even if you are a single-person team on a one-week project. Even if it's a 'throw-away' prototype. Even if the stuff you're working on isn't source code. Make sure that everything is under version control: documentation, phone number lists, memos to vendors, makefiles, build and release procedures, that little shell script that tidies up log files — everything.”** > **Dlaczego:** 1. **Giant undo key** — projektowa maszyna czasu, która może cofnąć cię do momentu, gdy kod się kompilował i działał. Więcej niż undo w edytorze — cofa stan całego projektu, nawet po restarcie komputera. 2. **Track changes** — kto zmienił tę linię? Jaka różnica między obecną wersją a zeszłotygodniową? Ile linii zmieniono w tym release? Które pliki zmieniają się najczęściej? Te informacje są nieocenione dla bug-trackingu, audytu, wydajności i jakości. 3. **Identify releases** — raz zidentyfikowany release możesz zawsze odtworzyć, niezależnie od późniejszych zmian. 4. **Concurrent work** — wielu użytkowników pracuje równocześnie na tym samym zestawie plików; system zarządza mergowaniem. 5. **Branches** — izolacja rozwoju funkcji, praca równoległa, workflow zespołu. > **Czego NIE robić:** **Nie udostępniaj plików przez sieć/dysk cloud.** „This is not viable. Teams that do this are constantly messing up each other's work, losing changes, breaking builds, and getting into fist fights in the car park. It's like writing concurrent code with shared data and no synchronization mechanism.” Jeszcze gorzej: trzymanie głównego repo VCS na dysku sieciowym/cloud — ryzyko korupcji i utraty wszystkiego. > **Thought experiment z książki:** rozlej herbatę na laptopa, kup nowy. Jak długo zajmie przywrócenie maszyny do stanu (SSH keys, config edytora, shell setup, zainstalowane aplikacje)? U jednego z autorów: **do końca popołudnia**, bo wszystko — dotfiles, konfiguracja edytora, lista oprogramowania z Homebrew, Ansible script, projekty — było w version control. > **Non-project use:** używaj VCS także do rzeczy nieprojektowych — przepisów, notatek, list numerów telefonów.",
+      "source_raw": "Rozdział 3, Topic 19 (Version Control), s. 161–167",
+      "chapter": 3,
+      "topics": [
+        19
+      ],
+      "type": "reasoning / why",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q030",
+      "header": "Relational / multi-hop (jak praktyki indywidualne skalują się do zespołu)",
+      "question": "Jak praktyki pragmatyczne dla jednostki przekładają się na zespół? Które z zasad książki autorzy wprost „przelożyli” na poziom zespołu w Topic 49?",
+      "reference_answer": "Autorzy otwierają Topic 49: „So far in this book we've looked at pragmatic techniques that help an individual be a better programmer. Can these methods work for teams as well...? The answer is a resounding 'yes!' There are advantages to being a pragmatic individual, but these advantages are multiplied manyfold if the individual is working on a pragmatic team.” > **Definicja zespołu:** mały, **stabilny** byt. „Fifty people aren't a team, they're a horde. Teams where members are constantly being pulled onto other assignments and no one knows each other aren't a team either, they are merely strangers temporarily sharing a bus stop in the rain.” **Pragmatic team:** < 10–12 osób, członkowie rzadko się zmieniają, wszyscy się znają, ufają sobie i zależą od siebie (Tip 84: Maintain Small, Stable Teams). > **Przełożone zasady:** - **No Broken Windows** (Topic 3) → **No Broken Windows (team version)** — zespół jako całość nie toleruje drobnych niedoskonałości. „Quality is built in, not bolted on.” Koncepcja „quality officer” jest absurdalna — jakość pochodzi tylko z indywidualnego wkładu wszystkich. - **Boiled Frogs** (Topic 4) → **Boiled Frogs (team)** — łatwiej zespołowi się „ugotować”, bo ludzie zakładają, że ktoś inny się tym zajmuje. Trzeba aktywnie monitorować otoczenie: scope creep, skrócone terminy, nowe wymagania, nowe środowiska. **Metryki na nowych wymaganiach.** - **Knowledge Portfolio** (Topic 6) → **Schedule Your Knowledge Portfolio** (Tip 85) — „Trying to get things done 'whenever there's a free moment' means they will never happen.” Trzeba **zaplanować** w backlogu: maintenance starych systemów, process reflection and refinement, new tech experiments, learning and skill improvements. - **DRY** (Topic 9) → **DRY w zespole** — **„frictionless” communication**. Jeśli musisz czekać tydzień na team meeting, żeby zadać pytanie, to za dużo friction. „Maintain awareness to stay DRY.” - **Tracer Bullets** (Topic 12) → **Team Tracer Bullets** — cały zespół ma umiejętności do end-to-end delivery: frontend, UI/UX, server, DBA, QA. „Organize Fully Functional Teams” (Tip 86). Bez gates i handoffs — Lean nazywa to waste. - **Automation** → **Automate everything** — code formatting, testing, deployment. „Automation is an essential component of every project team.” - **Sign Your Work** (Topic 53) → **Team brand** — nazwa projektu, logo, spójna komunikacja z otoczeniem. „The team speaks with one voice — externally. Internally, we strongly encourage lively, robust debate.” > **Conway's Law** (sidebar): „Organizations which design systems are constrained to produce designs which are copies of the communication structures of these organizations.” Struktura zespołu odbija się w strukturze systemu. Dlatego warto **świadomie** projektować zespół tak, jak chcesz, żeby wyglądał kod. Badania: zespoły rozproszone geograficznie mają tendencję do bardziej modularnego, rozproszonego oprogramowania.",
+      "source_raw": "Rozdział 9, Topic 49 (Pragmatic Teams), s. 437–445 + odniesienia do Topic 3, 4, 6, 9, 12, 53",
+      "chapter": 9,
+      "topics": [
+        49,
+        3,
+        4,
+        6,
+        9,
+        12,
+        53
+      ],
+      "type": "relational / multi-hop",
+      "difficulty": "trudna (wymaga zsyntetyzowania wielu Topiców i pokazania, jak skalują się do zespołu)"
+    },
+    {
+      "id": "u001",
+      "header": "Unanswerable (Kubernetes HPA & Ingress)",
+      "question": "Jak skonfigurować ingress controller i horizontal pod autoscaler w Kubernetes dla aplikacji mikrousługowej?",
+      "reference_answer": "Książka 'The Pragmatic Programmer' nie zawiera informacji na temat konfiguracji Kubernetes, Ingress ani Horizontal Pod Autoscalera (technologie te powstały po pierwotnym wydaniu i nie są tematem książki).",
+      "source_raw": "None (out-of-corpus)",
+      "chapter": null,
+      "topics": [],
+      "type": "unanswerable",
+      "difficulty": "unanswerable"
+    },
+    {
+      "id": "u002",
+      "header": "Unanswerable (React hooks)",
+      "question": "Jakie są najlepsze praktyki używania hooków useEffect i useMemo w React 18 do zapobiegania zbędnym re-renderom?",
+      "reference_answer": "Książka nie omawia biblioteki React, architektury komponentów UI w React ani hooków takich jak useEffect czy useMemo.",
+      "source_raw": "None (out-of-corpus)",
+      "chapter": null,
+      "topics": [],
+      "type": "unanswerable",
+      "difficulty": "unanswerable"
+    },
+    {
+      "id": "u003",
+      "header": "Unanswerable (OAuth 2.0 & JWT)",
+      "question": "W jaki sposób zaimplementować bezpieczną autoryzację tokenami JWT z mechanizmem refresh token w protokole OAuth 2.0?",
+      "reference_answer": "Książka nie opisuje protokołu OAuth 2.0, struktury tokenów JWT ani mechanizmu refresh tokenów.",
+      "source_raw": "None (out-of-corpus)",
+      "chapter": null,
+      "topics": [],
+      "type": "unanswerable",
+      "difficulty": "unanswerable"
+    },
+    {
+      "id": "u004",
+      "header": "Unanswerable (SQLAlchemy & SQL Injection)",
+      "question": "Jak zabezpieczyć bazę danych PostgreSQL przed atakami typu SQL Injection przy użyciu parametryzowanych zapytań w SQLAlchemy?",
+      "reference_answer": "Książka omawia bezpieczeństwo ogólne (Topic 43: Stay Safe Out There), ale nie zawiera szczegółów technicznych biblioteki SQLAlchemy ani zapytań PostgreSQL.",
+      "source_raw": "None (out-of-corpus)",
+      "chapter": null,
+      "topics": [],
+      "type": "unanswerable",
+      "difficulty": "unanswerable"
+    },
+    {
+      "id": "u005",
+      "header": "Unanswerable (Git rebase vs merge)",
+      "question": "Jakie są różnice między git merge a git rebase i w jakich sytuacjach interaktywny rebase w Git jest odradzany w zespołach?",
+      "reference_answer": "Książka w Topic 19 (Version Control) nakazuje bezwzględne używanie systemów kontroli wersji, ale nie porównuje poleceń git rebase z git merge ani mechaniki interaktywnego rebase.",
+      "source_raw": "None (out-of-corpus)",
+      "chapter": null,
+      "topics": [],
+      "type": "unanswerable",
+      "difficulty": "unanswerable"
+    },
+    {
+      "id": "u006",
+      "header": "Unanswerable (Docker multi-stage)",
+      "question": "Jak skonfigurować Docker multi-stage build, aby zminimalizować rozmiar obrazu produkcyjnego aplikacji Node.js?",
+      "reference_answer": "Książka nie zawiera instrukcji dotyczących kontenerów Docker, plików Dockerfile ani techniki multi-stage build.",
+      "source_raw": "None (out-of-corpus)",
+      "chapter": null,
+      "topics": [],
+      "type": "unanswerable",
+      "difficulty": "unanswerable"
+    },
+    {
+      "id": "u007",
+      "header": "Unanswerable (GraphQL & DataLoader)",
+      "question": "Jak zaprojektować schemat GraphQL z wykorzystaniem DataLoader, aby rozwiązać problem zapytań N+1 do bazy danych?",
+      "reference_answer": "Książka nie omawia technologii GraphQL ani biblioteki DataLoader do batchowania zapytań.",
+      "source_raw": "None (out-of-corpus)",
+      "chapter": null,
+      "topics": [],
+      "type": "unanswerable",
+      "difficulty": "unanswerable"
+    },
+    {
+      "id": "u008",
+      "header": "Unanswerable (AWS Lambda Serverless)",
+      "question": "Jak działają serverless functions w AWS Lambda pod kątem cold startu i limitów pamięci operacyjnej?",
+      "reference_answer": "Książka nie porusza zagadnień infrastruktury chmurowej AWS Lambda ani specyfiki problemu cold start w środowiskach serverless.",
+      "source_raw": "None (out-of-corpus)",
+      "chapter": null,
+      "topics": [],
+      "type": "unanswerable",
+      "difficulty": "unanswerable"
+    },
+    {
+      "id": "fp001",
+      "header": "False-Premise (Test Coverage 100%)",
+      "question": "Czy według autorów osiągnięcie 100% pokrycia kodu testami jednostkowymi gwarantuje brak ukrytych błędów w systemie produkcyjnym?",
+      "reference_answer": "Nie. Autorzy w Topic 41 (Test to Code) wprost stwierdzają, że 100% code coverage to iluzja bezpieczeństwa — metryka ta zlicza jedynie wykonane linie kodu, podczas gdy błędy kryją się w niezbadanych kombinacjach stanów i danych brzegowych.",
+      "source_raw": "Rozdział 7, Topic 41 (Test to Code), s. 343-352",
+      "chapter": 7,
+      "topics": [
+        41
+      ],
+      "type": "false_premise",
+      "difficulty": "false_premise"
+    },
+    {
+      "id": "fp002",
+      "header": "False-Premise (Refactoring Sprints)",
+      "question": "Czy refaktoryzację według książki należy planować jako osobny, wielotygodniowy sprint techniczny w kalendarzu zespołu raz na kwartał?",
+      "reference_answer": "Nie. W Topic 40 (Refactoring) autorzy porównują refaktoryzację do pielęgnacji ogrodu — to nawyk ciągły i codzienny ('refactor early, refactor often'), a nie wielka okresowa akcja.",
+      "source_raw": "Rozdział 7, Topic 40 (Refactoring), s. 336-342",
+      "chapter": 7,
+      "topics": [
+        40
+      ],
+      "type": "false_premise",
+      "difficulty": "false_premise"
+    },
+    {
+      "id": "fp003",
+      "header": "False-Premise (Deep Inheritance)",
+      "question": "Czy autorzy zalecają stosowanie głębokich hierarchii dziedziczenia klas zamiast kompozycji, aby zmaksymalizować ponowne użycie kodu?",
+      "reference_answer": "Nie. W Topic 31 (Inheritance Tax) autorzy przestrzegają przed dziedziczeniem jako groźnym sprzężeniem ('coupling tax') i zalecają alternatywy: interfejsy, delegację ('Has-A trumps Is-A') oraz mixiny.",
+      "source_raw": "Rozdział 5, Topic 31 (Inheritance Tax), s. 272-283",
+      "chapter": 5,
+      "topics": [
+        31
+      ],
+      "type": "false_premise",
+      "difficulty": "false_premise"
+    },
+    {
+      "id": "fp004",
+      "header": "False-Premise (Agile Ceremonies)",
+      "question": "Czy prawdziwe podejście Agile według autorów polega na bezwzględnym przestrzeganiu ceremonii Scrum, estymacji w story pointach i certyfikacji procesów?",
+      "reference_answer": "Nie. W Topic 48 (The Agile Essence) autorzy argumentują, że Agile to krótka pętla sprzężenia zwrotnego (zorientuj się, zrób mały krok, oceń wynik), a formalne metodyki i certyfikacje często wypaczają tę prostą ideę.",
+      "source_raw": "Rozdział 8, Topic 48 (The Agile Essence), s. 427-434",
+      "chapter": 8,
+      "topics": [
+        48
+      ],
+      "type": "false_premise",
+      "difficulty": "false_premise"
+    },
+    {
+      "id": "fp005",
+      "header": "False-Premise (Ignoring Lizard Brain)",
+      "question": "Czy autorzy radzą ignorować podświadome poczucie oporu przed pisaniem kodu i zmuszać się do natychmiastowego klepania linijek?",
+      "reference_answer": "Nie. W Topic 37 (Listen to Your Lizard Brain) autorzy radzą słuchać instynktu — opór przed kodowaniem zazwyczaj oznacza, że podświadomość wykryła ukrytą wadę architektoniczną lub niespójność wymagań.",
+      "source_raw": "Rozdział 7, Topic 37 (Listen to Your Lizard Brain), s. 325-330",
+      "chapter": 7,
+      "topics": [
+        37
+      ],
+      "type": "false_premise",
+      "difficulty": "false_premise"
+    },
+    {
+      "id": "fp006",
+      "header": "False-Premise (Exceptions for Flow Control)",
+      "question": "Czy autorzy zalecają rzucanie i łapanie wyjątków jako standardowy mechanizm sterowania normalnym przepływem logiki biznesowej?",
+      "reference_answer": "Nie. W Topic 24 i 26 autorzy podkreślają, że wyjątki powinny być zarezerwowane wyłącznie dla sytuacji wyjątkowych i nieoczekiwanych błędów, a nie stosowane jako alternatywa dla instrukcji sterujących (if/switch).",
+      "source_raw": "Rozdział 4, Topic 24 (Dead Programs Tell No Lies) / Topic 26, s. 220-230",
+      "chapter": 4,
+      "topics": [
+        24
+      ],
+      "type": "false_premise",
+      "difficulty": "false_premise"
+    },
+    {
+      "id": "fp007",
+      "header": "False-Premise (Stone Soup Waiting)",
+      "question": "Czy autorzy radzą, aby przed zainicjowaniem jakiejkolwiek innowacji w projekcie zawsze czekać na formalną zgodę kierownictwa i pełny budżet?",
+      "reference_answer": "Nie. Metafora 'Stone Soup' (Topic 4) uczy, by być katalizatorem zmian: zamiast prosić o zgodę na wielki projekt, zacznij od małego działającego prototypu i pokaż namacalną wartość, do której inni chętnie dołączą.",
+      "source_raw": "Rozdział 1, Topic 4 (Stone Soup and Boiled Frogs), s. 46-49",
+      "chapter": 1,
+      "topics": [
+        4
+      ],
+      "type": "false_premise",
+      "difficulty": "false_premise"
+    },
+    {
+      "id": "q031",
+      "header": "Factual (Topic 1: It's Your Life)",
+      "question": "Co autorzy mają na myśli pisząc, że masz 'agency' w swojej karierze zawodowej i jak należy reagować na toksyczne środowisko pracy?",
+      "reference_answer": "Autorzy podkreślają, że twoja kariera zależy od ciebie. Masz moc decydowania i wprowadzania zmian. Jeśli środowisko jest toksyczne lub firma nie inwestuje w twój rozwój, masz prawo i możliwość zmienić pracę.",
+      "source_raw": "Rozdział 1, Topic 1 (It's Your Life), s. 36-37",
+      "chapter": 1,
+      "topics": [
+        1
+      ],
+      "type": "factual",
+      "difficulty": "łatwa"
+    },
+    {
+      "id": "q032",
+      "header": "Procedural (Topic 2: Provide Options)",
+      "question": "Jaka jest pragmatyczna zasada reagowania na problem, gdy coś pójdzie nie tak w projekcie: 'Provide options, don't make lame excuses'?",
+      "reference_answer": "Zamiast wymówek należy przedstawić opcje rozwiązania problemu. Nie mów 'pies zjadł kod', lecz zbadaj sytuację, powiedz co poszło nie tak i zaproponuj alternatywne drogi wyjścia.",
+      "source_raw": "Rozdział 1, Topic 2 (The Cat Ate My Source Code), s. 38-41",
+      "chapter": 1,
+      "topics": [
+        2
+      ],
+      "type": "procedural",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q033",
+      "header": "Principle (Topic 11: Reversibility)",
+      "question": "Dlaczego odwracalność decyzji (Reversibility) jest tak ważna w architekturze oprogramowania i co to oznacza w praktyce?",
+      "reference_answer": "Nie ma decyzji wyrytych w kamieniu. Wymagania i środowisko się zmieniają. Architektura musi umożliwiać łatwą zamianę komponentów (np. bazy danych, dostawcy usług) bez przepisywania całego systemu.",
+      "source_raw": "Rozdział 2, Topic 11 (Reversibility), s. 104-108",
+      "chapter": 2,
+      "topics": [
+        11
+      ],
+      "type": "reasoning",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q034",
+      "header": "Design (Topic 14: Domain Languages)",
+      "question": "Czym różnią się wewnętrzne DSL od zewnętrznych DSL według autorów i kiedy je stosować?",
+      "reference_answer": "Wewnętrzne DSL wykorzystują składnię języka gospodarza (np. Ruby, Elixir, metaprogramowanie). Zewnętrzne DSL mają własny parser i gramatykę. Służą do programowania blisko domeny problemu.",
+      "source_raw": "Rozdział 2, Topic 14 (Domain Languages), s. 124-132",
+      "chapter": 2,
+      "topics": [
+        14
+      ],
+      "type": "comparison",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q035",
+      "header": "Estimation (Topic 15: Estimating)",
+      "question": "W jakich jednostkach czasu autorzy zalecają podawać szacunki (estymaty) w zależności od horyzontu czasowego zadania?",
+      "reference_answer": "Skala jednostek powinna odzwierciedlać dokładność: 1–15 dni podawaj w dniach; 3–8 tygodni w tygodniach; 8–30 tygodni w miesiącach; powyżej 30 tygodni szacuj ponownie przed podaniem liczby.",
+      "source_raw": "Rozdział 2, Topic 15 (Estimating), s. 133-144",
+      "chapter": 2,
+      "topics": [
+        15
+      ],
+      "type": "factual",
+      "difficulty": "łatwa"
+    },
+    {
+      "id": "q036",
+      "header": "Tools (Topic 17: Shell Games)",
+      "question": "Dlaczego według autorów każdy pragmatyczny programista powinien biegle posługiwać się powłoką wiersza poleceń (shell)?",
+      "reference_answer": "GUI ma ograniczenia i zmusza do pracy w ramach gotowych scenariuszy. Powłoka command line pozwala łączyć narzędzia w potoki, automatyzować powtarzalne zadania i daje pełną kontrolę nad środowiskiem.",
+      "source_raw": "Rozdział 3, Topic 17 (Shell Games), s. 152-155",
+      "chapter": 3,
+      "topics": [
+        17
+      ],
+      "type": "reasoning",
+      "difficulty": "łatwa"
+    },
+    {
+      "id": "q037",
+      "header": "Editing (Topic 18: Power Editing)",
+      "question": "Co oznacza rada 'Use a Single Editor Well' i dlaczego warto opanować edytor na poziomie odruchów bezwarunkowych?",
+      "reference_answer": "Biegłość w jednym zaawansowanym edytorze pozwala przekładać myśli na kod bez zacinania się nad mechaniką edycji. Gdy edytor staje się przedłużeniem dłoni, programista zachowuje flow.",
+      "source_raw": "Rozdział 3, Topic 18 (Power Editing), s. 156-160",
+      "chapter": 3,
+      "topics": [
+        18
+      ],
+      "type": "factual",
+      "difficulty": "łatwa"
+    },
+    {
+      "id": "q038",
+      "header": "Tools (Topic 21: Text Manipulation)",
+      "question": "Dlaczego autorzy twierdzą, że tekst jest uniwersalnym interfejsem informatyki i dlaczego należy opanować narzędzia manipulacji tekstem?",
+      "reference_answer": "Tekst nie ulega przedawnieniu, jest zrozumiały dla człowieka i maszyn oraz stanowi wspólny mianownik łączący narzędzia. Biegłość w obróbce tekstu pozwala automatyzować żmudne czynności.",
+      "source_raw": "Rozdział 3, Topic 21 (Text Manipulation), s. 181-184",
+      "chapter": 3,
+      "topics": [
+        21
+      ],
+      "type": "reasoning",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q039",
+      "header": "Habit (Topic 22: Engineering Daybooks)",
+      "question": "Czym jest 'Engineering Daybook' (dziennik inżynierski) i jakie korzyści przynosi jego codzienne prowadzenie?",
+      "reference_answer": "To papierowy notatnik, w którym zapisujesz na bieżąco przemyślenia, szkice, pomysły i problemy. Pomaga uwolnić pamięć roboczą, wspiera retrospekcję i nie rozprasza powiadomieniami.",
+      "source_raw": "Rozdział 3, Topic 22 (Engineering Daybooks), s. 185-190",
+      "chapter": 3,
+      "topics": [
+        22
+      ],
+      "type": "factual",
+      "difficulty": "łatwa"
+    },
+    {
+      "id": "q040",
+      "header": "Architecture (Topic 32: Configuration)",
+      "question": "Gdzie i jak powinny być przechowywane dane konfiguracyjne aplikacji według zaleceń książki?",
+      "reference_answer": "Konfiguracja powinna znajdować się poza kodem źródłowym (np. w zmiennych środowiskowych, zewnętrznych serwisach konfiguracyjnych lub plikach konfiguracyjnych), umożliwiając zmianę zachowania bez rekompilacji.",
+      "source_raw": "Rozdział 5, Topic 32 (Configuration), s. 284-291",
+      "chapter": 5,
+      "topics": [
+        32
+      ],
+      "type": "factual",
+      "difficulty": "łatwa"
+    },
+    {
+      "id": "q041",
+      "header": "Concurrency (Topic 33: Breaking Temporal Coupling)",
+      "question": "Czym jest sprzężenie czasowe (temporal coupling) i jak projektować systemy, które pozwalają na współbieżność zadań?",
+      "reference_answer": "Sprzężenie czasowe występuje, gdy kod zakłada sztywny porządek w czasie ('najpierw A, potem natychmiast B'). Należy analizować przepływ pracy (activity diagrams) i oddzielać operacje niezależne, stosując kolejki lub publikację zdarzeń.",
+      "source_raw": "Rozdział 6, Topic 33 (Breaking Temporal Coupling), s. 292-298",
+      "chapter": 6,
+      "topics": [
+        33
+      ],
+      "type": "reasoning",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q042",
+      "header": "Psychology (Topic 37: Lizard Brain)",
+      "question": "Co oznacza rada 'Listen to Your Lizard Brain' i jak programista powinien reagować na podświadome poczucie oporu przed pisaniem kodu?",
+      "reference_answer": "Instynktowny opór przed kodowaniem często wynika z tego, że podświadomość dostrzegła ukrytą wadę w projekcie. Zamiast zmuszać się do pisania, odejdź od klawiatury, przemyśl problem lub naszkicuj go na papierze.",
+      "source_raw": "Rozdział 7, Topic 37 (Listen to Your Lizard Brain), s. 327-333",
+      "chapter": 7,
+      "topics": [
+        37
+      ],
+      "type": "reasoning",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q043",
+      "header": "Problem Solving (Topic 46: Solving Impossible Puzzles)",
+      "question": "Jak autorzy radzą podchodzić do pozornie nierozwiązywalnych problemów programistycznych i algorytmicznych?",
+      "reference_answer": "Zidentyfikuj i zakwestionuj pozorne ograniczenia (self-imposed constraints). Często problem wydaje się niemożliwy, bo sami narzuciliśmy sobie nieistniejący warunek brzegowy. Zmień perspektywę lub zdefiniuj problem na nowo.",
+      "source_raw": "Rozdział 8, Topic 46 (Solving Impossible Puzzles), s. 418-423",
+      "chapter": 8,
+      "topics": [
+        46
+      ],
+      "type": "procedural",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q044",
+      "header": "Collaboration (Topic 47: Working Together)",
+      "question": "Jakie są zasady efektywnego pair programmingu i dlaczego kodowanie w parze nie oznacza patrzenia koledze przez ramię?",
+      "reference_answer": "Pair programming wymaga aktywnego dialogu: jedna osoba pisze kod (kierowca), druga analizuje szerszy kontekst i potencjalne problemy (nawigator). Rolami należy się regularnie zamieniać.",
+      "source_raw": "Rozdział 8, Topic 47 (Working Together), s. 424-428",
+      "chapter": 8,
+      "topics": [
+        47
+      ],
+      "type": "procedural",
+      "difficulty": "średnia"
+    },
+    {
+      "id": "q045",
+      "header": "Value (Topic 52: Delight Your Users)",
+      "question": "Jaki jest ostateczny cel tworzenia oprogramowania i co oznacza zasada 'Delight Your Users'?",
+      "reference_answer": "Celem nie jest tworzenie kodu, lecz rozwiązywanie problemów użytkowników i dostarczanie im wartości przekraczającej ich oczekiwania. Zachwycony użytkownik to miara sukcesu inżyniera.",
+      "source_raw": "Rozdział 9, Topic 52 (Delight Your Users), s. 462-464",
+      "chapter": 9,
+      "topics": [
+        52
+      ],
+      "type": "factual",
+      "difficulty": "łatwa"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "slice": "S-17",
+  "protocol": {
+    "members": [
+      "nlinear_L336_a1",
+      "nlinear_L96_a1",
+      "dlinear_L96_k25"
+    ],
+    "members_fit": "frozen; weight search on train 8,545, test on full 11,425",
+    "weights": "validation windows only (2,161 origins, train 8,545 fit); test never consulted",
+    "selection": "argmin over {L2-blend, L1-blend, best-member} on validation MAE",
+    "scoring": "rolling stride-1, 2,161 origins, full test region",
+    "horizon": 720
+  },
+  "validation": {
+    "member_names": [
+      "nlinear_L336_a1",
+      "nlinear_L96_a1",
+      "dlinear_L96_k25"
+    ],
+    "member_val_mae": [
+      2.897,
+      2.9742,
+      3.0108
+    ],
+    "best_member": 0,
+    "best_member_name": "nlinear_L336_a1",
+    "w_l2": [
+      0.418897,
+      0.581103,
+      0.0
+    ],
+    "w_l1": [
+      0.855314,
+      0.144686,
+      0.0
+    ],
+    "l2_val_mae": 2.9159,
+    "l1_val_mae": 2.8947,
+    "best_member_val_mae": 2.897,
+    "selected_config": "l1_blend",
+    "selected_val_mae": 2.8947,
+    "selected_weights": [
+      0.855314,
+      0.144686,
+      0.0
+    ]
+  },
+  "residual_pairwise_corr": {
+    "nlinear_L336_a1|nlinear_L96_a1": 0.9667,
+    "nlinear_L336_a1|dlinear_L96_k25": 0.9624,
+    "nlinear_L96_a1|dlinear_L96_k25": 0.9954
+  },
+  "test": {
+    "selected_config": "l1_blend",
+    "selected_weights": [
+      0.855314,
+      0.144686,
+      0.0
+    ],
+    "rolling_mae": 2.0519,
+    "rolling_rmse": 2.5025,
+    "disjoint_windows": {
+      "window_1": {
+        "mae": 2.3303974912608605,
+        "rmse": 2.7837204575280547
+      },
+      "window_2": {
+        "mae": 1.436330952559541,
+        "rmse": 1.773451886136807
+      },
+      "window_3": {
+        "mae": 1.9332580120793432,
+        "rmse": 2.4156770008472686
+      },
+      "window_4": {
+        "mae": 1.9617411048282478,
+        "rmse": 2.6134382638750715
+      }
+    },
+    "members": {
+      "nlinear_L336_a1": {
+        "test_mae": 2.0571,
+        "test_rmse": 2.5071
+      },
+      "nlinear_L96_a1": {
+        "test_mae": 2.0925,
+        "test_rmse": 2.5612
+      },
+      "dlinear_L96_k25": {
+        "test_mae": 2.1163,
+        "test_rmse": 2.6045
+      }
+    },
+    "incumbent_nlinear_L336": 2.0571,
+    "delta_vs_incumbent": -0.0052
+  }
+}

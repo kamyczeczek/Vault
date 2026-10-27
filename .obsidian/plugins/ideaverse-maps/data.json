@@ -1,6 +1,10 @@
 {
   "settings": {
-    "exclude": [],
+    "exclude": [
+      "projects",
+      "scripts/_scratch",
+      "logs"
+    ],
     "archive": "",
     "packs": "",
     "privateFolders": [],

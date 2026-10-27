@@ -1,0 +1,48 @@
+{
+  "slot": 5,
+  "cond": "C",
+  "session_no": 1,
+  "worktree": "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\.worktrees\\sim2b-C",
+  "packs": [
+    "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\stages\\05_evict\\CONTEXT.md"
+  ],
+  "disqualified": false,
+  "trivialization_hits": [],
+  "lab_state_hits": [],
+  "n_calls": 3,
+  "reorient_cum": 3,
+  "ttfva": "NA",
+  "ungrounded": 3,
+  "ttfva_tok": 301,
+  "calls": [
+    {
+      "query": "eviction stale memory",
+      "rc": 0,
+      "ids": [
+        "00_memory_eviction_forgetting_web_research",
+        "00_defensive_failure_mode_hardening"
+      ],
+      "ok": true,
+      "wall_s": 0.199,
+      "stdout_bytes": 753
+    },
+    {
+      "query": "memory rule evict gate",
+      "rc": 2,
+      "ids": [],
+      "ok": false,
+      "wall_s": 0.147,
+      "stdout_bytes": 0
+    },
+    {
+      "query": "promote candidate gate",
+      "rc": 0,
+      "ids": [
+        "111_harness_starter_kit"
+      ],
+      "ok": true,
+      "wall_s": 0.155,
+      "stdout_bytes": 451
+    }
+  ]
+}

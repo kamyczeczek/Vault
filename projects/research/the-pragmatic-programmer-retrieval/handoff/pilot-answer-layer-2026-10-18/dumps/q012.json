@@ -1,0 +1,69 @@
+{
+ "id": "q012",
+ "question": "Czym różni się model aktorów od blackboardu jako sposobu radzenia sobie ze współbieżnością? Kiedy stosować który?",
+ "type": "comparison / two-model",
+ "header": "Porównanie modeli współbieżności (comparison, dwa sąsiednie Topics)",
+ "gold_topics": [
+  35,
+  36
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 15,
+   "topic_title": "Estimating",
+   "chapter": 2,
+   "page_book": 133,
+   "text": "Model building can be both creative and useful in the long term. Often, the process of building the model leads to discoveries of underlying patterns and processes that weren't apparent on the surface. You may even want to reexamine the original question: \"You asked for an estimate to do _X_ . However, it looks like _Y_ , a variant of _X_ , could be done in about half the time, and you lose only one feature.\"\n\nBuilding the model introduces inaccuracies into the estimating process. This is inevitable, and also beneficial. You are trading off model simplicity for accuracy. Doubling the effort on the model may give you only a slight increase in accuracy. Your experience will tell you when to stop refining.\n\n##### **Break the Model into Components**"
+  },
+  {
+   "topic": 36,
+   "topic_title": "Blackboards",
+   "chapter": 6,
+   "page_book": 317,
+   "text": "Later came distributed blackboard-like systems such as JavaSpaces and T Spaces. With these systems, you can store active Java objects—not just data—on the blackboard, and retrieve them by partial matching of fields (via templates and wildcards) or by subtypes. For example, suppose you had a type Author, which is a subtype of Person. You could search a blackboard containing Person objects by using an Author template with a lastName value of \"Shakespeare.'' You'd get Bill Shakespeare the author, but not Fred Shakespeare the gardener.\n\nThese systems never really took off, we believe, in part, because the need for the kind of concurrent cooperative processing hadn't yet developed.\n\n#### **A BLACKBOARD IN ACTION**"
+  },
+  {
+   "topic": 15,
+   "topic_title": "Estimating",
+   "chapter": 2,
+   "page_book": 133,
+   "text": "This is the fun part of estimating. From your understanding of the question being asked, build a rough-and-ready bare-bones mental model. If you're estimating response times, your model may involve a server and some kind of arriving traffic. For a project, the model may be the steps that your organization uses\n\nduring development, along with a very rough picture of how the system might be implemented."
+  },
+  {
+   "topic": 41,
+   "topic_title": "Test to Code",
+   "chapter": 7,
+   "page_book": 361,
+   "text": "As a contrast, Peter Norvig describes an alternative approach[60]\n\nwhich feels very different in character: rather than being driven by tests, he starts with a basic understanding of how these kinds of problems are traditionally solved (using constraint propagation), and then focuses on refining his algorithm. He addresses board representation in a dozen lines of code that flow directly from his discussion of notation.\n\nTests can definitely help drive development. But, as with every drive, unless you have a destination in mind, you can end up going in circles.\n\n#### **BACK TO THE CODE**"
+  },
+  {
+   "topic": 6,
+   "topic_title": "Your Knowledge Portfolio",
+   "chapter": 1,
+   "page_book": 54,
+   "text": "Under what circumstances? Is it too late? Too early? Don't stop with first-order thinking ( _what will happen next_ ), but use second-order thinking: _what will happen after that?_\n\n_Why is this a problem?_\n\nIs there an underlying model? How does the underlying model work?\n\nUnfortunately, there are very few simple answers anymore. But with your extensive portfolio, and by applying some critical analysis to the torrent of technical articles you will read, you can understand the _complex_ answers.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 1, _It's Your Life_\n\nTopic 22, _Engineering Daybooks_\n\n#### **CHALLENGES**"
+  },
+  {
+   "topic": 38,
+   "topic_title": "Programming by Coincidence",
+   "chapter": 7,
+   "page_book": 334,
+   "text": "Russian leader being bald or hairy, in some domains we think that way all the time. Gamblers imagine patterns in lottery numbers, dice games, or roulette, when in fact these are statistically independent events. In finance, stock and bond trading are similarly rife with coincidence instead of actual, discernible patterns.\n\nA log file that shows an intermittent error every 1,000 requests may be a difficult-to-diagnose race condition, or may be a plain old bug. Tests that seem to pass on your machine but not on the server might indicate a difference between the two environments, or maybe it's just a coincidence.\n\nDon't assume it, prove it.\n\n##### **Accidents of Context**"
+  },
+  {
+   "topic": 15,
+   "topic_title": "Estimating",
+   "chapter": 2,
+   "page_book": 133,
+   "text": "Once you have a model, you can decompose it into components. You'll need to discover the mathematical rules that describe how these components interact. Sometimes a component contributes a single value that is added into the result. Some components may supply multiplying factors, while others may be more complicated (such as those that simulate the arrival of traffic at a node).\n\nYou'll find that each component will typically have parameters that affect how it contributes to the overall model. At this stage, simply identify each parameter.\n\n##### **Give Each Parameter a Value**\n\nOnce you have the parameters broken out, you can go through and assign each one a value. You expect to introduce some"
+  },
+  {
+   "topic": 36,
+   "topic_title": "Blackboards",
+   "chapter": 6,
+   "page_book": 317,
+   "text": "**Topic 36** Blackboards\n\n_The writing is on the wall…_\n\n_Daniel 5 (ref)_\n\nConsider how detectives might use a _blackboard_ to coordinate and solve a murder investigation. The chief inspector starts off by setting up a large blackboard in the conference room. On it, she writes a single question:\n\nH. Dumpty (Male, Egg): Accident? Murder?"
+  }
+ ]
+}

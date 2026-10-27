@@ -1,0 +1,25 @@
+== PHASE 10A MEASUREMENT SUMMARY ==
+
+In-corpus PL baseline: n=12
+  MRR@5=0.507 Recall@5=0.708
+  refusal=5/12
+
+In-corpus PL translated: n=12
+  MRR@5=0.778 Recall@5=0.875
+  refusal=0/12
+
+OOC PL baseline: n=5
+  refusal=5/5
+
+OOC PL translated: n=5
+  refusal=1/5
+
+Canary baseline: n=5
+  refusal=5/5
+
+Canary translated: n=5
+  refusal=1/5
+
+In-corpus EN control: n=8
+  MRR@5=0.771 Recall@5=1.000
+  refusal=0/8

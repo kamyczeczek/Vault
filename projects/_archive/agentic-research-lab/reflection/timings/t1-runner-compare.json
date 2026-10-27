@@ -1,0 +1,11 @@
+{
+  "topic": "t1-runner-compare",
+  "run_id": "reflect-9f366ca3f7034dba",
+  "stages": {
+    "pre_gates": 1944.0,
+    "agent": 272411.4,
+    "validation": 366.8,
+    "attribution": 278.5
+  },
+  "total_ms": 275000.7
+}

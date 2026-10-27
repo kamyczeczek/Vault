@@ -1,0 +1,120 @@
+{
+  "experiment": "F_adversarial_falsification",
+  "timestamp": "2026-09-25T20:31:59.801468",
+  "fingerprint": "44172cafee34",
+  "candidates_tested": 2,
+  "verdicts": [
+    {
+      "candidate_id": "vera-expf-rev-001",
+      "rule": "Adding a third evidence node with non-overlapping tag dimensions raises F1 counterfactual retention from 0.0 to 0.54–0.59, converting fragile verdicts to partial.",
+      "evidence_ids": [
+        "00_automated_peer_review_and_self_correction",
+        "00_agent_execution_hooks_guardrails",
+        "00_agent_memory_hierarchies"
+      ],
+      "verdict": "pass_falsification",
+      "scores": {
+        "grounding_score": 1.0,
+        "logical_consistency": 1.0,
+        "external_verifiability": 0.667
+      },
+      "falsification": {
+        "F1_counterfactual_ablation": {
+          "nodes_tested": 3,
+          "avg_evidence_retention": 0.458,
+          "fragility_score": 0.542,
+          "status": "partial",
+          "per_node": {
+            "00_automated_peer_review_and_self_correction": {
+              "lost_in_results": true,
+              "evidence_retention": 0.125,
+              "baseline_size": 8,
+              "after_size": 8,
+              "removed_query": "agentic agents context-engineering icm memory planning"
+            },
+            "00_agent_execution_hooks_guardrails": {
+              "lost_in_results": true,
+              "evidence_retention": 1.0,
+              "baseline_size": 8,
+              "after_size": 8,
+              "removed_query": "agentic agents context-engineering evaluation icm memory"
+            },
+            "00_agent_memory_hierarchies": {
+              "lost_in_results": true,
+              "evidence_retention": 0.25,
+              "baseline_size": 8,
+              "after_size": 7,
+              "removed_query": "agentic agents context-engineering evaluation planning prompt-engineering"
+            }
+          }
+        },
+        "F2_counter_evidence": {
+          "counter_nodes_found": 0,
+          "contradictory_queries": 0,
+          "status": "uncontested"
+        },
+        "F3_defect_injection": {
+          "defects_tested": 5,
+          "avg_drift_score": 0.0,
+          "status": "resilient"
+        }
+      }
+    },
+    {
+      "candidate_id": "vera-expf-rev-002",
+      "rule": "When two original evidence nodes share ≥5 of 6 tags, adding a third node does not fix F1 fragility — the redundancy is pairwise; node replacement (not addition) is required.",
+      "evidence_ids": [
+        "00_08_lesson_persistence_eviction_requirement",
+        "00_06_self_correction_grounding_requirement",
+        "00_agent_memory_hierarchies"
+      ],
+      "verdict": "pass_falsification",
+      "scores": {
+        "grounding_score": 1.0,
+        "logical_consistency": 1.0,
+        "external_verifiability": 0.667
+      },
+      "falsification": {
+        "F1_counterfactual_ablation": {
+          "nodes_tested": 3,
+          "avg_evidence_retention": 0.875,
+          "fragility_score": 0.125,
+          "status": "resilient",
+          "per_node": {
+            "00_08_lesson_persistence_eviction_requirement": {
+              "lost_in_results": true,
+              "evidence_retention": 1.0,
+              "baseline_size": 8,
+              "after_size": 8,
+              "removed_query": "agentic agents context-engineering icm memory planning"
+            },
+            "00_06_self_correction_grounding_requirement": {
+              "lost_in_results": true,
+              "evidence_retention": 1.0,
+              "baseline_size": 8,
+              "after_size": 8,
+              "removed_query": "agentic agents context-engineering icm memory planning"
+            },
+            "00_agent_memory_hierarchies": {
+              "lost_in_results": true,
+              "evidence_retention": 0.625,
+              "baseline_size": 8,
+              "after_size": 10,
+              "removed_query": "agentic agents context-engineering memory planning prompt-engineering"
+            }
+          }
+        },
+        "F2_counter_evidence": {
+          "counter_nodes_found": 0,
+          "contradictory_queries": 0,
+          "status": "uncontested"
+        },
+        "F3_defect_injection": {
+          "defects_tested": 5,
+          "avg_drift_score": 0.0,
+          "status": "resilient"
+        }
+      }
+    }
+  ]
+}

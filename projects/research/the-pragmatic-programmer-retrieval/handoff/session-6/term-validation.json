@@ -1,0 +1,164 @@
+{
+ "input_stage_hits": [
+  "q001",
+  "q002",
+  "q003",
+  "q004",
+  "q005",
+  "q006",
+  "q007",
+  "q009",
+  "q010",
+  "q011",
+  "q012",
+  "q013",
+  "q014"
+ ],
+ "input_stage_misses": [
+  "q008",
+  "q015"
+ ],
+ "terms": {
+  "q001": {
+   "kept": [
+    "knowledge",
+    "intent",
+    "duplication"
+   ],
+   "removed": [
+    "representation"
+   ]
+  },
+  "q002": {
+   "kept": [
+    "tracer",
+    "prototype",
+    "skeleton",
+    "disposable"
+   ],
+   "removed": []
+  },
+  "q003": {
+   "kept": [
+    "inheritance",
+    "coupling",
+    "delegation",
+    "mixin",
+    "interface"
+   ],
+   "removed": []
+  },
+  "q004": {
+   "kept": [
+    "value",
+    "rule",
+    "change",
+    "principle"
+   ],
+   "removed": []
+  },
+  "q005": {
+   "kept": [
+    "broken",
+    "window",
+    "fix"
+   ],
+   "removed": [
+    "repair"
+   ]
+  },
+  "q006": {
+   "kept": [
+    "precondition",
+    "postcondition",
+    "invariant",
+    "caller"
+   ],
+   "removed": []
+  },
+  "q007": {
+   "kept": [
+    "observer",
+    "event"
+   ],
+   "removed": [
+    "state",
+    "publish",
+    "subscribe"
+   ]
+  },
+  "q008": {
+   "kept": [
+    "crash",
+    "dead",
+    "damage"
+   ],
+   "removed": [
+    "cripple"
+   ]
+  },
+  "q009": {
+   "kept": [
+    "assertion",
+    "turn",
+    "production",
+    "net"
+   ],
+   "removed": []
+  },
+  "q010": {
+   "kept": [
+    "duplication",
+    "knowledge",
+    "orthogonality"
+   ],
+   "removed": [
+    "interdependence"
+   ]
+  },
+  "q011": {
+   "kept": [
+    "binary",
+    "chop",
+    "half"
+   ],
+   "removed": []
+  },
+  "q012": {
+   "kept": [
+    "actor",
+    "blackboard",
+    "mailbox",
+    "message"
+   ],
+   "removed": []
+  },
+  "q013": {
+   "kept": [
+    "coincidence",
+    "accident",
+    "luck"
+   ],
+   "removed": []
+  },
+  "q014": {
+   "kept": [
+    "requirement",
+    "want"
+   ],
+   "removed": [
+    "discover"
+   ]
+  },
+  "q015": {
+   "kept": [
+    "version",
+    "control",
+    "regression",
+    "test",
+    "starter"
+   ],
+   "removed": []
+  }
+ }
+}

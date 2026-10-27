@@ -1,0 +1,27 @@
+S-47: 6 tasks, fixed 2000-point fit per origin, W=5; first 3 select, last 2 post-lock diagnostic
+ task etth1_H96          H= 96 n=2600
+ task seasonal_H48       H= 48 n=2600
+ task trending_H48       H= 48 n=2600
+ task spiky_H48          H= 48 n=2600
+ task ou_H24             H= 24 n=2600
+ task multiscale_H96     H= 96 n=2600
+Harness C1+C2 pass (per-origin fit isolation, lag-only features).
+
+-- etth1_H96 H=96: fit 6 members at 5 origins; train std=6.04757
+
+-- seasonal_H48 H=48: fit 6 members at 5 origins; train std=0.80473
+
+-- trending_H48 H=48: fit 6 members at 5 origins; train std=5.5027
+
+-- spiky_H48 H=48: fit 6 members at 5 origins; train std=0.577918
+
+-- ou_H24 H=24: fit 6 members at 5 origins; train std=0.788867
+
+-- multiscale_H96 H=96: fit 6 members at 5 origins; train std=0.902511
+
+=== Select-only gates (task-normalized MAE) ===
+mean A=1.084936 B=1.021247 C=1.085290
+mean rank A=2.167 B=1.500 C=2.333; B wins 4/6
+G1 True G2 True G3 True; locked choice=B
+Post-lock G4 diagnostic: mean gap=-0.077304; B wins 4/6; confirmation_valid=False
+Verdict: DIAGNOSTIC ONLY — these confirmation origins appeared in the pre-correction report.

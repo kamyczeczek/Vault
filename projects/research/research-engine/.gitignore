@@ -1,0 +1,8 @@
+__pycache__/
+.pytest_cache/
+# OKF enforcer output (index.md is a generated tree view, never hand-edited and
+# committed by no project in this workspace).
+/index.md
+/evals/index.md
+/s47_ref/index.md
+/skills/index.md

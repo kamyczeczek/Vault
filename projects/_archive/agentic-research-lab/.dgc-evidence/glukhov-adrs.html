@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Decision Records for AI-Driven Software Development - Rost Glukhov | AI Systems &amp; Infrastructure</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Learn how ADRs, PDRs, and DDRs preserve intent, guide AI coding agents, and keep architecture, product, and design decisions close to code.">
+
+
+
+
+
+
+
+
+
+
+
+    <link rel="canonical" href="https://www.glukhov.org/app-architecture/documentation/decision-records-ai-driven-development/">
+
+
+
+    <link rel="alternate" hreflang="en" href="https://www.glukhov.org/app-architecture/documentation/decision-records-ai-driven-development/">
+
+    <link rel="alternate" hreflang="ru" href="https://www.glukhov.org/ru/app-architecture/documentation/decision-records-ai-driven-development/">
+
+    <link rel="alternate" hreflang="de" href="https://www.glukhov.org/de/app-architecture/documentation/decision-records-ai-driven-development/">
+
+    <link rel="alternate" hreflang="es" href="https://www.glukhov.org/es/app-architecture/documentation/decision-records-ai-driven-development/">
+
+    <link rel="alternate" hreflang="fr" href="https://www.glukhov.org/fr/app-architecture/documentation/decision-records-ai-driven-development/">
+
+    <link rel="alternate" hreflang="it" href="https://www.glukhov.org/it/app-architecture/documentation/decision-records-ai-driven-development/">
+
+    <link rel="alternate" hreflang="ja" href="https://www.glukhov.org/ja/app-architecture/documentation/decision-records-ai-driven-development/">
+
+    <link rel="alternate" hreflang="ko" href="https://www.glukhov.org/ko/app-architecture/documentation/decision-records-ai-driven-development/">
+
+    <link rel="alternate" hreflang="pl" href="https://www.glukhov.org/pl/app-architecture/documentation/decision-records-ai-driven-development/">
+
+    <link rel="alternate" hreflang="pt" href="https://www.glukhov.org/pt/app-architecture/documentation/decision-records-ai-driven-development/">
+
+
+		<meta property="og:url" content="https://www.glukhov.org/app-architecture/documentation/decision-records-ai-driven-development/">
+<meta property="og:site_name" content="Rost Glukhov | AI Systems &amp; Infrastructure">
+<meta property="og:title" content="Decision Records for AI-Driven Software Development">
+<meta property="og:locale" content="en">
+<meta property="og:type" content="article">
+<meta property="og:published_time" content="2026-06-28T00:00:00&#43;00:00">
+
+<meta property="og:description" content="Learn how ADRs, PDRs, and DDRs preserve intent, guide AI coding agents, and keep architecture, product, and design decisions close to code.">
+<meta property="og:image" content="https://www.glukhov.org/img/decision-records-ai_w1000.jpg">
+
+
+	<meta itemprop="name" content="Decision Records for AI-Driven Software Development">
+	<meta itemprop="description" content="Learn how ADRs, PDRs, and DDRs preserve intent, guide AI coding agents, and keep architecture, product, and design decisions close to code.">
+	<meta itemprop="datePublished" content="2026-06-28T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-09-16T00:00:00+00:00">
+	<meta itemprop="wordCount" content="4938">
+	<meta itemprop="image" content="https://www.glukhov.org/img/decision-records-ai_w1000.jpg">
+	<meta itemprop="keywords" content="Architecture,AI Coding,Documentation,Markdown">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://www.glukhov.org/img/decision-records-ai_w1000.jpg">
+	<meta name="twitter:title" content="Decision Records for AI-Driven Software Development">
+	<meta name="twitter:description" content="Learn how ADRs, PDRs, and DDRs preserve intent, guide AI coding agents, and keep architecture, product, and design decisions close to code.">
+
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="/css/subscribe.css">
+
+	<link rel="shortcut icon" href="/favicon.ico">
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZRQ2CGRM9"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-YZRQ2CGRM9');
+        }
+      </script>
+
+	<script type="application/ld+json">
+      {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+
+
+
+
+
+
+                  {
+                      "@type": "Question",
+                      "name": "What is a decision record in software development?",
+                      "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "A decision record is a short Markdown document that captures a meaningful choice made during development, including the context, alternatives considered, and consequences accepted. Decision records help teams preserve the reasoning behind architectural, product, and design decisions so future contributors and AI tools understand not just what the code does but why it was built that way."
+                      }
+                  }
+                  ,
+
+
+
+
+                  {
+                      "@type": "Question",
+                      "name": "What is the difference between an ADR, PDR, and DDR?",
+                      "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "An ADR (Architecture Decision Record) captures technical and structural decisions such as database choices or service boundaries. A PDR (Product Decision Record) documents product behavior and scope decisions such as safety flows or feature limits. A DDR (Design Decision Record) captures user experience and interaction decisions such as component placement or label conventions. All three follow the same format but document different layers of a software project."
+                      }
+                  }
+                  ,
+
+
+
+
+                  {
+                      "@type": "Question",
+                      "name": "Why are decision records important for AI-assisted development?",
+                      "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "AI coding agents can read code but cannot reliably infer why decisions were made. Without decision records, AI tools may reopen settled debates, optimize locally while breaking system-level constraints, or preserve code patterns without understanding the principles behind them. Decision records give AI tools a reviewed, version-controlled source of project intent before they act."
+                      }
+                  }
+                  ,
+
+
+
+
+                  {
+                      "@type": "Question",
+                      "name": "Where should decision records be stored?",
+                      "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Decision records should be stored as Markdown files inside the project repository, versioned with Git, and reviewed in pull requests just like code. Keeping them in the repository makes them accessible to both team members and AI coding tools. Storing them in a separate wiki or chat reduces their discoverability and the likelihood they stay current."
+                      }
+                  }
+                  ,
+
+
+
+
+                  {
+                      "@type": "Question",
+                      "name": "When should you write a decision record?",
+                      "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Write a decision record when a choice affects multiple parts of the system, resolves a genuine debate, introduces a long-term tradeoff, or would be expensive to rediscover later. A useful rule of thumb is that if reversing the decision would require team discussion, the decision deserves a record."
+                      }
+                  }
+                  ,
+
+
+
+
+                  {
+                      "@type": "Question",
+                      "name": "Can AI generate decision records automatically?",
+                      "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "AI can draft decision records quickly, and this is one of the more productive uses of AI in software development. However, AI-generated records must be reviewed by a human before merging because AI may produce plausible-sounding rationale that does not accurately reflect the real decision context, alternatives, or consequences."
+                      }
+                  }
+
+
+
+          ]
+      }
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https:\/\/www.glukhov.org\/"
+    },{
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "App Architecture in Production: Integration Patterns, Code Design, and Data Access",
+      "item": "https:\/\/www.glukhov.org\/app-architecture\/"
+    },{
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Decision Records for AI-Driven Software Development",
+      "item": "https:\/\/www.glukhov.org\/app-architecture\/documentation\/decision-records-ai-driven-development\/"
+    }]
+}
+</script>
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+
+	<div class="logo logo--mixed">
+		<a class="logo__link" href="/" title="Notes on the margins" rel="home">
+			<div class="logo__item logo__imagebox">
+					<img class="logo__img" src="/img/aa-128w.jpg" alt="site logo">
+				</div><div class="logo__item logo__text">
+					<div class="logo__title">Notes on the margins</div>
+					<div class="logo__tagline">Rost Glukhov - AI Systems &amp; Infrastructure Publication</div>
+				</div>
+		</a>
+	</div>
+
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/ai-systems/">
+
+				<span class="menu__text">AI Systems</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/documentation-tools/">
+
+				<span class="menu__text">Doc tools</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/hardware/">
+
+				<span class="menu__text">Hardware</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/llm-architecture/">
+
+				<span class="menu__text">LLM Architecture</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/llm-hosting/">
+
+				<span class="menu__text">LLM Hosting</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/llm-performance/">
+
+				<span class="menu__text">LLM Performance</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/rag/">
+
+				<span class="menu__text">RAG</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/data-infrastructure/">
+
+				<span class="menu__text">Data</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/app-architecture/">
+
+				<span class="menu__text">Architecture</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/observability/">
+
+				<span class="menu__text">Observability</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/ai-devtools/">
+
+				<span class="menu__text">AI DevTools</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/developer-tools/">
+
+				<span class="menu__text">DevTools</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/ai-systems/openclaw/">
+
+				<span class="menu__text">OpenClaw</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/web-infrastructure/">
+
+				<span class="menu__text">Web Infra</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/tags/cheatsheet/">
+
+				<span class="menu__text">Cheatsheets</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/knowledge-management/">
+
+				<span class="menu__text">Knowledge</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/sponsored/">
+
+				<span class="menu__text">Partnerships</span>
+
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">
+
+				<span class="menu__text">About</span>
+
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Decision Records for AI-Driven Software Development</h1>
+			<p class="post__lead">Keep intent close to the code.</p>
+
+		</header>
+
+
+<div class="post__toc toc">
+	<div class="toc__title">Page content</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#decision-records-are-the-missing-memory-layer">Decision records are the missing memory layer</a></li>
+    <li><a href="#what-are-decision-records">What are decision records?</a></li>
+    <li><a href="#architecture-decision-records">Architecture Decision Records</a></li>
+    <li><a href="#product-decision-records">Product Decision Records</a></li>
+    <li><a href="#design-decision-records">Design Decision Records</a></li>
+    <li><a href="#why-decision-records-matter-more-with-ai">Why decision records matter more with AI</a>
+      <ul>
+        <li><a href="#ai-may-reopen-settled-debates">AI may reopen settled debates</a></li>
+        <li><a href="#ai-may-optimize-locally-and-damage-globally">AI may optimize locally and damage globally</a></li>
+        <li><a href="#ai-may-preserve-code-but-lose-intent">AI may preserve code but lose intent</a></li>
+        <li><a href="#ai-may-generate-plausible-but-wrong-rationale">AI may generate plausible but wrong rationale</a></li>
+      </ul>
+    </li>
+    <li><a href="#decision-records-as-part-of-a-broader-methodology">Decision records as part of a broader methodology</a></li>
+    <li><a href="#decision-records-and-docs-as-code">Decision records and docs as code</a></li>
+    <li><a href="#a-practical-decision-record-template">A practical decision record template</a></li>
+    <li><a href="#what-belongs-in-a-decision-record">What belongs in a decision record?</a></li>
+    <li><a href="#status-values-and-lifecycle">Status values and lifecycle</a></li>
+    <li><a href="#how-ai-should-generate-decision-records">How AI should generate decision records</a></li>
+    <li><a href="#how-ai-should-read-decision-records">How AI should read decision records</a></li>
+    <li><a href="#decision-records-in-pull-requests">Decision records in pull requests</a></li>
+    <li><a href="#decision-records-and-architecture-governance">Decision records and architecture governance</a></li>
+    <li><a href="#decision-records-and-product-management">Decision records and product management</a></li>
+    <li><a href="#decision-records-and-design-systems">Decision records and design systems</a></li>
+    <li><a href="#how-decision-records-support-spec-driven-development">How decision records support spec-driven development</a></li>
+    <li><a href="#decision-records-are-not-specifications">Decision records are not specifications</a></li>
+    <li><a href="#decision-records-are-not-a-replacement-for-tests">Decision records are not a replacement for tests</a></li>
+    <li><a href="#decision-records-are-not-a-replacement-for-code-comments">Decision records are not a replacement for code comments</a></li>
+    <li><a href="#common-mistakes">Common mistakes</a>
+      <ul>
+        <li><a href="#writing-records-too-late">Writing records too late</a></li>
+        <li><a href="#making-records-too-long">Making records too long</a></li>
+        <li><a href="#recording-decisions-without-consequences">Recording decisions without consequences</a></li>
+        <li><a href="#editing-old-records-as-if-history-changed">Editing old records as if history changed</a></li>
+        <li><a href="#letting-ai-generated-records-merge-without-review">Letting AI-generated records merge without review</a></li>
+        <li><a href="#hiding-records-outside-the-repository">Hiding records outside the repository</a></li>
+      </ul>
+    </li>
+    <li><a href="#a-lightweight-operating-model">A lightweight operating model</a></li>
+    <li><a href="#example-adr">Example ADR</a></li>
+    <li><a href="#example-pdr">Example PDR</a></li>
+    <li><a href="#example-ddr">Example DDR</a></li>
+    <li><a href="#suggested-prompt-library">Suggested prompt library</a></li>
+    <li><a href="#related-reading">Related reading</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>Decision records are the missing memory layer in AI-assisted software development. They capture not just what was built, but why — and that distinction becomes critical when AI tools are writing your code.</p>
+<p><img
+  src="/img/decision-records-ai_w1000.jpg"
+  width="1002"
+  height="669"
+  alt="Decision records — ADR, PDR, DDR — connecting intent to code"
+  title="Decision Records for AI-Driven Software Development"
+  loading="lazy"
+  decoding="async"></p>
+<h2 id="decision-records-are-the-missing-memory-layer">Decision records are the missing memory layer</h2>
+<p><a href="https://www.glukhov.org/ai-devtools/vibe-coding/" title="What is Vibe Coding? Meaning, Tools, Benefits, and Risks in 2026">AI-driven programming</a> changes the economics of software development by making code cheaper to generate, easier to refactor, and faster to throw away. That is useful. It is also dangerous, because when code becomes easier to produce, the scarce resource is no longer typing — the scarce resource is judgment.</p>
+<p>Why did the team choose PostgreSQL instead of DynamoDB? Why does the product require human review before sending AI-generated emails? Why does the interface show suggestions in a side panel instead of applying them directly? Why was a simpler approach rejected six months ago? The code may show what exists, but it rarely explains why it exists.</p>
+<p>Decision records solve this problem by providing a short, version-controlled document that captures an important choice, the context behind it, the alternatives considered, and the consequences the team accepted. In an AI-assisted codebase, these records become more than documentation — they become durable project memory that both humans and AI coding agents can read before making future changes. The practical operating rule is simple: keep decision records as Markdown files in the repository, review them like code, and let future AI tools read them before proposing or implementing changes.</p>
+<h2 id="what-are-decision-records">What are decision records?</h2>
+<p>A decision record is a written record of a meaningful decision, structured to answer four basic questions: what did we decide, why did we decide it, what alternatives did we consider, and what consequences did we accept? The most common form is the Architecture Decision Record, shortened to ADR. ADRs are widely used to document technical decisions, and the same pattern can be extended beyond architecture into product and design work.</p>
+<p>For AI-driven programming, three types are especially useful:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Record type</th>
+					<th>Captures</th>
+					<th>Example</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>ADR</td>
+					<td>Architecture and technical decisions</td>
+					<td>Use PostgreSQL as the primary database</td>
+			</tr>
+			<tr>
+					<td>PDR</td>
+					<td>Product behavior and scope decisions</td>
+					<td>AI-generated emails must remain drafts</td>
+			</tr>
+			<tr>
+					<td>DDR</td>
+					<td>Design and interaction decisions</td>
+					<td>Show AI suggestions in a side panel</td>
+			</tr>
+	</tbody>
+</table>
+<p>Together, ADRs, PDRs, and DDRs describe not only the structure of the system but also the intent of the product and the reasoning behind the user experience. That combination matters because AI agents can read code, but code alone does not contain enough context to make good decisions. Decision records give AI systems a reviewed, durable, human-approved source of project intent.</p>
+<h2 id="architecture-decision-records">Architecture Decision Records</h2>
+<p>Architecture Decision Records capture technical and structural decisions. Use an ADR when a decision affects the shape of the system — its boundaries, dependencies, operational model, or long-term maintainability.</p>
+<p>Examples of decisions worth recording as ADRs include:</p>
+<ul>
+<li>Choosing PostgreSQL as the primary database</li>
+<li>Using an event-driven architecture for background processing</li>
+<li>Keeping the application as a modular monolith</li>
+<li>Introducing a message queue</li>
+<li>Choosing REST instead of GraphQL</li>
+<li>Using server-side rendering for the web application</li>
+<li>Requiring all background jobs to be idempotent</li>
+<li>Adopting a specific authentication and authorization model</li>
+</ul>
+<p>An ADR is not a full architecture document — it is intentionally small, recording one important decision at a specific moment in time. A good ADR prevents architectural amnesia: without it, future contributors may rediscover the same tradeoffs, reopen old debates, or accidentally undo important constraints.</p>
+<p>In AI-driven programming, ADRs carry even more weight. AI tools are often skilled at local optimization, and they may propose a technically plausible change that violates a larger architectural constraint. An ADR gives the AI a clear boundary: &ldquo;This is how this system is supposed to be shaped.&rdquo;</p>
+<h2 id="product-decision-records">Product Decision Records</h2>
+<p>Product Decision Records capture product behavior, scope, and user-facing intent. This is less common than ADRs, but it is often just as valuable — product decisions are frequently scattered across tickets, roadmap tools, chat threads, meeting notes, and people&rsquo;s memories, making them easy for humans to forget and almost impossible for AI tools to infer reliably.</p>
+<p>Use a PDR when a decision affects what the product does, who it serves, what is intentionally out of scope, or how a user-facing feature should behave. Examples include:</p>
+<ul>
+<li>AI-generated messages must remain drafts until reviewed by a human</li>
+<li>Free-tier users can create up to three projects</li>
+<li>Deleted workspaces are recoverable for 30 days</li>
+<li>Team billing is out of scope for version 1</li>
+<li>Users can export their data without contacting support</li>
+<li>Low-confidence AI summaries show a warning instead of being hidden</li>
+</ul>
+<p>A PDR is especially useful when a product choice looks arbitrary from the code. The code might contain a limit of three projects for free users, and without a PDR an AI tool may treat that number as a magic constant and suggest changing it. With a PDR, the AI can see that the limit is tied to pricing strategy, onboarding cost, or support load — and that changing it requires a deliberate product decision, not a quick edit.</p>
+<h2 id="design-decision-records">Design Decision Records</h2>
+<p>Design Decision Records capture user experience, interaction, visual, and content-design decisions. Use a DDR when a decision affects how users interact with the product, how information is presented, or how a design principle should be applied across future work.</p>
+<p>Examples of design decisions worth recording include:</p>
+<ul>
+<li>Use inline validation instead of validation only on submit</li>
+<li>Put AI suggestions in a side panel instead of directly in the editor</li>
+<li>Use progressive disclosure for advanced settings</li>
+<li>Require confirmation before destructive actions</li>
+<li>Use &ldquo;Draft&rdquo; and &ldquo;Published&rdquo; instead of &ldquo;Inactive&rdquo; and &ldquo;Active&rdquo;</li>
+<li>Keep primary actions visible on mobile screens</li>
+</ul>
+<p>Design intent is easy to lose during implementation. A developer may simplify a flow, or an AI agent may generate a component that technically works but breaks the intended interaction model. For example, a DDR might record: &ldquo;We show AI writing suggestions beside the document, not inside it, because users need to compare generated text with their own draft before accepting changes.&rdquo; That record gives future contributors a principle to preserve, not just a layout to copy.</p>
+<h2 id="why-decision-records-matter-more-with-ai">Why decision records matter more with AI</h2>
+<p>AI coding tools are powerful, but they are often stateless or only partially aware of project history. They can inspect files, infer patterns, and generate changes — but they do not automatically know which decisions are intentional, which are accidental, and which were already debated and resolved. This creates several distinct risks.</p>
+<h3 id="ai-may-reopen-settled-debates">AI may reopen settled debates</h3>
+<p>If the team already decided to use a modular monolith, an AI agent may still propose extracting a service because that looks clean in isolation. Without an ADR, the AI has no durable way to know that the team already considered and rejected that path, and the result is wasted effort or a subtle regression in system coherence.</p>
+<h3 id="ai-may-optimize-locally-and-damage-globally">AI may optimize locally and damage globally</h3>
+<p>A generated refactor may make one file cleaner while violating system boundaries. A UI change may reduce component complexity while weakening the intended user experience. A product change may simplify the implementation while breaking pricing or compliance assumptions. Decision records give the AI a larger frame of reference before it acts on narrowly scoped signals.</p>
+<h3 id="ai-may-preserve-code-but-lose-intent">AI may preserve code but lose intent</h3>
+<p>A model can follow existing patterns in the codebase, but patterns are not the same as principles. Sometimes existing code is a compromise. Sometimes it is transitional. Sometimes it exists because of an external constraint that is not visible in the file. Decision records explain the difference between &ldquo;this is how it works&rdquo; and &ldquo;this is why it was built this way.&rdquo;</p>
+<h3 id="ai-may-generate-plausible-but-wrong-rationale">AI may generate plausible but wrong rationale</h3>
+<p>AI can draft decision records, but it can also invent confident-sounding explanations that do not match the real decision. This is why human review is non-negotiable: AI may generate the first draft of a record, but a human must verify that it accurately describes the actual decision, alternatives, and consequences before the record is merged.</p>
+<h2 id="decision-records-as-part-of-a-broader-methodology">Decision records as part of a broader methodology</h2>
+<p>Decision records are not just documentation — they are part of a broader way of working that sits at the intersection of lightweight architecture governance, docs as code, <a href="https://www.glukhov.org/knowledge-management/ai-augmented-knowledge/ai-for-knowledge-management-workflows/" title="AI for Knowledge Management: Real Workflows That Hold Up">AI-augmented knowledge management workflows</a>, product discovery, design rationale, AI governance, and code review. A useful way to describe the larger process is Decision-Oriented Development.</p>
+<p>Most AI-driven programming workflows focus narrowly on the generate-review-commit loop:</p>
+<div class="mermaid">flowchart LR
+    A[Prompt] --> B[Generate code]
+    B --> C[Test]
+    C --> D[Commit]
+</div>
+<p>That cycle is too thin for serious systems work. A stronger workflow treats the repository as a store of both code and intent — the diagrams here use <a href="https://www.glukhov.org/documentation-tools/diagrams/mermaid-diagrams-quickstart-cheatsheet/" title="Mermaid Diagrams Quickstart and Cheatsheet for Developers">Mermaid</a>, a lightweight format that works well inside Markdown decision records too:</p>
+<div class="mermaid">flowchart TB
+    subgraph top[" "]
+        direction LR
+        A[Frame the problem] --> B[Identify existing decisions] --> C[Explore options and tradeoffs] --> D[Record the selected decision]
+    end
+    subgraph bottom[" "]
+        direction LR
+        E[Generate or modify code] --> F[Review code vs decisions] --> G[Merge implementation and memory] --> H[Use record to guide future work]
+    end
+    D --> E
+</div>
+<p>This process turns the repository into more than a code store. It becomes the source of truth for implementation, intent, and reasoning — a durable artifact that accumulates value with every decision made.</p>
+<h2 id="decision-records-and-docs-as-code">Decision records and docs as code</h2>
+<p>Decision records work best when they follow docs-as-code principles, which means they should be stored in the same repository as the code, written in plain Markdown, reviewed in pull requests, versioned with Git, linked to related issues and pull requests, and searchable by both humans and AI tools. This is far more reliable than storing important decisions in chat, wiki pages, slide decks, or meeting notes — those tools may still be useful for discussion, but the accepted decision should always live close to the code. <a href="https://www.glukhov.org/app-architecture/testing-architecture/specs-tests-code-traceability-ai-development/" title="Keeping Specs, Tests, And Code In Sync In AI Development">Keeping Specs, Tests, And Code In Sync In AI Development</a> extends this same &ldquo;link it back to the record&rdquo; habit into a full traceability model that ties requirement and design decision IDs to tests and pull requests.</p>
+<p>A well-organized repository structure for decision records might look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>docs/
+</span></span><span style="display:flex;"><span>  decisions/
+</span></span><span style="display:flex;"><span>    architecture/
+</span></span><span style="display:flex;"><span>      0001-use-postgresql-for-primary-storage.md
+</span></span><span style="display:flex;"><span>      0002-keep-billing-inside-the-core-app.md
+</span></span><span style="display:flex;"><span>    product/
+</span></span><span style="display:flex;"><span>      0001-ai-generated-email-requires-human-review.md
+</span></span><span style="display:flex;"><span>      0002-free-tier-project-limit.md
+</span></span><span style="display:flex;"><span>    design/
+</span></span><span style="display:flex;"><span>      0001-use-inline-validation.md
+</span></span><span style="display:flex;"><span>      0002-place-ai-suggestions-in-side-panel.md
+</span></span></code></pre></div><p>For smaller projects, a flatter structure works equally well. The exact folder organization matters less than consistency — the records must be easy to find, easy to review, and easy for AI tools to load as context before acting on the codebase. For Go teams, this <code>docs/decisions/</code> structure fits naturally alongside the <code>cmd/</code>, <code>internal/</code>, and <code>api/</code> layout described in <a href="https://www.glukhov.org/app-architecture/code-architecture/go-project-structure/" title="Go Project Structure: Practices &amp; Patterns">Go Project Structure: Practices &amp; Patterns</a>, which recommends <code>docs/</code> as the home for architecture decisions and API references.</p>
+<h2 id="a-practical-decision-record-template">A practical decision record template</h2>
+<p>A useful decision record template should be short enough that people actually use it. Here is a practical Markdown template that includes an optional but valuable AI guidance section:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># Decision: Short title
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Status: Proposed | Accepted | Superseded | Deprecated
+</span></span><span style="display:flex;"><span>Date: YYYY-MM-DD
+</span></span><span style="display:flex;"><span>Type: Architecture | Product | Design
+</span></span><span style="display:flex;"><span>Owners: Team or names
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Context
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Describe the problem, constraints, goals, user needs, technical facts,
+</span></span><span style="display:flex;"><span>and business factors that led to this decision.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Decision
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>State the decision clearly.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Alternatives considered
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Option 1
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Pros:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Cons:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Consequences
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Describe what becomes easier, what becomes harder, and what risks
+</span></span><span style="display:flex;"><span>or follow-up work this creates.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## AI guidance
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>When an AI assistant works in this area, it should:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Preserve ...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Avoid ...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Prefer ...
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Ask for review when ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Links
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Related issues:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Related pull requests:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Related files:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Supersedes:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Superseded by:
+</span></span></code></pre></div><p>The &ldquo;AI guidance&rdquo; section is optional, but for AI-driven programming it is extremely valuable — it turns the decision record into a durable instruction for future agents working in the same area of the codebase.</p>
+<h2 id="what-belongs-in-a-decision-record">What belongs in a decision record?</h2>
+<p>Not every choice deserves a record, and if every small implementation detail becomes a decision record the process collapses into noise. Create a decision record when a choice is meaningful and likely to matter later.</p>
+<p>Good candidates are decisions that:</p>
+<ul>
+<li>Affect multiple parts of the system</li>
+<li>Encode a product promise</li>
+<li>Resolve a real debate</li>
+<li>Introduce a long-term tradeoff</li>
+<li>Depend on business, compliance, or operational constraints</li>
+<li>Would be expensive to rediscover later</li>
+<li>Future AI tools might plausibly get wrong</li>
+<li>Future contributors might be tempted to reverse casually</li>
+</ul>
+<p>Poor candidates include tiny refactor choices, obvious bug fixes, temporary experiments, local naming decisions, and implementation details with no lasting consequence. A good rule of thumb is straightforward: if reversing the decision would require discussion, record the decision.</p>
+<h2 id="status-values-and-lifecycle">Status values and lifecycle</h2>
+<p>Decision records should have a lifecycle to signal their current standing. The simplest status values are sufficient.</p>
+<p><strong>Proposed</strong> — The decision is being considered but not yet accepted. Use this when the team wants to discuss a decision in a pull request before committing to it.</p>
+<p><strong>Accepted</strong> — The decision is active and should guide future work. Most useful decision records will spend most of their life in this state.</p>
+<p><strong>Superseded</strong> — The decision has been replaced by a newer record. Do not delete old records; keep them for history and link to the newer decision so the evolution of thinking stays visible.</p>
+<p><strong>Deprecated</strong> — The decision is no longer recommended but may still describe existing parts of the system. This is particularly useful during migrations, when old patterns exist in the codebase alongside newer approaches.</p>
+<p>The important principle is that decision records should be append-friendly. When the team changes direction, create a new record and link the old one rather than rewriting history to make the past look cleaner.</p>
+<h2 id="how-ai-should-generate-decision-records">How AI should generate decision records</h2>
+<p>AI can help create decision records, and this is one of the better uses of AI in software development — it is fast at drafting structured documents from context. After a discussion, architecture review, or pull request, you can ask an AI assistant to draft a record:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Draft an Architecture Decision Record for the decision in this pull request.
+</span></span><span style="display:flex;"><span>Include context, alternatives, consequences, and AI guidance.
+</span></span><span style="display:flex;"><span>Save it as Markdown under docs/decisions/architecture.
+</span></span></code></pre></div><p>For product work:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Draft a Product Decision Record explaining why AI-generated messages
+</span></span><span style="display:flex;"><span>must remain drafts until reviewed by the user.
+</span></span><span style="display:flex;"><span>Include user impact, out-of-scope behavior, tradeoffs, and AI guidance.
+</span></span></code></pre></div><p>The AI-generated record should not be trusted automatically, however. Human review should verify that the context is accurate, that the AI has not invented rationale, that the alternatives listed are real, that the consequences are honest, and that the AI guidance matches the team&rsquo;s actual intent. AI is a drafting assistant — it is not the owner of the decision.</p>
+<h2 id="how-ai-should-read-decision-records">How AI should read decision records</h2>
+<p>The other half of the practice is instructing AI to read the records before acting. Before asking an AI assistant to implement a change, include an instruction like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Before modifying this feature, read docs/decisions.
+</span></span><span style="display:flex;"><span>Identify any Architecture, Product, or Design Decision Records that apply.
+</span></span><span style="display:flex;"><span>Follow accepted decisions. If your proposed change conflicts with a decision
+</span></span><span style="display:flex;"><span>record, explain the conflict before changing code.
+</span></span></code></pre></div><p>For larger tasks, reinforce the role of the records as project memory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Use the decision records as project memory.
+</span></span><span style="display:flex;"><span>Do not reverse accepted decisions without proposing a new superseding decision.
+</span></span><span style="display:flex;"><span>When you generate code, explain which decision records influenced the implementation.
+</span></span></code></pre></div><p>This changes the AI&rsquo;s role from &ldquo;predict plausible code&rdquo; to &ldquo;operate inside a documented system of constraints&rdquo; — a significant improvement in reliability for complex or long-lived projects.</p>
+<h2 id="decision-records-in-pull-requests">Decision records in pull requests</h2>
+<p>Decision records should be part of normal pull request review rather than a separate process. A simple PR checklist entry makes the habit visible:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#75715e">## Decision record checklist
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> This PR does not introduce a significant architecture, product, or design decision.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> This PR introduces a significant decision and includes a new decision record.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> This PR changes a previous decision and includes a superseding record.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> Relevant existing decision records were considered.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> AI-generated code follows the accepted decision records.
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">- [ ]</span> AI-generated decision records were reviewed by a human.
+</span></span></code></pre></div><p>This checklist is simple, but it changes behavior by reminding the team that code is not the only artifact that matters in a pull request. It also makes it natural to catch when an AI-generated change silently violates a prior decision.</p>
+<h2 id="decision-records-and-architecture-governance">Decision records and architecture governance</h2>
+<p>Traditional architecture governance often fails because it is too heavy, too slow, or too disconnected from implementation — central approval boards, large upfront documents, and gatekeeping processes that block rather than guide. Decision records offer a lighter alternative that integrates directly into the development workflow.</p>
+<p>They do not require a central architecture board for every change, nor do they block teams from learning and adapting. Instead, they create a trail of decisions that can be reviewed, referenced, and built on over time. This supports evolutionary architecture: the architecture can change, but it changes with memory rather than in spite of it. The team can revisit old decisions without having to rediscover why they were made, which is a healthier and more honest form of governance:</p>
+<ul>
+<li>Small records instead of giant documents</li>
+<li>Review near the code instead of separate approval theater</li>
+<li>Historical context instead of tribal knowledge</li>
+<li>Explicit tradeoffs instead of hidden assumptions</li>
+</ul>
+<h2 id="decision-records-and-product-management">Decision records and product management</h2>
+<p>Product work also needs decision memory, and this is an area where the value of decision records is often underestimated. A roadmap says what might happen. A ticket says what to build next. Analytics say what users did. None of those fully explain why a product behavior exists.</p>
+<p>Product Decision Records fill that gap and are especially useful for pricing and packaging decisions, permission models, limits and quotas, AI safety and review flows, onboarding choices, user role definitions, collaboration rules, data retention policies, and feature scope boundaries. Once implemented, product decisions become invisible in the code — later, someone sees only the code and asks, &ldquo;Why does it work this way?&rdquo; A PDR gives the answer in a form that both humans and AI tools can find and use.</p>
+<h2 id="decision-records-and-design-systems">Decision records and design systems</h2>
+<p>Design systems often document components, tokens, and usage rules, but they rarely document why the system works that way. Design Decision Records fill this gap. A component library might say &ldquo;use the confirmation dialog for destructive actions,&rdquo; while a DDR explains the rationale: &ldquo;We require confirmation for destructive actions because users often work with shared team data, and accidental deletion has a high recovery cost.&rdquo;</p>
+<p>That rationale matters beyond the specific component. It helps future designers, developers, and AI tools apply the principle correctly in new situations. Without the DDR, an AI agent may generate a faster interaction that skips confirmation because it appears more efficient. With the DDR, the agent can recognize that preserving the safety property is intentional and non-negotiable.</p>
+<h2 id="how-decision-records-support-spec-driven-development">How decision records support spec-driven development</h2>
+<p>Spec-driven development explains what the system should do. Decision records explain why the team chose that direction, and the distinction matters significantly for AI-assisted work.</p>
+<p>A feature specification may say that AI-generated emails must be saved as drafts. A Product Decision Record explains why automatic sending was rejected, what risks were considered, and which future changes would require a new decision. A design specification may describe a side-panel interaction, while the corresponding DDR explains why inline AI edits were explicitly rejected and why preserving user control was weighted more heavily than workflow speed. An architecture specification may define a service boundary, and its ADR explains why the team chose that boundary over a simpler or more distributed alternative.</p>
+<p>The spec guides implementation. The decision record preserves judgment. Together, they give AI coding agents both instructions and context &ndash; the &ldquo;what&rdquo; and the &ldquo;why&rdquo; &ndash; which is what makes the combination so effective for complex, long-lived systems. When you adopt a spec-driven toolchain, compare how each option surfaces that context; <a href="https://www.glukhov.org/ai-devtools/ai-coding-assistants/spec-kit-vs-kiro-vs-claude-code/" title="GitHub Spec Kit vs Kiro vs Claude Code SDD Workflows">GitHub Spec Kit vs Kiro vs Claude Code SDD Workflows</a> breaks down portability, review gates, and repository grounding across the main setups. For the tool-neutral five-phase process those tools implement, see <a href="https://www.glukhov.org/app-architecture/documentation/spec-driven-development-workflow/" title="Spec-Driven Development Workflow From Requirements to Code">Spec-Driven Development Workflow From Requirements to Code</a>. Most SDD tools only handle the &ldquo;shipped&rdquo; half of that loop cleanly; <a href="https://www.glukhov.org/ai-devtools/openspec/handling-rejected-proposals/" title="OpenSpec Rejected Proposals: A Decision Memory Convention">OpenSpec Rejected Proposals: A Decision Memory Convention</a> covers the other half &ndash; recording a rejected decision durably enough that an agent checks it before re-proposing the same idea.</p>
+<h2 id="decision-records-are-not-specifications">Decision records are not specifications</h2>
+<p>Decision records are related to specifications, but they serve a different purpose. A specification says &ldquo;the system shall do X,&rdquo; while a decision record says &ldquo;we chose X instead of Y because of these constraints and tradeoffs.&rdquo; That &ldquo;instead of Y&rdquo; is the valuable part. AI tools often generate solutions by finding a plausible path to the requested outcome, but decision records tell them which plausible paths have already been explored, evaluated, and rejected — reducing churn and improving the quality of AI-assisted work.</p>
+<h2 id="decision-records-are-not-a-replacement-for-tests">Decision records are not a replacement for tests</h2>
+<p>Tests verify behavior; decision records explain intent. Both are necessary and they work together. A test can enforce that AI-generated emails must be saved as drafts, while a Product Decision Record explains that this is required because users must review AI-generated communication before it leaves the system. The test protects behavior. The decision record protects meaning. Together, they make future changes safer and more predictable.</p>
+<h2 id="decision-records-are-not-a-replacement-for-code-comments">Decision records are not a replacement for code comments</h2>
+<p>Code comments explain local implementation details, while decision records explain broader decisions. Use comments for surprising lines, edge cases, workarounds, and functions that cannot be simplified. Use decision records for why an architecture exists, why a product behavior exists, why an interaction pattern exists, and why the team chose one direction over another. If the explanation affects only a few lines, a comment is the right tool. If it affects the system&rsquo;s direction, a decision record is the right tool.</p>
+<h2 id="common-mistakes">Common mistakes</h2>
+<h3 id="writing-records-too-late">Writing records too late</h3>
+<p>A decision record should be written when the decision is made, not months later when everyone has forgotten the tradeoffs. It is fine to draft one during a pull request. It is better still to draft it before implementation, while the decision is still being actively discussed and the alternatives are fresh.</p>
+<h3 id="making-records-too-long">Making records too long</h3>
+<p>A decision record is not an essay. It should be detailed enough to preserve judgment but short enough that people will actually read it. Prefer clarity over completeness — a concise record that gets read is far more valuable than a comprehensive one that gets skipped.</p>
+<h3 id="recording-decisions-without-consequences">Recording decisions without consequences</h3>
+<p>The consequences section is the heart of the record. A decision without stated consequences is often just a preference rather than a real decision. Good records admit tradeoffs honestly, including what becomes harder or riskier as a result of the choice.</p>
+<h3 id="editing-old-records-as-if-history-changed">Editing old records as if history changed</h3>
+<p>When a decision changes, create a new record and mark the old one as superseded. Silently rewriting an old decision to match the current state destroys the historical context that makes decision records valuable. History is useful precisely because it shows how thinking evolved. Compiled knowledge bases face the identical problem under a different name — <a href="https://www.glukhov.org/knowledge-management/knowledge-systems-architectures/compiled-knowledge/llm-wiki-maintenance-knowledge-drift/" title="LLM Wiki Maintenance: Drift, Contradictions and Review">LLM Wiki Maintenance: Drift, Contradictions and Review</a> calls it decision drift, and applies the same supersede-rather-than-overwrite rule to wiki pages.</p>
+<h3 id="letting-ai-generated-records-merge-without-review">Letting AI-generated records merge without review</h3>
+<p>AI can produce a polished, well-structured record that is subtly wrong. Treat AI-generated decision records exactly like AI-generated code — review them carefully, verify the rationale is accurate, and ensure the consequences section reflects what the team actually accepted.</p>
+<h3 id="hiding-records-outside-the-repository">Hiding records outside the repository</h3>
+<p>If decision records live in a separate wiki or documentation system, they are less likely to be updated alongside code changes and far less likely to be read by AI coding tools loading context for a task. Keeping them in the repository is not just a convenience — it is what makes the practice work for AI-assisted development.</p>
+<h2 id="a-lightweight-operating-model">A lightweight operating model</h2>
+<p>A practical team process that adds minimal overhead looks like this:</p>
+<ol>
+<li>During planning or implementation, identify whether a meaningful decision is being made.</li>
+<li>Ask an AI assistant to draft an ADR, PDR, or DDR based on the discussion.</li>
+<li>Review the draft as a team, verifying context, alternatives, and consequences.</li>
+<li>Commit the record as Markdown in the repository.</li>
+<li>Link it from the related issue or pull request.</li>
+<li>Instruct AI coding tools to read relevant records before making future changes in the area.</li>
+<li>Supersede records when decisions change, preserving the old record for history.</li>
+</ol>
+<p>This does not require a new bureaucracy or a dedicated documentation role. It requires a small habit: preserving important judgment at the moment it is created, close to the code where it will be needed.</p>
+<h2 id="example-adr">Example ADR</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># Decision: Use PostgreSQL for primary application storage
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Status: Accepted
+</span></span><span style="display:flex;"><span>Date: 2026-06-25
+</span></span><span style="display:flex;"><span>Type: Architecture
+</span></span><span style="display:flex;"><span>Owners: Platform team
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Context
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The application needs durable relational storage for accounts, projects,
+</span></span><span style="display:flex;"><span>permissions, and audit events. The team expects frequent reporting queries
+</span></span><span style="display:flex;"><span>and strong consistency requirements for permission checks.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Decision
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>We will use PostgreSQL as the primary application database.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Alternatives considered
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### DynamoDB
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Pros:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Operationally scalable
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Good fit for predictable key-value access patterns
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Cons:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> More complex for relational queries
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Harder for ad hoc reporting
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Less familiar to the current team
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### MySQL
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Pros:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Mature relational database
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Familiar operational model
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Cons:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> PostgreSQL better matches the team&#39;s needs for JSON support,
+</span></span><span style="display:flex;"><span>  indexing options, and existing expertise
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Consequences
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PostgreSQL becomes a core operational dependency. The team must manage
+</span></span><span style="display:flex;"><span>migrations carefully and monitor query performance. In return, the
+</span></span><span style="display:flex;"><span>application gets strong relational modeling, mature indexing, and
+</span></span><span style="display:flex;"><span>flexible reporting support.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## AI guidance
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>When modifying persistence code, prefer relational modeling in PostgreSQL.
+</span></span><span style="display:flex;"><span>Do not introduce a second primary database without a superseding ADR.
+</span></span></code></pre></div><h2 id="example-pdr">Example PDR</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># Decision: AI-generated emails must remain drafts
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Status: Accepted
+</span></span><span style="display:flex;"><span>Date: 2026-06-25
+</span></span><span style="display:flex;"><span>Type: Product
+</span></span><span style="display:flex;"><span>Owners: Product team
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Context
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The product can generate email replies using AI. Sending email is a
+</span></span><span style="display:flex;"><span>high-trust action because mistakes may reach customers, partners, or
+</span></span><span style="display:flex;"><span>internal teams.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Decision
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AI-generated emails must be created as drafts. A human user must
+</span></span><span style="display:flex;"><span>review and send them.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Alternatives considered
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Send automatically
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Pros:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Faster workflow
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Less user effort
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Cons:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Higher risk of incorrect or inappropriate messages
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Lower user trust
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Harder to recover from mistakes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Ask for confirmation only after generation
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Pros:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Keeps the workflow simple
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Provides some user control
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Cons:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Still encourages shallow review
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Does not fit existing email client behavior as well as drafts
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Consequences
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The workflow is slightly slower, but safer and more trustworthy.
+</span></span><span style="display:flex;"><span>Future automation can improve review speed, but must not bypass
+</span></span><span style="display:flex;"><span>human approval without a superseding PDR.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## AI guidance
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>When building email-generation features, create drafts by default.
+</span></span><span style="display:flex;"><span>Do not add automatic sending unless a new accepted PDR explicitly allows it.
+</span></span></code></pre></div><h2 id="example-ddr">Example DDR</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># Decision: Show AI writing suggestions in a side panel
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Status: Accepted
+</span></span><span style="display:flex;"><span>Date: 2026-06-25
+</span></span><span style="display:flex;"><span>Type: Design
+</span></span><span style="display:flex;"><span>Owners: Design team
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Context
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Users need help improving written content, but they also need to stay
+</span></span><span style="display:flex;"><span>in control of the final text. Inline AI edits can make it hard to
+</span></span><span style="display:flex;"><span>distinguish user-written content from generated suggestions.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Decision
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>AI writing suggestions will appear in a side panel. Users can accept,
+</span></span><span style="display:flex;"><span>reject, or copy suggestions into the main editor.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Alternatives considered
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Apply suggestions inline
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Pros:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Fast
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Feels integrated
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Cons:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Blurs authorship
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Makes review harder
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Can surprise users
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Show suggestions in a modal
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Pros:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Focused experience
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Easy to implement
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Cons:
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Interrupts writing flow
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">-</span> Harder to compare suggestion and original text
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Consequences
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>The side panel takes more screen space, especially on small screens.
+</span></span><span style="display:flex;"><span>However, it preserves user control and makes review clearer.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## AI guidance
+</span></span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>When adding writing-assistance features, preserve separation between
+</span></span><span style="display:flex;"><span>user text and AI suggestions. Do not apply generated text directly
+</span></span><span style="display:flex;"><span>into the document without explicit user action.
+</span></span></code></pre></div><h2 id="suggested-prompt-library">Suggested prompt library</h2>
+<p>Use these prompts to make decision records part of daily AI-assisted development.</p>
+<p><strong>Find relevant records before working on a feature:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Read docs/decisions and identify any accepted decision records that apply
+</span></span><span style="display:flex;"><span>to this task. Summarize the constraints before proposing code changes.
+</span></span></code></pre></div><p><strong>Draft a new ADR:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Draft an Architecture Decision Record for this technical decision.
+</span></span><span style="display:flex;"><span>Include context, decision, alternatives, consequences, and AI guidance.
+</span></span><span style="display:flex;"><span>Keep it concise and specific.
+</span></span></code></pre></div><p><strong>Draft a new PDR:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Draft a Product Decision Record for this product behavior.
+</span></span><span style="display:flex;"><span>Include user impact, scope, alternatives, consequences, and AI guidance.
+</span></span></code></pre></div><p><strong>Draft a new DDR:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Draft a Design Decision Record for this interaction pattern.
+</span></span><span style="display:flex;"><span>Include user problem, alternatives, tradeoffs, consequences, and AI guidance.
+</span></span></code></pre></div><p><strong>Review a pull request against existing decisions:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Review this pull request against the accepted decision records in docs/decisions.
+</span></span><span style="display:flex;"><span>Identify any conflicts, missing decision records, or decisions that should
+</span></span><span style="display:flex;"><span>be superseded.
+</span></span></code></pre></div><p><strong>Supersede a decision:</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Create a new decision record that supersedes the existing one.
+</span></span><span style="display:flex;"><span>Preserve the historical rationale, explain what changed, and link both records.
+</span></span></code></pre></div><h2 id="related-reading">Related reading</h2>
+<ul>
+<li><a href="https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions">Michael Nygard&rsquo;s original ADR format</a> — the foundational post that started the ADR movement</li>
+<li><a href="https://adr.github.io/">ADR GitHub organization</a> — tooling, templates, and community resources for managing decision records</li>
+<li><a href="https://www.glukhov.org/app-architecture/documentation/what-is-spec-driven-development/" title="What Is Spec-Driven Development? The Spec as Source of Truth">What Is Spec-Driven Development? The Spec as Source of Truth</a> — the canonical SDD definition explaining how feature specs complement decision records: both make intent durable, at different levels of the system</li>
+<li><a href="https://www.glukhov.org/ai-devtools/vibe-coding/spec-driven-development-vs-vibe-coding/" title="Spec-Driven Development vs Vibe Coding -- Is This Just Waterfall Coming Back?">Spec-Driven Development vs Vibe Coding: Waterfall?</a> — when to use SDD and when to stay with faster, looser workflows</li>
+<li><a href="https://www.glukhov.org/app-architecture/" title="App Architecture in Production: Integration Patterns, Code Design, and Data Access">App Architecture in Production: Integration Patterns, Code Design, and Data Access</a> — the cluster home covering integration, testing, data access, and software documentation patterns</li>
+<li><a href="https://www.glukhov.org/ai-devtools/openspec/handling-rejected-proposals/" title="OpenSpec Rejected Proposals: A Decision Memory Convention">OpenSpec Rejected Proposals: A Decision Memory Convention</a> — applying this decision-record pattern specifically inside OpenSpec&rsquo;s change archive</li>
+<li><a href="https://www.glukhov.org/knowledge-management/ai-augmented-knowledge/ai-for-knowledge-management-workflows/" title="AI for Knowledge Management: Real Workflows That Hold Up">AI for Knowledge Management: Real Workflows That Hold Up</a> — practical AI-augmented knowledge workflows that complement the decision-record practice</li>
+</ul>
+		</div>
+		<footer class="post__footer">
+
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M4 0h8s2 0 4 2l15 15s2 2 0 4L21 31s-2 2-4 0L2 16s-2-2-2-4V3s0-3 4-3m3 10a3 3 0 0 0 0-6 3 3 0 0 0 0 6"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/architecture/" rel="tag">architecture</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/ai-coding/" rel="tag">AI Coding</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/documentation/" rel="tag">documentation</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="/tags/markdown/" rel="tag">markdown</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article><section class="post-subscribe">
+		<h2 class="post-subscribe__title">Subscribe</h2>
+		<p class="post-subscribe__lead">Get new posts on AI systems, Infrastructure, and AI engineering.</p>
+
+<form
+  action="https://buttondown.com/api/emails/embed-subscribe/rosgluk"
+  method="post"
+  class="subscribe-form"
+>
+  <input type="hidden" name="embed" value="1" />
+
+  <div class="subscribe-form__row">
+    <label for="bd-email-post-bottom" class="subscribe-form__label">Email</label>
+    <input
+      id="bd-email-post-bottom"
+      type="email"
+      name="email"
+      placeholder="you@example.com"
+      required
+      class="subscribe-form__input"
+    />
+  </div>
+
+
+
+  <input type="hidden" name="metadata__language" value="en" />
+  <input type="hidden" name="metadata__source" value="post-bottom" />
+  <input type="hidden" name="metadata__subscription" value="weekly" />
+
+  <input type="hidden" name="metadata__topic" value="app-architecture" />
+
+
+  <button type="submit" class="subscribe-form__button">Subscribe</button>
+</form>
+
+
+	</section>
+</main>
+
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Rost Glukhov avatar" src="/img/ava-90x90.jpg" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Rost Glukhov</span>
+	</div>
+	<div class="authorbox__description">
+		Rost Glukhov is a polyglot developer, has a special interest in web, mobile, backend, AI, devops and other areas. For more details have a look at the <a href="https://www.glukhov.org/about/" title="About Rost Glukhov">About page</a>. For partnership and sponsored content inquiries, see <a href="/sponsored/">Partnerships</a>.
+	</div>
+</div>
+
+<nav class="pager flex">
+	<div class="pager__item pager__item--prev">
+		<a class="pager__link" href="/app-architecture/code-architecture/go-error-handling-architecture/" rel="prev">
+			<span class="pager__subtitle">«&thinsp;Previous</span>
+			<p class="pager__title">Go Error Handling Architecture: Boundaries and Patterns</p>
+		</a>
+	</div>
+	<div class="pager__item pager__item--next">
+		<a class="pager__link" href="/app-architecture/documentation/what-is-spec-driven-development/" rel="next">
+			<span class="pager__subtitle">Next&thinsp;»</span>
+			<p class="pager__title">What Is Spec-Driven Development? The Spec as Source of Truth</p>
+		</a>
+	</div>
+</nav>
+
+
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<input class="widget-search__field" type="search" placeholder="Search…" value="" name="q" aria-label="Search…">
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="https://www.glukhov.org/">
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/app-architecture/api-architecture/go-web-frameworks-stdlib-chi-gin-echo-fiber/">Go Web Frameworks in 2026: net/http, chi, Gin, Echo, Fiber Compared</a></li>
+			<li class="widget__item"><a class="widget__link" href="/web-infrastructure/newsletters/best-newsletter-platforms/">Best Newsletter Platforms in 2026: Pricing, Hosting and SEO</a></li>
+			<li class="widget__item"><a class="widget__link" href="/web-infrastructure/wordpress/wordpress-seo-plugins-compared/">WordPress SEO Plugins Compared: Yoast to Local AI</a></li>
+			<li class="widget__item"><a class="widget__link" href="/web-infrastructure/seo/self-hosted-seo-tools-and-platforms/">Self-Hosted SEO Tools and Platforms: Open Source Guide</a></li>
+			<li class="widget__item"><a class="widget__link" href="/ai-devtools/gstack/">gstack: AI Software Engineering Stack</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/tags/ai/" title="AI">AI</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ai-coding/" title="AI Coding">AI Coding</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ai-agents/" title="AI Agents">AI Agents</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/alerting/" title="Alerting">Alerting</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/anaconda/" title="Anaconda">Anaconda</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/android/" title="Android">Android</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/api/" title="API">API</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/architecture/" title="Architecture">Architecture</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/aws/" title="AWS">AWS</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/aws-amplify/" title="AWS Amplify">AWS Amplify</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/backup/" title="Backup">Backup</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/bash/" title="Bash">Bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cheatsheet/" title="Cheatsheet">Cheatsheet</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cloud/" title="Cloud">Cloud</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/coding/" title="Coding">Coding</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/community/" title="Community">Community</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cookbook/" title="Cookbook">Cookbook</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/cursor/" title="Cursor">Cursor</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/data/" title="Data">Data</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/database/" title="Database">Database</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/deeplearning/" title="Deeplearning">Deeplearning</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/dev/" title="Dev">Dev</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/devops/" title="DevOps">DevOps</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/dgx-spark/" title="DGX Spark">DGX Spark</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/digital-detox/" title="Digital Detox">Digital Detox</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/docker/" title="Docker">Docker</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/documentation/" title="Documentation">Documentation</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/embeddings/" title="Embeddings">Embeddings</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/filofax/" title="Filofax">Filofax</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/flutter/" title="Flutter">Flutter</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/garage/" title="Garage">Garage</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/git/" title="Git">Git</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gitea/" title="Gitea">Gitea</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/github/" title="GitHub">GitHub</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/go/" title="Go">Go</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/golang/" title="Golang">Golang</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/gpu/" title="GPU">GPU</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/grafana/" title="Grafana">Grafana</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hardware/" title="Hardware">Hardware</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hermes/" title="Hermes">Hermes</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hosting/" title="Hosting">Hosting</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/hugo/" title="Hugo">Hugo</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/images/" title="Images">Images</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/infrastructure/" title="Infrastructure">Infrastructure</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/integration/" title="Integration">Integration</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/javascript/" title="JavaScript">JavaScript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/k8s/" title="K8s">K8s</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/knowledge-management/" title="Knowledge-Management">Knowledge-Management</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/kubernetes/" title="Kubernetes">Kubernetes</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/labelstudio/" title="LabelStudio">LabelStudio</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/latex/" title="Latex">Latex</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/linux/" title="Linux">Linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/llama.cpp/" title="Llama.cpp">Llama.cpp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/llamacpp/" title="Llamacpp">Llamacpp</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/llm/" title="LLM">LLM</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/logging/" title="Logging">Logging</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/logseq/" title="Logseq">Logseq</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/machine-learning/" title="Machine Learning">Machine Learning</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mainroad/" title="Mainroad">Mainroad</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/markdown/" title="Markdown">Markdown</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/melbourne/" title="Melbourne">Melbourne</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/microservices/" title="Microservices">Microservices</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/minio/" title="Minio">Minio</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/mmdetection/" title="Mmdetection">Mmdetection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/monitoring/" title="Monitoring">Monitoring</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/node.js/" title="Node.js">Node.js</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/nvidia/" title="NVIDIA">NVIDIA</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/objectdetection/" title="ObjectDetection">ObjectDetection</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/observability/" title="Observability">Observability</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/obsidian/" title="Obsidian">Obsidian</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/offline/" title="Offline">Offline</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ollama/" title="Ollama">Ollama</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/open-source/" title="Open Source">Open Source</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openai/" title="Openai">Openai</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/openclaw/" title="Openclaw">Openclaw</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/opencode/" title="Opencode">Opencode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/performance/" title="Performance">Performance</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/perplexica/" title="Perplexica">Perplexica</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/postgresql/" title="PostgreSQL">PostgreSQL</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/printing/" title="Printing">Printing</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/privacy/" title="Privacy">Privacy</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/prometheus/" title="Prometheus">Prometheus</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/python/" title="Python">Python</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/pytorch/" title="PyTorch">PyTorch</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/rag/" title="RAG">RAG</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/s3/" title="S3">S3</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/security/" title="Security">Security</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/self-hosting/" title="Self-Hosting">Self-Hosting</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/selfhosting/" title="SelfHosting">SelfHosting</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/seo/" title="SEO">SEO</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/serverless/" title="Serverless">Serverless</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sql/" title="SQL">SQL</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/terraform/" title="Terraform">Terraform</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/typescript/" title="TypeScript">TypeScript</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/ubuntu/" title="Ubuntu">Ubuntu</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vector-database/" title="Vector Database">Vector Database</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vector-databases/" title="Vector Databases">Vector Databases</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vllm/" title="VLLM">VLLM</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vs-code/" title="VS Code">VS Code</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/vscode/" title="VSCode">VSCode</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/web-hosting/" title="Web Hosting">Web Hosting</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/wiki/" title="Wiki">Wiki</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/windows/" title="Windows">Windows</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+
+<div class="footer__links">
+	<a class="footer__link" href="/contact/">Contact</a> | <a class="footer__link" href="/privacy/">Privacy Policy</a> | <a class="footer__link" href="/sponsored/">Sponsored Technical Contributions</a> | <a class="footer__link" href="/terms/">Terms and Conditions</a>
+</div>
+		<div class="footer__copyright">
+			&copy; 2026 Rost Glukhov.
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'default' });
+</script>
+</body>
+</html>

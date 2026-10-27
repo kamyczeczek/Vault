@@ -1,0 +1,68 @@
+{
+ "id": "q011",
+ "question": "Czym jest „binary chop” w kontekście debugowania i w jakich trzech sytuacjach książka zaleca jego stosowanie?",
+ "type": "factual + procedure",
+ "header": "Definicja + procedura (factual, single-topic)",
+ "gold_topics": [
+  20
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "You can try looking at the place it crashes and work backwards. But sometimes it's easier to start with the data. Get a copy of the dataset and feed it through a locally running copy of the app, making sure it still crashes. Then binary chop the data until you isolate exactly which input values are leading to the crash.\n\n##### **Regressions Across Releases**\n\nYou're on a good team, and you release your software into production. At some point a bug pops up in code that worked OK a week ago. Wouldn't it be nice if you could identify the specific change that introduced it? Guess what? Binary chop time.\n\n#### **THE BINARY CHOP**"
+  },
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "Every CS undergraduate has been forced to code a binary chop (sometimes called a binary search). The idea is simple. You're looking for a particular value in a sorted array. You could just look at each value in turn, but you'd end up looking at roughly half the entries on average until you either found the value you wanted, or you found a value greater than it, which would mean the value's not in the array."
+  },
+  {
+   "topic": 39,
+   "topic_title": "Algorithm Speed",
+   "chapter": 7,
+   "page_book": 343,
+   "text": "We coded a set of simple sort routines[54] in Rust. Run them on various machines available to you. Do your figures follow the expected curves? What can you deduce about the relative speeds of your machines? What are the effects of various compiler optimization settings?\n\n#### **Exercise 29** <u>(possible answer)</u>\n\nIn _<u>Common Sense Estimation</u>_ <u>, we claimed that a binary chop is</u> <mark>.</mark> Can you prove this?\n\n#### **Exercise 30** <u>(possible answer)</u>\n\nIn Figure 3, _<u>Runtimes of various algorithms</u>_ , we claimed that is the same as (or indeed logarithms to any base). Can\n\nyou explain why?"
+  },
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "But it's faster to use a _divide and conquer_ approach. Choose a value in the middle of the array. If it's the one you're looking for, stop. Otherwise you can chop the array in two. If the value you find is greater than the target then you know it must be in the first half of the array, otherwise it's in the second half. Repeat the procedure in the appropriate subarray, and in no time you'll have a result. (As we'll see when we talk about _<u>Big-O Notation</u>_ <u>,</u> a linear search is , and a binary chop is <mark>)</mark> .\n\nSo, the binary chop is way, way faster on any decent sized problem. Let's see how to apply it to debugging."
+  },
+  {
+   "topic": 39,
+   "topic_title": "Algorithm Speed",
+   "chapter": 7,
+   "page_book": 343,
+   "text": "If you nest a loop inside another, then your algorithm becomes <mark>,</mark> where and are the two loops' limits. This commonly occurs in simple sorting algorithms, such as bubble sort, where the outer loop scans each element in the array in turn, and the inner loop works out where to place that element in the sorted result. Such sorting <mark>.</mark> algorithms tend to be\n\n##### _Binary chop_\n\nIf your algorithm halves the set of things it considers each time around the loop, then it is likely to be logarithmic,\n\n<mark>.</mark> A binary search of a sorted list, traversing a binary tree, and finding the first set bit in a machine word can all be <mark>.</mark>\n\n_Divide and conquer_"
+  },
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "**Topic 20**\n\n#### Debugging\n\n_It is a painful thing To look at your own trouble and know That you yourself and no one else has made it_\n\n_Sophocles, Ajax_\n\nThe word _bug_ has been used to describe an \"object of terror'' ever since the fourteenth century. Rear Admiral Dr. Grace Hopper, the inventor of COBOL, is credited with observing the first _computer bug_ —literally, a moth caught in a relay in an early computer system. When asked to explain why the machine wasn't behaving as intended, a technician reported\n\nthat there was \"a bug in the system,\" and dutifully taped it— wings and all—into the log book."
+  },
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "Sometimes you're looking at a stack trace that seems to scroll on forever. In this case, there's often a quicker way to find the problem than examining each and every stack frame: use a _binary chop_ . But before we discuss that, let's look at two other common bug scenarios.\n\n##### **Sensitivity to Input Values**\n\nYou've been there. Your program works fine with all the test data, and survives its first week in production with honor. Then it suddenly crashes when fed a particular dataset."
+  },
+  {
+   "topic": 27,
+   "topic_title": "Don’t Outrun Your Headlights",
+   "chapter": 4,
+   "page_book": 222,
+   "text": "Around the time of the first edition of _The Pragmatic Programmer_ , debate raged in computer magazines and online forums over the burning question: \"Who would win the desktop GUI wars, Motif or OpenLook?\"[36] It was the wrong question. Odds are you've probably never heard of these technologies as neither \"won\" and the browser-centric web quickly dominated the landscape.\n\n**Tip 43**\n\n#### Avoid Fortune-Telling\n\nMuch of the time, tomorrow looks a lot like today. But don't count on it.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 12, _Tracer Bullets_\n\nTopic 13, _Prototypes and Post-it Notes_\n\nTopic 40, _Refactoring_\n\nTopic 41, _Test to Code_\n\nTopic 48, _The Essence of Agility_\n\nTopic 50, _<u>Coconuts Don't Cut It</u>_\n\n###### **Footnotes**"
+  }
+ ]
+}

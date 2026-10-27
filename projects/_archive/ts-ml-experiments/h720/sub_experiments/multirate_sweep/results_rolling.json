@@ -1,0 +1,269 @@
+{
+  "slice": "S-10-rolling",
+  "protocol": "frozen fit on train.csv; 2,161 stride-1 origins; identical windows to every rolling-scored config",
+  "results": [
+    {
+      "model": "multirate_R1_eq_parent",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.3092,
+      "rolling_rmse": 2.8046,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5923309463548625,
+          "rmse": 1.9823129280190273
+        },
+        "window_2": {
+          "mae": 1.8145564224871475,
+          "rmse": 2.236046049143698
+        },
+        "window_3": {
+          "mae": 1.6619488768935646,
+          "rmse": 2.2672602806133835
+        },
+        "window_4": {
+          "mae": 2.1615466427691765,
+          "rmse": 2.872775949016963
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "multirate_R1_4",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.2835,
+      "rolling_rmse": 2.7838,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.540335312545871,
+          "rmse": 1.9239890825576371
+        },
+        "window_2": {
+          "mae": 1.3004798604022205,
+          "rmse": 1.6826753024765007
+        },
+        "window_3": {
+          "mae": 1.7322510348513553,
+          "rmse": 2.317997467723534
+        },
+        "window_4": {
+          "mae": 2.9377648864735573,
+          "rmse": 3.6913366568379478
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "multirate_R1_2",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.2819,
+      "rolling_rmse": 2.7787,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6478771239823542,
+          "rmse": 2.0369058704864016
+        },
+        "window_2": {
+          "mae": 2.257715948126053,
+          "rmse": 2.6730382695657187
+        },
+        "window_3": {
+          "mae": 1.6672065744126843,
+          "rmse": 2.278717701393743
+        },
+        "window_4": {
+          "mae": 2.2113534847320158,
+          "rmse": 2.8881591947440968
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "multirate_R1_2_4",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.2744,
+      "rolling_rmse": 2.7743,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5945709836621487,
+          "rmse": 1.9741719568393505
+        },
+        "window_2": {
+          "mae": 1.656963423723542,
+          "rmse": 2.0671429507013874
+        },
+        "window_3": {
+          "mae": 1.7075478373436592,
+          "rmse": 2.3011797523095985
+        },
+        "window_4": {
+          "mae": 2.678306764078503,
+          "rmse": 3.4100186668275816
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "multirate_R1_2_4_8_168",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.4634,
+      "rolling_rmse": 2.9917,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5621523221618179,
+          "rmse": 1.957282901475402
+        },
+        "window_2": {
+          "mae": 1.6028649701226245,
+          "rmse": 1.948604290792242
+        },
+        "window_3": {
+          "mae": 1.6908138549788494,
+          "rmse": 2.2953708683579555
+        },
+        "window_4": {
+          "mae": 2.856798461667049,
+          "rmse": 3.555589653609749
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "multirate_R1_4_h128",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.3122,
+      "rolling_rmse": 2.814,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6471043428056609,
+          "rmse": 2.0739791991241954
+        },
+        "window_2": {
+          "mae": 1.634263845926733,
+          "rmse": 2.039650686069453
+        },
+        "window_3": {
+          "mae": 1.7987738892253635,
+          "rmse": 2.407827655543971
+        },
+        "window_4": {
+          "mae": 2.827722601516751,
+          "rmse": 3.580476862221463
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h64_full_fastlags",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.3092,
+      "rolling_rmse": 2.8046,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5923309463548625,
+          "rmse": 1.9823129280190273
+        },
+        "window_2": {
+          "mae": 1.8145564224871475,
+          "rmse": 2.236046049143698
+        },
+        "window_3": {
+          "mae": 1.6619488768935646,
+          "rmse": 2.2672602806133835
+        },
+        "window_4": {
+          "mae": 2.1615466427691765,
+          "rmse": 2.872775949016963
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "daily",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.5491,
+      "rolling_rmse": 3.112,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6720180662969748,
+          "rmse": 2.171948042164322
+        },
+        "window_2": {
+          "mae": 1.9042791694402694,
+          "rmse": 2.3712428720780094
+        },
+        "window_3": {
+          "mae": 1.8620638797266615,
+          "rmse": 2.5054643959241902
+        },
+        "window_4": {
+          "mae": 2.919241687407096,
+          "rmse": 3.6344442181063386
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "persistence",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.5985,
+      "rolling_rmse": 3.1282,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7952457486755318,
+          "rmse": 2.2503347360867134
+        },
+        "window_2": {
+          "mae": 2.1462069739898046,
+          "rmse": 2.6324969775393976
+        },
+        "window_3": {
+          "mae": 1.7779138766643074,
+          "rmse": 2.3889429847551824
+        },
+        "window_4": {
+          "mae": 2.180211087150706,
+          "rmse": 2.8509213353302125
+        }
+      },
+      "status": "ok"
+    }
+  ],
+  "t0_cross_check": {
+    "multirate_R1_eq_parent": {
+      "mae": 1.5923,
+      "rmse": 1.9823
+    },
+    "multirate_R1_4": {
+      "mae": 1.5403,
+      "rmse": 1.924
+    },
+    "multirate_R1_2": {
+      "mae": 1.6479,
+      "rmse": 2.0369
+    },
+    "multirate_R1_2_4": {
+      "mae": 1.5946,
+      "rmse": 1.9742
+    },
+    "multirate_R1_2_4_8_168": {
+      "mae": 1.5622,
+      "rmse": 1.9573
+    },
+    "multirate_R1_4_h128": {
+      "mae": 1.6471,
+      "rmse": 2.074
+    },
+    "elm_h64_full_fastlags": {
+      "mae": 1.5923,
+      "rmse": 1.9823
+    },
+    "daily": {
+      "mae": 1.672,
+      "rmse": 2.1719
+    },
+    "persistence": {
+      "mae": 1.7952,
+      "rmse": 2.2503
+    }
+  }
+}

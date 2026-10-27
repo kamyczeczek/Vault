@@ -1,0 +1,68 @@
+{
+ "id": "q014",
+ "question": "Książka radzi, żeby na początku projektu zebrać pełne wymagania, zapisać je w szczegółowym dokumencie i dać klientowi do podpisania, żeby uniknąć późniejszych zmian. Czy to prawidłowe?",
+ "type": "false-premise",
+ "header": "False-premise (test korekty)",
+ "gold_topics": [
+  45
+ ],
+ "input_stage_hit": false,
+ "chunks": [
+  {
+   "topic": 27,
+   "topic_title": "Don’t Outrun Your Headlights",
+   "chapter": 4,
+   "page_book": 222,
+   "text": "Around the time of the first edition of _The Pragmatic Programmer_ , debate raged in computer magazines and online forums over the burning question: \"Who would win the desktop GUI wars, Motif or OpenLook?\"[36] It was the wrong question. Odds are you've probably never heard of these technologies as neither \"won\" and the browser-centric web quickly dominated the landscape.\n\n**Tip 43**\n\n#### Avoid Fortune-Telling\n\nMuch of the time, tomorrow looks a lot like today. But don't count on it.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 12, _Tracer Bullets_\n\nTopic 13, _Prototypes and Post-it Notes_\n\nTopic 40, _Refactoring_\n\nTopic 41, _Test to Code_\n\nTopic 48, _The Essence of Agility_\n\nTopic 50, _<u>Coconuts Don't Cut It</u>_\n\n###### **Footnotes**"
+  },
+  {
+   "topic": 11,
+   "topic_title": "Reversibility",
+   "chapter": 2,
+   "page_book": 104,
+   "text": "- Topic 19, _Version Control_\n\n- Topic 28, _Decoupling_\n\n- Topic 45, _The Requirements Pit_\n\n- Topic 51, _Pragmatic Starter Kit_\n\n#### **CHALLENGES**"
+  },
+  {
+   "topic": 9,
+   "topic_title": "DRY—The Evils of Duplication",
+   "chapter": 2,
+   "page_book": 79,
+   "text": "Topic 8, _The Essence of_ _<u>Good Design</u>_\n\n- Topic 28, _Decoupling_\n\n- Topic 32, _<u>Configuration</u>_\n\n- Topic 38, _Programming by_ _<u>Coincidence</u>_\n\n- Topic 40, _Refactoring_"
+  },
+  {
+   "topic": 52,
+   "topic_title": "Delight Your Users",
+   "chapter": 9,
+   "page_book": 462,
+   "text": "#### **RELATED SECTIONS INCLUDE**\n\n- Topic 12, _Tracer Bullets_\n\n- Topic 13, _Prototypes and Post-it Notes_\n\n- Topic 45, _The Requirements Pit_"
+  },
+  {
+   "topic": 4,
+   "topic_title": "Stone Soup and Boiled Frogs",
+   "chapter": 1,
+   "page_book": 46,
+   "text": "Note that the frog's problem is different from the broken windows issue discussed in Topic 3, _<u>Software Entropy</u>_ . In the Broken Window Theory, people lose the will to fight entropy because they perceive that no one else cares. The frog just doesn't notice the change.\n\nDon't be like the fabled frog. Keep an eye on the big picture. Constantly review what's happening around you, not just what you personally are doing.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 1, _It's Your Life_\n\n##### Topic 38, _Programming by_ _<u>Coincidence</u>_\n\n#### **CHALLENGES**"
+  },
+  {
+   "topic": 49,
+   "topic_title": "Pragmatic Teams",
+   "chapter": 9,
+   "page_book": 437,
+   "text": "Teams as a whole should not tolerate broken windows—those small imperfections that no one fixes. The team _must_ take responsibility for the quality of the product, supporting developers who understand the _no broken windows_ philosophy we describe in Topic 3, _<u>Software Entropy</u>_ , and encouraging those who haven't yet discovered it.\n\nSome team methodologies have a \"quality officer\"—someone to whom the team delegates the responsibility for the quality of the deliverable. This is clearly ridiculous: quality can come only from the individual contributions of _all_ team members. Quality is built in, not bolted on.\n\n#### **BOILED FROGS**"
+  },
+  {
+   "topic": 8,
+   "topic_title": "The Essence of Good Design",
+   "chapter": 2,
+   "page_book": 75,
+   "text": "Second, treat this as a way to develop instincts. Note the situation in your engineering day book: the choices you have, and some guesses about change. Leave a tag in the source. Then, later, when this code has to change, you'll be able to look back and give yourself feedback. It might help the next time you reach a similar fork in the road.\n\nThe rest of the sections in this chapter have specific ideas on design, but all are motivated by this one principle.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 9, _DRY—The Evils of Duplication_\n\n- Topic 10, _<u>Orthogonality</u>_\n\n- Topic 11, _Reversibility_\n\n- Topic 14, _Domain Languages_\n\n- Topic 28, _Decoupling_\n\n- Topic 30, _Transforming Programming_\n\n- Topic 31, _Inheritance Tax_\n\n#### **CHALLENGES**"
+  },
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "Remember, if you see hoof prints, think horses—not zebras. The OS is probably not broken. And select is probably just fine."
+  }
+ ]
+}

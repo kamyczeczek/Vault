@@ -1,0 +1,14 @@
+{
+  "model_id": "amazon/chronos-bolt-base",
+  "model_revision": "main",
+  "model_hash": "amazon/chronos-bolt-base@main#54823f9d1fca",
+  "lora_r": 8,
+  "lora_alpha": 16,
+  "lora_dropout": 0.1,
+  "target_modules": [
+    "q",
+    "v"
+  ],
+  "context_length": 336,
+  "is_stub": true
+}

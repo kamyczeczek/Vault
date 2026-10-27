@@ -1,0 +1,1219 @@
+Introduction to AI Planning
+Marco Aiello and Ilche Georgievski
+Service Computing Department, University of Stuttgart
+firstname.lastname@iaas.uni-stuttgart.de
+December 17, 2024
+Abstract
+These are notes for lectures presented at the University of Stuttgart that provide an introduction to key concepts and techniques in AI Planning. Artificial Intelligence Planning, also
+known as Automated Planning, emerged somewhere in 1966 from the need to give autonomy to a
+wheeled robot. Since then, it has evolved into a flourishing research and development discipline,
+often associated with scheduling. Over the decades, various approaches to planning have been
+developed with characteristics that make them appropriate for specific tasks and applications.
+Most approaches represent the world as a state within a state transition system; then the planning
+problem becomes that of searching a path in the state space from the current state to one which
+satisfies the goals of the user.
+The notes begin by introducing the state model and move on to exploring classical planning,
+the foundational form of planning, and present fundamental algorithms for solving such problems.
+Subsequently, we examine planning as a constraint satisfaction problem, outlining the mapping
+process and describing an approach to solve such problems. The most extensive section is dedicated to Hierarchical Task Network (HTN) planning, one of the most widely used and powerful
+planning techniques in the field. The lecture notes end with a bonus chapter on the Planning Domain Definition (PDDL) Language, the de facto standard syntax for representing non-hierarchical
+planning problems.
+©2024 Marco Aiello & Ilche Georgievski. All rights reserved. This work is posted on arXiv under a
+non-exclusive license to distribute. Permission for reuse beyond personal purposes must be obtained
+from the authors.
+1
+arXiv:2412.11642v1 [cs.AI] 16 Dec 2024
+Contents
+1 State Model 3
+2 Classical Planning 5
+2.1 Complexity of Classical Planning . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+2.2 Planning Algorithms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+3 Planning as CSP 10
+3.1 CSP . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+3.2 From Planning Problems to CSPs . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+3.3 Complexity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+3.4 Algorithms . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+4 HTN Planning 14
+4.1 Concepts . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4.1.1 Task decomposition . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+4.1.2 Search space . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+4.1.3 Constraints . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+4.1.4 Commitment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+4.1.5 Constraint posting . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+4.1.6 Task interactions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+4.1.7 Explicit conditions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+4.2 Complexity . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+5 Bonus: PDDL 21
+5.1 Domain Description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+5.2 Problem Description . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+5.3 Types . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+5.4 STRIPS subset . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+2
+1 State Model
+To achieve goal-oriented behaviour, AI Planning systems choose available actions to change the state
+of the environment in order to satisfy the goal of their user. In this sense, the state model is a fitting
+representation. It is a standard model in AI defined over a state space, that is, a set of states and
+a set of actions that deterministically map each state to another one, extended with a single initial
+state and a non-empty set of goal states [1]. If systems employing the state model have complete
+knowledge about the states, then the state model is fully observable. The concept of a state model is
+also the one that most planning approaches rely on.
+A state model M consists of five components:
+• S is a finite set of states,
+• s0 ∈ S is the initial state,
+• SG ⊆ S is the set of goal states,
+• A is a finite set of actions,
+• δ : S×A → S is a deterministic transition function.
+M may be represented by a labelled directed graph whose vertices are the states in S. The
+graph contains an edge from s to s
+′
+if and only if s
+′ ∈ δ(s,a), with a ∈ A. Each arc is called a state
+transition.
+in
+no_keys
+locked
+in
+ keys
+locked
+in
+keys
+open
+in
+no_keys
+open
+out
+no_keys
+locked
+out
+keys
+locked
+out
+keys
+open
+out
+no_keys
+open
+get_keys
+open_door
+leave
+leave
+get_keys
+open_door open_door
+get_keys
+Figure 1: An example of a state model.
+3
+Example. Consider a simple pervasive computing scenario where there is a set of keys with
+an active tag, a person and a home with a door. The person can be inside or outside the home.
+The door can be closed and locked or open, and the keys can be in the possession of the person
+or not. A state model for this example is the following one.
+• S = {(in,no keys,locked),(in, keys,locked),...,(out,no keys,open)} in other terms, the
+states are all possible combinations of three boolean variables: |S| = 2
+3
+• s0 = (in,no keys,locked) is the initial state,
+• SG = {(out, keys,locked),(out, keys,open)} is the set of two goal states,
+• A = {get keys,open door,leave,drop keys, close door, enter,lock door,
+unlock door} is the set of actions,
+• δ : {(in, keys,locked)· open door → (in, keys,open),...} is the transition function. The
+full set of functions and states is shown in a graphical form in Figure 1. The starting
+state is circled in green, while the two goal states are circled in thick black. Furthermore
+the transtions are indicated by a double-headed arrow representing both the action and its
+inverse, e.g., get keys and drop keys.
+The figure shows only arrows for the actions in δ. The actions shown in italic are human actions, i.e., enter/leave, get/drop keys while all others are device operations. For
+each action, its inverse is also in δ, e.g., get keys−1 = drop keys, therefore the doubleheaded arrows. Parallel actions are not possible, that means that one cannot go from
+(in, keys,open) → (out,no keys,open) as this would entail both dropping the keys and
+leaving the home in one state transition.
+The state model M is deterministic, meaning that for every pair of a state s and an action a,
+δ(s,a) is either empty or returns a single state. An action a is applicable to state s if δ(s,a) returns
+a state. Thus, the application of a to a state s results in a deterministic system being in the state
+s
+′ = δ(s,a), or equivalently s
+′ = s[a]. The system stays in the same state until another action is
+applied. This implies that no events are allowed to change the state of the system outside of the set
+of actions defined in M. We then say that the state model is static.
+Once a state model is defined, it is often the practice to formulate a ‘solution’ or ‘plan’ for
+such a state model. While the state model may be intrinsically linked to some problem, it does not
+require a solution of any kind. What can be actually described is a trajectory of states that, through
+actions, leads from an initial state to a final state that is also a goal state. Such a trajectory may then
+correspond to a solution to any problem defined over the state model.
+Given an initial state s0, a sequence of states s0,...,sn+1 is called a solving trajectory if and only
+if there exists an action ai such that si+1 = si
+[ai
+], and sn+1 ∈ SG.
+Example. The action open is applicable to state (in, keys,locked), as the user has the keys
+and the door is locked. Other actions are not applicable, e.g., it is not possible to open the door
+without the keys, transition (in,no keys,locked) → (in,no keys,open). A path of applicable
+actions from the initial state to a final state, that is, a solution is, for example, s0[get keys,
+open door,leave].
+The simplest problem of planning for a state model M is to choose which actions to apply to
+which states in order to transition from the given initial state to one of the goal states. A solution to
+such a problem is a sequence of actions a1,...,an corresponding to a solving trajectory in M. The
+structure holding the solution to the problem is called a plan, often denoted by π.
+4
+State models for a particular domain are usually built by explicitly defining the entire state space,
+that is, enumerating all possible states and state transitions. This becomes infeasible in practice for
+most real applications as the size and complexity of state models increase. A better approach is to
+define the state models implicitly by using a representation in which a state consists of a collection
+of variables. The actions, their applicability, and the transition function are then defined in terms of
+these variables.
+2 Classical Planning
+The state model M introduced in Section 1 implies complete knowledge, that is, the model is fully
+observable. The application of an action in a given state always leads to one state only – the model is
+deterministic. Finally, a state cannot be changed by any dynamics other than the actions given in the
+state model – the model is static. Planning for a state model that is fully observable, deterministic,
+and static is called classical planning. The term classical planning refers to planning approaches
+that restrict the view of the world over which planning is performed. As a result, classical planning
+relies on several assumptions that simplify the state model [2]. These are:
+• environments have a finite set of states,
+• the initial state is complete and fully observable,
+• actions are deterministic,
+• environment states change only by executing actions,
+• goals are either satisfied or not by plans,
+• plans are ordered sequences of actions, and
+• there is no explicit representation of time.
+In contrast, non-classic planning approaches relax these assumptions and incorporate a wider
+range of properties describing actual environments. For example, modern planning approaches are
+able to deal with states that are not fully observable or with actions whose application can nondeterministically bring a system to several possible states. Therefore, much work has focused on
+developing planning approaches that relax one or more of these assumptions by allowing incomplete
+knowledge about the initial state, partially observable states, non-deterministic actions, actions with
+conditional effects, preferences, and extended goals, partially ordered plans, durative actions, and so
+on.
+Historical Note. Shakey, the name of the first known developed robot, used various programs for perception, modelling of the environment, and problem-solving. The main component used for problem-solving is the STRIPS planner, which is an automated planner developed
+in 1971 at the Stanford Research Institute. The planner is considered one of the first planning algorithms and representations [3]. The name of the planner is derived from the STanford
+Research Institute Problem Solver. STRIPS actions for Shakey involved moving from one location to another, changing the robot’s direction, blocking and unblocking doors with objects,
+and pushing movable objects to particular locations.
+The STRIPS representation, or STRIPS language, is used to refer to the formal language
+describing the input to the planner. The original version of STRIPS language was based on
+first-order logic, which provided for serious challenges in relation to the interpretation of the
+STRIPS operator descriptions [4]. The language was later simplified and reduced to propositional logic [1].
+A common way of defining state models underlying classical planning problems is by using the
+STRIPS language. We use the version of STRIPS representation as assumed in the definition of the
+STRIPS subset of PDDL rather than the original version to define a classical planning problem.
+5
+Definition 1 (Classical planning problem) A classical planning problem P is a tuple ⟨F,O,I,G⟩,
+where
+• F is a set of atoms,
+• O is a set of operators each of which is of the form ⟨pre(o),add(o),del(o)⟩, where pre(o) are
+preconditions, add(o) and del(o) are add and delete lists, respectively, and pre(o),add(o),del(o) ⊆
+F,
+• I ⊆ F is the initial state,
+• G ⊆ F is the goal state.
+Notice that now the initial state is a set of atoms defining a unique state in the domain, while the
+goal state is the one for which the set of atoms in G are true.
+The state model underlying the classical planning problem is implicitly described by the STRIPS
+representation. More formally, a classical planning problem P = ⟨F,O,I,G⟩ implicitly describes a
+state model MP = ⟨S,s0,SG,A,δ⟩, where
+• the states s ∈ S are collections of atoms from F,
+• the initial state s0 is I,
+• the goal states s ∈ SG are such that G ⊆ s,
+• the actions a ∈ A are the operators o ∈ O such that pre(o) ⊆ s for δ(s,a),
+• the transition function δ maps states s into states s
+′ = (s∪add(a)) \ del(a) for a ∈ A.
+Before we provide a definition of the solution to a classical planning problem, we define the
+application of a sequence of operators o1,...,on to a state s as
+s[] = s
+s[o1,...,on] = (s[o1,...,on−1])[on]
+Example. Take the example presented in Figure 1 and let us now model it as a classical
+planning problem. We have that:
+• F = {Inside(agent),Locked(door),Owns(key)};
+• O = {getKeys = ⟨¬Owns(key),Owns(key),¬Owns(key)⟩,
+unlock = ⟨{Locked(door),Owns(key)},¬Locked(door),Locked(door)⟩,
+exit = ⟨Inside(agent),¬Inside(agent),Inside(agent)⟩,...},
+• I = {Inside(agent),¬Owns(key),Locked(door)}, and
+• G = {¬Inside(agent),Owns(key)}.
+While a plan now becomes π = getKeys,unlock, exit. We notice that the preconditions to the
+getKeys actions are met by the initial state of the model, while unlock cannot act on the initial
+state, but it can on the outcome of the successful application of getKeys. More precisely, the application of getKeys to the initial state I, means the addition of owning the keys, making the state
+{Inside(agent),Owns(key),Locked(door)}, now the preconditions of unlock are met and it can
+be applied, bringing the state to {Inside(agent),Owns(key),
+¬Locked(door)}. Finally, the preconditions of exit are met, bringing the agent to a subset
+of the goal state {¬Inside(agent),Owns(key),¬Locked(door)}.
+6
+Given a classical planning problem, we are now in the position to define a solution to it.
+Definition 2 (Plan) Let P = ⟨F,O,I,G⟩ be a classical planning problem. The sequence of operators π = a1,...,an is a plan for P if each operator oi
+is applicable in oi
+, that is, pre(oi) ⊆ si
+, and
+the state resulting from the application of π from the initial state I contains the goal state G, that is,
+G ⊆ s[π].
+The plans for the problem P correspond to the solving trajectories of the state model MP.
+In practical applications, the domains can be quite large and complex. An example of application
+is from the logistics domain, particularly multi-modal transportation, where at least two means for
+transport are combined in order to move goods [5]. Consider that there is a truck used to move a
+container from one location to another. Before the move happens, the truck should be loaded, for
+which a load action is defined that specifies the truck to be used, the container to be loaded on that
+truck, and the location where the loading happens. If we assume that there are 250 trucks, 250
+containers, and 720 locations, then there are 250×250×720 = 45 million possible action instances
+only for the load action. Similar situations can be encountered in other applications, such as the
+Deep Space Mission of NASA, the game of bridge, video games, and so on. Searching for solutions
+to planning problems in such domains can be very expensive, if not unfeasible. It is important to
+know, at least from a theoretical point of view, the complexity of tasks related to planning in their
+various forms.
+2.1 Complexity of Classical Planning
+The worst-case complexity is a common way to get a general understanding of the feasibility and
+difficulty of solving a computational problem [6]. In our case, a representative problem to consider
+is that of finding a plan, if it exists. More formally, given a planning problem P, the plan existence
+problem or PlanEx(P) consists in finding whether there exists a plan that solves P. Given
+a planning problem P and an integer k, the bounded plan existence problem or PlanLen(P)
+consists of finding whether there is a plan of length at most k. PlanEx(P) and PlanLen(P)
+help in understanding the plan generation problem for P and its optimality in terms of number of
+actions in the plan, respectively.
+For classical planning, both plan existence problems are decidable. This means that we can
+construct an algorithm that checks whether a solution exists for any possible planning problem in
+the category of classical planning problems. This is guaranteed by the fact that the number of states
+is finite. However, if we add function symbols to the representation of planning problems, then the
+number of states can be infinite, and PlanEx(P) may become semidecidable. This means that
+we can construct an algorithm that terminates when a solution exists, but it may not terminate on
+planning problems that do not have a plan.
+In addition to knowing whether and in which cases the plan existence problems are solvable,
+one typically wants insight into how difficult it is to solve them or what resources are needed. In
+computational complexity, PSPACE defines a class of complex problems that can be solved by a
+deterministic Turing machine using a polynomial amount of space. The space here refers to the
+computer memory used by the computation. Problems with both plans’ existence fall into this
+category. Even more strongly, they are, in fact, PSPACE-complete [7]. A decision problem is
+PSPACE-complete if (i) it is using a polynomial amount of space (that is, it is in PSPACE) and
+(ii) every other decision problem in PSPACE can be transformed to it in polynomial time. In other
+words, PSPACE-complete problems can be solved in constant space and time. Note that PSPACEcomplete problems are the most difficult problems in PSPACE. Even if we reduce the complexity
+of planning problems by making restrictions on the operators, the decision problems remain difficult
+to solve in the worst case. For example, if we restrict operators to be without delete lists in effects,
+both problems become NP-hard. If we though remove negative preconditions, then PlanEx(P)
+can be solved in polynomial time.
+Such strong complexity results should, however, not discourage us. These are worst-case complexity and might say very little of the average case or the one most likely to occur for problems
+in a specific domain. The planning community typically also evaluates approaches in terms of their
+practical performance, often on a set of benchmark domains, regardless of the theoretical worst-case
+results.
+7
+function FORWARD-SEARCH(P = ⟨O, s0, g⟩)
+s ← s0
+π ← an empty plan
+loop
+if s satisfies g then return π
+applicableActions ← {a | a is a ground instance of an operation in O, and pre(a) is
+satisfied in s}
+if applicableActions = /0 then return failure
+non-deterministically choose an action a ∈ applicableActions
+s ← δ(s,a)
+append a to π
+Figure 2: A forward-search planning algorithm. It takes a planning problem P and looks for a
+sequence of actions that would solve the problem. It terminates when a solution is found or when no
+solutions exist. The algorithm is identical to the one presented in [2].
+2.2 Planning Algorithms
+Planning is the general process of going from the planning problem to its solution. The planner
+operates on a search space, with a search strategy, going through a potentially very large space or
+even the whole space in the worst case looking for solutions. The search space can be of several
+forms and structures, where the difficulty of the search increases with the intricacy and size of the
+space.
+There are many ways to find solutions to planning problems. The simplest way of solving planning problems is by using search algorithms whose search space is a subset of the state space. These
+are called state-based search algorithms. We briefly look at two state-based search algorithms,
+namely forward search and backward search.
+Forward search
+Forward search starts from the initial state and searches forward through the space of states in an
+attempt to find the goal state. Fig. 2 shows a forward search algorithm that can be used to solve a
+planning problem P. The algorithm is both sound, which means a plan returned by it is a solution
+to P, and complete, which means that if there is a solution to P, the algorithm will find it.
+Forward search is regarded as too inefficient in practice. There are two reasons for this, the first
+of which is that forward search also explores irrelevant actions. Consider the get-keys action and
+the goal (holds k1). Now suppose that there are 10 keys in total the user owns, all given in the
+initial state. So, we can bind 10 different values for the parameter ?k in get-keys, leading to 10
+possible instances of actions. The forward-search algorithm would need to try all these actions to
+find the one that leads to the goal.
+As second, planning problems often have large search spaces. Even for small planning problems,
+the state space may consist of an exponential number of states (see [8] for an example).
+Forward search becomes feasible in practice by employing heuristics that can lead the search
+faster to the goal state. Today, heuristics are derived automatically from the representation of planning problems.
+8
+Example. We apply the algorithm in Figure 2 to the example in Figure 1. A possible trace
+of the execution where the first applicable action is always chosen first
+1. s = s0 = {in,no keys,locked}
+2. π = /0
+3. applicableActions = {get keys}
+4. s = {in, keys,locked}
+5. π = get keys
+6. applicableActions = {open door,drop keys}
+7. s = {in, keys,open}
+8. π = get keys,open door
+9. applicableActions = {leave,drop keys,lock door}
+10. s = {out, keys,open}
+11. π = get keys,open door,leave
+12. terminate as the condition of s being a goal state is met and return π
+In this example, we have assumed that the first non-deterministically chosen action was always
+contributing to brining us to the solution. If that were not the case, one would get a failure,
+entailing that the non-deterministic choice would fall on the second applicable action, and so
+on, until all applicable actions were explored. In the end, a solution would be found if it existed
+due to the finite state assumption.
+Backward search
+Backward search starts from a goal state and applies actions backward until it finds the sequence of
+actions leading up to the initial state. To apply an action backward means to remove the action’s
+added effects from the current goal state and add the action’s preconditions to the current goal state.
+Assuming that the action was executed, its add effects need not be true before that state, while
+preconditions must have held for the action to have been applicable. We do not use delete effects
+because it is impossible to know whether they are true or not before an action’s application; it is only
+known that they are no longer true.
+Backward search chooses actions that are relevant to the goal state (or current goal state). An
+action is relevant to a goal if some of its effects unify with some part of the goal. The effects of a
+relevant action must not negate any part of the goal. Fig. 3 shows the backward search algorithm,
+which is also sound and complete.
+In backward search, the goal (holds k1) is immediately unified with the effect (holds ?k)
+of the action get-keys, meaning that the parameter ?k is bound to the object k1. We would then
+go backward using the get-keys action to create the predecessor state (owns a1 k1), which
+is part of the initial state, so the search is finished.
+In summary and in contrast to forward search, which also goes through irrelevant actions, backward search considers only relevant actions and thus usually has a smaller search space. It does,
+however, use sets of states instead of individual states, which are used by forward search, for which
+case it is difficult to design good heuristics. This is the main reason why forward search is chosen
+more often than backward search.
+9
+function BACKWARD-SEARCH(P = ⟨O, s0, g⟩)
+π ← an empty plan
+loop
+if s0 satisfies g then return π
+relevantActions ← {a | a is a ground instance of an operator in O that is relevant for g}
+if relevantActions = /0 then return failure
+non-deterministically choose an action a ∈ relevantActions
+prepend a to π
+g ← δ
+−1
+(g,a)
+Figure 3: The non-deterministic algorithm for backward-search planning, from [2].
+3 Planning as CSP
+The original planning state model M consists of states that are units with no particular internal
+structure, see Section 1. In the following section, we explored how to use variables as building
+blocks of predicates which are in turn used to represent states and classical planning problems. It
+is then natural to turn to the case in which variables are direct constituents of states. A state is
+represented by a set of variables, each of which takes some value. The problem then becomes
+the identification of appropriate values to assign to variables given some constraints over allowable
+values. This constitutes the constraint satisfaction problem, or CSP. A solution to a CSP is a set of
+assignments to variables such that all constraints are satisfied.
+Constraint satisfaction. In constraint satisfaction, one can naturally express a wide variety
+of computational problems that deal with mappings and assignments. Constraint satisfaction
+originated in the 1970s independently in Artificial Intelligence, Database Theory, and Graph
+Theory. It was later realized, in the 1990s, that these streams of research were, in fact, different
+perspectives of the same fundamental problem. Today, constraint satisfaction concepts are used
+for defining algorithms in theoretical computer science, and for modelling and solving realworld problems in AI, such as planning and scheduling, and in applied computer science, such
+as natural language comprehension.
+The concept of a constraint, which was probably borrowed from other research fields (see [9]),
+was a central notion used to describe relationships or dependencies between variables in terms
+of their possible values. Many techniques designed and introduced earlier, such as backtracking and a form of constraint propagation, seemed to be relevant to dealing with variables and
+the dependencies between them. As a then new discipline, constraint satisfaction developed
+these ideas further and introduced new topics, such as local consistency search. The main focus
+of constraint satisfaction is on developing new forms of search intertwined with consistency
+techniques and introducing new types of constraints.
+A popular approach of the 1980s was the implementation of constraint satisfaction by embedding constraints directly into a host programming language. This led to the development
+of a new discipline called constraint programming. Constraint programming languages have
+libraries that provide constraint propagation and various forms of search. For the principles of
+constraint programming, see [10].
+The idea is to solve planning problems by constraint satisfaction. To that end, a planning problem
+needs to be mapped to a CSP in such a way that there is a guarantee that the solution to the CSP is
+also a solution to the original planning problem.
+3.1 CSP
+A constraint satisfaction problem PC S P is made of three components:
+10
+• X = {x1,..., xn} is a finite set of variables,
+• D = {D1 ...,Dn} is a set of finite domains such that there is one domain for each variable,
+• C is a set of constraints that restrict the values the variables can take.
+A domain Di of variable xi
+is a set of possible values {v1,..., vk} that can be assigned to xi
+. A
+constraint ci
+is a pair ⟨t,R⟩, where t is a tuple of variables (called scope), and R is a relation that
+defines the values the variables can take. A constraint can be specified explicitly by listing all tuples
+of allowed values or implicitly by using a relation symbol. Consider the two variables x1 and x2
+having the same domain {α,β}; then to define that, for example, these variables must have different
+values, a constraint can be specified as ⟨(x1, x2),[(α,β),(β,α)]⟩ or ⟨(x1, x2), x1 ̸= x2⟩.
+In CSP, a state consists of a set of pairs (xi
+, vi) representing an assignment of values to some
+or all of the variables in X. If the assignment has values for all variables, it is called a complete
+assignment. An assignment that satisfies all constraints is called a consistent assignment. A solution
+to a CSP is a complete and consistent assignment. A CSP is consistent if such a solution exists.
+3.2 From Planning Problems to CSPs
+We are now ready to encode a classical planning problem into a CSP. A common practice is to
+translate a planning problem whose plans have a length of at most k, a number given a priori. Such
+a problem is called a bounded planning problem. For the sake of clarity, we assume that classical
+planning problems are represented by variables with binary values instead of predicates. We refer
+to such variables as state variables. This means that for every ground atom, there is a state variable
+with a domain D of two values: true or false. Similarly, a state variable is ground if there is a value
+assigned to it. The representation based on state variables enables us to explain the encoding into a
+CSP compactly.
+Our final aim is to characterise sequences of states {s0,...,sk} that correspond to plans of a
+length at most k steps. In the following, we refer to a state si by its index i, for 0 ≤ i ≤ k. We
+begin the encoding of a classical bounded planning problem P based on state-variable representation
+into a constraint satisfaction problem PCSP by defining the variables of PCSP. The CSP variables are
+all ground state variables of P augmented with one variable whose value corresponds to the action
+applied in state i.
+• For each ground state variable f with a domain D and for each 0 ≤ i ≤ k, there is a CSP
+variable x[i], whose domain is D.
+• For each 0 ≤ i ≤ k−1, there is a single CSP variable a[i], whose domain is the set of possible
+actions.
+Once the CSP variables are derived, the next step is to encode the initial state, the goal state and
+action into constraints.
+• Constraints encoding s0: Every ground state variable f whose value is true in s0 is encoded
+into a constraint of the corresponding CSP variable for i = 0 of the form (x[0] = true). Every
+ground state variable f not mentioned in s0 is encoded into the constraint (x[0] = f alse).
+• Constraints encoding g: Every ground state variable f whose value is v in g is encoded into a
+constraint of the corresponding CSP variable for i = k: (x[k] = v).
+• Constraints encoding actions: For each ground action (an action instance of some operator
+o ∈ O) a and for each 0 ≤ i ≤ k −1:
+– Constraints encoding preconditions: Every atom in pre(a) can be represented as a condition of the form (x = v), which is encoded into a constraint (a[i] = a, x[i] = v).
+– Constraints encoding effects: Every atom in the add list can be represented as an assignment of a state variable f ← true, which is encoded into a constraint: (a[i] =
+a, x[i + 1] = true). For every atom in the delete list, there is an assignment of a state
+variable f ← f alse, which is encoded into a constraint: (a[i] = a, x[i+1] = f alse).
+11
+Example. To encode the exiting the room example as a CSP, we first need to set a bound on
+the length of sought plans, say four steps, k = 4. This means that we have three vectors of four
+elements for the three ground variables in[i], keys[i], open[i] all ranging over boolean values
+{T,F}. Given the bound to four actions per plan, we have four variables a[i] ranging over the
+domain of actions DA = {get keys, open door, leave, drop keys, close door, enter, lock door,
+unlock door}.
+In the initial state, the agent has no keys, and the door is closed, resulting in the following
+constraints in[0] = T and keys[1] = open[2] = F.
+The goal is to be out with the keys, this means in[4] = F and keys[4] = T.
+Next consider the get keys action with precondition ¬Owns(key), effect Owns(key), and
+deletion of ¬Owns(key). This becomes encoded in the following constraint for the precondition
+(a[i] = get keys, keys[i] = F), while the effect becomes (a[i] = get keys, keys[i+1] = T). Two
+frame axioms for this case become (a[i] = get keys, in[i] = in[i+1], open[i] = open[i+1]). The
+encoding of the other actions follows a similar procedure.
+Since not all state variables are affected by the effects of selected actions, there are variables
+that remain unchanged from one step to the next one and which need to be explicitly asserted. This
+is accomplished by frame axioms. For every action a and state variable f with value v (true if the
+corresponding ground atom is in the state or f alse otherwise) that is not affected by a, a frame axiom
+is encoded as: {(a[i] = a, x[i] = v, x[i+1] = v)}.
+Now that we have a bounded classical planning problem encoded into a CSP, PCSP can be solved.
+If a solution exists, the outcome will be an assignment of values to all CSP variables. If variables
+a[i] get the assignment a[i] = ai+1 for 0 ≤ i ≤ k −1, then each ai
+is an action of P, and the sequence
+a1,...,ak
+is a plan of the bounded planning problem.
+Note that the state-variable representation of the bounded classical planning problem can be
+easily generalised to multi-valued variables, which are more common in real-world applications. In
+this case, the state variables have finite domains of values that can be encoded into CSP variables
+with the corresponding multi-valued domains. The approach of encoding the initial state, the goal
+state, and actions follows the steps used for encoding the binary-valued representation.
+3.3 Complexity
+Solving constraint satisfaction problems is in general NP-complete, as the size of PCSP can be exponential, that is, Πi=m
+i=1
+|Di
+|. Several restricted forms of CSP have been investigated to find tractable
+classes of problems. There are two main and well-studied types of restrictions, namely the constraint
+language restriction and the structural restriction. The former restricts the constraint language in
+terms of the available types of constraints: the set of relations on a domain in a given PCSP must be
+fixed and finite. Thus, the constraint language restricts the domain and the set of relations of each
+constraint. If, for each fixed constraint language, there exists a polynomial algorithm that solves all
+inconsistencies, then the corresponding of PCSP is tractable (in P). Otherwise, PCSP is NP-complete.
+The structural restriction limits the way constraints are placed over variables: the immediate
+interaction between variables in a PCSP is bounded. Thus, the structural restriction focuses on the
+scopes of the constraints rather than their relations. The problems based on structural restrictions are
+tractable.
+Encoding a bounded classical planning problem into a constraint satisfaction one, the number
+of CSP variables m is, in fact, linear in the size of the planning problem, k(n + 1), where k is the
+bound of the plan length and n is the number of state variables. From Section 2.1, we know that the
+bounded decision problem PLANLENGTH for a classical planning problem is PSPACE-complete.
+3.4 Algorithms
+A CSP is usually solved by searching a variable assignment from several possibilities. The search is
+performed systematically by a backtracking algorithm that checks all possible assignments of values
+to variables. A basic backtracking algorithm works as follows. It incrementally expands a partial
+12
+function CONSTRAINT SATISFACTION(P = ⟨g,S,s0,O⟩,k)
+Encode P into PC S P of length k (see page 11)
+i = 0
+Solution ← s0
+for i < k and Solution is consistent do
+Non-deterministically select a[i] and assign value action
+Solution add (a[i] = action)
+S
+{all of action’s pre and post conditions}
+if g is satisfied then
+Return a[0],a[1],...a[i]
+Return Failure (no plan found)
+Figure 4: The algorithm for solving CSP encoded planning problems.
+consistent solution to a complete one by repeatedly choosing an unassigned variable and trying all
+values in its domain in such a way the chosen value is consistent with the current partial solution.
+Given that the variables are assigned sequentially, the validity of a constraint is checked as soon as
+the scope of the constraint is assigned. If a constraint is violated in a partial solution, the search
+backtracks by reconsidering the most recently assigned variables for which there are still unexplored
+values. In doing so, backtracking guarantees to find a solution if it exists. Otherwise, the problem
+has no solution. The drawback of backtracking is efficiency, having to check all possibilities, in turn,
+leading to an unpractical runtime for large search spaces, given the exponential complexity. In our
+specific planning case, after encoding the planning problem as a CSP, the algorithm starts with the
+initial state s0 rather than the empty solution and proceeds forward action by action till it reaches the
+bound. This is illustrated in Figure 4. One could add a condition in the loop that if a consistent
+The attentive reader may notice that this basic backtracking strategy identifies assignment conflicts rather late. Since it assigns values sequentially, it might detect a conflict only after it assigns
+values to all variables of a conflicting constraint. To achieve earlier detection, techniques for consistency checks are commonly embedded within backtracking algorithms.
+Constraint propagation is the process of checking the consistency of values of variables, which
+in turn allows the reduction of the number of possible values for a variable. This reduction can
+influence the set of possible values of other variables, thus reduction can be propagated and applied
+to the whole sets of variables.
+When embedded within backtracking algorithms, constraint propagation can be applied after
+the backtracking algorithm assigns a value. In this case, a consistency check is performed on the
+unassigned “future” variables. For each unassigned variable related to the one just assigned, one
+removes any value in the domain of the unassigned variable that is inconsistent with the value of
+the current variable. This technique of consistency checking is called forward checking. Forward
+checking enables the backtracking algorithms to prune early the parts of the search space that do not
+lead toward a solution.
+Forward checking detects inconsistencies between the currently assigned variable and the future
+variables, thus it makes only the current variable consistent. A more general approach is to look
+ahead more broadly to all variables by checking the constraints between all future variables. Look
+ahead enables the backtracking algorithm to prune the search space earlier than forward checking.
+Whenever a new variable is assigned, all its current values are guaranteed to be consistent with
+past variables by both techniques. On the other hand, both techniques are computationally expensive
+in terms of time.
+Other classes of search algorithms can also be considered to solve CSPs. Rather than systematically searching through all possible alternatives (therefore, paths from an initial state), local search
+algorithms explore a single current state and move only to its successor states without retaining information on the past path. In the context of CSP, local search algorithms use an initial state in
+which a value is assigned to every variable while the search progresses by choosing a new value of
+one variable at a time. When a new value is chosen, that value should produce a minimum number
+of conflicts with other variables. This is called a min-conflict heuristic. The two main benefits of
+local search algorithms are the limited use of memory space and the finding of reasonable solutions
+in large state spaces.
+13
+4 HTN Planning
+We saw that the classical form of planning requires an initial state, a goal state, and some actions
+to realise a sequence of actions that, when executed in the initial state, lead to the goal state. While
+actions represent simple transitions from one world state to another one, a very common structure
+we use to understand the world better is of a hierarchical nature. The ability of planning to represent
+and deal with hierarchies is at the heart of hierarchical planning, or more specifically Hierarchical
+Task Network (HTN) planning [11]. Hierarchies encompass rich domain knowledge characterising
+the world, which makes HTN planning very useful, and also to perform well in real-world domains.
+HTN planning breaks with the tradition of classical planning due to the type of domain knowledge and the type of goal it requires. The basic idea includes an initial state, an initial task network
+as an objective to be accomplished, and domain knowledge consisting of networks of primitive and
+compound tasks. A task network represents a hierarchy of tasks each of which can be executed, if the
+task is primitive, or decomposed into refined subtasks. The planning process starts by decomposing
+the initial task network and continues until all compound tasks are decomposed, that is, a solution is
+found. The solution is a plan which equates to a sequence of primitive tasks applicable to the initial
+state.
+Historical Note. Beside being a tradition breaker, HTN planning appears to be controversial
+as well. The controversy lies in its requirement for well-conceived and well-structured domain
+knowledge. Such knowledge is likely to contain rich information and guidance on how to solve a
+planning problem, thus encoding more of the solution than was envisioned for classical planning
+techniques. This structured and rich knowledge gives a primary advantage to HTN planners
+in terms of speed and scalability when applied to real-world problems and compared to their
+counterparts in classical world.
+The biggest contribution towards this kind of “popular” image of HTN planning has emerged
+after the proposal of the Simple Hierarchical Ordered Planner (SHOP) [12] and its successors.
+SHOP is an HTN-based planner that shows efficient performance even on complex problems,
+but at the expense of providing well-written and possibly algorithmic-like domain knowledge.
+Several situations may confirm our observation, but the most well known is the disqualification
+of SHOP from the International Planning Competition (IPC) in 2000 [13] with the reason that
+the domain knowledge was not well written so that the planner produced plans that were not
+solutions to the competition problems [12]. Furthermore, the disqualification was followed by a
+dispute on whether providing such knowledge to a planner should be considered as “cheating”
+in the world of AI planning [14].
+SHOP’s style of HTN planning was introduced by the end of 1990s, but HTN planning
+existed long before that. The initial idea of hierarchical planning was presented in 1975 as the
+Nets of Action Hierarchies (NOAH) planner [15]. It was followed by a series of studies on
+practical implementations and theoretical contributions on HTN planning up until today. We
+believe that the fruitful ideas and scientific contribution of nearly 40 years must not be easily
+reduced to controversy and antagonism towards HTN planning.
+There are several proposals to formalise a model for HTN planning . Each proposal defines
+hierarchical concepts appropriate to its underlying theory. In order
+To set the grounds for basic understanding of HTN planning, we provide a hierarchical planning
+model in which we keep definitions of constructs generic. We complement the generic definitions by
+specifics as needed throughout the book. For other more specific or slightly different in style models
+of hierarchical planning, we refer the reader to, for example, [16, 12, 2, 17].
+As the original STRIPS planning language, the HTN planning language is a first-order language,
+with well-defined semantics. Its basic construct is a predicate which the reader should be already
+familiar with (see Section 5). Here too, the state s is a set of ground predicates in which the closedworld assumption is adopted.
+Characteristic for HTN planning are the notions of primitive and compound tasks. A primitive
+task is an expression tp(τ), where tp is some primitive symbol and τ = τ1,..., τk are constant symbols
+14
+and/or variables. The set of all primitive tasks is a finite one.
+Each primitive task is represented by a single operator defined similarly as for the classical
+planning problem. An operator o is a triple (p(o),pre(o), eff(o)), where p(o) is a primitive task,
+pre(o) are preconditions, eff(o) are effects. The subsets pre+(o) and pre−(o) denote positive and
+negative preconditions of o, respectively, and eff −(o) and eff +(o) are negative and positive effects
+of o, respectively.
+Similarly to the classical planning problem, a transition from a state to another one is accomplished by an instance of an operator whose preconditions are a logical consequence of the current
+state. That is, an operator o is applicable in state s, if pre+(o) ⊆ s and pre−(o)∩s = /0. The application of o to s results in state s[o] = (s∪eff +(o)) \ eff −(o) = s
+′
+.
+What makes HTN planning different from classical planning and a unique planning technique
+is the domain knowledge expressed through compound tasks. In a similar way to primitive tasks, a
+compound task is an expression tc(τ), where tc is a compound symbol and τ = τ1,..., τk are constant
+symbols and/or variables. The set of compound tasks is also a finite state. We refer to the union of
+the sets of primitive and compound tasks as a set of tasks T.
+Each compound task is associated with one or more methods holding the domain knowledge.
+A method m is a pair ⟨c(m),tn(m)⟩, where c(m) is a compound task, and tn(m) is a task network.
+A task network tn is a pair ⟨T
+′
+,ψ⟩, where T
+′
+is a finite set of tasks, and ψ is a set of constraints.
+Constraints specify restrictions over T
+′
+that must be satisfied during the planning process and by the
+solution. We refer to a task network over the set of primitive tasks as a primitive task network.
+We can now define the notion of planning problem for HTN planning.
+Definition 3 (HTN planning problem) An HTN planning problem PHT N is a tuple ⟨Q,T,O,M,tn0,s0⟩,
+where
+• Q is the finite set of predicates,
+• T is the finite set of tasks,
+• O is a finite set of operators,
+• M is a finite set of methods,
+• tn0 is an initial task network,
+• s0 is the initial state.
+From this definition, we should understand that planning is no longer searching for a sequence of
+actions that maps an initial state into some goal state, but instead searching for a sequence of actions
+that accomplishes the initial task network when applied to the initial state.
+Recall that an operator sequence o1,...,on is applicable in state s if there is a sequence of states
+s0,...,sn (that is, a solving trajectory) such that s0 = s and oi
+is applicable in si−1 and si−1[oi
+] = si
+for all 0 ≤ i ≤ n. Then, given an HTN planning problem PHT N, a plan is a solution to PHT N if there
+exists an operator sequence applicable in s0 by decomposing tn0. What exactly means to decompose
+a task network depends on various factors described in the following.
+4.1 Concepts
+To go beyond the basic hierarchical model and understand the workings of HTN planning, one has
+to look into the concepts characterising and influencing the planning process and decisions made
+along. Figure 5 shows a diagram of the conceptual model of HTN planning. A key concept of the
+model is the search space to which other concepts are related and interconnected in various ways.
+Let us shed some light into each of them.
+4.1.1 Task decomposition
+Simply put, a task decomposition is a strategy that transforms task networks. To be more specific,
+given a task network tn, a task decomposition chooses a task t from tn and, if t is primitive and
+applicable to the current state s, the task decomposition applies t to s. Otherwise, the decomposition
+15
+Figure 5: Conceptual model of HTN planning.
+strategy analyses all the methods that contain t as a part of their definition. Assuming that a set
+of methods is found, the task decomposition makes a non-deterministic choice of a method m, and
+replaces t with the task network associated with m. Finally, the task decomposition checks the newly
+composed task network against any constraint-related violation and modifies it, if necessary.
+Task decomposition can be characterised by the representation of task networks in terms of task
+ordering, and the way of forming new task networks during decomposition. As a consequence, there
+are three styles of task decomposition: totally ordered task decomposition (TOTD), unordered task
+decomposition (UTD), and partially ordered task decomposition (POTD). The first one follows the
+assumption of total order on task networks so as when a task is decomposed, the new task network is
+created in such a way that newly added tasks are totally ordered among each other and with respect
+to the tasks of the existing task network. Sometimes we refer to HTN planning that uses TOTD as
+totally ordered HTN planning. UTD relaxes the requirement of totally ordered task networks in such
+a way that tasks can be totally ordered or unordered with respect to each other, however no tasks in
+parallel are allowed. When a task is decomposed, new task networks are created in a manner that
+newly added tasks are interleaved with the tasks of the existing task network until all permissible
+permutations are exhausted. In this case, we refer to HTN planning as unordered HTN planning.
+The last style allows the existence of a partial order on tasks. When a task is decomposed, the tasks
+in the newly created network can be ordered in parallel whenever possible, certainly with respect to
+the constraints. We refer to HTN planning that uses POTD as partially ordered HTN planning.
+4.1.2 Search space
+There are two structures of the search space in hierarchical planing. The first one consists of task
+networks and task decompositions as evolutions from one task network to another. At the beginning
+of the search, a task decomposition is imposed on the initial task network of a given HTN planning
+problem. The planning process continues by repeatedly decomposing tasks from the updated task
+network until a primitive task network is produced. In other words, the initial task network is reduced
+to a primitive task network. Interestingly, the task network can be seen as a partially specified plan
+up until the point in search where the task network is primitive and fully specified. A linearisation
+of such a primitive task network, which is also applicable in the initial state, represents a solution to
+the given planning problem.
+It should be evident that the search space is a directed graph in which task networks (or partial
+plans) are vertices, and a decomposition of one task network into another task network by some
+method is an outgoing edge, under the condition that the initial task network belongs to the graph.
+An excerpt of such a graph is shown in Figure 6. Due to vertices being partial plans, we use the term
+plan space to refer to this structure of search space, and to the model of HTN planning that employs
+a plan space as plan-based HTN planning. Formal definition of plan space follows.
+Definition 4 (Plan space) Given an HTN planning problem PHT N, a plan space PG is a directed
+graph (V,E) such that tn0 ∈ V , and for each tn →D tn′
+: tn,tn′ ∈ V and (tn,tn′
+) ∈ E.
+16
+
+...
+kj
+...
+ݐ݊௜ାଵ
+ᇱ
+௜݊ݐ
+ݐ݊௜ାଵ
+ݐ݊௜ାଶ
+ݐ݊௜ାଷ ݐ݊kj݅൅͵
+Ԣ
+ݐ݊݅൅Ͷ
+Ԣ
+ݐ݊kj݅൅͵
+ԢԢ
+...
+Figure 6: Plan space represented as a directed graph with task networks as vertices and task decompositions as edges.
+The second space structure is in essence a subset of state space. It consists of explicitly described
+states restricted by task decompositions. As in classical planning, the search begins in the initial state
+with an empty plan, but instead of searching for a state that will satisfy the goal state, the search is
+for a state that will accomplish the initial task network. In particular, if a task from the task network
+is compound, the task decomposition continues on the next decomposition level, but in the same
+state. Otherwise, the task is executed and the search continues into a successor state. The task in
+the latter case is then added to the plan. When there are no more tasks in the task network to be
+decomposed, the search is finished. The solution to the given HTN planning problem is the plan
+containing a sequence of (totally ordered) primitive tasks.
+We consider a state space as a directed graph in which a state is a vertex, and a task decomposition maps to the same state where the corresponding method is applicable, and an operator
+application leads to a successor state. An excerpt of such a graph is shown in Figure 7. For the
+obvious reasons, we use the term state space to refer to this structure of search space, and to the
+model of HTN planning employing a state space as state-based HTN planning. Formal definition of
+state space follows.
+Definition 5 (State space) Given an HTN planning problem PHT N, a state space SG is a directed
+graph (V,E) such that s0 ∈ V , and there is a state si and tk ∈ tn such that
+• if tk
+is primitive, then si
+[tk
+] = si+1 such that k = i+1, si
+,si+1 ∈ V and (si
+,si+1) ∈ E; or
+• if tk
+is compound, then tn →D tn′
+is a self-transition such that si ∈ V and (si
+,si) ∈ E.
+4.1.3 Constraints
+As we have seen in Section 3, constraints express relationships between two or more variables. In the
+context of HTN planning, task networks rely upon such constraints as per definition, and also upon
+constraints that can be added dynamically during planning to resolve inconsistencies, for example.
+For the purpose of hierarchical planning, there are three types of constraints1
+. The first type
+of constraints implies commitments about partial descriptions of state objects. It answers the ques1These are in fact similar to the three interpretations of constraints in [18].
+17
+ai+1
+ai+j
+ai+l+1
+...
+Dr
+Dr+1
+Dr+v
+s
+i+l
+s
+i+1
+s
+i+l
+s
+i
+s
+i+l+1
+Dr+t+2
+Dr+t+1
+Dr+t
+Dr+t+u
+...
+Dr+s
+s
+s
+i+j
+...
+Dr+w
+ai+k
+Dr+w+1
+s
+i+k
+...
+s
+i+2
+ai+2
+Figure 7: State space as a directed graph with task networks as vertices and task decompositions as
+edges.
+tion of whether to make some object more specific and how specific by binding values to one or
+more variables describing that object. This type of constraints is directly related to the commitment
+strategy underlying the planning process, as described in the following section. Another type of
+constraints refines variable bindings in the sense that it eliminates a certain variable binding if that
+binding does not satisfy some given condition. The last type of constraints expresses relations between variables in different parts of a task network. What this means is that variables can be shared
+between different part of the task network, which is the same as saying variables can be shared
+among various steps in the (partial) plan, in the case of plan-based HTN planning.
+4.1.4 Commitment
+Hierarchical planning is similar to other planning techniques in the sense that it needs to make two
+decisions on constraints. The first one is the common decision on constraints for binding variables,
+while the second one is on ordering constraints, in this case, ordering tasks in task networks.
+There are two main approaches for when and how to make decisions on constraints. The first approach manages constraints in compliance with the least-commitment strategy by which task ordering and variable bindings are deferred until a decision is forced [19]. The least-commitment strategy
+allows for partially described state objects as some variables of a given object may be bound, while
+other may not.
+The second approach handles constraints according to the early-commitment strategy by which
+all object variables are bound and operators in the plan are totally ordered at each step of the planning
+process. Planners employing this strategy greatly benefit from the possibility of adopting forward
+chaining in which chaining of operators is achieved by imposing a total order over the plan. The
+total ordering ensures that neither the current operator to be added to the plan can interfere with
+some earlier operator’s preconditions or effects, nor a later operator can interfere with current task’s
+preconditions or effects.
+4.1.5 Constraint posting
+The concept of manipulating constraints in task networks is known as constraint posting. It is based
+on well-known operations on constraints, being the main ones: constraint satisfaction, constraint
+propagation, and constraint formulation. Constraint satisfaction ensures that a variable binding satisfies some given constraints, as in CSP described in Section 3, or guarantees the consistency of a
+18
+set of ordering constraints over tasks in a given task network.
+Constraint propagation enables adding or retracting constraints to and from task networks. Variable constraints in one part of a task network can be propagated based on variable constraints in
+another part of that task network. Ordering constraints are propagated during the so-called linking
+process. When some task interferes with another task, the linking process records a causal link –
+a 3-tuple of two pointers to tasks te and tp, and a predicate q which is both an effect of te and a
+precondition of tp – and adds it to the task network.
+The last operation is different from the other two in that it does not happen during planning.
+Constraint formulation is the process of modelling constraints within the domain knowledge, especially when a domain author is aware of some possible impasse situations in advance. By posting
+constraints as control information into the domain knowledge, planners can gain on efficiency by
+refining the search space [20, 21].
+Constraint posting is in fact the underlying process of addressing task interactions, elsewhere
+known as conflict resolution [22] or critics [23, 24].
+4.1.6 Task interactions
+A task interaction is a connection between two tasks (or parts) of a task network in which these
+tasks (or parts) have a certain effect on each other. The character of this effect yields two categories,
+namely harmful interactions and helpful interactions. Harmful interactions, also knowns as threats
+or flaws, are defined as relationships that introduce conflicts among different parts of a task network
+that threaten network’s correctness. The most common harmful interactions are the following:
+• Deleted-condition interaction happens when a primitive task in one part of a task network
+deletes an expression that is a precondition of a primitive task in another part of that task
+network.
+• Double-cross interaction appears when an effect of each of two conjunctive primitive tasks
+deletes a precondition for the other. That is, an effect of the first task deletes a precondition
+of the second primitive task, and an effect of the second task deletes a precondition of the first
+task.
+• Resource interaction occurs in two situations, and it is subdivided accordingly. A resourceresource interaction is similar to the deleted-condition interaction, while a resource-argument
+interaction occurs when a resource in one part of a task network is used as an argument in
+another part of that task network.
+Helpful interactions are relationships that can be found in situations when one part of a task network makes use of information associated with another part in the same task network. The detection
+of these interactions implies a possibility for planners to generate task networks and solutions of better quality. That is, some tasks can be merged together, eliminating task redundancy and potentially
+optimising the cost of the solution [25]. The most common helpful interactions are the following:
+• Placeholder replacement appears when an actual value already exists for a particular formal
+object. We already know that HTN planning allows tasks with variables to be inserted into
+a task network. If there is no specific value to be chosen for a particular variable, a socalled formal object is created and bound to that variable [26]. The formal object is simply a
+placeholder for something unspecified at that point.
+• Phantomisation emerges when some fact, which is supposed to be achieved, is already true at
+the point in the task network where it occurs. In other words, a phantomisation of a task t with
+an effect q is considered accomplished by treating q as achieved and finding an existing task
+t
+′
+in the task network that already achieved the same effect q.
+• Disjunct optimisation happens in disjunctive goals when one disjunctive goal is “superior to
+the others by the nature of its interaction” with the other tasks in a task network [26].
+The reader might have recognised that the task interactions are an inevitable consequence of the
+commitment strategy chosen.
+19
+4.1.7 Explicit conditions
+Hierarchical planners essentially depend on the quality of domain knowledge so as to restrict and
+guide the search for a solution. Domain authors are undoubtedly the ones who have the responsibility
+of giving guidance information. Domain authors explicitly encode such information as conditions
+within tasks. For example, explicit conditions may restrict the task decomposition, filter applicable
+methods, expect phantomisation, or require information from an external resource. The following is
+a list of types of explicit conditions that can be encountered in the existing HTN planners.
+• Supervised condition is accomplished within a compound task. The condition may be satisfied
+either by an intentional insertion of a relevant effect earlier in the processing of a task network,
+or by an explicit introduction of a primitive task that will achieve the required effect. Only
+this condition should allow further decompositions to be made.
+• External condition must be accomplished at the required task, but under the assumption that
+it is satisfied by some other task from the same task network.
+• Filter condition decides on task relevance to a particular situation. In the case of method
+relevance to a certain task decomposition, this condition reduces the branching factor by eliminating inappropriate methods.
+• Query condition accomplishes queries about variable bindings or restrictions at some required
+point in a task network.
+• Compute condition requires satisfaction by information coming only from external systems,
+such as a database.
+• Achieve condition allows expressing goals that can be achieved by any means available to a
+planner.
+4.2 Complexity
+Here too, we are interested in deciding whether a plan exists. For the purpose of analysing the complexity of solving an HTN planning problem, we provide a few more clarifications and assumptions.
+The words and phrases in italics are used as categories in the analysis.
+• The sets O and M can be provided in two ways. The sets can be a part of the input, or they can
+be fixed in advance, meaning the tasks are allowed to contain methods corresponding only to
+predicates in the initial state.
+• A compound task can be defined in several ways: (1) a compound task is without any restriction (yes); (2) a regular task in task networks – at most one compound task followed by all
+primitive tasks; (3) an acyclic task – a task can be decomposed to only a finite depth; and (4)
+compound tasks are not allowed at all (no).
+• A task network containing primitive and compound tasks as defined in the previous point can
+be totally ordered or partially ordered.
+• Variables can be allowed or not in PHT N.
+The complexity results of HTN planning are summarised in Table 1. When no restrictions on
+compound tasks are imposed and task networks are partially ordered, then giving O and M in the input or fixing them in advance, or allowing variables or not, does not affect the outcome and PLANEX
+is undecidable. However, given O and M in the input, and being every task acyclic and every task
+network partially ordered, PLANEX becomes decidable. PLANEX is decidable when task networks
+are totally ordered. In particular, when unrestricted compound tasks and variables are allowed,
+PLANEX is EXPSPACE-hard in double exponential time (2-EXPTIME), or, if no variable is allowed, PLANEX is PSPACE-hard in exponential time. When only primitive tasks and variables
+are allowed, PLANEX is NP-complete, irrespective of the ordering of task networks. Furthermore,
+forbidding the use of variables in the same case makes PLANEX to be in P. However, disallowing
+20
+Table 1: Computational complexity of HTN planning (adapted from [27])
+Operators and methods Compound task Task network Variables Plan existence
+fixed
+yes
+partially ordered yes
+undecidable
+input
+undecidable
+no undecidable
+totally ordered
+yes
+2-EXPTIME
+EXPSPACE-hard
+no
+EXPTIME
+PSPACE-hard
+no
+yes NP-complete
+no P
+partially ordered
+yes NP-complete
+no NP-complete
+acyclic yes decidable
+no decidable
+regular unimportant
+yes EXPSPACE-complete
+no PSPACE-complete
+fixed yes PSPACE
+PSPACE-complete
+variables when task networks are partially ordered tasks does not change the outcome and PLANEX
+remains NP-complete. Regardless of the ordering of task networks, when compound tasks are regular, there are two outcomes. When O and M are given in the input, and if variables are allowed, then
+PLANEX is EXPSPACE-complete, otherwise PLANEX is PSPACE-complete. When O and M are
+fixed in advance, and variables are allowed, PLANEX is PSPACE-complete.
+5 Bonus: PDDL
+A standard representation for describing problems in planning is the Planning Domain Definition
+Language (PDDL). PDDL, as a first-order representation, is built around objects and relations. Looking at the example in Figure 1, ‘agent’, ‘door’, and ‘key’ are objects, and the verb phrases ‘is inside’,
+’is locked’ and ‘owns’ refer to relations. The PDDL representation consists of predicates which
+are statements describing objects with certain relations among them and can be either true or false.
+Predicates can be also referred to as atoms or facts. An atom is composed of a predicate symbol,
+which refers to a relation, followed by a list of arguments, which are used to refer to objects. For
+part of the aforementioned example, we get the atom Inside(agent). Arguments can be constant
+symbols or variables. In order to determine whether a predicate is true or false, an interpretation is
+needed of exactly which objects and relations are referred to by arguments and predicate symbols.
+In our example, Inside(agent) states that the agent is inside the smart home. Note that there may be
+many possible interpretations for a single predicate. We say that a predicate is true when the relation
+denoted by the predicate symbol holds among the objects denoted by the arguments. A predicate that
+cannot be shown to be true is considered to be false. Such conclusion is known as the closed-world
+assumption, that is, everything that is not explicitly stated to have a certain value, remains the same.
+A predicate whose arguments contain no variables, that is, all variables are bound to objects, is called
+a atom. We say that a parametrised predicate unifies with a ground atom when the parameters of the
+predicate can be substituted with the argument values of the atom. For example, Inside(?a) unifies
+with Inside(agent) with ?a bound to agent.
+As in other first-order languages, complex statements can be formulated from predicates by
+using logical connectives, including negation (denoted by not), conjunction (denoted by and),
+disjunction (denoted by or), implication (denoted by imply), universal quantification (denoted by
+forall), and existential quantification (denoted by exists). For the semantics of the logical
+connectives, see for instance [8].
+By using predicates, PDDL enables describing actions, initial states, and goals. PDDL separates
+the descriptions of predicates and actions from the description of an initial state and a goal. The
+former is referred to as a domain description (or domain definition), while the latter as problem
+description (or problem definition). A planning problem is then created by combining a domain
+description with a problem description. A consequence of this separation is the possibility to create
+different planning problems in one domain by using the same domain description combined with
+21
+many different problem descriptions.
+The syntax of PDDL is based on Lisp2
+, making a description of a planning problem to be structured as a list of parenthesized expressions.
+In the following, we explain in more details the syntax and structure of a domain description and
+a problem description, we introduce a set of additional features that may increase the expressiveness
+of the language or that may give a more compact syntax. Finally, we introduce the STRIPS subset
+of the PDDL language.
+Historical Note. The Planning Domain Definition Language (PPDL) was initially created to
+provide a common syntax for specifying planning problems for the (first) International Planning
+competition in 1998. The original PDDL was based on function-free first-order logic, meaning
+that functions and arithmetics were not included in the logic, thus terms could only be constants
+or bound variables (and analogously for preconditions). The language has been further extended
+to support better expression of aspects of real-world planning problems, including numbers,
+numeric expressions and action durations, predicates derived from other predicates, and plan
+constraints and preferences. For details on the different versions of PDDL, see [28, 29, 30, 31].
+5.1 Domain Description
+A domain description is expressed by keywords and special fields that start with a colon. Each
+domain description begins with the declaration
+(define (domain <name>)),
+where define and domain are keywords, and <name> defines the name of the application domain. For example, a domain description for a smart home can begin with the declaration
+(define (domain smart-home)).
+In the simplest domain description, the declaration of the domain name is followed by the definitions
+of predicates and actions. The :predicates contains a list of declarations of the predicates. A
+predicate is of the form
+(NAME ?A1 ... ?An),
+where the arguments beginning with a question mark are parameters that represent objects in the
+domain. Consider the predicates in Fig. 8. The predicate (agent ?a) can be used to describe
+that ?a is an agent, while (in ?a ?r) to determine whether ?a, that is, an agent is in ?r, which
+is a room. The interpretation of the latter predicate depends on the combinations of values for
+the parameters for which the predicate can be true and the relationship to other predicates, such as
+(agent ?a) and (room ?r). Similar reasoning can be applied for the other predicates in Fig. 8.
+The Boolean values of predicates determine whether the predicates are facts holding in a given
+state of an environment. The truth values of predicates are affected by the actions, whereby the predicates are usually not influenced by a single action only. In PDDL, actions are schemas consisting
+of three elements, namely parameters, preconditions and effects. An action description begins with
+the declaration :action <name>, where <name> is the name of the action schema. Each of the
+elements of an action schema has its own special field. Fig. 9 shows an action schema for opening a
+door in a smart home as described in our key example.
+The action name and parameters define what the action can accomplish. Each action schema
+characterises a set of possible action instances by using the parameters. A specific action or action
+instance is derived by assigning each of the parameters a value (or object) that comes from a specific problem instance. An action instance is also called ground action. The preconditions define
+the conditions that need to be satisfied before the action can be applied. Preconditions are usually
+2Lisp is a functional programming language with parenthesized prefix notation, introduced in the late 50s by John McCarthy.
+22
+(:predicates
+(agent ?a)
+(room ?r)
+(door ?d)
+(key ?k)
+(in ?a ?r)
+(owns ?a ?k)
+(adjacent ?r1 ?r2)
+(installed-in ?d ?r)
+(in ?a ?r)
+)
+Figure 8: PDDL predicates representing some of the properties for the key example in Figure 1.
+(:action open-door
+:parameters (?d)
+:precondition (and (door ?d) (not (opened ?d)))
+:effect (opened ?d)
+)
+Figure 9: PDDL action schema for a door operation that opens a door.
+a complex statement, meaning they are expressed as a logical formula over predicates using logical
+connectives. In Fig. 9, the logical connective negation is applied over the predicate (opened ?d)
+to indicate that the expression (not (opened ?d)) is true when the door is closed. The predicates (door ?d) and (not (opened ?d)) are linked using conjunction. The effects define
+how the state would change after the action application. The basic effect formula may include a
+predicate (i.e., an atom added to a state), a negation of predicate (i.e., an atom deleted from a state),
+or a conjunction of those. More complex effect formulas may include conditional effects and universally quantified effects. Note that predicates involved in actions are determined by the effects that
+actions have on the predicates, and the truthfulness of ground atoms included in the initial state of
+the problem description.
+5.2 Problem Description
+A problem description is specified with respect to a domain description. Each problem description
+begins with the declaration
+(define (problem <name>)(:domain <name>)),
+which defines the name of the problem with respect to some application domain. For example, a
+problem description for a smart home can begin with the declaration
+(define (problem instance1) (:domain smart-home)).
+The simplest problem description specifies an initial state and a goal to be achieved. The description
+of the initial state is a list of all ground atoms that are true in the initial state. Recall that ground atoms
+are those predicates whose arguments are objects and constants, but not parameters. All other atoms
+are false due to the closed-world assumption. Fig. 10 shows a list of ground atoms describing an
+initial state and specified within the :init field. It gives information about the layout of the home,
+available devices, their arrangement within the home, the statuses of devices, and other relations and
+properties.
+The goal description usually has the same form as the condition formula in action preconditions
+except that all predicates are ground. The goal formula is specified within a :goal field.
+5.3 Types
+The domain description can be extended with other constructs, such as types, constants that have
+the same meaning for all planning problems in the given domain, functions to access and update
+23
+(:init
+(room livingRoom)
+(room hallway)
+(room bathroom)
+(door d1)
+(door d2)
+(door d3)
+(key k1)
+(key k2)
+(key k3)
+(key k4)
+(agent a1)
+(adjacent livingRoom hallway)
+(adjacent hallway bathroom)
+(installed-in d1 hallway)
+(installed-in d2 livingRoom)
+(installed-in d3 bathroom)
+(in a1 hallway)
+(opened d2)
+(locked d1)
+(owns a1 k1)
+(owns a1 k2)
+(owns a1 k3)
+)
+Figure 10: PDDL ground atoms representing an initial state of the smart home in the key example
+from Figure 1.
+numeric values (numeric fluents), and derived predicates. Types, for instance, are a syntactic sugar
+and can be useful to classify and represent various entities that share some characteristics into a
+more concise and human-readable form. Consider that the keys k1, k2, k3, and k4 listed in Fig. 10
+are of different types. For example, k1 is a digital key, k2 and k3 are pin tumbler lock keys (Yale
+keys), and k4 is car key. Since they are all keys, they can be represented in the domain description
+by using the key type as shown in Fig. 11. All domains include object and number as built-in
+types, which usually reside at the top of the type classification. PDDL types are specified within the
+:types field.
+(:types
+key door room agent - object
+digital-key yale-key car-key - key
+)
+Figure 11: PDDL types representing classes of smart home entities.
+When types are provided in the domain description, the typing of parameters can be employed.
+This means that we can declare a type of argument of a predicate or a type of parameter of an action
+using the form
+?x - TYPE-OF-X.
+For example, (in ?a - agent ?r - room). Fig. 12 shows typed definitions of the predicates from Fig. 8, and Fig. 13 illustrates a typed definition of the action schema from Fig. 9.
+Consider now the problem description. In Fig. 10, predicates are used to describe objects, for example, (room livingRoom). As a syntactic sugar, it is possible to describe such objects outside
+of the :init field by using the :objects field. In this case, the list of objects can be provided
+without or with types, making the problem description more concise (see Fig. 14).
+24
+(:predicates
+(adjacent ?r1 ?r2 - room)
+(installed-in ?d - door ?r - room)
+(in ?a - agent ?r - room)
+(opened ?d - door)
+(owns ?a - agent ?k - key)
+)
+Figure 12: PDDL typed predicates.
+(:action open-door
+:parameters (?d - door)
+:precondition (and (not (opened ?d)))
+:effect (opened ?d)
+)
+Figure 13: PDDL action schema with a typed parameter.
+(:objects
+livingRoom hallway bathroom - room
+d1 d2 d3 - door
+k1 - digital-key
+k2 k3 - yale-key
+k4 - car-key
+a1 - agent
+)
+(:init
+(adjacent livingRoom hallway)
+(adjacent hallway bathroom)
+(installed-in d1 hallway)
+(installed-in d2 livingRoom)
+...
+)
+Figure 14: More concise version of the problem description shown in Fig. 10 when objects are
+declared as an alternative to using predicates.
+5.4 STRIPS subset
+PDDL provides a STRIPS subset by which STRIPS planning problems can be represented in firstorder logic with predicates, variables, and constants (for STRIPS planning problems, see Section 2).
+Each action from a state model is represented using a STRIPS operator with preconditions and
+effects. Preconditions specify when an action is applicable and the effects describe what exactly is
+affected by the action. In the STRIPS representation, the effects are divided into an add list, which
+includes atoms to be made true in the successor state, and a delete list, which includes atoms to be
+made false. All atoms not specified in the representation of an operator remain unmodified.
+25
+References
+[1] N. J. Nilsson, Principles of Artificial Intelligence. Morgan Kaufmann Publishers Inc., 1980.
+[2] M. Ghallab, D. S. Nau, and P. Traverso, Automated planning: Theory & practice. Morgan
+Kaufmann Publishers Inc., 2004.
+[3] R. E. Fikes and N. J. Nilsson, “STRIPS: A new approach to the application of theorem proving
+to problem solving,” in International Joint Conference on Artificial Intelligence, ser. IJCAI’71.
+Morgan Kaufmann Publishers Inc., 1971, pp. 608–620.
+[4] V. Lifschitz, “On the semantics of strips,” in Reasoning about Actions and Plans, M. Georgeff,
+Lansky, and Amy, Eds. San Mateo, CA: Morgan Kaufmann, 1987, pp. 1–9.
+[5] J. E. Florez, A. T. A. de Reyna, J. Garc ´ ´ıa, C. L. Lopez, A. Garc ´ ´ıa-Olaya, and D. Borrajo,
+“Planning multi-modal transportation problems,” in International Conference on International
+Conference on Automated Planning and Scheduling, ser. ICAPS’11. AAAI Press, 2011, pp.
+66–73.
+[6] C. H. Papadimitriou, Computational complexity. John Wiley and Sons Ltd., 2003.
+[7] T. Bylander, “The computational complexity of propositional strips planning,” Artif. Intell.,
+vol. 69, no. 1-2, pp. 165–204, 1994.
+[8] S. J. Russell and P. Norvig, Artificial intelligence: A modern approach. Pearson Education,
+2003.
+[9] M. van Emden, “Review of principles of constraint programming; constraint processing, by k.
+r. apt & r. dechter,” SIAM Review, vol. 48, no. 2, pp. 400–404, 2006.
+[10] K. Apt, Principles of Constraint Programming. New York, NY, USA: Cambridge University
+Press, 2003.
+[11] I. Georgievski and M. Aiello, “HTN planning: Overview, comparison, and beyond,” Artif.
+Intell., vol. 222, pp. 124–156, 2015.
+[12] D. S. Nau, Y. Cao, A. Lotem, and H. Munoz Avila, “SHOP: Simple hierarchical ordered plan- ˜
+ner,” in International Joint Conference on Artificial Intelligence, 1999, pp. 968–975.
+[13] F. Bacchus, “The AIPS ’00 Planning Competition,” AI Magazine, vol. 22, no. 3, pp. 47–56,
+2001.
+[14] D. S. Nau, “Current trends in automated planning,” AI Magazine, vol. 28, no. 4, pp. 43–58,
+2007.
+[15] E. D. Sacerdoti, “A structure for plans and behavior,” Ph.D. dissertation, Standford University,
+AI Center, 1975.
+[16] K. Erol, J. Hendler, and D. S. Nau, “UMCP: A sound and complete procedure for hierarchical task network planning,” in International Conference on AI Planning Systems. Morgan
+Kaufmann Publishers Inc., 1994, pp. 249–254.
+[17] T. Geier and P. Bercher, “On the decidability of HTN planning with task insertion,” in International Joint Conference on Artificial Intelligence - Volume 3, ser. IJCAI’11. AAAI, 2011, pp.
+1955–1961.
+[18] M. Stefik, “Planning with constraints (MOLGEN: Part 1),” Artif. Intell., vol. 16, no. 2, pp.
+111–140, 1981.
+[19] D. S. Weld, “An introduction to least commitment planning,” AI Magazine, vol. 15, no. 4, pp.
+27–61, 1994.
+26
+[20] K. Erol, J. Hendler, and D. S. Nau, “Semantics for hierarchical task network planning,” University of Maryland, Institute for Advanced Computer Studies, Tech. Rep. UMIACS-TR-94-31,
+1994.
+[21] A. Nareyek, E. C. Freuder, R. Fourer, E. Giunchiglia, R. P. Goldman, H. Kautz, J. Rintanen,
+and A. Tate, “Constraints and AI planning,” IEEE Intelligent Systems, vol. 20, pp. 62–72, 2005.
+[22] Q. Yang, “A theory of conflict resolution in planning,” Artif. Intell., vol. 58, no. 1, pp. 361–392,
+1992.
+[23] A. Tate, “Project planning using a hierarchic non-linear planner,” Department of Artificial
+Intelligence, University of Edinburgh, Tech. Rep. 25, 1976.
+[24] D. E. Wilkins, Practical planning: Extending the classical AI planning paradigm. Morgan
+Kaufmann Publishers Inc., 1988.
+[25] D. E. Foulser, M. Li, and Q. Yang, “Theory and algorithms for plan merging,” Artif. Intell.,
+vol. 57, pp. 143–181, 1992.
+[26] E. D. Sacerdoti, “The nonlinear nature of plans,” in International Joint Conference on Artificial
+Intelligence - Volume 1, ser. IJCAI’75. Morgan Kaufmann Publishers Inc., 1975, pp. 206–214.
+[27] K. Erol, J. Handler, and D. S. Nau, “Complexity results for HTN planning,” Annals of Mathematics and AI, vol. 18, no. 1, pp. 69–93, 1996.
+[28] D. McDermott, M. Ghallab, A. Howe, C. Knoblock, A. Ram, M. Veloso, D. Weld, and
+D. Wilkins, “PDDL - The planning domain definition language,” CVC TR-98-003/DCS TR1165, Yale Center for Computational Vision and Control, Tech. Rep., 1998.
+[29] M. Fox and D. Long, “PDDL2.1: An extension to PDDL for expressing temporal planning
+domains,” Journal of Artificial Intelligence Research, vol. 20, no. 1, pp. 61–124, 2003.
+[30] S. Edelkamp, “Pddl 2.2: The language for the classical part of ipc-4,” in 4th International
+Planning Competition, ser. IPC 2004, 2004.
+[31] A. Gerevini and D. Long, “Preferences and soft constraints in PDDL3,” in ICAPS Workshop
+on Planning with Preferences and Soft Constraints, 2006.
+27

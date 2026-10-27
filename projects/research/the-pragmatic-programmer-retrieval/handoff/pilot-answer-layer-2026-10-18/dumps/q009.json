@@ -1,0 +1,68 @@
+{
+ "id": "q009",
+ "question": "Książka sugeruje, że asercje (assertions) powinny być wyłączone w wersji produkcyjnej, bo dodają overhead i spowalniają kod. Czy to prawidłowe?",
+ "type": "false-premise",
+ "header": "False-premise (test korekty)",
+ "gold_topics": [
+  25
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 25,
+   "topic_title": "Assertive Programming",
+   "chapter": 4,
+   "page_book": 207,
+   "text": "(We also believe that nowadays, when most languages have decent support for iterating functions over collections, this kind of explicit loop is unnecessary and bad form.)\n\n#### **LEAVE ASSERTIONS TURNED ON**\n\nThere is a common misunderstanding about assertions. It goes something like this:\n\nAssertions add some overhead to code. Because they check for things that should never happen, they'll get triggered only by a bug in the code. Once the code has been tested and shipped, they are no longer needed, and should be turned off to make the code run faster. Assertions are a debugging facility.\n\nThere are two patently wrong assumptions here. First, they assume that testing finds all the bugs. In reality, for any"
+  },
+  {
+   "topic": 25,
+   "topic_title": "Assertive Programming",
+   "chapter": 4,
+   "page_book": 207,
+   "text": "Even if you _do_ have performance issues, turn off only those assertions that really hit you. The sort example above may be a critical part of your application, and may need to be fast. Adding the check means another pass through the data, which might be unacceptable. Make that particular check optional, but leave the rest in.\n\n###### **Use Assertions in Production, Win Big Money**"
+  },
+  {
+   "topic": 23,
+   "topic_title": "Design by Contract",
+   "chapter": 4,
+   "page_book": 191,
+   "text": "While documenting these assumptions is a great start, you can get much greater benefit by having the compiler check your contract for you. You can partially emulate this in some languages by using _assertions:_ runtime checks of logical conditions (see Topic 25, _<u>Assertive Programming</u>_ ). Why only partially? Can't you use assertions to do everything DBC can do?"
+  },
+  {
+   "topic": 23,
+   "topic_title": "Design by Contract",
+   "chapter": 4,
+   "page_book": 191,
+   "text": "Unfortunately, the answer is no. To begin with, in objectoriented languages there probably is no support for propagating assertions down an inheritance hierarchy. This means that if you override a base class method that has a contract, the assertions that implement that contract will not be called correctly (unless you duplicate them manually in the new code). You must remember to call the class invariant (and all base class invariants) manually before you exit every method. The basic problem is that the contract is not automatically enforced.\n\nIn other environments, the exceptions generated from DBCstyle assertions might be turned off globally or ignored in the code.\n\nAlso, there is no built-in concept of \"old'' values; that is, values"
+  },
+  {
+   "topic": 25,
+   "topic_title": "Assertive Programming",
+   "chapter": 4,
+   "page_book": 207,
+   "text": "Assertions are also useful checks on an algorithm's operation. Maybe you've written a clever sort algorithm, named my_sort. Check that it works:\n\nbooks = my_sort(find( _\"scifi\"_ )) <mark>assert(is_sorted?(books))</mark>\n\nDon't use assertions in place of real error handling. Assertions check for things that should never happen: you don't want to be writing code such as the following:\n\nputs( _\"Enter 'Y' or 'N': \"_ ) <mark>ans = gets[0]</mark> _<mark># Grab first character of response</mark>_ assert((ch == _'Y'_ <u>) || (ch ==</u> _'N'_ <u>))</u> _# Very bad idea!_"
+  },
+  {
+   "topic": 25,
+   "topic_title": "Assertive Programming",
+   "chapter": 4,
+   "page_book": 207,
+   "text": "**Topic 25**\n\n#### Assertive Programming\n\n_There is a luxury in self-reproach. When we blame ourselves we feel no one else has a right to blame us._\n\n_Oscar Wilde, The Picture of Dorian Gray_\n\nIt seems that there's a mantra that every programmer must memorize early in his or her career. It is a fundamental tenet of computing, a core belief that we learn to apply to requirements, designs, code, comments, just about everything we do. It goes\n\nThis can never happen…\n\n\"This application will never be\n\nused abroad, so why internationalize it?\" \"count can't be negative.\" \"Logging can't fail.\"\n\nLet's not practice this kind of self-deception, particularly when coding.\n\n**Tip 39**\n\nUse Assertions to Prevent the Impossible"
+  },
+  {
+   "topic": 23,
+   "topic_title": "Design by Contract",
+   "chapter": 4,
+   "page_book": 191,
+   "text": "as they existed at the entry to a method. If you're using assertions to enforce contracts, you must add code to the precondition to save any information you'll want to use in the postcondition, if the language will even allow that. In the Eiffel language, where DBC was born, you can just use old _expression_ .\n\nFinally, conventional runtime systems and libraries are not designed to support contracts, so these calls are not checked. This is a big loss, because it is often at the boundary between your code and the libraries it uses that the most problems are detected (see Topic 24, _<u>Dead Programs Tell No Lies</u>_ for a more detailed discussion).\n\n###### **Who's Responsible?**"
+  },
+  {
+   "topic": 27,
+   "topic_title": "Don’t Outrun Your Headlights",
+   "chapter": 4,
+   "page_book": 222,
+   "text": "- <u>[30]</u> Based in part on earlier work by Dijkstra, Floyd, Hoare, Wirth, and others.\n\n- <u>[31]</u> In C and C++ these are usually implemented as macros. In Java, assertions are disabled by default. Invoke the Java VM with the –enableassertions flag to enable them, and leave them enabled.\n\n- <u>[32]</u> http://www.eps.mcgill.ca/jargon/jargon.html#heisenbug\n\n- <u>[33]</u> For a discussion of the dangers of coupled code, see Topic 28, _Decoupling_ .\n\n- <u>[34]</u> See the tip here.\n\n- <u>[35]</u> Per the NHTSA, Stopping Distance = Reaction Distance + Braking Distance, assuming an average reaction time of 1.5s and deceleration of 17.02ft/s².\n\n- <u>[36]</u> Motif and OpenLook were GUI standards for X-Windows based Unix workstations.\n\nCopyright © 2020 Pearson Education, Inc.\n\n## Chapter 5"
+  }
+ ]
+}

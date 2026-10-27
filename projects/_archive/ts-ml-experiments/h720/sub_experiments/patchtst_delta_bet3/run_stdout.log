@@ -1,0 +1,119 @@
+Verifying S-26 anchor 1.9909/2.4710 ...
+S-26 anchor OK: MAE 1.9909 RMSE 2.4710 disjoint 1.9696 W4 1.9579
+Collecting P_val for 4 candidates (val 2161 origins, members frozen on 8545)...
+  nlinear_L336_a1      ok (2161, 720) (0.7s)
+  nlinear_L336_a10     ok (2161, 720) (0.7s)
+  training patchtst_P24_D32_2L on train 8545 (small encoder, this may take minutes)...
+    [PatchTST P24 D32 L2] ep   0 train 4.3624 val 3.6247 gap +0.7377 ent 2.603
+    [PatchTST P24 D32 L2] ep   1 train 4.0867 val 3.5883 gap +0.4984 ent 2.598
+    [PatchTST P24 D32 L2] ep   2 train 4.0241 val 3.5058 gap +0.5183 ent 2.597
+    [PatchTST P24 D32 L2] ep   3 train 3.9899 val 3.4711 gap +0.5188 ent 2.593
+    [PatchTST P24 D32 L2] ep   5 train 3.9031 val 3.8282 gap +0.0749 ent 2.616
+    [PatchTST P24 D32 L2] ep  10 train 3.6899 val 4.2005 gap -0.5106 ent 2.531
+    [PatchTST P24 D32 L2] ep  15 train 3.5449 val 3.9909 gap -0.4459 ent 2.480
+    [PatchTST P24 D32 L2] ep  20 train 3.5200 val 3.9493 gap -0.4293 ent 2.440
+    [PatchTST P24 D32 L2] ep  25 train 3.4581 val 4.1312 gap -0.6732 ent 2.463
+    [PatchTST P24 D32 L2] ep  30 train 3.4552 val 4.1856 gap -0.7303 ent 2.446
+    [PatchTST P24 D32 L2] ep  35 train 3.4108 val 4.0680 gap -0.6572 ent 2.427
+    [PatchTST P24 D32 L2] ep  40 train 3.3988 val 4.3127 gap -0.9139 ent 2.420
+    early stop ep 43 best_val 3.4711
+  patchtst_P24_D32_2L  ok (2161, 720) (100.9s)
+  training patchtst_P48_D16_1L on train 8545 (small encoder, this may take minutes)...
+    [PatchTST P48 D16 L1] ep   0 train 4.4629 val 3.5222 gap +0.9407 ent 1.945
+    [PatchTST P48 D16 L1] ep   1 train 4.1590 val 3.4984 gap +0.6607 ent 1.943
+    [PatchTST P48 D16 L1] ep   5 train 3.9650 val 3.5312 gap +0.4338 ent 1.906
+    [PatchTST P48 D16 L1] ep  10 train 3.9123 val 3.5501 gap +0.3622 ent 1.673
+    [PatchTST P48 D16 L1] ep  15 train 3.8926 val 3.5971 gap +0.2954 ent 1.565
+    [PatchTST P48 D16 L1] ep  20 train 3.8705 val 3.5853 gap +0.2852 ent 1.710
+    [PatchTST P48 D16 L1] ep  25 train 3.8000 val 3.7427 gap +0.0574 ent 1.766
+    [PatchTST P48 D16 L1] ep  30 train 3.7680 val 3.7988 gap -0.0308 ent 1.818
+    [PatchTST P48 D16 L1] ep  35 train 3.7087 val 3.9095 gap -0.2008 ent 1.837
+    [PatchTST P48 D16 L1] ep  40 train 3.6733 val 3.8088 gap -0.1355 ent 1.852
+    early stop ep 41 best_val 3.4984
+  patchtst_P48_D16_1L  ok (2161, 720) (37.4s)
+  singleton nlinear_L336_a1      val 2.8970
+  singleton nlinear_L336_a10     val 2.8970
+  singleton patchtst_P24_D32_2L  val 3.0267
+  singleton patchtst_P48_D16_1L  val 3.1517
+Held-out S-26 delta-ridge control MAE (val[1080:2161)) = 2.5225 (alpha 10000.0)
+
+init singleton ['nlinear_L336_a10'] fast 2.5206
+iter  0 cur ['nlinear_L336_a10', 'patchtst_P48_D16_1L'] fast 2.5081 true 2.4992 a=30000.0 best_fast 2.5081 ['nlinear_L336_a10', 'patchtst_P48_D16_1L']
+iter  1 cur ['nlinear_L336_a1', 'patchtst_P48_D16_1L'] fast 2.5081 true 2.5081 a=3000.0 best_fast 2.5081 ['nlinear_L336_a10', 'patchtst_P48_D16_1L']
+iter  2 cur ['nlinear_L336_a1', 'patchtst_P24_D32_2L'] fast 2.5084 true 2.5084 a=3000.0 best_fast 2.5081 ['nlinear_L336_a10', 'patchtst_P48_D16_1L']
+iter  3 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L'] fast 2.5021 true 2.4936 a=30000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  4 cur ['nlinear_L336_a10', 'patchtst_P24_D32_2L'] fast 2.5084 true 2.5084 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  5 cur ['nlinear_L336_a10', 'patchtst_P24_D32_2L', 'patchtst_P48_D16_1L'] fast 2.5171 true 2.5171 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  6 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L', 'patchtst_P48_D16_1L'] fast 2.5096 true 2.4928 a=30000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  7 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P48_D16_1L'] fast 2.5129 true 2.5129 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  8 cur ['nlinear_L336_a1', 'patchtst_P24_D32_2L', 'patchtst_P48_D16_1L'] fast 2.5171 true 2.5171 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+  no improve 5 iters -> stop
+
+best subset fast 2.5021: ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+best_alpha 30000.0
+refit half-split val MAE 2.4936 alpha 30000.0
+
+Held-out precondition: control 2.5225  best_subset fast 2.5021  gain +0.0204
+  AUDIT patchtst_P24_D32_2L: train-val gap -0.0898  attention_entropy_last 2.392
+  AUDIT patchtst_P48_D16_1L: train-val gap 0.1795  attention_entropy_last 1.859
+Regularity: max train-val gap 0.1795 (>0.15=True)  entropy_collapse(<0.5)=False
+  REGULARITY FLAG: training/val gap or entropy collapse detected — reported, not hard-fail.
+  nlinear_L336_a1      test ok (0.8s)
+  nlinear_L336_a10     test ok (0.7s)
+  training patchtst_P24_D32_2L on full 11425 (frozen test)...
+    [PatchTST P24 D32 L2] ep   0 train 4.0849 val 3.0197 gap +1.0652 ent 2.606
+    [PatchTST P24 D32 L2] ep   1 train 3.8658 val 2.9361 gap +0.9298 ent 2.607
+    [PatchTST P24 D32 L2] ep   5 train 3.7354 val 3.0158 gap +0.7197 ent 2.351
+    [PatchTST P24 D32 L2] ep  10 train 3.6101 val 3.3052 gap +0.3049 ent 2.216
+    [PatchTST P24 D32 L2] ep  15 train 3.4973 val 3.4729 gap +0.0244 ent 2.140
+    [PatchTST P24 D32 L2] ep  20 train 3.4300 val 3.6167 gap -0.1866 ent 2.043
+    [PatchTST P24 D32 L2] ep  25 train 3.3845 val 3.5607 gap -0.1762 ent 2.059
+    [PatchTST P24 D32 L2] ep  30 train 3.3646 val 3.6169 gap -0.2524 ent 2.093
+    [PatchTST P24 D32 L2] ep  35 train 3.3323 val 3.7713 gap -0.4390 ent 2.085
+    [PatchTST P24 D32 L2] ep  40 train 3.3176 val 3.7040 gap -0.3865 ent 2.058
+    early stop ep 41 best_val 2.9361
+  patchtst_P24_D32_2L  test ok (127.3s)
+  training patchtst_P48_D16_1L on full 11425 (frozen test)...
+    [PatchTST P48 D16 L1] ep   0 train 4.1656 val 3.1797 gap +0.9859 ent 1.935
+    [PatchTST P48 D16 L1] ep   1 train 3.8790 val 3.0069 gap +0.8721 ent 1.935
+    [PatchTST P48 D16 L1] ep   2 train 3.8253 val 2.9764 gap +0.8489 ent 1.933
+    [PatchTST P48 D16 L1] ep   3 train 3.8015 val 2.9686 gap +0.8329 ent 1.933
+    [PatchTST P48 D16 L1] ep   4 train 3.8108 val 2.9349 gap +0.8759 ent 1.932
+    [PatchTST P48 D16 L1] ep   5 train 3.7854 val 2.9313 gap +0.8542 ent 1.928
+    [PatchTST P48 D16 L1] ep   9 train 3.7604 val 2.9276 gap +0.8327 ent 1.910
+    [PatchTST P48 D16 L1] ep  10 train 3.7508 val 2.8766 gap +0.8742 ent 1.909
+    [PatchTST P48 D16 L1] ep  14 train 3.7315 val 2.8516 gap +0.8799 ent 1.882
+    [PatchTST P48 D16 L1] ep  15 train 3.7349 val 2.8483 gap +0.8866 ent 1.870
+    [PatchTST P48 D16 L1] ep  20 train 3.7014 val 2.8695 gap +0.8319 ent 1.805
+    [PatchTST P48 D16 L1] ep  21 train 3.6934 val 2.8407 gap +0.8527 ent 1.793
+    [PatchTST P48 D16 L1] ep  25 train 3.6670 val 2.8835 gap +0.7834 ent 1.685
+    [PatchTST P48 D16 L1] ep  30 train 3.6357 val 2.9262 gap +0.7094 ent 1.581
+    [PatchTST P48 D16 L1] ep  35 train 3.5945 val 3.0265 gap +0.5680 ent 1.519
+    [PatchTST P48 D16 L1] ep  40 train 3.5876 val 3.0779 gap +0.5097 ent 1.441
+    [PatchTST P48 D16 L1] ep  45 train 3.5428 val 3.0814 gap +0.4614 ent 1.367
+    [PatchTST P48 D16 L1] ep  50 train 3.5324 val 3.0166 gap +0.5158 ent 1.285
+    [PatchTST P48 D16 L1] ep  55 train 3.5370 val 3.0033 gap +0.5337 ent 1.242
+    [PatchTST P48 D16 L1] ep  60 train 3.5112 val 3.0154 gap +0.4957 ent 1.195
+    early stop ep 61 best_val 2.8407
+  patchtst_P48_D16_1L  test ok (75.1s)
+  member nlinear_L336_a1      full 2.0571
+  member nlinear_L336_a10     full 2.0571
+  member patchtst_P24_D32_2L  full 2.1864
+Bootstrap 95% CI (B=2000): Bet3 full [1.9584, 1.9975] mean 1.9781; S-26 [1.9723, 2.0092] mean 1.9909
+Paired delta (Bet3-S26) mean -0.0128 95% CI [-0.0185, -0.0069] (UPPER BOUND < 0 => promotion-supported)
+  strat W1 (origin    0): Bet3 2.1607  S-26 2.1333  delta +0.0274
+  strat W2 (origin  720): Bet3 1.5655  S-26 1.5655  delta +0.0000
+  strat W3 (origin 1440): Bet3 2.2083  S-26 2.2739  delta -0.0656
+  strat W4 (origin 2160): Bet3 1.8896  S-26 1.9579  delta -0.0683
+  horizon h1_first240: Bet3 1.8266  S-26 1.8335  delta -0.0068
+  horizon h2_mid240: Bet3 1.9788  S-26 1.9728  delta +0.0060
+  horizon h3_last240: Bet3 2.1290  S-26 2.1665  delta -0.0375
+
+S-26 incumbent (in-harness): full 1.9909 / 1.9696 disjoint / W4 1.9579
+S-20 6-member reference W4: 1.8427 (NOT the defended incumbent)
+Bet3 best full 1.9781 / 2.4613 disjoint 1.8634 W4 1.8896 val_full 2.4936
+W4 compare: Bet3 1.8896 vs S-26 incumbent 1.9579 -> -0.0683 (Bet3 beats incumbent); spec cap 1.90 -> PASS
+Accept: full<=1.9859&<1.9909 True disj<=1.9696 True W4<=1.90 True (1.8896) heldout_gain>0.005 True (0.0204) reg(transfer<0.15 True, gap<0.15 False) val_full-held_out -0.0289
+Overall ACCEPT=False  close_trigger=True  VERDICT=REJECT (close family)
+
+wrote C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\patchtst_delta_bet3\results_patchtst_bet3.json elapsed 445.8s

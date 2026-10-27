@@ -1,0 +1,90 @@
+{
+ "spacy": "3.8.16",
+ "en_core_web_sm": "3.8.0",
+ "spawned_answerable": 13,
+ "input_stage_misses": [
+  "q008",
+  "q015"
+ ],
+ "strict_passed": 10,
+ "threshold": 10,
+ "threshold_rule": ">=70% of spawned, all required lemmas",
+ "threshold_met": true,
+ "unanswerable_refusals": 8,
+ "canary_refusal": true,
+ "per_question": {
+  "q001": {
+   "refusal": false,
+   "missing": [],
+   "result": "pass"
+  },
+  "q002": {
+   "refusal": false,
+   "missing": [],
+   "result": "pass"
+  },
+  "q003": {
+   "refusal": false,
+   "missing": [],
+   "result": "pass"
+  },
+  "q004": {
+   "refusal": false,
+   "missing": [],
+   "result": "pass"
+  },
+  "q005": {
+   "refusal": false,
+   "missing": [],
+   "result": "pass"
+  },
+  "q006": {
+   "refusal": false,
+   "missing": [],
+   "result": "pass"
+  },
+  "q007": {
+   "refusal": true,
+   "missing": [
+    "observer",
+    "event",
+    "coupling"
+   ],
+   "result": "fail"
+  },
+  "q009": {
+   "refusal": false,
+   "missing": [],
+   "result": "pass"
+  },
+  "q010": {
+   "refusal": false,
+   "missing": [],
+   "result": "pass"
+  },
+  "q011": {
+   "refusal": false,
+   "missing": [],
+   "result": "pass"
+  },
+  "q012": {
+   "refusal": false,
+   "missing": [
+    "mailbox"
+   ],
+   "result": "fail"
+  },
+  "q013": {
+   "refusal": false,
+   "missing": [],
+   "result": "pass"
+  },
+  "q014": {
+   "refusal": false,
+   "missing": [
+    "surface"
+   ],
+   "result": "fail"
+  }
+ }
+}

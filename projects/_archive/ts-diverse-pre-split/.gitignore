@@ -1,0 +1,27 @@
+# Derived, regenerable, and bulky artifacts. Never committed.
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Project Brain sidecar: derived by ARL scripts/bootstrap_project_brain.py
+# from this repo's own *.py and *.md. 231 MB, fully rebuildable.
+.brain/
+graph.db
+graph_index.json
+sessions.db
+.graph_fingerprint
+
+# Datasets are re-fetchable from the fetch_*.py scripts in this project.
+data/*.csv
+data/ETT/
+
+# Inbox holds the raw source PDFs (73 MB). Ingested, not committed.
+INBOX/
+
+# Run logs and scratch notes produced by experiments.
+harness.log
+bench_after.log
+*_console.log
+*.tmp
+*_tmp*
+7}

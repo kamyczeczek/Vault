@@ -1,7 +1,7 @@
 {
   "is_obsidian_vault": true,
   "smart_blocks": {
-    "embed_blocks": true,
+    "embed_blocks": false,
     "min_chars": 200
   },
   "smart_sources": {
@@ -14,20 +14,15 @@
     },
     "excluded_headings": "",
     "file_exclusions": "Untitled",
-    "folder_exclusions": "scripts/_scratch,scripts/out,projects/_archive,projects/research/retrieval-v2/corpus,handoff/flags,handoff/session-6-briefs,root_workspace/scripts/_scratch,root_workspace/scripts/out,root_workspace/projects/_archive,root_workspace/projects/research/retrieval-v2/corpus,root_workspace/handoff/flags,root_workspace/handoff/session-6-briefs",
+    "folder_exclusions": "scripts/_scratch,scripts/out,projects,logs,agents,handoff/flags,handoff/session-6-briefs",
     "folder_exclusions_list": [
       "scripts/_scratch",
       "scripts/out",
-      "projects/_archive",
-      "projects/research/retrieval-v2/corpus",
+      "projects",
+      "logs",
+      "agents",
       "handoff/flags",
-      "handoff/session-6-briefs",
-      "root_workspace/scripts/_scratch",
-      "root_workspace/scripts/out",
-      "root_workspace/projects/_archive",
-      "root_workspace/projects/research/retrieval-v2/corpus",
-      "root_workspace/handoff/flags",
-      "root_workspace/handoff/session-6-briefs"
+      "handoff/session-6-briefs"
     ]
   },
   "gitignore_exclusions": [
@@ -38,11 +33,29 @@
     ".smart-env/*",
     "!.smart-env/smart_env.json",
     ".trash/",
-    ".smart-env"
+    ".smart-env",
+    "__pycache__/",
+    "*.pyc",
+    "scripts/_scratch/",
+    "scripts/out/",
+    ".commit-approved",
+    "projects/",
+    "library/",
+    "agents/backup/",
+    "brain/*.db*",
+    "tools/out/",
+    "logs/",
+    ".pi/",
+    ".obsidian/repair-backup-*/",
+    ".obsidian/plugins.disabled-*/",
+    ".obsidian/*.bak-*",
+    ".obsidian/plugins/*/scan-cache.json",
+    "Notes/OKF-rag/source-slices/index.md",
+    ".export/\r"
   ],
-  "gitignore_exclusions_updated_at": 1792892129671,
+  "gitignore_exclusions_updated_at": 1793055951590,
   "language": "en",
-  "re_import_wait_time": 13,
+  "re_import_wait_time": 120,
   "smart_chat_threads": {
     "chat_model": {
       "adapter": "ollama",

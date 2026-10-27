@@ -1,0 +1,1133 @@
+seeds [42, 43, 44, 45, 46] — data generators keep fixed seeds, only model randomness varies
+
+########## seed 42 ##########
+
+-- etth1_H96 H=96 --
+  nlinear_a1             MAE 3.1407
+  nlinear_a10            MAE 3.1411
+  rff_h64                MAE 2.7593
+  subband_cA1            MAE 3.1446
+  subband_d1             MAE 3.0545
+  wavelet_pooled         MAE 3.3649
+  bigdict_elm            MAE 2.9715
+  amr_fbs                MAE 3.1549
+  dlinear                MAE 2.9222
+  spectral_fft           MAE 2.9103
+  theta                  MAE 2.7123
+  bigdict_tree           MAE 2.5276
+  subband_bigdict        MAE 2.7712
+  esn_reservoir          MAE 2.9946
+  knn_forecaster         MAE 2.5846
+  deterministic_esn      MAE 2.8301
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 2.6526
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 2.6668
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 2.6294
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 2.6672
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 2.6289
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 2.6556
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 2.6503
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 2.6546
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 2.6178
+
+-- sunspot_H24 H=24 --
+  nlinear_a1             MAE 18.6251
+  nlinear_a10            MAE 18.6250
+  rff_h64                MAE 30.4083
+  subband_cA1            MAE 18.5619
+  subband_d1             MAE 17.8716
+  wavelet_pooled         MAE 59.9673
+  bigdict_elm            MAE 15.0363
+  amr_fbs                MAE 15.6830
+  dlinear                MAE 27.3181
+  spectral_fft           MAE 39.3278
+  theta                  MAE 38.6926
+  bigdict_tree           MAE 19.6772
+  subband_bigdict        MAE 22.7612
+  esn_reservoir          MAE 20.8280
+  knn_forecaster         MAE 17.4284
+  deterministic_esn      MAE 21.3210
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 19.9287
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 21.5152
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 21.2868
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 19.7738
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 19.6384
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 21.2132
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 21.9327
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 22.0168
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 19.9899
+
+-- seasonal_H48 H=48 --
+  nlinear_a1             MAE 0.1272
+  nlinear_a10            MAE 0.1265
+  rff_h64                MAE 0.5039
+  subband_cA1            MAE 0.1263
+  subband_d1             MAE 1.0436
+  wavelet_pooled         MAE 1.0685
+  bigdict_elm            MAE 0.1329
+  amr_fbs                MAE 0.1349
+  dlinear                MAE 0.4652
+  spectral_fft           MAE 0.9909
+  theta                  MAE 1.1565
+  bigdict_tree           MAE 0.2645
+  subband_bigdict        MAE 0.1317
+  esn_reservoir          MAE 0.3511
+  knn_forecaster         MAE 0.1808
+  deterministic_esn      MAE 0.3773
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.4090
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.4091
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.4089
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.4091
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.4088
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.4089
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.4090
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.4090
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.4088
+
+-- trending_H48 H=48 --
+  nlinear_a1             MAE 0.8581
+  nlinear_a10            MAE 0.8571
+  rff_h64                MAE 1.0193
+  subband_cA1            MAE 0.8539
+  subband_d1             MAE 0.8893
+  wavelet_pooled         MAE 6.6658
+  bigdict_elm            MAE 0.8872
+  amr_fbs                MAE 1.0863
+  dlinear                MAE 0.9502
+  spectral_fft           MAE 10.6316
+  theta                  MAE 0.9062
+  bigdict_tree           MAE 1.4302
+  subband_bigdict        MAE 1.1542
+  esn_reservoir          MAE 0.8169
+  knn_forecaster         MAE 0.8269
+  deterministic_esn      MAE 0.8032
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 1.1848
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 1.1878
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 1.1858
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 1.1874
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 1.1831
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 1.1862
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 1.1863
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 1.1862
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 1.1816
+
+-- spiky_H48 H=48 --
+  nlinear_a1             MAE 0.4874
+  nlinear_a10            MAE 0.4869
+  rff_h64                MAE 0.6125
+  subband_cA1            MAE 0.4786
+  subband_d1             MAE 0.5407
+  wavelet_pooled         MAE 0.7385
+  bigdict_elm            MAE 0.5101
+  amr_fbs                MAE 0.5423
+  dlinear                MAE 0.4736
+  spectral_fft           MAE 0.4781
+  theta                  MAE 0.7266
+  bigdict_tree           MAE 0.4753
+  subband_bigdict        MAE 0.5045
+  esn_reservoir          MAE 0.4742
+  knn_forecaster         MAE 0.4901
+  deterministic_esn      MAE 0.4712
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.5050
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.5050
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.5050
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.5050
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.5050
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.5050
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.5050
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.5050
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.5050
+
+-- ou_H24 H=24 --
+  nlinear_a1             MAE 0.8190
+  nlinear_a10            MAE 0.8201
+  rff_h64                MAE 1.1340
+  subband_cA1            MAE 0.8256
+  subband_d1             MAE 0.8538
+  wavelet_pooled         MAE 1.0946
+  bigdict_elm            MAE 0.9810
+  amr_fbs                MAE 0.9238
+  dlinear                MAE 0.9328
+  spectral_fft           MAE 0.9085
+  theta                  MAE 1.2889
+  bigdict_tree           MAE 0.8968
+  subband_bigdict        MAE 0.8787
+  esn_reservoir          MAE 0.7965
+  knn_forecaster         MAE 0.7786
+  deterministic_esn      MAE 0.7925
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 1.0074
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 1.0076
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 1.0074
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 1.0074
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 1.0073
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 1.0075
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 1.0075
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 1.0075
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 1.0072
+
+-- multiscale_H96 H=96 --
+  nlinear_a1             MAE 0.2135
+  nlinear_a10            MAE 0.2128
+  rff_h64                MAE 1.2529
+  subband_cA1            MAE 0.2105
+  subband_d1             MAE 0.9463
+  wavelet_pooled         MAE 1.0874
+  bigdict_elm            MAE 0.2171
+  amr_fbs                MAE 0.2186
+  dlinear                MAE 0.3030
+  spectral_fft           MAE 0.8653
+  theta                  MAE 1.1892
+  bigdict_tree           MAE 0.4620
+  subband_bigdict        MAE 0.2151
+  esn_reservoir          MAE 0.4367
+  knn_forecaster         MAE 0.2616
+  deterministic_esn      MAE 0.4213
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.3737
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.3737
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.3737
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.3737
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.3736
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.3737
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.3737
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.3737
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.3736
+
+-- thomas_H24 H=24 --
+  nlinear_a1             MAE 0.0178
+  nlinear_a10            MAE 0.0232
+  rff_h64                MAE 0.1244
+  subband_cA1            MAE 0.0350
+  subband_d1             MAE 0.0792
+  wavelet_pooled         MAE 2.8422
+  bigdict_elm            MAE 0.0051
+  amr_fbs                MAE 0.0063
+  dlinear                MAE 0.0797
+  spectral_fft           MAE 0.6695
+  theta                  MAE 0.0969
+  bigdict_tree           MAE 0.0526
+  subband_bigdict        MAE 0.0301
+  esn_reservoir          MAE 0.0564
+  knn_forecaster         MAE 0.0860
+  deterministic_esn      MAE 0.0527
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.2823
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.2824
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.2823
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.2824
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.2823
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.2823
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.2823
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.2823
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.2822
+
+=== Aggregate (seed 42) ===
+meanA 3.4934 meanB 3.4599 meanC 3.2757 meanD 3.2534
+wins B over A 7/8  mean_rankB 2.38  wins D over A 7/8 rankD 1.12
+Gates(G1<mean-0.005,G2 rank<2,G3 wins>=4) G1 True G2 False G3 True all False -> REJECTED
+BigDict G1 True G2 True G3 True -> PROMOTE BigDict
+
+########## seed 43 ##########
+
+-- etth1_H96 H=96 --
+  nlinear_a1             MAE 3.1407
+  nlinear_a10            MAE 3.1411
+  rff_h64                MAE 2.9728
+  subband_cA1            MAE 3.1446
+  subband_d1             MAE 3.0545
+  wavelet_pooled         MAE 2.8908
+  bigdict_elm            MAE 2.9364
+  amr_fbs                MAE 3.1835
+  dlinear                MAE 2.9222
+  spectral_fft           MAE 2.9103
+  theta                  MAE 2.7123
+  bigdict_tree           MAE 2.5276
+  subband_bigdict        MAE 3.0857
+  esn_reservoir          MAE 2.9961
+  knn_forecaster         MAE 2.5846
+  deterministic_esn      MAE 2.8301
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 2.6503
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 2.6645
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 2.6275
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 2.6647
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 2.6330
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 2.6414
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 2.6482
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 2.6524
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 2.6220
+
+-- sunspot_H24 H=24 --
+  nlinear_a1             MAE 18.6251
+  nlinear_a10            MAE 18.6250
+  rff_h64                MAE 32.9953
+  subband_cA1            MAE 18.5619
+  subband_d1             MAE 17.8716
+  wavelet_pooled         MAE 64.6293
+  bigdict_elm            MAE 15.2266
+  amr_fbs                MAE 16.2847
+  dlinear                MAE 27.3181
+  spectral_fft           MAE 39.3278
+  theta                  MAE 38.6926
+  bigdict_tree           MAE 19.6772
+  subband_bigdict        MAE 19.7416
+  esn_reservoir          MAE 19.4577
+  knn_forecaster         MAE 17.4284
+  deterministic_esn      MAE 21.3210
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 19.3268
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 21.1334
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 20.9580
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 20.5350
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 19.3404
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 21.6726
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 21.3611
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 21.5503
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 19.4679
+
+-- seasonal_H48 H=48 --
+  nlinear_a1             MAE 0.1272
+  nlinear_a10            MAE 0.1265
+  rff_h64                MAE 0.8749
+  subband_cA1            MAE 0.1263
+  subband_d1             MAE 1.0436
+  wavelet_pooled         MAE 1.0767
+  bigdict_elm            MAE 0.1329
+  amr_fbs                MAE 0.1342
+  dlinear                MAE 0.4652
+  spectral_fft           MAE 0.9909
+  theta                  MAE 1.1565
+  bigdict_tree           MAE 0.2645
+  subband_bigdict        MAE 0.1315
+  esn_reservoir          MAE 0.3683
+  knn_forecaster         MAE 0.1808
+  deterministic_esn      MAE 0.3773
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.4089
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.4090
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.4089
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.4091
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.4088
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.4089
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.4090
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.4090
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.4088
+
+-- trending_H48 H=48 --
+  nlinear_a1             MAE 0.8581
+  nlinear_a10            MAE 0.8571
+  rff_h64                MAE 0.8930
+  subband_cA1            MAE 0.8539
+  subband_d1             MAE 0.8893
+  wavelet_pooled         MAE 6.3306
+  bigdict_elm            MAE 0.8636
+  amr_fbs                MAE 1.1064
+  dlinear                MAE 0.9502
+  spectral_fft           MAE 10.6316
+  theta                  MAE 0.9062
+  bigdict_tree           MAE 1.4302
+  subband_bigdict        MAE 0.9459
+  esn_reservoir          MAE 0.8281
+  knn_forecaster         MAE 0.8269
+  deterministic_esn      MAE 0.8032
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 1.1842
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 1.1872
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 1.1852
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 1.1871
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 1.1827
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 1.1866
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 1.1857
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 1.1856
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 1.1811
+
+-- spiky_H48 H=48 --
+  nlinear_a1             MAE 0.4874
+  nlinear_a10            MAE 0.4869
+  rff_h64                MAE 0.6743
+  subband_cA1            MAE 0.4786
+  subband_d1             MAE 0.5407
+  wavelet_pooled         MAE 0.7241
+  bigdict_elm            MAE 0.4985
+  amr_fbs                MAE 0.5513
+  dlinear                MAE 0.4736
+  spectral_fft           MAE 0.4781
+  theta                  MAE 0.7266
+  bigdict_tree           MAE 0.4753
+  subband_bigdict        MAE 0.4900
+  esn_reservoir          MAE 0.4737
+  knn_forecaster         MAE 0.4901
+  deterministic_esn      MAE 0.4712
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.5050
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.5050
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.5050
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.5050
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.5051
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.5050
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.5050
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.5050
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.5051
+
+-- ou_H24 H=24 --
+  nlinear_a1             MAE 0.8190
+  nlinear_a10            MAE 0.8201
+  rff_h64                MAE 1.1173
+  subband_cA1            MAE 0.8256
+  subband_d1             MAE 0.8538
+  wavelet_pooled         MAE 1.0243
+  bigdict_elm            MAE 0.9158
+  amr_fbs                MAE 0.9572
+  dlinear                MAE 0.9328
+  spectral_fft           MAE 0.9085
+  theta                  MAE 1.2889
+  bigdict_tree           MAE 0.8968
+  subband_bigdict        MAE 0.7543
+  esn_reservoir          MAE 0.7950
+  knn_forecaster         MAE 0.7786
+  deterministic_esn      MAE 0.7925
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 1.0070
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 1.0071
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 1.0070
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 1.0071
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 1.0067
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 1.0070
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 1.0071
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 1.0071
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 1.0066
+
+-- multiscale_H96 H=96 --
+  nlinear_a1             MAE 0.2135
+  nlinear_a10            MAE 0.2128
+  rff_h64                MAE 1.2032
+  subband_cA1            MAE 0.2105
+  subband_d1             MAE 0.9463
+  wavelet_pooled         MAE 1.0929
+  bigdict_elm            MAE 0.2165
+  amr_fbs                MAE 0.2196
+  dlinear                MAE 0.3030
+  spectral_fft           MAE 0.8653
+  theta                  MAE 1.1892
+  bigdict_tree           MAE 0.5369
+  subband_bigdict        MAE 0.2143
+  esn_reservoir          MAE 0.4366
+  knn_forecaster         MAE 0.2616
+  deterministic_esn      MAE 0.4213
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.3737
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.3737
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.3737
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.3737
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.3736
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.3737
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.3737
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.3737
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.3736
+
+-- thomas_H24 H=24 --
+  nlinear_a1             MAE 0.0178
+  nlinear_a10            MAE 0.0232
+  rff_h64                MAE 0.1197
+  subband_cA1            MAE 0.0350
+  subband_d1             MAE 0.0792
+  wavelet_pooled         MAE 2.8417
+  bigdict_elm            MAE 0.0053
+  amr_fbs                MAE 0.0064
+  dlinear                MAE 0.0797
+  spectral_fft           MAE 0.6695
+  theta                  MAE 0.0969
+  bigdict_tree           MAE 0.0653
+  subband_bigdict        MAE 0.0311
+  esn_reservoir          MAE 0.0542
+  knn_forecaster         MAE 0.0860
+  deterministic_esn      MAE 0.0527
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.2823
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.2824
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.2823
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.2824
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.2823
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.2823
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.2823
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.2823
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.2822
+
+=== Aggregate (seed 43) ===
+meanA 3.4453 meanB 3.4184 meanC 3.3705 meanD 3.2166
+wins B over A 7/8  mean_rankB 2.12  wins D over A 7/8 rankD 1.50
+Gates(G1<mean-0.005,G2 rank<2,G3 wins>=4) G1 True G2 False G3 True all False -> REJECTED
+BigDict G1 True G2 True G3 True -> PROMOTE BigDict
+
+########## seed 44 ##########
+
+-- etth1_H96 H=96 --
+  nlinear_a1             MAE 3.1407
+  nlinear_a10            MAE 3.1411
+  rff_h64                MAE 2.8074
+  subband_cA1            MAE 3.1446
+  subband_d1             MAE 3.0545
+  wavelet_pooled         MAE 2.6609
+  bigdict_elm            MAE 2.9102
+  amr_fbs                MAE 3.5481
+  dlinear                MAE 2.9222
+  spectral_fft           MAE 2.9103
+  theta                  MAE 2.7123
+  bigdict_tree           MAE 2.5959
+  subband_bigdict        MAE 3.4664
+  esn_reservoir          MAE 3.0115
+  knn_forecaster         MAE 2.5846
+  deterministic_esn      MAE 2.8301
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 2.6503
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 2.6646
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 2.6274
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 2.6650
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 2.6286
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 2.6376
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 2.6478
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 2.6524
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 2.6176
+
+-- sunspot_H24 H=24 --
+  nlinear_a1             MAE 18.6251
+  nlinear_a10            MAE 18.6250
+  rff_h64                MAE 30.5208
+  subband_cA1            MAE 18.5619
+  subband_d1             MAE 17.8716
+  wavelet_pooled         MAE 62.8079
+  bigdict_elm            MAE 15.8955
+  amr_fbs                MAE 16.2402
+  dlinear                MAE 27.3181
+  spectral_fft           MAE 39.3278
+  theta                  MAE 38.6926
+  bigdict_tree           MAE 19.6612
+  subband_bigdict        MAE 17.6154
+  esn_reservoir          MAE 20.0985
+  knn_forecaster         MAE 17.4284
+  deterministic_esn      MAE 21.3210
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 19.7442
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 21.3789
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 21.4262
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 19.0228
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 19.2417
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 20.6799
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 21.9225
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 21.8504
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 19.4957
+
+-- seasonal_H48 H=48 --
+  nlinear_a1             MAE 0.1272
+  nlinear_a10            MAE 0.1265
+  rff_h64                MAE 0.7261
+  subband_cA1            MAE 0.1263
+  subband_d1             MAE 1.0436
+  wavelet_pooled         MAE 1.0860
+  bigdict_elm            MAE 0.1321
+  amr_fbs                MAE 0.1360
+  dlinear                MAE 0.4652
+  spectral_fft           MAE 0.9909
+  theta                  MAE 1.1565
+  bigdict_tree           MAE 0.2645
+  subband_bigdict        MAE 0.1305
+  esn_reservoir          MAE 0.3497
+  knn_forecaster         MAE 0.1808
+  deterministic_esn      MAE 0.3773
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.4090
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.4091
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.4089
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.4091
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.4089
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.4090
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.4091
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.4091
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.4088
+
+-- trending_H48 H=48 --
+  nlinear_a1             MAE 0.8581
+  nlinear_a10            MAE 0.8571
+  rff_h64                MAE 1.0499
+  subband_cA1            MAE 0.8539
+  subband_d1             MAE 0.8893
+  wavelet_pooled         MAE 6.4620
+  bigdict_elm            MAE 0.8932
+  amr_fbs                MAE 1.1856
+  dlinear                MAE 0.9502
+  spectral_fft           MAE 10.6316
+  theta                  MAE 0.9062
+  bigdict_tree           MAE 1.4302
+  subband_bigdict        MAE 1.0506
+  esn_reservoir          MAE 0.8198
+  knn_forecaster         MAE 0.8269
+  deterministic_esn      MAE 0.8032
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 1.1841
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 1.1870
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 1.1850
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 1.1865
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 1.1834
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 1.1865
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 1.1855
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 1.1854
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 1.1818
+
+-- spiky_H48 H=48 --
+  nlinear_a1             MAE 0.4874
+  nlinear_a10            MAE 0.4869
+  rff_h64                MAE 0.5968
+  subband_cA1            MAE 0.4786
+  subband_d1             MAE 0.5407
+  wavelet_pooled         MAE 0.7172
+  bigdict_elm            MAE 0.5168
+  amr_fbs                MAE 0.5879
+  dlinear                MAE 0.4736
+  spectral_fft           MAE 0.4781
+  theta                  MAE 0.7266
+  bigdict_tree           MAE 0.4753
+  subband_bigdict        MAE 0.5027
+  esn_reservoir          MAE 0.4737
+  knn_forecaster         MAE 0.4901
+  deterministic_esn      MAE 0.4712
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.5050
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.5050
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.5050
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.5050
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.5050
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.5050
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.5050
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.5050
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.5050
+
+-- ou_H24 H=24 --
+  nlinear_a1             MAE 0.8190
+  nlinear_a10            MAE 0.8201
+  rff_h64                MAE 1.1830
+  subband_cA1            MAE 0.8256
+  subband_d1             MAE 0.8538
+  wavelet_pooled         MAE 0.9274
+  bigdict_elm            MAE 0.8660
+  amr_fbs                MAE 0.8011
+  dlinear                MAE 0.9328
+  spectral_fft           MAE 0.9085
+  theta                  MAE 1.2889
+  bigdict_tree           MAE 0.8560
+  subband_bigdict        MAE 0.9229
+  esn_reservoir          MAE 0.7985
+  knn_forecaster         MAE 0.7786
+  deterministic_esn      MAE 0.7925
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 1.0076
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 1.0077
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 1.0076
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 1.0075
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 1.0074
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 1.0076
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 1.0076
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 1.0076
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 1.0074
+
+-- multiscale_H96 H=96 --
+  nlinear_a1             MAE 0.2135
+  nlinear_a10            MAE 0.2128
+  rff_h64                MAE 0.9790
+  subband_cA1            MAE 0.2105
+  subband_d1             MAE 0.9463
+  wavelet_pooled         MAE 1.0995
+  bigdict_elm            MAE 0.2156
+  amr_fbs                MAE 0.2169
+  dlinear                MAE 0.3030
+  spectral_fft           MAE 0.8653
+  theta                  MAE 1.1892
+  bigdict_tree           MAE 0.5369
+  subband_bigdict        MAE 0.2145
+  esn_reservoir          MAE 0.4305
+  knn_forecaster         MAE 0.2616
+  deterministic_esn      MAE 0.4213
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.3737
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.3737
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.3736
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.3737
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.3736
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.3736
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.3737
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.3737
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.3736
+
+-- thomas_H24 H=24 --
+  nlinear_a1             MAE 0.0178
+  nlinear_a10            MAE 0.0232
+  rff_h64                MAE 0.1339
+  subband_cA1            MAE 0.0350
+  subband_d1             MAE 0.0792
+  wavelet_pooled         MAE 2.8414
+  bigdict_elm            MAE 0.0064
+  amr_fbs                MAE 0.0075
+  dlinear                MAE 0.0797
+  spectral_fft           MAE 0.6695
+  theta                  MAE 0.0969
+  bigdict_tree           MAE 0.0533
+  subband_bigdict        MAE 0.0315
+  esn_reservoir          MAE 0.0574
+  knn_forecaster         MAE 0.0860
+  deterministic_esn      MAE 0.0527
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.2823
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.2824
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.2823
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.2824
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.2822
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.2823
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.2823
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.2823
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.2822
+
+=== Aggregate (seed 44) ===
+meanA 3.4760 meanB 3.4770 meanC 3.1815 meanD 3.2038
+wins B over A 6/8  mean_rankB 2.50  wins D over A 7/8 rankD 1.50
+Gates(G1<mean-0.005,G2 rank<2,G3 wins>=4) G1 False G2 False G3 True all False -> REJECTED
+BigDict G1 True G2 True G3 True -> PROMOTE BigDict
+
+########## seed 45 ##########
+
+-- etth1_H96 H=96 --
+  nlinear_a1             MAE 3.1407
+  nlinear_a10            MAE 3.1411
+  rff_h64                MAE 2.9070
+  subband_cA1            MAE 3.1446
+  subband_d1             MAE 3.0545
+  wavelet_pooled         MAE 2.8738
+  bigdict_elm            MAE 3.1818
+  amr_fbs                MAE 3.1150
+  dlinear                MAE 2.9222
+  spectral_fft           MAE 2.9103
+  theta                  MAE 2.7123
+  bigdict_tree           MAE 2.5276
+  subband_bigdict        MAE 2.9447
+  esn_reservoir          MAE 3.0202
+  knn_forecaster         MAE 2.5846
+  deterministic_esn      MAE 2.8301
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 2.6495
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 2.6637
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 2.6266
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 2.6654
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 2.6174
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 2.6465
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 2.6465
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 2.6515
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 2.6066
+
+-- sunspot_H24 H=24 --
+  nlinear_a1             MAE 18.6251
+  nlinear_a10            MAE 18.6250
+  rff_h64                MAE 34.1857
+  subband_cA1            MAE 18.5619
+  subband_d1             MAE 17.8716
+  wavelet_pooled         MAE 57.2713
+  bigdict_elm            MAE 15.5177
+  amr_fbs                MAE 18.2267
+  dlinear                MAE 27.3181
+  spectral_fft           MAE 39.3278
+  theta                  MAE 38.6926
+  bigdict_tree           MAE 19.6772
+  subband_bigdict        MAE 18.1091
+  esn_reservoir          MAE 20.6509
+  knn_forecaster         MAE 17.4284
+  deterministic_esn      MAE 21.3210
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 19.1930
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 21.0338
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 20.8234
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 20.9109
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 19.1498
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 21.3804
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 21.4738
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 21.4757
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 19.4122
+
+-- seasonal_H48 H=48 --
+  nlinear_a1             MAE 0.1272
+  nlinear_a10            MAE 0.1265
+  rff_h64                MAE 0.8392
+  subband_cA1            MAE 0.1263
+  subband_d1             MAE 1.0436
+  wavelet_pooled         MAE 1.0837
+  bigdict_elm            MAE 0.1329
+  amr_fbs                MAE 0.1350
+  dlinear                MAE 0.4652
+  spectral_fft           MAE 0.9909
+  theta                  MAE 1.1565
+  bigdict_tree           MAE 0.2645
+  subband_bigdict        MAE 0.1308
+  esn_reservoir          MAE 0.3548
+  knn_forecaster         MAE 0.1808
+  deterministic_esn      MAE 0.3773
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.4090
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.4091
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.4089
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.4091
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.4088
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.4089
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.4090
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.4090
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.4088
+
+-- trending_H48 H=48 --
+  nlinear_a1             MAE 0.8581
+  nlinear_a10            MAE 0.8571
+  rff_h64                MAE 0.9469
+  subband_cA1            MAE 0.8539
+  subband_d1             MAE 0.8893
+  wavelet_pooled         MAE 6.1664
+  bigdict_elm            MAE 0.9017
+  amr_fbs                MAE 1.2747
+  dlinear                MAE 0.9502
+  spectral_fft           MAE 10.6316
+  theta                  MAE 0.9062
+  bigdict_tree           MAE 1.1626
+  subband_bigdict        MAE 1.0945
+  esn_reservoir          MAE 0.8128
+  knn_forecaster         MAE 0.8269
+  deterministic_esn      MAE 0.8032
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 1.1846
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 1.1876
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 1.1855
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 1.1868
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 1.1839
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 1.1858
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 1.1861
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 1.1860
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 1.1824
+
+-- spiky_H48 H=48 --
+  nlinear_a1             MAE 0.4874
+  nlinear_a10            MAE 0.4869
+  rff_h64                MAE 0.6152
+  subband_cA1            MAE 0.4786
+  subband_d1             MAE 0.5407
+  wavelet_pooled         MAE 0.7020
+  bigdict_elm            MAE 0.5123
+  amr_fbs                MAE 0.5514
+  dlinear                MAE 0.4736
+  spectral_fft           MAE 0.4781
+  theta                  MAE 0.7266
+  bigdict_tree           MAE 0.4753
+  subband_bigdict        MAE 0.4948
+  esn_reservoir          MAE 0.4746
+  knn_forecaster         MAE 0.4901
+  deterministic_esn      MAE 0.4712
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.5050
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.5050
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.5050
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.5050
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.5050
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.5050
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.5050
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.5050
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.5050
+
+-- ou_H24 H=24 --
+  nlinear_a1             MAE 0.8190
+  nlinear_a10            MAE 0.8201
+  rff_h64                MAE 1.1087
+  subband_cA1            MAE 0.8256
+  subband_d1             MAE 0.8538
+  wavelet_pooled         MAE 1.0839
+  bigdict_elm            MAE 0.8562
+  amr_fbs                MAE 0.8507
+  dlinear                MAE 0.9328
+  spectral_fft           MAE 0.9085
+  theta                  MAE 1.2889
+  bigdict_tree           MAE 0.8087
+  subband_bigdict        MAE 0.9529
+  esn_reservoir          MAE 0.7992
+  knn_forecaster         MAE 0.7786
+  deterministic_esn      MAE 0.7925
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 1.0073
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 1.0074
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 1.0073
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 1.0074
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 1.0071
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 1.0072
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 1.0073
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 1.0073
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 1.0070
+
+-- multiscale_H96 H=96 --
+  nlinear_a1             MAE 0.2135
+  nlinear_a10            MAE 0.2128
+  rff_h64                MAE 1.1035
+  subband_cA1            MAE 0.2105
+  subband_d1             MAE 0.9463
+  wavelet_pooled         MAE 1.0985
+  bigdict_elm            MAE 0.2158
+  amr_fbs                MAE 0.2162
+  dlinear                MAE 0.3030
+  spectral_fft           MAE 0.8653
+  theta                  MAE 1.1892
+  bigdict_tree           MAE 0.4620
+  subband_bigdict        MAE 0.2147
+  esn_reservoir          MAE 0.4346
+  knn_forecaster         MAE 0.2616
+  deterministic_esn      MAE 0.4213
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.3738
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.3738
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.3737
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.3738
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.3737
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.3737
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.3738
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.3738
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.3737
+
+-- thomas_H24 H=24 --
+  nlinear_a1             MAE 0.0178
+  nlinear_a10            MAE 0.0232
+  rff_h64                MAE 0.1445
+  subband_cA1            MAE 0.0350
+  subband_d1             MAE 0.0792
+  wavelet_pooled         MAE 2.8420
+  bigdict_elm            MAE 0.0052
+  amr_fbs                MAE 0.0065
+  dlinear                MAE 0.0797
+  spectral_fft           MAE 0.6695
+  theta                  MAE 0.0969
+  bigdict_tree           MAE 0.0530
+  subband_bigdict        MAE 0.0305
+  esn_reservoir          MAE 0.0569
+  knn_forecaster         MAE 0.0860
+  deterministic_esn      MAE 0.0527
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.2823
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.2824
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.2823
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.2823
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.2822
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.2823
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.2823
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.2823
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.2822
+
+=== Aggregate (seed 45) ===
+meanA 3.4328 meanB 3.4016 meanC 3.4176 meanD 3.1910
+wins B over A 7/8  mean_rankB 2.00  wins D over A 7/8 rankD 1.25
+Gates(G1<mean-0.005,G2 rank<2,G3 wins>=4) G1 True G2 False G3 True all False -> REJECTED
+BigDict G1 True G2 True G3 True -> PROMOTE BigDict
+
+########## seed 46 ##########
+
+-- etth1_H96 H=96 --
+  nlinear_a1             MAE 3.1407
+  nlinear_a10            MAE 3.1411
+  rff_h64                MAE 2.7211
+  subband_cA1            MAE 3.1446
+  subband_d1             MAE 3.0545
+  wavelet_pooled         MAE 3.1899
+  bigdict_elm            MAE 2.9646
+  amr_fbs                MAE 3.3191
+  dlinear                MAE 2.9222
+  spectral_fft           MAE 2.9103
+  theta                  MAE 2.7123
+  bigdict_tree           MAE 2.5276
+  subband_bigdict        MAE 3.2001
+  esn_reservoir          MAE 3.0020
+  knn_forecaster         MAE 2.5846
+  deterministic_esn      MAE 2.8301
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 2.6519
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 2.6662
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 2.6289
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 2.6666
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 2.6285
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 2.6418
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 2.6495
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 2.6540
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 2.6176
+
+-- sunspot_H24 H=24 --
+  nlinear_a1             MAE 18.6251
+  nlinear_a10            MAE 18.6250
+  rff_h64                MAE 32.0907
+  subband_cA1            MAE 18.5619
+  subband_d1             MAE 17.8716
+  wavelet_pooled         MAE 62.1697
+  bigdict_elm            MAE 15.7902
+  amr_fbs                MAE 16.7251
+  dlinear                MAE 27.3181
+  spectral_fft           MAE 39.3278
+  theta                  MAE 38.6926
+  bigdict_tree           MAE 19.6772
+  subband_bigdict        MAE 20.4878
+  esn_reservoir          MAE 20.2380
+  knn_forecaster         MAE 17.4284
+  deterministic_esn      MAE 21.3210
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 18.9964
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 20.9748
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 20.7453
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 21.1278
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 18.8232
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 21.0655
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 21.2822
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 21.4759
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 19.1851
+
+-- seasonal_H48 H=48 --
+  nlinear_a1             MAE 0.1272
+  nlinear_a10            MAE 0.1265
+  rff_h64                MAE 0.7080
+  subband_cA1            MAE 0.1263
+  subband_d1             MAE 1.0436
+  wavelet_pooled         MAE 1.0790
+  bigdict_elm            MAE 0.1321
+  amr_fbs                MAE 0.1364
+  dlinear                MAE 0.4652
+  spectral_fft           MAE 0.9909
+  theta                  MAE 1.1565
+  bigdict_tree           MAE 0.2645
+  subband_bigdict        MAE 0.1303
+  esn_reservoir          MAE 0.3606
+  knn_forecaster         MAE 0.1808
+  deterministic_esn      MAE 0.3773
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.4090
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.4091
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.4090
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.4091
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.4089
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.4090
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.4091
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.4091
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.4089
+
+-- trending_H48 H=48 --
+  nlinear_a1             MAE 0.8581
+  nlinear_a10            MAE 0.8571
+  rff_h64                MAE 1.0228
+  subband_cA1            MAE 0.8539
+  subband_d1             MAE 0.8893
+  wavelet_pooled         MAE 6.4366
+  bigdict_elm            MAE 0.9131
+  amr_fbs                MAE 1.0921
+  dlinear                MAE 0.9502
+  spectral_fft           MAE 10.6316
+  theta                  MAE 0.9062
+  bigdict_tree           MAE 1.4302
+  subband_bigdict        MAE 0.8951
+  esn_reservoir          MAE 0.8146
+  knn_forecaster         MAE 0.8269
+  deterministic_esn      MAE 0.8032
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 1.1850
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 1.1880
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 1.1859
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 1.1877
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 1.1848
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 1.1865
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 1.1865
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 1.1864
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 1.1832
+
+-- spiky_H48 H=48 --
+  nlinear_a1             MAE 0.4874
+  nlinear_a10            MAE 0.4869
+  rff_h64                MAE 0.5839
+  subband_cA1            MAE 0.4786
+  subband_d1             MAE 0.5407
+  wavelet_pooled         MAE 0.7102
+  bigdict_elm            MAE 0.5181
+  amr_fbs                MAE 0.5141
+  dlinear                MAE 0.4736
+  spectral_fft           MAE 0.4781
+  theta                  MAE 0.7266
+  bigdict_tree           MAE 0.4753
+  subband_bigdict        MAE 0.5145
+  esn_reservoir          MAE 0.4737
+  knn_forecaster         MAE 0.4901
+  deterministic_esn      MAE 0.4712
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.5050
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.5050
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.5050
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.5050
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.5050
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.5050
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.5050
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.5050
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.5050
+
+-- ou_H24 H=24 --
+  nlinear_a1             MAE 0.8190
+  nlinear_a10            MAE 0.8201
+  rff_h64                MAE 1.1856
+  subband_cA1            MAE 0.8256
+  subband_d1             MAE 0.8538
+  wavelet_pooled         MAE 1.1029
+  bigdict_elm            MAE 0.8699
+  amr_fbs                MAE 0.9180
+  dlinear                MAE 0.9328
+  spectral_fft           MAE 0.9085
+  theta                  MAE 1.2889
+  bigdict_tree           MAE 0.9560
+  subband_bigdict        MAE 0.9193
+  esn_reservoir          MAE 0.7999
+  knn_forecaster         MAE 0.7786
+  deterministic_esn      MAE 0.7925
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 1.0071
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 1.0072
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 1.0071
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 1.0072
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 1.0068
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 1.0071
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 1.0071
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 1.0072
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 1.0067
+
+-- multiscale_H96 H=96 --
+  nlinear_a1             MAE 0.2135
+  nlinear_a10            MAE 0.2128
+  rff_h64                MAE 1.0331
+  subband_cA1            MAE 0.2105
+  subband_d1             MAE 0.9463
+  wavelet_pooled         MAE 1.0835
+  bigdict_elm            MAE 0.2167
+  amr_fbs                MAE 0.2225
+  dlinear                MAE 0.3030
+  spectral_fft           MAE 0.8653
+  theta                  MAE 1.1892
+  bigdict_tree           MAE 0.4620
+  subband_bigdict        MAE 0.2156
+  esn_reservoir          MAE 0.4415
+  knn_forecaster         MAE 0.2616
+  deterministic_esn      MAE 0.4213
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.3737
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.3737
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.3737
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.3737
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.3736
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.3737
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.3737
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.3737
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.3736
+
+-- thomas_H24 H=24 --
+  nlinear_a1             MAE 0.0178
+  nlinear_a10            MAE 0.0232
+  rff_h64                MAE 0.1717
+  subband_cA1            MAE 0.0350
+  subband_d1             MAE 0.0792
+  wavelet_pooled         MAE 2.8418
+  bigdict_elm            MAE 0.0065
+  amr_fbs                MAE 0.0072
+  dlinear                MAE 0.0797
+  spectral_fft           MAE 0.6695
+  theta                  MAE 0.0969
+  bigdict_tree           MAE 0.0525
+  subband_bigdict        MAE 0.0293
+  esn_reservoir          MAE 0.0633
+  knn_forecaster         MAE 0.0860
+  deterministic_esn      MAE 0.0527
+  Pool I (KNN Feature) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'knn_forecaster'] blend 0.2823
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.2824
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.2823
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.2824
+  Pool D ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs'] blend 0.2823
+  Pool E ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_bigdict'] blend 0.2823
+  Pool F ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'esn_reservoir'] blend 0.2823
+  Pool G ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'deterministic_esn'] blend 0.2823
+  Pool H (Hybrid BigDict + DetESN) ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'bigdict_elm', 'amr_fbs', 'deterministic_esn'] blend 0.2822
+
+=== Aggregate (seed 46) ===
+meanA 3.4258 meanB 3.3921 meanC 3.4449 meanD 3.1516
+wins B over A 7/8  mean_rankB 2.12  wins D over A 7/8 rankD 1.38
+Gates(G1<mean-0.005,G2 rank<2,G3 wins>=4) G1 True G2 False G3 True all False -> REJECTED
+BigDict G1 True G2 True G3 True -> PROMOTE BigDict
+
+########## seed sweep ##########
+meanA      3.4547 ± 0.0290
+meanB      3.4298 ± 0.0370
+meanC      3.3380 ± 0.1086
+meanD      3.2033 ± 0.0371
+mean_rankB 2.2250 ± 0.2054
+mean_rankD 1.3500 ± 0.1630
+winsB      6.8000 ± 0.4472
+winsD      7.0000 ± 0.0000
+gap B-A -0.0249 ± 0.0147   gap D-A -0.2514 ± 0.0205
+sweep gates {'B_beats_A_beyond_std': True, 'D_beats_A_beyond_std': True, 'B_wins_majority_every_seed': True, 'BigDict_gates_every_seed': True}

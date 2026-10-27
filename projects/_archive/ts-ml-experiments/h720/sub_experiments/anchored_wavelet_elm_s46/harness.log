@@ -1,0 +1,137 @@
+S-46 anchored wavelet → ELM dictionary → sparse readout (S46_DESIGN.md, binding).
+Stages 0/4: NLinear-style per-origin last-value anchor (level-free deltas).
+Stage 1: SWT db4 J=3 periodization + VisuShrink soft threshold per detail band, pooled F features.
+Stage 2: fixed random tanh ELM (seed 42) h200/h400; Stage 3: per-horizon Lasso (no-intercept).
+Pool M=6: ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L', 'patchtst_P48_D16_1L', 'wavelet_elm_swt_db4_h200', 'wavelet_elm_swt_db4_h400'] ;  S-44 incumbent blend target  1.9781/1.8634
+S-44 ground truth: C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\blend_promotion_s44\results_s44.json
+PatchTST encoder audit: C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\patchtst_delta_bet3\patchtst_encoder.py (architecture-identical import)
+Library versions: pywt 1.8.0  sklearn 1.9.0  torch 2.13.0+cpu
+
+Collecting P_val for 6 candidates (val 2161 origins, members frozen on 8545)...
+  nlinear_L336_a1                ok (2161, 720) (1.7s)
+  nlinear_L336_a10               ok (2161, 720) (1.3s)
+  training patchtst_P24_D32_2L on train 8545 (small encoder, minutes)...
+    [PatchTST P24 D32 L2] ep   0 train 4.3624 val 3.6247 gap +0.7377 ent 2.603
+    [PatchTST P24 D32 L2] ep   1 train 4.0867 val 3.5883 gap +0.4984 ent 2.598
+    [PatchTST P24 D32 L2] ep   2 train 4.0241 val 3.5058 gap +0.5183 ent 2.597
+    [PatchTST P24 D32 L2] ep   3 train 3.9899 val 3.4711 gap +0.5188 ent 2.593
+    [PatchTST P24 D32 L2] ep   5 train 3.9031 val 3.8282 gap +0.0749 ent 2.616
+    [PatchTST P24 D32 L2] ep  10 train 3.6899 val 4.2005 gap -0.5106 ent 2.531
+    [PatchTST P24 D32 L2] ep  15 train 3.5449 val 3.9909 gap -0.4459 ent 2.480
+    [PatchTST P24 D32 L2] ep  20 train 3.5200 val 3.9493 gap -0.4293 ent 2.440
+    [PatchTST P24 D32 L2] ep  25 train 3.4581 val 4.1312 gap -0.6732 ent 2.463
+    [PatchTST P24 D32 L2] ep  30 train 3.4552 val 4.1856 gap -0.7303 ent 2.446
+    [PatchTST P24 D32 L2] ep  35 train 3.4108 val 4.0680 gap -0.6572 ent 2.427
+    [PatchTST P24 D32 L2] ep  40 train 3.3988 val 4.3127 gap -0.9139 ent 2.420
+    early stop ep 43 best_val 3.4711
+  patchtst_P24_D32_2L            ok (2161, 720) (158.9s)
+  training patchtst_P48_D16_1L on train 8545 (small encoder, minutes)...
+    [PatchTST P48 D16 L1] ep   0 train 4.4629 val 3.5222 gap +0.9407 ent 1.945
+    [PatchTST P48 D16 L1] ep   1 train 4.1590 val 3.4984 gap +0.6607 ent 1.943
+    [PatchTST P48 D16 L1] ep   5 train 3.9650 val 3.5312 gap +0.4338 ent 1.906
+    [PatchTST P48 D16 L1] ep  10 train 3.9123 val 3.5501 gap +0.3622 ent 1.673
+    [PatchTST P48 D16 L1] ep  15 train 3.8926 val 3.5971 gap +0.2954 ent 1.565
+    [PatchTST P48 D16 L1] ep  20 train 3.8705 val 3.5853 gap +0.2852 ent 1.710
+    [PatchTST P48 D16 L1] ep  25 train 3.8000 val 3.7427 gap +0.0574 ent 1.766
+    [PatchTST P48 D16 L1] ep  30 train 3.7680 val 3.7988 gap -0.0308 ent 1.818
+    [PatchTST P48 D16 L1] ep  35 train 3.7087 val 3.9095 gap -0.2008 ent 1.837
+    [PatchTST P48 D16 L1] ep  40 train 3.6733 val 3.8088 gap -0.1355 ent 1.852
+    early stop ep 41 best_val 3.4984
+  patchtst_P48_D16_1L            ok (2161, 720) (62.6s)
+  training wavelet_elm_swt_db4_h200 on train 8545 (SWT → ELM → Lasso over 720 horizons)...
+  wavelet_elm_swt_db4_h200       ok (2161, 720) (8.2s)
+  training wavelet_elm_swt_db4_h400 on train 8545 (SWT → ELM → Lasso over 720 horizons)...
+  wavelet_elm_swt_db4_h400       ok (2161, 720) (9.5s)
+  singleton nlinear_L336_a1                val 2.8970
+  singleton nlinear_L336_a10               val 2.8970
+  singleton patchtst_P24_D32_2L            val 3.0267
+  singleton patchtst_P48_D16_1L            val 3.1517
+  singleton wavelet_elm_swt_db4_h200       val 3.2848
+  singleton wavelet_elm_swt_db4_h400       val 3.3426
+Held-out S-44 control (3-member, half-split alpha 30000) MAE val[1080:2161) = 2.4936 (fast@3000 2.5021; parity s44 val_full 2.4936)
+
+init singleton ['nlinear_L336_a10'] fast 2.5206
+iter  0 cur ['nlinear_L336_a10', 'patchtst_P48_D16_1L'] fast 2.5081 true 2.4992 a=30000.0 best_fast 2.5081 ['nlinear_L336_a10', 'patchtst_P48_D16_1L']
+iter  1 cur ['nlinear_L336_a1', 'patchtst_P48_D16_1L'] fast 2.5081 true 2.5081 a=3000.0 best_fast 2.5081 ['nlinear_L336_a10', 'patchtst_P48_D16_1L']
+iter  2 cur ['nlinear_L336_a1', 'patchtst_P24_D32_2L'] fast 2.5084 true 2.5084 a=3000.0 best_fast 2.5081 ['nlinear_L336_a10', 'patchtst_P48_D16_1L']
+iter  3 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L'] fast 2.5021 true 2.4936 a=30000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  4 cur ['nlinear_L336_a10', 'patchtst_P24_D32_2L'] fast 2.5084 true 2.5084 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  5 cur ['nlinear_L336_a10', 'patchtst_P24_D32_2L', 'patchtst_P48_D16_1L'] fast 2.5171 true 2.5171 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  6 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L', 'patchtst_P48_D16_1L'] fast 2.5096 true 2.4928 a=30000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  7 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P48_D16_1L'] fast 2.5129 true 2.5129 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  8 cur ['nlinear_L336_a1', 'patchtst_P24_D32_2L', 'patchtst_P48_D16_1L'] fast 2.5171 true 2.5171 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+  no improve 5 iters -> stop
+
+best subset fast 2.5021: ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+best_alpha 30000.0
+refit half-split val MAE 2.4936 alpha 30000.0
+
+Held-out precondition: control 2.4936  best_subset fast 2.5021  gain -0.0085  FAIL (<=0.005)
+  WAVELET AUDIT wavelet_elm_swt_db4_h200: F=12  lasso_alpha* 10000.0  nnz_mean 200.0  elastic=False
+  WAVELET AUDIT wavelet_elm_swt_db4_h400: F=12  lasso_alpha* 10000.0  nnz_mean 400.0  elastic=False
+VAL-PHASE PARITY (S-44 P1): 5 checks vs S-44, all_pass=True (tol 1e-4)
+  nlinear_L336_a1                test ok + cached (2.4s) -> C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\anchored_wavelet_elm_s46\.cache_test\P_test_nlinear_L336_a1.npz
+  nlinear_L336_a10               test ok + cached (2.4s) -> C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\anchored_wavelet_elm_s46\.cache_test\P_test_nlinear_L336_a10.npz
+  training patchtst_P24_D32_2L on full 11425 (frozen test) [will cache]...
+    [PatchTST P24 D32 L2] ep   0 train 4.0849 val 3.0197 gap +1.0652 ent 2.606
+    [PatchTST P24 D32 L2] ep   1 train 3.8658 val 2.9361 gap +0.9298 ent 2.607
+    [PatchTST P24 D32 L2] ep   5 train 3.7354 val 3.0158 gap +0.7197 ent 2.351
+    [PatchTST P24 D32 L2] ep  10 train 3.6101 val 3.3052 gap +0.3049 ent 2.216
+    [PatchTST P24 D32 L2] ep  15 train 3.4973 val 3.4729 gap +0.0244 ent 2.140
+    [PatchTST P24 D32 L2] ep  20 train 3.4300 val 3.6167 gap -0.1866 ent 2.043
+    [PatchTST P24 D32 L2] ep  25 train 3.3845 val 3.5607 gap -0.1762 ent 2.059
+    [PatchTST P24 D32 L2] ep  30 train 3.3646 val 3.6169 gap -0.2524 ent 2.093
+    [PatchTST P24 D32 L2] ep  35 train 3.3323 val 3.7713 gap -0.4390 ent 2.085
+    [PatchTST P24 D32 L2] ep  40 train 3.3176 val 3.7040 gap -0.3865 ent 2.058
+    early stop ep 41 best_val 2.9361
+  patchtst_P24_D32_2L            test ok + cached (22784.3s) -> C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\anchored_wavelet_elm_s46\.cache_test\P_test_patchtst_P24_D32_2L.npz
+  training patchtst_P48_D16_1L on full 11425 (frozen test) [will cache]...
+    [PatchTST P48 D16 L1] ep   0 train 4.1656 val 3.1797 gap +0.9859 ent 1.935
+    [PatchTST P48 D16 L1] ep   1 train 3.8790 val 3.0069 gap +0.8721 ent 1.935
+    [PatchTST P48 D16 L1] ep   2 train 3.8253 val 2.9764 gap +0.8489 ent 1.933
+    [PatchTST P48 D16 L1] ep   3 train 3.8015 val 2.9686 gap +0.8329 ent 1.933
+    [PatchTST P48 D16 L1] ep   4 train 3.8108 val 2.9349 gap +0.8759 ent 1.932
+    [PatchTST P48 D16 L1] ep   5 train 3.7854 val 2.9313 gap +0.8542 ent 1.928
+    [PatchTST P48 D16 L1] ep   9 train 3.7604 val 2.9276 gap +0.8327 ent 1.910
+    [PatchTST P48 D16 L1] ep  10 train 3.7508 val 2.8766 gap +0.8742 ent 1.909
+    [PatchTST P48 D16 L1] ep  14 train 3.7315 val 2.8516 gap +0.8799 ent 1.882
+    [PatchTST P48 D16 L1] ep  15 train 3.7349 val 2.8483 gap +0.8866 ent 1.870
+    [PatchTST P48 D16 L1] ep  20 train 3.7014 val 2.8695 gap +0.8319 ent 1.805
+    [PatchTST P48 D16 L1] ep  21 train 3.6934 val 2.8407 gap +0.8527 ent 1.793
+    [PatchTST P48 D16 L1] ep  25 train 3.6670 val 2.8835 gap +0.7834 ent 1.685
+    [PatchTST P48 D16 L1] ep  30 train 3.6357 val 2.9262 gap +0.7094 ent 1.581
+    [PatchTST P48 D16 L1] ep  35 train 3.5945 val 3.0265 gap +0.5680 ent 1.519
+    [PatchTST P48 D16 L1] ep  40 train 3.5876 val 3.0779 gap +0.5097 ent 1.441
+    [PatchTST P48 D16 L1] ep  45 train 3.5428 val 3.0814 gap +0.4614 ent 1.367
+    [PatchTST P48 D16 L1] ep  50 train 3.5324 val 3.0166 gap +0.5158 ent 1.285
+    [PatchTST P48 D16 L1] ep  55 train 3.5370 val 3.0033 gap +0.5337 ent 1.242
+    [PatchTST P48 D16 L1] ep  60 train 3.5112 val 3.0154 gap +0.4957 ent 1.195
+    early stop ep 61 best_val 2.8407
+  patchtst_P48_D16_1L            test ok + cached (215.6s) -> C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\anchored_wavelet_elm_s46\.cache_test\P_test_patchtst_P48_D16_1L.npz
+  training wavelet_elm_swt_db4_h200 on full 11425 (frozen test, SWT→ELM→Ridge)...
+  wavelet_elm_swt_db4_h200       test ok (18.7s)
+  training wavelet_elm_swt_db4_h400 on full 11425 (frozen test, SWT→ELM→Ridge)...
+  wavelet_elm_swt_db4_h400       test ok (19.9s)
+  member nlinear_L336_a1                full 2.0571
+  member nlinear_L336_a10               full 2.0571
+  member patchtst_P24_D32_2L            full 2.1864
+
+In-harness S-44 incumbent (re-derived): full 1.9781/2.4613  disjoint 1.8634  W4 1.8896
+S-46 blend best full 1.9781/2.4613  disjoint 1.8634  W4 1.8896  val_full 2.4936
+Bootstrap 95% CI (B=2000): S-46 full [1.9584, 1.9975] mean 1.9781; S-44 re-derived [1.9584, 1.9975] mean 1.9781
+Paired delta (S46 - S44 re-derived) mean +0.0000 95% CI [+0.0000, +0.0000] (upper >= 0 => not decisive)
+  strat W1 (origin    0): S-46 2.1607  S-44 2.1607  delta +0.0000
+  strat W2 (origin  720): S-46 1.5655  S-44 1.5655  delta +0.0000
+  strat W3 (origin 1440): S-46 2.2083  S-44 2.2083  delta +0.0000
+  strat W4 (origin 2160): S-46 1.8896  S-44 1.8896  delta +0.0000
+  horizon h1_first240: S-46 1.8266  S-44 1.8266  delta +0.0000
+  horizon h2_mid240: S-46 1.9788  S-44 1.9788  delta +0.0000
+  horizon h3_last240: S-46 2.1290  S-44 2.1290  delta +0.0000
+PARITY (S-44 P1): 9 checks vs S-44, all_pass=True (tol 1e-4)
+
+Binding gate (vs in-harness S-44 1.9781/1.8634): G1 full<=1.9731 False (1.9781)  G2 full<1.9781 False  G3 disjoint<=1.8634 True (1.8634)  G4 paired-CI-upper<0 False (+0.0000)  all_binding=False
+Close: C1 no-wavelet True  C2 heldout_gain<=0.005 True (-0.0085)  C3 CI-upper>=0 True  C4 any-G1-G3-fails True  trigger=True
+Family-close S-20-clean: both_wavelet>2.90 True  no_wavelet_beats_control(3.1833>=2.4936)=True  family_close=True
+Overall VERDICT=REJECTED
+
+wrote C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\anchored_wavelet_elm_s46\results_s46.json elapsed 23597.7s  VERDICT=REJECTED

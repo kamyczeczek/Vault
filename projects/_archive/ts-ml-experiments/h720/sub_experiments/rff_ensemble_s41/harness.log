@@ -1,0 +1,5 @@
+harness_command: python projects/ts-ml-experiments/h720/sub_experiments/rff_ensemble_s41/rolling_arm.py
+plan_impact: S-41 RFF-MoE ensemble; 4-expert pool (2 S-26 linear controls + 2 RFF variants: raw L336 RFF and calendar-aware L336 RFF); uniform router and optional stack head alpha=10000; test MAE 2.3589 >= 1.9909 (REJECT).
+metrics: test_mae=2.358881 test_rmse=2.999571 disjoint_4_mae=2.261481
+acceptance: primary=FAIL stability=FAIL transfer_delta=FAIL
+runtime: 12.31s

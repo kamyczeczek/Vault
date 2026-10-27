@@ -1,0 +1,140 @@
+{
+  "slice": "S-26-greedy-linear",
+  "pool": [
+    "nlinear_L96_a1",
+    "nlinear_L96_a10",
+    "nlinear_L96_a100",
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "nlinear_L720_a1",
+    "dlinear_L96_k25_a0",
+    "dlinear_L96_k49_a0",
+    "dlinear_L336_k25_a0",
+    "dlinear_L336_k49_a0",
+    "rlinear_L96_a0",
+    "rlinear_L336_a0"
+  ],
+  "trace": [
+    {
+      "iter": 0,
+      "cur": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10"
+      ],
+      "fast": 2.5224798283169374,
+      "true": 2.51907740175763,
+      "alpha": 10000.0,
+      "best_fast": 2.5224798283169374,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10"
+      ]
+    },
+    {
+      "iter": 1,
+      "cur": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "nlinear_L720_a1"
+      ],
+      "fast": 2.5343314129850874,
+      "true": 2.5343314129850874,
+      "alpha": 3000.0,
+      "best_fast": 2.5224798283169374,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10"
+      ]
+    },
+    {
+      "iter": 2,
+      "cur": [
+        "nlinear_L96_a100",
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "nlinear_L720_a1"
+      ],
+      "fast": 2.5459034922442,
+      "true": 2.5459034922442,
+      "alpha": 3000.0,
+      "best_fast": 2.5224798283169374,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10"
+      ]
+    },
+    {
+      "iter": 3,
+      "cur": [
+        "nlinear_L96_a10",
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "nlinear_L720_a1"
+      ],
+      "fast": 2.5459098873938726,
+      "true": 2.5459098873938726,
+      "alpha": 3000.0,
+      "best_fast": 2.5224798283169374,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10"
+      ]
+    },
+    {
+      "iter": 4,
+      "cur": [
+        "nlinear_L96_a1",
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "nlinear_L720_a1"
+      ],
+      "fast": 2.5459105485204225,
+      "true": 2.5459105485204225,
+      "alpha": 3000.0,
+      "best_fast": 2.5224798283169374,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10"
+      ]
+    },
+    {
+      "iter": 5,
+      "cur": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "nlinear_L720_a1",
+        "dlinear_L336_k25_a0"
+      ],
+      "fast": 2.5467351604660244,
+      "true": 2.5467351604660244,
+      "alpha": 3000.0,
+      "best_fast": 2.5224798283169374,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10"
+      ]
+    }
+  ],
+  "best_subset": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10"
+  ],
+  "best_idx": [
+    3,
+    4
+  ],
+  "best_fast": 2.5224798283169374,
+  "best_alpha": 10000.0,
+  "val_full": 2.852669942273521,
+  "test_disjoint": {
+    "mae": 1.969616847749498,
+    "rmse": 2.487586320185094
+  },
+  "test_full": {
+    "mae": 1.990897385574145,
+    "rmse": 2.470998626872596,
+    "n": 2161,
+    "delta_vs_s20": -0.007102614425855025
+  },
+  "protocol": "S-20-clean: val members frozen on 8545, test members refrozen on 11425"
+}

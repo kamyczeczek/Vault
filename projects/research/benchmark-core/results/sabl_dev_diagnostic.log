@@ -1,0 +1,20 @@
+
+=== origin 12240 (2017-11-23) ===
+  bigdict_L96                 MAE=1.5101 range=[2.91745, 6.06374] fit=19.58s
+  sabl_fixed_L336_a100        MAE=2.9193 range=[-2.2685, 16.16177] fit=19.04s
+  sabl_fixed_L336_a1000       MAE=2.9116 range=[-1.68314, 16.19771] fit=24.2s
+  sabl_scaled_a100            MAE=2.9097 range=[-2.51672, 14.45754] fit=16.61s
+  sabl_scaled_a1000           MAE=3.7020 range=[-4.89111, 10.12352] fit=20.42s
+  sabl_scaled_valalpha        MAE=2.9050 range=[-2.24432, 14.71146] fit=102.72s
+  sabl_scaled_L96_a1000       MAE=4.8628 range=[-13.49344, 10.73765] fit=8.94s
+  sabl_scaled_approx_a1000    MAE=2.8253 range=[-2.61064, 14.47649] fit=44.02s
+
+=== origin 16560 (2018-05-22) ===
+  bigdict_L96                 MAE=1.3865 range=[6.48471, 11.36025] fit=19.21s
+  sabl_fixed_L336_a100        MAE=2.7792 range=[2.88556, 18.34649] fit=20.01s
+  sabl_fixed_L336_a1000       MAE=2.9358 range=[2.95189, 18.6501] fit=15.27s
+  sabl_scaled_a100            MAE=6.3206 range=[3.67721, 23.24115] fit=15.11s
+  sabl_scaled_a1000           MAE=5.0836 range=[3.35715, 21.77228] fit=13.41s
+  sabl_scaled_valalpha        MAE=2.5376 range=[0.11346, 16.79375] fit=84.87s
+  sabl_scaled_L96_a1000       MAE=3.8955 range=[-5.27371, 12.16631] fit=3.18s
+  sabl_scaled_approx_a1000    MAE=4.4547 range=[2.90975, 21.62004] fit=34.93s

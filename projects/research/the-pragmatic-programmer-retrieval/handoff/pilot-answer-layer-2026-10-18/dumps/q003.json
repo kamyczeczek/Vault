@@ -1,0 +1,68 @@
+{
+ "id": "q003",
+ "question": "Dlaczego autorzy twierdzą, że dziedziczenie (inheritance) to „tax”, i jakie trzy alternatywy proponują?",
+ "type": "reasoning / why + enumeration",
+ "header": "Rozumowanie (reasoning, single-topic)",
+ "gold_topics": [
+  31
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 31,
+   "topic_title": "Inheritance Tax",
+   "chapter": 5,
+   "page_book": 272,
+   "text": "**Topic 31**\n\nInheritance Tax\n\n_You wanted a banana but what you got was a gorilla holding the banana and the entire jungle._\n\nDo you program in an objectoriented language? Do you use inheritance?\n\nIf so, stop! It probably isn't what you want to do.\n\nLet's see why.\n\n_Joe Armstrong_\n\n#### **SOME BACKGROUND**\n\nInheritance first appeared in Simula 67 in 1969. It was an elegant solution to the problem of queuing multiple types of events on the same list. The Simula approach was to use something called _prefix classes_ . You could write something like this:\n\nlink CLASS car; <mark>... implementation of car link CLASS bicycle;</mark> ... implementation of bicycle"
+  },
+  {
+   "topic": 31,
+   "topic_title": "Inheritance Tax",
+   "chapter": 5,
+   "page_book": 272,
+   "text": "> **Tip 51** Don't Pay Inheritance Tax\n\n#### **THE ALTERNATIVES ARE BETTER**\n\nLet us suggest three techniques that mean you should never need to use inheritance again:\n\nInterfaces and protocols\n\nDelegation\n\nMixins and traits\n\n**Interfaces and Protocols**\n\nMost OO languages allow you to specify that a class implements one or more sets of behaviors. You could say, for example, that a Car class implements the Drivable behavior and the Locatable behavior. The syntax used for doing this varies: in Java, it might look like this:\n\n**public class** Car **implements** Drivable, Locatable { _// Code for class Car. This code must include_ _<mark>// the functionality of both Drivable</mark> // and Locatable_ <u>}</u>"
+  },
+  {
+   "topic": 31,
+   "topic_title": "Inheritance Tax",
+   "chapter": 5,
+   "page_book": 272,
+   "text": "Unfortunately, these diagrams soon grow into wall-covering monstrosities, layer-upon-layer added in order to express the smallest nuance of differentiation between classes. This added complexity can make the application more brittle, as changes can ripple up and down many layers.\n\nEven worse, though, is the multiple inheritance issue. A Car may be a kind of Vehicle, but it can also be a kind of Asset, InsuredItem, LoanCollateral and so on. Modeling this correctly would need\n\nmultiple inheritance.\n\nC++ gave multiple inheritance a bad name in the 1990s because of some questionable disambiguation semantics. As a result, many current OO languages don't offer it. So, even if you're happy with complex type trees, you won't be able to model your domain accurately anyway."
+  },
+  {
+   "topic": 31,
+   "topic_title": "Inheritance Tax",
+   "chapter": 5,
+   "page_book": 272,
+   "text": "So, now we're faced with a generation of OO developers who use inheritance for one of two reasons: they don't like typing, or they like types.\n\nThose who don't like typing save their fingers by using\n\ninheritance to add common functionality from a base class into child classes: class User and class Product are both subclasses of ActiveRecord::Base.\n\nThose who like types use inheritance to express the relationship between classes: a Car is-a-kind-of Vehicle.\n\nUnfortunately both kinds of inheritance have problems.\n\n#### **PROBLEMS USING INHERITANCE TO SHARE CODE**\n\nInheritance _is_ coupling. Not only is the child class coupled to the parent, the parent's parent, and so on, but the code that _uses_ the child is also coupled to all the ancestors. Here's an example:"
+  },
+  {
+   "topic": 31,
+   "topic_title": "Inheritance Tax",
+   "chapter": 5,
+   "page_book": 272,
+   "text": "An API change is expected to break clients of Vehicle class. But the top-level is not: as far as it is concerned it is using a Car. What the Car class does in terms of implementation is not the concern of the top-level code, but it still breaks.\n\nSimilarly the name of an instance variable is purely an internal implementation detail, but when Vehicle changes it also (silently) breaks Car.\n\nSo much coupling.\n\n**Problems Using Inheritance to Build Types** Some folks view inheritance as a way of defining new types. Their favorite design diagram shows class hierarchies. They view problems the way Victorian gentleman scientists viewed nature, as something to be broken down into categories."
+  },
+  {
+   "topic": 31,
+   "topic_title": "Inheritance Tax",
+   "chapter": 5,
+   "page_book": 272,
+   "text": "Here, both derived classes include validations common to all account objects. The customer variant also includes validations appropriate for the customer-facing APIs, while the admin variant contained (the presumably less restrictive) admin validations.\n\nNow, by passing instances of AccountForCustomer or AccountForAdmin back and forth, our code _automatically_ ensures the correct validation is applied.\n\n> **Tip 54** Use Mixins to Share Functionality\n\n#### **INHERITANCE IS RARELY THE ANSWER**\n\nWe've had a quick look at three alternatives to traditional class inheritance:\n\nInterfaces and protocols\n\n- Delegation\n\nMixins and traits"
+  },
+  {
+   "topic": 31,
+   "topic_title": "Inheritance Tax",
+   "chapter": 5,
+   "page_book": 272,
+   "text": "So when I designed Smalltalk-72—and it was a lark for fun while thinking about Smalltalk-71—I thought it would be fun to use its Lisp-like dynamics to do experiments with \"differential programming\" (meaning: various ways to accomplish \"this is like that except\").\n\nThis is subclassing purely for behavior.\n\nThese two styles of inheritance (which actually had a fair amount in common) developed over the following decades. The Simula approach, which suggested inheritance was a way of combining types, continued in languages such as C++ and Java. The Smalltalk school, where inheritance was a dynamic organization of behaviors, was seen in languages such as Ruby and JavaScript."
+  },
+  {
+   "topic": 28,
+   "topic_title": "Decoupling",
+   "chapter": 5,
+   "page_book": 228,
+   "text": "The misuse of subclassing, where a class inherits state and behavior from another class, is so important that we discuss it in its own section, Topic 31, _<u>Inheritance Tax</u>_ <u>.</u>\n\n#### **AGAIN, IT'S ALL ABOUT CHANGE**\n\nCoupled code is hard to change: alterations in one place can have secondary effects elsewhere in the code, and often in hardto-find places that only come to light a month later in production.\n\nKeeping your code shy: having it only deal with things it directly knows about, will help keep your applications decoupled, and that will make them more amenable to change.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 8, _The Essence of_ _<u>Good Design</u>_\n\n- Topic 9, _DRY—The Evils of Duplication_"
+  }
+ ]
+}

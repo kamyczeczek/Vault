@@ -1,0 +1,66 @@
+{
+ "id": "u008",
+ "question": "Jak działają serverless functions w AWS Lambda pod kątem cold startu i limitów pamięci operacyjnej?",
+ "type": "unanswerable",
+ "header": "Unanswerable (AWS Lambda Serverless)",
+ "gold_topics": [],
+ "input_stage_hit": false,
+ "chunks": [
+  {
+   "topic": 11,
+   "topic_title": "Reversibility",
+   "chapter": 2,
+   "page_book": 104,
+   "text": "While many people try to keep their _code_ flexible, you also need to think about maintaining flexibility in the areas of architecture, deployment, and vendor integration.\n\nWe're writing this in 2019. Since the turn of the century we've seen the following \"best practice\" server-side architectures:\n\n- Big hunk of iron\n\n- Federations of big iron\n\n- Load-balanced clusters of commodity hardware\n\n- Cloud-based virtual machines running applications\n\n- Cloud-based virtual machines running services\n\n- Containerized versions of the above\n\n- Cloud-supported serverless applications\n\n- And, inevitably, an apparent move back to big hunks of iron for some tasks\n\nGo ahead and add the very latest and greatest fads to this list, and then regard it with awe: it's a miracle that anything ever worked."
+  },
+  {
+   "topic": 42,
+   "topic_title": "Property-Based Testing",
+   "chapter": 7,
+   "page_book": 375,
+   "text": "**@given** (some.integers(min_value=5, max_value=10).map( **lambda** x: x * 2))\n\nthen we'd get the even numbers between 10 and 20.\n\nYou can also compose types, so that\n\n**<u><mark>@given</mark></u>** <u><mark>(some.lists(some.integers(min_value=1), max_size=100))</mark></u>\n\nwill be lists of natural numbers that are at most 100 elements long.\n\nThis isn't supposed to be a tutorial on any particular framework, so we'll skip a bunch of cool details and instead look at a realworld example.\n\n#### **FINDING BAD ASSUMPTIONS**"
+  },
+  {
+   "topic": 51,
+   "topic_title": "Pragmatic Starter Kit",
+   "chapter": 9,
+   "page_book": 452,
+   "text": "Everything depends on automation. You can't build the project on an anonymous cloud server unless the build is fully automatic. You can't deploy automatically if there are manual steps involved. And once you introduce manual steps (\"just for this one part…\") you've broken a very large window ~~.~~ <u>[83]</u>\n\nWith these three legs of version control, ruthless testing, and full automation, your project will have the firm foundation you need so you can concentrate on the hard part: delighting users.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 11, _Reversibility_\n\n- Topic 12, _Tracer Bullets_\n\n- Topic 17, _Shell Games_\n\n- Topic 19, _Version Control_\n\n- Topic 41, _Test to Code_\n\n- Topic 49, _Pragmatic Teams_\n\n- Topic 50, _<u>Coconuts Don't Cut It</u>_\n\n#### **CHALLENGES**"
+  },
+  {
+   "topic": 51,
+   "topic_title": "Pragmatic Starter Kit",
+   "chapter": 9,
+   "page_book": 452,
+   "text": "In theory, this three-line function has 1,000,000 logical states, 999,999 of which will work correctly and one that will not (when a + b equals zero). Simply knowing that you executed this line of code doesn't tell you that—you would need to identify all possible states of the program. Unfortunately, in general this is a _really hard_ problem. Hard as in, \"The sun will be a cold hard lump before you can solve it.\"\n\n> **Tip 93** Test State Coverage, Not Code Coverage\n\n##### **Property-Based Testing**\n\nA great way to explore how your code handles unexpected states is to have a computer generate those states."
+  },
+  {
+   "topic": 29,
+   "topic_title": "Juggling the Real World",
+   "chapter": 5,
+   "page_book": 239,
+   "text": "Although you could implement a very basic pubsub system yourself, you probably don't want to. Most cloud service providers have pubsub offerings, allowing you to connect applications around the world. Every popular language will have at least one pubsub library.\n\nPubsub is a good technology for decoupling the handling of asynchronous events. It allows code to be added and replaced, potentially while the application is running, without altering existing code. The downside is that it can be hard to see what is going on in a system that uses pubsub heavily: you can't look at a publisher and immediately see which subscribers are involved with a particular message."
+  },
+  {
+   "topic": 6,
+   "topic_title": "Your Knowledge Portfolio",
+   "chapter": 1,
+   "page_book": 54,
+   "text": "This is a very dynamic industry. That hot technology you started investigating last month might be stone cold by now. Maybe you need to brush up on that database technology that you haven't used in a while. Or perhaps\n\nyou could be better positioned for that new job opening if you tried out that other language….\n\nOf all these guidelines, the most important one is the simplest to do:\n\n**Tip 9**\n\n#### Invest Regularly in Your Knowledge Portfolio\n\n#### **GOALS**\n\nNow that you have some guidelines on what and when to add to your knowledge portfolio, what's the best way to go about acquiring intellectual capital with which to fund your portfolio? Here are a few suggestions:\n\n_Learn at least one new language every year_"
+  },
+  {
+   "topic": 32,
+   "topic_title": "Configuration",
+   "chapter": 5,
+   "page_book": 284,
+   "text": "If that makes you feed sad, _nil desperandum!_ There are better ways to construct concurrent applications. One of these is using the _actor model_ , where independent processes, which share no data, communicate over channels using defined, simple, semantics. We talk about both the theory and practice of this approach in Topic 35, _<u>Actors and Processes</u>_ .\n\nFinally, we'll look at Topic 36, _<u>Blackboards</u>_ . These are systems which act like a combination of an object store and a smart publish/subscribe broker. In their original form, they never really took off. But today we're seeing more and more implementations of middleware layers with blackboard-like semantics. Used correctly, these types of systems offer a serious amount of decoupling."
+  },
+  {
+   "topic": 4,
+   "topic_title": "Stone Soup and Boiled Frogs",
+   "chapter": 1,
+   "page_book": 46,
+   "text": "We've all seen the symptoms. Projects slowly and inexorably get totally out of hand. Most software disasters start out too small to notice, and most project overruns happen a day at a time. Systems drift from their specifications feature by feature, while patch after patch gets added to a piece of code until there's nothing of the original left. It's often the accumulation of small things that breaks morale and teams.\n\n> **Tip 7** Remember the Big Picture\n\nWe've never tried this—honest. But \"they\" say that if you take a frog and drop it into boiling water, it will jump straight back out again. However, if you place the frog in a pan of cold water, then gradually heat it, the frog won't notice the slow increase in temperature and will stay put until cooked."
+  }
+ ]
+}

@@ -1,0 +1,734 @@
+{
+  "Electricity_Hourly": {
+    "H_96": {
+      "AMR-FBS": {
+        "mse": 5.328,
+        "mae": 1.8384
+      },
+      "StateSpaceHybrid": {
+        "mse": 107.0277,
+        "mae": 8.2715
+      },
+      "KNNForecaster": {
+        "mse": 9.6187,
+        "mae": 2.5106
+      },
+      "BigDictELM": {
+        "mse": 5.6598,
+        "mae": 1.9053
+      },
+      "DLinear": {
+        "mse": 102.3129,
+        "mae": 8.6487
+      },
+      "SpectralFFT": {
+        "mse": 248.4294,
+        "mae": 13.1969
+      },
+      "Theta": {
+        "mse": 404.0382,
+        "mae": 16.636
+      }
+    },
+    "H_192": {
+      "AMR-FBS": {
+        "mse": 5.5983,
+        "mae": 1.8747
+      },
+      "StateSpaceHybrid": {
+        "mse": 123.1976,
+        "mae": 8.9337
+      },
+      "KNNForecaster": {
+        "mse": 8.1516,
+        "mae": 2.2598
+      },
+      "BigDictELM": {
+        "mse": 5.6235,
+        "mae": 1.8817
+      },
+      "DLinear": {
+        "mse": 74.1072,
+        "mae": 6.7546
+      },
+      "SpectralFFT": {
+        "mse": 236.7704,
+        "mae": 13.1365
+      },
+      "Theta": {
+        "mse": 612.4067,
+        "mae": 20.4731
+      }
+    },
+    "H_336": {
+      "AMR-FBS": {
+        "mse": 6.8895,
+        "mae": 2.0956
+      },
+      "StateSpaceHybrid": {
+        "mse": 149.7559,
+        "mae": 9.4815
+      },
+      "KNNForecaster": {
+        "mse": 10.8548,
+        "mae": 2.5997
+      },
+      "BigDictELM": {
+        "mse": 6.8733,
+        "mae": 2.0761
+      },
+      "DLinear": {
+        "mse": 98.2644,
+        "mae": 7.9935
+      },
+      "SpectralFFT": {
+        "mse": 198.2284,
+        "mae": 11.2822
+      },
+      "Theta": {
+        "mse": 1337.6844,
+        "mae": 29.1874
+      }
+    },
+    "H_720": {
+      "AMR-FBS": {
+        "mse": 19.3494,
+        "mae": 3.1616
+      },
+      "StateSpaceHybrid": {
+        "mse": 146.8657,
+        "mae": 9.6491
+      },
+      "KNNForecaster": {
+        "mse": 28.8281,
+        "mae": 4.1336
+      },
+      "BigDictELM": {
+        "mse": 20.4969,
+        "mae": 3.2894
+      },
+      "DLinear": {
+        "mse": 126.7725,
+        "mae": 8.8636
+      },
+      "SpectralFFT": {
+        "mse": 237.7491,
+        "mae": 12.5403
+      },
+      "Theta": {
+        "mse": 3381.8138,
+        "mae": 47.0257
+      }
+    }
+  },
+  "Traffic_Flow": {
+    "H_96": {
+      "AMR-FBS": {
+        "mse": 12.7755,
+        "mae": 2.8858
+      },
+      "StateSpaceHybrid": {
+        "mse": 126.9148,
+        "mae": 8.3525
+      },
+      "KNNForecaster": {
+        "mse": 11.0682,
+        "mae": 2.6571
+      },
+      "BigDictELM": {
+        "mse": 18.1163,
+        "mae": 3.3766
+      },
+      "DLinear": {
+        "mse": 131.0842,
+        "mae": 7.779
+      },
+      "SpectralFFT": {
+        "mse": 195.6847,
+        "mae": 11.951
+      },
+      "Theta": {
+        "mse": 356.8924,
+        "mae": 14.1504
+      }
+    },
+    "H_192": {
+      "AMR-FBS": {
+        "mse": 11.2669,
+        "mae": 2.6782
+      },
+      "StateSpaceHybrid": {
+        "mse": 79.8218,
+        "mae": 7.1864
+      },
+      "KNNForecaster": {
+        "mse": 10.8308,
+        "mae": 2.595
+      },
+      "BigDictELM": {
+        "mse": 14.8184,
+        "mae": 3.0557
+      },
+      "DLinear": {
+        "mse": 44.9389,
+        "mae": 4.8429
+      },
+      "SpectralFFT": {
+        "mse": 156.3551,
+        "mae": 10.1424
+      },
+      "Theta": {
+        "mse": 986.7531,
+        "mae": 26.6355
+      }
+    },
+    "H_336": {
+      "AMR-FBS": {
+        "mse": 19.0875,
+        "mae": 3.2852
+      },
+      "StateSpaceHybrid": {
+        "mse": 102.6498,
+        "mae": 7.7838
+      },
+      "KNNForecaster": {
+        "mse": 15.2947,
+        "mae": 3.0421
+      },
+      "BigDictELM": {
+        "mse": 25.9676,
+        "mae": 3.8064
+      },
+      "DLinear": {
+        "mse": 98.7995,
+        "mae": 6.0383
+      },
+      "SpectralFFT": {
+        "mse": 173.2145,
+        "mae": 10.8565
+      },
+      "Theta": {
+        "mse": 959.7795,
+        "mae": 21.4227
+      }
+    },
+    "H_720": {
+      "AMR-FBS": {
+        "mse": 17.2642,
+        "mae": 3.2161
+      },
+      "StateSpaceHybrid": {
+        "mse": 93.5072,
+        "mae": 7.8038
+      },
+      "KNNForecaster": {
+        "mse": 15.9605,
+        "mae": 3.1759
+      },
+      "BigDictELM": {
+        "mse": 30.0889,
+        "mae": 4.1552
+      },
+      "DLinear": {
+        "mse": 55.0967,
+        "mae": 5.4362
+      },
+      "SpectralFFT": {
+        "mse": 128.2087,
+        "mae": 9.0458
+      },
+      "Theta": {
+        "mse": 6163.4809,
+        "mae": 57.7402
+      }
+    }
+  },
+  "Financial_Returns": {
+    "H_96": {
+      "AMR-FBS": {
+        "mse": 972191.6024,
+        "mae": 569.0414
+      },
+      "StateSpaceHybrid": {
+        "mse": 1016052.2524,
+        "mae": 567.977
+      },
+      "KNNForecaster": {
+        "mse": 1053517.9615,
+        "mae": 577.5448
+      },
+      "BigDictELM": {
+        "mse": 1027949.804,
+        "mae": 577.1422
+      },
+      "DLinear": {
+        "mse": 993061.3396,
+        "mae": 569.2191
+      },
+      "SpectralFFT": {
+        "mse": 5346992.993,
+        "mae": 2082.3547
+      },
+      "Theta": {
+        "mse": 1051035.2073,
+        "mae": 588.0653
+      }
+    },
+    "H_192": {
+      "AMR-FBS": {
+        "mse": 1087772.3182,
+        "mae": 631.4538
+      },
+      "StateSpaceHybrid": {
+        "mse": 1125461.7082,
+        "mae": 608.3204
+      },
+      "KNNForecaster": {
+        "mse": 1183753.0859,
+        "mae": 624.2209
+      },
+      "BigDictELM": {
+        "mse": 1058104.2817,
+        "mae": 621.8183
+      },
+      "DLinear": {
+        "mse": 1115524.1911,
+        "mae": 602.9768
+      },
+      "SpectralFFT": {
+        "mse": 6801804.1853,
+        "mae": 2394.4213
+      },
+      "Theta": {
+        "mse": 1225515.504,
+        "mae": 651.2723
+      }
+    },
+    "H_336": {
+      "AMR-FBS": {
+        "mse": 973914.4656,
+        "mae": 679.1192
+      },
+      "StateSpaceHybrid": {
+        "mse": 1030295.853,
+        "mae": 630.8542
+      },
+      "KNNForecaster": {
+        "mse": 1137641.2759,
+        "mae": 637.8759
+      },
+      "BigDictELM": {
+        "mse": 969575.5979,
+        "mae": 641.1391
+      },
+      "DLinear": {
+        "mse": 998040.5871,
+        "mae": 621.9578
+      },
+      "SpectralFFT": {
+        "mse": 8035756.2021,
+        "mae": 2649.7093
+      },
+      "Theta": {
+        "mse": 1101252.9527,
+        "mae": 638.9543
+      }
+    },
+    "H_720": {
+      "AMR-FBS": {
+        "mse": 674239.9915,
+        "mae": 553.771
+      },
+      "StateSpaceHybrid": {
+        "mse": 1029687.4616,
+        "mae": 715.9299
+      },
+      "KNNForecaster": {
+        "mse": 1199888.5578,
+        "mae": 737.4449
+      },
+      "BigDictELM": {
+        "mse": 695336.1488,
+        "mae": 566.9276
+      },
+      "DLinear": {
+        "mse": 1007847.1277,
+        "mae": 712.7386
+      },
+      "SpectralFFT": {
+        "mse": 9402085.0563,
+        "mae": 2933.2094
+      },
+      "Theta": {
+        "mse": 1058219.1383,
+        "mae": 702.9155
+      }
+    }
+  },
+  "Weather_Temperature": {
+    "H_96": {
+      "AMR-FBS": {
+        "mse": 18.0338,
+        "mae": 3.4714
+      },
+      "StateSpaceHybrid": {
+        "mse": 25.4516,
+        "mae": 4.0571
+      },
+      "KNNForecaster": {
+        "mse": 36.1839,
+        "mae": 4.7572
+      },
+      "BigDictELM": {
+        "mse": 21.5546,
+        "mae": 3.8122
+      },
+      "DLinear": {
+        "mse": 42.1813,
+        "mae": 4.5736
+      },
+      "SpectralFFT": {
+        "mse": 210.4831,
+        "mae": 12.5931
+      },
+      "Theta": {
+        "mse": 197.7302,
+        "mae": 11.2159
+      }
+    },
+    "H_192": {
+      "AMR-FBS": {
+        "mse": 23.7004,
+        "mae": 3.8214
+      },
+      "StateSpaceHybrid": {
+        "mse": 31.681,
+        "mae": 4.3666
+      },
+      "KNNForecaster": {
+        "mse": 35.822,
+        "mae": 4.7207
+      },
+      "BigDictELM": {
+        "mse": 23.9556,
+        "mae": 3.8705
+      },
+      "DLinear": {
+        "mse": 133.1453,
+        "mae": 9.74
+      },
+      "SpectralFFT": {
+        "mse": 327.6121,
+        "mae": 15.103
+      },
+      "Theta": {
+        "mse": 856.9576,
+        "mae": 22.2994
+      }
+    },
+    "H_336": {
+      "AMR-FBS": {
+        "mse": 24.5257,
+        "mae": 3.9711
+      },
+      "StateSpaceHybrid": {
+        "mse": 34.6999,
+        "mae": 4.7011
+      },
+      "KNNForecaster": {
+        "mse": 44.5771,
+        "mae": 5.2981
+      },
+      "BigDictELM": {
+        "mse": 23.5322,
+        "mae": 3.8862
+      },
+      "DLinear": {
+        "mse": 58.8921,
+        "mae": 5.0411
+      },
+      "SpectralFFT": {
+        "mse": 342.4319,
+        "mae": 15.4644
+      },
+      "Theta": {
+        "mse": 3564.9292,
+        "mae": 53.5372
+      }
+    },
+    "H_720": {
+      "AMR-FBS": {
+        "mse": 17.9722,
+        "mae": 3.336
+      },
+      "StateSpaceHybrid": {
+        "mse": 37.1942,
+        "mae": 5.007
+      },
+      "KNNForecaster": {
+        "mse": 38.8178,
+        "mae": 4.8613
+      },
+      "BigDictELM": {
+        "mse": 19.8525,
+        "mae": 3.5127
+      },
+      "DLinear": {
+        "mse": 76.8737,
+        "mae": 6.4777
+      },
+      "SpectralFFT": {
+        "mse": 344.9948,
+        "mae": 15.8061
+      },
+      "Theta": {
+        "mse": 5943.6612,
+        "mae": 58.662
+      }
+    }
+  },
+  "Web_Traffic": {
+    "H_96": {
+      "AMR-FBS": {
+        "mse": 81.0706,
+        "mae": 5.6063
+      },
+      "StateSpaceHybrid": {
+        "mse": 94.0107,
+        "mae": 6.6019
+      },
+      "KNNForecaster": {
+        "mse": 86.807,
+        "mae": 5.4802
+      },
+      "BigDictELM": {
+        "mse": 82.4873,
+        "mae": 5.6967
+      },
+      "DLinear": {
+        "mse": 119.9119,
+        "mae": 7.8206
+      },
+      "SpectralFFT": {
+        "mse": 1456.1829,
+        "mae": 32.4414
+      },
+      "Theta": {
+        "mse": 3722.4064,
+        "mae": 48.1707
+      }
+    },
+    "H_192": {
+      "AMR-FBS": {
+        "mse": 79.9111,
+        "mae": 5.1443
+      },
+      "StateSpaceHybrid": {
+        "mse": 91.8934,
+        "mae": 6.0897
+      },
+      "KNNForecaster": {
+        "mse": 83.535,
+        "mae": 5.4299
+      },
+      "BigDictELM": {
+        "mse": 79.91,
+        "mae": 5.1696
+      },
+      "DLinear": {
+        "mse": 97.3329,
+        "mae": 6.4537
+      },
+      "SpectralFFT": {
+        "mse": 1063.8026,
+        "mae": 27.2338
+      },
+      "Theta": {
+        "mse": 5497.0774,
+        "mae": 63.9393
+      }
+    },
+    "H_336": {
+      "AMR-FBS": {
+        "mse": 67.0527,
+        "mae": 4.9226
+      },
+      "StateSpaceHybrid": {
+        "mse": 84.1551,
+        "mae": 6.0214
+      },
+      "KNNForecaster": {
+        "mse": 78.2391,
+        "mae": 5.3906
+      },
+      "BigDictELM": {
+        "mse": 66.8612,
+        "mae": 4.9871
+      },
+      "DLinear": {
+        "mse": 90.8339,
+        "mae": 6.0301
+      },
+      "SpectralFFT": {
+        "mse": 1047.4443,
+        "mae": 27.3656
+      },
+      "Theta": {
+        "mse": 17355.9987,
+        "mae": 116.1598
+      }
+    },
+    "H_720": {
+      "AMR-FBS": {
+        "mse": 51.2302,
+        "mae": 4.6795
+      },
+      "StateSpaceHybrid": {
+        "mse": 65.3451,
+        "mae": 5.5477
+      },
+      "KNNForecaster": {
+        "mse": 53.7076,
+        "mae": 4.8658
+      },
+      "BigDictELM": {
+        "mse": 53.7079,
+        "mae": 4.7976
+      },
+      "DLinear": {
+        "mse": 54.0413,
+        "mae": 4.9487
+      },
+      "SpectralFFT": {
+        "mse": 627.4999,
+        "mae": 21.2405
+      },
+      "Theta": {
+        "mse": 45017.981,
+        "mae": 173.8254
+      }
+    }
+  },
+  "Healthcare_Vitals": {
+    "H_96": {
+      "AMR-FBS": {
+        "mse": 2.4198,
+        "mae": 1.2327
+      },
+      "StateSpaceHybrid": {
+        "mse": 12.6202,
+        "mae": 2.5652
+      },
+      "KNNForecaster": {
+        "mse": 2.7732,
+        "mae": 1.3034
+      },
+      "BigDictELM": {
+        "mse": 2.4553,
+        "mae": 1.2497
+      },
+      "DLinear": {
+        "mse": 93.0592,
+        "mae": 8.2761
+      },
+      "SpectralFFT": {
+        "mse": 73.884,
+        "mae": 7.0649
+      },
+      "Theta": {
+        "mse": 175.5827,
+        "mae": 10.6698
+      }
+    },
+    "H_192": {
+      "AMR-FBS": {
+        "mse": 13.0221,
+        "mae": 2.2495
+      },
+      "StateSpaceHybrid": {
+        "mse": 19.2983,
+        "mae": 3.2446
+      },
+      "KNNForecaster": {
+        "mse": 7.7422,
+        "mae": 1.7559
+      },
+      "BigDictELM": {
+        "mse": 9.9647,
+        "mae": 2.0321
+      },
+      "DLinear": {
+        "mse": 118.8424,
+        "mae": 8.8135
+      },
+      "SpectralFFT": {
+        "mse": 92.009,
+        "mae": 7.8655
+      },
+      "Theta": {
+        "mse": 207.4943,
+        "mae": 11.687
+      }
+    },
+    "H_336": {
+      "AMR-FBS": {
+        "mse": 27.2121,
+        "mae": 3.1824
+      },
+      "StateSpaceHybrid": {
+        "mse": 48.4467,
+        "mae": 4.8264
+      },
+      "KNNForecaster": {
+        "mse": 21.9691,
+        "mae": 2.7596
+      },
+      "BigDictELM": {
+        "mse": 18.5126,
+        "mae": 2.2924
+      },
+      "DLinear": {
+        "mse": 148.8809,
+        "mae": 10.0689
+      },
+      "SpectralFFT": {
+        "mse": 85.1537,
+        "mae": 7.3574
+      },
+      "Theta": {
+        "mse": 386.3778,
+        "mae": 14.8356
+      }
+    },
+    "H_720": {
+      "AMR-FBS": {
+        "mse": 24.7044,
+        "mae": 2.9711
+      },
+      "StateSpaceHybrid": {
+        "mse": 203.8668,
+        "mae": 7.9955
+      },
+      "KNNForecaster": {
+        "mse": 27.1954,
+        "mae": 3.1067
+      },
+      "BigDictELM": {
+        "mse": 36.6535,
+        "mae": 3.2188
+      },
+      "DLinear": {
+        "mse": 109.3764,
+        "mae": 8.4136
+      },
+      "SpectralFFT": {
+        "mse": 124.8418,
+        "mae": 9.4641
+      },
+      "Theta": {
+        "mse": 2061.2062,
+        "mae": 29.2073
+      }
+    }
+  }
+}

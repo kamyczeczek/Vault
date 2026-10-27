@@ -1,0 +1,20 @@
+{
+  "is_stub": true,
+  "stub_reason": "peft/chronos unavailable or stub flag",
+  "n_train_windows": 7490,
+  "best_val_mae": 4.579339751666959,
+  "best_epoch": 0,
+  "epochs_run": 0,
+  "patience": 5,
+  "max_epochs": 50,
+  "model_id": "amazon/chronos-bolt-base",
+  "model_revision": "main",
+  "model_hash": "amazon/chronos-bolt-base@main#54823f9d1fca",
+  "history": [
+    {
+      "epoch": 0,
+      "val_mae": 4.579339751666959,
+      "is_stub": true
+    }
+  ]
+}

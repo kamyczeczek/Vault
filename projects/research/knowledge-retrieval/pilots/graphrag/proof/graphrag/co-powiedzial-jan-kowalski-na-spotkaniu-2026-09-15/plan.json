@@ -1,0 +1,13 @@
+{
+  "pytanie": "Co powiedzial Jan Kowalski na spotkaniu 2026-09-15?",
+  "slowa_kluczowe": [
+    "powiedzial",
+    "jan",
+    "kowalski",
+    "spotkaniu",
+    "2026-09-15"
+  ],
+  "typ_szukania": "fts_body",
+  "top_k": 10,
+  "data": "2026-10-11T00:31:23.140134Z"
+}

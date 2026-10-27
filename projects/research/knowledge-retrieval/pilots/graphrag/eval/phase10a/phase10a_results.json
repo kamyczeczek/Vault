@@ -1,0 +1,943 @@
+{
+  "generated_by": "phase10a_measure.py (read-only use of frozen pilot)",
+  "K": 5,
+  "in_corpus_pl_baseline": [
+    {
+      "qid": "PL_Q3",
+      "question": "Jakie sa metody kompresji sesji agentow?",
+      "mrr": 0.5,
+      "recall": 0.5,
+      "refusal": true,
+      "top5": [
+        "00_agentic_engineering_od_chaosu_do_wiadomego_proje",
+        "01_session_compaction_for_ai_agents",
+        "02_agentic_engineering_od_chaosu_do_wiadomego_proje",
+        "01_session_compaction_for_ai_agents_research",
+        "00_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PL_Q14",
+      "question": "Czym jest agentic engineering i jak prowadzi od chaosu do świadomego projektowania?",
+      "mrr": 0.3333333333333333,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "01_agentic_engineering_od_chaosu_do_wiadomego_proje",
+        "02_agentic_engineering_od_chaosu_do_wiadomego_proje",
+        "00_agentic_engineering_od_chaosu_do_wiadomego_proje",
+        "78_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "63_graph_engineering_for_agentic_ai_systems_ken_hua"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PL_Q15",
+      "question": "Dlaczego ponowne wymyślanie koła w vibe coding jest problemem?",
+      "mrr": 0.0,
+      "recall": 0.0,
+      "refusal": false,
+      "top5": [
+        "13_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "10_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "00_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "154_the_pragmatic_programmer_20th_anniversary_editio",
+        "36_beyond_vibe_coding_from_coder_to_ai_era_develope"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PL_Q16",
+      "question": "Jakie są techniki, żeby wycisnąć 2-3x wydajności z AI w kodowaniu?",
+      "mrr": 0.5,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "02_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods",
+        "00_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods",
+        "01_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods",
+        "201_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "169_structure_and_interpretation_of_computer_program"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PL_Q17",
+      "question": "Jak działa routowanie narzędzi oparte na grafie z samonaprawą?",
+      "mrr": 0.0,
+      "recall": 0.0,
+      "refusal": true,
+      "top5": [
+        "168_graph_engineering_for_agentic_ai_systems_ken_hua",
+        "17_graph_databases_new_opportunities_for_connected",
+        "16_graph_databases_new_opportunities_for_connected",
+        "156_graph_databases_new_opportunities_for_connected",
+        "64_graph_engineering_for_agentic_ai_systems_ken_hua"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PL_Q18",
+      "question": "Do czego służy message passing w analizie i odpornym projektowaniu systemów samonaprawczych?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_524ade10f990_message_passing_for_analysis_and_re",
+        "214_harness_starter_kit",
+        "155_structure_and_interpretation_of_computer_program",
+        "30_the_mythical_man_month_frederick_p_brooks_jr_etc",
+        "393_pattern_recognition_and_machine_learning_christo"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PL_Q19",
+      "question": "Jak działa rozproszona detekcja zmian o odporności bizantyjskiej?",
+      "mrr": 0.5,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods",
+        "00_32e1be065210_byzantine_fault_tolerant_distribute",
+        "03_the_mythical_man_month_frederick_p_brooks_jr_etc",
+        "91_the_mythical_man_month_frederick_p_brooks_jr_etc",
+        "645_pattern_recognition_and_machine_learning_christo"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PL_Q20",
+      "question": "Czym charakteryzuje się energetycznie oszczędne uczenie federacyjne z kwantyzacją?",
+      "mrr": 0.0,
+      "recall": 0.0,
+      "refusal": true,
+      "top5": [
+        "10_the_five_level_verification_ladder",
+        "236_multiagent_systems_algorithmic_game_theoretic_an",
+        "23_building_llms_for_production_enhancing_llm_abili",
+        "07_the_five_level_verification_ladder",
+        "207_multiagent_systems_algorithmic_game_theoretic_an"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PL_Q21",
+      "question": "Jak wygląda taksonomia błędów agentów i frameworki debugowania?",
+      "mrr": 0.25,
+      "recall": 1.0,
+      "refusal": true,
+      "top5": [
+        "00_prov_agent_unified_provenance_for_tracking_ai_ag",
+        "09_transferable_expertise_for_autonomous_agents_via",
+        "182_harness_starter_kit",
+        "00_agent_error_taxonomy_debugging_web_research",
+        "34_harness_starter_kit"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PL_Q22",
+      "question": "Jak realizowana jest niskonarzutowa odporność na błędy dla kwantowej uniwersalności?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": true,
+      "top5": [
+        "00_0d780aefeb5f_low_overhead_transversal_fault_tole",
+        "139_artificial_intelligence_a_modern_approach_4th_ed",
+        "244_the_book_of_why_the_new_science_of_cause_and_eff",
+        "31_icm_knowledge_big",
+        "238_structure_and_interpretation_of_computer_program"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PL_Q1",
+      "question": "What is SEVerA and how does it relate to self-evolving agents?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_severa_verified_synthesis_of_self_evolving_agent",
+        "00_a_comprehensive_survey_of_self_evolving_ai_agent",
+        "233_multiagent_systems_algorithmic_game_theoretic_an",
+        "00_self_evolving_world_models_foresight_web_researc",
+        "00_self_improvements_in_modern_agentic_systems_a_su"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PL_Q2",
+      "question": "What trust tiers does this lab use for evidence, and what does tier 3 mean?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_okf_methodology_research",
+        "01_measured_record_surviving_positive_magnitude",
+        "02_the_five_level_verification_ladder",
+        "02_00_software_factory_isolate_build_prove_ship",
+        "109_domain_driven_design_tackling_complexity_in_the"
+      ],
+      "n_wynikow": 10
+    }
+  ],
+  "in_corpus_pl_translated": [
+    {
+      "qid": "PLT_Q3",
+      "question": "Jakie sa metody kompresji sesji agentow?",
+      "translated": "What are the methods for compressing AI agent sessions?",
+      "mrr": 1.0,
+      "recall": 0.5,
+      "refusal": false,
+      "top5": [
+        "00_session_compaction_for_ai_agents",
+        "196_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "00_session_compaction_for_ai_agents_research",
+        "186_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "01_01_session_graph_research"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PLT_Q14",
+      "question": "Czym jest agentic engineering i jak prowadzi od chaosu do świadomego projektowania?",
+      "translated": "What is agentic engineering and how does it lead from chaos to deliberate design?",
+      "mrr": 0.0,
+      "recall": 0.0,
+      "refusal": false,
+      "top5": [
+        "78_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "00_seed_tree_of_thoughts",
+        "621_beginning_software_engineering_2nd_edition_rod_s",
+        "198_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "92_graph_engineering_for_agentic_ai_systems_ken_hua"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PLT_Q15",
+      "question": "Dlaczego ponowne wymyślanie koła w vibe coding jest problemem?",
+      "translated": "Why is reinventing the wheel in vibe coding a problem?",
+      "mrr": 0.3333333333333333,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "05_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "01_00_bend2_vibe_coding_reinventing_wheels",
+        "00_00_bend2_vibe_coding_reinventing_wheels",
+        "38_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "41_beyond_vibe_coding_from_coder_to_ai_era_develope"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PLT_Q16",
+      "question": "Jakie są techniki, żeby wycisnąć 2-3x wydajności z AI w kodowaniu?",
+      "translated": "What are the techniques for squeezing 2-3x efficiency out of AI in coding?",
+      "mrr": 0.5,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "02_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods",
+        "00_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods",
+        "01_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods",
+        "126_psychology_of_computer_programming_gerald_m_wein",
+        "96_beyond_vibe_coding_from_coder_to_ai_era_develope"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PLT_Q17",
+      "question": "Jak działa routowanie narzędzi oparte na grafie z samonaprawą?",
+      "translated": "How does graph-based tool routing with self-healing work?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_32ecfce36290_graph_based_self_healing_tool_routi",
+        "00_c6374f03f91e_learning_recovery_strategies_for_dy",
+        "00_524ade10f990_message_passing_for_analysis_and_re",
+        "00_pending_request_req_20260922_165217",
+        "32_graph_engineering_for_agentic_ai_systems_ken_hua"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PLT_Q18",
+      "question": "Do czego służy message passing w analizie i odpornym projektowaniu systemów samonaprawczych?",
+      "translated": "What is message passing used for in the analysis and resilient design of self-healing systems?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_524ade10f990_message_passing_for_analysis_and_re",
+        "00_c6374f03f91e_learning_recovery_strategies_for_dy",
+        "00_self_healing_dilemmas_in_distributed_systems_fau",
+        "00_pending_request_req_20260922_165217",
+        "00_pending_request_req_20260922_163307"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PLT_Q19",
+      "question": "Jak działa rozproszona detekcja zmian o odporności bizantyjskiej?",
+      "translated": "How does distributed change detection with Byzantine fault tolerance work?",
+      "mrr": 0.5,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_e6cad2b3c51d_scheduling_and_checkpointing_optimi",
+        "00_32e1be065210_byzantine_fault_tolerant_distribute",
+        "00_self_healing_dilemmas_in_distributed_systems_fau",
+        "447_beginning_software_engineering_2nd_edition_rod_s",
+        "00_pending_request_req_20260922_163307"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PLT_Q20",
+      "question": "Czym charakteryzuje się energetycznie oszczędne uczenie federacyjne z kwantyzacją?",
+      "translated": "What characterizes energy-efficient federated learning with quantization?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_225c8527385d_energy_efficient_quantized_federate",
+        "327_building_llms_for_production_enhancing_llm_abili",
+        "267_llm_engineers_handbook_iusztin_paul_labonne_z_li",
+        "331_building_llms_for_production_enhancing_llm_abili",
+        "231_multiagent_systems_algorithmic_game_theoretic_an"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PLT_Q21",
+      "question": "Jak wygląda taksonomia błędów agentów i frameworki debugowania?",
+      "translated": "What does the taxonomy of agent errors and debugging frameworks look like?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_agent_error_taxonomy_debugging_web_research",
+        "01_agent_error_taxonomy_debugging_web_research",
+        "09_transferable_expertise_for_autonomous_agents_via",
+        "01_taxonomy_of_20_ai_research_failure_modes",
+        "205_harness_starter_kit"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PLT_Q22",
+      "question": "Jak realizowana jest niskonarzutowa odporność na błędy dla kwantowej uniwersalności?",
+      "translated": "How is low-overhead fault tolerance for quantum universality implemented?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_0d780aefeb5f_low_overhead_transversal_fault_tole",
+        "00_e6cad2b3c51d_scheduling_and_checkpointing_optimi",
+        "00_pending_request_req_20260922_163307",
+        "319_paradigms_of_artificial_intelligence_programming",
+        "00_pending_request_req_20260922_165217"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PLT_Q1",
+      "question": "What is SEVerA and how does it relate to self-evolving agents?",
+      "translated": "What is SEVerA and how does it relate to self-evolving agents?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_severa_verified_synthesis_of_self_evolving_agent",
+        "00_a_comprehensive_survey_of_self_evolving_ai_agent",
+        "233_multiagent_systems_algorithmic_game_theoretic_an",
+        "00_self_evolving_world_models_foresight_web_researc",
+        "00_self_improvements_in_modern_agentic_systems_a_su"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "PLT_Q2",
+      "question": "What trust tiers does this lab use for evidence, and what does tier 3 mean?",
+      "translated": "What trust tiers does this lab use for evidence, and what does tier 3 mean?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_okf_methodology_research",
+        "01_measured_record_surviving_positive_magnitude",
+        "02_the_five_level_verification_ladder",
+        "02_00_software_factory_isolate_build_prove_ship",
+        "109_domain_driven_design_tackling_complexity_in_the"
+      ],
+      "n_wynikow": 10
+    }
+  ],
+  "in_corpus_pl_metrics": {
+    "baseline": {
+      "n": 12,
+      "n_refusal": 5,
+      "n_nonrefusal": 7,
+      "mrr": 0.5069444444444444,
+      "recall": 0.7083333333333334,
+      "mrrs": [
+        0.5,
+        0.3333333333333333,
+        0.0,
+        0.5,
+        0.0,
+        1.0,
+        0.5,
+        0.0,
+        0.25,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "recs": [
+        0.5,
+        1.0,
+        0.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "translated": {
+      "n": 12,
+      "n_refusal": 0,
+      "n_nonrefusal": 12,
+      "mrr": 0.7777777777777777,
+      "recall": 0.875,
+      "mrrs": [
+        1.0,
+        0.0,
+        0.3333333333333333,
+        0.5,
+        1.0,
+        1.0,
+        0.5,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "recs": [
+        0.5,
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "ooc_pl_baseline": [
+    {
+      "qid": "Q4",
+      "question": "Jaki wpis dodala sesja 04 do SCARS.md w sprawie CRLF (blizna R13)?",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "reflection_rule_of_scars",
+        "173_llm_engineers_handbook_iusztin_paul_labonne_z_li",
+        "214_icm_knowledge_big",
+        "01_measured_closed_families_need_frontier_state",
+        "03_cerebras_second_brain"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "Q5",
+      "question": "Co powiedzial Jan Kowalski na spotkaniu 2026-09-15?",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "00_agentic_rag_modular_graph",
+        "70_the_book_of_why_the_new_science_of_cause_and_eff",
+        "00_agent_memory_hierarchies",
+        "274_the_goal_a_process_of_ongoing_improvement_revise",
+        "00_tool_orchestration_multi_tool"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "Q23",
+      "question": "Jaka będzie prognoza pogody w Warszawie jutro o 14:00?",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "36_the_goal_a_process_of_ongoing_improvement_revise",
+        "121_beginning_software_engineering_2nd_edition_rod_s",
+        "159_the_goal_a_process_of_ongoing_improvement_revise",
+        "582_beginning_software_engineering_2nd_edition_rod_s",
+        "237_building_llms_for_production_enhancing_llm_abili"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "Q24",
+      "question": "Jaki jest tradycyjny przepis na domowe pierogi ruskie?",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "161_the_pragmatic_programmer_20th_anniversary_editio",
+        "334_paradigms_of_artificial_intelligence_programming",
+        "121_beginning_software_engineering_2nd_edition_rod_s",
+        "335_paradigms_of_artificial_intelligence_programming",
+        "221_psychology_of_computer_programming_gerald_m_wein"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "Q25",
+      "question": "Jaki padł wynik w ostatnim meczu siatkówki Polska - Brazylia?",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "237_building_llms_for_production_enhancing_llm_abili",
+        "551_paradigms_of_artificial_intelligence_programming",
+        "40_artificial_intelligence_a_modern_approach_4th_ed",
+        "186_artificial_intelligence_a_modern_approach_4th_ed",
+        "36_the_creative_act_a_way_of_being_rick_rubin_z_lib"
+      ],
+      "n_wynikow": 10
+    }
+  ],
+  "ooc_pl_translated": [
+    {
+      "qid": "T_Q4",
+      "question": "Jaki wpis dodala sesja 04 do SCARS.md w sprawie CRLF (blizna R13)?",
+      "translated": "What entry did session 04 add to SCARS.md regarding CRLF (scar R13)?",
+      "mrr": null,
+      "recall": null,
+      "refusal": false,
+      "top5": [
+        "reflection_rule_of_scars",
+        "156_harness_starter_kit",
+        "214_icm_knowledge_big",
+        "168_icm_knowledge_big",
+        "206_icm_knowledge_big"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "T_Q5",
+      "question": "Co powiedzial Jan Kowalski na spotkaniu 2026-09-15?",
+      "translated": "What did Jan Kowalski say at the meeting on 2026-09-15?",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "00_agentic_rag_modular_graph",
+        "274_the_goal_a_process_of_ongoing_improvement_revise",
+        "00_agent_memory_hierarchies",
+        "283_the_goal_a_process_of_ongoing_improvement_revise",
+        "00_tool_orchestration_multi_tool"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "T_Q23",
+      "question": "Jaka będzie prognoza pogody w Warszawie jutro o 14:00?",
+      "translated": "What will be the weather forecast in Warsaw tomorrow at 14:00?",
+      "mrr": null,
+      "recall": null,
+      "refusal": false,
+      "top5": [
+        "333_graph_engineering_for_agentic_ai_systems_ken_hua",
+        "36_the_goal_a_process_of_ongoing_improvement_revise",
+        "49_the_mythical_man_month_frederick_p_brooks_jr_etc",
+        "159_the_goal_a_process_of_ongoing_improvement_revise",
+        "256_the_book_of_why_the_new_science_of_cause_and_eff"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "T_Q24",
+      "question": "Jaki jest tradycyjny przepis na domowe pierogi ruskie?",
+      "translated": "What is a traditional recipe for homemade Russian pierogi?",
+      "mrr": null,
+      "recall": null,
+      "refusal": false,
+      "top5": [
+        "290_building_llms_for_production_enhancing_llm_abili",
+        "63_the_creative_act_a_way_of_being_rick_rubin_z_lib",
+        "14_the_book_of_why_the_new_science_of_cause_and_eff",
+        "410_paradigms_of_artificial_intelligence_programming",
+        "239_harness_starter_kit"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "T_Q25",
+      "question": "Jaki padł wynik w ostatnim meczu siatkówki Polska - Brazylia?",
+      "translated": "What was the score in the last volleyball match Poland - Brazil?",
+      "mrr": null,
+      "recall": null,
+      "refusal": false,
+      "top5": [
+        "237_building_llms_for_production_enhancing_llm_abili",
+        "261_artificial_intelligence_a_modern_approach_4th_ed",
+        "551_paradigms_of_artificial_intelligence_programming",
+        "108_graph_databases_new_opportunities_for_connected",
+        "188_artificial_intelligence_a_modern_approach_4th_ed"
+      ],
+      "n_wynikow": 10
+    }
+  ],
+  "ooc_pl_metrics": {
+    "baseline": {
+      "n": 5,
+      "n_refusal": 5,
+      "n_nonrefusal": 0
+    },
+    "translated": {
+      "n": 5,
+      "n_refusal": 1,
+      "n_nonrefusal": 4
+    }
+  },
+  "canary_baseline": [
+    {
+      "qid": "CANARY_01",
+      "question": "Jaki jest numer telefonu do dzialu HR firmy XYZ?",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "77_structure_and_interpretation_of_computer_program",
+        "199_beginning_software_engineering_2nd_edition_rod_s",
+        "157_structure_and_interpretation_of_computer_program",
+        "551_beginning_software_engineering_2nd_edition_rod_s",
+        "78_structure_and_interpretation_of_computer_program"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "CANARY_02",
+      "question": "Kiedy urodzila sie babcia Krystyna z Sierpca?",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "334_the_book_of_why_the_new_science_of_cause_and_eff",
+        "03_artificial_intelligence_a_modern_approach_4th_ed",
+        "59_the_book_of_why_the_new_science_of_cause_and_eff",
+        "794_artificial_intelligence_a_modern_approach_4th_ed",
+        "246_the_goal_a_process_of_ongoing_improvement_revise"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "CANARY_03",
+      "question": "Ile kosztuje bilet miesieczny w komunikacji miejskiej w Atlantis?",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "228_building_llms_for_production_enhancing_llm_abili",
+        "157_domain_driven_design_tackling_complexity_in_the",
+        "192_multiagent_systems_algorithmic_game_theoretic_an",
+        "121_graph_databases_new_opportunities_for_connected",
+        "80_artificial_intelligence_a_modern_approach_4th_ed"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "CANARY_04",
+      "question": "Jaki jest numer NIP firmy Widmo Sp. z o.o.?",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "77_structure_and_interpretation_of_computer_program",
+        "128_augmenting_human_intellect_a_conceptual_framewor",
+        "157_structure_and_interpretation_of_computer_program",
+        "199_beginning_software_engineering_2nd_edition_rod_s",
+        "78_structure_and_interpretation_of_computer_program"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "CANARY_05",
+      "question": "Podaj wspolrzedne geograficzne miasta Eldoria.",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "47_graph_databases_new_opportunities_for_connected",
+        "15_the_goal_a_process_of_ongoing_improvement_revise",
+        "184_paradigms_of_artificial_intelligence_programming",
+        "187_paradigms_of_artificial_intelligence_programming",
+        "74_artificial_intelligence_a_modern_approach_4th_ed"
+      ],
+      "n_wynikow": 10
+    }
+  ],
+  "canary_translated": [
+    {
+      "qid": "T_CANARY_01",
+      "question": "Jaki jest numer telefonu do dzialu HR firmy XYZ?",
+      "translated": "What is the phone number of the HR department of XYZ company?",
+      "mrr": null,
+      "recall": null,
+      "refusal": false,
+      "top5": [
+        "551_beginning_software_engineering_2nd_edition_rod_s",
+        "199_beginning_software_engineering_2nd_edition_rod_s",
+        "182_beginning_software_engineering_2nd_edition_rod_s",
+        "212_the_goal_a_process_of_ongoing_improvement_revise",
+        "15_the_goal_a_process_of_ongoing_improvement_revise"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "T_CANARY_02",
+      "question": "Kiedy urodzila sie babcia Krystyna z Sierpca?",
+      "translated": "When was Krystyna from Sierpc born?",
+      "mrr": null,
+      "recall": null,
+      "refusal": true,
+      "top5": [
+        "74_the_book_of_why_the_new_science_of_cause_and_eff",
+        "815_paradigms_of_artificial_intelligence_programming",
+        "421_multiagent_systems_algorithmic_game_theoretic_an",
+        "1098_artificial_intelligence_a_modern_approach_4th_ed",
+        "48_graph_databases_new_opportunities_for_connected"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "T_CANARY_03",
+      "question": "Ile kosztuje bilet miesieczny w komunikacji miejskiej w Atlantis?",
+      "translated": "How much does a monthly public transport ticket cost in Atlantis?",
+      "mrr": null,
+      "recall": null,
+      "refusal": false,
+      "top5": [
+        "180_working_effectively_with_legacy_code_michael_c_f",
+        "45_the_mythical_man_month_frederick_p_brooks_jr_etc",
+        "254_icm_knowledge_big",
+        "192_multiagent_systems_algorithmic_game_theoretic_an",
+        "181_working_effectively_with_legacy_code_michael_c_f"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "T_CANARY_04",
+      "question": "Jaki jest numer NIP firmy Widmo Sp. z o.o.?",
+      "translated": "What is the VAT number (NIP) of Widmo Sp. z o.o. company?",
+      "mrr": null,
+      "recall": null,
+      "refusal": false,
+      "top5": [
+        "192_beginning_software_engineering_2nd_edition_rod_s",
+        "89_the_mythical_man_month_frederick_p_brooks_jr_etc",
+        "156_domain_driven_design_tackling_complexity_in_the",
+        "1118_artificial_intelligence_a_modern_approach_4th_ed",
+        "00_psychology_of_computer_programming_gerald_m_wein"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "T_CANARY_05",
+      "question": "Podaj wspolrzedne geograficzne miasta Eldoria.",
+      "translated": "Give the geographic coordinates of the city of Eldoria.",
+      "mrr": null,
+      "recall": null,
+      "refusal": false,
+      "top5": [
+        "186_paradigms_of_artificial_intelligence_programming",
+        "184_paradigms_of_artificial_intelligence_programming",
+        "187_paradigms_of_artificial_intelligence_programming",
+        "129_artificial_intelligence_a_modern_approach_4th_ed",
+        "96_domain_driven_design_tackling_complexity_in_the"
+      ],
+      "n_wynikow": 10
+    }
+  ],
+  "canary_metrics": {
+    "baseline": {
+      "n": 5,
+      "n_refusal": 5,
+      "n_nonrefusal": 0
+    },
+    "translated": {
+      "n": 5,
+      "n_refusal": 1,
+      "n_nonrefusal": 4
+    }
+  },
+  "in_corpus_en_control": [
+    {
+      "qid": "Q6",
+      "question": "What are the core structures of agent memory hierarchies?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_agent_memory_hierarchies",
+        "00_persistent_memory_hierarchies_agents",
+        "309_multiagent_systems_algorithmic_game_theoretic_an",
+        "00_self_improvements_in_modern_agentic_systems_a_su",
+        "03_transferable_expertise_for_autonomous_agents_via"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "Q7",
+      "question": "How do agent execution hooks provide deterministic loop interception and guardrails?",
+      "mrr": 0.5,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "01_agent_execution_hooks_guardrails",
+        "00_agent_execution_hooks_guardrails",
+        "00_agent_hooks_lifecycle_guardrails",
+        "02_agent_execution_hooks_guardrails",
+        "03_the_last_harness_you_ll_ever_build"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "Q8",
+      "question": "What is the isolate build prove ship methodology in software factories?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_00_software_factory_isolate_build_prove_ship",
+        "314_domain_driven_design_tackling_complexity_in_the",
+        "02_00_software_factory_isolate_build_prove_ship",
+        "03_00_software_factory_isolate_build_prove_ship",
+        "437_beginning_software_engineering_2nd_edition_rod_s"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "Q9",
+      "question": "How does the engineering workspace function as an adaptive search environment?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_adaptive_search_workspace_architecture",
+        "386_beginning_software_engineering_2nd_edition_rod_s",
+        "51_graph_engineering_for_agentic_ai_systems_ken_hua",
+        "827_artificial_intelligence_a_modern_approach_4th_ed",
+        "129_icm_knowledge_big"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "Q10",
+      "question": "What are the key version control paradigms and git discipline patterns for autonomous agents?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_agentic_git_discipline_patterns",
+        "02_agentic_git_discipline_patterns",
+        "01_transferable_expertise_for_autonomous_agents_via",
+        "01_agentic_git_discipline_patterns",
+        "198_beyond_vibe_coding_from_coder_to_ai_era_develope"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "Q11",
+      "question": "How is modular graph structured in agentic RAG?",
+      "mrr": 1.0,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_agentic_rag_modular_graph",
+        "17_graph_databases_new_opportunities_for_connected",
+        "00_agentic_auto_research_frontier_10_sources",
+        "11_graph_databases_new_opportunities_for_connected",
+        "01_modular_composition_strategy_research"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "Q12",
+      "question": "What is the CRITIC framework for verify-then-correct with external tools?",
+      "mrr": 0.3333333333333333,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "01_07_critic_external_tool_verification",
+        "00_grounded_tool_reliability_failure_modes_web_rese",
+        "00_07_critic_external_tool_verification",
+        "01_00_bend2_vibe_coding_reinventing_wheels",
+        "191_harness_starter_kit"
+      ],
+      "n_wynikow": 10
+    },
+    {
+      "qid": "Q13",
+      "question": "How does lesson persistence and eviction work in ExpeL?",
+      "mrr": 0.3333333333333333,
+      "recall": 1.0,
+      "refusal": false,
+      "top5": [
+        "00_memory_eviction_forgetting_web_research",
+        "01_08_lesson_persistence_eviction_requirement",
+        "00_08_lesson_persistence_eviction_requirement",
+        "437_structure_and_interpretation_of_computer_program",
+        "12_cascade_case_based_continual_adaptation_for_larg"
+      ],
+      "n_wynikow": 10
+    }
+  ],
+  "in_corpus_en_metrics": {
+    "n": 8,
+    "n_refusal": 0,
+    "n_nonrefusal": 8,
+    "mrr": 0.7708333333333333,
+    "recall": 1.0,
+    "mrrs": [
+      1.0,
+      0.5,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      0.3333333333333333,
+      0.3333333333333333
+    ],
+    "recs": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ]
+  }
+}

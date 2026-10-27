@@ -1,0 +1,182 @@
+{
+ "fingerprint": "229121a926f7",
+ "file_count": 3,
+ "scar_count": 7,
+ "card_count": 3,
+ "files": {
+  "2026-09-18_1715_S-49-project-workspace-design-reflection.md": "3aaeb3d6e257c443",
+  "2026-09-19_1200_S-100-simplification-ts-diverse-reflection.md": "bd3d512b96720b0d",
+  "2026-09-19_1200_S-99-smoke-test.md": "27febf8c95eeaea1"
+ },
+ "families": {
+  "tool-interaction": 0,
+  "repo-hygiene": 0,
+  "protocol-domain": 2,
+  "knowledge-routing": 5
+ },
+ "cards": [
+  {
+   "stem": "2026-09-18_1715_S-49-project-workspace-design-reflection",
+   "session": "S-49-project-workspace-design-reflection",
+   "invariants": [
+    "P1",
+    "P2"
+   ],
+   "card": "SCAR S-49-project-workspace-design-reflection (2026-09-18, 2 invariants): [P1] Graph-brain scripts must document their expected working directory in the module docstring and `--help` output; path resolution must fail loudly with an actionable message when cwd is wrong. | [P2] Stale referrers in historical reflection files are informational only; `check_catalog.py` exit 0 supersedes informational notes. Source: MONITORING/reflection/2026-09-18_1715_S-49-project-workspace-design-reflection.md"
+  },
+  {
+   "stem": "2026-09-19_1200_S-100-simplification-ts-diverse-reflection",
+   "session": "S-100-simplification-ts-diverse-reflection",
+   "invariants": [
+    "P1",
+    "P2",
+    "P3",
+    "P4"
+   ],
+   "card": "SCAR S-100-simplification-ts-diverse-reflection (2026-09-19, 4 invariants): [P1] Fast model probes MUST be routable through a single experiment stage/contract; full-stage ICM routing is reserved for incumbents, merges, and contract changes. | [P2] Worker-scoped prompt injection MUST be implemented as an isolated `.omp/extensions/<brain>.ts` file resolved module-relative, activated ONLY for agents started with `--cwd workspaces/<brain>`; the main orchestrator agent MUST NOT receive automatic brain injection. | [P3] Any candidate promoted to incumbent MUST be validated on at least one cross-domain mini-suite in addition to the primary H720 leaderboard. | [P4] New experiment scripts MUST follow the `bench.py` shape: task list, fit/pred members, rolling_preds helper, pool blend, JSON+harness outputs; no hidden global state. Source: MONITORING/reflection/2026-09-19_1200_S-100-simplification-ts-diverse-reflection.md"
+  },
+  {
+   "stem": "2026-09-19_1200_S-99-smoke-test",
+   "session": "S-99-smoke-test",
+   "invariants": [
+    "P1"
+   ],
+   "card": "SCAR S-99-smoke-test (2026-09-19, 1 invariant): [P1] Reflection stage contract, trigger checker, close gate, and AGENTS.md invariant must be added atomically with any brain consolidation. Source: MONITORING/reflection/2026-09-19_1200_S-99-smoke-test.md"
+  }
+ ],
+ "scars": [
+  {
+   "stem": "2026-09-18_1715_S-49-project-workspace-design-reflection",
+   "session": "S-49-project-workspace-design-reflection",
+   "id": "P1",
+   "title": "graph brain queries require specific working directory",
+   "invariant": "Graph-brain scripts must document their expected working directory in the module docstring and `--help` output; path resolution must fail loudly with an actionable message when cwd is wrong.",
+   "owning_doc": "`projects/workspace-research/knowledge/graph/ask.py`",
+   "family": "knowledge-routing",
+   "keywords": [
+    "ask",
+    "graph",
+    "knowledge",
+    "projects",
+    "brain",
+    "queries",
+    "require",
+    "specific"
+   ]
+  },
+  {
+   "stem": "2026-09-18_1715_S-49-project-workspace-design-reflection",
+   "session": "S-49-project-workspace-design-reflection",
+   "id": "P2",
+   "title": "check_catalog.py reports stale referrers",
+   "invariant": "Stale referrers in historical reflection files are informational only; `check_catalog.py` exit 0 supersedes informational notes.",
+   "owning_doc": "`RESEARCH/check_catalog.py`",
+   "family": "knowledge-routing",
+   "keywords": [
+    "check_catalog",
+    "RESEARCH",
+    "check",
+    "catalog",
+    "reports",
+    "stale",
+    "referrers",
+    "historical"
+   ]
+  },
+  {
+   "stem": "2026-09-19_1200_S-100-simplification-ts-diverse-reflection",
+   "session": "S-100-simplification-ts-diverse-reflection",
+   "id": "P1",
+   "title": "stage/gate machinery dominates model-iteration cost",
+   "invariant": "Fast model probes MUST be routable through a single experiment stage/contract; full-stage ICM routing is reserved for incumbents, merges, and contract changes.",
+   "owning_doc": "`PROCESS/WORKFLOW.md`",
+   "family": "knowledge-routing",
+   "keywords": [
+    "WORKFLOW",
+    "PROCESS",
+    "stage",
+    "gate",
+    "machinery",
+    "dominates",
+    "model",
+    "iteration"
+   ]
+  },
+  {
+   "stem": "2026-09-19_1200_S-100-simplification-ts-diverse-reflection",
+   "session": "S-100-simplification-ts-diverse-reflection",
+   "id": "P2",
+   "title": "knowledge injection is manual, not automatic",
+   "invariant": "Worker-scoped prompt injection MUST be implemented as an isolated `.omp/extensions/<brain>.ts` file resolved module-relative, activated ONLY for agents started with `--cwd workspaces/<brain>`; the main orchestrator agent MUST NOT receive automatic brain injection.",
+   "owning_doc": "`workspaces/AGENTS.md`",
+   "family": "knowledge-routing",
+   "keywords": [
+    "AGENTS",
+    "workspaces",
+    "knowledge",
+    "injection",
+    "manual",
+    "automatic",
+    "Worker",
+    "scoped"
+   ]
+  },
+  {
+   "stem": "2026-09-19_1200_S-100-simplification-ts-diverse-reflection",
+   "session": "S-100-simplification-ts-diverse-reflection",
+   "id": "P3",
+   "title": "ETTh1 H720 saturation blocks new signal",
+   "invariant": "Any candidate promoted to incumbent MUST be validated on at least one cross-domain mini-suite in addition to the primary H720 leaderboard.",
+   "owning_doc": "`RESEARCH/CONTEXT.md`",
+   "family": "protocol-domain",
+   "keywords": [
+    "CONTEXT",
+    "RESEARCH",
+    "ETTh1",
+    "H720",
+    "saturation",
+    "blocks",
+    "new",
+    "signal"
+   ]
+  },
+  {
+   "stem": "2026-09-19_1200_S-100-simplification-ts-diverse-reflection",
+   "session": "S-100-simplification-ts-diverse-reflection",
+   "id": "P4",
+   "title": "experiment artifacts are heavyweight",
+   "invariant": "New experiment scripts MUST follow the `bench.py` shape: task list, fit/pred members, rolling_preds helper, pool blend, JSON+harness outputs; no hidden global state.",
+   "owning_doc": "`PROCESS/08_experiment/CONTEXT.md`",
+   "family": "protocol-domain",
+   "keywords": [
+    "CONTEXT",
+    "08_experiment",
+    "PROCESS",
+    "experiment",
+    "artifacts",
+    "are",
+    "heavyweight",
+    "scripts"
+   ]
+  },
+  {
+   "stem": "2026-09-19_1200_S-99-smoke-test",
+   "session": "S-99-smoke-test",
+   "id": "P1",
+   "title": "missing reflection workflow",
+   "invariant": "Reflection stage contract, trigger checker, close gate, and AGENTS.md invariant must be added atomically with any brain consolidation.",
+   "owning_doc": "`AGENTS.md`",
+   "family": "knowledge-routing",
+   "keywords": [
+    "AGENTS",
+    "missing",
+    "reflection",
+    "workflow",
+    "stage",
+    "contract",
+    "trigger",
+    "checker"
+   ]
+  }
+ ]
+}

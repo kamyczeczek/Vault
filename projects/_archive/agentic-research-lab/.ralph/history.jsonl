@@ -1,0 +1,16 @@
+{"event": "init", "status": "READY", "iteration": 0, "run": ".ralph\\runs\\2026-10-01_trustworthy-agent-tests", "next_frontier": "D-001", "updated_at": "2026-10-01T20:03:25+00:00"}
+{"event": "iteration", "iteration": "I-001", "decision": "D-001", "outcome": "CONTINUE", "next_frontier": "D-002"}
+{"event": "status", "status": "APPROVED", "iteration": 1, "run": ".ralph\\runs\\2026-10-01_trustworthy-agent-tests", "next_frontier": "D-002", "updated_at": "2026-10-01T20:12:08+00:00", "last_iteration": "I-001", "last_decision": "D-001", "handoff_at": "2026-10-02T00:00:00+00:00"}
+{"event": "iteration", "iteration": "I-002", "decision": "D-002", "outcome": "CONTINUE", "next_frontier": "D-002"}
+{"event": "status", "status": "APPROVED", "iteration": 2, "run": ".ralph\\runs\\2026-10-01_trustworthy-agent-tests", "next_frontier": "D-002", "updated_at": "2026-10-01T20:35:48+00:00", "last_iteration": "I-002", "last_decision": "D-002", "handoff_at": "2026-10-02T00:00:00+00:00"}
+{"event": "iteration", "iteration": "I-003", "decision": "D-002", "outcome": "DONE", "next_frontier": ""}
+{"event": "status", "status": "DONE", "iteration": 2, "run": ".ralph\\runs\\2026-10-01_trustworthy-agent-tests", "next_frontier": "", "updated_at": "2026-10-01T20:38:18+00:00", "last_iteration": "I-003", "last_decision": "D-002", "handoff_at": "2026-10-02T00:30:00+00:00"}
+{"event": "init", "status": "READY", "iteration": 0, "run": ".ralph\\runs\\2026-10-02_plain-language-meter", "next_frontier": "D-001", "updated_at": "2026-10-02T11:15:51+00:00"}
+{"event": "status", "status": "WORKING", "iteration": 0, "run": ".ralph\\runs\\2026-10-02_plain-language-meter", "next_frontier": "D-001", "updated_at": "2026-10-02T11:16:29+00:00"}
+{"event": "iteration", "iteration": "I-001", "decision": "D-001", "outcome": "CONTINUE", "next_frontier": "D-002"}
+{"event": "status", "status": "APPROVED", "iteration": 1, "run": ".ralph\\runs\\2026-10-02_plain-language-meter", "next_frontier": "D-002", "updated_at": "2026-10-02T14:07:53+00:00", "last_iteration": "I-001", "last_decision": "D-001", "handoff_at": "2026-10-02T11:35:00+00:00"}
+{"event": "iteration", "iteration": "I-002", "decision": "D-002", "outcome": "CONTINUE", "next_frontier": "D-003"}
+{"event": "status", "status": "APPROVED", "iteration": 2, "run": ".ralph\\runs\\2026-10-02_plain-language-meter", "next_frontier": "D-003", "updated_at": "2026-10-03T03:24:15+00:00", "last_iteration": "I-002", "last_decision": "D-002", "handoff_at": "2026-10-02T11:35:00+00:00"}
+{"event": "iteration", "iteration": "I-003", "decision": "D-003", "outcome": "CONTINUE", "next_frontier": "D-004"}
+{"event": "init", "status": "READY", "iteration": 0, "run": ".ralph\\runs\\2026-10-08_transfer-lab", "next_frontier": "D-001", "updated_at": "2026-10-07T23:59:42+00:00"}
+{"event": "iteration", "iteration": "I-001", "decision": "D-001", "outcome": "CONTINUE", "next_frontier": "Czekaj na odpowiedź Mateusza dotyczącą wyboru projektu-kandydata dla Fazy 2 (knowledge-retrieval vs benchmark-core)"}

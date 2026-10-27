@@ -1,0 +1,66 @@
+{
+ "id": "u002",
+ "question": "Jakie są najlepsze praktyki używania hooków useEffect i useMemo w React 18 do zapobiegania zbędnym re-renderom?",
+ "type": "unanswerable",
+ "header": "Unanswerable (React hooks)",
+ "gold_topics": [],
+ "input_stage_hit": false,
+ "chunks": [
+  {
+   "topic": 29,
+   "topic_title": "Juggling the Real World",
+   "chapter": 5,
+   "page_book": 239,
+   "text": "There are many frameworks that can help with this kind of data-level reactivity: in the realm of the browser React and Vue.js are current favorites (but, this being JavaScript, this information will be out-of-date before this book is even printed).\n\nIt's clear that events can also be used to trigger reactions in code, but it isn't necessarily easy to plumb them in. That's where _streams_ come in."
+  },
+  {
+   "topic": 41,
+   "topic_title": "Test to Code",
+   "chapter": 7,
+   "page_book": 361,
+   "text": "Chip-level testing for hardware is roughly equivalent to _unit testing_ in software—testing done on each module, in isolation, to verify its behavior. We can get a better feeling for how a module will react in the big wide world once we have tested it throughly under controlled (even contrived) conditions.\n\nA software unit test is code that exercises a module. Typically, the unit test will establish some kind of artificial environment, then invoke routines in the module being tested. It then checks the results that are returned, either against known values or against the results from previous runs of the same test (regression testing)."
+  },
+  {
+   "topic": 11,
+   "topic_title": "Reversibility",
+   "chapter": 2,
+   "page_book": 104,
+   "text": "Similarly, suppose the project begins as a browser-based application, but then, late in the game, marketing decides that what they really want is a mobile app. How hard would that be for you? In an ideal world, it shouldn't impact you too much, at least on the server side. You'd be stripping out some HTML rendering and replacing it with an API.\n\nThe mistake lies in assuming that any decision is cast in stone— and in not preparing for the contingencies that might arise. Instead of carving decisions in stone, think of them more as being written in the sand at the beach. A big wave can come along and wipe them out at any time.\n\n> **Tip 18** There Are No Final Decisions\n\n#### **FLEXIBLE ARCHITECTURE**"
+  },
+  {
+   "topic": 29,
+   "topic_title": "Juggling the Real World",
+   "chapter": 5,
+   "page_book": 239,
+   "text": "Compared to the observer pattern, pubsub is a great example of reducing coupling by abstracting up through a shared interface (the channel). However, it is still basically just a message passing system. Creating systems that respond to combinations of events will need more than this, so let's look at ways we can add a time dimension to event processing.\n\n**REACTIVE PROGRAMMING, STREAMS, AND EVENTS** If you've ever used a spreadsheet, then you'll be familiar with _reactive programming_ . If a cell contains a formula which refers to a second cell, then updating that second cell causes the first to update as well. The values _react_ as the values they use change."
+  },
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "If you \"changed only one thing'' and the system stopped working, that one thing was likely to be responsible, directly or indirectly, no matter how farfetched it seems. Sometimes the thing that changed is outside of your control: new versions of the OS, compiler, database, or other third-party software can wreak havoc with previously correct code. New bugs might show up. Bugs for which you had a workaround get fixed, breaking the workaround. APIs change, functionality changes; in short, it's a whole new ball game, and you must retest the system under these new conditions. So keep a close eye on the schedule when considering an upgrade; you may want to wait until _after_ the next release.\n\n#### **THE ELEMENT OF SURPRISE**"
+  },
+  {
+   "topic": 2,
+   "topic_title": "The Cat Ate My Source Code",
+   "chapter": 1,
+   "page_book": 38,
+   "text": "maybe you need to spend more time with the users? Or maybe it's just you: do you need to learn some technique or technology in greater depth? Would a book or a course help? Don't be afraid to ask, or to admit that you need help.\n\nTry to flush out the lame excuses before voicing them aloud. If you must, tell your cat first. After all, if little Tiddles is going to take the blame….\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 49, _Pragmatic Teams_\n\n#### **CHALLENGES**\n\n- How do you react when someone—such as a bank teller, an auto mechanic, or a clerk—comes to you with a lame excuse? What do you think of them and their company as a result?"
+  },
+  {
+   "topic": 40,
+   "topic_title": "Refactoring",
+   "chapter": 7,
+   "page_book": 354,
+   "text": "Refactoring your code—moving functionality around and updating earlier decisions—is really an exercise in _pain management_ . Let's face it, changing source code around can be pretty painful: it was working, maybe it's better to leave well enough alone. Many developers are reluctant to go in and reopen a piece of code just because it isn't quite right.\n\n##### **Real-World Complications**\n\nSo you go to your teammates or client and say, \"This code works, but I need another week to completely refactor it.\"\n\nWe can't print their reply."
+  },
+  {
+   "topic": 27,
+   "topic_title": "Don’t Outrun Your Headlights",
+   "chapter": 4,
+   "page_book": 222,
+   "text": "Next, we'll look at different techniques you can use when Topic 29, _<u>Juggling the Real World</u>_ <u>. We'll examine four different</u> strategies to help manage and react to events—a critical aspect of modern software applications.\n\nTraditional procedural and object-oriented code might be too tightly coupled for your purposes. In Topic 30, _<u>Transforming</u>_\n\n_<u>Programming</u>_ <u>, we'll take advantage of the more flexible and</u> clearer style offered by function pipelines, even if your language doesn't support them directly.\n\nCommon object-oriented style can tempt you with another trap. Don't fall for it, or you'll end up paying a hefty Topic 31, _<u>Inheritance Tax</u>_ <u>. We'll explore better alternatives to keep your</u> code flexible and easier to change."
+  }
+ ]
+}

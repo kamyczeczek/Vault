@@ -1,0 +1,73 @@
+{
+  "criterion": "content_match",
+  "date": "2026-10-05",
+  "description": "Session B non-tautological content criterion for the Phase 2 KG ablation (flag phase2_result). Each task carries content facts extracted ONLY from its oracle chunks; each fact is a case-insensitive regex over the answer text. Both arms can in principle match every fact (no oracle-chunk-ID requirement), so the metric measures answer content, not arm identity. Scoring: per-task fraction = matched facts / total facts; arm score = macro average over tasks; family breakdown reported. No LLM judge. Echo guard: no pattern may match the task question (enforced by --build-check); facts sourced from a chunk outside the task's oracle_ids are rejected.",
+  "provenance": "fact statements copied from the oracle chunk text: 00_kg_icm_phase1_synthesis, 01_kg_icm_phase1_synthesis, 00_icm_implementation_pitfalls_and_failure_modes, 00_memory_eviction_forgetting_web_research",
+  "verdict_rule": "ON wins if on_macro > off_macro AND ON strictly out-scores OFF on at least 2 of the 3 task families; otherwise INCONCLUSIVE (n=9 pilot).",
+  "tasks": {
+    "bf-concentration": {
+      "facts": [
+        {"id": "c1", "statement": "Citation concentration mitigated by HippoRAG spreading activation via PPR", "source": "01_kg_icm_phase1_synthesis", "pattern": "(?i)hipporag|pagerank|ppr"},
+        {"id": "c2", "statement": "critic gate demotes redundant/over-concentrated hits", "source": "01_kg_icm_phase1_synthesis", "pattern": "(?i)critic|demot"},
+        {"id": "c3", "statement": "diversity is a retrieval property, not a writer property", "source": "01_kg_icm_phase1_synthesis", "pattern": "(?i)diversif?y|diversit"}
+      ]
+    },
+    "bf-deadroute": {
+      "facts": [
+        {"id": "d1", "statement": "the zero-hit tag route is a silent reasoning failure", "source": "00_icm_implementation_pitfalls_and_failure_modes", "pattern": "(?i)silent (reasoning )?fail"},
+        {"id": "d2", "statement": "mitigation: reachability seeds + alias/threshold splitting in route.py", "source": "00_icm_implementation_pitfalls_and_failure_modes", "pattern": "(?i)reachab|alias|threshold spli"}
+      ]
+    },
+    "bf-staleprint": {
+      "facts": [
+        {"id": "s1", "statement": "restamp digests in place when cited IDs still resolve", "source": "01_kg_icm_phase1_synthesis", "pattern": "(?i)re-?stamp"},
+        {"id": "s2", "statement": "mark superseded_by when they do not; never silently drop", "source": "01_kg_icm_phase1_synthesis", "pattern": "(?i)supersede|never (silently )?drop"},
+        {"id": "s3", "statement": "remediation is invalidate-don't-delete (Graphiti): invalidate, never delete", "source": "01_kg_icm_phase1_synthesis", "pattern": "(?i)invalidat"}
+      ]
+    },
+    "feat-critic": {
+      "facts": [
+        {"id": "q1", "statement": "the pattern is named CRAG / reflective RAG (cheap evaluator)", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)crag|reflective rag"},
+        {"id": "q2", "statement": "gates expansion BEFORE 1-hop to prevent semantic drift / k=15 noise collapse", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)drift|nois"},
+        {"id": "q3", "statement": "measured effect +4-37pp over plain RAG", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)4 ?- ?37 ?pp"}
+      ]
+    },
+    "feat-eviction": {
+      "facts": [
+        {"id": "e1", "statement": "ExpeL is the surveyed system with a working eviction model", "source": "00_memory_eviction_forgetting_web_research", "pattern": "(?i)expel"},
+        {"id": "e2", "statement": "core mechanism: importance scoring, DOWNVOTE-to-zero eviction, reversibility", "source": "00_memory_eviction_forgetting_web_research", "pattern": "(?i)importance scor|down-?vote|reversib"},
+        {"id": "e3", "statement": "Graphiti bi-temporal is the only surveyed system with principled decay", "source": "01_kg_icm_phase1_synthesis", "pattern": "(?i)bi-?temporal|graphiti"}
+      ]
+    },
+    "feat-codeschema": {
+      "facts": [
+        {"id": "cs1", "statement": "Tree-sitter per file into SQLite is the cheapest surveyed code-graph schema", "source": "01_kg_icm_phase1_synthesis", "pattern": "(?i)tree-?sitter"},
+        {"id": "cs2", "statement": "edge kinds: defines / calls / imports / inherits only", "source": "01_kg_icm_phase1_synthesis", "pattern": "(?i)defini|call|import|inherit"},
+        {"id": "cs3", "statement": "measured +2.3-4.7pp SWE-bench Lite resolve, -70% regressions", "source": "01_kg_icm_phase1_synthesis", "pattern": "(?i)2.3 ?- ?4.7|27 ?- ?100|70 ?%|regress"}
+      ]
+    },
+    "perf-ppr": {
+      "facts": [
+        {"id": "p1", "statement": "the pattern is attributed to HippoRAG2 single-step PPR", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)hipporag"},
+        {"id": "p2", "statement": "gain +5-14pp R@5 multi-hop", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)5 ?- ?14 ?pp|r@ ?5"},
+        {"id": "p3", "statement": "at 10-30x lower cost than iterative retrieval", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)10 ?- ?30 ?x|lower cost|cheaper"},
+        {"id": "p4", "statement": "lesson: expand the query before matching (seed selection beats NER-to-node)", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)expand|seed select|query-?to-?triple"}
+      ]
+    },
+    "perf-costinversion": {
+      "facts": [
+        {"id": "ci1", "statement": "no LLM compute at index/build time (deterministic chunk+tag+FTS5 build)", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)(index|build|offline|pre-?process|pre-?comput).{0,120}(absent|no (llm )?(cost|compute)|without (any )?(llm|cost)|skips?|deterministic)|(absent|no (llm )?cost|without (any )?cost|skips?|deterministic).{0,120}(index|build|offline|pre-?process)"},
+        {"id": "ci2", "statement": "LLM compute is spent at read/query time instead", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)query time|read time|retrieval time|on-?demand|on-?the-?fly|dynamically"},
+        {"id": "ci3", "statement": "build = chunks + tags + FTS5, content-hash, nothing to re-extract", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)fts5|content-?hash"},
+        {"id": "ci4", "statement": "LightRAG lesson / GraphRAG 57x time, 210x tokens, 610K", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)lightrag|57 ?x|210 ?x|610 ?k"}
+      ]
+    },
+    "perf-queryexpand": {
+      "facts": [
+        {"id": "x1", "statement": "recommended pre-match step: expand the query before tag intersection (seed selection)", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)expand|seed select|query-?to-?triple"},
+        {"id": "x2", "statement": "motivating finding: that single-step PPR matches iterative recall at 10-30x lower cost", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)cheaper|lower cost|10 ?- ?30 ?x"},
+        {"id": "x3", "statement": "query-to-triple beats NER-to-node by 12.5pp", "source": "00_kg_icm_phase1_synthesis", "pattern": "(?i)12.5 ?pp|ner-?to-?node"}
+      ]
+    }
+  }
+}

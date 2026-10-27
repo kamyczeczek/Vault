@@ -1,0 +1,39 @@
+{
+  "model": "ZTL-MoE-S39",
+  "experts": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "nlinear_L720_a1",
+    "rlinear_L336_a0",
+    "fourier_lag_L336_a100"
+  ],
+  "horizon": 720,
+  "router": "EWA",
+  "stack_head_used": true,
+  "val_router_mae": 2.619464,
+  "val_stack_mae": 2.613375,
+  "test_mae": 2.016601,
+  "test_rmse": 2.517493,
+  "disjoint_4": {
+    "window_1": {
+      "mae": 2.5800848234089098,
+      "rmse": 3.036880245722815
+    },
+    "window_2": {
+      "mae": 1.199686785594007,
+      "rmse": 1.484721438612703
+    },
+    "window_3": {
+      "mae": 1.8835889907762264,
+      "rmse": 2.3867030959776656
+    },
+    "window_4": {
+      "mae": 1.8811979608190565,
+      "rmse": 2.4834509131285336
+    }
+  },
+  "n_val_origins": 2161,
+  "n_test_origins": 2161,
+  "elapsed_s": 54.622,
+  "plan_impact": "S-39 ZTL-MoE prototype; 5-expert linear pool + deterministic EWA router; Expert 5 Fourier-lag implemented; zero-tuning respected"
+}

@@ -1,0 +1,697 @@
+{
+  "slice": "S-47-diverse-mini",
+  "suite": "6-task synthetic+ETTh1; fixed fit per origin; W=5",
+  "harness_command": "python s47_ref/rolling_arm.py --window fixed",
+  "protocol": {
+    "train_window": 2000,
+    "fit_window": "fixed",
+    "n_origins": 5,
+    "select_origins": 3,
+    "confirmation_origins": 2,
+    "fit_policy": "refit on trailing train_window at every origin; one fit per forecast horizon",
+    "stack_policy": "select scores use leave-one-select-origin-out weights; confirmation weights fit on all select origins",
+    "task_scale": "population std of the initial training window",
+    "confirmation_status": "exposed_in_pre_correction_report; diagnostic_only"
+  },
+  "per_task": {
+    "etth1_H96": {
+      "H": 96,
+      "origins": [
+        2000,
+        2096,
+        2192,
+        2288,
+        2384
+      ],
+      "train_scale": 6.04757191033222,
+      "singleton": {
+        "nlinear_a1": 3.629279439360757,
+        "nlinear_a10": 3.629518984585434,
+        "rff_h64": 5.9865605564606135,
+        "subband_cA1": 3.6337371101365483,
+        "subband_d1": 4.475251223811338,
+        "wavelet_pooled": 15.769720674835204
+      },
+      "singleton_confirmation": {
+        "nlinear_a1": 2.1098623538439365,
+        "nlinear_a10": 2.1096333473756603,
+        "rff_h64": 2.0140232311219486,
+        "subband_cA1": 2.1117325073826065,
+        "subband_d1": 2.6732639024968043,
+        "wavelet_pooled": 18.62132696425579
+      },
+      "pool_blend": {
+        "A": 11.921344267772575,
+        "B": 9.930179970832562,
+        "C": 11.94355228827449
+      },
+      "pool_blend_normalized": {
+        "A": 1.9712612672542298,
+        "B": 1.6420110613099024,
+        "C": 1.9749334882432803
+      },
+      "pool_names": {
+        "A": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64"
+        ],
+        "B": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "subband_cA1",
+          "subband_d1"
+        ],
+        "C": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "wavelet_pooled"
+        ]
+      },
+      "confirmation": {
+        "pool_blend": {
+          "A": 8.548550129995457,
+          "B": 6.222894443605647,
+          "C": 8.614276090225411
+        },
+        "pool_blend_normalized": {
+          "A": 1.4135508029909225,
+          "B": 1.0289905661103242,
+          "C": 1.4244189598651984
+        },
+        "test_gap_normalized": -0.38456023688059826
+      },
+      "screened": {
+        "select_origins": [
+          2000,
+          2096,
+          2192
+        ],
+        "confirmation_origins": [
+          2288,
+          2384
+        ],
+        "choice": "B",
+        "test_gap_normalized": -0.38456023688059826,
+        "confirmation_claim": "diagnostic_only_prior_exposure",
+        "per_origin_raw_mae": {
+          "A": [
+            14.478046911224359,
+            8.30669664126415,
+            12.97928925082922,
+            9.609235710548283,
+            7.487864549442629
+          ],
+          "B": [
+            11.737585434826423,
+            6.94624904567295,
+            11.106705431998316,
+            7.44913748958487,
+            4.996651397626423
+          ],
+          "C": [
+            14.611391518591967,
+            8.345531801110974,
+            12.87373354512053,
+            9.70985131047539,
+            7.518700869975432
+          ]
+        }
+      }
+    },
+    "seasonal_H48": {
+      "H": 48,
+      "origins": [
+        2000,
+        2048,
+        2096,
+        2144,
+        2192
+      ],
+      "train_scale": 0.804729623954525,
+      "singleton": {
+        "nlinear_a1": 0.12452122697033478,
+        "nlinear_a10": 0.12449267277118706,
+        "rff_h64": 0.9709311464891499,
+        "subband_cA1": 0.1240561641063201,
+        "subband_d1": 1.0881786451032995,
+        "wavelet_pooled": 1.138429802321879
+      },
+      "singleton_confirmation": {
+        "nlinear_a1": 0.13542975857856293,
+        "nlinear_a10": 0.13328586484803093,
+        "rff_h64": 0.7610563366015751,
+        "subband_cA1": 0.13024136714625,
+        "subband_d1": 0.9740763675683496,
+        "wavelet_pooled": 0.9593413634424941
+      },
+      "pool_blend": {
+        "A": 0.6707159677414235,
+        "B": 0.6700188465633534,
+        "C": 0.6701577118793626
+      },
+      "pool_blend_normalized": {
+        "A": 0.833467475007886,
+        "B": 0.8326011950085933,
+        "C": 0.8327737564651069
+      },
+      "pool_names": {
+        "A": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64"
+        ],
+        "B": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "subband_cA1",
+          "subband_d1"
+        ],
+        "C": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "wavelet_pooled"
+        ]
+      },
+      "confirmation": {
+        "pool_blend": {
+          "A": 0.7233581328394696,
+          "B": 0.7222370454347081,
+          "C": 0.7224613336299339
+        },
+        "pool_blend_normalized": {
+          "A": 0.8988834402352589,
+          "B": 0.8974903171646151,
+          "C": 0.8977690296520761
+        },
+        "test_gap_normalized": -0.0013931230706437647
+      },
+      "screened": {
+        "select_origins": [
+          2000,
+          2048,
+          2096
+        ],
+        "confirmation_origins": [
+          2144,
+          2192
+        ],
+        "choice": "B",
+        "test_gap_normalized": -0.0013931230706437647,
+        "confirmation_claim": "diagnostic_only_prior_exposure",
+        "per_origin_raw_mae": {
+          "A": [
+            0.7040874272349661,
+            0.6462135360628678,
+            0.661846939926437,
+            0.7144324308939352,
+            0.7322838347850041
+          ],
+          "B": [
+            0.7033900032376698,
+            0.6454956216092634,
+            0.6611709148431268,
+            0.7135081418806583,
+            0.730965948988758
+          ],
+          "C": [
+            0.7035513179395658,
+            0.6455369357201041,
+            0.6613848819784178,
+            0.7135693912898193,
+            0.7313532759700484
+          ]
+        }
+      }
+    },
+    "trending_H48": {
+      "H": 48,
+      "origins": [
+        2000,
+        2048,
+        2096,
+        2144,
+        2192
+      ],
+      "train_scale": 5.502696440962854,
+      "singleton": {
+        "nlinear_a1": 1.031347406218216,
+        "nlinear_a10": 1.0297723481270842,
+        "rff_h64": 1.295954666931278,
+        "subband_cA1": 1.0242656372023697,
+        "subband_d1": 1.0355151476566324,
+        "wavelet_pooled": 6.42806776840172
+      },
+      "singleton_confirmation": {
+        "nlinear_a1": 0.5798073723644636,
+        "nlinear_a10": 0.5787284908985991,
+        "rff_h64": 0.7029667141581776,
+        "subband_cA1": 0.5746205062297319,
+        "subband_d1": 0.6732034110934842,
+        "wavelet_pooled": 7.2334798442555455
+      },
+      "pool_blend": {
+        "A": 5.446348323661687,
+        "B": 5.164352216899377,
+        "C": 5.4454420176892455
+      },
+      "pool_blend_normalized": {
+        "A": 0.9897599080912944,
+        "B": 0.9385130130848588,
+        "C": 0.9895952059344219
+      },
+      "pool_names": {
+        "A": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64"
+        ],
+        "B": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "subband_cA1",
+          "subband_d1"
+        ],
+        "C": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "wavelet_pooled"
+        ]
+      },
+      "confirmation": {
+        "pool_blend": {
+          "A": 6.508154310738684,
+          "B": 6.087625706976859,
+          "C": 6.508644454936224
+        },
+        "pool_blend_normalized": {
+          "A": 1.1827209406448553,
+          "B": 1.1062986614452706,
+          "C": 1.1828100141023499
+        },
+        "test_gap_normalized": -0.07642227919958478
+      },
+      "screened": {
+        "select_origins": [
+          2000,
+          2048,
+          2096
+        ],
+        "confirmation_origins": [
+          2144,
+          2192
+        ],
+        "choice": "B",
+        "test_gap_normalized": -0.07642227919958478,
+        "confirmation_claim": "diagnostic_only_prior_exposure",
+        "per_origin_raw_mae": {
+          "A": [
+            6.432065632024464,
+            5.3330870423883905,
+            4.573892296572208,
+            6.013804316760694,
+            7.002504304716673
+          ],
+          "B": [
+            6.139463390804406,
+            5.066073002442038,
+            4.287520257451686,
+            5.6022872885250665,
+            6.572964125428652
+          ],
+          "C": [
+            6.431151118539128,
+            5.332108277971341,
+            4.573066656557269,
+            6.013608699290033,
+            7.0036802105824165
+          ]
+        }
+      }
+    },
+    "spiky_H48": {
+      "H": 48,
+      "origins": [
+        2000,
+        2048,
+        2096,
+        2144,
+        2192
+      ],
+      "train_scale": 0.5779181578276169,
+      "singleton": {
+        "nlinear_a1": 0.5101608199906581,
+        "nlinear_a10": 0.5094756836536992,
+        "rff_h64": 0.6940721562492604,
+        "subband_cA1": 0.4962027954703443,
+        "subband_d1": 0.6046084214995275,
+        "wavelet_pooled": 0.7949794728533318
+      },
+      "singleton_confirmation": {
+        "nlinear_a1": 0.4603069006309137,
+        "nlinear_a10": 0.4599346053908036,
+        "rff_h64": 0.565167009459597,
+        "subband_cA1": 0.4558328211726146,
+        "subband_d1": 0.43651298556252316,
+        "wavelet_pooled": 0.6000262406434778
+      },
+      "pool_blend": {
+        "A": 0.4467435817384222,
+        "B": 0.44674679768797243,
+        "C": 0.446749023170994
+      },
+      "pool_blend_normalized": {
+        "A": 0.7730222276069723,
+        "B": 0.773027792321468,
+        "C": 0.7730316431833789
+      },
+      "pool_names": {
+        "A": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64"
+        ],
+        "B": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "subband_cA1",
+          "subband_d1"
+        ],
+        "C": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "wavelet_pooled"
+        ]
+      },
+      "confirmation": {
+        "pool_blend": {
+          "A": 0.4390583816820598,
+          "B": 0.43906151029627627,
+          "C": 0.4390571621309417
+        },
+        "pool_blend_normalized": {
+          "A": 0.7597241507906097,
+          "B": 0.7597295643845141,
+          "C": 0.7597220405417767
+        },
+        "test_gap_normalized": 5.413593904379788e-06
+      },
+      "screened": {
+        "select_origins": [
+          2000,
+          2048,
+          2096
+        ],
+        "confirmation_origins": [
+          2144,
+          2192
+        ],
+        "choice": "B",
+        "test_gap_normalized": 5.413593904379788e-06,
+        "confirmation_claim": "diagnostic_only_prior_exposure",
+        "per_origin_raw_mae": {
+          "A": [
+            0.5487397442030654,
+            0.41029541140127623,
+            0.3811955896109251,
+            0.3904376087957595,
+            0.48767915456836014
+          ],
+          "B": [
+            0.5487363767279577,
+            0.41030310154966276,
+            0.38120091478629675,
+            0.390440948716122,
+            0.48768207187643053
+          ],
+          "C": [
+            0.5487513502303666,
+            0.4102973302789655,
+            0.3811983890036499,
+            0.3904324244887745,
+            0.48768189977310894
+          ]
+        }
+      }
+    },
+    "ou_H24": {
+      "H": 24,
+      "origins": [
+        2000,
+        2024,
+        2048,
+        2072,
+        2096
+      ],
+      "train_scale": 0.7888669774047332,
+      "singleton": {
+        "nlinear_a1": 0.6551242331480679,
+        "nlinear_a10": 0.6574820671096143,
+        "rff_h64": 0.9487928900940013,
+        "subband_cA1": 0.6687088530518099,
+        "subband_d1": 0.7709750011106146,
+        "wavelet_pooled": 1.4716309377825882
+      },
+      "singleton_confirmation": {
+        "nlinear_a1": 1.0909179972442462,
+        "nlinear_a10": 1.089715063417693,
+        "rff_h64": 1.1640619505622654,
+        "subband_cA1": 1.0867552221038699,
+        "subband_d1": 0.9912545902536323,
+        "wavelet_pooled": 0.5799077422829223
+      },
+      "pool_blend": {
+        "A": 0.8735736784477632,
+        "B": 0.8736811747462591,
+        "C": 0.8738668716958499
+      },
+      "pool_blend_normalized": {
+        "A": 1.1073776738908552,
+        "B": 1.1075139405892653,
+        "C": 1.1077493376269278
+      },
+      "pool_names": {
+        "A": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64"
+        ],
+        "B": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "subband_cA1",
+          "subband_d1"
+        ],
+        "C": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "wavelet_pooled"
+        ]
+      },
+      "confirmation": {
+        "pool_blend": {
+          "A": 0.638034654217043,
+          "B": 0.6380542098613581,
+          "C": 0.6379685927502419
+        },
+        "pool_blend_normalized": {
+          "A": 0.8087987867309284,
+          "B": 0.8088235762643672,
+          "C": 0.808715044517484
+        },
+        "test_gap_normalized": 2.4789533438762668e-05
+      },
+      "screened": {
+        "select_origins": [
+          2000,
+          2024,
+          2048
+        ],
+        "confirmation_origins": [
+          2072,
+          2096
+        ],
+        "choice": "B",
+        "test_gap_normalized": 2.4789533438762668e-05,
+        "confirmation_claim": "diagnostic_only_prior_exposure",
+        "per_origin_raw_mae": {
+          "A": [
+            0.40036454310497027,
+            1.0181972075054968,
+            1.2021592847328229,
+            0.5219041282764229,
+            0.7541651801576631
+          ],
+          "B": [
+            0.4003740355891008,
+            1.0183187013456443,
+            1.202350787304032,
+            0.5219352780208838,
+            0.7541731417018324
+          ],
+          "C": [
+            0.4006180453309273,
+            1.0183803582090125,
+            1.2026022115476096,
+            0.5217983394899476,
+            0.7541388460105362
+          ]
+        }
+      }
+    },
+    "multiscale_H96": {
+      "H": 96,
+      "origins": [
+        2000,
+        2096,
+        2192,
+        2288,
+        2384
+      ],
+      "train_scale": 0.9025113915684934,
+      "singleton": {
+        "nlinear_a1": 0.21489841146028885,
+        "nlinear_a10": 0.21414071278499705,
+        "rff_h64": 0.7650564985277216,
+        "subband_cA1": 0.21267235052199285,
+        "subband_d1": 0.94386571556652,
+        "wavelet_pooled": 0.9890702941714685
+      },
+      "singleton_confirmation": {
+        "nlinear_a1": 0.21110919691258587,
+        "nlinear_a10": 0.2106029693097422,
+        "rff_h64": 1.106189731996429,
+        "subband_cA1": 0.20796320299920878,
+        "subband_d1": 0.9539227924476407,
+        "wavelet_pooled": 1.2513783915550627
+      },
+      "pool_blend": {
+        "A": 0.7533520407092964,
+        "B": 0.752530112772476,
+        "C": 0.7523869076557063
+      },
+      "pool_blend_normalized": {
+        "A": 0.8347285671375628,
+        "B": 0.8338178551570836,
+        "C": 0.833659181130243
+      },
+      "pool_names": {
+        "A": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64"
+        ],
+        "B": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "subband_cA1",
+          "subband_d1"
+        ],
+        "C": [
+          "nlinear_a1",
+          "nlinear_a10",
+          "rff_h64",
+          "wavelet_pooled"
+        ]
+      },
+      "confirmation": {
+        "pool_blend": {
+          "A": 0.7023828782741806,
+          "B": 0.7010500281566143,
+          "C": 0.700764205151698
+        },
+        "pool_blend_normalized": {
+          "A": 0.7782537537321216,
+          "B": 0.7767769301374079,
+          "C": 0.7764602327443483
+        },
+        "test_gap_normalized": -0.0014768235947136832
+      },
+      "screened": {
+        "select_origins": [
+          2000,
+          2096,
+          2192
+        ],
+        "confirmation_origins": [
+          2288,
+          2384
+        ],
+        "choice": "B",
+        "test_gap_normalized": -0.0014768235947136832,
+        "confirmation_claim": "diagnostic_only_prior_exposure",
+        "per_origin_raw_mae": {
+          "A": [
+            0.7662664541239897,
+            0.7333361282516275,
+            0.7604535397522717,
+            0.7288377061480138,
+            0.6759280504003472
+          ],
+          "B": [
+            0.7654230369224968,
+            0.7325183332495743,
+            0.7596489681453567,
+            0.7274058479618667,
+            0.6746942083513621
+          ],
+          "C": [
+            0.7652426215607298,
+            0.732360997855273,
+            0.7595571035511163,
+            0.7270627662494284,
+            0.6744656440539677
+          ]
+        }
+      }
+    }
+  },
+  "aggregate": {
+    "meanA": 3.352012976678527,
+    "meanB": 2.9729181865836662,
+    "meanC": 3.3553591367276074,
+    "meanA_normalized": 1.0849361864981335,
+    "meanB_normalized": 1.0212474762451953,
+    "meanC_normalized": 1.08529043543056,
+    "winsB": 4,
+    "mean_rankA": 2.1666666666666665,
+    "mean_rankB": 1.5,
+    "mean_rankC": 2.3333333333333335,
+    "confirmation_gap_mean_normalized": -0.07730370993636622,
+    "confirmation_winsB": 4
+  },
+  "gates": {
+    "G1": true,
+    "G2": true,
+    "G3": true,
+    "G4_diagnostic": true,
+    "G4_confirmatory_valid": false,
+    "select_pass": true,
+    "all_binding": false
+  },
+  "harness": {
+    "C1_geometry": "pass",
+    "C1_nlinear_a1": "pass",
+    "C1_nlinear_a10": "pass",
+    "C1_rff_h64": "pass",
+    "C1_subband_cA1": "pass",
+    "C1_subband_d1": "pass",
+    "C1_wavelet_pooled": "pass",
+    "C2": "pass",
+    "C3": "pass",
+    "screened_decision": "aggregate choice locked on select origins before confirmation scoring"
+  },
+  "verdict": "DIAGNOSTIC ONLY \u2014 historical exposure prevents confirmatory decision",
+  "elapsed_s": 26.73243737220764
+}

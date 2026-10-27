@@ -1,0 +1,34 @@
+{
+  "experiment": "F_post_promotion_audit_experimental",
+  "timestamp": "2026-09-25T20:18:13.756398",
+  "fingerprint": "44172cafee34",
+  "results": [
+    {
+      "candidate_id": "vera-expa-001",
+      "status": "pass",
+      "evidence_count": 3,
+      "evidence_missing": [],
+      "action_vagueness": [],
+      "questions_tested": 23,
+      "issues": []
+    },
+    {
+      "candidate_id": "vera-expa-002",
+      "status": "pass",
+      "evidence_count": 3,
+      "evidence_missing": [],
+      "action_vagueness": [],
+      "questions_tested": 23,
+      "issues": []
+    },
+    {
+      "candidate_id": "vera-expa-004",
+      "status": "pass",
+      "evidence_count": 3,
+      "evidence_missing": [],
+      "action_vagueness": [],
+      "questions_tested": 23,
+      "issues": []
+    }
+  ]
+}

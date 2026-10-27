@@ -1,0 +1,9 @@
+[
+  {
+    "task": "spiky_H48",
+    "mutation_type": "robust_median_residual_filter",
+    "hypothesis": "Replace L2 ridge penalty on spiky subbands with Huber loss or robust median smoothing.",
+    "target_member": "wavelet_pooled",
+    "expected_gain": "Reduce spiky transient overshoots."
+  }
+]

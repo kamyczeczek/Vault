@@ -1,0 +1,70 @@
+{
+ "id": "q004",
+ "question": "Jak zasada ETC łączy się z pozostałymi zasadami projektowymi w książce — decouplingiem, DRY i orthogonality? Czy ETC jest regułą, czy wartością?",
+ "type": "relational / multi-hop",
+ "header": "Relacyjne / multi-hop (wymaga połączenia faktów z różnych Topiców)",
+ "gold_topics": [
+  8,
+  9,
+  10
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 10,
+   "topic_title": "Orthogonality",
+   "chapter": 2,
+   "page_book": 92,
+   "text": "Orthogonality is closely related to the DRY principle. With DRY, you're looking to minimize duplication within a system, whereas with orthogonality you reduce the interdependency among the system's components. It may be a clumsy word, but if you use the principle of orthogonality, combined closely with the DRY principle, you'll find that the systems you develop are more flexible, more understandable, and easier to debug, test, and maintain.\n\nIf you're brought into a project where people are desperately struggling to make changes, and where every change seems to cause four other things to go wrong, remember the nightmare with the helicopter. The project probably is not orthogonally designed and coded. It's time to refactor.\n\nAnd, if you're a helicopter pilot, don't eat the fish…."
+  },
+  {
+   "topic": 7,
+   "topic_title": "Communicate!",
+   "chapter": 1,
+   "page_book": 63,
+   "text": "Treat English (or whatever your native tongue may be) as just another programming language. Write natural language as you would write code: honor the DRY principle, ETC, automation, and so on. (We discuss the DRY and ETC design principles in the next chapter.)\n\n> **Tip 11** English is Just Another Programming Language\n\nWe've put together a list of additional ideas that we find useful.\n\n#### **KNOW YOUR AUDIENCE**"
+  },
+  {
+   "topic": 7,
+   "topic_title": "Communicate!",
+   "chapter": 1,
+   "page_book": 63,
+   "text": "The next two sections, Topic 9, _<u>DRY—The Evils of Duplication</u>_ and Topic 10, _<u>Orthogonality</u>_ <u>, are closely related. The first warns</u> you not to duplicate knowledge throughout your systems, the second not to split any one piece of knowledge across multiple system components.\n\nAs the pace of change increases, it becomes harder and harder to keep our applications relevant. In Topic 11, _<u>Reversibility</u>_ <u>,</u> we'll look at some techniques that help insulate your projects from their changing environment."
+  },
+  {
+   "topic": 8,
+   "topic_title": "The Essence of Good Design",
+   "chapter": 2,
+   "page_book": 75,
+   "text": "A thing is well designed if it adapts to the people who use it. For code, that means it must adapt by changing. So we believe in the ETC principle: _Easier to Change_ . _ETC_ . That's it.\n\nAs far as we can tell, every design principle out there is a special case of ETC.\n\nWhy is decoupling good? Because by isolating concerns we make each easier to change. ETC.\n\nWhy is the single responsibility principle useful? Because a change in requirements is mirrored by a change in just one module. ETC.\n\nWhy is naming important? Because good names make code easier to read, and you have to read it to change it. ETC!\n\n**ETC IS A VALUE, NOT A RULE**"
+  },
+  {
+   "topic": 28,
+   "topic_title": "Decoupling",
+   "chapter": 5,
+   "page_book": 228,
+   "text": "- Topic 10, _<u>Orthogonality</u>_ Topic 11, _Reversibility_ Topic 29, _<u>Juggling the Real World</u>_\n\n- Topic 30, _Transforming Programming_\n\n- Topic 31, _Inheritance Tax_ Topic 32, _<u>Configuration</u>_\n\n- Topic 33, _Breaking Temporal Coupling_\n\n- Topic 34, _Shared State Is Incorrect State_\n\n- Topic 35, _Actors and Processes_\n\n- Topic 36, _Blackboards_\n\n- We discuss _Tell, Don't Ask_ in our 2003 Software Construction <u>[38]</u>\n\n- article _The Art of Enbugging_ ."
+  },
+  {
+   "topic": 30,
+   "topic_title": "Transforming Programming",
+   "chapter": 5,
+   "page_book": 255,
+   "text": "**iex>** Grep.find_all _\"/etc/passwd\"_ , _~r/wombat/_ <mark>{:error, \"nothing found\"}</mark> **iex>** Grep.find_all _\"/etc/koala\"_ , _~r/www/_ <u><mark>{:error, :enoent}</mark></u>\n\nYou can see that an error anywhere in the pipeline immediately becomes the value of the pipeline.\n\n##### **Or Handle It in the Pipeline**\n\nYou might be looking at the find_matching_lines and truncate_lines functions thinking that we've moved the burden of error handling into the transformations. You'd be right. In a language which uses pattern matching in function calls, such as Elixir, the effect is lessened, but it's still ugly."
+  },
+  {
+   "topic": 11,
+   "topic_title": "Reversibility",
+   "chapter": 2,
+   "page_book": 104,
+   "text": "#### **REVERSIBILITY**\n\nMany of the topics in this book are geared to producing flexible, adaptable software. By sticking to their recommendations— especially the <u>DRY principle, decoupling, and use of external configuration—we don't have to make as many critical,</u> irreversible decisions. This is a good thing, because we don't always make the best decisions the first time around. We commit to a certain technology only to discover we can't hire enough people with the necessary skills. We lock in a certain third-party vendor just before they get bought out by their competitor. Requirements, users, and hardware change faster\n\nthan we can get the software developed."
+  },
+  {
+   "topic": 30,
+   "topic_title": "Transforming Programming",
+   "chapter": 5,
+   "page_book": 255,
+   "text": "We need a representation for our wrapper (the data structure that carries around a value or an error indication). You can use structures for this, but Elixir already has a pretty strong convention: functions tend to return a tuple containing either {:ok, value} or {:error, reason}. For example, File.open returns either :ok and an IO process or :error and a reason code:\n\n**iex(1)>** File.open( _\"/etc/passwd\"_ ) <mark>{:ok, #PID<0.109.0>}</mark> **iex(2)>** File.open( _\"/etc/wombat\"_ ) <u><mark>{:error, :enoent}</mark></u>\n\nWe'll use the :ok/:error tuple as our wrapper when passing things through a pipeline.\n\n##### **Then Handle It Inside Each Transformation**"
+  }
+ ]
+}

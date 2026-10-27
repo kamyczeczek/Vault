@@ -1,0 +1,2458 @@
+{
+ "summary": {
+  "tier": "3 (retrieve, RRF, no reranker)",
+  "model": "opencode/glm-5.3-flash-free",
+  "n_queries": 23,
+  "p50_ms": 87.6,
+  "p95_ms": 99.05,
+  "sanity1_median_lt_500ms": true
+ },
+ "index": {
+  "q001": {
+   "id": "q001",
+   "question": "What exactly is the DRY principle according to The Pragmatic Programmer, and what is the test that lets you check whether code violates it?",
+   "gold_topics": [
+    9
+   ],
+   "top8ids": [
+    "ch_0093",
+    "ch_0139",
+    "ch_0094",
+    "ch_0825",
+    "ch_0571",
+    "ch_0659",
+    "ch_0316",
+    "ch_0838"
+   ],
+   "top8topics": [
+    9,
+    10,
+    9,
+    51,
+    36,
+    41,
+    22,
+    51
+   ],
+   "dt_ms": 442.86,
+   "chunks": [
+    {
+     "id": "ch_0093",
+     "text": "The alternative is to have the same thing expressed in two or more places. If you change one, you have to remember to change the others, or, like the alien computers, your program will be brought to its knees by a contradiction. It isn't a question of whether you'll remember: it's a question of when you'll forget.\n\nYou'll find the DRY principle popping up time and time again throughout this book, often in contexts that have nothing to do with coding. We feel that it is one of the most important tools in the Pragmatic Programmer's tool box.\n\nIn this section we'll outline the problems of duplication and\n\nsuggest general strategies for dealing with it.\n\n#### **DRY IS MORE THAN CODE**",
+     "chapter": 2,
+     "topic": 9,
+     "topic_title": "DRY—The Evils of Duplication",
+     "page_book": 79,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0139",
+     "text": "Orthogonality is closely related to the DRY principle. With DRY, you're looking to minimize duplication within a system, whereas with orthogonality you reduce the interdependency among the system's components. It may be a clumsy word, but if you use the principle of orthogonality, combined closely with the DRY principle, you'll find that the systems you develop are more flexible, more understandable, and easier to debug, test, and maintain.\n\nIf you're brought into a project where people are desperately struggling to make changes, and where every change seems to cause four other things to go wrong, remember the nightmare with the helicopter. The project probably is not orthogonally designed and coded. It's time to refactor.\n\nAnd, if you're a helicopter pilot, don't eat the fish….",
+     "chapter": 2,
+     "topic": 10,
+     "topic_title": "Orthogonality",
+     "page_book": 92,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0094",
+     "text": "Let's get something out of the way up-front. In the first edition of this book we did a poor job of explaining just what we meant by _Don't Repeat Yourself_ . Many people took it to refer to code only: they thought that DRY means \"don't copy-and-paste lines of source.\"\n\nThat _is_ part of DRY, but it's a tiny and fairly trivial part.\n\nDRY is about the duplication of _knowledge_ , of _intent_ . It's about expressing the same thing in two different places, possibly in two totally different ways.\n\nHere's the acid test: when some single facet of the code has to change, do you find yourself making that change in multiple places, and in multiple different formats? Do you have to change code and documentation, or a database schema and a structure that holds it, or…? If so, your code isn't DRY.",
+     "chapter": 2,
+     "topic": 9,
+     "topic_title": "DRY—The Evils of Duplication",
+     "page_book": 79,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0825",
+     "text": "Although software development is still an industry at the Model-T stage, we can't afford to go through two pages of instructions again and again for some common operation. Whether it is the build and release procedure, testing, project paperwork, or any other recurring task on the project, it has to be automatic and repeatable on any capable machine.\n\nIn addition, we want to ensure consistency and repeatability on the project. Manual procedures leave consistency up to chance; repeatability isn't guaranteed, especially if aspects of the procedure are open to interpretation by different people.\n\nAfter we wrote the first edition of _The Pragmatic Programmer,_ we wanted to create more books to help teams develop software. We figured we should start at the beginning: what are the most",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0571",
+     "text": "Pragmatic Programmers think critically about all code, including our own. We constantly see room for improvement in our programs and our designs. In Topic 40, _<u>Refactoring</u>_ , we look at techniques that help us fix up existing code continuously as we go.\n\nTesting is not about finding bugs, it's about getting feedback on your code: aspects of design, the API, coupling, and so on. That means that the major benefits of testing happen when you think about and write the tests, not just when you run them. We'll explore this idea in Topic 41, _<u>Test to Code</u>_ .",
+     "chapter": 6,
+     "topic": 36,
+     "topic_title": "Blackboards",
+     "page_book": 317,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0659",
+     "text": "We like to think of unit testing as _testing against contract_ (see Topic 23, _<u>Design by Contract</u>_ <u>). We want to write test cases that</u> ensure that a given unit honors its contract. This will tell us two things: whether the code meets the contract, and whether the contract means what we think it means. We want to test that the module delivers the functionality it promises, over a wide range\n\nof test cases and boundary conditions.\n\nWhat does this mean in practice? Let's start with a simple, numerical example: a square root routine. Its documented contract is simple:\n\npre-conditions:\n\n<mark>argument >= 0;</mark>\n\n<mark>post-conditions:</mark> <u>((result * result) - argument).abs <= epsilon*argument;</u>\n\nThis tells us what to test:",
+     "chapter": 7,
+     "topic": 41,
+     "topic_title": "Test to Code",
+     "page_book": 361,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0316",
+     "text": "But Pragmatic Programmers take this a step further. _They don't trust themselves, either._ Knowing that no one writes perfect code, including themselves, Pragmatic Programmers build in defenses against their own mistakes. We describe the first defensive measure in Topic 23, _<u>Design by Contract</u>_ : clients and suppliers must agree on rights and responsibilities.\n\nIn Topic 24, _<u>Dead Programs Tell No Lies</u>_ <u>, we want to ensure</u> that we do no damage while we're working the bugs out. So we try to check things often and terminate the program if things go awry.\n\nTopic 25, _<u>Assertive Programming</u>_ describes an easy method of checking along the way—write code that actively verifies your assumptions.",
+     "chapter": 3,
+     "topic": 22,
+     "topic_title": "Engineering Daybooks",
+     "page_book": 185,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0838",
+     "text": "Use _property-based_ testing techniques to generate test data according to the contracts and invariants of the code under test. We cover this topic in detail in Topic 42, _<u>Property-Based Testing</u>_ <u>.</u>\n\n#### **TIGHTENING THE NET**\n\nFinally, we'd like to reveal the single most important concept in testing. It is an obvious one, and virtually every textbook says to do it this way. But for some reason, most projects still do not.\n\nIf a bug slips through the net of existing tests, you need to add a new test to trap it next time.\n\n> **Tip 94** Find Bugs Once",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "definition"
+    }
+   ]
+  },
+  "q002": {
+   "id": "q002",
+   "question": "What is the difference between tracer bullets and prototypes, and when should you use which?",
+   "gold_topics": [
+    12,
+    13
+   ],
+   "top8ids": [
+    "ch_0166",
+    "ch_0179",
+    "ch_0164",
+    "ch_0169",
+    "ch_0081",
+    "ch_0849",
+    "ch_0173",
+    "ch_0154"
+   ],
+   "top8topics": [
+    12,
+    13,
+    12,
+    12,
+    7,
+    52,
+    13,
+    12
+   ],
+   "dt_ms": 87.73,
+   "chunks": [
+    {
+     "id": "ch_0166",
+     "text": "#### **TRACER CODE VERSUS PROTOTYPING**\n\nYou might think that this tracer code concept is nothing more than prototyping under an aggressive name. There is a difference. With a prototype, you're aiming to explore specific aspects of the final system. With a true prototype, you will\n\nthrow away whatever you lashed together when trying out the concept, and recode it properly using the lessons you've learned.\n\nFor example, say you're producing an application that helps shippers determine how to pack odd-sized boxes into containers. Among other problems, the user interface needs to be intuitive and the algorithms you use to determine optimal packing are very complex.",
+     "chapter": 2,
+     "topic": 12,
+     "topic_title": "Tracer Bullets",
+     "page_book": 109,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0179",
+     "text": "If you feel there is a strong possibility in your environment or culture that the purpose of prototype code may be misinterpreted, you may be better off with the tracer bullet approach. You'll end up with a solid framework on which to base future development.\n\nProperly used prototypes can save you huge amounts of time, money, and pain by identifying and correcting potential problem spots early in the development cycle—the time when fixing mistakes is both cheap and easy.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 12, _Tracer Bullets_\n\n- Topic 14, _Domain Languages_\n\n- Topic 17, _Shell Games_\n\n- Topic 27, _Don't Outrun Your Headlights_\n\n- Topic 37, _Listen to Your Lizard Brain_\n\n- Topic 45, _The Requirements Pit_\n\n- Topic 52, _Delight Your Users_\n\n#### **EXERCISES**",
+     "chapter": 2,
+     "topic": 13,
+     "topic_title": "Prototypes and Post-it Notes",
+     "page_book": 118,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0164",
+     "text": "far easier to measure performance and to demonstrate progress to your user. Because each individual development is smaller, you avoid creating those monolithic blocks of code that are reported as 95% complete week after week.\n\n#### **TRACER BULLETS DON'T ALWAYS HIT THEIR TARGET**\n\nTracer bullets show what you're hitting. This may not always be the target. You then adjust your aim until they're on target. That's the point.",
+     "chapter": 2,
+     "topic": 12,
+     "topic_title": "Tracer Bullets",
+     "page_book": 109,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0169",
+     "text": "completing stubbed routines. But the framework stays intact, and you know the system will continue to behave the way it did when your first tracer code was completed.\n\nThe distinction is important enough to warrant repeating. Prototyping generates disposable code. Tracer code is lean but complete, and forms part of the skeleton of the final system. Think of prototyping as the reconnaissance and intelligence gathering that takes place before a single tracer bullet is fired.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 13, _Prototypes and Post-it Notes_\n\n- Topic 27, _Don't Outrun Your Headlights_\n\n- Topic 40, _Refactoring_\n\n- Topic 49, _Pragmatic Teams_\n\n- Topic 50, _<u>Coconuts Don't Cut It</u>_\n\n- Topic 51, _Pragmatic Starter Kit_\n\n- Topic 52, _Delight Your Users_",
+     "chapter": 2,
+     "topic": 12,
+     "topic_title": "Tracer Bullets",
+     "page_book": 109,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0081",
+     "text": "The next two sections are also related. In Topic 12, _<u>Tracer Bullets</u>_ <u>, we talk about a style of development that allows you to</u> gather requirements, test designs, and implement code at the same time. It's the only way to keep up with the pace of modern life.\n\nTopic 13, _<u>Prototypes and Post-it Notes</u>_ shows you how to use prototyping to test architectures, algorithms, interfaces, and ideas. In the modern world, it's critical to test ideas and get feedback before you commit to them whole-heartedly.",
+     "chapter": 1,
+     "topic": 7,
+     "topic_title": "Communicate!",
+     "page_book": 63,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0849",
+     "text": "#### **RELATED SECTIONS INCLUDE**\n\n- Topic 12, _Tracer Bullets_\n\n- Topic 13, _Prototypes and Post-it Notes_\n\n- Topic 45, _The Requirements Pit_",
+     "chapter": 9,
+     "topic": 52,
+     "topic_title": "Delight Your Users",
+     "page_book": 462,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0173",
+     "text": "But if you find yourself in an environment where you _cannot_ give up the details, then you need to ask yourself if you are really building a prototype at all. Perhaps a tracer bullet style of development would be more appropriate in this case (see Topic 12, _<u>Tracer Bullets</u>_ ).\n\n#### **THINGS TO PROTOTYPE**\n\nWhat sorts of things might you choose to investigate with a prototype? Anything that carries risk. Anything that hasn't been tried before, or that is absolutely critical to the final system. Anything unproven, experimental, or doubtful. Anything you aren't comfortable with. You can prototype:\n\nArchitecture\n\nNew functionality in an existing system\n\nStructure or contents of external data\n\nThird-party tools or components\n\nPerformance issues\n\nUser interface design",
+     "chapter": 2,
+     "topic": 13,
+     "topic_title": "Prototypes and Post-it Notes",
+     "page_book": 118,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0154",
+     "text": "Tracer bullets are loaded at intervals alongside regular ammunition. When they're fired, their phosphorus ignites and leaves a pyrotechnic trail from the gun to whatever they hit. If the tracers are hitting the target, then so are the regular bullets. Soldiers use these tracer rounds to refine their aim: it's pragmatic, real-time feedback under actual conditions.\n\nThat same principle applies to projects, particularly when you're building something that hasn't been built before. We use the\n\nterm _tracer bullet development_ to visually illustrate the need for immediate feedback under actual conditions with a moving goal.",
+     "chapter": 2,
+     "topic": 12,
+     "topic_title": "Tracer Bullets",
+     "page_book": 109,
+     "type": "prose"
+    }
+   ]
+  },
+  "q003": {
+   "id": "q003",
+   "question": "Why do the authors claim that inheritance is a tax, and which three alternatives do they propose?",
+   "gold_topics": [
+    31
+   ],
+   "top8ids": [
+    "ch_0474",
+    "ch_0481",
+    "ch_0477",
+    "ch_0493",
+    "ch_0737",
+    "ch_0140",
+    "ch_0078",
+    "ch_0476"
+   ],
+   "top8topics": [
+    31,
+    31,
+    31,
+    31,
+    45,
+    10,
+    7,
+    31
+   ],
+   "dt_ms": 85.17,
+   "chunks": [
+    {
+     "id": "ch_0474",
+     "text": "**Topic 31**\n\nInheritance Tax\n\n_You wanted a banana but what you got was a gorilla holding the banana and the entire jungle._\n\nDo you program in an objectoriented language? Do you use inheritance?\n\nIf so, stop! It probably isn't what you want to do.\n\nLet's see why.\n\n_Joe Armstrong_\n\n#### **SOME BACKGROUND**\n\nInheritance first appeared in Simula 67 in 1969. It was an elegant solution to the problem of queuing multiple types of events on the same list. The Simula approach was to use something called _prefix classes_ . You could write something like this:\n\nlink CLASS car; <mark>... implementation of car link CLASS bicycle;</mark> ... implementation of bicycle",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0481",
+     "text": "> **Tip 51** Don't Pay Inheritance Tax\n\n#### **THE ALTERNATIVES ARE BETTER**\n\nLet us suggest three techniques that mean you should never need to use inheritance again:\n\nInterfaces and protocols\n\nDelegation\n\nMixins and traits\n\n**Interfaces and Protocols**\n\nMost OO languages allow you to specify that a class implements one or more sets of behaviors. You could say, for example, that a Car class implements the Drivable behavior and the Locatable behavior. The syntax used for doing this varies: in Java, it might look like this:\n\n**public class** Car **implements** Drivable, Locatable { _// Code for class Car. This code must include_ _<mark>// the functionality of both Drivable</mark> // and Locatable_ <u>}</u>",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0477",
+     "text": "So, now we're faced with a generation of OO developers who use inheritance for one of two reasons: they don't like typing, or they like types.\n\nThose who don't like typing save their fingers by using\n\ninheritance to add common functionality from a base class into child classes: class User and class Product are both subclasses of ActiveRecord::Base.\n\nThose who like types use inheritance to express the relationship between classes: a Car is-a-kind-of Vehicle.\n\nUnfortunately both kinds of inheritance have problems.\n\n#### **PROBLEMS USING INHERITANCE TO SHARE CODE**\n\nInheritance _is_ coupling. Not only is the child class coupled to the parent, the parent's parent, and so on, but the code that _uses_ the child is also coupled to all the ancestors. Here's an example:",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "code"
+    },
+    {
+     "id": "ch_0493",
+     "text": "Here, both derived classes include validations common to all account objects. The customer variant also includes validations appropriate for the customer-facing APIs, while the admin variant contained (the presumably less restrictive) admin validations.\n\nNow, by passing instances of AccountForCustomer or AccountForAdmin back and forth, our code _automatically_ ensures the correct validation is applied.\n\n> **Tip 54** Use Mixins to Share Functionality\n\n#### **INHERITANCE IS RARELY THE ANSWER**\n\nWe've had a quick look at three alternatives to traditional class inheritance:\n\nInterfaces and protocols\n\n- Delegation\n\nMixins and traits",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0737",
+     "text": "Stop for a second and imagine yourself in that position. What's the first thing that comes to mind?\n\nThe chances are very good that you had questions:\n\n- Does the $50 include tax?\n\n- Does the $50 include current shipping charges?\n\n- Does the $50 have to be for paper books, or can the order also include ebooks?\n\n- What kind of shipping is offered? Priority? Ground?\n\n- What about international orders?\n\n- How often will the $50 limit change in the future?\n\nThat's what we do. When given something that seems simple, we annoy people by looking for edge cases and asking about\n\nthem.\n\nThe chances are the client will have already thought of some of these, and just assumed that the implementation would work that way. Asking the question just flushes that information out.",
+     "chapter": 8,
+     "topic": 45,
+     "topic_title": "The Requirements Pit",
+     "page_book": 405,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0140",
+     "text": "#### **RELATED SECTIONS INCLUDE**\n\nTopic 3, _Software Entropy_\n\nTopic 8, _The Essence of_ _<u>Good Design</u>_\n\n- Topic 11, _Reversibility_\n\n- Topic 28, _Decoupling_\n\n- Topic 31, _Inheritance Tax_\n\n- Topic 33, _Breaking Temporal Coupling_\n\n- Topic 34, _Shared State Is Incorrect State_\n\n- Topic 36, _Blackboards_\n\n##### **Challenges**\n\n- Consider the difference between tools which have a graphical user interface and small but combinable command-line utilities used at shell prompts. Which set is more orthogonal, and why? Which is easier to use for exactly the purpose for which it was intended? Which set is easier to combine with other tools to meet new challenges? Which set is easier to learn?",
+     "chapter": 2,
+     "topic": 10,
+     "topic_title": "Orthogonality",
+     "page_book": 92,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0078",
+     "text": "- <u>[9]</u> An _expiring asset_ is something whose value diminishes over time. Examples include a warehouse full of bananas and a ticket to a ball game.\n\n- <u>[10]</u> We may be biased, but there's a fine selection available at https://pragprog.com.\n\n- <u>[11]</u> Never heard of any of these languages? Remember, knowledge is an expiring asset, and so is popular technology. The list of hot new and experimental languages was very different for the first edition, and is probably different again by the time you read this. All the more reason to keep learning.\n\n<u>[12]</u> The word _annoy_ comes from the Old French _enui_ , which also means \"to bore.''\n\nCopyright © 2020 Pearson Education, Inc.\n\n## Chapter 2\n\n# **A Pragmatic Approach**",
+     "chapter": 1,
+     "topic": 7,
+     "topic_title": "Communicate!",
+     "page_book": 63,
+     "type": "list"
+    },
+    {
+     "id": "ch_0476",
+     "text": "So when I designed Smalltalk-72—and it was a lark for fun while thinking about Smalltalk-71—I thought it would be fun to use its Lisp-like dynamics to do experiments with \"differential programming\" (meaning: various ways to accomplish \"this is like that except\").\n\nThis is subclassing purely for behavior.\n\nThese two styles of inheritance (which actually had a fair amount in common) developed over the following decades. The Simula approach, which suggested inheritance was a way of combining types, continued in languages such as C++ and Java. The Smalltalk school, where inheritance was a dynamic organization of behaviors, was seen in languages such as Ruby and JavaScript.",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "prose"
+    }
+   ]
+  },
+  "q004": {
+   "id": "q004",
+   "question": "How does the ETC principle connect with the other design principles in the book — decoupling, DRY, and orthogonality? Is ETC a rule or a value?",
+   "gold_topics": [
+    8,
+    9,
+    10
+   ],
+   "top8ids": [
+    "ch_0084",
+    "ch_0087",
+    "ch_0088",
+    "ch_0139",
+    "ch_0060",
+    "ch_0072",
+    "ch_0396",
+    "ch_0083"
+   ],
+   "top8topics": [
+    8,
+    8,
+    8,
+    10,
+    7,
+    7,
+    28,
+    8
+   ],
+   "dt_ms": 87.91,
+   "chunks": [
+    {
+     "id": "ch_0084",
+     "text": "A thing is well designed if it adapts to the people who use it. For code, that means it must adapt by changing. So we believe in the ETC principle: _Easier to Change_ . _ETC_ . That's it.\n\nAs far as we can tell, every design principle out there is a special case of ETC.\n\nWhy is decoupling good? Because by isolating concerns we make each easier to change. ETC.\n\nWhy is the single responsibility principle useful? Because a change in requirements is mirrored by a change in just one module. ETC.\n\nWhy is naming important? Because good names make code easier to read, and you have to read it to change it. ETC!\n\n**ETC IS A VALUE, NOT A RULE**",
+     "chapter": 2,
+     "topic": 8,
+     "topic_title": "The Essence of Good Design",
+     "page_book": 75,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0087",
+     "text": "Second, treat this as a way to develop instincts. Note the situation in your engineering day book: the choices you have, and some guesses about change. Leave a tag in the source. Then, later, when this code has to change, you'll be able to look back and give yourself feedback. It might help the next time you reach a similar fork in the road.\n\nThe rest of the sections in this chapter have specific ideas on design, but all are motivated by this one principle.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 9, _DRY—The Evils of Duplication_\n\n- Topic 10, _<u>Orthogonality</u>_\n\n- Topic 11, _Reversibility_\n\n- Topic 14, _Domain Languages_\n\n- Topic 28, _Decoupling_\n\n- Topic 30, _Transforming Programming_\n\n- Topic 31, _Inheritance Tax_\n\n#### **CHALLENGES**",
+     "chapter": 2,
+     "topic": 8,
+     "topic_title": "The Essence of Good Design",
+     "page_book": 75,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0088",
+     "text": "- Think about a design principle you use regularly. Is it intended to make things easy-to-change?\n\n- Also think about languages and programming paradigms (OO, FP, Reactive, and so on). Do any have either big positives or big negatives when it comes to helping you write ETC code? Do any have both?\n\nWhen coding, what can you do to eliminate the negatives and <u>[13]</u> accentuate the positives?\n\nMany editors have support (either built-in or via extensions) to run commands when you save a file. Get your editor to popup an _ETC?_ <u>[14]</u> message every time you save and use it as a cue to think about the code you just wrote. Is it easy to change?",
+     "chapter": 2,
+     "topic": 8,
+     "topic_title": "The Essence of Good Design",
+     "page_book": 75,
+     "type": "list"
+    },
+    {
+     "id": "ch_0139",
+     "text": "Orthogonality is closely related to the DRY principle. With DRY, you're looking to minimize duplication within a system, whereas with orthogonality you reduce the interdependency among the system's components. It may be a clumsy word, but if you use the principle of orthogonality, combined closely with the DRY principle, you'll find that the systems you develop are more flexible, more understandable, and easier to debug, test, and maintain.\n\nIf you're brought into a project where people are desperately struggling to make changes, and where every change seems to cause four other things to go wrong, remember the nightmare with the helicopter. The project probably is not orthogonally designed and coded. It's time to refactor.\n\nAnd, if you're a helicopter pilot, don't eat the fish….",
+     "chapter": 2,
+     "topic": 10,
+     "topic_title": "Orthogonality",
+     "page_book": 92,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0060",
+     "text": "Treat English (or whatever your native tongue may be) as just another programming language. Write natural language as you would write code: honor the DRY principle, ETC, automation, and so on. (We discuss the DRY and ETC design principles in the next chapter.)\n\n> **Tip 11** English is Just Another Programming Language\n\nWe've put together a list of additional ideas that we find useful.\n\n#### **KNOW YOUR AUDIENCE**",
+     "chapter": 1,
+     "topic": 7,
+     "topic_title": "Communicate!",
+     "page_book": 63,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0072",
+     "text": "However, this doesn't mean we agree with the folks who say that _every_ function, data structure, type declaration, etc., needs its own comment. This kind of mechanical comment writing actually makes it more difficult to maintain code: now there are two things to update when you make a change. So restrict your non-API commenting to discussing _why_ something is done, its purpose and its goal. The code already shows _how_ it is done, so commenting on this is redundant—and is a violation of the DRY principle.\n\nCommenting source code gives you the perfect opportunity to document those elusive bits of a project that can't be documented anywhere else: engineering trade-offs, why decisions were made, what other alternatives were discarded, and so on.\n\n#### **SUMMARY**",
+     "chapter": 1,
+     "topic": 7,
+     "topic_title": "Communicate!",
+     "page_book": 63,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0396",
+     "text": "**Topic 28**\n\n#### Decoupling\n\n_When we try to pick out anything by itself, we find it hitched to everything else in the Universe._\n\n_John Muir, My First Summer in the Sierra_\n\nIn Topic 8, _<u>The Essence of Good Design</u>_ we claim that using good design principles will make the code you write easy to change. Coupling is the enemy of change, because it links together things that must change in parallel. This makes change more difficult: either you spend time tracking down all the parts that need changing, or you spend time\n\nwondering why things broke when you changed \"just one thing\" and not the other things to which it was coupled.\n\nWhen you are designing something you want to be rigid, a bridge or a tower perhaps, you couple the components together:\n\nimages/links-01.png",
+     "chapter": 5,
+     "topic": 28,
+     "topic_title": "Decoupling",
+     "page_book": 228,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0083",
+     "text": "> **Topic 8** The Essence of Good Design\n\nThe world is full of gurus and pundits, all eager to pass on their hard-earned wisdom when it comes to How to Design Software. There are acronyms, lists (which seem to favor five entries), patterns, diagrams, videos, talks, and (the internet being the internet) probably a cool series on the Law of Demeter explained using interpretive dance.\n\nAnd we, your gentle authors, are guilty of this too. But we'd like to make amends by explaining something that only became apparent to us fairly recently. First, the general statement:\n\n> **Tip 14** Good Design Is Easier to Change Than Bad Design",
+     "chapter": 2,
+     "topic": 8,
+     "topic_title": "The Essence of Good Design",
+     "page_book": 75,
+     "type": "definition"
+    }
+   ]
+  },
+  "q005": {
+   "id": "q005",
+   "question": "The book says that when you find a broken window in code, it is best to leave it alone until the end of the project so as not to disrupt the team's flow. Is that correct?",
+   "gold_topics": [
+    3
+   ],
+   "top8ids": [
+    "ch_0020",
+    "ch_0021",
+    "ch_0198",
+    "ch_0019",
+    "ch_0353",
+    "ch_0724",
+    "ch_0017",
+    "ch_0663"
+   ],
+   "top8topics": [
+    3,
+    3,
+    15,
+    3,
+    24,
+    44,
+    3,
+    41
+   ],
+   "dt_ms": 90.86,
+   "chunks": [
+    {
+     "id": "ch_0020",
+     "text": "duration of the project—is all it takes to start the decline. If you find yourself working on a project with quite a few broken windows, it's all too easy to slip into the mindset of \"All the rest of this code is crap, I'll just follow suit.\" It doesn't matter if the project has been fine up to this point. In the original experiment leading to the \"Broken Window Theory,\" an abandoned car sat for a week untouched. But once a single window was broken, the car was stripped and turned upside down within _hours_ .",
+     "chapter": 1,
+     "topic": 3,
+     "topic_title": "Software Entropy",
+     "page_book": 42,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0021",
+     "text": "By the same token, if you find yourself on a project where the code is pristinely beautiful—cleanly written, well designed, and elegant—you will likely take extra special care not to mess it up, just like the firefighters. Even if there's a fire raging (deadline, release date, trade show demo, etc.), _you_ don't want to be the first one to make a mess and inflict additional damage.\n\nJust tell yourself, \"No broken windows.\"\n\n**RELATED SECTIONS INCLUDE**\n\n- Topic 10, _<u>Orthogonality</u>_\n\n- Topic 40, _Refactoring_\n\n- Topic 44, _Naming Things_\n\n#### **CHALLENGES**\n\n- Help strengthen your team by surveying your project neighborhood. Choose two or three broken windows and discuss with your colleagues what the problems are and what could be done to fix them.",
+     "chapter": 1,
+     "topic": 3,
+     "topic_title": "Software Entropy",
+     "page_book": 42,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0198",
+     "text": "By learning to estimate, and by developing this skill to the point where you have an intuitive feel for the magnitudes of things, you will be able to show an apparent magical ability to determine their feasibility. When someone says \"we'll send the backup over a network connection to S3,\" you'll be able to know intuitively whether this is practical. When you're coding, you'll be able to know which subsystems need optimizing and which ones can be left alone.\n\n> **Tip 23** Estimate to Avoid Surprises\n\nAs a bonus, at the end of this section we'll reveal the single correct answer to give whenever anyone asks you for an estimate.\n\n#### **HOW ACCURATE IS ACCURATE ENOUGH?**",
+     "chapter": 2,
+     "topic": 15,
+     "topic_title": "Estimating",
+     "page_book": 133,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0019",
+     "text": "Now that sounds pretty extreme. Surely the fire department's first priority is to put out the fire, collateral damage be damned. But they clearly had assessed the situation, were confident of their ability to manage the fire, and were careful not to inflict unnecessary damage to the property. That's the way it must be with software: don't cause collateral damage just because there's a crisis of some sort. One broken window is one too many.\n\nOne broken window—a badly designed piece of code, a poor management decision that the team must live with for the",
+     "chapter": 1,
+     "topic": 3,
+     "topic_title": "Software Entropy",
+     "page_book": 42,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0353",
+     "text": "In other environments, it may be inappropriate simply to exit a running program. You may have claimed resources that might not get released, or you may need to write log messages, tidy up open transactions, or interact with other processes.\n\nHowever, the basic principle stays the same—when your code discovers that something that was supposed to be impossible just happened, your program is no longer viable. Anything it does from this point forward becomes suspect, so terminate it\n\nas soon as possible.\n\nA dead program normally does a lot less damage than a crippled one.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 20, _Debugging_\n\n- Topic 23, _Design by_ _<u>Contract</u>_\n\n- Topic 25, _Assertive Programming_\n\n- Topic 26, _How to Balance Resources_\n\n- Topic 43, _Stay Safe Out There_",
+     "chapter": 4,
+     "topic": 24,
+     "topic_title": "Dead Programs Tell No Lies",
+     "page_book": 203,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0724",
+     "text": "- Topic 3, _Software Entropy_ Topic 40, _Refactoring_ Topic 45, _The Requirements Pit_\n\n#### **CHALLENGES**\n\n- When you find a function or method with an overly generic name, try and rename it to express all the things it really does. Now it's an easier target for refactoring.\n\n- In our examples, we suggested using more specific names such as _buyer_ instead of the more traditional and generic _user._ What other names do you habitually use that could be better?\n\n- Are the names in your system congruent with user terms from the domain? If not, why? Does this cause a Stroop-effect style cognitive dissonance for the team?\n\n- Are names in your system hard to change? What can you do to fix that particular broken window?\n\n###### **Footnotes**",
+     "chapter": 7,
+     "topic": 44,
+     "topic_title": "Naming Things",
+     "page_book": 395,
+     "type": "list"
+    },
+    {
+     "id": "ch_0017",
+     "text": "Don't leave \"broken windows'' (bad designs, wrong decisions, or poor code) unrepaired. Fix each one as soon as it is discovered. If there is insufficient time to fix it properly, then _board it up._ Perhaps you can comment out the offending code, or display a \"Not Implemented\" message, or substitute dummy data instead. Take _some_ action to prevent further damage and to show that you're on top of the situation.\n\nWe've seen clean, functional systems deteriorate pretty quickly once windows start breaking. There are other factors that can contribute to software rot, and we'll touch on some of them elsewhere, but neglect _accelerates_ the rot faster than any other factor.",
+     "chapter": 1,
+     "topic": 3,
+     "topic_title": "Software Entropy",
+     "page_book": 42,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0663",
+     "text": "**Tip 69**\n\n#### Design to Test\n\n#### **AD HOC TESTING**\n\nNot to be confused with \"odd hack,\" _ad-hoc_ testing is when we\n\nrun poke at our code manually. This may be as simple as a console.log(), or a piece of code entered interactively in a debugger, IDE environment, or REPL.\n\nAt the end of the debugging session, you need to formalize this ad hoc test. If the code broke once, it is likely to break again. Don't just throw away the test you created; add it to the existing unit test arsenal.\n\n#### **BUILD A TEST WINDOW**\n\nEven the best sets of tests are unlikely to find all the bugs; there's something about the damp, warm conditions of a production environment that seems to bring them out of the woodwork.",
+     "chapter": 7,
+     "topic": 41,
+     "topic_title": "Test to Code",
+     "page_book": 361,
+     "type": "definition"
+    }
+   ]
+  },
+  "q006": {
+   "id": "q006",
+   "question": "What are preconditions, postconditions, and class invariants in Design by Contract, and who is responsible for checking them?",
+   "gold_topics": [
+    23
+   ],
+   "top8ids": [
+    "ch_0322",
+    "ch_0331",
+    "ch_0338",
+    "ch_0335",
+    "ch_0330",
+    "ch_0323",
+    "ch_0336",
+    "ch_0691"
+   ],
+   "top8topics": [
+    23,
+    23,
+    23,
+    23,
+    23,
+    23,
+    23,
+    42
+   ],
+   "dt_ms": 86.28,
+   "chunks": [
+    {
+     "id": "ch_0322",
+     "text": "##### _Class invariants_\n\nA class ensures that this condition is always true from the perspective of a caller. During internal processing of a\n\nroutine, the invariant may not hold, but by the time the routine exits and control returns to the caller, the invariant must be true. (Note that a class cannot give unrestricted write-access to any data member that participates in the invariant.)\n\nThe contract between a routine and any potential caller can thus be read as\n\nIf all the routine's preconditions are met by the caller, the routine shall guarantee that all postconditions and invariants will be true when it completes.",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "code"
+    },
+    {
+     "id": "ch_0331",
+     "text": "It's a naming thing. Eiffel is an object-oriented language, so Meyer named this idea \"class invariant.\" But, really, it's more general than that. What this idea really refers to is _state_ . In an object-oriented language, the state is associated with instances of classes. But other languages have state, too.\n\nIn a functional language, you typically pass state to functions and receive updated state as a result. The concepts of invariants is just as useful in these circumstances.\n\n#### **IMPLEMENTING DBC**\n\nSimply enumerating what the input domain range is, what the boundary conditions are, and what the routine promises to deliver—or, more importantly, what it _doesn't_ promise to deliver —before you write the code is a huge leap forward in writing",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0338",
+     "text": "By expressing the domain of the square root function in the precondition of the sqrt routine, you shift the burden of correctness to the caller—where it belongs. You can then design the sqrt routine secure in the knowledge that its input will be in range.\n\n#### **DBC AND CRASHING EARLY**\n\nDBC fits in nicely with our concept of crashing early (see Topic 24, _<u>Dead Programs Tell No Lies</u>_ <u>). By using an assert or DBC</u>\n\nmechanism to validate the preconditions, postconditions, and invariants, you can crash early and report more accurate information about the problem.",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "code"
+    },
+    {
+     "id": "ch_0335",
+     "text": "as they existed at the entry to a method. If you're using assertions to enforce contracts, you must add code to the precondition to save any information you'll want to use in the postcondition, if the language will even allow that. In the Eiffel language, where DBC was born, you can just use old _expression_ .\n\nFinally, conventional runtime systems and libraries are not designed to support contracts, so these calls are not checked. This is a big loss, because it is often at the boundary between your code and the libraries it uses that the most problems are detected (see Topic 24, _<u>Dead Programs Tell No Lies</u>_ for a more detailed discussion).\n\n###### **Who's Responsible?**",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0330",
+     "text": "- TDD does not focus on checking internal invariants within the code under test, it's more black-box style to check the public interface\n\n- DBC is more efficient (and DRY-er) than defensive programming, where _everyone_ has to validate data in case no one else does.\n\nTDD is a great technique, but as with many techniques, it might invite you to concentrate on the \"happy path,\" and not the real world full of bad data, bad actors, bad versions, and bad specifications.\n\n##### **Class Invariants and Functional Languages**",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "code"
+    },
+    {
+     "id": "ch_0323",
+     "text": "If either party fails to live up to the terms of the contract, then a remedy (which was previously agreed to) is invoked—maybe an exception is raised, or the program terminates. Whatever happens, make no mistake that failure to live up to the contract is a bug. It is not something that should ever happen, which is why preconditions should not be used to perform things such as user-input validation.\n\nSome languages have better support for these concepts than others. Clojure, for example, supports pre- and post-conditions as well as the more comprehensive instrumentation provided by _specs_ . Here's an example of a banking function to make a deposit using simple pre- and post-conditions:",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "code"
+    },
+    {
+     "id": "ch_0336",
+     "text": "Who is responsible for checking the precondition, the caller or the routine being called? When implemented as part of the language, the answer is neither: the precondition is tested behind the scenes after the caller invokes the routine but before the routine itself is entered. Thus if there is any explicit checking of parameters to be done, it must be performed by the _caller_ , because the routine itself will never see parameters that violate its precondition. (For languages without built-in support, you would need to bracket the _called_ routine with a preamble and/or postamble that checks these assertions.)",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0691",
+     "text": "Think about the code you're currently working on. What are the properties: the contracts and invariants? Can you use propertybased testing framework to verify these automatically?",
+     "chapter": 7,
+     "topic": 42,
+     "topic_title": "Property-Based Testing",
+     "page_book": 375,
+     "type": "prose"
+    }
+   ]
+  },
+  "q007": {
+   "id": "q007",
+   "question": "What four strategies for dealing with events does the book describe, and how do they differ in terms of coupling and asynchronicity?",
+   "gold_topics": [
+    29
+   ],
+   "top8ids": [
+    "ch_0394",
+    "ch_0193",
+    "ch_0415",
+    "ch_0833",
+    "ch_0432",
+    "ch_0093",
+    "ch_0512",
+    "ch_0479"
+   ],
+   "top8topics": [
+    27,
+    14,
+    29,
+    51,
+    29,
+    9,
+    33,
+    31
+   ],
+   "dt_ms": 87.6,
+   "chunks": [
+    {
+     "id": "ch_0394",
+     "text": "Next, we'll look at different techniques you can use when Topic 29, _<u>Juggling the Real World</u>_ <u>. We'll examine four different</u> strategies to help manage and react to events—a critical aspect of modern software applications.\n\nTraditional procedural and object-oriented code might be too tightly coupled for your purposes. In Topic 30, _<u>Transforming</u>_\n\n_<u>Programming</u>_ <u>, we'll take advantage of the more flexible and</u> clearer style offered by function pipelines, even if your language doesn't support them directly.\n\nCommon object-oriented style can tempt you with another trap. Don't fall for it, or you'll end up paying a hefty Topic 31, _<u>Inheritance Tax</u>_ <u>. We'll explore better alternatives to keep your</u> code flexible and easier to change.",
+     "chapter": 4,
+     "topic": 27,
+     "topic_title": "Don’t Outrun Your Headlights",
+     "page_book": 222,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0193",
+     "text": "describe BowlingScore **do** <mark>it</mark> _<mark>\"totals 12 if you score 3 four times\"</mark>_ **<mark>do</mark>** score = BowlingScore.new <mark>4.times { score.add_pins(3) }</mark>\n\nexpect(score.total).to eq(12)\n\n**<mark>end</mark> end**\n\nIn this code, describe, it, expect, to, and eq are just Ruby methods. There's a little plumbing behind the scenes in terms of how objects are passed around, but it's all just code. We'll explore that a little in the exercises.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 8, _The Essence of_ _<u>Good Design</u>_\n\n- Topic 13, _Prototypes and Post-it Notes_\n\n- Topic 32, _<u>Configuration</u>_\n\n#### **CHALLENGES**",
+     "chapter": 2,
+     "topic": 14,
+     "topic_title": "Domain Languages",
+     "page_book": 124,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0415",
+     "text": "**Topic 29**\n\n#### Juggling the Real World\n\n_Things don't just happen; they are made to happen._\n\nIn the old days, when your authors still had their boyish good looks, computers were not particularly flexible. We'd typically organize the way we interacted with them based on their limitations.\n\n_John F. Kennedy_\n\nToday, we expect more: computers have to integrate into _our_ world,\n\nnot the other way around. And our world is messy: things are constantly happening, stuff gets moved around, we change our minds, …. And the applications we write somehow have to work out what to do.\n\nThis section is all about writing these responsive applications.\n\nWe'll start off with the concept of an _event_ .\n\n#### **EVENTS**",
+     "chapter": 5,
+     "topic": 29,
+     "topic_title": "Juggling the Real World",
+     "page_book": 239,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0833",
+     "text": "As soon as you have an executable user interface or prototype, you need to answer an all-important question: the users told you what they wanted, but is it what they need?\n\nDoes it meet the functional requirements of the system? This, too, needs to be tested. A bug-free system that answers the wrong question isn't very useful. Be conscious of end-user access patterns and how they differ from developer test data (for an example, see the story about brush strokes <u>here).</u>\n\n##### **Performance Testing**\n\nPerformance or stress testing may be important aspects of the project as well.\n\nAsk yourself if the software meets the performance requirements under real-world conditions—with the expected number of users, or connections, or transactions per second. Is it scalable?",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0432",
+     "text": "Compared to the observer pattern, pubsub is a great example of reducing coupling by abstracting up through a shared interface (the channel). However, it is still basically just a message passing system. Creating systems that respond to combinations of events will need more than this, so let's look at ways we can add a time dimension to event processing.\n\n**REACTIVE PROGRAMMING, STREAMS, AND EVENTS** If you've ever used a spreadsheet, then you'll be familiar with _reactive programming_ . If a cell contains a formula which refers to a second cell, then updating that second cell causes the first to update as well. The values _react_ as the values they use change.",
+     "chapter": 5,
+     "topic": 29,
+     "topic_title": "Juggling the Real World",
+     "page_book": 239,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0093",
+     "text": "The alternative is to have the same thing expressed in two or more places. If you change one, you have to remember to change the others, or, like the alien computers, your program will be brought to its knees by a contradiction. It isn't a question of whether you'll remember: it's a question of when you'll forget.\n\nYou'll find the DRY principle popping up time and time again throughout this book, often in contexts that have nothing to do with coding. We feel that it is one of the most important tools in the Pragmatic Programmer's tool box.\n\nIn this section we'll outline the problems of duplication and\n\nsuggest general strategies for dealing with it.\n\n#### **DRY IS MORE THAN CODE**",
+     "chapter": 2,
+     "topic": 9,
+     "topic_title": "DRY—The Evils of Duplication",
+     "page_book": 79,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0512",
+     "text": "We don't usually approach programming with either of these aspects in mind. When people first sit down to design an architecture or write a program, things tend to be linear. That's the way most people think— _do this_ and then always _do that_ . But thinking this way leads to _temporal coupling_ : coupling in time. Method A must always be called before method B; only one report can be run at a time; you must wait for the screen to redraw before the button click is received. Tick must happen before tock.\n\nThis approach is not very flexible, and not very realistic.",
+     "chapter": 6,
+     "topic": 33,
+     "topic_title": "Breaking Temporal Coupling",
+     "page_book": 292,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0479",
+     "text": "An API change is expected to break clients of Vehicle class. But the top-level is not: as far as it is concerned it is using a Car. What the Car class does in terms of implementation is not the concern of the top-level code, but it still breaks.\n\nSimilarly the name of an instance variable is purely an internal implementation detail, but when Vehicle changes it also (silently) breaks Car.\n\nSo much coupling.\n\n**Problems Using Inheritance to Build Types** Some folks view inheritance as a way of defining new types. Their favorite design diagram shows class hierarchies. They view problems the way Victorian gentleman scientists viewed nature, as something to be broken down into categories.",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "code"
+    }
+   ]
+  },
+  "q008": {
+   "id": "q008",
+   "question": "Why is crashing early better than a program continuing silently after an error is detected? How does this connect with the Catch-and-Release-is-for-Fish approach?",
+   "gold_topics": [
+    24,
+    25
+   ],
+   "top8ids": [
+    "ch_0349",
+    "ch_0351",
+    "ch_0339",
+    "ch_0591",
+    "ch_0296",
+    "ch_0829",
+    "ch_0353",
+    "ch_0460"
+   ],
+   "top8topics": [
+    24,
+    24,
+    23,
+    38,
+    20,
+    51,
+    24,
+    30
+   ],
+   "dt_ms": 99.05,
+   "chunks": [
+    {
+     "id": "ch_0349",
+     "text": "that the error can't happen, and choose to ignore it. Instead, Pragmatic Programmers tell themselves that if there is an error, something very, very bad has happened. Don't forget to Read the Damn Error Message (see _<u>Coder in a Strange Land</u>_ ).\n\n#### **CATCH AND RELEASE IS FOR FISH**\n\nSome developers feel that is it good style to catch or rescue all exceptions, re-raising them after writing some kind of message. Their code is full of things like this (where a bare raise statement reraises the current exception):",
+     "chapter": 4,
+     "topic": 24,
+     "topic_title": "Dead Programs Tell No Lies",
+     "page_book": 203,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0351",
+     "text": "We prefer it for two reasons. First, the application code isn't eclipsed by the error handling. Second, and perhaps more important, the code is less coupled. In the verbose example, we have to list every exception the add_score_to_board method could raise. If the writer of that method adds another exception, our code is subtly out of date. In the more pragmatic second version, the new exception is automatically propagated.\n\n> **Tip 38** Crash Early\n\n#### **CRASH, DON'T TRASH**\n\nOne of the benefits of detecting problems as soon as you can is that you can crash earlier, and crashing is often the best thing you can do. The alternative may be to continue, writing corrupted data to some vital database or commanding the washing machine into its twentieth consecutive spin cycle.",
+     "chapter": 4,
+     "topic": 24,
+     "topic_title": "Dead Programs Tell No Lies",
+     "page_book": 203,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0339",
+     "text": "For example, suppose you have a method that calculates square roots. It needs a DBC precondition that restricts the domain to positive numbers. In languages that support DBC, if you pass sqrt a negative parameter, you'll get an informative error such as sqrt_arg_must_be_positive, along with a stack trace.\n\nThis is better than the alternative in other languages such as Java, C, and C++ where passing a negative number to sqrt returns the special value NaN (Not a Number). It may be some time later in the program that you attempt to do some math on NaN, with surprising results.\n\nIt's much easier to find and diagnose the problem by crashing early, at the site of the problem.\n\n#### **SEMANTIC INVARIANTS**",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0591",
+     "text": "As developers, we also work in minefields. There are hundreds of traps waiting to catch us each day. Remembering the soldier's tale, we should be wary of drawing false conclusions. We should avoid programming by coincidence—relying on luck and accidental successes—in favor of _programming deliberately_ .\n\n#### **HOW TO PROGRAM BY COINCIDENCE**\n\nSuppose Fred is given a programming assignment. Fred types in some code, tries it, and it seems to work. Fred types in some more code, tries it, and it still seems to work. After several weeks of coding this way, the program suddenly stops working, and after hours of trying to fix it, he still doesn't know why. Fred",
+     "chapter": 7,
+     "topic": 38,
+     "topic_title": "Programming by Coincidence",
+     "page_book": 334,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0296",
+     "text": "more of your assumptions is wrong. Don't gloss over a routine or piece of code involved in the bug because you \"know\" it works. Prove it. Prove it in _this_ context, with _this_ data, with _these_ boundary conditions.\n\n> **Tip 34** Don't Assume It—Prove It\n\nWhen you come across a surprise bug, beyond merely fixing it, you need to determine why this failure wasn't caught earlier. Consider whether you need to amend the unit or other tests so that they would have caught it.\n\nAlso, if the bug is the result of bad data that was propagated through a couple of levels before causing the explosion, see if better parameter checking in those routines would have isolated it earlier (see the discussions on crashing early and assertions <u>here and here, respectively).</u>",
+     "chapter": 3,
+     "topic": 20,
+     "topic_title": "Debugging",
+     "page_book": 168,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0829",
+     "text": "Finding bugs is somewhat like fishing with a net. We use fine, small nets (unit tests) to catch the minnows, and big, coarse nets (integration tests) to catch the killer sharks. Sometimes the fish manage to escape, so we patch any holes that we find, in hopes of catching more and more slippery defects that are swimming about in our project pool.\n\n> **Tip 90** Test Early, Test Often, Test Automatically\n\nWe want to start testing as soon as we have code. Those tiny minnows have a nasty habit of becoming giant, man-eating sharks pretty fast, and catching a shark is quite a bit harder. So we write unit tests. A lot of unit tests.",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0353",
+     "text": "In other environments, it may be inappropriate simply to exit a running program. You may have claimed resources that might not get released, or you may need to write log messages, tidy up open transactions, or interact with other processes.\n\nHowever, the basic principle stays the same—when your code discovers that something that was supposed to be impossible just happened, your program is no longer viable. Anything it does from this point forward becomes suspect, so terminate it\n\nas soon as possible.\n\nA dead program normally does a lot less damage than a crippled one.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 20, _Debugging_\n\n- Topic 23, _Design by_ _<u>Contract</u>_\n\n- Topic 25, _Assertive Programming_\n\n- Topic 26, _How to Balance Resources_\n\n- Topic 43, _Stay Safe Out There_",
+     "chapter": 4,
+     "topic": 24,
+     "topic_title": "Dead Programs Tell No Lies",
+     "page_book": 203,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0460",
+     "text": "Yes, there is still a degree of coupling, but in our experience it's more manageable than the OO-style of command and control. And, if you're using a language with type checking, you'll get compile-time warnings when you try to connect two incompatible things.\n\n#### **WHAT ABOUT ERROR HANDLING?**\n\nSo far our transforms have worked in a world where nothing goes wrong. How can we use them in the real world, though? If we can only build linear chains, how can we add all that conditional logic that we need for error checking?",
+     "chapter": 5,
+     "topic": 30,
+     "topic_title": "Transforming Programming",
+     "page_book": 255,
+     "type": "prose"
+    }
+   ]
+  },
+  "q009": {
+   "id": "q009",
+   "question": "The book suggests that assertions should be turned off in the production version of the program, because they add overhead and slow the code down. Is that correct?",
+   "gold_topics": [
+    25
+   ],
+   "top8ids": [
+    "ch_0359",
+    "ch_0361",
+    "ch_0360",
+    "ch_0357",
+    "ch_0334",
+    "ch_0595",
+    "ch_0304",
+    "ch_0392"
+   ],
+   "top8topics": [
+    25,
+    25,
+    25,
+    25,
+    23,
+    38,
+    21,
+    27
+   ],
+   "dt_ms": 90.76,
+   "chunks": [
+    {
+     "id": "ch_0359",
+     "text": "(We also believe that nowadays, when most languages have decent support for iterating functions over collections, this kind of explicit loop is unnecessary and bad form.)\n\n#### **LEAVE ASSERTIONS TURNED ON**\n\nThere is a common misunderstanding about assertions. It goes something like this:\n\nAssertions add some overhead to code. Because they check for things that should never happen, they'll get triggered only by a bug in the code. Once the code has been tested and shipped, they are no longer needed, and should be turned off to make the code run faster. Assertions are a debugging facility.\n\nThere are two patently wrong assumptions here. First, they assume that testing finds all the bugs. In reality, for any",
+     "chapter": 4,
+     "topic": 25,
+     "topic_title": "Assertive Programming",
+     "page_book": 207,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0361",
+     "text": "Even if you _do_ have performance issues, turn off only those assertions that really hit you. The sort example above may be a critical part of your application, and may need to be fast. Adding the check means another pass through the data, which might be unacceptable. Make that particular check optional, but leave the rest in.\n\n###### **Use Assertions in Production, Win Big Money**",
+     "chapter": 4,
+     "topic": 25,
+     "topic_title": "Assertive Programming",
+     "page_book": 207,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0360",
+     "text": "complex program you are unlikely to test even a minuscule percentage of the permutations your code will be put through. Second, the optimists are forgetting that your program runs in a dangerous world. During testing, rats probably won't gnaw through a communications cable, someone playing a game won't exhaust memory, and log files won't fill the storage partition. These things might happen when your program runs in a production environment. Your first line of defense is checking for any possible error, and your second is using assertions to try to detect those you've missed.\n\nTurning off assertions when you deliver a program to production is like crossing a high wire without a net because you once made it across in practice. There's dramatic value, but it's hard to get life insurance.",
+     "chapter": 4,
+     "topic": 25,
+     "topic_title": "Assertive Programming",
+     "page_book": 207,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0357",
+     "text": "And just because most assert implementations will terminate the process when an assertion fails, there's no reason why versions you write should. If you need to free resources, catch the assertion's exception or trap the exit, and run your own error handler. Just make sure the code you execute in those dying milliseconds doesn't rely on the information that triggered the assertion failure in the first place.\n\n#### **ASSERTIONS AND SIDE EFFECTS**\n\nIt's embarrassing when the code we add to detect errors actually ends up creating new errors. This can happen with assertions if evaluating the condition has side effects. For example, it would be a bad idea to code something such as",
+     "chapter": 4,
+     "topic": 25,
+     "topic_title": "Assertive Programming",
+     "page_book": 207,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0334",
+     "text": "Unfortunately, the answer is no. To begin with, in objectoriented languages there probably is no support for propagating assertions down an inheritance hierarchy. This means that if you override a base class method that has a contract, the assertions that implement that contract will not be called correctly (unless you duplicate them manually in the new code). You must remember to call the class invariant (and all base class invariants) manually before you exit every method. The basic problem is that the contract is not automatically enforced.\n\nIn other environments, the exceptions generated from DBCstyle assertions might be turned off globally or ignored in the code.\n\nAlso, there is no built-in concept of \"old'' values; that is, values",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "code"
+    },
+    {
+     "id": "ch_0595",
+     "text": "- The boundary condition you rely on may be just an accident. In different circumstances (a different screen resolution, more CPU cores), it might behave differently.\n\n- Undocumented behavior may change with the next release of the library.\n\n- Additional and unnecessary calls make your code slower.\n\n- Additional calls increase the risk of introducing new bugs of their own.\n\nFor code you write that others will call, the basic principles of good modularization and of hiding implementation behind small, well-documented interfaces can all help. A well-specified contract (see Topic 23, _<u>Design by Contract</u>_ <u>) can help eliminate</u> misunderstandings.\n\nFor routines you call, rely only on documented behavior. If you can't, for whatever reason, then document your assumption well.",
+     "chapter": 7,
+     "topic": 38,
+     "topic_title": "Programming by Coincidence",
+     "page_book": 334,
+     "type": "list"
+    },
+    {
+     "id": "ch_0304",
+     "text": "duplicating code, virtually guaranteeing that we'd forget to update an example when the corresponding program was changed. For some examples, we also didn't want to bore you with all the framework code needed to make our example compile and run. We turned to Ruby. A relatively simple script is invoked when we format the book—it extracts a named segment of a source file, does syntax highlighting, and converts the result into the typesetting language we use.\n\n_Website update_\n\nWe have a simple script that does a partial book build, extracts the table of contents, then uploads it to the book's page on our website. We also have a script that extracts sections of a book and uploads them as samples.\n\n_Including equations_",
+     "chapter": 3,
+     "topic": 21,
+     "topic_title": "Text Manipulation",
+     "page_book": 181,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0392",
+     "text": "- <u>[30]</u> Based in part on earlier work by Dijkstra, Floyd, Hoare, Wirth, and others.\n\n- <u>[31]</u> In C and C++ these are usually implemented as macros. In Java, assertions are disabled by default. Invoke the Java VM with the –enableassertions flag to enable them, and leave them enabled.\n\n- <u>[32]</u> http://www.eps.mcgill.ca/jargon/jargon.html#heisenbug\n\n- <u>[33]</u> For a discussion of the dangers of coupled code, see Topic 28, _Decoupling_ .\n\n- <u>[34]</u> See the tip here.\n\n- <u>[35]</u> Per the NHTSA, Stopping Distance = Reaction Distance + Braking Distance, assuming an average reaction time of 1.5s and deceleration of 17.02ft/s².\n\n- <u>[36]</u> Motif and OpenLook were GUI standards for X-Windows based Unix workstations.\n\nCopyright © 2020 Pearson Education, Inc.\n\n## Chapter 5",
+     "chapter": 4,
+     "topic": 27,
+     "topic_title": "Don’t Outrun Your Headlights",
+     "page_book": 222,
+     "type": "list"
+    }
+   ]
+  },
+  "q010": {
+   "id": "q010",
+   "question": "How does DRY differ from Orthogonality? Are they the same thing, or two different principles? How do they complement each other?",
+   "gold_topics": [
+    9,
+    10
+   ],
+   "top8ids": [
+    "ch_0094",
+    "ch_0117",
+    "ch_0139",
+    "ch_0102",
+    "ch_0142",
+    "ch_0833",
+    "ch_0080",
+    "ch_0093"
+   ],
+   "top8topics": [
+    9,
+    10,
+    10,
+    9,
+    10,
+    51,
+    7,
+    9
+   ],
+   "dt_ms": 88.4,
+   "chunks": [
+    {
+     "id": "ch_0094",
+     "text": "Let's get something out of the way up-front. In the first edition of this book we did a poor job of explaining just what we meant by _Don't Repeat Yourself_ . Many people took it to refer to code only: they thought that DRY means \"don't copy-and-paste lines of source.\"\n\nThat _is_ part of DRY, but it's a tiny and fairly trivial part.\n\nDRY is about the duplication of _knowledge_ , of _intent_ . It's about expressing the same thing in two different places, possibly in two totally different ways.\n\nHere's the acid test: when some single facet of the code has to change, do you find yourself making that change in multiple places, and in multiple different formats? Do you have to change code and documentation, or a database schema and a structure that holds it, or…? If so, your code isn't DRY.",
+     "chapter": 2,
+     "topic": 9,
+     "topic_title": "DRY—The Evils of Duplication",
+     "page_book": 79,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0117",
+     "text": "**Topic 10**\n\n#### Orthogonality\n\nOrthogonality is a critical concept if you want to produce systems that are easy to design, build, test, and extend. However, the concept of orthogonality is rarely taught directly. Often it is an implicit feature of various other methods and techniques you learn. This is a mistake. Once you learn to apply the principle of orthogonality directly, you'll notice an immediate improvement in the quality of systems you produce.\n\n#### **WHAT IS ORTHOGONALITY?**\n\n\"Orthogonality'' is a term borrowed from geometry. Two lines are orthogonal if they meet at right angles, such as the axes on a graph. In vector terms, the two lines are _independent_ . As the\n\nimages/orthogonality.png",
+     "chapter": 2,
+     "topic": 10,
+     "topic_title": "Orthogonality",
+     "page_book": 92,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0139",
+     "text": "Orthogonality is closely related to the DRY principle. With DRY, you're looking to minimize duplication within a system, whereas with orthogonality you reduce the interdependency among the system's components. It may be a clumsy word, but if you use the principle of orthogonality, combined closely with the DRY principle, you'll find that the systems you develop are more flexible, more understandable, and easier to debug, test, and maintain.\n\nIf you're brought into a project where people are desperately struggling to make changes, and where every change seems to cause four other things to go wrong, remember the nightmare with the helicopter. The project probably is not orthogonally designed and coded. It's time to refactor.\n\nAnd, if you're a helicopter pilot, don't eat the fish….",
+     "chapter": 2,
+     "topic": 10,
+     "topic_title": "Orthogonality",
+     "page_book": 92,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0102",
+     "text": "**def** validate_age(value): <mark>validate_type(value, :integer)</mark> validate_min_integer(value, 0) **def** validate_quantity(value): <mark>validate_type(value, :integer)</mark> validate_min_integer(value, 0)\n\nDuring code review, the resident know-it-all bounces this code, claiming it's a DRY violation: both function bodies are the same.\n\nThey are wrong. The code is the same, but the knowledge they represent is different. The two functions validate two separate things that just happen to have the same rules. That's a coincidence, not a duplication.\n\n#### **DUPLICATION IN DOCUMENTATION**\n\nSomehow the myth was born that you should comment all your functions. Those who believe in this insanity then produce something such as this:",
+     "chapter": 2,
+     "topic": 9,
+     "topic_title": "DRY—The Evils of Duplication",
+     "page_book": 79,
+     "type": "code"
+    },
+    {
+     "id": "ch_0142",
+     "text": "class Split2 { <mark>constructor(line)        # splits a line</mark> def getField(n)          # returns nth field in current line <u><mark>}</mark></u>\n\n**Exercise 2** <u>(possible answer)</u>\n\nWhat are the differences in orthogonality between objectoriented and functional languages? Are these differences inherent in the languages themselves, or just in the way people use them?",
+     "chapter": 2,
+     "topic": 10,
+     "topic_title": "Orthogonality",
+     "page_book": 92,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0833",
+     "text": "As soon as you have an executable user interface or prototype, you need to answer an all-important question: the users told you what they wanted, but is it what they need?\n\nDoes it meet the functional requirements of the system? This, too, needs to be tested. A bug-free system that answers the wrong question isn't very useful. Be conscious of end-user access patterns and how they differ from developer test data (for an example, see the story about brush strokes <u>here).</u>\n\n##### **Performance Testing**\n\nPerformance or stress testing may be important aspects of the project as well.\n\nAsk yourself if the software meets the performance requirements under real-world conditions—with the expected number of users, or connections, or transactions per second. Is it scalable?",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0080",
+     "text": "The next two sections, Topic 9, _<u>DRY—The Evils of Duplication</u>_ and Topic 10, _<u>Orthogonality</u>_ <u>, are closely related. The first warns</u> you not to duplicate knowledge throughout your systems, the second not to split any one piece of knowledge across multiple system components.\n\nAs the pace of change increases, it becomes harder and harder to keep our applications relevant. In Topic 11, _<u>Reversibility</u>_ <u>,</u> we'll look at some techniques that help insulate your projects from their changing environment.",
+     "chapter": 1,
+     "topic": 7,
+     "topic_title": "Communicate!",
+     "page_book": 63,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0093",
+     "text": "The alternative is to have the same thing expressed in two or more places. If you change one, you have to remember to change the others, or, like the alien computers, your program will be brought to its knees by a contradiction. It isn't a question of whether you'll remember: it's a question of when you'll forget.\n\nYou'll find the DRY principle popping up time and time again throughout this book, often in contexts that have nothing to do with coding. We feel that it is one of the most important tools in the Pragmatic Programmer's tool box.\n\nIn this section we'll outline the problems of duplication and\n\nsuggest general strategies for dealing with it.\n\n#### **DRY IS MORE THAN CODE**",
+     "chapter": 2,
+     "topic": 9,
+     "topic_title": "DRY—The Evils of Duplication",
+     "page_book": 79,
+     "type": "prose"
+    }
+   ]
+  },
+  "q011": {
+   "id": "q011",
+   "question": "What is a binary chop in the context of debugging, and in which three situations does the book recommend using it?",
+   "gold_topics": [
+    20
+   ],
+   "top8ids": [
+    "ch_0283",
+    "ch_0282",
+    "ch_0284",
+    "ch_0700",
+    "ch_0270",
+    "ch_0236",
+    "ch_0625",
+    "ch_0281"
+   ],
+   "top8topics": [
+    20,
+    20,
+    20,
+    43,
+    20,
+    16,
+    39,
+    20
+   ],
+   "dt_ms": 86.27,
+   "chunks": [
+    {
+     "id": "ch_0283",
+     "text": "Every CS undergraduate has been forced to code a binary chop (sometimes called a binary search). The idea is simple. You're looking for a particular value in a sorted array. You could just look at each value in turn, but you'd end up looking at roughly half the entries on average until you either found the value you wanted, or you found a value greater than it, which would mean the value's not in the array.",
+     "chapter": 3,
+     "topic": 20,
+     "topic_title": "Debugging",
+     "page_book": 168,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0282",
+     "text": "You can try looking at the place it crashes and work backwards. But sometimes it's easier to start with the data. Get a copy of the dataset and feed it through a locally running copy of the app, making sure it still crashes. Then binary chop the data until you isolate exactly which input values are leading to the crash.\n\n##### **Regressions Across Releases**\n\nYou're on a good team, and you release your software into production. At some point a bug pops up in code that worked OK a week ago. Wouldn't it be nice if you could identify the specific change that introduced it? Guess what? Binary chop time.\n\n#### **THE BINARY CHOP**",
+     "chapter": 3,
+     "topic": 20,
+     "topic_title": "Debugging",
+     "page_book": 168,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0284",
+     "text": "But it's faster to use a _divide and conquer_ approach. Choose a value in the middle of the array. If it's the one you're looking for, stop. Otherwise you can chop the array in two. If the value you find is greater than the target then you know it must be in the first half of the array, otherwise it's in the second half. Repeat the procedure in the appropriate subarray, and in no time you'll have a result. (As we'll see when we talk about _<u>Big-O Notation</u>_ <u>,</u> a linear search is , and a binary chop is <mark>)</mark> .\n\nSo, the binary chop is way, way faster on any decent sized problem. Let's see how to apply it to debugging.",
+     "chapter": 3,
+     "topic": 20,
+     "topic_title": "Debugging",
+     "page_book": 168,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0700",
+     "text": "_Debugging info is an attack vector_\n\nThere's nothing as heartwarming as seeing a full stack trace with data on your local ATM machine, an airport kiosk, or crashing web page. Information designed to make debugging easier can make breaking in easier as well. Make sure any \"test window\" (discussed here) and runtime exception reporting is protected from spying <u>[64]</u> eyes ~~.~~\n\n**Tip 72**\n\n#### Keep It Simple and Minimize Attack Surfaces\n\n##### **Principle of Least Privilege**",
+     "chapter": 7,
+     "topic": 43,
+     "topic_title": "Stay Safe Out There",
+     "page_book": 385,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0270",
+     "text": "Regrettably, we still have bugs in the system, albeit not the flying kind. But the fourteenth century meaning—a bogeyman— is perhaps even more applicable now than it was then. Software defects manifest themselves in a variety of ways, from misunderstood requirements to coding errors. Unfortunately, modern computer systems are still limited to doing what you _tell_ them to do, not necessarily what you _want_ them to do.\n\nNo one writes perfect software, so it's a given that debugging will take up a major portion of your day. Let's look at some of the issues involved in debugging and some general strategies for finding elusive bugs.\n\n#### **PSYCHOLOGY OF DEBUGGING**",
+     "chapter": 3,
+     "topic": 20,
+     "topic_title": "Debugging",
+     "page_book": 168,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0236",
+     "text": "Topic 17, _Shell Games_\n\nTopic 21, _Text Manipulation_\n\nTopic 32, _<u>Configuration</u>_\n\n#### **CHALLENGES**\n\n- Design a small address book database (name, phone number, and so on) using a straightforward binary representation in your language of choice. Do this before reading the rest of this challenge.\n\n- Translate that format into a plain-text format using XML or JSON.\n\n- For each version, add a new, variable-length field called _directions_ in which you might enter directions to each person's house.\n\nWhat issues come up regarding versioning and extensibility? Which\n\nform was easier to modify? What about converting existing data?",
+     "chapter": 3,
+     "topic": 16,
+     "topic_title": "The Power of Plain Text",
+     "page_book": 146,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0625",
+     "text": "We coded a set of simple sort routines[54] in Rust. Run them on various machines available to you. Do your figures follow the expected curves? What can you deduce about the relative speeds of your machines? What are the effects of various compiler optimization settings?\n\n#### **Exercise 29** <u>(possible answer)</u>\n\nIn _<u>Common Sense Estimation</u>_ <u>, we claimed that a binary chop is</u> <mark>.</mark> Can you prove this?\n\n#### **Exercise 30** <u>(possible answer)</u>\n\nIn Figure 3, _<u>Runtimes of various algorithms</u>_ , we claimed that is the same as (or indeed logarithms to any base). Can\n\nyou explain why?",
+     "chapter": 7,
+     "topic": 39,
+     "topic_title": "Algorithm Speed",
+     "page_book": 343,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0281",
+     "text": "Sometimes you're looking at a stack trace that seems to scroll on forever. In this case, there's often a quicker way to find the problem than examining each and every stack frame: use a _binary chop_ . But before we discuss that, let's look at two other common bug scenarios.\n\n##### **Sensitivity to Input Values**\n\nYou've been there. Your program works fine with all the test data, and survives its first week in production with honor. Then it suddenly crashes when fed a particular dataset.",
+     "chapter": 3,
+     "topic": 20,
+     "topic_title": "Debugging",
+     "page_book": 168,
+     "type": "prose"
+    }
+   ]
+  },
+  "q012": {
+   "id": "q012",
+   "question": "How does the actor model differ from the blackboard as a way of dealing with concurrency? When should you use which?",
+   "gold_topics": [
+    35,
+    36
+   ],
+   "top8ids": [
+    "ch_0509",
+    "ch_0564",
+    "ch_0551",
+    "ch_0542",
+    "ch_0539",
+    "ch_0566",
+    "ch_0565",
+    "ch_0549"
+   ],
+   "top8topics": [
+    32,
+    36,
+    35,
+    35,
+    35,
+    36,
+    36,
+    35
+   ],
+   "dt_ms": 80.89,
+   "chunks": [
+    {
+     "id": "ch_0509",
+     "text": "If that makes you feed sad, _nil desperandum!_ There are better ways to construct concurrent applications. One of these is using the _actor model_ , where independent processes, which share no data, communicate over channels using defined, simple, semantics. We talk about both the theory and practice of this approach in Topic 35, _<u>Actors and Processes</u>_ .\n\nFinally, we'll look at Topic 36, _<u>Blackboards</u>_ . These are systems which act like a combination of an object store and a smart publish/subscribe broker. In their original form, they never really took off. But today we're seeing more and more implementations of middleware layers with blackboard-like semantics. Used correctly, these types of systems offer a serious amount of decoupling.",
+     "chapter": 5,
+     "topic": 32,
+     "topic_title": "Configuration",
+     "page_book": 284,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0564",
+     "text": "The actor and/or blackboard and/or microservice approach to architecture removes a whole class of potential concurrency problems from your applications. But that benefit comes at a cost. These approaches are harder to reason about, because a lot\n\nof the action is indirect. You'll find it helps to keep a central repository of message formats and/or APIs, particularly if the repository can generate the code and documentation for you. You'll also need good tooling to be able to trace messages and facts as they progress through the system. (A useful technique is to add a unique _trace id_ when a particular business function is initiated and then propagate it to all the actors involved. You'll then be able to reconstruct what happens from the log files.)",
+     "chapter": 6,
+     "topic": 36,
+     "topic_title": "Blackboards",
+     "page_book": 317,
+     "type": "code"
+    },
+    {
+     "id": "ch_0551",
+     "text": "Waiter adds apple pie slice to customer1's order Waiter adds peach pie slice to customer2's order <mark>customer1 sees \"cherry pie slice\" appear on the table</mark> Waiter adds cherry pie slice to customer1's order The waiter apologizes to customer1: no pie left <mark>customer1 sulks… The waiter apologizes to customer2: no pie left</mark> customer2 sulks…\n\n**NO EXPLICIT CONCURRENCY**\n\nIn the actor model, there's no need to write any code to handle concurrency, as there is no shared state. There's also no need to code in explicit end-to-end \"do this, do that\" logic, as the actors work it out for themselves based on the messages they receive.",
+     "chapter": 6,
+     "topic": 35,
+     "topic_title": "Actors and Processes",
+     "page_book": 309,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0542",
+     "text": "- All messages are one way—there's no concept of replying. If you want an actor to return a response, you include your own mailbox address in the message you send it, and it will (eventually) send the response as just another message to that mailbox.\n\n- An actor processes each message to completion, and only processes one message at a time.\n\nAs a result, actors execute concurrently, asynchronously, and share nothing. If you had enough physical processors, you could run an actor on each. If you have a single processor, then some runtime can handle the switching of context between them. Either way, the code running in the actors is the same.\n\n**Tip 59**\n\nUse Actors For Concurrency Without Shared State\n\n#### **A SIMPLE ACTOR**",
+     "chapter": 6,
+     "topic": 35,
+     "topic_title": "Actors and Processes",
+     "page_book": 309,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0539",
+     "text": "**Topic 35**\n\n#### Actors and Processes\n\n_Without writers, stories would not be written, Without actors, stories could not be brought to life._\n\n_Angie-Marie Delsante_\n\nActors and processes offer interesting ways of implementing concurrency without the burden of synchronizing access to shared memory.\n\nBefore we get into them, however, we need to define what we mean. And this is going to sound academic. Never fear, we'll be working through it all in a short while.",
+     "chapter": 6,
+     "topic": 35,
+     "topic_title": "Actors and Processes",
+     "page_book": 309,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0566",
+     "text": "_Group calendaring._ You've got people scattered across the globe, in different time zones, and speaking different languages, trying to schedule a meeting.\n\n_Network monitoring tool._ The system gathers performance statistics and collects trouble reports, which agents use to look for trouble in the system.\n\n#### **CHALLENGES**\n\n- Do you use blackboard systems in the real world—the message board by the refrigerator, or the big whiteboard at work? What makes them effective? Are messages ever posted with a consistent format? Does it matter?\n\n###### **Footnotes**",
+     "chapter": 6,
+     "topic": 36,
+     "topic_title": "Blackboards",
+     "page_book": 317,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0565",
+     "text": "Finally, these kinds of system can be more troublesome to deploy and manage, as there are more moving parts. To some extent this is offset by the fact that the system is more granular, and can be updated by replacing individual actors, and not the whole system.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 28, _Decoupling_\n\n- Topic 29, _<u>Juggling the Real World</u>_\n\n- Topic 33, _Breaking Temporal Coupling_\n\n- Topic 35, _Actors and Processes_\n\n#### **EXERCISES**\n\n**Exercise 24** <u>(possible answer)</u>\n\nWould a blackboard-style system be appropriate for the following applications? Why, or why not?\n\n_Image processing._ You'd like to have a number of parallel processes grab chunks of an image, process them, and put the completed chunk back.",
+     "chapter": 6,
+     "topic": 36,
+     "topic_title": "Blackboards",
+     "page_book": 317,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0549",
+     "text": "- We'll give the waiter a reference to the pie case\n\n- We'll give the customers a reference to the waiter\n\n|concurrency/actors/index.js|\n|---|\n|**const**actorSystem = start();|\n|**let**pieCase = start_actor(|\n|actorSystem,|\n|_'pie-case'_,|\n|pieCaseActor,|\n|{ slices: [_\"apple\"_,_\"peach\"_,_\"cherry\"_] });|\n|**let**waiter = start_actor(|\n|actorSystem,|\n|_'waiter'_,|\n|waiterActor,|\n|{ pieCase:pieCase});|\n|**let**c1 = start_actor(actorSystem,_'customer1'_,|\n|customerActor, { waiter: waiter });|\n|**let**c2 = start_actor(actorSystem,_'customer2'_,|\n|customerActor, {waiter: waiter});|\n\nAnd finally we kick it off. Our customers are greedy. Customer 1 asks for three slices of pie, and customer 2 asks for two:",
+     "chapter": 6,
+     "topic": 35,
+     "topic_title": "Actors and Processes",
+     "page_book": 309,
+     "type": "list"
+    }
+   ]
+  },
+  "q013": {
+   "id": "q013",
+   "question": "What is programming by coincidence and why is it dangerous? What specific types of accidents do the authors list?",
+   "gold_topics": [
+    38
+   ],
+   "top8ids": [
+    "ch_0591",
+    "ch_0592",
+    "ch_0598",
+    "ch_0593",
+    "ch_0570",
+    "ch_0600",
+    "ch_0599",
+    "ch_0474"
+   ],
+   "top8topics": [
+    38,
+    38,
+    38,
+    38,
+    36,
+    38,
+    38,
+    31
+   ],
+   "dt_ms": 89.12,
+   "chunks": [
+    {
+     "id": "ch_0591",
+     "text": "As developers, we also work in minefields. There are hundreds of traps waiting to catch us each day. Remembering the soldier's tale, we should be wary of drawing false conclusions. We should avoid programming by coincidence—relying on luck and accidental successes—in favor of _programming deliberately_ .\n\n#### **HOW TO PROGRAM BY COINCIDENCE**\n\nSuppose Fred is given a programming assignment. Fred types in some code, tries it, and it seems to work. Fred types in some more code, tries it, and it still seems to work. After several weeks of coding this way, the program suddenly stops working, and after hours of trying to fix it, he still doesn't know why. Fred",
+     "chapter": 7,
+     "topic": 38,
+     "topic_title": "Programming by Coincidence",
+     "page_book": 334,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0592",
+     "text": "may well spend a significant amount of time chasing this piece of code around without ever being able to fix it. No matter what he does, it just doesn't ever seem to work right.\n\nFred doesn't know why the code is failing because _he didn't know why it worked in the first place_ . It seemed to work, given the limited \"testing'' that Fred did, but that was just a coincidence. Buoyed by false confidence, Fred charged ahead into oblivion. Now, most intelligent people may know someone like Fred, but _we_ know better. We don't rely on coincidences— do we?\n\nSometimes we might. Sometimes it can be pretty easy to confuse a happy coincidence with a purposeful plan. Let's look at a few examples.\n\n##### **Accidents of Implementation**",
+     "chapter": 7,
+     "topic": 38,
+     "topic_title": "Programming by Coincidence",
+     "page_book": 334,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0598",
+     "text": "Russian leader being bald or hairy, in some domains we think that way all the time. Gamblers imagine patterns in lottery numbers, dice games, or roulette, when in fact these are statistically independent events. In finance, stock and bond trading are similarly rife with coincidence instead of actual, discernible patterns.\n\nA log file that shows an intermittent error every 1,000 requests may be a difficult-to-diagnose race condition, or may be a plain old bug. Tests that seem to pass on your machine but not on the server might indicate a difference between the two environments, or maybe it's just a coincidence.\n\nDon't assume it, prove it.\n\n##### **Accidents of Context**",
+     "chapter": 7,
+     "topic": 38,
+     "topic_title": "Programming by Coincidence",
+     "page_book": 334,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0593",
+     "text": "Accidents of implementation are things that happen simply because that's the way the code is currently written. You end up relying on undocumented error or boundary conditions.\n\nSuppose you call a routine with bad data. The routine responds in a particular way, and you code based on that response. But the author didn't intend for the routine to work that way—it was never even considered. When the routine gets \"fixed,'' your code may break. In the most extreme case, the routine you called may not even be designed to do what you want, but it _seems_ to work okay. Calling things in the wrong order, or in the wrong context, is a related problem.\n\nHere it looks like Fred is desperately trying to get something out on the screen using some particular GUI rendering framework:",
+     "chapter": 7,
+     "topic": 38,
+     "topic_title": "Programming by Coincidence",
+     "page_book": 334,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0570",
+     "text": "But listening to your instincts doesn't mean you can just fly on autopilot. Developers who don't actively think about their code are programming by coincidence—the code might work, but\n\nthere's no particular reason why. In Topic 38, _<u>Programming by Coincidence</u>_ <u>, we advocate a more positive involvement with the</u> coding process.\n\nWhile most of the code we write executes quickly, we occasionally develop algorithms that have the potential to bog down even the fastest processors. In Topic 39, _<u>Algorithm Speed</u>_ , we discuss ways to estimate the speed of code, and we give some tips on how to spot potential problems before they happen.",
+     "chapter": 6,
+     "topic": 36,
+     "topic_title": "Blackboards",
+     "page_book": 317,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0600",
+     "text": "Finding an answer that happens to fit is not the same as the\n\nright answer.\n\n> **Tip 62** Don't Program by Coincidence\n\n##### **Implicit Assumptions**\n\nCoincidences can mislead at all levels—from generating requirements through to testing. Testing is particularly fraught with false causalities and coincidental outcomes. It's easy to assume that _X_ causes _Y_ , but as we said in Topic 20, _<u>Debugging</u>_ <u>:</u> don't assume it, prove it.\n\nAt all levels, people operate with many assumptions in mind— but these assumptions are rarely documented and are often in conflict between different developers. Assumptions that aren't based on well-established facts are the bane of all projects.\n\n#### **HOW TO PROGRAM DELIBERATELY**",
+     "chapter": 7,
+     "topic": 38,
+     "topic_title": "Programming by Coincidence",
+     "page_book": 334,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0599",
+     "text": "You can have \"accidents of context\" as well. Suppose you are writing a utility module. Just because you are currently coding for a GUI environment, does the module have to rely on a GUI being present? Are you relying on English-speaking users? Literate users? What else are you relying on that isn't guaranteed?\n\nAre you relying on the current directory being writable? On certain environment variables or configuration files being present? On the time on the server being accurate—within what tolerance? Are you relying on network availability and speed?\n\nWhen you copied code from the first answer you found on the net, are you sure your context is the same? Or are you building \"cargo cult\" code, merely imitating form without content?[52]",
+     "chapter": 7,
+     "topic": 38,
+     "topic_title": "Programming by Coincidence",
+     "page_book": 334,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0474",
+     "text": "**Topic 31**\n\nInheritance Tax\n\n_You wanted a banana but what you got was a gorilla holding the banana and the entire jungle._\n\nDo you program in an objectoriented language? Do you use inheritance?\n\nIf so, stop! It probably isn't what you want to do.\n\nLet's see why.\n\n_Joe Armstrong_\n\n#### **SOME BACKGROUND**\n\nInheritance first appeared in Simula 67 in 1969. It was an elegant solution to the problem of queuing multiple types of events on the same list. The Simula approach was to use something called _prefix classes_ . You could write something like this:\n\nlink CLASS car; <mark>... implementation of car link CLASS bicycle;</mark> ... implementation of bicycle",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "prose"
+    }
+   ]
+  },
+  "q014": {
+   "id": "q014",
+   "question": "The book advises that at the start of a project you should gather complete requirements, write them down in a detailed document, and give the document to the client for signing, to avoid later changes. Is that correct?",
+   "gold_topics": [
+    45
+   ],
+   "top8ids": [
+    "ch_0751",
+    "ch_0749",
+    "ch_0750",
+    "ch_0753",
+    "ch_0185",
+    "ch_0748",
+    "ch_0649",
+    "ch_0752"
+   ],
+   "top8topics": [
+    45,
+    45,
+    45,
+    45,
+    14,
+    45,
+    41,
+    45
+   ],
+   "dt_ms": 91.18,
+   "chunks": [
+    {
+     "id": "ch_0751",
+     "text": "Submit a 200-page requirements document, and the client will likely heft it to decide if it weighs enough to be important, they may read the first couple of paragraphs (which is why the first two paragraphs are always titled _Management Summary_ ), and they may flick through the rest, sometimes stopping when there's a neat diagram.\n\nThis isn't putting the client down. But giving them a large technical document is like giving the average developer a copy of the _Iliad_ in Homeric Greek and asking them to code the video game from it.\n\n##### **Requirements Documents Are for Planning**",
+     "chapter": 8,
+     "topic": 45,
+     "topic_title": "The Requirements Pit",
+     "page_book": 405,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0749",
+     "text": "##### **Requirements Documents Are Not for Clients**\n\nIn the past, both Andy and Dave have been on projects that produced incredibly detailed requirements. These substantial documents expanded on the client's initial two-minute explanation of what was wanted, producing inch-thick masterpieces full of diagrams and tables. Things were specified to the point where there was almost no room for ambiguity in the implementation. Given sufficiently powerful tools, the document could actually _be_ the final program.\n\nCreating these documents was a mistake for two reasons. First, as we've discussed, the client doesn't really know what they want up front. So when we take what they say and expand it into what is almost a legal document, we are building an incredibly complex castle on quicksand.",
+     "chapter": 8,
+     "topic": 45,
+     "topic_title": "The Requirements Pit",
+     "page_book": 405,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0750",
+     "text": "You might say \"but then we take the document to the client and they sign off on it. We're getting feedback.\" And that leads us to the second problem with these requirement specifications: the client never reads them.\n\nThe client uses programmers because, while the client is motivated by solving a high-level and somewhat nebulous problem, programmers are interested in all the details and\n\nnuances. The requirements document is written for developers, and contains information and subtleties that are sometimes incomprehensible and frequently boring to the client.",
+     "chapter": 8,
+     "topic": 45,
+     "topic_title": "The Requirements Pit",
+     "page_book": 405,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0753",
+     "text": "application. You'd be right. And that's part of the point. By keeping this statement of requirements short, you're encouraging developers to ask clarifying questions. You're enhancing the feedback process between clients and coders before and during the creation of each piece of code.\n\n#### **OVERSPECIFICATION**\n\nAnother big danger in producing a requirements document is being too specific. Good requirements are abstract. Where requirements are concerned, the simplest statement that accurately reflects the business need is best. This doesn't mean you can be vague—you must capture the underlying semantic invariants as requirements, and document the specific or current work practices as policy.",
+     "chapter": 8,
+     "topic": 45,
+     "topic_title": "The Requirements Pit",
+     "page_book": 405,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0185",
+     "text": "So when you force a business person to sign off on a requirements document, or get them to agree to a set of Cucumber features, you're doing the equivalent of getting them to check the spelling in an essay written in Sumerian. They'll make some random changes to save face and sign it off to get you out of their office.\n\nGive them code that runs, however, and they can play with it. That's where their real needs will surface.\n\n##### **Phoenix Routes**\n\nMany web frameworks have a routing facility, mapping incoming HTTP requests onto handler functions in the code. Here's an example from Phoenix.[21]",
+     "chapter": 2,
+     "topic": 14,
+     "topic_title": "Domain Languages",
+     "page_book": 124,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0748",
+     "text": "This example also illustrates our belief that successful tools adapt to the hands that use them. Successful requirements gathering takes this into account. And this is why early feedback, with prototypes or tracer bullets, will let your clients say \"yes, it does _what_ I want, but not _how_ I want.\"\n\n#### **DOCUMENTING REQUIREMENTS**\n\nWe believe that the best requirements documentation, perhaps\n\nthe _only_ requirements documentation, is working code.\n\nBut that doesn't mean that you can get away without documenting your understanding of what the client wants. It just means that those documents are not a deliverable: they are not something that you give to a client to sign off on. Instead, they are simply mileposts to help guide the implementation process.",
+     "chapter": 8,
+     "topic": 45,
+     "topic_title": "The Requirements Pit",
+     "page_book": 405,
+     "type": "code"
+    },
+    {
+     "id": "ch_0649",
+     "text": "- They have lots of redundant tests. For example, before writing a class for the first time, many TDD adherents will first write a failing test that simply references the class's name. It fails, then they write an empty class definition and it passes. But now you have a test that does absolutely nothing; the next test you write will also reference the class, and so it makes the first unnecessary. There's more stuff to change if the class name changes later. And this is just a trivial example.\n\n- Their designs tend to start at the bottom and work their way up. (See _Bottom-Up vs. Top-Down vs. The Way You Should Do It_ .)\n\n###### **Bottom-Up vs. Top-Down vs. The Way You Should Do It**",
+     "chapter": 7,
+     "topic": 41,
+     "topic_title": "Test to Code",
+     "page_book": 361,
+     "type": "code"
+    },
+    {
+     "id": "ch_0752",
+     "text": "So we don't believe in the monolithic, heavy-enough-to-stunan-ox, requirements document. We do, however, know that requirements have to be written down, simply because developers on a team need to know what they'll be doing.\n\nWhat form does this take? We favor something that can fit on a real (or virtual) index card. These short descriptions are often called _user stories_ . They describe what a small portion of the application should do from the perspective of a user of that functionality.\n\nWhen written this way, the requirements can be placed on a board and moved around to show both status and priority.\n\nYou might think that a single index card can't hold the information needed to implement a component of the",
+     "chapter": 8,
+     "topic": 45,
+     "topic_title": "The Requirements Pit",
+     "page_book": 405,
+     "type": "prose"
+    }
+   ]
+  },
+  "q015": {
+   "id": "q015",
+   "question": "What is the Pragmatic Starter Kit, and why do the authors claim that its three elements are inseparably linked? How do they connect with the rest of the book?",
+   "gold_topics": [
+    51,
+    11,
+    12,
+    17,
+    19,
+    41,
+    42,
+    48,
+    50
+   ],
+   "top8ids": [
+    "ch_0826",
+    "ch_0824",
+    "ch_0303",
+    "ch_0793",
+    "ch_0843",
+    "ch_0305",
+    "ch_0794",
+    "ch_0823"
+   ],
+   "top8topics": [
+    51,
+    51,
+    21,
+    48,
+    51,
+    21,
+    49,
+    50
+   ],
+   "dt_ms": 94.49,
+   "chunks": [
+    {
+     "id": "ch_0826",
+     "text": "basic, most important elements that _every_ team needs regardless of methodology, language, or technology stack. And so the idea of the _Pragmatic Starter Kit_ was born, covering these three critical and interrelated topics:\n\nVersion Control\n\nRegression Testing\n\nFull Automation\n\nThese are the three legs that support every project. Here's how.\n\n#### **DRIVE WITH VERSION CONTROL**\n\nAs we said in Topic 19, _<u>Version Control</u>_ <u>, you want to keep</u> everything needed to build your project under version control. That idea becomes even more important in the context of the project itself.",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0824",
+     "text": "**Topic 51**\n\n#### Pragmatic Starter Kit\n\n_Civilization advances by extending the number of important operations we can perform without thinking._\n\n_Alfred North Whitehead_\n\nBack when cars were a novelty, the instructions for starting a Model-T Ford were more than two pages long. With modern cars, you just push a button—the starting procedure is automatic and foolproof. A person following a list of instructions might flood the engine, but the automatic starter won't.",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0303",
+     "text": "> **Tip 35** Learn a Text Manipulation Language\n\nTo show the wide-ranging applicability of text manipulation languages, here's a sample of some stuff we've done with Ruby and Python just related to the creation of this book:\n\n_Building the Book_\n\nThe build system for the Pragmatic Bookshelf is written in Ruby. Authors, editors, layout people, and support folks use Rake tasks to coordinate the building of PDFs and ebooks.\n\n##### _Code inclusion and highlighting_\n\nWe think it is important that any code presented in a book should have been tested first. Most of the code in this book has been. However, using the DRY principle (see Topic 9, _<u>DRY—The Evils of Duplication</u>_ <u>) we didn't</u> want to copy and paste lines of code from the tested programs into the book. That would mean we'd be",
+     "chapter": 3,
+     "topic": 21,
+     "topic_title": "Text Manipulation",
+     "page_book": 181,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0793",
+     "text": "And of course none of that matters if you can't deliver software consistently and reliably. That's the basis of the magic trio of version control, testing, and automation: the Topic 51, _<u>Pragmatic Starter Kit</u>_ .\n\nUltimately, though, success is in the eye of the beholder—the sponsor of the project. The perception of success is what counts, and in Topic 52, _<u>Delight Your Users</u>_ we'll show you how to delight every project's sponsor.\n\nThe last tip in the book is a direct consequence of all the rest. In Topic 53, _<u>Pride and Prejudice</u>_ <u>, we ask you to sign your work,</u> and to take pride in what you do.",
+     "chapter": 8,
+     "topic": 48,
+     "topic_title": "The Essence of Agility",
+     "page_book": 429,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0843",
+     "text": "- Are your nightly or continuous builds automatic, but deploying to production isn't? Why? What's special about that server?\n\n- Can you automatically test your project completely? Many teams are forced to answer \"no.\" Why? Is it too hard to define the acceptable results? Won't this make it hard to prove to the sponsors that the project is \"done\"?\n\n- Is it too hard to test the application logic independent of the GUI? What does this say about the GUI? About coupling?",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "list"
+    },
+    {
+     "id": "ch_0305",
+     "text": "There's a Python script that converts LaTeX math markup into nicely formatted text.\n\n_Index generation_\n\nMost indexes are created as separate documents (which makes maintaining them difficult if a document changes). Ours are marked up in the text itself, and a Ruby script collates and formats the entries.\n\nAnd so on. In a very real way, the Pragmatic Bookshelf is built around text manipulation. And if you follow our advice to keep things in plain text, then using these languages to manipulate that text will bring a whole host of benefits.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 16, _The Power of Plain Text_\n\nTopic 17, _Shell Games_\n\n#### **EXERCISES**\n\n#### **Exercise 11**",
+     "chapter": 3,
+     "topic": 21,
+     "topic_title": "Text Manipulation",
+     "page_book": 181,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0794",
+     "text": "**Topic 49**\n\n#### Pragmatic Teams\n\n_At Group L, Stoffel oversees six first-rate programmers, a managerial challenge roughly comparable to herding cats._\n\n_The Washington Post Magazine, June 9, 1985_\n\nEven in 1985, the joke about herding cats was getting old. By the time of the first edition at the turn of the century, it was positively ancient. Yet it persists, because it has a ring of truth to it. Programmers are a bit like cats: intelligent, strong willed, opinionated, independent, and often worshiped by the net.\n\nSo far in this book we've looked at pragmatic techniques that help an",
+     "chapter": 9,
+     "topic": 49,
+     "topic_title": "Pragmatic Teams",
+     "page_book": 437,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0823",
+     "text": "- Topic 27, _Don't Outrun Your Headlights_\n\n- Topic 48, _The Essence of Agility_\n\n- Topic 49, _Pragmatic Teams_\n\n- Topic 51, _Pragmatic Starter Kit_",
+     "chapter": 9,
+     "topic": 50,
+     "topic_title": "Coconuts Don’t Cut It",
+     "page_book": 446,
+     "type": "list"
+    }
+   ]
+  },
+  "u001": {
+   "id": "u001",
+   "question": "How do you configure an ingress controller and a horizontal pod autoscaler in Kubernetes for a microservices application?",
+   "gold_topics": [],
+   "top8ids": [
+    "ch_0495",
+    "ch_0264",
+    "ch_0842",
+    "ch_0039",
+    "ch_0822",
+    "ch_0168",
+    "ch_0412",
+    "ch_0214"
+   ],
+   "top8topics": [
+    32,
+    19,
+    51,
+    5,
+    50,
+    12,
+    28,
+    15
+   ],
+   "dt_ms": 87.69,
+   "chunks": [
+    {
+     "id": "ch_0495",
+     "text": "> **Topic 32** Configuration\n\nWhen code relies on values that may change after the application has gone live, keep those values external to the app. When your application will run in different environments, and potentially for different customers, keep the environment- and customerspecific values outside the app. In this way, you're parameterizing\n\n_Let all your things have their places; let each part of your business have its time._\n\n> _Benjamin Franklin, Thirteen_ environment- and customer- _Virtues, autobiography_ specific values outside the app. In this way, you're parameterizing your application; the code adapts to the places it runs.\n\nParameterize Your App Using External **Tip 55** Configuration\n\nCommon things you will probably want to put in configuration data include:",
+     "chapter": 5,
+     "topic": 32,
+     "topic_title": "Configuration",
+     "page_book": 284,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0264",
+     "text": "The Ansible script used to configure apps All current projects\n\nThe machine was restored by the end of the afternoon.\n\n#### **VERSION CONTROL AS A PROJECT HUB**\n\nAlthough version control is incredibly useful on personal projects, it really comes into its own when working with a team. And much of this value comes from how you host your repository.\n\nNow, many version control systems don't need any hosting. They are completely decentralized, with each developer cooperating on a peer-to-peer basis. But even with these systems, it's worth looking into having a central repository, because once you do, you can take advantage of a ton of integrations to make the project flow easier.",
+     "chapter": 3,
+     "topic": 19,
+     "topic_title": "Version Control",
+     "page_book": 161,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0842",
+     "text": "Everything depends on automation. You can't build the project on an anonymous cloud server unless the build is fully automatic. You can't deploy automatically if there are manual steps involved. And once you introduce manual steps (\"just for this one part…\") you've broken a very large window ~~.~~ <u>[83]</u>\n\nWith these three legs of version control, ruthless testing, and full automation, your project will have the firm foundation you need so you can concentrate on the hard part: delighting users.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 11, _Reversibility_\n\n- Topic 12, _Tracer Bullets_\n\n- Topic 17, _Shell Games_\n\n- Topic 19, _Version Control_\n\n- Topic 41, _Test to Code_\n\n- Topic 49, _Pragmatic Teams_\n\n- Topic 50, _<u>Coconuts Don't Cut It</u>_\n\n#### **CHALLENGES**",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0039",
+     "text": "- Look at the software tools and operating systems that you use regularly. Can you find any evidence that these organizations and/or developers are comfortable shipping software they know is not perfect? As a user, would you rather (1) wait for them to get all the bugs out, (2) have complex software and accept some bugs, or (3) opt for simpler software with fewer defects?\n\n- Consider the effect of modularization on the delivery of software. Will it take more or less time to get a tightly coupled monolithic block of software to the required quality compared with a system designed as very loosely coupled modules or microservices? What are the advantages or disadvantages of each approach?",
+     "chapter": 1,
+     "topic": 5,
+     "topic_title": "Good-Enough Software",
+     "page_book": 50,
+     "type": "list"
+    },
+    {
+     "id": "ch_0822",
+     "text": "Once your infrastructure is in order, you need to decide how to\n\norganize the work. Beginners might want to start with Scrum for project management, plus the technical practices from eXtreme Programming (XP). More disciplined and experienced teams might look to Kanban and Lean techniques, both for the team and perhaps for larger governance issues.\n\nBut don't take our word for it, investigate and try these approaches for yourself. Be careful, though, in overdoing it. Overly investing in any particular methodology can leave you blind to alternatives. You get used to it. Soon it becomes hard to see any other way. You've become calcified, and now you can't adapt quickly anymore.\n\nMight as well be using coconuts.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 12, _Tracer Bullets_",
+     "chapter": 9,
+     "topic": 50,
+     "topic_title": "Coconuts Don’t Cut It",
+     "page_book": 446,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0168",
+     "text": "The tracer code approach addresses a different problem. You need to know how the application as a whole hangs together. You want to show your users how the interactions will work in practice, and you want to give your developers an architectural skeleton on which to hang code. In this case, you might construct a tracer consisting of a trivial implementation of the container packing algorithm (maybe something like first-come, first-served) and a simple but working user interface. Once you have all the components in the application plumbed together, you have a framework to show your users and your developers. Over time, you add to this framework with new functionality,",
+     "chapter": 2,
+     "topic": 12,
+     "topic_title": "Tracer Bullets",
+     "page_book": 109,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0412",
+     "text": "means that your global data has a bit of intelligence behind it. If you decide to change the representation of log levels, you can maintain compatibility by mapping between the new and old in the Config API. But you still have only the one set of configuration data.\n\n##### **Global Data Includes External Resources**\n\nAny mutable external resource is global data. If your application uses a database, datastore, file system, service API, and so on, it risks falling into the globalization trap. Again, the solution is to make sure you always wrap these resources behind code that you control.\n\nIf It's Important Enough to Be Global, Wrap It in **Tip 48** an API\n\n#### **INHERITANCE ADDS COUPLING**",
+     "chapter": 5,
+     "topic": 28,
+     "topic_title": "Decoupling",
+     "page_book": 228,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0214",
+     "text": "Initially, you may have only a vague idea of how many iterations will be required, or how long they may be. Some methods require you to nail this down as part of the initial plan; however, for all but the most trivial of projects this is a mistake. Unless you are doing an application similar to a previous one, with the same team and the same technology, you'd just be guessing.",
+     "chapter": 2,
+     "topic": 15,
+     "topic_title": "Estimating",
+     "page_book": 133,
+     "type": "prose"
+    }
+   ]
+  },
+  "u002": {
+   "id": "u002",
+   "question": "What are the best practices for using the useEffect and useMemo hooks in React 18 to prevent unnecessary re-renders?",
+   "gold_topics": [],
+   "top8ids": [
+    "ch_0433",
+    "ch_0731",
+    "ch_0010",
+    "ch_0438",
+    "ch_0753",
+    "ch_0150",
+    "ch_0819",
+    "ch_0546"
+   ],
+   "top8topics": [
+    29,
+    44,
+    2,
+    29,
+    45,
+    11,
+    50,
+    35
+   ],
+   "dt_ms": 85.14,
+   "chunks": [
+    {
+     "id": "ch_0433",
+     "text": "There are many frameworks that can help with this kind of data-level reactivity: in the realm of the browser React and Vue.js are current favorites (but, this being JavaScript, this information will be out-of-date before this book is even printed).\n\nIt's clear that events can also be used to trigger reactions in code, but it isn't necessarily easy to plumb them in. That's where _streams_ come in.",
+     "chapter": 5,
+     "topic": 29,
+     "topic_title": "Juggling the Real World",
+     "page_book": 239,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0731",
+     "text": "and regardless of which \"best practices\" it includes, no method can replace _thinking_ . You don't need any particular process or tool, what you do need is the Topic 48, _<u>The Essence of Agility</u>_ .\n\nWith these critical issues sorted out _before_ the project gets under way, you can be better positioned to avoid \"analysis paralysis\" and actually begin—and complete—your successful project.",
+     "chapter": 7,
+     "topic": 44,
+     "topic_title": "Naming Things",
+     "page_book": 395,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0010",
+     "text": "Instead of excuses, provide options. Don't say it can't be done; explain what _can_ be done to salvage the situation. Does code have to be deleted? Tell them so, and explain the value of refactoring (see Topic 40, _<u>Refactoring</u>_ <u>).</u>\n\nDo you need to spend time prototyping to determine the best way to proceed (see Topic 13, _<u>Prototypes and Post-it Notes</u>_ <u>)? Do</u> you need to introduce better testing (see Topic 41, _<u>Test to Code</u>_ <u>,</u> and _<u>Ruthless and Continuous Testing</u>_ ) or automation to prevent it from happening again?\n\nPerhaps you need additional resources to complete this task. Or",
+     "chapter": 1,
+     "topic": 2,
+     "topic_title": "The Cat Ate My Source Code",
+     "page_book": 38,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0438",
+     "text": "Event streams are normally populated as events occur, which implies that the observables that populate them can run in parallel. Here's an example that fetches information about users from a remote site. For this we'll use <u>https://reqres.in, a public</u> site that provides an open REST interface. As part of its API, we can fetch data on a particular (fake) user by performing a GET request to users/«id». Our code fetches the users with the IDs 3, 2, and 1:\n\n|event/rx1/index.js|\n|---|\n|**import*as**Observable**from** _'rxjs'_|\n|**import**{ mergeMap }**from** _'rxjs/operators'_|\n|**import**{ ajax }**from** _'rxjs/ajax'_|\n\n**import** { logValues } **from** _\"../rxcommon/logger.js\"_\n\n**<mark>let</mark>** <mark>users = Observable.</mark> **<mark>of</mark>** <mark>(3, 2, 1)</mark>",
+     "chapter": 5,
+     "topic": 29,
+     "topic_title": "Juggling the Real World",
+     "page_book": 239,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0753",
+     "text": "application. You'd be right. And that's part of the point. By keeping this statement of requirements short, you're encouraging developers to ask clarifying questions. You're enhancing the feedback process between clients and coders before and during the creation of each piece of code.\n\n#### **OVERSPECIFICATION**\n\nAnother big danger in producing a requirements document is being too specific. Good requirements are abstract. Where requirements are concerned, the simplest statement that accurately reflects the business need is best. This doesn't mean you can be vague—you must capture the underlying semantic invariants as requirements, and document the specific or current work practices as policy.",
+     "chapter": 8,
+     "topic": 45,
+     "topic_title": "The Requirements Pit",
+     "page_book": 405,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0150",
+     "text": "How can you plan for this kind of architectural volatility? You can't.\n\nWhat you can do is make it easy to change. Hide third-party APIs behind your own abstraction layers. Break your code into components: even if you end up deploying them on a single massive server, this approach is a lot easier than taking a monolithic application and splitting it. (We have the scars to prove it.)\n\nAnd, although this isn't particularly a reversibility issue, one final piece of advice.\n\n#### **Tip 19** Forgo Following Fads\n\nNo one knows what the future may hold, especially not us! So enable your code to rock-n-roll: to \"rock on'' when it can, to roll with the punches when it must.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 8, _The Essence of_ _<u>Good Design</u>_\n\n- Topic 10, _<u>Orthogonality</u>_",
+     "chapter": 2,
+     "topic": 11,
+     "topic_title": "Reversibility",
+     "page_book": 104,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0819",
+     "text": "Instead, you want to take the best pieces from any particular methodology and adapt them for use. No one size fits all, and current methods are far from complete, so you'll need to look at more than just one popular method.\n\nFor example, Scrum defines some project management\n\npractices, but Scrum by itself doesn't provide enough guidance at the technical level for teams or at the portfolio/governance level for leadership. So where do you start?\n\n###### **Be Like Them!**\n\nWe frequently hear software development leaders tell their staff, \"We should operate like Netflix\" (or one of these other leading companies). Of course you _could_ do that.\n\nFirst, get yourself a few hundred thousand servers and tens of millions of users...\n\n#### **THE REAL GOAL**",
+     "chapter": 9,
+     "topic": 50,
+     "topic_title": "Coconuts Don’t Cut It",
+     "page_book": 446,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0546",
+     "text": "concurrency/actors/index.js **const** waiterActor = { _<mark>\"order\"</mark>_ <mark>: (msg, ctx, state) => {</mark> **if** (msg.wants == _\"pie\"_ ) { <mark>dispatch(state.pieCase,</mark> { type: _\"get slice\"_ , customer: msg.customer, waiter: ctx.self }) <mark>}</mark> **else** { <mark>console.dir(</mark> _`_ _<mark>Don't know how to order</mark>_ <mark>${msg.wants}</mark> _`_ <mark>);</mark> } <mark>},</mark> _<mark>\"add to order\"</mark>_ <mark>: (msg, ctx) =></mark> console.log( _`Waiter adds_ ${msg.food} _to_ ${msg.customer.name} _'s order`_ ), _\"error\"_ : (msg, ctx) => { <mark>dispatch(msg.customer, { type:</mark> _<mark>'no pie left'</mark>_ <mark>, msg: msg.msg });</mark> console.log( _`\\nThe waiter apologizes to_ ${msg.customer.name} _:_ ${msg.msg} _`_ ) <mark>}</mark> <u><mark>};</mark></u>",
+     "chapter": 6,
+     "topic": 35,
+     "topic_title": "Actors and Processes",
+     "page_book": 309,
+     "type": "prose"
+    }
+   ]
+  },
+  "u003": {
+   "id": "u003",
+   "question": "How do you implement secure authorization with JWT tokens and a refresh-token mechanism in the OAuth 2.0 protocol?",
+   "gold_topics": [],
+   "top8ids": [
+    "ch_0711",
+    "ch_0712",
+    "ch_0338",
+    "ch_0486",
+    "ch_0702",
+    "ch_0708",
+    "ch_0487",
+    "ch_0699"
+   ],
+   "top8topics": [
+    43,
+    43,
+    23,
+    31,
+    43,
+    43,
+    31,
+    43
+   ],
+   "dt_ms": 86.57,
+   "chunks": [
+    {
+     "id": "ch_0711",
+     "text": "Beyond simple encryption tasks, take a hard look at other security-related features of your site or application. Take authentication, for instance.\n\nIn order to implement your own login with password or biometric authentication, you need to understand how hashes and salts work, how crackers use things like Rainbow tables, why you shouldn't use MD5 or SHA1, and a host of other concerns. And even if you get all that right, at the end of the day you're still responsible for holding onto the data and keeping it secure, subject to whatever new legislation and legal obligations come up.",
+     "chapter": 7,
+     "topic": 43,
+     "topic_title": "Stay Safe Out There",
+     "page_book": 385,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0712",
+     "text": "Or, you could take the Pragmatic approach and let someone else worry about it and use a third-party authentication provider. This may be an off-the-shelf service you run in-house, or it could be a third party in the cloud. Authentication services are\n\noften available from email, phone, or social media providers, which may or may not be appropriate for your application. In any case, these folks spend all their days keeping their systems secure, and they're better at it than you are.\n\nStay safe out there.\n\n**RELATED SECTIONS INCLUDE**\n\n- Topic 23, _Design by_ _<u>Contract</u>_\n\n- Topic 24, _Dead Programs Tell No Lies_\n\n- Topic 25, _Assertive Programming_\n\n- Topic 38, _Programming by_ _<u>Coincidence</u>_\n\n- Topic 45, _The Requirements Pit_",
+     "chapter": 7,
+     "topic": 43,
+     "topic_title": "Stay Safe Out There",
+     "page_book": 385,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0338",
+     "text": "By expressing the domain of the square root function in the precondition of the sqrt routine, you shift the burden of correctness to the caller—where it belongs. You can then design the sqrt routine secure in the knowledge that its input will be in range.\n\n#### **DBC AND CRASHING EARLY**\n\nDBC fits in nicely with our concept of crashing early (see Topic 24, _<u>Dead Programs Tell No Lies</u>_ <u>). By using an assert or DBC</u>\n\nmechanism to validate the preconditions, postconditions, and invariants, you can crash early and report more accurate information about the problem.",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "code"
+    },
+    {
+     "id": "ch_0486",
+     "text": "We now expose _none_ of the framework API to the clients of our Account class: that decoupling is now broken. But there's more. Now that we're no longer constrained by the API of the framework we're using, we're free to create the API we need. Yes, we could do that before, but we always ran the risk that the interface _we_ wrote can be bypassed, and the persistence API used instead. Now we control everything.\n\n> **Tip 53** Delegate to Services: Has-A Trumps Is-A\n\nIn fact, we can take this a step further. Why should an Account have to know how to persist itself? Isn't its job to know and enforce the account business rules?\n\n**class** Account _<mark># nothing but account stuff</mark>_\n\n**end**",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0702",
+     "text": "This doesn't just apply to operating system privilege levels. Does your application implement different levels of access? Is it a blunt tool, such as \"administrator\" vs. \"user?\" If so, consider something more finely grained, where your sensitive resources are partitioned into different categories, and individual users have permissions for only certain of those categories.\n\nThis technique follows the same sort of idea as minimizing surface area—reducing the scope of attack vectors, both by time and by privilege level. In this case, less is indeed more.\n\n##### **Secure Defaults**",
+     "chapter": 7,
+     "topic": 43,
+     "topic_title": "Stay Safe Out There",
+     "page_book": 385,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0708",
+     "text": "You want to encourage long, random passwords with a high degree of entropy. Putting artificial constraints limits entropy and encourages bad password habits, leaving your user's accounts vulnerable to takeover.\n\n##### **Maintain Security Updates**\n\nUpdating computer systems can be a huge pain. You need that security patch, but as a side effect it breaks some portion of your application. You could decide to wait, and defer the update until later. That's a terrible idea, because now your system is vulnerable to a known exploit.\n\n#### **Tip 73** Apply Security Patches Quickly",
+     "chapter": 7,
+     "topic": 43,
+     "topic_title": "Stay Safe Out There",
+     "page_book": 385,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0487",
+     "text": "**class** AccountRecord _<mark># wraps an account with the ability</mark> # to be fetched and stored_ **<mark>end</mark>**\n\nNow we're really decoupled, but it has come at a cost. We're having to write more code, and typically some of it will be boilerplate: it's likely that all our record classes will need a find method, for example.\n\nFortunately, that's what mixins and traits do for us.\n\n**Mixins, Traits, Categories, Protocol Extensions, …** As an industry, we love to give things names. Quite often we'll give the same thing many names. More is better, right?",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0699",
+     "text": "_Authenticated services are an attack vector_\n\nKeep the number of authorized users at an absolute minimum. Cull unused, old, or outdated users and services. Many net-enabled devices have been found to contain simple default passwords or unused, unprotected administrative accounts. If an account with deployment\n\ncredentials is compromised, your entire product is compromised.\n\n_Output data is an attack vector_\n\nThere's a (possibly apocryphal) story about a system that dutifully reported the error message Password is used by another user. Don't give away information. Make sure that the data you report is appropriate for the authorization of that user. Truncate or obfuscate potentially risky information such as Social Security or other government ID numbers.",
+     "chapter": 7,
+     "topic": 43,
+     "topic_title": "Stay Safe Out There",
+     "page_book": 385,
+     "type": "prose"
+    }
+   ]
+  },
+  "u004": {
+   "id": "u004",
+   "question": "How do you secure a PostgreSQL database against SQL injection attacks using parameterized queries in SQLAlchemy?",
+   "gold_topics": [],
+   "top8ids": [
+    "ch_0159",
+    "ch_0642",
+    "ch_0727",
+    "ch_0158",
+    "ch_0641",
+    "ch_0335",
+    "ch_0486",
+    "ch_0657"
+   ],
+   "top8topics": [
+    12,
+    41,
+    44,
+    12,
+    41,
+    23,
+    31,
+    41
+   ],
+   "dt_ms": 83.8,
+   "chunks": [
+    {
+     "id": "ch_0159",
+     "text": "This was a great opportunity to use tracer code. We developed the framework for the front end, libraries for representing the queries, and a structure for converting a stored query into a database-specific query. Then we put it all together and checked that it worked. For that initial build, all we could do was submit\n\na query that listed all the rows in a table, but it proved that the UI could talk to the libraries, the libraries could serialize and unserialize a query, and the server could generate SQL from the result. Over the following months we gradually fleshed out this basic structure, adding new functionality by augmenting each component of the tracer code in parallel. When the UI added a new query type, the library grew and the SQL generation was made more sophisticated.",
+     "chapter": 2,
+     "topic": 12,
+     "topic_title": "Tracer Bullets",
+     "page_book": 109,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0642",
+     "text": "The answer is that you can't know that. No one can. But thinking about tests can make it more likely. Here's how that works.\n\nStart by imagining that you'd finished writing the function and now had to test it. How would you do that? Well, you'd want to use some test data, which probably means you want to work in a database you control. Now some frameworks can handle that for you, running tests against a test database, but in our case that means we should be passing the database instance into our function rather than using some global one, as that allows us to change it while testing:\n\n**<mark>def</mark>** <mark>return_avid_users(db)</mark> **<mark>do</mark>**",
+     "chapter": 7,
+     "topic": 41,
+     "topic_title": "Test to Code",
+     "page_book": 361,
+     "type": "code"
+    },
+    {
+     "id": "ch_0727",
+     "text": "- <u>[63]</u> Remember our good friend, little Bobby Tables (https://xkcd.com/327)? While you're reminiscing have a look at https://bobby-tables.com, which lists ways of sanitizing data passed to database queries.\n\n- <u>[64]</u> This technique has proven to be successful at the CPU chip level, where well-known exploits target debugging and administrative facilities. Once cracked, the entire machine is left exposed.\n\n- <u>[65]</u> _NIST Special Publication 800-63B: Digital Identity Guidelines: Authentication and Lifecycle Management_ , available free online at https://doi.org/10.6028/NIST.SP.80063b\n\n- <u>[66]</u> Unless you have a PhD in cryptography, and even then only with major peer review, extensive field trials with a bug bounty, and budget for long-term maintenance.",
+     "chapter": 7,
+     "topic": 44,
+     "topic_title": "Naming Things",
+     "page_book": 395,
+     "type": "list"
+    },
+    {
+     "id": "ch_0158",
+     "text": "images/layer-diagram-tracer.png\n\nWe once undertook a complex client-server database marketing project. Part of its requirement was the ability to specify and execute temporal queries. The servers were a range of relational and specialized databases. The client UI, written in random language A, used a set of libraries written in a different language to provide an interface to the servers. The user's query was stored on the server in a Lisp-like notation before being converted to optimized SQL just prior to execution. There were many unknowns and many different environments, and no one was too sure how the UI should behave.",
+     "chapter": 2,
+     "topic": 12,
+     "topic_title": "Tracer Bullets",
+     "page_book": 109,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0641",
+     "text": "So what do _we_ think is important about testing? And how do we think you should go about it?\n\nLet's start with the bold statement:\n\n> **Tip 66** Testing Is Not About Finding Bugs\n\nWe believe that the major benefits of testing happen when you think about and write the tests, not when you run them.\n\n#### **THINKING ABOUT TESTS**\n\nIt's a Monday morning and you settle in to start work on some new code. You have to write something that queries the database to return a list of people who watch more than 10 videos a week on your \"world's funniest dishwashing videos\" site.\n\nYou fire up your editor, and start by writing the function that performs the query:\n\n**def** return_avid_viewers **do** _<mark># ... hmmm ...</mark>_ **end**\n\nStop! How do you know that what you're about to do is a good thing?",
+     "chapter": 7,
+     "topic": 41,
+     "topic_title": "Test to Code",
+     "page_book": 361,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0335",
+     "text": "as they existed at the entry to a method. If you're using assertions to enforce contracts, you must add code to the precondition to save any information you'll want to use in the postcondition, if the language will even allow that. In the Eiffel language, where DBC was born, you can just use old _expression_ .\n\nFinally, conventional runtime systems and libraries are not designed to support contracts, so these calls are not checked. This is a big loss, because it is often at the boundary between your code and the libraries it uses that the most problems are detected (see Topic 24, _<u>Dead Programs Tell No Lies</u>_ for a more detailed discussion).\n\n###### **Who's Responsible?**",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0486",
+     "text": "We now expose _none_ of the framework API to the clients of our Account class: that decoupling is now broken. But there's more. Now that we're no longer constrained by the API of the framework we're using, we're free to create the API we need. Yes, we could do that before, but we always ran the risk that the interface _we_ wrote can be bypassed, and the persistence API used instead. Now we control everything.\n\n> **Tip 53** Delegate to Services: Has-A Trumps Is-A\n\nIn fact, we can take this a step further. Why should an Account have to know how to persist itself? Isn't its job to know and enforce the account business rules?\n\n**class** Account _<mark># nothing but account stuff</mark>_\n\n**end**",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0657",
+     "text": "Chip-level testing for hardware is roughly equivalent to _unit testing_ in software—testing done on each module, in isolation, to verify its behavior. We can get a better feeling for how a module will react in the big wide world once we have tested it throughly under controlled (even contrived) conditions.\n\nA software unit test is code that exercises a module. Typically, the unit test will establish some kind of artificial environment, then invoke routines in the module being tested. It then checks the results that are returned, either against known values or against the results from previous runs of the same test (regression testing).",
+     "chapter": 7,
+     "topic": 41,
+     "topic_title": "Test to Code",
+     "page_book": 361,
+     "type": "prose"
+    }
+   ]
+  },
+  "u005": {
+   "id": "u005",
+   "question": "What are the differences between git merge and git rebase, and in which situations is interactive rebase in Git discouraged within teams?",
+   "gold_topics": [],
+   "top8ids": [
+    "ch_0142",
+    "ch_0256",
+    "ch_0442",
+    "ch_0266",
+    "ch_0059",
+    "ch_0268",
+    "ch_0329",
+    "ch_0262"
+   ],
+   "top8topics": [
+    10,
+    19,
+    29,
+    19,
+    7,
+    19,
+    23,
+    19
+   ],
+   "dt_ms": 82.95,
+   "chunks": [
+    {
+     "id": "ch_0142",
+     "text": "class Split2 { <mark>constructor(line)        # splits a line</mark> def getField(n)          # returns nth field in current line <u><mark>}</mark></u>\n\n**Exercise 2** <u>(possible answer)</u>\n\nWhat are the differences in orthogonality between objectoriented and functional languages? Are these differences inherent in the languages themselves, or just in the way people use them?",
+     "chapter": 2,
+     "topic": 10,
+     "topic_title": "Orthogonality",
+     "page_book": 92,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0256",
+     "text": "Teams that do this are constantly messing up each other's work, losing changes, breaking builds, and getting into fist fights in the car park. It's like writing concurrent code with shared data and no synchronization mechanism. Use version control.\n\nBut there's more! Some folks _do_ use version control, and keep their main repository on a network or cloud drive. They reason that this is the best of both worlds: their files are accessible anywhere and (in the case of cloud storage) it's backed up off-site.",
+     "chapter": 3,
+     "topic": 19,
+     "topic_title": "Version Control",
+     "page_book": 161,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0442",
+     "text": "Which of these technologies (perhaps in combination) would be a good fit for the following situations:\n\n- If you receive three _network interface down_ events within five minutes, notify the operations staff.\n\n- If it is after sunset, and there is motion detected at the bottom of the stairs followed by motion detected at the top of the stairs, turn on the upstairs lights.\n\n- You want to notify various reporting systems that an order was completed.\n\n- In order to determine whether a customer qualifies for a car loan, the application needs to send requests to three backend services and wait for the responses.",
+     "chapter": 5,
+     "topic": 29,
+     "topic_title": "Juggling the Real World",
+     "page_book": 239,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0266",
+     "text": "Many teams have their VCS configured so that a push to a particular branch will automatically build the system, run the tests, and if successful deploy the new code into production.\n\nSound scary? Not when you realize you're using version control. You can always roll it back.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 11, _Reversibility_\n\n- Topic 49, _Pragmatic Teams_\n\n- Topic 51, _Pragmatic Starter Kit_\n\n#### **CHALLENGES**\n\n- Knowing you can roll back to any previous state using the VCS is one thing, but can you actually do it? Do you know the commands to do it properly? Learn them now, not when disaster strikes and you're under pressure.",
+     "chapter": 3,
+     "topic": 19,
+     "topic_title": "Version Control",
+     "page_book": 161,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0059",
+     "text": "As developers, we have to communicate on many levels. We spend hours in meetings, listening and talking. We work with end users, trying to understand their needs. We write code, which communicates our intentions to a machine and documents our thinking for future generations of developers. We write proposals and memos requesting and justifying resources, reporting our status, and suggesting new approaches. And we work daily within our teams to advocate our ideas, modify existing practices, and suggest new ones. A large part of our day is spent communicating, so we need to do it well.",
+     "chapter": 1,
+     "topic": 7,
+     "topic_title": "Communicate!",
+     "page_book": 63,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0268",
+     "text": "- Consciously explore the features of your current VCS and hosting provider that you're not using. If your team isn't using feature branches, experiment with introducing them. The same with pull/merge requests. Continuous integration. Build pipelines. Even continuous deployment. Look into the team communication tools, too: wikis, Kanban boards, and the like. You don't have to use any of it. But you do need to know what it does so you can make that decision.\n\nUse version control for nonproject things, too.",
+     "chapter": 3,
+     "topic": 19,
+     "topic_title": "Version Control",
+     "page_book": 161,
+     "type": "list"
+    },
+    {
+     "id": "ch_0329",
+     "text": "Is Design by Contract needed in a world where developers practice unit testing, testdriven development (TDD), property-based testing, or defensive programming?\n\nThe short answer is \"yes.\"\n\nDBC and testing are different approaches to the broader topic of program correctness. They both have value and both have uses in different situations. DBC offers several advantages over specific testing approaches:\n\nDBC doesn't require any setup or mocking\n\n- DBC defines the parameters for success or failure in _all_ cases, whereas testing can only target one specific case at a time\n\n- TDD and other testing happens only at \"test time\" within the build cycle. But DBC and assertions are forever: during design, development, deployment, and maintenance",
+     "chapter": 4,
+     "topic": 23,
+     "topic_title": "Design by Contract",
+     "page_book": 191,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0262",
+     "text": "One benefit of branches is the isolation they give you. If you develop feature A in one branch, and a teammate works on feature B in another, you're not going to interfere with each other.\n\nA second benefit, which may be surprising, is that branches are often at the heart of a team's project workflow.\n\nAnd this is where things get a little confusing. Version control branches and test organization have something in common: they both have thousands of people out there telling you how you should do it. And that advice is largely meaningless, because what they're really saying is \"this is what worked for me.\"\n\nSo use version control in your project, and if you bump into workflow issues, search for possible solutions. And remember to review and adjust what you're doing as you gain experience.",
+     "chapter": 3,
+     "topic": 19,
+     "topic_title": "Version Control",
+     "page_book": 161,
+     "type": "prose"
+    }
+   ]
+  },
+  "u006": {
+   "id": "u006",
+   "question": "How do you configure Docker multi-stage builds to minimize the size of the production image of a Node.js application?",
+   "gold_topics": [],
+   "top8ids": [
+    "ch_0206",
+    "ch_0150",
+    "ch_0843",
+    "ch_0842",
+    "ch_0827",
+    "ch_0810",
+    "ch_0180",
+    "ch_0828"
+   ],
+   "top8topics": [
+    15,
+    11,
+    51,
+    51,
+    51,
+    49,
+    13,
+    51
+   ],
+   "dt_ms": 85.32,
+   "chunks": [
+    {
+     "id": "ch_0206",
+     "text": "Once you have a model, you can decompose it into components. You'll need to discover the mathematical rules that describe how these components interact. Sometimes a component contributes a single value that is added into the result. Some components may supply multiplying factors, while others may be more complicated (such as those that simulate the arrival of traffic at a node).\n\nYou'll find that each component will typically have parameters that affect how it contributes to the overall model. At this stage, simply identify each parameter.\n\n##### **Give Each Parameter a Value**\n\nOnce you have the parameters broken out, you can go through and assign each one a value. You expect to introduce some",
+     "chapter": 2,
+     "topic": 15,
+     "topic_title": "Estimating",
+     "page_book": 133,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0150",
+     "text": "How can you plan for this kind of architectural volatility? You can't.\n\nWhat you can do is make it easy to change. Hide third-party APIs behind your own abstraction layers. Break your code into components: even if you end up deploying them on a single massive server, this approach is a lot easier than taking a monolithic application and splitting it. (We have the scars to prove it.)\n\nAnd, although this isn't particularly a reversibility issue, one final piece of advice.\n\n#### **Tip 19** Forgo Following Fads\n\nNo one knows what the future may hold, especially not us! So enable your code to rock-n-roll: to \"rock on'' when it can, to roll with the punches when it must.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 8, _The Essence of_ _<u>Good Design</u>_\n\n- Topic 10, _<u>Orthogonality</u>_",
+     "chapter": 2,
+     "topic": 11,
+     "topic_title": "Reversibility",
+     "page_book": 104,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0843",
+     "text": "- Are your nightly or continuous builds automatic, but deploying to production isn't? Why? What's special about that server?\n\n- Can you automatically test your project completely? Many teams are forced to answer \"no.\" Why? Is it too hard to define the acceptable results? Won't this make it hard to prove to the sponsors that the project is \"done\"?\n\n- Is it too hard to test the application logic independent of the GUI? What does this say about the GUI? About coupling?",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "list"
+    },
+    {
+     "id": "ch_0842",
+     "text": "Everything depends on automation. You can't build the project on an anonymous cloud server unless the build is fully automatic. You can't deploy automatically if there are manual steps involved. And once you introduce manual steps (\"just for this one part…\") you've broken a very large window ~~.~~ <u>[83]</u>\n\nWith these three legs of version control, ruthless testing, and full automation, your project will have the firm foundation you need so you can concentrate on the hard part: delighting users.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 11, _Reversibility_\n\n- Topic 12, _Tracer Bullets_\n\n- Topic 17, _Shell Games_\n\n- Topic 19, _Version Control_\n\n- Topic 41, _Test to Code_\n\n- Topic 49, _Pragmatic Teams_\n\n- Topic 50, _<u>Coconuts Don't Cut It</u>_\n\n#### **CHALLENGES**",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0827",
+     "text": "First, it allows build machines to be ephemeral. Instead of one hallowed, creaky machine in the corner of the office that everyone is afraid to touch ~~,~~ <u>[80]</u> build machines and/or clusters are created on demand as spot instances in the cloud. Deployment configuration is under version control as well, so releasing to production can be handled automatically.\n\nAnd that's the important part: at the project level, version control _drives_ the build and release process.\n\nUse Version Control to Drive Builds, Tests, and **Tip 89** Releases\n\nThat is, build, test, and deployment are triggered via commits or",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0810",
+     "text": "A great way to ensure both consistency and accuracy is to automate everything the team does. Why struggle with code formatting standards when your editor or IDE can do it for you automatically? Why do manual testing when the continuous build can run tests automatically? Why deploy by hand when automation can do it the same way every time, repeatably and reliably?\n\nAutomation is an essential component of every project team. Make sure the team has skills at _tool building_ to construct and deploy the tools that automate the project development and production deployment.\n\n#### **KNOW WHEN TO STOP ADDING PAINT**",
+     "chapter": 9,
+     "topic": 49,
+     "topic_title": "Pragmatic Teams",
+     "page_book": 437,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0180",
+     "text": "**Exercise 3** <u>(possible answer)</u>\n\nMarketing would like to sit down and brainstorm a few web page designs with you. They are thinking of clickable image maps to take you to other pages, and so on. But they can't decide on a model for the image—maybe it's a car, or a phone, or a house. You have a list of target pages and content; they'd like to see a few prototypes. Oh, by the way, you have 15 minutes. What tools might you use?",
+     "chapter": 2,
+     "topic": 13,
+     "topic_title": "Prototypes and Post-it Notes",
+     "page_book": 118,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0828",
+     "text": "pushes to version control, and built in a container in the cloud. Release to staging or production is specified by using a tag in your version control system. Releases then become a much more low-ceremony part of every day life—true continuous delivery, not tied to any one build machine or developer's machine.\n\n#### **RUTHLESS AND CONTINUOUS TESTING**\n\nMany developers test gently, subconsciously knowing where the code will break and avoiding the weak spots. Pragmatic Programmers are different. We are _driven_ to find our bugs _now_ , so we don't have to endure the shame of others finding our bugs later.",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "prose"
+    }
+   ]
+  },
+  "u007": {
+   "id": "u007",
+   "question": "How do you design a GraphQL schema using DataLoader to solve the N+1 query problem in database access?",
+   "gold_topics": [],
+   "top8ids": [
+    "ch_0159",
+    "ch_0158",
+    "ch_0127",
+    "ch_0111",
+    "ch_0507",
+    "ch_0650",
+    "ch_0236",
+    "ch_0108"
+   ],
+   "top8topics": [
+    12,
+    12,
+    10,
+    9,
+    32,
+    41,
+    16,
+    9
+   ],
+   "dt_ms": 85.47,
+   "chunks": [
+    {
+     "id": "ch_0159",
+     "text": "This was a great opportunity to use tracer code. We developed the framework for the front end, libraries for representing the queries, and a structure for converting a stored query into a database-specific query. Then we put it all together and checked that it worked. For that initial build, all we could do was submit\n\na query that listed all the rows in a table, but it proved that the UI could talk to the libraries, the libraries could serialize and unserialize a query, and the server could generate SQL from the result. Over the following months we gradually fleshed out this basic structure, adding new functionality by augmenting each component of the tracer code in parallel. When the UI added a new query type, the library grew and the SQL generation was made more sophisticated.",
+     "chapter": 2,
+     "topic": 12,
+     "topic_title": "Tracer Bullets",
+     "page_book": 109,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0158",
+     "text": "images/layer-diagram-tracer.png\n\nWe once undertook a complex client-server database marketing project. Part of its requirement was the ability to specify and execute temporal queries. The servers were a range of relational and specialized databases. The client UI, written in random language A, used a set of libraries written in a different language to provide an interface to the servers. The user's query was stored on the server in a Lisp-like notation before being converted to optimized SQL just prior to execution. There were many unknowns and many different environments, and no one was too sure how the UI should behave.",
+     "chapter": 2,
+     "topic": 12,
+     "topic_title": "Tracer Bullets",
+     "page_book": 109,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0127",
+     "text": "There is an easy test for orthogonal design. Once you have your components mapped out, ask yourself: _If I dramatically change the requirements behind a particular function, how many modules are affected?_ In an orthogonal system, the answer should be \"one.''[16] Moving a button on a GUI panel should not require a change in the database schema. Adding contextsensitive help should not change the billing subsystem.",
+     "chapter": 2,
+     "topic": 10,
+     "topic_title": "Orthogonality",
+     "page_book": 92,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0111",
+     "text": "##### **Duplication with Data Sources**\n\nMany data sources allow you to introspect on their data schema. This can be used to remove much of the duplication between them and your code. Rather than manually creating the code to contain this stored data, you can generate the containers directly from the schema. Many persistence frameworks will do this heavy lifting for you.\n\nThere's another option, and one we often prefer. Rather than writing code that represents external data in a fixed structure (an instance of a struct or class, for example), just stick it into a key/value data structure (your language might call it a map, hash, dictionary, or even object).",
+     "chapter": 2,
+     "topic": 9,
+     "topic_title": "DRY—The Evils of Duplication",
+     "page_book": 79,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0507",
+     "text": "Developers often talk about coupling between chunks of code. They're referring to dependencies, and how those dependencies make things hard to change. But there's another form of coupling. _Temporal coupling_ happens when your code imposes a sequence on things that is not required to solve the problem at hand. Do you depend on the \"tick\" coming before the \"tock\"? Not if you want to stay flexible. Does your code access multiple back-end services sequentially, one after the other? Not if you want to keep your customers. In Topic 33, _<u>Breaking Temporal Coupling</u>_ <u>, we'll look at ways of identifying this kind of temporal</u> coupling.",
+     "chapter": 5,
+     "topic": 32,
+     "topic_title": "Configuration",
+     "page_book": 284,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0650",
+     "text": "Back when computing was young and carefree, there were two schools of design: topdown and bottom-up. The top-down folks said you should start with the overall problem you're trying to solve and break it into a small number of pieces. Then break each of these into smaller pieces, and so on, until you end up with pieces small enough to express in code.\n\nThe bottom-up folks build code like you'd build a house. They start at the bottom, producing a layer of code that gives them some abstractions that are closer to the problem they are trying to solve. Then they add another layer, with higher-level abstractions. They keep on until the final layer is an abstraction that solves the problem. \"Make it so….\"",
+     "chapter": 7,
+     "topic": 41,
+     "topic_title": "Test to Code",
+     "page_book": 361,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0236",
+     "text": "Topic 17, _Shell Games_\n\nTopic 21, _Text Manipulation_\n\nTopic 32, _<u>Configuration</u>_\n\n#### **CHALLENGES**\n\n- Design a small address book database (name, phone number, and so on) using a straightforward binary representation in your language of choice. Do this before reading the rest of this challenge.\n\n- Translate that format into a plain-text format using XML or JSON.\n\n- For each version, add a new, variable-length field called _directions_ in which you might enter directions to each person's house.\n\nWhat issues come up regarding versioning and extensibility? Which\n\nform was easier to modify? What about converting existing data?",
+     "chapter": 3,
+     "topic": 16,
+     "topic_title": "The Power of Plain Text",
+     "page_book": 146,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0108",
+     "text": "This example also illustrates an important issue: whenever a module exposes a data structure, you're coupling all the code that uses that structure to the implementation of that module. Where possible, always use accessor functions to read and write the attributes of objects. It will make it easier to add functionality in the future.\n\nThis use of accessor functions ties in with Meyer's _Uniform Access principle_ , described in _<u>Object-Oriented Software Construction</u>_ <u>[Mey97], which states that</u>\n\nAll services offered by a module should be available through a uniform notation, which does not betray whether they are implemented through storage or through computation.\n\n#### **REPRESENTATIONAL DUPLICATION**",
+     "chapter": 2,
+     "topic": 9,
+     "topic_title": "DRY—The Evils of Duplication",
+     "page_book": 79,
+     "type": "prose"
+    }
+   ]
+  },
+  "u008": {
+   "id": "u008",
+   "question": "How do serverless functions in AWS Lambda work with regard to cold starts and memory limits?",
+   "gold_topics": [],
+   "top8ids": [
+    "ch_0149",
+    "ch_0383",
+    "ch_0181",
+    "ch_0431",
+    "ch_0610",
+    "ch_0373",
+    "ch_0837",
+    "ch_0546"
+   ],
+   "top8topics": [
+    11,
+    26,
+    14,
+    29,
+    39,
+    26,
+    51,
+    35
+   ],
+   "dt_ms": 83.5,
+   "chunks": [
+    {
+     "id": "ch_0149",
+     "text": "While many people try to keep their _code_ flexible, you also need to think about maintaining flexibility in the areas of architecture, deployment, and vendor integration.\n\nWe're writing this in 2019. Since the turn of the century we've seen the following \"best practice\" server-side architectures:\n\n- Big hunk of iron\n\n- Federations of big iron\n\n- Load-balanced clusters of commodity hardware\n\n- Cloud-based virtual machines running applications\n\n- Cloud-based virtual machines running services\n\n- Containerized versions of the above\n\n- Cloud-supported serverless applications\n\n- And, inevitably, an apparent move back to big hunks of iron for some tasks\n\nGo ahead and add the very latest and greatest fads to this list, and then regard it with awe: it's a miracle that anything ever worked.",
+     "chapter": 2,
+     "topic": 11,
+     "topic_title": "Reversibility",
+     "page_book": 104,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0383",
+     "text": "At a lower, but no less useful level, you can invest in tools that (among other things) check your running programs for memory leaks.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 24, _Dead Programs Tell No Lies_ Topic 30, _Transforming Programming_\n\n##### Topic 33, _Breaking Temporal Coupling_\n\n#### **CHALLENGES**\n\n- Although there are no guaranteed ways of ensuring that you always free resources, certain design techniques, when applied consistently, will help. In the text we discussed how establishing a semantic invariant for major data structures could direct memory deallocation decisions. Consider how Topic 23, _Design by_ _<u>Contract</u>_ <u>,</u> could help refine this idea.\n\n#### **Exercise 17** (possible answer)",
+     "chapter": 4,
+     "topic": 26,
+     "topic_title": "How to Balance Resources",
+     "page_book": 212,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0181",
+     "text": "**Topic 14**\n\n#### Domain Languages\n\n_The limits of language are the limits of one's world._\n\n_Ludwig Wittgenstein_\n\nComputer languages influence _how_ you think about a problem, and how you think about communicating. Every language comes with a list of features: buzzwords such as static versus dynamic typing, early versus late binding, functional versus OO, inheritance models, mixins,\n\nmacros—all of which may suggest or obscure certain solutions. Designing a solution with C++ in mind will produce different results than a solution based on Haskell-style thinking, and vice versa. Conversely, and we think more importantly, the language of the problem domain may also suggest a programming solution.",
+     "chapter": 2,
+     "topic": 14,
+     "topic_title": "Domain Languages",
+     "page_book": 124,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0431",
+     "text": "Although you could implement a very basic pubsub system yourself, you probably don't want to. Most cloud service providers have pubsub offerings, allowing you to connect applications around the world. Every popular language will have at least one pubsub library.\n\nPubsub is a good technology for decoupling the handling of asynchronous events. It allows code to be added and replaced, potentially while the application is running, without altering existing code. The downside is that it can be hard to see what is going on in a system that uses pubsub heavily: you can't look at a publisher and immediately see which subscribers are involved with a particular message.",
+     "chapter": 5,
+     "topic": 29,
+     "topic_title": "Juggling the Real World",
+     "page_book": 239,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0610",
+     "text": "The notation puts an upper bound on the value of the thing we're measuring (time, memory, and so on). If we say a function takes time, then we know that the upper bound of the time it takes will not grow faster than <mark>.</mark> Sometimes we come up with fairly complex functions, but because the highest-order term will dominate the value as increases, the convention is to remove all low-order terms, and not to bother showing any constant multiplying factors:\n\nThis is actually a feature of the notation—one algorithm may be 1,000 times faster than another algorithm, but you won't know it from the notation. Big-O is never going to give you actual numbers for time or memory or whatever: it simply tells you how these values will change as the input changes.",
+     "chapter": 7,
+     "topic": 39,
+     "topic_title": "Algorithm Speed",
+     "page_book": 343,
+     "type": "code"
+    },
+    {
+     "id": "ch_0373",
+     "text": "In this topic we're mostly looking at ephemeral resources used by your running process. But you might want to consider what other messes you might be leaving behind.\n\nFor instance, how are your logging files handled? You are creating data and using up storage space. Is there something in place to rotate the logs and clean them up? How about for your unofficial debug files you're dropping? If you're adding logging records in a database, is there a similar process in place to expire them? For anything that you create that takes up a finite resource, consider how to balance it.\n\nWhat else are you leaving behind?\n\n#### **NEST ALLOCATIONS**\n\nThe basic pattern for resource allocation can be extended for routines that need more than one resource at a time. There are just two more suggestions:",
+     "chapter": 4,
+     "topic": 26,
+     "topic_title": "How to Balance Resources",
+     "page_book": 212,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0837",
+     "text": "In theory, this three-line function has 1,000,000 logical states, 999,999 of which will work correctly and one that will not (when a + b equals zero). Simply knowing that you executed this line of code doesn't tell you that—you would need to identify all possible states of the program. Unfortunately, in general this is a _really hard_ problem. Hard as in, \"The sun will be a cold hard lump before you can solve it.\"\n\n> **Tip 93** Test State Coverage, Not Code Coverage\n\n##### **Property-Based Testing**\n\nA great way to explore how your code handles unexpected states is to have a computer generate those states.",
+     "chapter": 9,
+     "topic": 51,
+     "topic_title": "Pragmatic Starter Kit",
+     "page_book": 452,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0546",
+     "text": "concurrency/actors/index.js **const** waiterActor = { _<mark>\"order\"</mark>_ <mark>: (msg, ctx, state) => {</mark> **if** (msg.wants == _\"pie\"_ ) { <mark>dispatch(state.pieCase,</mark> { type: _\"get slice\"_ , customer: msg.customer, waiter: ctx.self }) <mark>}</mark> **else** { <mark>console.dir(</mark> _`_ _<mark>Don't know how to order</mark>_ <mark>${msg.wants}</mark> _`_ <mark>);</mark> } <mark>},</mark> _<mark>\"add to order\"</mark>_ <mark>: (msg, ctx) =></mark> console.log( _`Waiter adds_ ${msg.food} _to_ ${msg.customer.name} _'s order`_ ), _\"error\"_ : (msg, ctx) => { <mark>dispatch(msg.customer, { type:</mark> _<mark>'no pie left'</mark>_ <mark>, msg: msg.msg });</mark> console.log( _`\\nThe waiter apologizes to_ ${msg.customer.name} _:_ ${msg.msg} _`_ ) <mark>}</mark> <u><mark>};</mark></u>",
+     "chapter": 6,
+     "topic": 35,
+     "topic_title": "Actors and Processes",
+     "page_book": 309,
+     "type": "prose"
+    }
+   ]
+  },
+  "canary": {
+   "id": "canary",
+   "question": "What exactly is the DRY principle according to The Pragmatic Programmer, and what is the test that lets you check whether code violates it?",
+   "gold_topics": [
+    9
+   ],
+   "top8ids": [
+    "ch_0474",
+    "ch_0481",
+    "ch_0477",
+    "ch_0493",
+    "ch_0737",
+    "ch_0140",
+    "ch_0078",
+    "ch_0476"
+   ],
+   "top8topics": [
+    31,
+    31,
+    31,
+    31,
+    45,
+    10,
+    7,
+    31
+   ],
+   "dt_ms": 0.0,
+   "chunks": [
+    {
+     "id": "ch_0474",
+     "text": "**Topic 31**\n\nInheritance Tax\n\n_You wanted a banana but what you got was a gorilla holding the banana and the entire jungle._\n\nDo you program in an objectoriented language? Do you use inheritance?\n\nIf so, stop! It probably isn't what you want to do.\n\nLet's see why.\n\n_Joe Armstrong_\n\n#### **SOME BACKGROUND**\n\nInheritance first appeared in Simula 67 in 1969. It was an elegant solution to the problem of queuing multiple types of events on the same list. The Simula approach was to use something called _prefix classes_ . You could write something like this:\n\nlink CLASS car; <mark>... implementation of car link CLASS bicycle;</mark> ... implementation of bicycle",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0481",
+     "text": "> **Tip 51** Don't Pay Inheritance Tax\n\n#### **THE ALTERNATIVES ARE BETTER**\n\nLet us suggest three techniques that mean you should never need to use inheritance again:\n\nInterfaces and protocols\n\nDelegation\n\nMixins and traits\n\n**Interfaces and Protocols**\n\nMost OO languages allow you to specify that a class implements one or more sets of behaviors. You could say, for example, that a Car class implements the Drivable behavior and the Locatable behavior. The syntax used for doing this varies: in Java, it might look like this:\n\n**public class** Car **implements** Drivable, Locatable { _// Code for class Car. This code must include_ _<mark>// the functionality of both Drivable</mark> // and Locatable_ <u>}</u>",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0477",
+     "text": "So, now we're faced with a generation of OO developers who use inheritance for one of two reasons: they don't like typing, or they like types.\n\nThose who don't like typing save their fingers by using\n\ninheritance to add common functionality from a base class into child classes: class User and class Product are both subclasses of ActiveRecord::Base.\n\nThose who like types use inheritance to express the relationship between classes: a Car is-a-kind-of Vehicle.\n\nUnfortunately both kinds of inheritance have problems.\n\n#### **PROBLEMS USING INHERITANCE TO SHARE CODE**\n\nInheritance _is_ coupling. Not only is the child class coupled to the parent, the parent's parent, and so on, but the code that _uses_ the child is also coupled to all the ancestors. Here's an example:",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "code"
+    },
+    {
+     "id": "ch_0493",
+     "text": "Here, both derived classes include validations common to all account objects. The customer variant also includes validations appropriate for the customer-facing APIs, while the admin variant contained (the presumably less restrictive) admin validations.\n\nNow, by passing instances of AccountForCustomer or AccountForAdmin back and forth, our code _automatically_ ensures the correct validation is applied.\n\n> **Tip 54** Use Mixins to Share Functionality\n\n#### **INHERITANCE IS RARELY THE ANSWER**\n\nWe've had a quick look at three alternatives to traditional class inheritance:\n\nInterfaces and protocols\n\n- Delegation\n\nMixins and traits",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0737",
+     "text": "Stop for a second and imagine yourself in that position. What's the first thing that comes to mind?\n\nThe chances are very good that you had questions:\n\n- Does the $50 include tax?\n\n- Does the $50 include current shipping charges?\n\n- Does the $50 have to be for paper books, or can the order also include ebooks?\n\n- What kind of shipping is offered? Priority? Ground?\n\n- What about international orders?\n\n- How often will the $50 limit change in the future?\n\nThat's what we do. When given something that seems simple, we annoy people by looking for edge cases and asking about\n\nthem.\n\nThe chances are the client will have already thought of some of these, and just assumed that the implementation would work that way. Asking the question just flushes that information out.",
+     "chapter": 8,
+     "topic": 45,
+     "topic_title": "The Requirements Pit",
+     "page_book": 405,
+     "type": "prose"
+    },
+    {
+     "id": "ch_0140",
+     "text": "#### **RELATED SECTIONS INCLUDE**\n\nTopic 3, _Software Entropy_\n\nTopic 8, _The Essence of_ _<u>Good Design</u>_\n\n- Topic 11, _Reversibility_\n\n- Topic 28, _Decoupling_\n\n- Topic 31, _Inheritance Tax_\n\n- Topic 33, _Breaking Temporal Coupling_\n\n- Topic 34, _Shared State Is Incorrect State_\n\n- Topic 36, _Blackboards_\n\n##### **Challenges**\n\n- Consider the difference between tools which have a graphical user interface and small but combinable command-line utilities used at shell prompts. Which set is more orthogonal, and why? Which is easier to use for exactly the purpose for which it was intended? Which set is easier to combine with other tools to meet new challenges? Which set is easier to learn?",
+     "chapter": 2,
+     "topic": 10,
+     "topic_title": "Orthogonality",
+     "page_book": 92,
+     "type": "definition"
+    },
+    {
+     "id": "ch_0078",
+     "text": "- <u>[9]</u> An _expiring asset_ is something whose value diminishes over time. Examples include a warehouse full of bananas and a ticket to a ball game.\n\n- <u>[10]</u> We may be biased, but there's a fine selection available at https://pragprog.com.\n\n- <u>[11]</u> Never heard of any of these languages? Remember, knowledge is an expiring asset, and so is popular technology. The list of hot new and experimental languages was very different for the first edition, and is probably different again by the time you read this. All the more reason to keep learning.\n\n<u>[12]</u> The word _annoy_ comes from the Old French _enui_ , which also means \"to bore.''\n\nCopyright © 2020 Pearson Education, Inc.\n\n## Chapter 2\n\n# **A Pragmatic Approach**",
+     "chapter": 1,
+     "topic": 7,
+     "topic_title": "Communicate!",
+     "page_book": 63,
+     "type": "list"
+    },
+    {
+     "id": "ch_0476",
+     "text": "So when I designed Smalltalk-72—and it was a lark for fun while thinking about Smalltalk-71—I thought it would be fun to use its Lisp-like dynamics to do experiments with \"differential programming\" (meaning: various ways to accomplish \"this is like that except\").\n\nThis is subclassing purely for behavior.\n\nThese two styles of inheritance (which actually had a fair amount in common) developed over the following decades. The Simula approach, which suggested inheritance was a way of combining types, continued in languages such as C++ and Java. The Smalltalk school, where inheritance was a dynamic organization of behaviors, was seen in languages such as Ruby and JavaScript.",
+     "chapter": 5,
+     "topic": 31,
+     "topic_title": "Inheritance Tax",
+     "page_book": 272,
+     "type": "prose"
+    }
+   ]
+  }
+ }
+}

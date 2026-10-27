@@ -1,0 +1,66 @@
+{
+ "id": "u007",
+ "question": "Jak zaprojektować schemat GraphQL z wykorzystaniem DataLoader, aby rozwiązać problem zapytań N+1 do bazy danych?",
+ "type": "unanswerable",
+ "header": "Unanswerable (GraphQL & DataLoader)",
+ "gold_topics": [],
+ "input_stage_hit": false,
+ "chunks": [
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "Debugging is a sensitive, emotional subject for many developers. Instead of attacking it as a puzzle to be solved, you may encounter denial, finger pointing, lame excuses, or just plain apathy.\n\nEmbrace the fact that debugging is just _problem solving_ , and attack it as such.\n\nHaving found someone else's bug, you can spend time and energy laying blame on the filthy culprit who created it. In some workplaces this is part of the culture, and may be cathartic. However, in the technical arena, you want to concentrate on fixing the _problem_ , not the blame.\n\n**Tip 29**\n\nFix the Problem, Not the Blame\n\nIt doesn't really matter whether the bug is your fault or someone else's. It is still your problem.\n\n#### **A DEBUGGING MINDSET**"
+  },
+  {
+   "topic": 11,
+   "topic_title": "Reversibility",
+   "chapter": 2,
+   "page_book": 104,
+   "text": "There is always more than one way to implement something, and there is usually more than one vendor available to provide a third-party product. If you go into a project hampered by the myopic notion that there is only _one_ way to do it, you may be in for an unpleasant surprise. Many project teams have their eyes forcibly opened as the future unfolds:\n\n\"But you said we'd use database XYZ! We are 85% done coding the project, we can't change now!\" the programmer protested. \"Sorry, but our company decided to standardize on database\n\nPDQ instead—for all projects. It's out of my hands. We'll just have to recode. All of you will be working weekends until further notice.\""
+  },
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "A very simple but particularly useful technique for finding the cause of a problem is simply to explain it to someone else. The other person should look over your shoulder at the screen, and nod his or her head constantly (like a rubber duck bobbing up and down in a bathtub). They do not need to say a word; the simple act of explaining, step by step, what the code is supposed to do often causes the problem to leap off the screen and announce itself ~~.~~ <u>[26]</u>\n\nIt sounds simple, but in explaining the problem to another person you must explicitly state things that you may take for granted when going through the code yourself. By having to"
+  },
+  {
+   "topic": 2,
+   "topic_title": "The Cat Ate My Source Code",
+   "chapter": 1,
+   "page_book": 38,
+   "text": "Don't blame someone or something else, or make up an excuse. Don't blame all the problems on a vendor, a programming language, management, or your coworkers. Any and all of these may play a role, but it is up to _you_ to provide solutions, not excuses.\n\nIf there was a risk that the vendor wouldn't come through for\n\nyou, then you should have had a contingency plan. If your mass storage melts—taking all of your source code with it—and you don't have a backup, it's your fault. Telling your boss \"the cat ate my source code'' just won't cut it.\n\n> **Tip 4** Provide Options, Don't Make Lame Excuses"
+  },
+  {
+   "topic": 46,
+   "topic_title": "Solving Impossible Puzzles",
+   "chapter": 8,
+   "page_book": 418,
+   "text": "Have them ask you questions such as:\n\nWhy are you solving this problem?\n\nWhat's the benefit of solving it?\n\n- Are the problems you're having related to edge cases? Can you eliminate them?\n\nIs there a simpler, related problem you can solve?\n\nThis is another example of Rubber Ducking in practice.\n\n#### **FORTUNE FAVORS THE PREPARED MIND**\n\nLouis Pasteur is reported to have said:\n\nDans les champs de l'observation le hasard ne favorise que les esprits préparés.\n\n_(When it comes to observation, fortune favors the prepared mind.)_\n\nThat is true for problem solving, too. In order to have those _eureka!_ moments, your nonconscious brain needs to have plenty of raw material; prior experiences that can contribute to an answer."
+  },
+  {
+   "topic": 12,
+   "topic_title": "Tracer Bullets",
+   "chapter": 2,
+   "page_book": 109,
+   "text": "images/layer-diagram-tracer.png\n\nWe once undertook a complex client-server database marketing project. Part of its requirement was the ability to specify and execute temporal queries. The servers were a range of relational and specialized databases. The client UI, written in random language A, used a set of libraries written in a different language to provide an interface to the servers. The user's query was stored on the server in a Lisp-like notation before being converted to optimized SQL just prior to execution. There were many unknowns and many different environments, and no one was too sure how the UI should behave."
+  },
+  {
+   "topic": 41,
+   "topic_title": "Test to Code",
+   "chapter": 7,
+   "page_book": 361,
+   "text": "Back when computing was young and carefree, there were two schools of design: topdown and bottom-up. The top-down folks said you should start with the overall problem you're trying to solve and break it into a small number of pieces. Then break each of these into smaller pieces, and so on, until you end up with pieces small enough to express in code.\n\nThe bottom-up folks build code like you'd build a house. They start at the bottom, producing a layer of code that gives them some abstractions that are closer to the problem they are trying to solve. Then they add another layer, with higher-level abstractions. They keep on until the final layer is an abstraction that solves the problem. \"Make it so….\""
+  },
+  {
+   "topic": 49,
+   "topic_title": "Pragmatic Teams",
+   "chapter": 9,
+   "page_book": 437,
+   "text": "Teams as a whole should not tolerate broken windows—those small imperfections that no one fixes. The team _must_ take responsibility for the quality of the product, supporting developers who understand the _no broken windows_ philosophy we describe in Topic 3, _<u>Software Entropy</u>_ , and encouraging those who haven't yet discovered it.\n\nSome team methodologies have a \"quality officer\"—someone to whom the team delegates the responsibility for the quality of the deliverable. This is clearly ridiculous: quality can come only from the individual contributions of _all_ team members. Quality is built in, not bolted on.\n\n#### **BOILED FROGS**"
+  }
+ ]
+}

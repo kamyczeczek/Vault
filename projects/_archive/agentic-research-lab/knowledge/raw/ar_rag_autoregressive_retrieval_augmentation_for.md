@@ -1,0 +1,19 @@
+---
+type: Concept
+title: "AR-RAG: Autoregressive Retrieval Augmentation for Image Generation"
+source: "http://arxiv.org/abs/2506.06962v3"
+tags: [agentic, scientific-discovery]
+generated: { by: okf-enforcer/0.6, at: 2026-10-24T23:21:09Z }
+---
+
+# AR-RAG: Autoregressive Retrieval Augmentation for Image Generation
+
+**Source:** http://arxiv.org/abs/2506.06962v3
+**Tags:** `agentic, scientific-discovery`
+
+## Core Methodology & Findings
+
+**Authors:** Jingyuan Qi, Zhiyang Xu, Qifan Wang, Lifu Huang
+
+### Abstract
+We introduce Autoregressive Retrieval Augmentation (AR-RAG), a novel paradigm that enhances image generation by autoregressively incorporating knearest neighbor retrievals at the patch level. Unlike prior methods that perform a single, static retrieval before generation and condition the entire generation on fixed reference images, AR-RAG performs context-aware retrievals at each generation step, using prior-generated patches as queries to retrieve and incorporate the most relevant patch-level visual references, enabling the model to respond to evolving generation needs while avoiding limitations (e.g., over-copying, stylistic bias, etc.) prevalent in existing methods. To realize AR-RAG, we propose two parallel frameworks: (1) Distribution-Augmentation in Decoding (DAiD), a training-free plug-and-use decoding strategy that directly merges the distribution of model-predicted patches with the distribution of retrieved patches, and (2) Feature-Augmentation in Decoding (FAiD), a parameter-efficient fine-tuning method that progressively smooths the features of retrieved patches via multi-scale convolution operations and leverages them to augment the image generation process. We validate the effectiveness of AR-RAG on widely adopted benchmarks, including Midjourney-30K, GenEval and DPG-Bench, demonstrating significant performance gains over state-of-the-art image generation models.

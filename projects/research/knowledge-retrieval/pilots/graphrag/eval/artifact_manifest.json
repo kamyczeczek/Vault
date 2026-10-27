@@ -1,0 +1,43 @@
+{
+    "session": "8f",
+    "created_at": "2026-10-11T05:00:00+02:00",
+    "artifacts": [
+        {
+            "path": "eval/verify_artifacts.py",
+            "sha256": "a91286c3ba4973885a9857a2e6a51b73c17faabc0c67cd76910b3db7b8005809",
+            "produced_by": "agent",
+            "step": "B4"
+        },
+        {
+            "path": "eval/canary.json",
+            "sha256": "4d9369f1a17595cf5bb08d7e66d8610071048cdfcb88878206149279f8d4642d",
+            "produced_by": "agent",
+            "step": "B4"
+        },
+        {
+            "path": "eval/extended_eval.py",
+            "sha256": "4f2c68bc2cce9de2bf8011cdf9de04596ea5331ec37cdbc9bfa45e509c2c7044",
+            "produced_by": "agent",
+            "step": "B4"
+        },
+        {
+            "path": "eval/extended_eval_canary_output.txt",
+            "sha256": "02aef474b1e187b271be3a2a44670e0987ac9708a3cf40febd8c77da08a4c4dc",
+            "produced_by": "agent",
+            "step": "B4"
+        },
+        {
+            "path": "SCARS.md",
+            "sha256": "a3d9f166b3f92acc7c1f4c836b7ea3ee24c9da5ef970cd22acd5643033363c2f",
+            "produced_by": "agent",
+            "step": "B4"
+        },
+        {
+            "path": "SESSION_TEMPLATE.md",
+            "sha256": "5557bd195e60c930cb9d10f1bdbc1c5f37144e9d35d47cb2be478a7f1e0bb1b1",
+            "produced_by": "agent",
+            "step": "B4"
+        }
+    ],
+    "notes": "Wszystkie 6 artefakt\u00f3w sesji 8e/8f zweryfikowanych"
+}

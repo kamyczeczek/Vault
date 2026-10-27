@@ -1,0 +1,66 @@
+{
+ "id": "u003",
+ "question": "W jaki sposób zaimplementować bezpieczną autoryzację tokenami JWT z mechanizmem refresh token w protokole OAuth 2.0?",
+ "type": "unanswerable",
+ "header": "Unanswerable (OAuth 2.0 & JWT)",
+ "gold_topics": [],
+ "input_stage_hit": false,
+ "chunks": [
+  {
+   "topic": 53,
+   "topic_title": "Pride and Prejudice",
+   "chapter": 9,
+   "page_book": 465,
+   "text": "Project teams are still made up of people, however, and this rule can cause trouble. On some projects, the idea of _code ownership_ can cause cooperation problems. People may become territorial, or unwilling to work on common foundation elements. The project may end up like a bunch of insular little fiefdoms. You become prejudiced in favor of your code and against your coworkers.\n\nThat's not what we want. You shouldn't jealously defend your code against interlopers; by the same token, you should treat other people's code with respect. The Golden Rule (\"Do unto others as you would have them do unto you'') and a foundation of mutual respect among the developers is critical to make this tip work."
+  },
+  {
+   "topic": 31,
+   "topic_title": "Inheritance Tax",
+   "chapter": 5,
+   "page_book": 272,
+   "text": "We now expose _none_ of the framework API to the clients of our Account class: that decoupling is now broken. But there's more. Now that we're no longer constrained by the API of the framework we're using, we're free to create the API we need. Yes, we could do that before, but we always ran the risk that the interface _we_ wrote can be bypassed, and the persistence API used instead. Now we control everything.\n\n> **Tip 53** Delegate to Services: Has-A Trumps Is-A\n\nIn fact, we can take this a step further. Why should an Account have to know how to persist itself? Isn't its job to know and enforce the account business rules?\n\n**class** Account _<mark># nothing but account stuff</mark>_\n\n**end**"
+  },
+  {
+   "topic": 3,
+   "topic_title": "Software Entropy",
+   "chapter": 1,
+   "page_book": 42,
+   "text": "By the same token, if you find yourself on a project where the code is pristinely beautiful—cleanly written, well designed, and elegant—you will likely take extra special care not to mess it up, just like the firefighters. Even if there's a fire raging (deadline, release date, trade show demo, etc.), _you_ don't want to be the first one to make a mess and inflict additional damage.\n\nJust tell yourself, \"No broken windows.\"\n\n**RELATED SECTIONS INCLUDE**\n\n- Topic 10, _<u>Orthogonality</u>_\n\n- Topic 40, _Refactoring_\n\n- Topic 44, _Naming Things_\n\n#### **CHALLENGES**\n\n- Help strengthen your team by surveying your project neighborhood. Choose two or three broken windows and discuss with your colleagues what the problems are and what could be done to fix them."
+  },
+  {
+   "topic": 29,
+   "topic_title": "Juggling the Real World",
+   "chapter": 5,
+   "page_book": 239,
+   "text": "**<mark>let</mark>** <mark>result = users.pipe(</mark>\n\nmergeMap((user) => ajax.getJSON( _`https://reqres.in/api/users/_ ${user} _`_ )) <mark>)</mark>\n\n<mark>result.subscribe(</mark>\n\nresp => logValues(JSON.stringify(resp.data)),\n\n<mark>err  => console.error(JSON.stringify(err))</mark> <u>)</u>\n\nThe internal details of the code are not too important. What's exciting is the result, shown in the following screenshot:\n\nimages/events_three_users.png\n\nLook at the timestamps: the three requests, or three separate streams, were processed in parallel, The first to come back, for id 2, took 82ms, and the next two came back 50 and 51ms later.\n\n**Streams of Events Are Asynchronous Collections**"
+  },
+  {
+   "topic": 51,
+   "topic_title": "Pragmatic Starter Kit",
+   "chapter": 9,
+   "page_book": 452,
+   "text": "Everything depends on automation. You can't build the project on an anonymous cloud server unless the build is fully automatic. You can't deploy automatically if there are manual steps involved. And once you introduce manual steps (\"just for this one part…\") you've broken a very large window ~~.~~ <u>[83]</u>\n\nWith these three legs of version control, ruthless testing, and full automation, your project will have the firm foundation you need so you can concentrate on the hard part: delighting users.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 11, _Reversibility_\n\n- Topic 12, _Tracer Bullets_\n\n- Topic 17, _Shell Games_\n\n- Topic 19, _Version Control_\n\n- Topic 41, _Test to Code_\n\n- Topic 49, _Pragmatic Teams_\n\n- Topic 50, _<u>Coconuts Don't Cut It</u>_\n\n#### **CHALLENGES**"
+  },
+  {
+   "topic": 42,
+   "topic_title": "Property-Based Testing",
+   "chapter": 7,
+   "page_book": 375,
+   "text": "Think about the code you're currently working on. What are the properties: the contracts and invariants? Can you use propertybased testing framework to verify these automatically?"
+  },
+  {
+   "topic": 16,
+   "topic_title": "The Power of Plain Text",
+   "chapter": 3,
+   "page_book": 146,
+   "text": "The information part is important. The following is not useful plain text:\n\nhlj;uijn bfjxrrctvh jkni'pio6p7gu;vh bjxrdi5rgvhj\n\nNeither is this:\n\n<mark>Field19=467abe</mark>\n\nThe reader has no idea what the significance of 467abe may be. We like our plain text to be _understandable_ to humans.\n\n> **Tip 25** Keep Knowledge in Plain Text\n\n#### **THE POWER OF TEXT**\n\nPlain text doesn't mean that the text is unstructured; HTML, JSON, YAML, and so on are all plain text. So are the majority of the fundamental protocols on the net, such as HTTP, SMTP, IMAP, and so on. And that's for some good reasons:\n\nInsurance against obsolescence\n\nLeverage existing tools\n\nEasier testing\n\n##### **Insurance Against Obsolescence**"
+  },
+  {
+   "topic": 23,
+   "topic_title": "Design by Contract",
+   "chapter": 4,
+   "page_book": 191,
+   "text": "You can use _semantic invariants_ to express inviolate requirements, a kind of \"philosophical contract.''\n\nWe once wrote a debit card transaction switch. A major requirement was that the user of a debit card should never have the same transaction applied to their account twice. In other words, no matter what sort of failure mode might happen, the error should be on the side of _not_ processing a transaction rather than processing a duplicate transaction.\n\nThis simple law, driven directly from the requirements, proved to be very helpful in sorting out complex error recovery\n\nscenarios, and guided the detailed design and implementation in many areas."
+  }
+ ]
+}

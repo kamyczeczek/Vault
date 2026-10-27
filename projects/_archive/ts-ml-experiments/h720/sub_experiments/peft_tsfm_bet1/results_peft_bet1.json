@@ -1,0 +1,233 @@
+{
+  "slice": "peft_tsfm_bet1",
+  "harness_command": "C:/Users/Mateusz/AppData/Local/hermes/hermes-agent/venv/Scripts/python.exe projects/ts-ml-experiments/h720/sub_experiments/peft_tsfm_bet1/rolling_arm.py",
+  "harness_log": "harness.log",
+  "protocol": "S-20-clean: val search phase fit S-26 pair on train 8545 + fine-tune LoRA on train 8545; ridge no-intercept over M=3 with 11-alpha grid [0.1,1,10,100,300,1000,3000,10000,30000] fitted on val[0:1080) selected on val[1080:2161); frozen test refit S-26 on 11425 + re-fine-tune LoRA on 11425",
+  "mode": "full",
+  "model": {
+    "id": "amazon/chronos-bolt-base",
+    "revision": "main",
+    "hash": "amazon/chronos-bolt-base@main#54823f9d1fca",
+    "lora": {
+      "r": 8,
+      "alpha": 16,
+      "dropout": 0.1,
+      "target_modules": [
+        "q",
+        "v"
+      ],
+      "trainable_pct_note": "~0.3% when peft applied"
+    },
+    "context_length": 336,
+    "horizon": 720
+  },
+  "training": {
+    "history_only": true,
+    "exogenous": false,
+    "L": 336,
+    "H": 720,
+    "optimizer": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "batch_size": 32,
+    "early_stopping": {
+      "patience": 5,
+      "max_epochs": 50,
+      "metric": "frozen val MAE (train 8545 / val 2880)"
+    },
+    "val_phase_summary": {
+      "is_stub": true,
+      "stub_reason": "peft/chronos unavailable or stub flag",
+      "n_train_windows": 7490,
+      "best_val_mae": 4.579339751666959,
+      "best_epoch": 0,
+      "epochs_run": 0,
+      "patience": 5,
+      "max_epochs": 50,
+      "model_id": "amazon/chronos-bolt-base",
+      "model_revision": "main",
+      "model_hash": "amazon/chronos-bolt-base@main#54823f9d1fca",
+      "history": [
+        {
+          "epoch": 0,
+          "val_mae": 4.579339751666959,
+          "is_stub": true
+        }
+      ]
+    },
+    "test_phase_summary": {
+      "is_stub": true,
+      "note": "stub reuse, no gradient on 11425"
+    },
+    "adapter_val_is_stub": true,
+    "adapter_test_is_stub": true
+  },
+  "members": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "chronos_bolt_lora_r8"
+  ],
+  "alpha_grid": [
+    0.1,
+    1,
+    10,
+    100,
+    300,
+    1000,
+    3000,
+    10000,
+    30000
+  ],
+  "best_alpha": 0.1,
+  "alpha_selection": {
+    "n_fit": 1080,
+    "n_select": 1081,
+    "held_out_mae": 2.575750290475661,
+    "val_full_mae": 2.8384846264980768,
+    "val_disjoint_4_mae": 3.4471898381918926,
+    "edge_alpha": true,
+    "per_alpha": [
+      {
+        "alpha": 0.1,
+        "held_out_mae": 2.575750290475661
+      },
+      {
+        "alpha": 1,
+        "held_out_mae": 2.5757627673714367
+      },
+      {
+        "alpha": 10,
+        "held_out_mae": 2.5758614181124413
+      },
+      {
+        "alpha": 100,
+        "held_out_mae": 2.576851484170289
+      },
+      {
+        "alpha": 300,
+        "held_out_mae": 2.5790515415502884
+      },
+      {
+        "alpha": 1000,
+        "held_out_mae": 2.586534324529982
+      },
+      {
+        "alpha": 3000,
+        "held_out_mae": 2.605595055823322
+      },
+      {
+        "alpha": 10000,
+        "held_out_mae": 2.6510965438660596
+      },
+      {
+        "alpha": 30000,
+        "held_out_mae": 2.7048232924110596
+      }
+    ]
+  },
+  "s26_anchor": {
+    "full_mae": 1.990897385574145,
+    "full_rmse": 2.470998626872596,
+    "disjoint_4_mae": 1.9696168477494975,
+    "val_full_mae": 2.8527,
+    "n": 2161,
+    "guard": "1.9909\u00b11e-4 fail-loud (1e-3 abort)"
+  },
+  "metrics": {
+    "full_mae": 2.0062061528632515,
+    "full_rmse": 2.4900741268590973,
+    "disjoint_4_mae": 1.969282325224346,
+    "disjoint_4_rmse": 2.507952564026482,
+    "w_mae": [
+      2.511013343795983,
+      1.299010995703127,
+      2.033906776820703,
+      2.0331981845775715
+    ],
+    "n": 2161,
+    "improvement_vs_s26": -0.015306152863251654,
+    "verdict": "REJECTED",
+    "acceptance_threshold": 1.9859,
+    "s26_full": 1.9909,
+    "s26_disjoint": 1.9696
+  },
+  "singleton": {
+    "lora_val_mae": 4.385429132762063,
+    "lora_test_mae": 3.5378320421658973,
+    "s26_val_full": 2.8527,
+    "lora_singleton_guard": "val >2.8527 -> close family",
+    "guard_fail": true
+  },
+  "non_degeneracy": {
+    "mean_abs_w_tsfm": 0.06537565561853623,
+    "std_w_tsfm": 0.07888134798263555,
+    "ridge_weights_mean": [
+      -0.011083864286234521,
+      0.9626170800104245,
+      0.008812357730333165
+    ],
+    "ridge_weights_abs_mean": [
+      0.07321924464637171,
+      0.9626170800104245,
+      0.06537565561853623
+    ],
+    "ridge_weights_std": [
+      0.10023762324297131,
+      0.14203117728601322,
+      0.07888134798263555
+    ],
+    "guard": "mean|w_TSFm|>0.02 and std>0.01",
+    "pass": true
+  },
+  "close_condition": {
+    "close_family": true,
+    "close_singleton": true,
+    "close_full": true,
+    "close_disjoint": false,
+    "edge_alpha": true,
+    "message": "if LoRA singleton val >2.8527 or test >=1.9909 or disjoint>1.9696 -> close foundation-model adaptation family for ETTh1 H=720 under S-20-clean (PEFT-adapted Chronos-Bolt does not transfer to H=720 even with ETTh1 gradient)"
+  },
+  "guards": {
+    "stationarity": {
+      "val_mean": 0.4755176596692655,
+      "val_std": 0.08623084682913697,
+      "test_mean": 0.5085652773823636,
+      "test_std": 0.0661383387781187,
+      "delta_sigma": 0.3832458464210857,
+      "guard_pass": true
+    },
+    "correlation": {
+      "rho_omega336_mae": -0.08022672404579656,
+      "pval": 0.0001889683994841448,
+      "guard_pass": true
+    },
+    "call_rate_Omega_gt_0_5": {
+      "call_rate": 0.5391022674687644,
+      "note": "diagnostic only \u2014 this bet uses ridge blending, not hard gate; threshold 0.5 gate retained for reporting"
+    }
+  },
+  "stratified_mae": {
+    "A_lt04_mae": 2.1344620320986265,
+    "B_04_05_mae": 2.0110435753775895,
+    "C_gt05_mae": 1.990099407426549,
+    "count_A": 113,
+    "count_B": 883,
+    "count_C": 1165
+  },
+  "bootstrap_ci_95": [
+    1.9880310964534502,
+    2.0243877897551124
+  ],
+  "bootstrap_B": 2000,
+  "plan_impact": {
+    "invalidates": [
+      "PEFT Bet 1 as SOTA promotion (full 2.0062 >= 1.9859 or >= S-26 1.9909 or disjoint 1.9693 > 1.9696 or nondeg True)"
+    ],
+    "confirms": [
+      "S-26 remains terminal incumbent at 1.9909 MAE"
+    ],
+    "opens": [
+      "Close foundation-model adaptation family for ETTh1 H=720 under S-20-clean \u2014 PEFT-adapted Chronos-Bolt does not transfer to H=720 even with ETTh1 gradient; no further TSFM fine-tuning variants without new pre-registration"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+harness_command: projects/ts-ml-experiments/h720/sub_experiments/multivariate_nlinear_s37/rolling_arm.py
+timestamp: 2026-09-12 22:49:47
+verdict: REJECT
+best_subset: ['nlinear_L336_a10']
+best_alpha: 0.1
+val_full_mae: 2.8448
+test_full_mae: 2.0244
+test_full_rmse: 2.5175
+test_disjoint_mae: 1.9909
+transfer_delta: -0.8204
+plan_impact: No change; S-26 1.9909/2.4710 remains terminal.

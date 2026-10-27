@@ -1,0 +1,107 @@
+{
+  "val_results": {
+    "k16_alpha0.05": {
+      "val_mae": 2.8981,
+      "alpha_star": null
+    },
+    "k16_alpha0.10": {
+      "val_mae": 2.9013,
+      "alpha_star": null
+    },
+    "k16_alpha0.15": {
+      "val_mae": 2.9067,
+      "alpha_star": null
+    },
+    "k16_alpha0.20": {
+      "val_mae": 2.914,
+      "alpha_star": null
+    },
+    "k16_alpha_star_0.000": {
+      "val_mae": 2.897,
+      "alpha_star": 0.0
+    },
+    "k16_best": {
+      "best_fixed_alpha": 0.05,
+      "alpha_star": 0.0
+    },
+    "k32_alpha0.05": {
+      "val_mae": 2.8982,
+      "alpha_star": null
+    },
+    "k32_alpha0.10": {
+      "val_mae": 2.9012,
+      "alpha_star": null
+    },
+    "k32_alpha0.15": {
+      "val_mae": 2.906,
+      "alpha_star": null
+    },
+    "k32_alpha0.20": {
+      "val_mae": 2.9124,
+      "alpha_star": null
+    },
+    "k32_alpha_star_0.000": {
+      "val_mae": 2.897,
+      "alpha_star": 0.0
+    },
+    "k32_best": {
+      "best_fixed_alpha": 0.05,
+      "alpha_star": 0.0
+    },
+    "k48_alpha0.05": {
+      "val_mae": 2.8983,
+      "alpha_star": null
+    },
+    "k48_alpha0.10": {
+      "val_mae": 2.9013,
+      "alpha_star": null
+    },
+    "k48_alpha0.15": {
+      "val_mae": 2.9059,
+      "alpha_star": null
+    },
+    "k48_alpha0.20": {
+      "val_mae": 2.9121,
+      "alpha_star": null
+    },
+    "k48_alpha_star_0.000": {
+      "val_mae": 2.897,
+      "alpha_star": 0.0
+    },
+    "k48_best": {
+      "best_fixed_alpha": 0.05,
+      "alpha_star": 0.0
+    },
+    "k64_alpha0.05": {
+      "val_mae": 2.8984,
+      "alpha_star": null
+    },
+    "k64_alpha0.10": {
+      "val_mae": 2.9013,
+      "alpha_star": null
+    },
+    "k64_alpha0.15": {
+      "val_mae": 2.9057,
+      "alpha_star": null
+    },
+    "k64_alpha0.20": {
+      "val_mae": 2.9116,
+      "alpha_star": null
+    },
+    "k64_alpha_star_0.000": {
+      "val_mae": 2.897,
+      "alpha_star": 0.0
+    },
+    "k64_best": {
+      "best_fixed_alpha": 0.05,
+      "alpha_star": 0.0
+    }
+  },
+  "best_key": "k16_alpha_star_0.000",
+  "best_k": 16,
+  "best_alpha": 0.0,
+  "test_rolling_mae": 2.0571,
+  "test_w4_mae": 1.9626,
+  "nlinear_test_mae": 2.0571,
+  "delta": 0.0
+}

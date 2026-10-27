@@ -1,0 +1,9 @@
+{
+  "topic": "g3-end-to-end-grounded-implementation",
+  "run_id": "reflect-9374dae46ab145f3",
+  "stages": {
+    "pre_gates": 1761.9,
+    "agent": 121282.2
+  },
+  "total_ms": 123044.1
+}

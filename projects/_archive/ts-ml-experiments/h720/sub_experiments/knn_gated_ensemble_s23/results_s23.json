@@ -1,0 +1,51 @@
+{
+  "slice": "S-23-knn-gated-ensemble",
+  "protocol": "frozen fit on train 8545; deterministic median thresholds; refit all val; frozen test on 11425",
+  "gating": {
+    "tau1": 1.3413,
+    "tau2": 0.5458,
+    "beta": 0.5,
+    "gated_val": 382,
+    "gated_test": 134,
+    "val_mae_ridge": 2.8191,
+    "val_mae_gated": 2.8396
+  },
+  "rolling_test": {
+    "mae": 2.0114,
+    "rmse": 2.5002,
+    "disjoint_windows": {
+      "window_1": {
+        "mae": 2.6728393022803205,
+        "rmse": 3.1317236124996883
+      },
+      "window_2": {
+        "mae": 1.2912207573433196,
+        "rmse": 1.587925832799037
+      },
+      "window_3": {
+        "mae": 1.8978962189418884,
+        "rmse": 2.3593866254537996
+      },
+      "window_4": {
+        "mae": 1.842679580377262,
+        "rmse": 2.4523851729176607
+      }
+    },
+    "ridge_only_mae": 1.998,
+    "ridge_only_rmse": 2.481
+  },
+  "anchor_checks": {
+    "nlinear_L336_a1": {
+      "rolling_mae": 2.0571,
+      "rolling_rmse": 2.5071
+    },
+    "knn_mi_ema0.9_k32": {
+      "rolling_mae": 2.2298,
+      "rolling_rmse": 2.7226
+    },
+    "daily": {
+      "rolling_mae": 2.5491,
+      "rolling_rmse": 3.112
+    }
+  }
+}

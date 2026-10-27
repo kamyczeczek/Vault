@@ -1,0 +1,181 @@
+{
+  "slice": "S-08",
+  "protocol": {
+    "members_fit": "frozen, train.csv 11,425 rows",
+    "weights": "validation windows only (2,161 stride-1 origins over trailing 2,880 rows)",
+    "scoring": "rolling stride-1, 2161 origins, test region",
+    "horizon": 720
+  },
+  "results": [
+    {
+      "model": "cross_family_ensemble",
+      "protocol": "rolling stride-1, 2161 origins, frozen members on train.csv; weights from validation only",
+      "rolling_mae": 2.3103,
+      "rolling_rmse": 2.7957,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5867657996861109,
+          "rmse": 1.9523975659653017
+        },
+        "window_2": {
+          "mae": 3.590201140279401,
+          "rmse": 3.957473867153363
+        },
+        "window_3": {
+          "mae": 1.916085900915949,
+          "rmse": 2.4758097782516026
+        },
+        "window_4": {
+          "mae": 2.3197278937646924,
+          "rmse": 3.0173101840198826
+        }
+      },
+      "weights": {
+        "elm": 0.3048,
+        "knn": 0.6056,
+        "daily": 0.0896
+      },
+      "mae_weights": {
+        "elm": 0.0,
+        "knn": 1.0,
+        "daily": 0.0
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h64_full_fastlags",
+      "protocol": "rolling stride-1, 2161 origins",
+      "rolling_mae": 2.3092,
+      "rolling_rmse": 2.8046,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5923309463548625,
+          "rmse": 1.9823129280190273
+        },
+        "window_2": {
+          "mae": 1.8145564224871475,
+          "rmse": 2.236046049143698
+        },
+        "window_3": {
+          "mae": 1.6619488768935646,
+          "rmse": 2.2672602806133835
+        },
+        "window_4": {
+          "mae": 2.1615466427691765,
+          "rmse": 2.872775949016963
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "knn_q3_k32_recent10",
+      "protocol": "rolling stride-1, 2161 origins",
+      "rolling_mae": 2.5583,
+      "rolling_rmse": 3.0994,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7204022215138837,
+          "rmse": 2.140518059341063
+        },
+        "window_2": {
+          "mae": 4.909015824020376,
+          "rmse": 5.320957010538725
+        },
+        "window_3": {
+          "mae": 2.4162477067444916,
+          "rmse": 3.0946342209562143
+        },
+        "window_4": {
+          "mae": 2.815968450564001,
+          "rmse": 3.497057298251968
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "daily",
+      "protocol": "rolling stride-1, 2161 origins",
+      "rolling_mae": 2.5491,
+      "rolling_rmse": 3.112,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6720180662969748,
+          "rmse": 2.171948042164322
+        },
+        "window_2": {
+          "mae": 1.9042791694402694,
+          "rmse": 2.3712428720780094
+        },
+        "window_3": {
+          "mae": 1.8620638797266615,
+          "rmse": 2.5054643959241902
+        },
+        "window_4": {
+          "mae": 2.919241687407096,
+          "rmse": 3.6344442181063386
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "persistence",
+      "protocol": "rolling stride-1, 2161 origins",
+      "rolling_mae": 2.5985,
+      "rolling_rmse": 3.1282,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7952457486755318,
+          "rmse": 2.2503347360867134
+        },
+        "window_2": {
+          "mae": 2.1462069739898046,
+          "rmse": 2.6324969775393976
+        },
+        "window_3": {
+          "mae": 1.7779138766643074,
+          "rmse": 2.3889429847551824
+        },
+        "window_4": {
+          "mae": 2.180211087150706,
+          "rmse": 2.8509213353302125
+        }
+      },
+      "status": "ok"
+    }
+  ],
+  "acceptance": {
+    "validation_ensemble_mae": 2.75,
+    "validation_member_maes": {
+      "elm": 3.1246,
+      "knn": 2.6566,
+      "daily": 3.4977
+    },
+    "ensemble_le_min_members_on_validation": false,
+    "l1_diagnostic": {
+      "weights": {
+        "elm": 0.0,
+        "knn": 1.0,
+        "daily": 0.0
+      },
+      "validation_mae": 2.6566,
+      "note": "L1 optimum over the weight simplex = pure best member (kNN): no non-trivial blend improves on the best member's validation MAE. The acceptance boolean's False reflects this data property, not a solver flaw."
+    },
+    "test_rolling_mae": {
+      "ensemble": 2.3103,
+      "elm": 2.3092,
+      "knn": 2.5583,
+      "daily": 2.5491,
+      "persistence": 2.5985
+    },
+    "test_delta_vs_best_member": 0.0011,
+    "ensemble_beats_all_members_on_test": false,
+    "weights": {
+      "elm": 0.3048,
+      "knn": 0.6056,
+      "daily": 0.0896
+    },
+    "weights_nonneg_sum1": true,
+    "no_test_data_for_weighting": true,
+    "ensemble_beats_leader_nlinear_L336": false
+  }
+}

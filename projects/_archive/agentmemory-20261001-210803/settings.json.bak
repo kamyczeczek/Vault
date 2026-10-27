@@ -1,0 +1,29 @@
+{
+  "compaction": {
+    "enabled": true,
+    "keepRecentTokens": 20000,
+    "reserveTokens": 16384
+  },
+  "defaultModel": "agnes-3-flash",
+  "defaultProvider": "nara",
+  "defaultThinkingLevel": "low",
+  "defaultTools": [
+    "read",
+    "bash",
+    "powershell",
+    "edit",
+    "write"
+  ],
+  "extensions": [
+    "C:\\Users\\Mateusz\\.pi\\agent\\extensions\\agentmemory",
+    "C:\\Users\\Mateusz\\.pi\\agent\\extensions\\tree-sitter-context.ts"
+  ],
+  "lastChangelogVersion": "0.99.1",
+  "packages": [],
+  "retry": {
+    "baseDelayMs": 2000,
+    "enabled": true,
+    "maxRetries": 3
+  },
+  "shellPath": "C:\\Users\\Mateusz\\AppData\\Local\\hermes\\git\\bin\\bash.exe"
+}

@@ -1,0 +1,54 @@
+---
+type: Concept
+title: icm-disclosure-depth-balance
+generated: { by: okf-enforcer/0.6, at: 2026-10-24T23:21:30Z }
+---
+
+fingerprint: 5f4f9d29057b  plan_version: ad0a031aa564  phase: 04_reflect  routing: see Routing section below
+# Reflection: ICM Folder-Depth vs the Progressive-Disclosure Bound (C4 open question)
+
+- **fingerprint:** 1cf1e4aea87c  (graph @ 581 nodes / 1,593,830 edges)
+- **topic tags used for routing:** `icm`, `context-engineering`, `anti-leakage`, `memory`
+- **method:** `ask.py --tag icm --tag context-engineering` + `ask.py --tag icm --tag anti-leakage` intersections → sanctioned `ask.py --raw` / file expansion of returned chunk-ids only. No corpus browsing beyond returned ids.
+- **scope:** resolves the open question flagged by candidate C4 in `context-as-external-state.jsonl`: *"Does ICM's nested folder hierarchy violate the one-level progressive-disclosure bound?"*
+
+---
+
+## Claim
+
+**ICM's five-layer folder hierarchy does NOT violate the Progressive-Disclosure-Bounded principle (C4).** The bound measures *retrieval-time disclosure recursion* — how many hops of index→subindex→content the agent traverses to find material. ICM collapses to **one explicit load-table per stage**: each `stages/XX/CONTEXT.md` carries an Inputs Table that *names exactly* which Layer-3 (reference) and Layer-4 (working) files to load. The agent does not recursively drill an index tree; the taxonomy depth (5 layers + nested stage folders) is a **storage hierarchy**, resolved by a single per-stage index. Therefore taxonomy depth is **orthogonal** to disclosure fan-out, and C4's "one level" bound is satisfied at decision time.
+
+This claim is currently an *inference* from the architecture description, not a measured result. It stays **experimental** until the replay-pairing regression (NB1, below) measures per-layer output divergence.
+
+---
+
+## Evidence (all ids returned by the routing queries above)
+
+| Chunk (id) | Proves |
+|---|---|
+| `01_icm_map` | ICM prescribes a **Five-Layer Context Hierarchy** (Layer 0 Global Identity ~800t → L1 Task Routing `CONTEXT.md` → L2 Stage Contract `stages/XX/CONTEXT.md` → L3 Reference `references/` ~500–2k → L4 Working `output/`). Crucially: *"Stage Contracts (`stages/XX/CONTEXT.md`) → Inputs Table: Explicitly lists which Layer 3 and Layer 4 files to load."* The stage CONTEXT.md is the **single index**; the agent loads named files, it does NOT navigate a deeper index. |
+| `00_is_progressive_disclosure_all_you_need_for_long` | Controlled study: *"one level is enough. A second, deeper routing level never helps and sometimes breaks accuracy outright."* The paper explicitly **separates** "how deep disclosure recurses" from "where the per-chunk index physically lives" — exactly the distinction that lets ICM's deep *storage* taxonomy coexist with single-level *disclosure*. Also: *"Progressive disclosure buys context, not intelligence."* |
+| `00_one_stage_one_job` | ICM rule: single responsibility per folder/stage. Scoping is structural; the agent at a stage sees one contract, not a recursive tree. |
+| `00_plain_text_as_interface` | Plain-text artifacts as the universal layer — the Inputs Table is plain-text and git-diffable, so the *single* disclosure level is inspectable/verifiable (ties to accepted C3 Determinism-Evidence). |
+| `00_interpretable_context_methodology_folder_structu` | ICM = filesystem-as-orchestrator; local scripts do non-AI work. Confirms the folder tree is an **orchestration/addressing** structure, not a disclosure cascade the model traverses. |
+
+---
+
+## Decision
+
+- **C4 is NOT promoted to "violated."** Reclassify its open question *"Does ICM's nested folder hierarchy violate this, or is folder-depth orthogonal to skill-pack depth?"* → **resolved as "likely orthogonal, pending measurement."**
+- **Emit new candidate C10** (`icm-disclosure-depth-balance`, state `experimental`): taxonomy depth ≠ disclosure recursion; the per-stage Inputs Table is the single disclosure level. Confidence **0.7** (architecture-grounded inference; no controlled measurement yet).
+- **No change to accepted candidates C1–C3, C7–C8.** C2 (Scoped-Context) is *reinforced*: the stage contract's Inputs Table is the mechanism that keeps disclosure to one level.
+
+---
+
+## Next bet
+
+- **NB1 (decisive, cheap — promotes C10 experimental→accepted or rejects it):** run the replay-pairing regression proposed in the prior reflection (`context-as-external-state.md` NB1): same task with vs without each ICM layer present; measure output divergence.
+  - If removing a layer yields ≈0 divergence → that layer is decorative (violates accepted C1 External-Persistence / scoping) AND confirms depth is load-bearing only if it changes output.
+  - If removing a layer yields large divergence → C4-boundedness holds for ICM too, and C10 promotes to `accepted`.
+  - Either outcome is corpus-decidable and turns C4's open question from inference into evidence.
+
+---
+
+*Generated by reflection agent over graph `1cf1e4aea87c`. Writes limited to `reflection/digests/` and `reflection/candidates/`. No corpus/source edits. Every claim cites ≥1 chunk-id returned by the routing queries.*

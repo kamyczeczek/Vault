@@ -1,0 +1,178 @@
+STDOUT:
+== EXTENDED EVAL DETAIL (Faza 8c) ==
+QID: Q1 | Refusal: False
+  Pytanie: What is SEVerA and how does it relate to self-evolving agents?
+  Top5 IDs: ['00_severa_verified_synthesis_of_self_evolving_agent', '00_a_comprehensive_survey_of_self_evolving_ai_agent', '233_multiagent_systems_algorithmic_game_theoretic_an', '00_self_evolving_world_models_foresight_web_researc', '00_self_improvements_in_modern_agentic_systems_a_su']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q2 | Refusal: False
+  Pytanie: What trust tiers does this lab use for evidence, and what does tier 3 mean?
+  Top5 IDs: ['00_okf_methodology_research', '01_measured_record_surviving_positive_magnitude', '02_the_five_level_verification_ladder', '02_00_software_factory_isolate_build_prove_ship', '109_domain_driven_design_tackling_complexity_in_the']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q6 | Refusal: False
+  Pytanie: What are the core structures of agent memory hierarchies?
+  Top5 IDs: ['00_agent_memory_hierarchies', '00_persistent_memory_hierarchies_agents', '309_multiagent_systems_algorithmic_game_theoretic_an', '00_self_improvements_in_modern_agentic_systems_a_su', '03_transferable_expertise_for_autonomous_agents_via']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q7 | Refusal: False
+  Pytanie: How do agent execution hooks provide deterministic loop interception and guardrails?
+  Top5 IDs: ['01_agent_execution_hooks_guardrails', '00_agent_execution_hooks_guardrails', '00_agent_hooks_lifecycle_guardrails', '02_agent_execution_hooks_guardrails', '03_the_last_harness_you_ll_ever_build']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q8 | Refusal: False
+  Pytanie: What is the isolate build prove ship methodology in software factories?
+  Top5 IDs: ['00_00_software_factory_isolate_build_prove_ship', '314_domain_driven_design_tackling_complexity_in_the', '02_00_software_factory_isolate_build_prove_ship', '03_00_software_factory_isolate_build_prove_ship', '437_beginning_software_engineering_2nd_edition_rod_s']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q9 | Refusal: False
+  Pytanie: How does the engineering workspace function as an adaptive search environment?
+  Top5 IDs: ['00_adaptive_search_workspace_architecture', '386_beginning_software_engineering_2nd_edition_rod_s', '51_graph_engineering_for_agentic_ai_systems_ken_hua', '827_artificial_intelligence_a_modern_approach_4th_ed', '129_icm_knowledge_big']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q10 | Refusal: False
+  Pytanie: What are the key version control paradigms and git discipline patterns for autonomous agents?
+  Top5 IDs: ['00_agentic_git_discipline_patterns', '02_agentic_git_discipline_patterns', '01_transferable_expertise_for_autonomous_agents_via', '01_agentic_git_discipline_patterns', '198_beyond_vibe_coding_from_coder_to_ai_era_develope']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q11 | Refusal: False
+  Pytanie: How is modular graph structured in agentic RAG?
+  Top5 IDs: ['00_agentic_rag_modular_graph', '17_graph_databases_new_opportunities_for_connected', '00_llm_agents_for_interactive_workflow_provenance_r', '11_graph_databases_new_opportunities_for_connected', '00_agentic_auto_research_frontier_10_sources']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q12 | Refusal: False
+  Pytanie: What is the CRITIC framework for verify-then-correct with external tools?
+  Top5 IDs: ['01_07_critic_external_tool_verification', '00_grounded_tool_reliability_failure_modes_web_rese', '00_07_critic_external_tool_verification', '01_00_bend2_vibe_coding_reinventing_wheels', '191_harness_starter_kit']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q13 | Refusal: False
+  Pytanie: How does lesson persistence and eviction work in ExpeL?
+  Top5 IDs: ['00_memory_eviction_forgetting_web_research', '01_08_lesson_persistence_eviction_requirement', '00_08_lesson_persistence_eviction_requirement', '437_structure_and_interpretation_of_computer_program', '12_cascade_case_based_continual_adaptation_for_larg']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q3 | Refusal: True
+  Pytanie: Jakie sa metody kompresji sesji agentow?
+  Top5 IDs: ['00_agentic_engineering_od_chaosu_do_wiadomego_proje', '01_session_compaction_for_ai_agents', '02_agentic_engineering_od_chaosu_do_wiadomego_proje', '01_session_compaction_for_ai_agents_research', '00_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q14 | Refusal: False
+  Pytanie: Czym jest agentic engineering i jak prowadzi od chaosu do świadomego projektowania?
+  Top5 IDs: ['01_agentic_engineering_od_chaosu_do_wiadomego_proje', '02_agentic_engineering_od_chaosu_do_wiadomego_proje', '00_agentic_engineering_od_chaosu_do_wiadomego_proje', '78_beyond_vibe_coding_from_coder_to_ai_era_develope', '63_graph_engineering_for_agentic_ai_systems_ken_hua']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q15 | Refusal: False
+  Pytanie: Dlaczego ponowne wymyślanie koła w vibe coding jest problemem?
+  Top5 IDs: ['13_beyond_vibe_coding_from_coder_to_ai_era_develope', '10_beyond_vibe_coding_from_coder_to_ai_era_develope', '00_beyond_vibe_coding_from_coder_to_ai_era_develope', '154_the_pragmatic_programmer_20th_anniversary_editio', '36_beyond_vibe_coding_from_coder_to_ai_era_develope']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q16 | Refusal: False
+  Pytanie: Jakie są techniki, żeby wycisnąć 2-3x wydajności z AI w kodowaniu?
+  Top5 IDs: ['02_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods', '00_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods', '01_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods', '201_beyond_vibe_coding_from_coder_to_ai_era_develope', '169_structure_and_interpretation_of_computer_program']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q17 | Refusal: True
+  Pytanie: Jak działa routowanie narzędzi oparte na grafie z samonaprawą?
+  Top5 IDs: ['714_pattern_recognition_and_machine_learning_christo', '168_graph_engineering_for_agentic_ai_systems_ken_hua', '541_pattern_recognition_and_machine_learning_christo', '17_graph_databases_new_opportunities_for_connected', '457_pattern_recognition_and_machine_learning_christo']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q18 | Refusal: False
+  Pytanie: Do czego służy message passing w analizie i odpornym projektowaniu systemów samonaprawczych?
+  Top5 IDs: ['00_524ade10f990_message_passing_for_analysis_and_re', '214_harness_starter_kit', '155_structure_and_interpretation_of_computer_program', '30_the_mythical_man_month_frederick_p_brooks_jr_etc', '393_pattern_recognition_and_machine_learning_christo']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q19 | Refusal: False
+  Pytanie: Jak działa rozproszona detekcja zmian o odporności bizantyjskiej?
+  Top5 IDs: ['00_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods', '00_32e1be065210_byzantine_fault_tolerant_distribute', '03_the_mythical_man_month_frederick_p_brooks_jr_etc', '91_the_mythical_man_month_frederick_p_brooks_jr_etc', '645_pattern_recognition_and_machine_learning_christo']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q20 | Refusal: True
+  Pytanie: Czym charakteryzuje się energetycznie oszczędne uczenie federacyjne z kwantyzacją?
+  Top5 IDs: ['10_the_five_level_verification_ladder', '236_multiagent_systems_algorithmic_game_theoretic_an', '23_building_llms_for_production_enhancing_llm_abili', '07_the_five_level_verification_ladder', '207_multiagent_systems_algorithmic_game_theoretic_an']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q21 | Refusal: True
+  Pytanie: Jak wygląda taksonomia błędów agentów i frameworki debugowania?
+  Top5 IDs: ['00_prov_agent_unified_provenance_for_tracking_ai_ag', '09_transferable_expertise_for_autonomous_agents_via', '182_harness_starter_kit', '00_agent_error_taxonomy_debugging_web_research', '34_harness_starter_kit']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q22 | Refusal: True
+  Pytanie: Jak realizowana jest niskonarzutowa odporność na błędy dla kwantowej uniwersalności?
+  Top5 IDs: ['00_0d780aefeb5f_low_overhead_transversal_fault_tole', '139_artificial_intelligence_a_modern_approach_4th_ed', '244_the_book_of_why_the_new_science_of_cause_and_eff', '31_icm_knowledge_big', '238_structure_and_interpretation_of_computer_program']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q4 | Refusal: True
+  Pytanie: Jaki wpis dodala sesja 04 do SCARS.md w sprawie CRLF (blizna R13)?
+  Top5 IDs: ['reflection_rule_of_scars', '173_llm_engineers_handbook_iusztin_paul_labonne_z_li', '214_icm_knowledge_big', '01_measured_closed_families_need_frontier_state', '03_cerebras_second_brain']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q5 | Refusal: True
+  Pytanie: Co powiedzial Jan Kowalski na spotkaniu 2026-09-15?
+  Top5 IDs: ['00_agentic_rag_modular_graph', '70_the_book_of_why_the_new_science_of_cause_and_eff', '00_agent_memory_hierarchies', '274_the_goal_a_process_of_ongoing_improvement_revise', '00_tool_orchestration_multi_tool']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q23 | Refusal: True
+  Pytanie: Jaka będzie prognoza pogody w Warszawie jutro o 14:00?
+  Top5 IDs: ['36_the_goal_a_process_of_ongoing_improvement_revise', '121_beginning_software_engineering_2nd_edition_rod_s', '159_the_goal_a_process_of_ongoing_improvement_revise', '582_beginning_software_engineering_2nd_edition_rod_s', '237_building_llms_for_production_enhancing_llm_abili']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q24 | Refusal: True
+  Pytanie: Jaki jest tradycyjny przepis na domowe pierogi ruskie?
+  Top5 IDs: ['161_the_pragmatic_programmer_20th_anniversary_editio', '334_paradigms_of_artificial_intelligence_programming', '121_beginning_software_engineering_2nd_edition_rod_s', '335_paradigms_of_artificial_intelligence_programming', '221_psychology_of_computer_programming_gerald_m_wein']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q25 | Refusal: True
+  Pytanie: Jaki padł wynik w ostatnim meczu siatkówki Polska - Brazylia?
+  Top5 IDs: ['84_graph_engineering_for_agentic_ai_systems_ken_hua', '237_building_llms_for_production_enhancing_llm_abili', '317_building_llms_for_production_enhancing_llm_abili', '551_paradigms_of_artificial_intelligence_programming', '00_pocock_context_shared_language']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q26 | Refusal: False
+  Pytanie: What is the latest release date and new features of Python 3.15?
+  Top5 IDs: ['350_llm_engineers_handbook_iusztin_paul_labonne_z_li', '40_llm_engineers_handbook_iusztin_paul_labonne_z_li', '441_beginning_software_engineering_2nd_edition_rod_s', '164_harness_starter_kit', '381_llm_engineers_handbook_iusztin_paul_labonne_z_li']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q27 | Refusal: False
+  Pytanie: What was Tesla's stock price at market close yesterday?
+  Top5 IDs: ['382_multiagent_systems_algorithmic_game_theoretic_an', '385_beginning_software_engineering_2nd_edition_rod_s', '384_multiagent_systems_algorithmic_game_theoretic_an', '297_building_llms_for_production_enhancing_llm_abili', '383_multiagent_systems_algorithmic_game_theoretic_an']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q28 | Refusal: False
+  Pytanie: What is the status of flight UA123 from New York to London?
+  Top5 IDs: ['128_augmenting_human_intellect_a_conceptual_framewor', '84_the_book_of_why_the_new_science_of_cause_and_eff', '00_psychology_of_computer_programming_gerald_m_wein', '80_artificial_intelligence_a_modern_approach_4th_ed', '71_the_goal_a_process_of_ongoing_improvement_revise']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q29 | Refusal: False
+  Pytanie: Who is the current elected President of Mars colony in 2026?
+  Top5 IDs: ['120_structure_and_interpretation_of_computer_program', '100_agentforce_harnessing_the_agency_of_ai_to_scale', '178_the_book_of_why_the_new_science_of_cause_and_eff', '135_building_llms_for_production_enhancing_llm_abili', '00_tool_orchestration_multi_tool']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+QID: Q30 | Refusal: False
+  Pytanie: Which company announced quantum supremacy with 1 million qubits today?
+  Top5 IDs: ['00_0d780aefeb5f_low_overhead_transversal_fault_tole', '528_beginning_software_engineering_2nd_edition_rod_s', '34_artificial_intelligence_a_modern_approach_4th_ed', '1030_artificial_intelligence_a_modern_approach_4th_ed', '29_icm_knowledge_big']
+  Top5 Cosine: ['err', 'err', 'err', 'err', 'err']
+------------------------------------------------------------
+== CANARY EVALUATION (Faza 8f) ==
+CANARY_CANARY_01: refusal=True [OK]
+  Pytanie: Jaki jest numer telefonu do dzialu HR firmy XYZ?
+------------------------------------------------------------
+CANARY_CANARY_02: refusal=False [FAIL]
+  Pytanie: Kiedy urodzila sie babcia Krystyna z Sierpca?
+------------------------------------------------------------
+CANARY_CANARY_03: refusal=False [FAIL]
+  Pytanie: Ile kosztuje bilet miesieczny w komunikacji miejskiej w Atlantis?
+------------------------------------------------------------
+CANARY_CANARY_04: refusal=False [FAIL]
+  Pytanie: Jaki jest numer NIP firmy Widmo Sp. z o.o.?
+------------------------------------------------------------
+CANARY_CANARY_05: refusal=True [OK]
+  Pytanie: Podaj wspolrzedne geograficzne miasta Eldoria.
+------------------------------------------------------------
+CANARY EVALUATION FAILED: some canary questions did not refuse.
+
+
+STDERR:
+
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]
+Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2087.84it/s]
+
+
+EXIT CODE: 1

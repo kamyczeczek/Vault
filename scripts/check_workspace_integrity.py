@@ -194,6 +194,10 @@ ALLOWED_ROOT = {
     # hook. Runtime artifact — declared in CLAUDE.md, listed in .gitignore, never
     # committed. Without this entry R1 would fail the moment close.py mints it.
     ".commit-approved",
+    # Bulk generated markdown (Repomix exports) that Obsidian must never parse:
+    # dot-prefixed on purpose, gitignored, written only by
+    # scripts/export_vault_repomix.bat. Declared in CLAUDE.md.
+    ".export",
 }
 
 # R1b: entries owned by the vault root, not the workspace root (ADR-006). Each
@@ -358,14 +362,27 @@ def check_declared_output_dirs_ignored() -> None:
 
 
 def _tracked_files(proj: Path) -> set[str]:
-    """Files git already tracks in this project; a set of repo-relative posix paths."""
-    if not (proj / ".git").exists():
-        return set()
+    """Files git already tracks in this project; a set of project-relative posix paths.
+
+    A project that is still its own repo is asked directly. A project absorbed
+    into the vault monorepo (its `.git` replaced by `history.bundle`, 2026-10-27)
+    is asked through the enclosing repo instead. The old `return set()` for that
+    case asserted that *no* file in a git-less project is tracked, which turned
+    every kept `.log` into residue — the exact outcome check_r3_hygiene's own
+    docstring forbids, because it teaches people to delete their evidence.
+    """
+    if (proj / ".git").exists():
+        out = subprocess.run(
+            ["git", "-C", str(proj), "ls-files"],
+            capture_output=True, text=True, check=False,
+        )
+        return {line for line in out.stdout.splitlines() if line}
     out = subprocess.run(
-        ["git", "-C", str(proj), "ls-files"],
+        ["git", "-C", str(ROOT), "ls-files", "-z", "--", str(proj)],
         capture_output=True, text=True, check=False,
     )
-    return {line for line in out.stdout.splitlines() if line}
+    prefix = proj.relative_to(ROOT).as_posix().rstrip("/") + "/"
+    return {p[len(prefix):] for p in out.stdout.split("\0") if p.startswith(prefix)}
 
 GRADES = ("candidate", "active", "demoted")
 

@@ -1,0 +1,33 @@
+{
+  "note": "BigDict component ablation - BigDict vs benchmarks",
+  "bigdict_cos_only": {
+    "thomas_H24": 0.2281,
+    "seasonal_H48": 0.3033,
+    "multiscale_H96": 0.2260
+  },
+  "bigdict_hybrid": {
+    "thomas_H24": 0.1858,
+    "seasonal_H48": 0.3033,
+    "multiscale_H96": 0.2260
+  },
+  "benchmarks": {
+    "amr_fbs": {"thomas_H24": 0.0572, "seasonal_H48": 0.7122, "multiscale_H96": 0.2200},
+    "knn": {"thomas_H24": 0.1035, "seasonal_H48": 0.1859, "multiscale_H96": 0.2612}
+  },
+  "activation_ablation_thomas": {
+    "cos": {"mae": 0.2281, "time_s": 80},
+    "rbf": {"mae": 0.1980, "time_s": 31},
+    "hybrid": {"mae": 0.1858, "time_s": 54}
+  },
+  "filter_bank": {
+    "D0": 1824,
+    "groups": [
+      {"name": "identity", "dims": 96, "share_pct": 5},
+      {"name": "MA", "dims": 384, "share_pct": 21},
+      {"name": "EMA", "dims": 192, "share_pct": 11},
+      {"name": "Diff", "dims": 192, "share_pct": 11},
+      {"name": "HP", "dims": 192, "share_pct": 11},
+      {"name": "Wavelet", "dims": 768, "share_pct": 42}
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+ "id": "q007",
+ "question": "Jakie cztery strategie radzenia sobie ze zdarzeniami opisuje książka i czym się różnią pod względem couplingu i asynchroniczności?",
+ "type": "comparison / four-way",
+ "header": "Porównanie czterech strategii (comparison, multi-chunk w jednym Topicu)",
+ "gold_topics": [
+  29
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 33,
+   "topic_title": "Breaking Temporal Coupling",
+   "chapter": 6,
+   "page_book": 292,
+   "text": "We don't usually approach programming with either of these aspects in mind. When people first sit down to design an architecture or write a program, things tend to be linear. That's the way most people think— _do this_ and then always _do that_ . But thinking this way leads to _temporal coupling_ : coupling in time. Method A must always be called before method B; only one report can be run at a time; you must wait for the screen to redraw before the button click is received. Tick must happen before tock.\n\nThis approach is not very flexible, and not very realistic."
+  },
+  {
+   "topic": 28,
+   "topic_title": "Decoupling",
+   "chapter": 5,
+   "page_book": 228,
+   "text": "- Topic 10, _<u>Orthogonality</u>_ Topic 11, _Reversibility_ Topic 29, _<u>Juggling the Real World</u>_\n\n- Topic 30, _Transforming Programming_\n\n- Topic 31, _Inheritance Tax_ Topic 32, _<u>Configuration</u>_\n\n- Topic 33, _Breaking Temporal Coupling_\n\n- Topic 34, _Shared State Is Incorrect State_\n\n- Topic 35, _Actors and Processes_\n\n- Topic 36, _Blackboards_\n\n- We discuss _Tell, Don't Ask_ in our 2003 Software Construction <u>[38]</u>\n\n- article _The Art of Enbugging_ ."
+  },
+  {
+   "topic": 30,
+   "topic_title": "Transforming Programming",
+   "chapter": 5,
+   "page_book": 255,
+   "text": "Yes, there is still a degree of coupling, but in our experience it's more manageable than the OO-style of command and control. And, if you're using a language with type checking, you'll get compile-time warnings when you try to connect two incompatible things.\n\n#### **WHAT ABOUT ERROR HANDLING?**\n\nSo far our transforms have worked in a world where nothing goes wrong. How can we use them in the real world, though? If we can only build linear chains, how can we add all that conditional logic that we need for error checking?"
+  },
+  {
+   "topic": 33,
+   "topic_title": "Breaking Temporal Coupling",
+   "chapter": 6,
+   "page_book": 292,
+   "text": "**Topic 33**\n\n#### Breaking Temporal Coupling\n\n\"What is _temporal coupling_ all about?\", you may ask. It's about time.\n\nTime is an often ignored aspect of software architectures. The only time that preoccupies us is the time on the schedule, the time left until we ship—but this is not what we're talking about here. Instead, we are talking about the role of time as a design element of the software itself. There are two aspects of time that are important to us: concurrency (things happening at the same time) and ordering (the relative positions of things in time)."
+  },
+  {
+   "topic": 31,
+   "topic_title": "Inheritance Tax",
+   "chapter": 5,
+   "page_book": 272,
+   "text": "Each of these methods may be better for you in different circumstances, depending on whether your goal is sharing type information, adding functionality, or sharing methods. As with anything in programming, aim to use the technique that best expresses your intent.\n\nAnd try not to drag the whole jungle along for the ride.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 8, _The Essence of_ _<u>Good Design</u>_\n\n- Topic 10, _<u>Orthogonality</u>_\n\n- Topic 28, _Decoupling_\n\n#### **CHALLENGES**\n\n- The next time you find yourself subclassing, take a minute to examine the options. Can you achieve what you want with interfaces, delegation, and/or mixins? Can you reduce coupling by doing so?"
+  },
+  {
+   "topic": 32,
+   "topic_title": "Configuration",
+   "chapter": 5,
+   "page_book": 284,
+   "text": "Developers often talk about coupling between chunks of code. They're referring to dependencies, and how those dependencies make things hard to change. But there's another form of coupling. _Temporal coupling_ happens when your code imposes a sequence on things that is not required to solve the problem at hand. Do you depend on the \"tick\" coming before the \"tock\"? Not if you want to stay flexible. Does your code access multiple back-end services sequentially, one after the other? Not if you want to keep your customers. In Topic 33, _<u>Breaking Temporal Coupling</u>_ <u>, we'll look at ways of identifying this kind of temporal</u> coupling."
+  },
+  {
+   "topic": 28,
+   "topic_title": "Decoupling",
+   "chapter": 5,
+   "page_book": 228,
+   "text": "##### **Chains and Pipelines**\n\nIn Topic 30, _<u>Transforming Programming</u>_ we talk about composing functions into pipelines. These pipelines transform data, passing it from one function to the next. This is not the same as a train wreck of method calls, as we are not relying on hidden implementation details.\n\nThat's not to say that pipelines don't introduce some coupling: they do. The format of the data returned by one function in a pipeline must be compatible with the format accepted by the next.\n\nOur experience is that this form of coupling is far less a barrier to changing the code than the form introduced by train wrecks.\n\n#### **THE EVILS OF GLOBALIZATION**"
+  },
+  {
+   "topic": 29,
+   "topic_title": "Juggling the Real World",
+   "chapter": 5,
+   "page_book": 239,
+   "text": "Compared to the observer pattern, pubsub is a great example of reducing coupling by abstracting up through a shared interface (the channel). However, it is still basically just a message passing system. Creating systems that respond to combinations of events will need more than this, so let's look at ways we can add a time dimension to event processing.\n\n**REACTIVE PROGRAMMING, STREAMS, AND EVENTS** If you've ever used a spreadsheet, then you'll be familiar with _reactive programming_ . If a cell contains a formula which refers to a second cell, then updating that second cell causes the first to update as well. The values _react_ as the values they use change."
+  }
+ ]
+}

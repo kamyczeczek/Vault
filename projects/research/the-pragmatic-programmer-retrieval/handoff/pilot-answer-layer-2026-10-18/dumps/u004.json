@@ -1,0 +1,66 @@
+{
+ "id": "u004",
+ "question": "Jak zabezpieczyć bazę danych PostgreSQL przed atakami typu SQL Injection przy użyciu parametryzowanych zapytań w SQLAlchemy?",
+ "type": "unanswerable",
+ "header": "Unanswerable (SQLAlchemy & SQL Injection)",
+ "gold_topics": [],
+ "input_stage_hit": false,
+ "chunks": [
+  {
+   "topic": 12,
+   "topic_title": "Tracer Bullets",
+   "chapter": 2,
+   "page_book": 109,
+   "text": "This was a great opportunity to use tracer code. We developed the framework for the front end, libraries for representing the queries, and a structure for converting a stored query into a database-specific query. Then we put it all together and checked that it worked. For that initial build, all we could do was submit\n\na query that listed all the rows in a table, but it proved that the UI could talk to the libraries, the libraries could serialize and unserialize a query, and the server could generate SQL from the result. Over the following months we gradually fleshed out this basic structure, adding new functionality by augmenting each component of the tracer code in parallel. When the UI added a new query type, the library grew and the SQL generation was made more sophisticated."
+  },
+  {
+   "topic": 12,
+   "topic_title": "Tracer Bullets",
+   "chapter": 2,
+   "page_book": 109,
+   "text": "images/layer-diagram-tracer.png\n\nWe once undertook a complex client-server database marketing project. Part of its requirement was the ability to specify and execute temporal queries. The servers were a range of relational and specialized databases. The client UI, written in random language A, used a set of libraries written in a different language to provide an interface to the servers. The user's query was stored on the server in a Lisp-like notation before being converted to optimized SQL just prior to execution. There were many unknowns and many different environments, and no one was too sure how the UI should behave."
+  },
+  {
+   "topic": 41,
+   "topic_title": "Test to Code",
+   "chapter": 7,
+   "page_book": 361,
+   "text": "The answer is that you can't know that. No one can. But thinking about tests can make it more likely. Here's how that works.\n\nStart by imagining that you'd finished writing the function and now had to test it. How would you do that? Well, you'd want to use some test data, which probably means you want to work in a database you control. Now some frameworks can handle that for you, running tests against a test database, but in our case that means we should be passing the database instance into our function rather than using some global one, as that allows us to change it while testing:\n\n**<mark>def</mark>** <mark>return_avid_users(db)</mark> **<mark>do</mark>**"
+  },
+  {
+   "topic": 23,
+   "topic_title": "Design by Contract",
+   "chapter": 4,
+   "page_book": 191,
+   "text": "as they existed at the entry to a method. If you're using assertions to enforce contracts, you must add code to the precondition to save any information you'll want to use in the postcondition, if the language will even allow that. In the Eiffel language, where DBC was born, you can just use old _expression_ .\n\nFinally, conventional runtime systems and libraries are not designed to support contracts, so these calls are not checked. This is a big loss, because it is often at the boundary between your code and the libraries it uses that the most problems are detected (see Topic 24, _<u>Dead Programs Tell No Lies</u>_ for a more detailed discussion).\n\n###### **Who's Responsible?**"
+  },
+  {
+   "topic": 23,
+   "topic_title": "Design by Contract",
+   "chapter": 4,
+   "page_book": 191,
+   "text": "** (FunctionClauseError) no function clause matching in Deposits.accept_deposit/2\n\nThis is a better approach than simply checking your inputs; in this case, you simply _can not_ call this function if your arguments are out of range.\n\n> **Tip 37** Design with Contracts\n\nIn Topic 10, _<u>Orthogonality</u>_ <u>, we recommended writing \"shy\"</u> code. Here, the emphasis is on \"lazy\" code: be strict in what you will accept before you begin, and promise as little as possible in return. Remember, if your contract indicates that you'll accept anything and promise the world in return, then you've got a lot of code to write!\n\nIn any programming language, whether it's functional, objectoriented, or procedural, DBC forces you to _think._\n\n**DBC and Test-Driven Development**"
+  },
+  {
+   "topic": 44,
+   "topic_title": "Naming Things",
+   "chapter": 7,
+   "page_book": 395,
+   "text": "- <u>[63]</u> Remember our good friend, little Bobby Tables (https://xkcd.com/327)? While you're reminiscing have a look at https://bobby-tables.com, which lists ways of sanitizing data passed to database queries.\n\n- <u>[64]</u> This technique has proven to be successful at the CPU chip level, where well-known exploits target debugging and administrative facilities. Once cracked, the entire machine is left exposed.\n\n- <u>[65]</u> _NIST Special Publication 800-63B: Digital Identity Guidelines: Authentication and Lifecycle Management_ , available free online at https://doi.org/10.6028/NIST.SP.80063b\n\n- <u>[66]</u> Unless you have a PhD in cryptography, and even then only with major peer review, extensive field trials with a bug bounty, and budget for long-term maintenance."
+  },
+  {
+   "topic": 42,
+   "topic_title": "Property-Based Testing",
+   "chapter": 7,
+   "page_book": 375,
+   "text": "We're writing a simple order processing and stock control system (because there's always room for one more). It models the stock levels with a Warehouse object. We can query a warehouse to see if something is in stock, remove things from stock, and get the current stock levels.\n\nHere's the code:\n\n|proptest/stock.py|\n|---|\n|**class**Warehouse:|\n|**def**__init__(self, stock):|\n|self.stock = stock|\n|**def**in_stock(self, item_name):|"
+  },
+  {
+   "topic": 23,
+   "topic_title": "Design by Contract",
+   "chapter": 4,
+   "page_book": 191,
+   "text": "It's a naming thing. Eiffel is an object-oriented language, so Meyer named this idea \"class invariant.\" But, really, it's more general than that. What this idea really refers to is _state_ . In an object-oriented language, the state is associated with instances of classes. But other languages have state, too.\n\nIn a functional language, you typically pass state to functions and receive updated state as a result. The concepts of invariants is just as useful in these circumstances.\n\n#### **IMPLEMENTING DBC**\n\nSimply enumerating what the input domain range is, what the boundary conditions are, and what the routine promises to deliver—or, more importantly, what it _doesn't_ promise to deliver —before you write the code is a huge leap forward in writing"
+  }
+ ]
+}

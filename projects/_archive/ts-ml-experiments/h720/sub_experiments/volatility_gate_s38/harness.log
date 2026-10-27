@@ -1,0 +1,17 @@
+=== S-38 Volatility-Gated Conditional Weighting Harness ===
+Collecting validation predictions for 2 S-26 members over 2161 origins...
+Best held-out val MAE: 2.5696 with window=96, alpha=10000.0
+  Val Tercile 0 (n=720): mean coefs = [0.478106812379943, 0.4781098685508745]
+  Val Tercile 1 (n=720): mean coefs = [0.43986650074035144, 0.43986987071248096]
+  Val Tercile 2 (n=721): mean coefs = [0.4889480571638698, 0.48895124840670395]
+Refit all val MAE: 2.7770, RMSE: 3.4270
+Fitting members on full train 11425 for test evaluation...
+Collecting test predictions on 2161 test origins...
+  Test Tercile 0 (n=1516): MAE=2.0160, RMSE=2.5025
+  Test Tercile 1 (n=530): MAE=1.8641, RMSE=2.3091
+  Test Tercile 2 (n=115): MAE=1.9415, RMSE=2.4039
+
+S-38 Results:
+  Full MAE: 1.9748 (Incumbent: 1.9909)
+  Disjoint-4 MAE: 2.0914 (Incumbent: 1.9696)
+Acceptance: False (MAE < 1.9909: True, Disj < 1.9696: False, No Collapse: True)

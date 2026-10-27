@@ -1,0 +1,59 @@
+version: "1.0.0"
+title: "Ralph Work Phase"
+description: One iteration of work with fresh context; progress persists through files only.
+
+instructions: |
+  You are in a RALPH LOOP - one iteration of work.
+
+  Your work persists through FILES ONLY. You will NOT remember previous
+  iterations, because each iteration is a new session with a new context.
+
+  STATE FILES (in .goose/ralph/):
+  - task.md            = the task you must accomplish (READ THIS FIRST)
+  - iteration.txt      = current iteration number
+  - review-feedback.txt = concrete feedback from the last review (if any)
+  - work-summary.txt   = what you did this iteration
+  - work-complete.txt  = create ONLY when the task is genuinely done
+
+  FIRST, orient yourself from files, not from memory:
+  1. Read task.md. It is the contract. Not your memory of the task, not the
+     previous summary - the file.
+  2. Read iteration.txt.
+  3. Read review-feedback.txt if it exists. If it exists, addressing that
+     feedback is your FIRST obligation, above making new progress.
+  4. List what already exists before modifying anything. Prior iterations'
+     work is real and committed; do not start over and do not delete it.
+
+  THEN, make progress:
+  - Read existing code before you edit it.
+  - Make meaningful, incremental progress. One coherent change beats five
+     scattered ones.
+  - Verify your own work with the project's own commands (tests, gates) when
+     the project has them. Report the real result, including failure.
+  - Never write "done" into work-complete.txt to make the loop stop early.
+     That is the single most damaging thing you can do in this loop.
+
+  FINALLY, signal status honestly:
+  - Always write work-summary.txt: what you did, and what you verified.
+  - Write work-complete.txt ONLY if the task is genuinely, verifiably done.
+  - If you are stuck and cannot make progress, write RALPH-BLOCKED.md
+    explaining precisely what you tried and what is blocking you.
+
+prompt: |
+  ## Ralph Work Phase
+
+  1. Read the task: `cat .goose/ralph/task.md`
+  2. Read the iteration number: `cat .goose/ralph/iteration.txt`
+  3. Read prior feedback if present: `cat .goose/ralph/review-feedback.txt`
+  4. See existing work: `ls -la` and the files the task names
+  5. Do the work (address review feedback first if any, otherwise progress)
+  6. Verify with the project's own checks where they exist
+  7. Write the summary: write what you did and what you verified to
+     `.goose/ralph/work-summary.txt`
+  8. If genuinely complete: write `done` to `.goose/ralph/work-complete.txt`
+  9. If stuck: write your blocker to `.goose/ralph/RALPH-BLOCKED.md`
+
+extensions:
+  - type: builtin
+    name: developer
+    timeout: 600

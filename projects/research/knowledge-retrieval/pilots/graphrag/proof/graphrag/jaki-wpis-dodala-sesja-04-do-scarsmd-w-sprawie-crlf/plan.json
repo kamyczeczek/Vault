@@ -1,0 +1,14 @@
+{
+  "pytanie": "Jaki wpis dodala sesja 04 do SCARS.md w sprawie CRLF?",
+  "slowa_kluczowe": [
+    "wpis",
+    "dodala",
+    "sesja",
+    "scars",
+    "sprawie",
+    "crlf"
+  ],
+  "typ_szukania": "fts_body",
+  "top_k": 10,
+  "data": "2026-10-11T19:59:26.434694Z"
+}

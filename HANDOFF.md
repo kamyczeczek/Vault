@@ -29,10 +29,68 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/vault-monorepo-import-2026-10-27.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
+`vault-monorepo-import-2026-10-27` — 2026-10-27: cały vault w jednym repo GitHub.
+Stan: 12 zagnieżdżonych repo zastąpione plikami + `history.bundle` (każde odtwarzalne
+przez `git clone history.bundle`); `.gitignore` zwężony do toolchainu, sekretów,
+książek i plików >100 MB. `check_workspace_integrity._tracked_files` pyta teraz repo
+nadrzędne, bo projekt bez własnego `.git` nie ma już „zera śledzonych plików”.
+Next: push (~300 MB) i weryfikacja świeżego `git clone`.
+not checked: push do GitHuba i świeży `git clone` — dopiero po tym commicie.
+Książki z `library/` i archiwów zostają poza repo (świadoma decyzja, nie przeoczenie).
+
 <!-- handoff/flags/research-engine-s47-2026-10-26.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `research-engine-s47-2026-10-26` — 2026-10-26: zagnieżdżone repo `research-engine` jest domknięte (dwa commity: 0b08562, 70ce0eb; drzewo czyste). Q9 rozstrzygnięte regułą zapisaną **przed** odczytem liczb: obie polityki okna (stałe 2000 vs expanding) muszą dać tego samego kandydata i te same bramki. Dały — wybór B, te same rangi, 4/6 zwycięstw, 0/6 zmian zwycięzcy na zadaniach — więc stałe 2000 zostaje protokołem, a expanding jest zapisanym testem wrażliwości (`results_s47_expanding.json`, `compare_window_policies.py` → exit 0). Q10: pięć originów W=5 jest spalone dla potwierdzenia, `all_binding=false`, nic nie awansuje. Q11: 26.7 s fixed / 26.2 s expanding, poniżej `<5 min`. `results_s47.json` w HEAD nie mówi już `PROMOTE` — werdykt jest diagnostyczny. Testy 12/12.
 Next: protokół FEV w `benchmark-core` — patrz `benchmark-core-fev-honest-2026-10-26`. S-47 zostaje sondą.
 not checked: nie ruszano `benchmark-core` w tym commicie; stan `bench.py --fev` opisuje flaga `benchmark-core-fev-honest-2026-10-26`.
+
+<!-- handoff/flags/obsidian-index-overload-2026-10-26.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
+`obsidian-index-overload-2026-10-26` — 2026-10-26: przyczyną zadyszki był nie
+jeden indeks, a cztery nakładające się przebiegi po całym vaulcie, który po
+root-flatten (2026-10-25) jest workspace'em dev: **72 818 plików / 3,27 GB, 26 645 md**,
+z czego 23 273 md to dane maszynowe (dwa identyczne korpusy po 10 374 plików
++ 2 525 w `brain/.brain/corpus`), a w środku leżały dwa pliki Repomix
+**55,7 MB / 1,05 mln linii** i **27,9 MB**.
+
+Zmiany (żaden plik nie został usunięty):
+
+- `vault_export.md`, `test_export.md`, `scripts/vault_export.md` → `.export/`
+  (katalog z kropką; Obsidian nie indeksuje ścieżek zaczynających się od `.`).
+  `scripts/export_vault_repomix.bat` domyślnie pisze do `.export\` i wymusza to
+  także przy argumencie; `.export/` w `.gitignore`.
+- `.obsidian/app.json`: `userIgnoreFilters` = `projects/`, `scripts/_scratch/`,
+  `logs/`, `agents/` (ukrywa z grafu/wyszukiwania/properties; **nie** zatrzymuje
+  parsowania metadataCache — to ograniczenie Obsidiana).
+- `okf-enforcer/data.json`: `scanOnStartup: false`, `fixOnSave: false`,
+  `autoGenerateIndex: false`, `excludeFolders` += `projects`, `scripts/_scratch`,
+  `logs`, `agents` (wcześniej brak pliku = domyślne, czyli pełna walidacja
+  całego vaulta na starcie i zapisy `index.md` w `__pycache__`).
+- `ideaverse-maps/data.json`: `exclude` = `projects`, `scripts/_scratch`, `logs`
+  (scan-cache miał 23 991 wpisów, w tym 10 374 z korpusu i 12 480 z `_archive`).
+- `.smart-env/smart_env.json`: `folder_exclusions` += `projects`, `logs`, `agents`;
+  `smart_blocks.embed_blocks: false`; `re_import_wait_time` 13 → 120 s
+  (13 s debounce po każdym zapisie = 91 re-importów w 43 h).
+- `obsidian-git/data.json`: nowy plik z `autoSaveInterval: 0`,
+  `autoPullInterval: 0`, `refreshSourceControlTimer: 60000` (domyślne 7 s
+  `git status` po całym drzewie; backup z 10-25 miał auto-commit i auto-pull
+  co 10 s).
+- `.obsidian/workspace.json`: usunięte panele `all-properties`, `tag`,
+  `smart-connections-view`, `smart-env-status-view`; wyczyszczone `lastOpenFiles`.
+
+Czego to **nie** usuwa: Obsidian dalej parsuje 23,3 tys. notatek korpusu przy
+każdym starcie (metadataCache nie jest trwały, a „Excluded files" nie wpływa na
+parsowanie). Jeśli start ma być krótki, korpusy muszą wyjść z vaulta albo dostać
+nazwę z kropką — to zmiana ścieżek w `projects/`, więc osobna decyzja.
+
+Potwierdzone przez użytkownika 2026-10-27 po restarcie aplikacji: indeksowanie
+przestało dławić Obsidiana. Zostaje tylko koszt startu (~24 tys. notatek do
+sparsowania), nie cykliczne zadyszki w trakcie pracy.
+
+not checked:
+- brak profilu CPU przed/po — potwierdzenie jest objawowe („już nie dławi"),
+  nie liczbowo; nie mierzono czasu startu ani zużycia RAM.
+- `_recovery-2026-10-25` (67,9 MB) i `smart_sources.ajson` (28,7 MB) nietknięte;
+  baza Smart Connections nie została wyczyszczona.
 
 <!-- handoff/flags/benchmark-core-fev-honest-2026-10-26.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `benchmark-core-fev-honest-2026-10-26` — 2026-10-26: `bench.py --fev` przestało kłamać (nested commits `726daa6` kod + testy, `e54644d` MAP.md; tylko `bench.py` + `test_benchmark_protocol.py` — 36 wcześniejszych brudnych wpisów w `benchmark-core` **nie** ruszono). Martwe URL-e były prawdziwe: `benchmarks/fev_bench.yaml` i `fev_bench_mini.yaml` → 404; właściwe to `benchmarks/fev_bench/tasks.yaml` i `.../tasks_mini.yaml`, sprawdzone 200, a `Benchmark.from_yaml` ładuje 20 zadań i przechodzi probe. `--fev` domyślnie **failuje zamknięciem** (exit 2, zero artefaktów); `--allow-synthetic-fallback` to jawny opt-in. Każdy wynik niesie `data_source` (`real` / `synthetic_fallback` / `builtin_suite`) i `confirmatory` (true tylko dla real); fallback jest stemplowany `synthetic_fallback` / `false`, zapisuje `fev_attempt` i ląduje w `bench_synthetic_fallback.json` — nigdy w `results_s47.json`, który wcześniej nadpisywał. `test_benchmark_protocol.py` 6/6.
@@ -310,160 +368,7 @@ not checked:
 - `--include .` w realnej migracji — sprawdzony dopiero w commicie migracyjnym; jeśli stray pojawi się mimo to, commit padnie i to jest poprawne zachowanie.
 - czy `git add --intent-to-add .` jest potrzebny (S67 dotyczy untracked plików, nie katalogów) — nie testowano na katalogu z untracked treścią.
 
-<!-- handoff/flags/test-memory-index-format-restored-2026-10-23.md · owner: opencode · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`test-memory-index-format-restored-2026-10-23` — 2026-10-23: **`test_memory_index.py` is green (33/33).** The 2026-10-21 restructure removed `format_results`, `format_brief`, `get_chunk` and `print_usage` from `memory_index.py` but left the regression file importing them, so the suite died at import and its four guards were dead. Restored all four helpers and wired them back into `query --full` / default `query`, `get`, and `stats --usage`; `--with-context` now renders again as `(+Nctx)` in the brief view, which the inline rewrite had silently dropped.
-
-Evidence:
-- `scripts/memory_index.py` — `format_results`, `format_brief`, `get_chunk`,
-  `print_usage`; `query` prints the brief/full views, `get` drills via
-  `get_chunk` (None → exit 1), `stats --usage` delegates counts/window/terms to
-  `print_usage` and keeps the usage-rate metrics.
-- `scripts/test_memory_index.py` — CLI miss checks read `main()`'s return value
-  (`main` returns int; it does not raise `SystemExit` on a miss).
-- `python.exe scripts/test_memory_index.py` — 33/33, all checks passed.
-- `check_workspace_integrity.py` — OK; freshness OK; retrieval_eval hit@5=1.000
-  MRR=0.577; drift OK (10 stores).
-
-not checked: the `format_results` body path prefers a real `snippet` key and
-otherwise falls back to the 400-char `_evidence_snippet`, so its per-hit cost is
-unchanged from the inline version; no end-to-end `--rebuild` cost measured.
-
-<!-- handoff/flags/session-digest-ab-2026-10-23.md · owner: opencode · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`session-digest-ab-2026-10-23` — 2026-10-23: **L0 unproven/closed; L1 is a
-selection index, not an analysis layer.** A/B on one real question:
-*"what happened with `--classify` — candidate count, promotion, cause, next
-step?"* Same 3 sessions (review/promotion, classify, commit), three corpora.
-
-| Corpus | Content | Size | Read | Score |
-|---|---|---|---|---|
-| P (plan A) | L1 cards + 3 full bodies | 270 040 B | 1 828 / 5 670 lines | 4/4 facts |
-| Q (plan B) | `did` for the same 3 | 180 308 B | 3 726 / 3 726 | 4/4 + 3 extra |
-| R (L1 only) | 3 cards, no bodies | 3 913 B | 147 / 147 | 0/4 — "brak w materiale" |
-
-Scored facts: 6 candidates (4 `open_threads` + 2 `contradictions`); 0/6 true
-→ no promotion; cause `session_facts._marker_scan` + `not_checked` in
-`OPEN_MARKERS`; next step rules-v2 + `review_ref`. Q additionally found
-40 sessions / 93 children, smoke 0 candidates, and the pre-`--classify` state.
-L0 contributed nothing: 781 B, all `_brak_`.
-
-Decision: do not build `--profile llm`; do not promote L0. Keep L1 as the
-selector (filter `session_cards.json` by `files`/`flags`), then export 2–5
-sessions; use `did` or the selected bodies for analysis. Recorded in
-`brain/decisions/ADR-005-session-digest-fact-judgment.md` ("Wynik A/B") and
-`docs/session-digest-GATES.md` G14.
-
-Reproduction (corpora are one-off, under `%TEMP%`, never committed):
-
-```text
-python scripts/session_digest.py 10 --out-dir %TEMP%\digest-probe-10
-python scripts/session_digest.py --classify --count 10 --out-dir %TEMP%\digest-probe-10
-python scripts/extract_did.py 6 -o %TEMP%\ab-test\did6.md
-python scripts/agent_sessions.py export opencode ses_e9ee3df48ffeI2L1QarEEqiSUz -o %TEMP%\ab-test\body-1.md
-python scripts/agent_sessions.py export opencode ses_e9ef9abd8ffeilAF4R1y6kPPWq -o %TEMP%\ab-test\body-2.md
-python scripts/agent_sessions.py export opencode ses_e9efe1ee0ffeT9xzjalxF9309H -o %TEMP%\ab-test\body-3.md
-```
-
-`%TEMP%\ab-test` is disposable; only the numbers above are the evidence.
-
-not checked: n=1 question, 3 sessions, one model; P and Q differ in content
-filter (P keeps read-only calls and payloads, Q drops them); scoring was not
-fully blind because the formats are recognisable. The design session
-(574 KB in `did`) was outside the test, so the "rejected alternatives"
-question was not measured; its cost gap would only favour `did` further.
-
-<!-- handoff/flags/session-brief-valuable-2026-10-23.md · owner: opencode · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`session-brief-valuable-2026-10-23` — 2026-10-23: **`session_brief.py` built;
-committed in `e98237a`.** The tool reads the N latest main sessions, reuses the L1 cards
-from `session_digest.py` for selection (commits, files, flags, tests, micro) and
-the `did` event stream from `extract_did.py` for content, then writes a compact
-per-session brief. No model call and no free-form summary: every line is a
-mechanical fact, a quote, or a truncated tool excerpt.
-
-Selection with `--valuable` drops durably excluded meta-sessions, micro sessions
-with no delta, and sessions with no mutating event and no commit/flag/test
-signal. Read-only `bash`/PowerShell noise is dropped, including `--help`,
-`--version`, null redirects, temp-path writes, and fixture-like flag ids.
-Quoted spans are stripped before the mutation test, so a `>` or `rm` inside a
-pattern does not make `grep`/`Select-String` look mutating, and `rm`/`mv`/`cp`
-only match as commands, not inside ids like `git-rm`. `skill` calls are not
-actions. Session `flags` are split into present and `absent now` (the latter
-replaces the old `flags missing` line, which read like loss instead of
-retirement).
-
-Evidence:
-- `scripts/session_brief.py` — `--last N`, `--valuable`, `--agent`, `--days`,
-  `--until`, `-o/--out`, `--session-kb` (8), `--total-kb` (120),
-  `--max-actions` (8). Default output:
-  `scripts/_scratch/sessions/02_products/session_brief.md`.
-- `scripts/session_brief.bat` — wrapper: `session_brief.bat N [OUT]`.
-- `scripts/test_session_brief.py` — stdlib-only helper tests; `OK session_brief`.
-- Sample run: `--last 20 --valuable --until "2026-10-23 05:00:00"` selected
-  18/20 (skipped 1 meta, 1 micro), 70,001 bytes; `--last 10 --valuable` selected
-  8/10, 27,722 bytes. The `--until` keeps the in-flight session out of the
-  sample; without it the running session becomes #1 and its "Ending" is just the
-  latest reply, not an ending.
-- `scripts/_scratch/sessions/CLAUDE.md` and `02_products/CONTEXT.md` — product
-  routing rows (derived shelf docs).
-
-not checked: the selector is heuristic — a session whose only mutating calls are
-`python -c` probes or temp-dir experiments can still pass; `2>/dev/null` counts
-as an attempted redirect (on PowerShell it really does try to write
-`C:\dev\null`); `--last N` filters inside the N-session window instead of
-backfilling to N valuable sessions; the sample was inspected by eye, not graded
-against a gold set; nothing yet uses it on a real analytical question, so it is
-a tool, not a product. The tool, its `.bat`, and its test landed in `e98237a`.
-
-Related: `handoff/flags/memory-meta-session-exclusion-durable-2026-10-23.md`
-(durable meta-session exclusion used by the selector).
-
-<!-- handoff/flags/memory-meta-session-exclusion-durable-2026-10-23.md · owner: opencode · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`memory-meta-session-exclusion-durable-2026-10-23` — 2026-10-23: **B landed;
-A is durable.** `memory_index.EXCLUDED_SESSION_IDS` is the checked-in list; it
-holds the four meta-sessions A removed plus this implementation session (that
-session took #1 in two eval queries; without it MRR was 0.577 → 0.562).
-`ingest` skips the list and purges any rows already in the derived store;
-`freshness` and `memory_index_check_drift.py` filter it before asking what is
-on disk. The first ingest after the change purged the implementing session and
-reported "5 durably excluded"; drift OK (10 stores), freshness OK,
-`retrieval_eval` 15/15 MRR 0.577.
-
-Evidence:
-- `scripts/memory_index.py` — `EXCLUDED_SESSION_IDS`, `is_excluded`,
-  `filter_excluded`, `purge_excluded`; applied in `ingest` and `freshness`.
-- `scripts/memory_index_check_drift.py` — `load_sessions_like_ingest` returns
-  `memory_index.filter_excluded(sessions)`; the docstring names the policy.
-- `scripts/test_memory_index_exclusions.py` — 5/5 (list, filter, purge,
-  idempotence, freshness ignores an excluded newest).
-- `scripts/test_memory_index_check_drift.py` — 9/9 (added the exclusion check).
-- `scripts/memory/CONTEXT.md` — contract note.
-
-Retires `handoff/flags/memory-index-meta-session-exclusion-2026-10-23.md` (A's
-per-run workaround): the list is now the source, the DB is rebuilt from it.
-
-not checked: the list is ID-based, so a new meta-session needs an id added (the
-title scan found many close-out/instruction sessions; only the ones that
-measurably displaced eval entries were excluded); full `--rebuild` cost
-after B not measured.
-
-<!-- handoff/flags/did-sessions-default-5-2026-10-23.md · owner: opencode · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`did-sessions-default-5-2026-10-23` — 2026-10-23: **1f1937f gets its flag
-retroactively.** `scripts/did_sessions.bat` now defaults to `COUNT=5` (was 10);
-an explicit argument still overrides it. The 10-session run wrote
-`scripts/_scratch/sessions/02_products/did_sessions.md` at 1,268,733 bytes, and
-that file is read whole by whoever inspects it — 5 halves the default cost and
-still covers a working day. No code path depends on the default value.
-
-Evidence:
-- commit `1f1937f` — `scripts/did_sessions.bat:7` — `set COUNT=5`.
-- `scripts/_scratch/sessions/02_products/did_sessions.md` — 10 sessions,
-  1,268,733 bytes, generated 2026-10-23 05:41:32 (the last 10-default run).
-
-not checked: the worktree also held an uncommitted revert to `COUNT=10`; it was
-discarded, so the flag claims HEAD, not what an open editor buffer says. Whether
-5 is the right size is a judgement call, not a measurement — no read-time or
-token-spend comparison of 5 vs 10 exists.
-
-Starsze flagi (207): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
+Starsze flagi (212): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
 
 ## where-the-work-landed
 

@@ -1,0 +1,50 @@
+{
+  "ETT_Load_Synthetic": {
+    "length": 8000,
+    "mean": 152.08855586145938,
+    "std": 19.706817206404505,
+    "min": 105.08182185203246,
+    "max": 198.19855302984334,
+    "source": "ETT Load Synthetic"
+  },
+  "Solar_Activity_SIDC": {
+    "length": 8000,
+    "mean": 116.19490077206103,
+    "std": 150.70679671746282,
+    "min": 0.0,
+    "max": 432.33483221197025,
+    "source": "Solar Activity SIDC"
+  },
+  "Weather_Temperature_Realistic": {
+    "length": 8000,
+    "mean": 24.01864327158758,
+    "std": 13.32731104561779,
+    "min": -9.638454355943631,
+    "max": 59.75547723906173,
+    "source": "Weather Temperature Realistic"
+  },
+  "Financial_Returns_GARCH": {
+    "length": 8000,
+    "mean": -490.38580680950304,
+    "std": 268.7456808484066,
+    "min": -1001.3210735912221,
+    "max": 124.04398764301729,
+    "source": "Financial Returns GARCH"
+  },
+  "Industrial_Sensor_A": {
+    "length": 8000,
+    "mean": 102.74902169318487,
+    "std": 35.21154354076023,
+    "min": 40.34769063745364,
+    "max": 158.7585475589146,
+    "source": "Industrial Sensor A"
+  },
+  "Industrial_Sensor_B": {
+    "length": 8000,
+    "mean": 82.2997247337937,
+    "std": 28.109753521361835,
+    "min": 34.4856066143273,
+    "max": 125.9594221770211,
+    "source": "Industrial Sensor B"
+  }
+}

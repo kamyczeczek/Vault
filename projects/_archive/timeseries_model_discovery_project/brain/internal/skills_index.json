@@ -1,0 +1,1085 @@
+{
+  "skill_count": 46,
+  "skills": [
+    {
+      "catalog_description": "Internet read layer: 15 platforms via upstream CLIs/APIs (web, YouTube, RSS, GitHub, Reddit, Twitter, Bilibili, V2EX, ...). Use for web research, platform lookups, URL reading; `agent-reach doctor --json` shows live backends.",
+      "content_sha256": "2c09c36633bb29b13ff53b0e697972fdeb9b13965e27498cc28c0d89d3048e45",
+      "description": "MUST USE when user wants to \u8c03\u7814/research/\u641c\u7d22/search/\u67e5/\u627e/look up anything on the internet \u2014 e.g. \u5168\u7f51\u8c03\u7814 X / \u5e2e\u6211\u8c03\u7814\u4e00\u4e0b X / \u67e5\u4e00\u4e0b X / \u641c\u641c X / \u770b\u770b\u5927\u5bb6\u600e\u4e48\u8bc4\u4ef7 X / X \u4e0a\u6709\u4ec0\u4e48\u8ba8\u8bba / research this topic\u3002 Also MUST USE when user mentions any platfo...",
+      "flags": [
+        "must_use"
+      ],
+      "keywords": [
+        "agent",
+        "anything",
+        "internet",
+        "platfo",
+        "reach",
+        "research",
+        "search",
+        "topic",
+        "\u4e0a\u6709\u4ec0\u4e48\u8ba8\u8bba",
+        "\u5168\u7f51\u8c03\u7814",
+        "\u5e2e\u6211\u8c03\u7814\u4e00\u4e0b",
+        "\u641c\u641c",
+        "\u641c\u7d22",
+        "\u67e5\u4e00\u4e0b",
+        "\u770b\u770b\u5927\u5bb6\u600e\u4e48\u8bc4\u4ef7",
+        "\u8c03\u7814"
+      ],
+      "name": "agent-reach",
+      "path": "skills/agent-reach/SKILL.md",
+      "word_count": 702
+    },
+    {
+      "catalog_description": "Ask which skill or flow fits your situation. A router over the skills in this repo.",
+      "content_sha256": "d8934db5ccf28b8c6e43d44d88801936d3831ab5666280b26d6f0852a312dc63",
+      "description": "Ask which skill or flow fits your situation. A router over the skills in this repo.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "ask",
+        "fits",
+        "flow",
+        "matt",
+        "repo",
+        "router",
+        "situation"
+      ],
+      "name": "ask-matt",
+      "path": "skills/ask-matt/SKILL.md",
+      "word_count": 1871
+    },
+    {
+      "catalog_description": "Handoff workflow for Claude.",
+      "content_sha256": "7f99b9c489c8d55374d261c31e2dcf7e75c2ee103dbb64e87b18971a05449f21",
+      "description": "Hand the current conversation off to a fresh background agent that picks up the work immediately.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "agent",
+        "background",
+        "claude",
+        "conversation",
+        "current",
+        "fresh",
+        "hand",
+        "handoff",
+        "immediately",
+        "picks"
+      ],
+      "name": "claude-handoff",
+      "path": "skills/claude-handoff/SKILL.md",
+      "word_count": 204
+    },
+    {
+      "catalog_description": "Review changes since a fixed point along standards and spec axes.",
+      "content_sha256": "3abbdfe52540f9242e16589fae2cc423b3d98994c37683944462b29bab89495c",
+      "description": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating...",
+      "flags": [],
+      "keywords": [
+        "along",
+        "axes",
+        "branch",
+        "changes",
+        "code",
+        "coding",
+        "commit",
+        "documented",
+        "does",
+        "fixed",
+        "follow",
+        "match",
+        "merge-base",
+        "originating",
+        "point",
+        "repo",
+        "review",
+        "since",
+        "spec",
+        "standards"
+      ],
+      "name": "code-review",
+      "path": "skills/code-review/SKILL.md",
+      "word_count": 1075
+    },
+    {
+      "catalog_description": "Deep-module vocabulary; finding deepening opportunities.",
+      "content_sha256": "362b0bec828219d9f4b08ca7c466164e67253bdd817359258e60d2e9c5692a8f",
+      "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when...",
+      "flags": [],
+      "keywords": [
+        "ai-navigable",
+        "codebase",
+        "decide",
+        "deep",
+        "deepening",
+        "design",
+        "designing",
+        "find",
+        "goes",
+        "improve",
+        "interface",
+        "make",
+        "module",
+        "modules",
+        "more",
+        "opportunities",
+        "seam",
+        "shared",
+        "testable",
+        "vocabulary"
+      ],
+      "name": "codebase-design",
+      "path": "skills/codebase-design/SKILL.md",
+      "word_count": 825
+    },
+    {
+      "catalog_description": "Diagnosis loop for hard bugs and performance regressions.",
+      "content_sha256": "bca66b7141da7d225b7dfd1abf6f2bee657b8044d3897604055e760749c71724",
+      "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow.",
+      "flags": [],
+      "keywords": [
+        "broken",
+        "bugs",
+        "debug",
+        "diagnose",
+        "diagnosing",
+        "diagnosis",
+        "failing",
+        "hard",
+        "loop",
+        "performance",
+        "regressions",
+        "reports",
+        "says",
+        "slow",
+        "something",
+        "throwing"
+      ],
+      "name": "diagnosing-bugs",
+      "path": "skills/diagnosing-bugs/SKILL.md",
+      "word_count": 1389
+    },
+    {
+      "catalog_description": "Build/sharpen a project's domain model, write CONTEXT.md, record ADRs.",
+      "content_sha256": "dd4c753a617bd7db97c34fd3e049581c4bc0c0590e8a8b1f97d3b9d6013131dc",
+      "description": "Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a CONTEXT.md, or recording or editing an ADR.",
+      "flags": [],
+      "keywords": [
+        "build",
+        "codebase",
+        "context",
+        "discussing",
+        "domain",
+        "editing",
+        "model",
+        "modeling",
+        "project",
+        "recording",
+        "sharpen",
+        "terminology",
+        "writing"
+      ],
+      "name": "domain-modeling",
+      "path": "skills/domain-modeling/SKILL.md",
+      "word_count": 497
+    },
+    {
+      "catalog_description": "Block dangerous git operations with guardrails.",
+      "content_sha256": "12d335b84bcf984b213b527014262233f27ffa1eb807db466832ff711b96f41f",
+      "description": "Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use when user wants to prevent destructive git operations, add git safety hooks, or block git...",
+      "flags": [],
+      "keywords": [
+        "block",
+        "branch",
+        "claude",
+        "clean",
+        "code",
+        "commands",
+        "dangerous",
+        "destructive",
+        "execute",
+        "git",
+        "guardrails",
+        "hard",
+        "hooks",
+        "operations",
+        "prevent",
+        "push",
+        "reset",
+        "safety",
+        "they"
+      ],
+      "name": "git-guardrails-claude-code",
+      "path": "skills/git-guardrails-claude-code/SKILL.md",
+      "word_count": 301
+    },
+    {
+      "catalog_description": "Grill me session for sharpening thoughts.",
+      "content_sha256": "19e660207b447acf6ee0d600471c02e549c7aca8fb3ab38fdc2c7056aa442fc8",
+      "description": "A relentless interview to sharpen a plan or design.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "design",
+        "grill",
+        "interview",
+        "me",
+        "plan",
+        "relentless",
+        "sharpen"
+      ],
+      "name": "grill-me",
+      "path": "skills/grill-me/SKILL.md",
+      "word_count": 23
+    },
+    {
+      "catalog_description": "Relentless interview to sharpen a plan while creating ADRs and glossary.",
+      "content_sha256": "abc0fa7948db18b5fb0e1cc1c522ac5ff47d874e2da1e5df60619d79be11f38b",
+      "description": "A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "creates",
+        "design",
+        "docs",
+        "glossary",
+        "grill",
+        "interview",
+        "plan",
+        "relentless",
+        "sharpen",
+        "with"
+      ],
+      "name": "grill-with-docs",
+      "path": "skills/grill-with-docs/SKILL.md",
+      "word_count": 39
+    },
+    {
+      "catalog_description": "Grilling process for requirements.",
+      "content_sha256": "d806733216b16e51adad834e724bfec5540a436d06395bfc75b843cda9f7404b",
+      "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.",
+      "flags": [],
+      "keywords": [
+        "about",
+        "decision",
+        "grill",
+        "grilling",
+        "idea",
+        "phrases",
+        "plan",
+        "relentlessly",
+        "stress-test",
+        "their",
+        "thinking",
+        "trigger",
+        "uses"
+      ],
+      "name": "grilling",
+      "path": "skills/grilling/SKILL.md",
+      "word_count": 317
+    },
+    {
+      "catalog_description": "Structured session handoff.",
+      "content_sha256": "96f8045f01f569daa3737150d918b7201ccd090905fb10cefedd326e4001f551",
+      "description": "Compact the current conversation into a handoff document for another agent to pick up.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "agent",
+        "another",
+        "compact",
+        "conversation",
+        "current",
+        "document",
+        "handoff",
+        "pick"
+      ],
+      "name": "handoff",
+      "path": "skills/handoff/SKILL.md",
+      "word_count": 139
+    },
+    {
+      "catalog_description": "Design any process/idea/problem into an ICM workspace (Build mode), restructure an existing folder/repo/vault into ICM conventions (Restructure mode), or audit code into a walkable edit map (System map form). Use when structuring, restructuring, or auditing a workspace.",
+      "content_sha256": "8a0d62444f047e84aa02ca1728a5dc3848dd06afa32f9e66bf3225352fe67a38",
+      "description": "Design any process, idea, problem, or body of knowledge into an ICM (Interpretable Context Methodology) workspace \u2014 folder structure as agent architecture \u2014 or restructure an existing folder, repo, or vault into one....",
+      "flags": [],
+      "keywords": [
+        "agent",
+        "architect",
+        "architecture",
+        "body",
+        "context",
+        "design",
+        "existing",
+        "folder",
+        "icm",
+        "idea",
+        "interpretable",
+        "knowledge",
+        "methodology",
+        "problem",
+        "process",
+        "repo",
+        "restructure",
+        "structure",
+        "vault",
+        "workspace"
+      ],
+      "name": "icm-architect",
+      "path": "skills/icm-architect/SKILL.md",
+      "word_count": 2022
+    },
+    {
+      "catalog_description": "Implement a piece of work based on a spec or set of tickets.",
+      "content_sha256": "30cd7bc1ebfb3891e85a1eed3b3b81aea0fa4ad4553a784de7f8e421b2d223e0",
+      "description": "Implement a piece of work based on a spec or set of tickets.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "implement",
+        "piece",
+        "spec",
+        "tickets"
+      ],
+      "name": "implement",
+      "path": "skills/implement/SKILL.md",
+      "word_count": 72
+    },
+    {
+      "catalog_description": "Implement a specification directly.",
+      "content_sha256": "986c0becc03a5b72d1c8b04c8e7c0830b8b9baae109acba404d0f1a8831966a5",
+      "description": "Implement a specification in code.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "implement",
+        "spec",
+        "specification"
+      ],
+      "name": "implement-spec",
+      "path": "skills/implement-spec/SKILL.md",
+      "word_count": 315
+    },
+    {
+      "catalog_description": "Scan a codebase for deepening opportunities, present as HTML report.",
+      "content_sha256": "ab67dc77f7fb0e82ac2ce45e3680c4f90bd68f638c86522996cdf03426084ac7",
+      "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "architecture",
+        "codebase",
+        "deepening",
+        "grill",
+        "html",
+        "improve",
+        "opportunities",
+        "pick",
+        "present",
+        "report",
+        "scan",
+        "through",
+        "visual",
+        "whichever"
+      ],
+      "name": "improve-codebase-architecture",
+      "path": "skills/improve-codebase-architecture/SKILL.md",
+      "word_count": 938
+    },
+    {
+      "catalog_description": "Run iterative feedback loops.",
+      "content_sha256": "38ac316635d244abfdc1526edec49596f9284b36595f5a212fc5983894b6094a",
+      "description": "Grill me about specs for the workflows I want to build, within this workspace.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "about",
+        "build",
+        "grill",
+        "loop",
+        "me",
+        "specs",
+        "within",
+        "workflows",
+        "workspace"
+      ],
+      "name": "loop-me",
+      "path": "skills/loop-me/SKILL.md",
+      "word_count": 418
+    },
+    {
+      "catalog_description": "Migrate projects to shoehorn layout.",
+      "content_sha256": "200c11163ecd56d908ec431154e4b452cd6afeb3de91e5b54434f543f0822201",
+      "description": "Migrate test files from `as` type assertions to @total-typescript/shoehorn. Use when user mentions shoehorn, wants to replace `as` in tests, or needs partial test data.",
+      "flags": [],
+      "keywords": [
+        "assertions",
+        "data",
+        "migrate",
+        "needs",
+        "partial",
+        "replace",
+        "shoehorn",
+        "test",
+        "tests",
+        "to",
+        "total-typescript",
+        "type"
+      ],
+      "name": "migrate-to-shoehorn",
+      "path": "skills/migrate-to-shoehorn/SKILL.md",
+      "word_count": 339
+    },
+    {
+      "catalog_description": "Manus-style persistent file-based planning: task_plan.md, findings.md, progress.md on disk so work survives context loss.",
+      "content_sha256": "585cc559a7d2c5d15fe88ae158d1fa70eb539d54826bbc59b072c73e4ffe9c4c",
+      "description": "Manus-style persistent file-based planning for AI coding agents: keeps task_plan.md, findings.md, and progress.md on disk so work survives context loss and /clear. Use when asked to plan out, break down, or organize a...",
+      "flags": [],
+      "keywords": [
+        "agents",
+        "asked",
+        "break",
+        "clear",
+        "coding",
+        "context",
+        "disk",
+        "down",
+        "file-based",
+        "files",
+        "findings",
+        "keeps",
+        "loss",
+        "manus-style",
+        "organize",
+        "persistent",
+        "plan",
+        "planning",
+        "progress",
+        "survives",
+        "task_plan",
+        "with"
+      ],
+      "name": "planning-with-files",
+      "path": "skills/planning-with-files/SKILL.md",
+      "word_count": 204
+    },
+    {
+      "catalog_description": "Throwaway prototype to answer a design question.",
+      "content_sha256": "f74ae01f4fc454d3a4ef21271920f1706e626271e715dda0559e489f45c792c3",
+      "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.",
+      "flags": [],
+      "keywords": [
+        "answer",
+        "build",
+        "design",
+        "explore",
+        "feels",
+        "logic",
+        "model",
+        "prototype",
+        "question",
+        "right",
+        "sanity-check",
+        "state",
+        "throwaway",
+        "whether"
+      ],
+      "name": "prototype",
+      "path": "skills/prototype/SKILL.md",
+      "word_count": 492
+    },
+    {
+      "catalog_description": "Investigate against primary sources, capture findings as Markdown.",
+      "content_sha256": "524b404b1ca373a8b00f63a64667ec4b0a61c3c9cf4e8f246e639be859bb6979",
+      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the user wants a topic researched, docs or API facts gathered, or reading legwork delegated t...",
+      "flags": [],
+      "keywords": [
+        "against",
+        "capture",
+        "delegated",
+        "docs",
+        "facts",
+        "findings",
+        "gathered",
+        "high-trust",
+        "investigate",
+        "legwork",
+        "markdown",
+        "primary",
+        "question",
+        "reading",
+        "repo",
+        "research",
+        "researched",
+        "sources",
+        "topic"
+      ],
+      "name": "research",
+      "path": "skills/research/SKILL.md",
+      "word_count": 133
+    },
+    {
+      "catalog_description": "Resolve in-progress git merge/rebase conflicts.",
+      "content_sha256": "d97e7320010bbe7d32313c574acd47cec830d64edd59c956bd0ce2cba84e6ad7",
+      "description": "Use when you need to resolve an in-progress git merge/rebase conflict.",
+      "flags": [],
+      "keywords": [
+        "conflict",
+        "conflicts",
+        "in-progress",
+        "merge",
+        "need",
+        "rebase",
+        "resolve",
+        "resolving"
+      ],
+      "name": "resolving-merge-conflicts",
+      "path": "skills/resolving-merge-conflicts/SKILL.md",
+      "word_count": 141
+    },
+    {
+      "catalog_description": "Conduct retrospectives.",
+      "content_sha256": "27213192896e3efa8f0a5dd316bfcfd072e7ae794658523cf1bfe0908b819f1c",
+      "description": "Conduct a retrospective on a coding session.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "coding",
+        "conduct",
+        "retro",
+        "retrospective",
+        "session"
+      ],
+      "name": "retro",
+      "path": "skills/retro/SKILL.md",
+      "word_count": 537
+    },
+    {
+      "catalog_description": "Scaffold learning or coding exercises.",
+      "content_sha256": "de28db7a0954db55c11ba1e3cc0fd4c037bf0f5cb8313cb292e319bcce47f424",
+      "description": "Create exercise directory structures with sections, problems, solutions, and explainers that pass linting. Use when user wants to scaffold exercises, create exercise stubs, or set up a new course section.",
+      "flags": [],
+      "keywords": [
+        "course",
+        "create",
+        "directory",
+        "exercise",
+        "exercises",
+        "explainers",
+        "linting",
+        "pass",
+        "problems",
+        "scaffold",
+        "section",
+        "sections",
+        "solutions",
+        "structures",
+        "stubs"
+      ],
+      "name": "scaffold-exercises",
+      "path": "skills/scaffold-exercises/SKILL.md",
+      "word_count": 529
+    },
+    {
+      "catalog_description": "One-time repo setup for the engineering skills: issue tracker, triage label vocabulary, domain doc layout.",
+      "content_sha256": "86c0dee483fb69f7f5ecfcd010f6d7cbb30df2c47a9b059ac95f98380f383d86",
+      "description": "Configure this repo for the engineering skills: set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "configure",
+        "domain",
+        "engineering",
+        "first",
+        "issue",
+        "label",
+        "layout",
+        "matt",
+        "once",
+        "other",
+        "pocock",
+        "repo",
+        "setup",
+        "skills",
+        "tracker",
+        "triage",
+        "vocabulary"
+      ],
+      "name": "setup-matt-pocock-skills",
+      "path": "skills/setup-matt-pocock-skills/SKILL.md",
+      "word_count": 1110
+    },
+    {
+      "catalog_description": "Setup pre-commit hooks.",
+      "content_sha256": "e069e6a23069ebdba946d4dea11e5d663c10640c6b14b55c4585c81b1a256ac9",
+      "description": "Set up Husky pre-commit hooks with lint-staged (Prettier), type checking, and tests in the current repo. Use when user wants to add pre-commit hooks, set up Husky, configure lint-staged, or add commit-time formatting/...",
+      "flags": [],
+      "keywords": [
+        "checking",
+        "commit",
+        "commit-time",
+        "configure",
+        "current",
+        "formatting",
+        "hooks",
+        "husky",
+        "lint-staged",
+        "pre",
+        "pre-commit",
+        "prettier",
+        "repo",
+        "setup",
+        "tests",
+        "type"
+      ],
+      "name": "setup-pre-commit",
+      "path": "skills/setup-pre-commit/SKILL.md",
+      "word_count": 322
+    },
+    {
+      "catalog_description": "Setup deep TypeScript modules with dependency cruiser.",
+      "content_sha256": "3709fc7d62ea75cd7da1d6f21e33d58d758766fb8f5247a859687d7ed63c213e",
+      "description": "Wire dependency-cruiser into a TypeScript repo so each package is a deep module, with implementation hidden in subfolders and reachable only through its entry-point files. User-invoked.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "deep",
+        "dependency-cruiser",
+        "entry-point",
+        "hidden",
+        "implementation",
+        "module",
+        "modules",
+        "package",
+        "reachable",
+        "repo",
+        "setup",
+        "subfolders",
+        "through",
+        "ts",
+        "typescript",
+        "user-invoked",
+        "wire"
+      ],
+      "name": "setup-ts-deep-modules",
+      "path": "skills/setup-ts-deep-modules/SKILL.md",
+      "word_count": 1201
+    },
+    {
+      "catalog_description": "Test-driven development loop and practices.",
+      "content_sha256": "193b791c489d1640ccfb58d7cbd60fc9e059ef44632b3c92f208784cfe45ab78",
+      "description": "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor\", or wants integration tests.",
+      "flags": [],
+      "keywords": [
+        "bugs",
+        "build",
+        "development",
+        "features",
+        "integration",
+        "red-green-refactor",
+        "tdd",
+        "test-driven",
+        "test-first",
+        "tests"
+      ],
+      "name": "tdd",
+      "path": "skills/tdd/SKILL.md",
+      "word_count": 573
+    },
+    {
+      "catalog_description": "Teaching structured knowledge.",
+      "content_sha256": "3377485cbb1d62782122c1cc8cab4ceb37d5457c0543889784f3d7d9ca359e04",
+      "description": "Teach the user a new skill or concept, within this workspace.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "concept",
+        "teach",
+        "within",
+        "workspace"
+      ],
+      "name": "teach",
+      "path": "skills/teach/SKILL.md",
+      "word_count": 1509
+    },
+    {
+      "catalog_description": "Classical forecasting models: ARIMA, SARIMA, ETS, Holt-Winters. Baseline protocol and when to use classical methods.",
+      "content_sha256": "133f103bf3b1304f7b698a8c3ef7c3b77c3a4e6ed6f546808f2a383aac8801a8",
+      "description": "",
+      "flags": [],
+      "keywords": [
+        "classical",
+        "timeseries"
+      ],
+      "name": "timeseries-classical",
+      "path": "skills/timeseries-classical/SKILL.md",
+      "word_count": 45
+    },
+    {
+      "catalog_description": "Deep learning forecasting: LSTM, GRU, TCN, Transformer, PatchTST, iTransformer, NLinear, DLinear. Selection, implementation, and comparison.",
+      "content_sha256": "3ddabba7280fdab37f024ad48814547d3b245b4259d7c6e5065b79f031dc9984",
+      "description": "",
+      "flags": [],
+      "keywords": [
+        "deep",
+        "learning",
+        "timeseries"
+      ],
+      "name": "timeseries-deep-learning",
+      "path": "skills/timeseries-deep-learning/SKILL.md",
+      "word_count": 59
+    },
+    {
+      "catalog_description": "Forecasting evaluation: metric selection (MAE, MSE, MAPE, sMAPE, MASE, CRPS), backtesting, probabilistic metrics, baseline comparison rules.",
+      "content_sha256": "6a010e34a1b1975549e61a8125f829f5202ebc0b74d1dee88e05fdf040f97e45",
+      "description": "",
+      "flags": [],
+      "keywords": [
+        "evaluation",
+        "timeseries"
+      ],
+      "name": "timeseries-evaluation",
+      "path": "skills/timeseries-evaluation/SKILL.md",
+      "word_count": 60
+    },
+    {
+      "catalog_description": "Time series methodology: classical model selection, baseline protocol (naive, seasonal naive, classical), classical vs ML vs deep learning guidance.",
+      "content_sha256": "eadc7ce9a67b45d35ebf43dbca2f3e7eec2eff84404e6c06a840ccae154b1877",
+      "description": "",
+      "flags": [],
+      "keywords": [
+        "methodology",
+        "timeseries"
+      ],
+      "name": "timeseries-methodology",
+      "path": "skills/timeseries-methodology/SKILL.md",
+      "word_count": 65
+    },
+    {
+      "catalog_description": "Machine learning for forecasting: XGBoost, LightGBM, CatBoost, feature engineering (lags, rolling stats, date features), hybrid classical+ML approaches.",
+      "content_sha256": "913f09f359cc620c5723107b71aaded9d993fdb76df07256e90415646d0f1e0d",
+      "description": "",
+      "flags": [],
+      "keywords": [
+        "ml",
+        "timeseries"
+      ],
+      "name": "timeseries-ml",
+      "path": "skills/timeseries-ml/SKILL.md",
+      "word_count": 56
+    },
+    {
+      "catalog_description": "Turn unstructured thoughts into a questionnaire.",
+      "content_sha256": "77825120815c21400f82e2794faf342d1d1a4ab1493be3fe061857885d26b768",
+      "description": "Turn a decision you can't fully answer into a questionnaire for someone else to fill in.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "answer",
+        "decision",
+        "else",
+        "fill",
+        "fully",
+        "questionnaire",
+        "someone",
+        "to",
+        "turn"
+      ],
+      "name": "to-questionnaire",
+      "path": "skills/to-questionnaire/SKILL.md",
+      "word_count": 487
+    },
+    {
+      "catalog_description": "Turn requirements into a specification.",
+      "content_sha256": "c73a2250beac0479e384f5466e834bb54ce6e30b7f8705e9999ba840d9d59b36",
+      "description": "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you've already discussed.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "already",
+        "conversation",
+        "current",
+        "discussed",
+        "interview",
+        "issue",
+        "project",
+        "publish",
+        "spec",
+        "synthesis",
+        "to",
+        "tracker",
+        "turn"
+      ],
+      "name": "to-spec",
+      "path": "skills/to-spec/SKILL.md",
+      "word_count": 495
+    },
+    {
+      "catalog_description": "Break a spec into tracer-bullet tickets with blocking edges.",
+      "content_sha256": "8082bc6ef165027c5df3215763055f4a9668878bf27f25f582db78a14c3ed3c1",
+      "description": "Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the configured tracker (edges as text in one file per ticket locally, or native bloc...",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "bloc",
+        "blocking",
+        "break",
+        "configured",
+        "conversation",
+        "current",
+        "declaring",
+        "edges",
+        "locally",
+        "native",
+        "plan",
+        "published",
+        "spec",
+        "text",
+        "ticket",
+        "tickets",
+        "to",
+        "tracer-bullet",
+        "tracker"
+      ],
+      "name": "to-tickets",
+      "path": "skills/to-tickets/SKILL.md",
+      "word_count": 910
+    },
+    {
+      "catalog_description": "Triage incoming issues and bugs through a state machine.",
+      "content_sha256": "652c815971c2df925cee0f250ae2596f50fde19328305f3c55afd157a7f06fe6",
+      "description": "Move issues and external PRs through a state machine of triage roles, categorise, verify, grill if needed, and write agent-ready briefs.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "agent-ready",
+        "briefs",
+        "categorise",
+        "external",
+        "grill",
+        "issues",
+        "machine",
+        "move",
+        "needed",
+        "roles",
+        "state",
+        "through",
+        "triage",
+        "verify",
+        "write"
+      ],
+      "name": "triage",
+      "path": "skills/triage/SKILL.md",
+      "word_count": 1049
+    },
+    {
+      "catalog_description": "Completion discipline for substantial autonomous work: acceptance gates before execution, Depth Tree decomposition, evidence re-verification before reporting.",
+      "content_sha256": "50513459aebeef55f1e4e5804811e4654b55c6e68857b83344391c3d54204aef",
+      "description": "Enforces completion discipline for substantial autonomous work by writing acceptance gates before execution, decomposing work with the Depth Tree, running approved checks, and re-verifying evidence before reporting. U...",
+      "flags": [],
+      "keywords": [
+        "acceptance",
+        "approved",
+        "autonomous",
+        "checks",
+        "completion",
+        "decomposing",
+        "depth",
+        "discipline",
+        "enforces",
+        "evidence",
+        "execution",
+        "gates",
+        "re-verifying",
+        "reporting",
+        "running",
+        "substantial",
+        "tree",
+        "unlazy",
+        "writing"
+      ],
+      "name": "unlazy",
+      "path": "skills/unlazy/SKILL.md",
+      "word_count": 1381
+    },
+    {
+      "catalog_description": "Sanity check and reality check.",
+      "content_sha256": "dcaa44ef972d5a3f9bda65a69442fb11e36eb41b7e9bb0dc8b63031ba0582fdb",
+      "description": "Stop. That last message did not land: re-pitch it.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "land",
+        "last",
+        "message",
+        "re-pitch",
+        "stop",
+        "wait",
+        "what"
+      ],
+      "name": "wait-what",
+      "path": "skills/wait-what/SKILL.md",
+      "word_count": 69
+    },
+    {
+      "catalog_description": "Plan work too big for one session as a map of decision tickets.",
+      "content_sha256": "3362fa360948f8526e88ebe8184f5402f9b5f4d9dced2ba0ed2721f64ae3de5a",
+      "description": "Plan a huge chunk of work (more than one agent session can hold) as a shared map of decision tickets on your issue tracker, and resolve them one at a time until the way to the destination is clear.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "agent",
+        "chunk",
+        "clear",
+        "decision",
+        "destination",
+        "hold",
+        "huge",
+        "issue",
+        "more",
+        "plan",
+        "resolve",
+        "session",
+        "shared",
+        "tickets",
+        "time",
+        "tracker",
+        "until",
+        "wayfinder"
+      ],
+      "name": "wayfinder",
+      "path": "skills/wayfinder/SKILL.md",
+      "word_count": 2052
+    },
+    {
+      "catalog_description": "Interactive bash wizard for human-only steps (infra, credentials, CI).",
+      "content_sha256": "dbefb750eae07d9f8b05ab1084f6acfdda2752df2a6b577c46a505e2bc790164",
+      "description": "Generate an interactive bash wizard that walks a human through steps only they can perform. Use when provisioning infrastructure, setting up credentials or CI secrets, walking an unfamiliar third-party dashboard, or r...",
+      "flags": [],
+      "keywords": [
+        "bash",
+        "credentials",
+        "dashboard",
+        "generate",
+        "human",
+        "infrastructure",
+        "interactive",
+        "perform",
+        "provisioning",
+        "secrets",
+        "setting",
+        "steps",
+        "they",
+        "third-party",
+        "through",
+        "unfamiliar",
+        "walking",
+        "walks",
+        "wizard"
+      ],
+      "name": "wizard",
+      "path": "skills/wizard/SKILL.md",
+      "word_count": 689
+    },
+    {
+      "catalog_description": "Writing narrative beats.",
+      "content_sha256": "b23f7851987dab7828c83d42df98090ccebff586b64908ce6a5e772440214621",
+      "description": "Writing, exploit; assemble raw material into a journey of beats, grounding each term before a beat leans on it.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "assemble",
+        "beat",
+        "beats",
+        "exploit",
+        "grounding",
+        "journey",
+        "leans",
+        "material",
+        "term",
+        "writing"
+      ],
+      "name": "writing-beats",
+      "path": "skills/writing-beats/SKILL.md",
+      "word_count": 868
+    },
+    {
+      "catalog_description": "Writing markdown optimized for AI agents.",
+      "content_sha256": "1c0c4ebf2d221917591144f0ced4fe46dae13301cb3d6d93fc88ecf0dda6aed2",
+      "description": "Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md.",
+      "flags": [],
+      "keywords": [
+        "agents",
+        "claude",
+        "creating",
+        "documents",
+        "editing",
+        "for",
+        "modifying",
+        "writing"
+      ],
+      "name": "writing-for-agents",
+      "path": "skills/writing-for-agents/SKILL.md",
+      "word_count": 1818
+    },
+    {
+      "catalog_description": "Writing short prose fragments.",
+      "content_sha256": "3be6ffe9386ddd6de8b320c331295953995792fd65d0972aa2a28524ead73e90",
+      "description": "Writing, explore: mine raw fragments, no structure yet.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "explore",
+        "fragments",
+        "mine",
+        "structure",
+        "writing"
+      ],
+      "name": "writing-fragments",
+      "path": "skills/writing-fragments/SKILL.md",
+      "word_count": 595
+    },
+    {
+      "catalog_description": "Shaping writing structure.",
+      "content_sha256": "c13cbc364fbceefce654d9a4b0331113ff47efe90ce2523c2de23ecef63fefbd",
+      "description": "Writing, exploit: shape raw material into an article, paragraph by paragraph.",
+      "flags": [
+        "explicit-only"
+      ],
+      "keywords": [
+        "article",
+        "exploit",
+        "material",
+        "paragraph",
+        "shape",
+        "writing"
+      ],
+      "name": "writing-shape",
+      "path": "skills/writing-shape/SKILL.md",
+      "word_count": 1037
+    }
+  ],
+  "version": 1
+}

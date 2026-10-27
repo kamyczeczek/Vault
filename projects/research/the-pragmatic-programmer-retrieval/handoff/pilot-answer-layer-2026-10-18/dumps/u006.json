@@ -1,0 +1,66 @@
+{
+ "id": "u006",
+ "question": "Jak skonfigurować Docker multi-stage build, aby zminimalizować rozmiar obrazu produkcyjnego aplikacji Node.js?",
+ "type": "unanswerable",
+ "header": "Unanswerable (Docker multi-stage)",
+ "gold_topics": [],
+ "input_stage_hit": false,
+ "chunks": [
+  {
+   "topic": 15,
+   "topic_title": "Estimating",
+   "chapter": 2,
+   "page_book": 133,
+   "text": "Once you have a model, you can decompose it into components. You'll need to discover the mathematical rules that describe how these components interact. Sometimes a component contributes a single value that is added into the result. Some components may supply multiplying factors, while others may be more complicated (such as those that simulate the arrival of traffic at a node).\n\nYou'll find that each component will typically have parameters that affect how it contributes to the overall model. At this stage, simply identify each parameter.\n\n##### **Give Each Parameter a Value**\n\nOnce you have the parameters broken out, you can go through and assign each one a value. You expect to introduce some"
+  },
+  {
+   "topic": 51,
+   "topic_title": "Pragmatic Starter Kit",
+   "chapter": 9,
+   "page_book": 452,
+   "text": "Everything depends on automation. You can't build the project on an anonymous cloud server unless the build is fully automatic. You can't deploy automatically if there are manual steps involved. And once you introduce manual steps (\"just for this one part…\") you've broken a very large window ~~.~~ <u>[83]</u>\n\nWith these three legs of version control, ruthless testing, and full automation, your project will have the firm foundation you need so you can concentrate on the hard part: delighting users.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 11, _Reversibility_\n\n- Topic 12, _Tracer Bullets_\n\n- Topic 17, _Shell Games_\n\n- Topic 19, _Version Control_\n\n- Topic 41, _Test to Code_\n\n- Topic 49, _Pragmatic Teams_\n\n- Topic 50, _<u>Coconuts Don't Cut It</u>_\n\n#### **CHALLENGES**"
+  },
+  {
+   "topic": 17,
+   "topic_title": "Shell Games",
+   "chapter": 3,
+   "page_book": 152,
+   "text": "GUI environments are normally limited to the capabilities that their designers intended. If you need to go beyond the model the designer provided, you are usually out of luck—and more often than not, you _do_ need to go beyond the model. Pragmatic Programmers don't just cut code, or develop object models, or write documentation, or automate the build process—we do _all_ of these things. The scope of any one tool is usually limited to the tasks that the tool is expected to perform. For instance, suppose you need to integrate a code preprocessor (to implement design-by-contract, or multi-processing pragmas, or some such) into your IDE. Unless the designer of the IDE explicitly provided hooks for this capability, you can't do it.\n\n> **Tip 26** Use the Power of Command Shells"
+  },
+  {
+   "topic": 13,
+   "topic_title": "Prototypes and Post-it Notes",
+   "chapter": 2,
+   "page_book": 118,
+   "text": "But if you find yourself in an environment where you _cannot_ give up the details, then you need to ask yourself if you are really building a prototype at all. Perhaps a tracer bullet style of development would be more appropriate in this case (see Topic 12, _<u>Tracer Bullets</u>_ ).\n\n#### **THINGS TO PROTOTYPE**\n\nWhat sorts of things might you choose to investigate with a prototype? Anything that carries risk. Anything that hasn't been tried before, or that is absolutely critical to the final system. Anything unproven, experimental, or doubtful. Anything you aren't comfortable with. You can prototype:\n\nArchitecture\n\nNew functionality in an existing system\n\nStructure or contents of external data\n\nThird-party tools or components\n\nPerformance issues\n\nUser interface design"
+  },
+  {
+   "topic": 51,
+   "topic_title": "Pragmatic Starter Kit",
+   "chapter": 9,
+   "page_book": 452,
+   "text": "Although software development is still an industry at the Model-T stage, we can't afford to go through two pages of instructions again and again for some common operation. Whether it is the build and release procedure, testing, project paperwork, or any other recurring task on the project, it has to be automatic and repeatable on any capable machine.\n\nIn addition, we want to ensure consistency and repeatability on the project. Manual procedures leave consistency up to chance; repeatability isn't guaranteed, especially if aspects of the procedure are open to interpretation by different people.\n\nAfter we wrote the first edition of _The Pragmatic Programmer,_ we wanted to create more books to help teams develop software. We figured we should start at the beginning: what are the most"
+  },
+  {
+   "topic": 11,
+   "topic_title": "Reversibility",
+   "chapter": 2,
+   "page_book": 104,
+   "text": "- Topic 19, _Version Control_\n\n- Topic 28, _Decoupling_\n\n- Topic 45, _The Requirements Pit_\n\n- Topic 51, _Pragmatic Starter Kit_\n\n#### **CHALLENGES**"
+  },
+  {
+   "topic": 35,
+   "topic_title": "Actors and Processes",
+   "chapter": 6,
+   "page_book": 309,
+   "text": "concurrency/actors/index.js dispatch(c1, { type: _'hungry for pie'_ , waiter: waiter }); <mark>dispatch(c2, { type:</mark> _<mark>'hungry for pie'</mark>_ <mark>, waiter: waiter });</mark> dispatch(c1, { type: _'hungry for pie'_ , waiter: waiter }); <mark>dispatch(c2, { type:</mark> _<mark>'hungry for pie'</mark>_ <mark>, waiter: waiter });</mark> dispatch(c1, { type: _'hungry for pie'_ , waiter: waiter }); <mark>sleep(500)</mark> .then(() => { <mark>stop(actorSystem);</mark> <u>})</u>\n\nWhen we run it, we can see the actors communicating.[49] The order you see may well be different:\n\n**$ node index.js** <mark>customer1 sees \"apple pie slice\" appear on the table</mark> customer2 sees \"peach pie slice\" appear on the table"
+  },
+  {
+   "topic": 7,
+   "topic_title": "Communicate!",
+   "chapter": 1,
+   "page_book": 63,
+   "text": "The next two sections are also related. In Topic 12, _<u>Tracer Bullets</u>_ <u>, we talk about a style of development that allows you to</u> gather requirements, test designs, and implement code at the same time. It's the only way to keep up with the pace of modern life.\n\nTopic 13, _<u>Prototypes and Post-it Notes</u>_ shows you how to use prototyping to test architectures, algorithms, interfaces, and ideas. In the modern world, it's critical to test ideas and get feedback before you commit to them whole-heartedly."
+  }
+ ]
+}

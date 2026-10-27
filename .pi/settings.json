@@ -1,0 +1,6 @@
+{
+  "pi-plan": {
+    "autoFlow": true,
+    "workspaceGuard": "block"
+  }
+}

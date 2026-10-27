@@ -1,0 +1,68 @@
+{
+ "id": "q013",
+ "question": "Czym jest „programming by coincidence” i dlaczego jest niebezpieczne? Jakie konkretne typy przypadków autorzy wymieniają?",
+ "type": "reasoning / why + enumeration",
+ "header": "Rozumowanie (reasoning, single-topic)",
+ "gold_topics": [
+  38
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 38,
+   "topic_title": "Programming by Coincidence",
+   "chapter": 7,
+   "page_book": 334,
+   "text": "As developers, we also work in minefields. There are hundreds of traps waiting to catch us each day. Remembering the soldier's tale, we should be wary of drawing false conclusions. We should avoid programming by coincidence—relying on luck and accidental successes—in favor of _programming deliberately_ .\n\n#### **HOW TO PROGRAM BY COINCIDENCE**\n\nSuppose Fred is given a programming assignment. Fred types in some code, tries it, and it seems to work. Fred types in some more code, tries it, and it still seems to work. After several weeks of coding this way, the program suddenly stops working, and after hours of trying to fix it, he still doesn't know why. Fred"
+  },
+  {
+   "topic": 36,
+   "topic_title": "Blackboards",
+   "chapter": 6,
+   "page_book": 317,
+   "text": "But listening to your instincts doesn't mean you can just fly on autopilot. Developers who don't actively think about their code are programming by coincidence—the code might work, but\n\nthere's no particular reason why. In Topic 38, _<u>Programming by Coincidence</u>_ <u>, we advocate a more positive involvement with the</u> coding process.\n\nWhile most of the code we write executes quickly, we occasionally develop algorithms that have the potential to bog down even the fastest processors. In Topic 39, _<u>Algorithm Speed</u>_ , we discuss ways to estimate the speed of code, and we give some tips on how to spot potential problems before they happen."
+  },
+  {
+   "topic": 38,
+   "topic_title": "Programming by Coincidence",
+   "chapter": 7,
+   "page_book": 334,
+   "text": "But the fact that it was \"only\" off by one some of the time was a coincidence, masking a deeper and more fundamental flaw. Without a proper model of time handling, the entire large code base had devolved over time to an untenable mass of +1 and -1 statements. Ultimately, none of it was correct and the project was scrapped.\n\n##### **Phantom Patterns**\n\nHuman beings are designed to see patterns and causes, even when it's just a coincidence. For example, Russian leaders always alternate between being bald and hairy: a bald (or obviously balding) state leader of Russia has succeeded a nonbald (\"hairy\") one, and vice versa, for nearly 200 years ~~.~~ <u>[51]</u>\n\nBut while you wouldn't write code that depended on the next"
+  },
+  {
+   "topic": 38,
+   "topic_title": "Programming by Coincidence",
+   "chapter": 7,
+   "page_book": 334,
+   "text": "may well spend a significant amount of time chasing this piece of code around without ever being able to fix it. No matter what he does, it just doesn't ever seem to work right.\n\nFred doesn't know why the code is failing because _he didn't know why it worked in the first place_ . It seemed to work, given the limited \"testing'' that Fred did, but that was just a coincidence. Buoyed by false confidence, Fred charged ahead into oblivion. Now, most intelligent people may know someone like Fred, but _we_ know better. We don't rely on coincidences— do we?\n\nSometimes we might. Sometimes it can be pretty easy to confuse a happy coincidence with a purposeful plan. Let's look at a few examples.\n\n##### **Accidents of Implementation**"
+  },
+  {
+   "topic": 9,
+   "topic_title": "DRY—The Evils of Duplication",
+   "chapter": 2,
+   "page_book": 79,
+   "text": "Topic 8, _The Essence of_ _<u>Good Design</u>_\n\n- Topic 28, _Decoupling_\n\n- Topic 32, _<u>Configuration</u>_\n\n- Topic 38, _Programming by_ _<u>Coincidence</u>_\n\n- Topic 40, _Refactoring_"
+  },
+  {
+   "topic": 38,
+   "topic_title": "Programming by Coincidence",
+   "chapter": 7,
+   "page_book": 334,
+   "text": "Finding an answer that happens to fit is not the same as the\n\nright answer.\n\n> **Tip 62** Don't Program by Coincidence\n\n##### **Implicit Assumptions**\n\nCoincidences can mislead at all levels—from generating requirements through to testing. Testing is particularly fraught with false causalities and coincidental outcomes. It's easy to assume that _X_ causes _Y_ , but as we said in Topic 20, _<u>Debugging</u>_ <u>:</u> don't assume it, prove it.\n\nAt all levels, people operate with many assumptions in mind— but these assumptions are rarely documented and are often in conflict between different developers. Assumptions that aren't based on well-established facts are the bane of all projects.\n\n#### **HOW TO PROGRAM DELIBERATELY**"
+  },
+  {
+   "topic": 38,
+   "topic_title": "Programming by Coincidence",
+   "chapter": 7,
+   "page_book": 334,
+   "text": "Russian leader being bald or hairy, in some domains we think that way all the time. Gamblers imagine patterns in lottery numbers, dice games, or roulette, when in fact these are statistically independent events. In finance, stock and bond trading are similarly rife with coincidence instead of actual, discernible patterns.\n\nA log file that shows an intermittent error every 1,000 requests may be a difficult-to-diagnose race condition, or may be a plain old bug. Tests that seem to pass on your machine but not on the server might indicate a difference between the two environments, or maybe it's just a coincidence.\n\nDon't assume it, prove it.\n\n##### **Accidents of Context**"
+  },
+  {
+   "topic": 9,
+   "topic_title": "DRY—The Evils of Duplication",
+   "chapter": 2,
+   "page_book": 79,
+   "text": "The alternative is to have the same thing expressed in two or more places. If you change one, you have to remember to change the others, or, like the alien computers, your program will be brought to its knees by a contradiction. It isn't a question of whether you'll remember: it's a question of when you'll forget.\n\nYou'll find the DRY principle popping up time and time again throughout this book, often in contexts that have nothing to do with coding. We feel that it is one of the most important tools in the Pragmatic Programmer's tool box.\n\nIn this section we'll outline the problems of duplication and\n\nsuggest general strategies for dealing with it.\n\n#### **DRY IS MORE THAN CODE**"
+  }
+ ]
+}

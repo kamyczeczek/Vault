@@ -1,0 +1,166 @@
+{
+  "4c82a0dcdd8d86ba48d8a812826531c2e95c198f4c54b65d38b070e86197af54": {
+    "title": "Artificial Intelligence: A Modern Approach (4th ed.)",
+    "filename": "Artificial Intelligence A Modern Approach (4th ed.) (Stuart Russell, Peter Norvig) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "sha256": "4c82a0dcdd8d86ba48d8a812826531c2e95c198f4c54b65d38b070e86197af54",
+    "bytes": 12909682,
+    "path": "4c/4c82a0dcdd8d86ba48d8a812826531c2e95c198f4c54b65d38b070e86197af54.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "01f3bc4a31286930e152d2f44186c39c70fe6080b4c36b1af3de2120f060611d": {
+    "title": "Automated Machine Learning: Methods, Systems, Challenges",
+    "filename": "Automated Machine Learning_ Methods, Systems, Challenges -- Frank Hutter (editor), Lars Kotthoff (editor), Joaquin -- 1st ed_ 2019, 2019 -- Springer -- isbn13 9783030053178 -- 3c0dff85cd88fafb98a566ba0492be1e -- .pdf",
+    "sha256": "01f3bc4a31286930e152d2f44186c39c70fe6080b4c36b1af3de2120f060611d",
+    "bytes": 4805943,
+    "path": "01/01f3bc4a31286930e152d2f44186c39c70fe6080b4c36b1af3de2120f060611d.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "a4229d91932be4fa458dc5c88d9c8f156edcecd71700931bffab66db34058889": {
+    "title": "Building LLMs for Production",
+    "filename": "Building LLMs for Production Enhancing LLM Abilities and Reliability with Prompting, Fine-Tuning, and RAG (Peters, Louie  Bouchard, Louis-François) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "sha256": "a4229d91932be4fa458dc5c88d9c8f156edcecd71700931bffab66db34058889",
+    "bytes": 5573328,
+    "path": "a4/a4229d91932be4fa458dc5c88d9c8f156edcecd71700931bffab66db34058889.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "5e555f6947aff7835da70fdbe84d96348f95fd6c517bf813df4500d4312f4b22": {
+    "title": "Graph Databases: New Opportunities for Connected Data",
+    "filename": "Graph Databases New Opportunities for Connected Data (Ian Robinson, Jim Webber, Emil Eifrem) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "sha256": "5e555f6947aff7835da70fdbe84d96348f95fd6c517bf813df4500d4312f4b22",
+    "bytes": 9901016,
+    "path": "5e/5e555f6947aff7835da70fdbe84d96348f95fd6c517bf813df4500d4312f4b22.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "4285c2d57fd11c34bb3dd70bb0495f36facc339fb7e76677b901c3eccfc59a7f": {
+    "title": "LLM Engineers Handbook",
+    "filename": "LLM Engineers Handbook (Iusztin Paul, Labonne) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "sha256": "4285c2d57fd11c34bb3dd70bb0495f36facc339fb7e76677b901c3eccfc59a7f",
+    "bytes": 6113846,
+    "path": "42/4285c2d57fd11c34bb3dd70bb0495f36facc339fb7e76677b901c3eccfc59a7f.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "ee65b7833d78176dc3c4d70ed312bbfac72647b0ffccc2368806ac4bbd6d4beb": {
+    "title": "Multiagent Systems: Algorithmic, Game-Theoretic, and Logical Foundations",
+    "filename": "Multiagent Systems Algorithmic, Game-Theoretic, and Logical Foundations (Yoav Shoham  Kevin Leyton-Brown) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "sha256": "ee65b7833d78176dc3c4d70ed312bbfac72647b0ffccc2368806ac4bbd6d4beb",
+    "bytes": 3511020,
+    "path": "ee/ee65b7833d78176dc3c4d70ed312bbfac72647b0ffccc2368806ac4bbd6d4beb.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "ff33d8607164139cb4a8c7f68176a5c5d7a00218be6fa205b5ce492d647793d4": {
+    "title": "Paradigms of AI Programming",
+    "filename": "Paradigms of artificial intelligence programming  case studies in Common Lisp (Norvig, Peter) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "sha256": "ff33d8607164139cb4a8c7f68176a5c5d7a00218be6fa205b5ce492d647793d4",
+    "bytes": 36170841,
+    "path": "ff/ff33d8607164139cb4a8c7f68176a5c5d7a00218be6fa205b5ce492d647793d4.pdf",
+    "cited_by": [
+      "agentic-research-lab",
+      "brain"
+    ]
+  },
+  "3930d0e9bd47c2cc1da2ea44c82bafe0003e23f7187bde195c3585d541f097e3": {
+    "title": "The Pragmatic Programmer (20th Anniversary Ed.)",
+    "filename": "The Pragmatic Programmer - 20th Anniversary Edition (David Thomas, Andrew Hunt) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "sha256": "3930d0e9bd47c2cc1da2ea44c82bafe0003e23f7187bde195c3585d541f097e3",
+    "bytes": 4535429,
+    "path": "39/3930d0e9bd47c2cc1da2ea44c82bafe0003e23f7187bde195c3585d541f097e3.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "112495a0ced1d91ca9ed7cc259e0205b5477969a0f5603d307399390d9184d55": {
+    "title": "Working Effectively with Legacy Code",
+    "filename": "Working Effectively with Legacy Code -- Michael C_ Feathers -- Robert C_ Martin Series, 1, 2004 -- Prentice Hall _ Pearson -- isbn13 9788131740774 -- 92137f14d3ac8af27a67dc0a267c7f36 -- Anna’s Archive.pdf",
+    "sha256": "112495a0ced1d91ca9ed7cc259e0205b5477969a0f5603d307399390d9184d55",
+    "bytes": 1759253,
+    "path": "11/112495a0ced1d91ca9ed7cc259e0205b5477969a0f5603d307399390d9184d55.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "22ec6d918c912acd149186817aa3d417b24851ce904c8ff1ca97d0694d6dbe58": {
+    "title": "Agentforce",
+    "filename": "Agentforce_ Harnessing the Agency of AI to Scale, Grow, and -- Kihn, Martin -- 2025 -- Wiley & Sons, Incorporated, John -- isbn13 9781394349234 -- c2a215391a01e6518825591c1c82ec18 -- Anna’s Archive.epub",
+    "sha256": "22ec6d918c912acd149186817aa3d417b24851ce904c8ff1ca97d0694d6dbe58",
+    "bytes": 4952558,
+    "path": "22/22ec6d918c912acd149186817aa3d417b24851ce904c8ff1ca97d0694d6dbe58.epub",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "640f078f46381ce6fb10691f89ffc61d22f9c9fdb65a2aec92de6a45b01eeb5a": {
+    "title": "Domain-Driven Design",
+    "filename": "Domain-Driven Design _ Tackling Complexity in the Heart of -- Evans, Eric, Ross Venables -- 20_ print, 2014 -- Addison-Wesley Professional -- isbn13 9780132181266 -- 04d80385c9e9bccd2e076a183b003766 -- Anna’s Arc.pdf",
+    "sha256": "640f078f46381ce6fb10691f89ffc61d22f9c9fdb65a2aec92de6a45b01eeb5a",
+    "bytes": 3781791,
+    "path": "64/640f078f46381ce6fb10691f89ffc61d22f9c9fdb65a2aec92de6a45b01eeb5a.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "68e621cdeb312e18ce11fbdc63785d92efb79a48f0d5b4819cd43ca96ee2d9af": {
+    "title": "Design Patterns",
+    "filename": "Design Patterns_ Elements of Reusable Object-oriented -- Erich Gamma, Richard Helm, Craig Larman, Ralph Johnson, John -- Addison-Wesley professional -- isbn13 9780131489066 -- a0854aaea02eb8a7958e22aac3d45e22 -- .pdf",
+    "sha256": "68e621cdeb312e18ce11fbdc63785d92efb79a48f0d5b4819cd43ca96ee2d9af",
+    "bytes": 4205179,
+    "path": "68/68e621cdeb312e18ce11fbdc63785d92efb79a48f0d5b4819cd43ca96ee2d9af.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "95550e68ac4574d2fdb928d6f492557110e2375949e77a5cc23b45fcf556fc3b": {
+    "title": "The Goal",
+    "filename": "The Goal_ A Process of Ongoing Improvement - Revised 3rd -- Eliyahu M_ Goldratt, Jeff Cox, Ensemble cast, Dwight Jon -- Revised 3rd Edition, 2006 -- isbn13 9781598870640 -- 95f4f3be72ed3c91ea065d8eb808b566 -- Ann.pdf",
+    "sha256": "95550e68ac4574d2fdb928d6f492557110e2375949e77a5cc23b45fcf556fc3b",
+    "bytes": 1985109,
+    "path": "95/95550e68ac4574d2fdb928d6f492557110e2375949e77a5cc23b45fcf556fc3b.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "fb62e1a1b687d42edeb79956a3449f84f196e675ca1c722b4f0f33fed577e316": {
+    "title": "Refactoring",
+    "filename": "Refactoring - Improving the Design of Existing Code (Martin Fowler, Kent Beck, John Brant etc.) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "sha256": "fb62e1a1b687d42edeb79956a3449f84f196e675ca1c722b4f0f33fed577e316",
+    "bytes": 2005554,
+    "path": "fb/fb62e1a1b687d42edeb79956a3449f84f196e675ca1c722b4f0f33fed577e316.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "fe611e84d8d5bb02a80324e5861b67437cbde69222703a7ff9bd15c29da4bd73": {
+    "title": "SICP 2nd Edition",
+    "filename": "Structure and Interpretation of Computer Programs - 2nd -- Harold Abelson and Gerald Jay Sussman, with Julie Sussman; -- Second Edition, Cambridge, -- isbn13 9780070004221 -- d4956531f880ff64ccec69c9ccdfe1f1 -- A.pdf",
+    "sha256": "fe611e84d8d5bb02a80324e5861b67437cbde69222703a7ff9bd15c29da4bd73",
+    "bytes": 2600430,
+    "path": "fe/fe611e84d8d5bb02a80324e5861b67437cbde69222703a7ff9bd15c29da4bd73.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ]
+  },
+  "7036d45d859eb85fc6818b5d92d87cc1dfdd19cfcb576dce724724c98b455258": {
+    "title": "Graph Engineering for Agentic AI Systems",
+    "filename": "Graph Engineering for Agentic AI Systems (Ken Huang) (z-library.sk, 1lib.sk, z-lib.sk).pdf",
+    "sha256": "7036d45d859eb85fc6818b5d92d87cc1dfdd19cfcb576dce724724c98b455258",
+    "bytes": 23854652,
+    "path": "70/7036d45d859eb85fc6818b5d92d87cc1dfdd19cfcb576dce724724c98b455258.pdf",
+    "cited_by": [
+      "agentic-research-lab"
+    ],
+    "aliases": [
+      "Graph Engineering for Agentic AI Systems (Ken Huang) (z-library.sk, 1lib.sk, z-lib.sk).txt"
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "slice": "S-32-window-scale-scalar",
+  "feature": "sigma_t=zscore(std(history_[s-336:s])) per origin, broadcast H=720, m=2->m=3 per-horizon Ridge no-intercept",
+  "alphas_grid": [
+    0.1,
+    1.0,
+    3.0,
+    10.0,
+    30.0,
+    100.0,
+    300.0,
+    1000.0,
+    3000.0,
+    10000.0,
+    30000.0
+  ],
+  "incumbent_mae": 1.9909,
+  "sigma_window": 336,
+  "pooled": {
+    "alpha": 10000.0,
+    "held_out_mae": 2.51907740175763,
+    "val_full": 2.852669942273521,
+    "disjoint": {
+      "mae": 1.969616847749498,
+      "rmse": 2.487586320185094
+    },
+    "full": {
+      "mae": 1.990897385574145,
+      "rmse": 2.470998626872596,
+      "n": 2161
+    }
+  },
+  "sigma": {
+    "alpha": 10000.0,
+    "held_out_mae": 2.5240144978389774,
+    "val_full": 2.8496089058864307,
+    "disjoint": {
+      "mae": 1.960485043376882,
+      "rmse": 2.484554057901428
+    },
+    "full": {
+      "mae": 1.9927594762153231,
+      "rmse": 2.473394163555043,
+      "n": 2161
+    }
+  },
+  "checks": {
+    "interior": true,
+    "held_beats_pooled": false,
+    "held_beats_2.5191": false,
+    "full_beats_0.005": false,
+    "disjoint_not_worse_0.002": true,
+    "delta_held": 0.004937096081347292,
+    "delta_full_vs_incumbent": 0.0018594762153232303,
+    "delta_disjoint_sigma_minus_pooled": -0.00913180437261607
+  },
+  "verdict": "REJECT",
+  "reasons": [
+    "full 1.9928 not >0.005 better than 1.9909 (need <=1.9859)",
+    "held-out 2.5240 not < pooled 2.5191 (flip gate)",
+    "held-out 2.5240 not < 2.5191"
+  ],
+  "protocol": "S-20-clean: preds_for_train_fit for val (8545 frozen), preds_for_full_fit for test (11425 refrozen); sigma scalar from history window only; full 2161 selector, disjoint-4 diagnostic only; no _lag_dataset change",
+  "hotspot_guard": "_lag_dataset @ base.py:197 untouched \u2014 map-level +1 scalar only",
+  "sigma_cite": "methods/neural_models.py:220 _window_stats"
+}

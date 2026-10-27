@@ -4,6 +4,11 @@
 
 | flag | since | owner | agent | summary |
 | --- | --- | --- | --- | --- |
+| `test-memory-index-format-restored-2026-10-23` | 2026-10-23 | opencode | opencode | **`test_memory_index.py` is green (33/33).** The 2026-10-21 restructure removed `format_results`, `format_brief`,… |
+| `session-digest-ab-2026-10-23` | 2026-10-23 | opencode | opencode | **L0 unproven/closed; L1 is a |
+| `session-brief-valuable-2026-10-23` | 2026-10-23 | opencode | opencode | **`session_brief.py` built; |
+| `memory-meta-session-exclusion-durable-2026-10-23` | 2026-10-23 | opencode | opencode | **B landed; |
+| `did-sessions-default-5-2026-10-23` | 2026-10-23 | opencode | opencode | **1f1937f gets its flag |
 | `session-digest-design-2026-10-22` | 2026-10-22 | opencode | opencode | digest sesji zaprojektowany |
 | `obsidian-vault-2026-10-22` | 2026-10-22 | opencode | opencode | vault Obsidiana zbudowany jako podfolder |
 | `sessions-lab-icm-restructure-2026-10-21` | 2026-10-21 | mateusz | opencode | `scripts/_scratch/sessions/` przebudowane na ICM (one folder, one job), 740 MB → 389 MB, martwizy wyczyszczone,… |

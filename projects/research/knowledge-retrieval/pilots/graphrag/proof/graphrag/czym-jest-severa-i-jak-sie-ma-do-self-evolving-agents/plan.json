@@ -1,0 +1,11 @@
+{
+  "pytanie": "Czym jest SEVerA i jak sie ma do self-evolving agents?",
+  "slowa_kluczowe": [
+    "severa",
+    "self-evolving",
+    "agents"
+  ],
+  "typ_szukania": "edge_proveniencia",
+  "top_k": 10,
+  "data": "2026-10-11T19:59:26.400597Z"
+}

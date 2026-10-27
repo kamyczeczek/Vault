@@ -1,0 +1,566 @@
+{
+  "gold_set_id": "extended_en_2026-10-18",
+  "source": "eval/gold_set_extended.json",
+  "translation_method": "agent + reverse-translation check (EN frozen before first retrieve; reverse PL comparison done after freeze, before or during analysis; drift 2 = STOP and manual fix with translation_notes)",
+  "translated_at": "2026-10-18",
+  "index_fingerprint": "sha256:e4076daba9b0689a437950a2403f0bb2594a48a37bd1065ad79b0280767613ae",
+  "translation_fingerprint": "sha256:540a8a64e14d342890e27b8a6c15005dc354fb5442b92c02337082f6ff515575",
+  "translation_notes": "reverse-translation check post-freeze: drift 0 = 58/60; drift 1 (paraphrase, no meaning change) = 2/60 -> q005, q037; drift 2 = 0/60 (no STOP). Questions untouched after freeze (S56).",
+  "notes_fields": "Only fields needed for Recall@8: id, topics, question (EN), type, header. reference_answer NOT translated in this session (answer-layer = session 5).",
+  "categories": {
+    "hard_curated": 30,
+    "unanswerable": 8,
+    "false_premise": 7,
+    "additional_topics": 15
+  },
+  "questions": [
+    {
+      "id": "q001",
+      "header": "Definicja (factual, single-chunk)",
+      "question": "What exactly is the DRY principle according to The Pragmatic Programmer, and what is the test that lets you check whether code violates it?",
+      "type": "factual / definition",
+      "topics": [
+        9
+      ]
+    },
+    {
+      "id": "q002",
+      "header": "Porównanie (comparison, dwa powiązane chunki)",
+      "question": "What is the difference between tracer bullets and prototypes, and when should you use which?",
+      "type": "comparison / multi-chunk (dwa sąsiednie Topics)",
+      "topics": [
+        12,
+        13
+      ]
+    },
+    {
+      "id": "q003",
+      "header": "Rozumowanie (reasoning, single-topic)",
+      "question": "Why do the authors claim that inheritance is a tax, and which three alternatives do they propose?",
+      "type": "reasoning / why + enumeration",
+      "topics": [
+        31
+      ]
+    },
+    {
+      "id": "q004",
+      "header": "Relacyjne / multi-hop (wymaga połączenia faktów z różnych Topiców)",
+      "question": "How does the ETC principle connect with the other design principles in the book — decoupling, DRY, and orthogonality? Is ETC a rule or a value?",
+      "type": "relational / multi-hop",
+      "topics": [
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "q005",
+      "header": "False-premise (test korekty błędnego założenia)",
+      "question": "The book says that when you find a broken window in code, it is best to leave it alone until the end of the project so as not to disrupt the team's flow. Is that correct?",
+      "type": "false-premise (system powinien skorygować, nie potwierdzić)",
+      "topics": [
+        3
+      ]
+    },
+    {
+      "id": "q006",
+      "header": "Definicja (factual, single-topic)",
+      "question": "What are preconditions, postconditions, and class invariants in Design by Contract, and who is responsible for checking them?",
+      "type": "factual / definition",
+      "topics": [
+        23
+      ]
+    },
+    {
+      "id": "q007",
+      "header": "Porównanie czterech strategii (comparison, multi-chunk w jednym Topicu)",
+      "question": "What four strategies for dealing with events does the book describe, and how do they differ in terms of coupling and asynchronicity?",
+      "type": "comparison / four-way",
+      "topics": [
+        29
+      ]
+    },
+    {
+      "id": "q008",
+      "header": "Rozumowanie (reasoning, two related topics)",
+      "question": "Why is crashing early better than a program continuing silently after an error is detected? How does this connect with the Catch-and-Release-is-for-Fish approach?",
+      "type": "reasoning / why",
+      "topics": [
+        24,
+        25
+      ]
+    },
+    {
+      "id": "q009",
+      "header": "False-premise (test korekty)",
+      "question": "The book suggests that assertions should be turned off in the production version of the program, because they add overhead and slow the code down. Is that correct?",
+      "type": "false-premise",
+      "topics": [
+        25
+      ]
+    },
+    {
+      "id": "q010",
+      "header": "Relacyjne / multi-hop (DRY vs Orthogonality)",
+      "question": "How does DRY differ from Orthogonality? Are they the same thing, or two different principles? How do they complement each other?",
+      "type": "relational / multi-hop",
+      "topics": [
+        9,
+        10
+      ]
+    },
+    {
+      "id": "q011",
+      "header": "Definicja + procedura (factual, single-topic)",
+      "question": "What is a binary chop in the context of debugging, and in which three situations does the book recommend using it?",
+      "type": "factual + procedure",
+      "topics": [
+        20
+      ]
+    },
+    {
+      "id": "q012",
+      "header": "Porównanie modeli współbieżności (comparison, dwa sąsiednie Topics)",
+      "question": "How does the actor model differ from the blackboard as a way of dealing with concurrency? When should you use which?",
+      "type": "comparison / two-model",
+      "topics": [
+        35,
+        36
+      ]
+    },
+    {
+      "id": "q013",
+      "header": "Rozumowanie (reasoning, single-topic)",
+      "question": "What is programming by coincidence and why is it dangerous? What specific types of accidents do the authors list?",
+      "type": "reasoning / why + enumeration",
+      "topics": [
+        38
+      ]
+    },
+    {
+      "id": "q014",
+      "header": "False-premise (test korekty)",
+      "question": "The book advises that at the start of a project you should gather complete requirements, write them down in a detailed document, and give the document to the client for signing, to avoid later changes. Is that correct?",
+      "type": "false-premise",
+      "topics": [
+        45
+      ]
+    },
+    {
+      "id": "q015",
+      "header": "Relacyjne / multi-hop (Pragmatic Starter Kit)",
+      "question": "What is the Pragmatic Starter Kit, and why do the authors claim that its three elements are inseparably linked? How do they connect with the rest of the book?",
+      "type": "relational / multi-hop",
+      "topics": [
+        51,
+        11,
+        12,
+        17,
+        19,
+        41,
+        42,
+        48,
+        50
+      ]
+    },
+    {
+      "id": "q016",
+      "header": "Definicja + uzasadnienie (factual, single-topic)",
+      "question": "Why does the book claim that plain text is the best format for storing knowledge? Which three concrete benefits does it list?",
+      "type": "factual + rationale",
+      "topics": [
+        16
+      ]
+    },
+    {
+      "id": "q017",
+      "header": "Procedura + rozumowanie (reasoning, single-topic)",
+      "question": "When should you refactor code according to the book? Which specific situations do the authors list as signals to refactor, and what safety rules do they give?",
+      "type": "reasoning + procedure",
+      "topics": [
+        40
+      ]
+    },
+    {
+      "id": "q018",
+      "header": "Porównanie (comparison, single-topic z dwoma podejściami)",
+      "question": "Which two approaches to configuration does the book describe, and how do they differ? Which do the authors prefer and why?",
+      "type": "comparison",
+      "topics": [
+        32
+      ]
+    },
+    {
+      "id": "q019",
+      "header": "False-premise (test korekty)",
+      "question": "The book says that sign your work means you should defend your code against interference from others and treat it as your own territory. Is that correct?",
+      "type": "false-premise",
+      "topics": [
+        53
+      ]
+    },
+    {
+      "id": "q020",
+      "header": "Relacyjne / multi-hop (Balance Resources + DBC + Headlights)",
+      "question": "How does the finish-what-you-start principle from How to Balance Resources connect with Design by Contract and with Don't Outrun Your Headlights? How do these three principles jointly influence design?",
+      "type": "relational / multi-hop",
+      "topics": [
+        23,
+        26,
+        27,
+        8
+      ]
+    },
+    {
+      "id": "q021",
+      "header": "Reasoning (5 wytycznych + dlaczego działają)",
+      "question": "Which five guidelines for investing in your knowledge portfolio does the book give, and why does it treat knowledge as an expiring asset?",
+      "type": "reasoning / enumeration",
+      "topics": [
+        6
+      ]
+    },
+    {
+      "id": "q022",
+      "header": "Reasoning (dlaczego nazwy mają znaczenie)",
+      "question": "Why is naming things so important according to the book? What is the Stroop effect, and how does it relate to naming in code?",
+      "type": "reasoning / why",
+      "topics": [
+        44
+      ]
+    },
+    {
+      "id": "q023",
+      "header": "Reasoning (Big-O i praktyka)",
+      "question": "How does the book advise estimating algorithm complexity using common sense, and when should you NOT optimize?",
+      "type": "reasoning / when-not-to",
+      "topics": [
+        39
+      ]
+    },
+    {
+      "id": "q024",
+      "header": "Factual + procedura (5 zasad bezpieczeństwa)",
+      "question": "Which five basic security principles does the book list, and what specifically does it advise in each of them?",
+      "type": "factual + procedure",
+      "topics": [
+        43
+      ]
+    },
+    {
+      "id": "q025",
+      "header": "Reasoning (dlaczego shared state jest zły)",
+      "question": "Why does the book claim that shared state is incorrect state? What solution does it propose, and what are that solution's drawbacks?",
+      "type": "reasoning / why",
+      "topics": [
+        34
+      ]
+    },
+    {
+      "id": "q026",
+      "header": "Comparison (pipelines vs train wrecks, OO vs transformations)",
+      "question": "How does the transforming-programming style differ from the object-oriented approach? Why do the authors prefer pipelines, and how do pipelines differ from train wrecks?",
+      "type": "comparison",
+      "topics": [
+        30,
+        28
+      ]
+    },
+    {
+      "id": "q027",
+      "header": "Factual + procedura (jak komunikować)",
+      "question": "What concrete advice about communication does the book give? How should communication be treated in the context of programming?",
+      "type": "factual + procedure",
+      "topics": [
+        7
+      ]
+    },
+    {
+      "id": "q028",
+      "header": "False-premise (test korekty)",
+      "question": "The book says that good-enough software means you may write careless, poorly designed code, as long as you deliver on time. Is that correct?",
+      "type": "false-premise",
+      "topics": [
+        5
+      ]
+    },
+    {
+      "id": "q029",
+      "header": "Reasoning (dlaczego VCS jest obowiązkowy)",
+      "question": "Why does the book claim that you should use version control always, even in one-person projects, and even for things that are not source code?",
+      "type": "reasoning / why",
+      "topics": [
+        19
+      ]
+    },
+    {
+      "id": "q030",
+      "header": "Relational / multi-hop (jak praktyki indywidualne skalują się do zespołu)",
+      "question": "How do pragmatic practices for individuals translate to teams? Which of the book's principles do the authors explicitly carry over to the team level in Topic 49?",
+      "type": "relational / multi-hop",
+      "topics": [
+        49,
+        3,
+        4,
+        6,
+        9,
+        12,
+        53
+      ]
+    },
+    {
+      "id": "u001",
+      "header": "Unanswerable (Kubernetes HPA & Ingress)",
+      "question": "How do you configure an ingress controller and a horizontal pod autoscaler in Kubernetes for a microservices application?",
+      "topics": [],
+      "type": "unanswerable"
+    },
+    {
+      "id": "u002",
+      "header": "Unanswerable (React hooks)",
+      "question": "What are the best practices for using the useEffect and useMemo hooks in React 18 to prevent unnecessary re-renders?",
+      "topics": [],
+      "type": "unanswerable"
+    },
+    {
+      "id": "u003",
+      "header": "Unanswerable (OAuth 2.0 & JWT)",
+      "question": "How do you implement secure authorization with JWT tokens and a refresh-token mechanism in the OAuth 2.0 protocol?",
+      "topics": [],
+      "type": "unanswerable"
+    },
+    {
+      "id": "u004",
+      "header": "Unanswerable (SQLAlchemy & SQL Injection)",
+      "question": "How do you secure a PostgreSQL database against SQL injection attacks using parameterized queries in SQLAlchemy?",
+      "topics": [],
+      "type": "unanswerable"
+    },
+    {
+      "id": "u005",
+      "header": "Unanswerable (Git rebase vs merge)",
+      "question": "What are the differences between git merge and git rebase, and in which situations is interactive rebase in Git discouraged within teams?",
+      "topics": [],
+      "type": "unanswerable"
+    },
+    {
+      "id": "u006",
+      "header": "Unanswerable (Docker multi-stage)",
+      "question": "How do you configure Docker multi-stage builds to minimize the size of the production image of a Node.js application?",
+      "topics": [],
+      "type": "unanswerable"
+    },
+    {
+      "id": "u007",
+      "header": "Unanswerable (GraphQL & DataLoader)",
+      "question": "How do you design a GraphQL schema using DataLoader to solve the N+1 query problem in database access?",
+      "topics": [],
+      "type": "unanswerable"
+    },
+    {
+      "id": "u008",
+      "header": "Unanswerable (AWS Lambda Serverless)",
+      "question": "How do serverless functions in AWS Lambda work with regard to cold starts and memory limits?",
+      "topics": [],
+      "type": "unanswerable"
+    },
+    {
+      "id": "fp001",
+      "header": "False-Premise (Test Coverage 100%)",
+      "question": "According to the authors, does achieving 100% unit-test code coverage guarantee the absence of hidden bugs in a production system?",
+      "type": "false_premise",
+      "topics": [
+        41
+      ]
+    },
+    {
+      "id": "fp002",
+      "header": "False-Premise (Refactoring Sprints)",
+      "question": "According to the book, should refactoring be planned as a separate, multi-week technical sprint in the team's calendar, once per quarter?",
+      "type": "false_premise",
+      "topics": [
+        40
+      ]
+    },
+    {
+      "id": "fp003",
+      "header": "False-Premise (Deep Inheritance)",
+      "question": "Do the authors recommend using deep class-inheritance hierarchies instead of composition in order to maximize code reuse?",
+      "type": "false_premise",
+      "topics": [
+        31
+      ]
+    },
+    {
+      "id": "fp004",
+      "header": "False-Premise (Agile Ceremonies)",
+      "question": "Is the genuinely Agile approach, according to the authors, a strict adherence to Scrum ceremonies, estimation in story points, and process certification?",
+      "type": "false_premise",
+      "topics": [
+        48
+      ]
+    },
+    {
+      "id": "fp005",
+      "header": "False-Premise (Ignoring Lizard Brain)",
+      "question": "Do the authors advise ignoring the subconscious feeling of resistance before writing code, and forcing yourself to immediately crank out the lines?",
+      "type": "false_premise",
+      "topics": [
+        37
+      ]
+    },
+    {
+      "id": "fp006",
+      "header": "False-Premise (Exceptions for Flow Control)",
+      "question": "Do the authors recommend throwing and catching exceptions as the standard mechanism for controlling the normal flow of business logic?",
+      "type": "false_premise",
+      "topics": [
+        24
+      ]
+    },
+    {
+      "id": "fp007",
+      "header": "False-Premise (Stone Soup Waiting)",
+      "question": "Do the authors advise that, before initiating any innovation in a project, you should always wait for formal approval from management and a full budget?",
+      "type": "false_premise",
+      "topics": [
+        4
+      ]
+    },
+    {
+      "id": "q031",
+      "header": "Factual (Topic 1: It's Your Life)",
+      "question": "What do the authors mean when they write that you have agency in your professional career, and how should you react to a toxic work environment?",
+      "type": "factual",
+      "topics": [
+        1
+      ]
+    },
+    {
+      "id": "q032",
+      "header": "Procedural (Topic 2: Provide Options)",
+      "question": "What is the pragmatic rule for responding to a problem when something goes wrong in a project: provide options, don't make lame excuses?",
+      "type": "procedural",
+      "topics": [
+        2
+      ]
+    },
+    {
+      "id": "q033",
+      "header": "Principle (Topic 11: Reversibility)",
+      "question": "Why is reversibility of decisions so important in software architecture, and what does it mean in practice?",
+      "type": "reasoning",
+      "topics": [
+        11
+      ]
+    },
+    {
+      "id": "q034",
+      "header": "Design (Topic 14: Domain Languages)",
+      "question": "How do internal DSLs differ from external DSLs according to the authors, and when should you use them?",
+      "type": "comparison",
+      "topics": [
+        14
+      ]
+    },
+    {
+      "id": "q035",
+      "header": "Estimation (Topic 15: Estimating)",
+      "question": "In which units of time do the authors recommend giving estimates, depending on the task's time horizon?",
+      "type": "factual",
+      "topics": [
+        15
+      ]
+    },
+    {
+      "id": "q036",
+      "header": "Tools (Topic 17: Shell Games)",
+      "question": "Why do the authors claim that every pragmatic programmer should be fluent in the command-line shell?",
+      "type": "reasoning",
+      "topics": [
+        17
+      ]
+    },
+    {
+      "id": "q037",
+      "header": "Editing (Topic 18: Power Editing)",
+      "question": "What does the advice to use a single editor well mean, and why is it worth mastering an editor to the level of unconditional reflexes?",
+      "type": "factual",
+      "topics": [
+        18
+      ]
+    },
+    {
+      "id": "q038",
+      "header": "Tools (Topic 21: Text Manipulation)",
+      "question": "Why do the authors claim that text is the universal interface of computing, and why should you master text-manipulation tools?",
+      "type": "reasoning",
+      "topics": [
+        21
+      ]
+    },
+    {
+      "id": "q039",
+      "header": "Habit (Topic 22: Engineering Daybooks)",
+      "question": "What is an engineering daybook, and what benefits does keeping one daily bring?",
+      "type": "factual",
+      "topics": [
+        22
+      ]
+    },
+    {
+      "id": "q040",
+      "header": "Architecture (Topic 32: Configuration)",
+      "question": "Where and how should application configuration data be stored according to the book's recommendations?",
+      "type": "factual",
+      "topics": [
+        32
+      ]
+    },
+    {
+      "id": "q041",
+      "header": "Concurrency (Topic 33: Breaking Temporal Coupling)",
+      "question": "What is temporal coupling, and how should you design systems that allow tasks to run concurrently?",
+      "type": "reasoning",
+      "topics": [
+        33
+      ]
+    },
+    {
+      "id": "q042",
+      "header": "Psychology (Topic 37: Lizard Brain)",
+      "question": "What does the advice to listen to your lizard brain mean, and how should a programmer react to a subconscious feeling of resistance before writing code?",
+      "type": "reasoning",
+      "topics": [
+        37
+      ]
+    },
+    {
+      "id": "q043",
+      "header": "Problem Solving (Topic 46: Solving Impossible Puzzles)",
+      "question": "How do the authors advise approaching seemingly unsolvable programming and algorithmic problems?",
+      "type": "procedural",
+      "topics": [
+        46
+      ]
+    },
+    {
+      "id": "q044",
+      "header": "Collaboration (Topic 47: Working Together)",
+      "question": "What are the rules of effective pair programming, and why does coding in a pair not mean looking over your colleague's shoulder?",
+      "type": "procedural",
+      "topics": [
+        47
+      ]
+    },
+    {
+      "id": "q045",
+      "header": "Value (Topic 52: Delight Your Users)",
+      "question": "What is the ultimate goal of creating software, and what does the principle of delighting your users mean?",
+      "type": "factual",
+      "topics": [
+        52
+      ]
+    }
+  ]
+}

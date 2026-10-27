@@ -1,0 +1,46 @@
+{
+  "slot": 4,
+  "cond": "B",
+  "session_no": 2,
+  "worktree": "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\.worktrees\\sim2b-B",
+  "packs": [
+    "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\subprojects\\vera\\experiments\\sim2_packB.md"
+  ],
+  "disqualified": false,
+  "trivialization_hits": [],
+  "lab_state_hits": [
+    "SIM-2",
+    "Q1"
+  ],
+  "n_calls": 2,
+  "reorient_cum": 1,
+  "ttfva": 2,
+  "ungrounded": 1,
+  "ttfva_tok": 624,
+  "calls": [
+    {
+      "query": "reorientation cost",
+      "rc": 0,
+      "ids": [
+        "00_reflection_reorientation_cost"
+      ],
+      "ok": true,
+      "wall_s": 0.144,
+      "stdout_bytes": 474
+    },
+    {
+      "query": "rapid understanding",
+      "rc": 0,
+      "ids": [
+        "31_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "01_workspace_rapid_understanding",
+        "287_domain_driven_design_tackling_complexity_in_the",
+        "28_the_book_of_why_the_new_science_of_cause_and_eff",
+        "81_graph_databases_new_opportunities_for_connected"
+      ],
+      "ok": true,
+      "wall_s": 0.155,
+      "stdout_bytes": 2023
+    }
+  ]
+}

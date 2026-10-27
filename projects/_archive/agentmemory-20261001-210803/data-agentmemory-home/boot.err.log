@@ -1,0 +1,21 @@
+[agentmemory] info Observation captured {"obsId":"obs_muodilla_30dff70e880a","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Consolidation pipeline complete {"tier":"semantic","results":{"semantic":{"skipped":true,"reason":"fewer than 5 summaries"}}}
+[agentmemory] info Observation captured {"obsId":"obs_muodiz4u_80d4192f5968","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodiz77_03e8663ccdbf","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodiz79_0258a591c8d3","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodjiqd_f9d593426107","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodjygy_d6d4e70274f4","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodkjsu_f14caa0fdd80","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodksxc_c84c8d7afa2a","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodllzh_973c5f76a1fb","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodm223_9af4870ddb17","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodmjb9_8dee9cd84acd","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodneyb_8317f9505f79","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodnqv8_66db93c68537","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodo0fv_85a016edd858","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muododeo_e0fd3d13f384","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodpb54_8ee864daf770","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodppo5_234f9c5331bf","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodq3ik_d7ffa7970ad5","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodqbsq_3679b15bb093","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}
+[agentmemory] info Observation captured {"obsId":"obs_muodqpjk_6a4927eba165","sessionId":"2026-09-30T15-04-27-963Z_01a0f2d8-783a-7683-b5ee-0beeb8d38bee","hook":"post_tool_use","compress":"synthetic"}

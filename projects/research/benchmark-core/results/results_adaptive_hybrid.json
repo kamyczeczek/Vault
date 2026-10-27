@@ -1,0 +1,110 @@
+{
+  "Electricity_Hourly": {
+    "AMR-FBS": {
+      "mse": 5.328,
+      "mae": 1.838
+    },
+    "KNNForecaster": {
+      "mse": 9.619,
+      "mae": 2.511
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 5.418,
+      "mae": 1.867
+    },
+    "DLinear": {
+      "mse": 102.313,
+      "mae": 8.649
+    }
+  },
+  "Traffic_Flow": {
+    "AMR-FBS": {
+      "mse": 12.776,
+      "mae": 2.886
+    },
+    "KNNForecaster": {
+      "mse": 11.068,
+      "mae": 2.657
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 11.076,
+      "mae": 2.645
+    },
+    "DLinear": {
+      "mse": 131.084,
+      "mae": 7.779
+    }
+  },
+  "Financial_Returns": {
+    "AMR-FBS": {
+      "mse": 972191.602,
+      "mae": 569.041
+    },
+    "KNNForecaster": {
+      "mse": 1053517.962,
+      "mae": 577.545
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 990178.631,
+      "mae": 570.527
+    },
+    "DLinear": {
+      "mse": 993061.34,
+      "mae": 569.219
+    }
+  },
+  "Weather_Temperature": {
+    "AMR-FBS": {
+      "mse": 18.034,
+      "mae": 3.471
+    },
+    "KNNForecaster": {
+      "mse": 36.184,
+      "mae": 4.757
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 22.313,
+      "mae": 3.831
+    },
+    "DLinear": {
+      "mse": 42.181,
+      "mae": 4.574
+    }
+  },
+  "Web_Traffic": {
+    "AMR-FBS": {
+      "mse": 81.071,
+      "mae": 5.606
+    },
+    "KNNForecaster": {
+      "mse": 86.807,
+      "mae": 5.48
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 80.541,
+      "mae": 5.426
+    },
+    "DLinear": {
+      "mse": 119.912,
+      "mae": 7.821
+    }
+  },
+  "Healthcare_Vitals": {
+    "AMR-FBS": {
+      "mse": 2.42,
+      "mae": 1.233
+    },
+    "KNNForecaster": {
+      "mse": 2.773,
+      "mae": 1.303
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 2.387,
+      "mae": 1.221
+    },
+    "DLinear": {
+      "mse": 93.059,
+      "mae": 8.276
+    }
+  }
+}

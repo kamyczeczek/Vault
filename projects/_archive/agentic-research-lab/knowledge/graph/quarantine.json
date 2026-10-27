@@ -1,0 +1,16 @@
+{
+  "generated_by": "scripts/build_quarantine.py",
+  "detector": "scripts/check_corpus_health.py",
+  "min_glue_len": 32,
+  "granularity": "chunk",
+  "chunk_ids": {
+    "329_paradigms_of_artificial_intelligence_programming": {
+      "source": "Paradigms of artificial intelligence programming  case studies in Common Lisp (N",
+      "glue_tokens": 1
+    },
+    "949_artificial_intelligence_a_modern_approach_4th_ed": {
+      "source": "Artificial Intelligence A Modern Approach (4th ed.) (Stuart Russell, Peter Norvi",
+      "glue_tokens": 2
+    }
+  }
+}

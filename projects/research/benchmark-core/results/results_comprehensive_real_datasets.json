@@ -1,0 +1,224 @@
+{
+  "ETT_Load_Synthetic": {
+    "AMR-FBS": {
+      "mse": 28.7208,
+      "mae": 4.305,
+      "rmse": 5.3562,
+      "mape": 2.8754,
+      "dir_acc": 70.736
+    },
+    "KNNForecaster": {
+      "mse": 34.69,
+      "mae": 4.7683,
+      "rmse": 5.8272,
+      "mape": 3.1616,
+      "dir_acc": 71.578
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 28.8238,
+      "mae": 4.3179,
+      "rmse": 5.3641,
+      "mape": 2.8808,
+      "dir_acc": 71.158
+    },
+    "DLinear": {
+      "mse": 228.6046,
+      "mae": 12.7489,
+      "rmse": 14.6678,
+      "mape": 8.4569,
+      "dir_acc": 69.264
+    },
+    "SpectralFFT": {
+      "mse": 471.7421,
+      "mae": 17.8718,
+      "rmse": 21.3221,
+      "mape": 11.7632,
+      "dir_acc": 55.79
+    }
+  },
+  "Solar_Activity_SIDC": {
+    "AMR-FBS": {
+      "mse": 4.3564,
+      "mae": 0.8579,
+      "rmse": 1.2299,
+      "mape": 8327926514.7902,
+      "dir_acc": 0.0
+    },
+    "KNNForecaster": {
+      "mse": 10.2343,
+      "mae": 1.1788,
+      "rmse": 1.6543,
+      "mape": 11538246514.2743,
+      "dir_acc": 79.79
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 5.7002,
+      "mae": 0.9104,
+      "rmse": 1.3149,
+      "mape": 8853494684.1656,
+      "dir_acc": 0.0
+    },
+    "DLinear": {
+      "mse": 1.7622,
+      "mae": 0.4531,
+      "rmse": 0.7856,
+      "mape": 4280755066.7855,
+      "dir_acc": 79.79
+    },
+    "SpectralFFT": {
+      "mse": 20326.5599,
+      "mae": 137.2966,
+      "rmse": 137.3626,
+      "mape": 1371013697622.6643,
+      "dir_acc": 0.21
+    }
+  },
+  "Weather_Temperature_Realistic": {
+    "AMR-FBS": {
+      "mse": 27.3775,
+      "mae": 4.2294,
+      "rmse": 5.0196,
+      "mape": 36.3215,
+      "dir_acc": 63.79
+    },
+    "KNNForecaster": {
+      "mse": 23.7908,
+      "mae": 3.8891,
+      "rmse": 4.6277,
+      "mape": 33.1741,
+      "dir_acc": 63.368
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 25.4082,
+      "mae": 4.0882,
+      "rmse": 4.8523,
+      "mape": 34.2638,
+      "dir_acc": 65.264
+    },
+    "DLinear": {
+      "mse": 154.8206,
+      "mae": 9.5231,
+      "rmse": 10.7152,
+      "mape": 88.8704,
+      "dir_acc": 63.158
+    },
+    "SpectralFFT": {
+      "mse": 283.6506,
+      "mae": 14.0556,
+      "rmse": 16.4529,
+      "mape": 190.3911,
+      "dir_acc": 55.37
+    }
+  },
+  "Financial_Returns_GARCH": {
+    "AMR-FBS": {
+      "mse": 4821.4447,
+      "mae": 56.7983,
+      "rmse": 66.0672,
+      "mape": 11.0173,
+      "dir_acc": 51.58
+    },
+    "KNNForecaster": {
+      "mse": 3557.8126,
+      "mae": 47.9252,
+      "rmse": 54.9824,
+      "mape": 9.2754,
+      "dir_acc": 51.58
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 4415.1876,
+      "mae": 53.492,
+      "rmse": 62.5983,
+      "mape": 10.3673,
+      "dir_acc": 48.84
+    },
+    "DLinear": {
+      "mse": 3993.1608,
+      "mae": 51.1479,
+      "rmse": 59.3351,
+      "mape": 10.314,
+      "dir_acc": 48.842
+    },
+    "SpectralFFT": {
+      "mse": 223090.0332,
+      "mae": 468.608,
+      "rmse": 471.5805,
+      "mape": 87.7578,
+      "dir_acc": 46.948
+    }
+  },
+  "Industrial_Sensor_A": {
+    "AMR-FBS": {
+      "mse": 12.5281,
+      "mae": 2.8429,
+      "rmse": 3.5257,
+      "mape": 3.5957,
+      "dir_acc": 44.422
+    },
+    "KNNForecaster": {
+      "mse": 12.6111,
+      "mae": 2.7986,
+      "rmse": 3.4981,
+      "mape": 3.7741,
+      "dir_acc": 52.422
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 11.2332,
+      "mae": 2.6416,
+      "rmse": 3.3407,
+      "mape": 3.411,
+      "dir_acc": 45.056
+    },
+    "DLinear": {
+      "mse": 31.3697,
+      "mae": 4.4107,
+      "rmse": 5.1922,
+      "mape": 5.7566,
+      "dir_acc": 51.158
+    },
+    "SpectralFFT": {
+      "mse": 883.452,
+      "mae": 24.5137,
+      "rmse": 25.2205,
+      "mape": 27.0361,
+      "dir_acc": 47.58
+    }
+  },
+  "Industrial_Sensor_B": {
+    "AMR-FBS": {
+      "mse": 11.7967,
+      "mae": 2.7554,
+      "rmse": 3.2885,
+      "mape": 4.1578,
+      "dir_acc": 49.684
+    },
+    "KNNForecaster": {
+      "mse": 5.556,
+      "mae": 1.8916,
+      "rmse": 2.3301,
+      "mape": 2.9483,
+      "dir_acc": 52.422
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 8.3387,
+      "mae": 2.2812,
+      "rmse": 2.752,
+      "mape": 3.3954,
+      "dir_acc": 51.792
+    },
+    "DLinear": {
+      "mse": 27.4641,
+      "mae": 4.0954,
+      "rmse": 4.751,
+      "mape": 6.5238,
+      "dir_acc": 48.42
+    },
+    "SpectralFFT": {
+      "mse": 556.1925,
+      "mae": 19.3878,
+      "rmse": 19.9273,
+      "mape": 26.5509,
+      "dir_acc": 50.318
+    }
+  }
+}

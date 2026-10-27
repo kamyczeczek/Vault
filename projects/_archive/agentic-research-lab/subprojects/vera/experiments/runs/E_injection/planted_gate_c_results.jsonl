@@ -1,0 +1,73 @@
+{"claim_id": "Q1_D2_planted_02", "qid": "Q1", "planted": true, "flags": []}
+{"claim_id": "Q1_E_c01", "qid": "Q1", "planted": false, "flags": []}
+{"claim_id": "Q1_D1_planted_01", "qid": "Q1", "planted": true, "flags": [{"defect": "D1", "detail": "unresolvable source_id 00_esuite_nonexistent_citation_probe"}, {"defect": "D2-heuristic", "detail": "overlap=0 with 00_esuite_nonexistent_citation_probe (< 3)"}]}
+{"claim_id": "Q1_E_c02", "qid": "Q1", "planted": false, "flags": []}
+{"claim_id": "Q1_D3_planted_03", "qid": "Q1", "planted": true, "flags": [{"defect": "D3", "detail": "negation-wrap of Q1_E_c01"}]}
+{"claim_id": "Q1_D4_planted_04", "qid": "Q1", "planted": true, "flags": []}
+{"claim_id": "Q1_D5_planted_05", "qid": "Q1", "planted": true, "flags": [{"defect": "D5", "detail": "confident claim, empty source_ids"}]}
+{"claim_id": "Q2_E_c01", "qid": "Q2", "planted": false, "flags": []}
+{"claim_id": "Q2_D3_planted_03", "qid": "Q2", "planted": true, "flags": [{"defect": "D3", "detail": "negation-wrap of Q2_E_c02"}]}
+{"claim_id": "Q2_E_c02", "qid": "Q2", "planted": false, "flags": []}
+{"claim_id": "Q2_D4_planted_04", "qid": "Q2", "planted": true, "flags": []}
+{"claim_id": "Q2_D2_planted_02", "qid": "Q2", "planted": true, "flags": [{"defect": "D2-heuristic", "detail": "overlap=2 with 00_session_compaction_for_ai_agents (< 3)"}]}
+{"claim_id": "Q2_D5_planted_05", "qid": "Q2", "planted": true, "flags": [{"defect": "D5", "detail": "confident claim, empty source_ids"}]}
+{"claim_id": "Q2_D1_planted_01", "qid": "Q2", "planted": true, "flags": [{"defect": "D1", "detail": "unresolvable source_id 00_esuite_nonexistent_citation_probe"}, {"defect": "D2-heuristic", "detail": "overlap=0 with 00_esuite_nonexistent_citation_probe (< 3)"}]}
+{"claim_id": "Q4_D2_planted_02", "qid": "Q4", "planted": true, "flags": [{"defect": "D2-heuristic", "detail": "overlap=2 with 00_07_critic_external_tool_verification (< 3)"}]}
+{"claim_id": "Q4_D4_planted_04", "qid": "Q4", "planted": true, "flags": []}
+{"claim_id": "Q4_D5_planted_05", "qid": "Q4", "planted": true, "flags": [{"defect": "D5", "detail": "confident claim, empty source_ids"}]}
+{"claim_id": "Q4_E_c02", "qid": "Q4", "planted": false, "flags": []}
+{"claim_id": "Q4_E_c03", "qid": "Q4", "planted": false, "flags": []}
+{"claim_id": "Q4_E_c01", "qid": "Q4", "planted": false, "flags": []}
+{"claim_id": "Q4_D3_planted_03", "qid": "Q4", "planted": true, "flags": [{"defect": "D3", "detail": "negation-wrap of Q4_E_c03"}]}
+{"claim_id": "Q4_D1_planted_01", "qid": "Q4", "planted": true, "flags": [{"defect": "D1", "detail": "unresolvable source_id 00_esuite_nonexistent_citation_probe"}, {"defect": "D2-heuristic", "detail": "overlap=0 with 00_esuite_nonexistent_citation_probe (< 3)"}]}
+{"claim_id": "Q5_D5_planted_05", "qid": "Q5", "planted": true, "flags": [{"defect": "D5", "detail": "confident claim, empty source_ids"}]}
+{"claim_id": "Q5_D2_planted_02", "qid": "Q5", "planted": true, "flags": [{"defect": "D2-heuristic", "detail": "overlap=0 with 446_harness_starter_kit (< 3)"}]}
+{"claim_id": "Q5_E_c02", "qid": "Q5", "planted": false, "flags": []}
+{"claim_id": "Q5_E_c01", "qid": "Q5", "planted": false, "flags": []}
+{"claim_id": "Q5_E_c03", "qid": "Q5", "planted": false, "flags": []}
+{"claim_id": "Q5_D1_planted_01", "qid": "Q5", "planted": true, "flags": [{"defect": "D1", "detail": "unresolvable source_id 00_esuite_nonexistent_citation_probe"}, {"defect": "D2-heuristic", "detail": "overlap=0 with 00_esuite_nonexistent_citation_probe (< 3)"}]}
+{"claim_id": "Q5_D4_planted_04", "qid": "Q5", "planted": true, "flags": []}
+{"claim_id": "Q5_D3_planted_03", "qid": "Q5", "planted": true, "flags": [{"defect": "D3", "detail": "negation-wrap of Q5_E_c01"}]}
+{"claim_id": "Q6_E_c01", "qid": "Q6", "planted": false, "flags": []}
+{"claim_id": "Q6_D1_planted_01", "qid": "Q6", "planted": true, "flags": [{"defect": "D1", "detail": "unresolvable source_id 00_esuite_nonexistent_citation_probe"}, {"defect": "D2-heuristic", "detail": "overlap=0 with 00_esuite_nonexistent_citation_probe (< 3)"}]}
+{"claim_id": "Q6_E_c02", "qid": "Q6", "planted": false, "flags": []}
+{"claim_id": "Q6_D4_planted_04", "qid": "Q6", "planted": true, "flags": []}
+{"claim_id": "Q6_D2_planted_02", "qid": "Q6", "planted": true, "flags": [{"defect": "D2-heuristic", "detail": "overlap=0 with 00_karpathy_minimalist_agentic_coding_harnesses (< 3)"}]}
+{"claim_id": "Q6_D5_planted_05", "qid": "Q6", "planted": true, "flags": [{"defect": "D5", "detail": "confident claim, empty source_ids"}]}
+{"claim_id": "Q6_D3_planted_03", "qid": "Q6", "planted": true, "flags": [{"defect": "D3", "detail": "negation-wrap of Q6_E_c01"}]}
+{"claim_id": "Q7_D4_planted_04", "qid": "Q7", "planted": true, "flags": []}
+{"claim_id": "Q7_D2_planted_02", "qid": "Q7", "planted": true, "flags": [{"defect": "D2-heuristic", "detail": "overlap=2 with 00_session_compaction_for_ai_agents (< 3)"}]}
+{"claim_id": "Q7_D5_planted_05", "qid": "Q7", "planted": true, "flags": [{"defect": "D5", "detail": "confident claim, empty source_ids"}]}
+{"claim_id": "Q7_E_c02", "qid": "Q7", "planted": false, "flags": []}
+{"claim_id": "Q7_D3_planted_03", "qid": "Q7", "planted": true, "flags": [{"defect": "D3", "detail": "negation-wrap of Q7_E_c02"}]}
+{"claim_id": "Q7_E_c01", "qid": "Q7", "planted": false, "flags": []}
+{"claim_id": "Q7_D1_planted_01", "qid": "Q7", "planted": true, "flags": [{"defect": "D1", "detail": "unresolvable source_id 00_esuite_nonexistent_citation_probe"}, {"defect": "D2-heuristic", "detail": "overlap=0 with 00_esuite_nonexistent_citation_probe (< 3)"}]}
+{"claim_id": "Q8_D5_planted_05", "qid": "Q8", "planted": true, "flags": [{"defect": "D5", "detail": "confident claim, empty source_ids"}]}
+{"claim_id": "Q8_D3_planted_03", "qid": "Q8", "planted": true, "flags": [{"defect": "D3", "detail": "negation-wrap of Q8_E_c03"}]}
+{"claim_id": "Q8_D1_planted_01", "qid": "Q8", "planted": true, "flags": [{"defect": "D1", "detail": "unresolvable source_id 00_esuite_nonexistent_citation_probe"}, {"defect": "D2-heuristic", "detail": "overlap=0 with 00_esuite_nonexistent_citation_probe (< 3)"}]}
+{"claim_id": "Q8_E_c02", "qid": "Q8", "planted": false, "flags": []}
+{"claim_id": "Q8_E_c03", "qid": "Q8", "planted": false, "flags": []}
+{"claim_id": "Q8_D2_planted_02", "qid": "Q8", "planted": true, "flags": [{"defect": "D2-heuristic", "detail": "overlap=1 with 01_new_markdown_file (< 3)"}]}
+{"claim_id": "Q8_E_c01", "qid": "Q8", "planted": false, "flags": []}
+{"claim_id": "Q8_D4_planted_04", "qid": "Q8", "planted": true, "flags": []}
+{"claim_id": "Q10_D1_planted_01", "qid": "Q10", "planted": true, "flags": [{"defect": "D1", "detail": "unresolvable source_id 00_esuite_nonexistent_citation_probe"}, {"defect": "D2-heuristic", "detail": "overlap=0 with 00_esuite_nonexistent_citation_probe (< 3)"}]}
+{"claim_id": "Q10_E_c02", "qid": "Q10", "planted": false, "flags": []}
+{"claim_id": "Q10_D3_planted_03", "qid": "Q10", "planted": true, "flags": [{"defect": "D3", "detail": "negation-wrap of Q10_E_c01"}]}
+{"claim_id": "Q10_D2_planted_02", "qid": "Q10", "planted": true, "flags": [{"defect": "D2-heuristic", "detail": "overlap=1 with 00_automated_peer_review_and_self_correction (< 3)"}]}
+{"claim_id": "Q10_D4_planted_04", "qid": "Q10", "planted": true, "flags": []}
+{"claim_id": "Q10_E_c01", "qid": "Q10", "planted": false, "flags": []}
+{"claim_id": "Q10_D5_planted_05", "qid": "Q10", "planted": true, "flags": [{"defect": "D5", "detail": "confident claim, empty source_ids"}]}
+{"claim_id": "Q11_D3_planted_03", "qid": "Q11", "planted": true, "flags": [{"defect": "D3", "detail": "negation-wrap of Q11_E_c02"}]}
+{"claim_id": "Q11_D1_planted_01", "qid": "Q11", "planted": true, "flags": [{"defect": "D1", "detail": "unresolvable source_id 00_esuite_nonexistent_citation_probe"}, {"defect": "D2-heuristic", "detail": "overlap=0 with 00_esuite_nonexistent_citation_probe (< 3)"}]}
+{"claim_id": "Q11_D5_planted_05", "qid": "Q11", "planted": true, "flags": [{"defect": "D5", "detail": "confident claim, empty source_ids"}]}
+{"claim_id": "Q11_D4_planted_04", "qid": "Q11", "planted": true, "flags": []}
+{"claim_id": "Q11_D2_planted_02", "qid": "Q11", "planted": true, "flags": [{"defect": "D2-heuristic", "detail": "overlap=2 with bm25_agentic_search_bergum (< 3)"}]}
+{"claim_id": "Q11_E_c02", "qid": "Q11", "planted": false, "flags": []}
+{"claim_id": "Q11_E_c01", "qid": "Q11", "planted": false, "flags": []}
+{"claim_id": "Q12_E_c01", "qid": "Q12", "planted": false, "flags": []}
+{"claim_id": "Q12_D4_planted_04", "qid": "Q12", "planted": true, "flags": []}
+{"claim_id": "Q12_D3_planted_03", "qid": "Q12", "planted": true, "flags": [{"defect": "D3", "detail": "negation-wrap of Q12_E_c02"}]}
+{"claim_id": "Q12_D1_planted_01", "qid": "Q12", "planted": true, "flags": [{"defect": "D1", "detail": "unresolvable source_id 00_esuite_nonexistent_citation_probe"}, {"defect": "D2-heuristic", "detail": "overlap=0 with 00_esuite_nonexistent_citation_probe (< 3)"}]}
+{"claim_id": "Q12_D5_planted_05", "qid": "Q12", "planted": true, "flags": [{"defect": "D5", "detail": "confident claim, empty source_ids"}]}
+{"claim_id": "Q12_E_c02", "qid": "Q12", "planted": false, "flags": []}
+{"claim_id": "Q12_D2_planted_02", "qid": "Q12", "planted": true, "flags": [{"defect": "D2-heuristic", "detail": "overlap=1 with 00_can_an_ai_out_plan_a_senior_engineer (< 3)"}]}

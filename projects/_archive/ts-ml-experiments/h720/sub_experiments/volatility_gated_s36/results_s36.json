@@ -1,0 +1,191 @@
+{
+  "slice": "S-36-volatility-gated",
+  "protocol": "S-20-clean: val members frozen on 8545, test members refrozen on 11425; chronological n2=1080/1081 split",
+  "pool": [
+    "nlinear_L96_a1",
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "nlinear_L720_a1",
+    "dlinear_L96_k25_a0",
+    "dlinear_L336_k25_a0"
+  ],
+  "incumbent_idx": [
+    1,
+    2
+  ],
+  "gate_design": {
+    "description": "continuous macro-volatility z*Dext + z_bias with per-column Ridge (a_blend, a_gate); TRAIN-standardized window std, no kNN graph",
+    "vol_windows": [
+      96,
+      336,
+      720
+    ],
+    "gate_alphas": [
+      100.0,
+      300.0,
+      1000.0,
+      3000.0,
+      10000.0
+    ],
+    "orthogonality": {
+      "vs_S23_kNN": "gate uses global window scale std(history[t-L:t]) \u2014 continuous scalar, no neighbourhood / distance graph; S-23 discrete kNN distance noise-fit +0.0134",
+      "vs_S19_simplex": "gate strength is per-horizon Ridge coefficient with entropy REGULARIZER (per-column diagonal penalty toward uniform), NOT simplex argmin on val (S-19 simplex overfit 93.8% on CycleESN, test +0.047)",
+      "corr_z_absD": 0.2702509349085113
+    }
+  },
+  "val": {
+    "pooled_S26_held": 2.51907740175763,
+    "pooled_S26_alpha": 10000.0,
+    "pooled_all": {
+      "inc": {
+        "held": 2.51907740175763,
+        "alpha": 10000.0
+      },
+      "div96_336": {
+        "held": 2.561667419635401,
+        "alpha": 10000.0
+      },
+      "div336_720": {
+        "held": 2.522710653980145,
+        "alpha": 300.0
+      },
+      "div3": {
+        "held": 2.56184162211617,
+        "alpha": 3000.0
+      },
+      "div_all6": {
+        "held": 2.56440261391515,
+        "alpha": 3000.0
+      }
+    },
+    "gate_variants": [
+      {
+        "name": "vol96_Dext",
+        "window": 96,
+        "type": "z*Dext",
+        "held": 2.5214401968354925,
+        "alphas": [
+          10000.0,
+          10000.0
+        ]
+      },
+      {
+        "name": "vol336_Dext",
+        "window": 336,
+        "type": "z*Dext",
+        "held": 2.5152344725165428,
+        "alphas": [
+          10000.0,
+          3000.0
+        ]
+      },
+      {
+        "name": "vol720_Dext",
+        "window": 720,
+        "type": "z*Dext",
+        "held": 2.5171478706271664,
+        "alphas": [
+          10000.0,
+          10000.0
+        ]
+      },
+      {
+        "name": "vol96_bias",
+        "window": 96,
+        "type": "z_bias",
+        "held": 2.519659806688761,
+        "alphas": [
+          10000.0,
+          10000.0
+        ]
+      },
+      {
+        "name": "vol336_bias",
+        "window": 336,
+        "type": "z_bias",
+        "held": 2.524013300846087,
+        "alphas": [
+          10000.0,
+          10000.0
+        ]
+      },
+      {
+        "name": "vol720_bias",
+        "window": 720,
+        "type": "z_bias",
+        "held": 2.511260598512544,
+        "alphas": [
+          3000.0,
+          300.0
+        ]
+      },
+      {
+        "name": "trend336_Dext",
+        "window": 336,
+        "type": "trend*Dext",
+        "held": 2.5213365055728425,
+        "alphas": [
+          10000.0,
+          10000.0
+        ]
+      }
+    ],
+    "winner": {
+      "name": "vol720_bias",
+      "window": 720,
+      "type": "z_bias",
+      "held": 2.511260598512544,
+      "alphas": [
+        3000.0,
+        300.0
+      ]
+    },
+    "interior": true,
+    "val_full": 2.7842012444336413,
+    "weight_entropy": {
+      "mean": 0.9947753775539904,
+      "max": 1.0986122886681098,
+      "ratio": 0.9054835703321643
+    }
+  },
+  "test_disjoint": {
+    "mae": 2.597516907061011,
+    "rmse": 3.3367764066215075,
+    "per_window": [
+      2.714371684366859,
+      1.4358545398757296,
+      3.449165317849415,
+      2.79067608615204
+    ],
+    "w4": 2.79067608615204
+  },
+  "test_full": {
+    "mae": 2.4724475044582377,
+    "rmse": 3.1834326187973105,
+    "n": 2161,
+    "delta_vs_s26": 0.4815475044582378
+  },
+  "accept": false,
+  "strong_accept_target_1.9850": false,
+  "incumbent": {
+    "mae": 1.9909,
+    "disjoint": 1.9696,
+    "w4_s20_reference": 1.8427,
+    "w4_s26_incumbent": 1.9579,
+    "note": "baseline relabelled post-hoc; the 1.8427 cap is the S-20 6-member leaderboard W4, not the defended S-26 incumbent (in-harness W4 = 1.9579); verdict/metrics unchanged"
+  },
+  "harness_command": "python projects/ts-ml-experiments/h720/sub_experiments/volatility_gated_s36/rolling_arm.py",
+  "harness_log": "projects/ts-ml-experiments/h720/sub_experiments/volatility_gated_s36/harness.log",
+  "plan_impact": {
+    "invalidates": [
+      "S-36 volatility-gated bet as SOTA (REJECTED \u2014 val edge does not survive refit)"
+    ],
+    "confirms": [
+      "volatility signal has held-out val edge but does not transfer to frozen test (val->test flip \u2014 regime-specific, consistent with univariate-linear saturation H2)"
+    ],
+    "opens": [
+      "none \u2014 next gains require multivariate with sparse regularization or non-linear level-free heads per scout bets 1/2"
+    ]
+  },
+  "elapsed_s": 137.4325885772705
+}

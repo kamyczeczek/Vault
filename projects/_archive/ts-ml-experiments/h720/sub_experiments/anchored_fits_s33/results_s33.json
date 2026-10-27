@@ -1,0 +1,128 @@
+{
+  "slice": "S-33-anchored-fits",
+  "pool": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "afits_L336"
+  ],
+  "trace": [
+    {
+      "iter": 0,
+      "cur": [
+        "nlinear_L336_a10",
+        "afits_L336"
+      ],
+      "fast": 2.520498934411538,
+      "true": 2.5170296045376865,
+      "alpha": 10000.0,
+      "best_fast": 2.520498934411538,
+      "best_set": [
+        "nlinear_L336_a10",
+        "afits_L336"
+      ]
+    },
+    {
+      "iter": 1,
+      "cur": [
+        "nlinear_L336_a1",
+        "afits_L336"
+      ],
+      "fast": 2.5205024773603006,
+      "true": 2.5205024773603006,
+      "alpha": 3000.0,
+      "best_fast": 2.520498934411538,
+      "best_set": [
+        "nlinear_L336_a10",
+        "afits_L336"
+      ]
+    },
+    {
+      "iter": 2,
+      "cur": [
+        "nlinear_L336_a1"
+      ],
+      "fast": 2.5205846911461407,
+      "true": 2.5205846911461407,
+      "alpha": 3000.0,
+      "best_fast": 2.520498934411538,
+      "best_set": [
+        "nlinear_L336_a10",
+        "afits_L336"
+      ]
+    },
+    {
+      "iter": 3,
+      "cur": [
+        "afits_L336"
+      ],
+      "fast": 2.5214592574872987,
+      "true": 2.5205534342815046,
+      "alpha": 10000.0,
+      "best_fast": 2.520498934411538,
+      "best_set": [
+        "nlinear_L336_a10",
+        "afits_L336"
+      ]
+    },
+    {
+      "iter": 4,
+      "cur": [
+        "nlinear_L336_a10",
+        "afits_L336"
+      ],
+      "fast": 2.520498934411538,
+      "true": 2.520498934411538,
+      "alpha": 3000.0,
+      "best_fast": 2.520498934411538,
+      "best_set": [
+        "nlinear_L336_a10",
+        "afits_L336"
+      ]
+    },
+    {
+      "iter": 5,
+      "cur": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "afits_L336"
+      ],
+      "fast": 2.521427850276049,
+      "true": 2.521427850276049,
+      "alpha": 3000.0,
+      "best_fast": 2.520498934411538,
+      "best_set": [
+        "nlinear_L336_a10",
+        "afits_L336"
+      ]
+    }
+  ],
+  "best_subset": [
+    "nlinear_L336_a10",
+    "afits_L336"
+  ],
+  "best_idx": [
+    1,
+    2
+  ],
+  "best_fast": 2.520498934411538,
+  "best_alpha": 10000.0,
+  "val_full": 2.8519397220020393,
+  "test_disjoint": {
+    "mae": 1.9656185699651385,
+    "rmse": 2.482622262435171
+  },
+  "test_full": {
+    "mae": 1.9909097288831763,
+    "rmse": 2.470885034361401,
+    "n": 2161,
+    "delta_vs_s26": 9.728883176407521e-06
+  },
+  "accept": false,
+  "acceptance_criteria": {
+    "full_mae_threshold": 1.9859,
+    "disjoint_mae_cap": 1.9696,
+    "incumbent_full": 1.9909,
+    "incumbent_disjoint": 1.9696
+  },
+  "protocol": "S-20-clean: val members frozen on 8545, test members refrozen on 11425"
+}

@@ -1,0 +1,69 @@
+{
+ "id": "q010",
+ "question": "Czym różni się DRY od Orthogonality? Czy to to samo, czy dwie różne zasady? Jak się uzupełniają?",
+ "type": "relational / multi-hop",
+ "header": "Relacyjne / multi-hop (DRY vs Orthogonality)",
+ "gold_topics": [
+  9,
+  10
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 10,
+   "topic_title": "Orthogonality",
+   "chapter": 2,
+   "page_book": 92,
+   "text": "Orthogonality is closely related to the DRY principle. With DRY, you're looking to minimize duplication within a system, whereas with orthogonality you reduce the interdependency among the system's components. It may be a clumsy word, but if you use the principle of orthogonality, combined closely with the DRY principle, you'll find that the systems you develop are more flexible, more understandable, and easier to debug, test, and maintain.\n\nIf you're brought into a project where people are desperately struggling to make changes, and where every change seems to cause four other things to go wrong, remember the nightmare with the helicopter. The project probably is not orthogonally designed and coded. It's time to refactor.\n\nAnd, if you're a helicopter pilot, don't eat the fish…."
+  },
+  {
+   "topic": 7,
+   "topic_title": "Communicate!",
+   "chapter": 1,
+   "page_book": 63,
+   "text": "The next two sections, Topic 9, _<u>DRY—The Evils of Duplication</u>_ and Topic 10, _<u>Orthogonality</u>_ <u>, are closely related. The first warns</u> you not to duplicate knowledge throughout your systems, the second not to split any one piece of knowledge across multiple system components.\n\nAs the pace of change increases, it becomes harder and harder to keep our applications relevant. In Topic 11, _<u>Reversibility</u>_ <u>,</u> we'll look at some techniques that help insulate your projects from their changing environment."
+  },
+  {
+   "topic": 10,
+   "topic_title": "Orthogonality",
+   "chapter": 2,
+   "page_book": 92,
+   "text": "class Split2 { <mark>constructor(line)        # splits a line</mark> def getField(n)          # returns nth field in current line <u><mark>}</mark></u>\n\n**Exercise 2** <u>(possible answer)</u>\n\nWhat are the differences in orthogonality between objectoriented and functional languages? Are these differences inherent in the languages themselves, or just in the way people use them?"
+  },
+  {
+   "topic": 28,
+   "topic_title": "Decoupling",
+   "chapter": 5,
+   "page_book": 228,
+   "text": "- Topic 10, _<u>Orthogonality</u>_ Topic 11, _Reversibility_ Topic 29, _<u>Juggling the Real World</u>_\n\n- Topic 30, _Transforming Programming_\n\n- Topic 31, _Inheritance Tax_ Topic 32, _<u>Configuration</u>_\n\n- Topic 33, _Breaking Temporal Coupling_\n\n- Topic 34, _Shared State Is Incorrect State_\n\n- Topic 35, _Actors and Processes_\n\n- Topic 36, _Blackboards_\n\n- We discuss _Tell, Don't Ask_ in our 2003 Software Construction <u>[38]</u>\n\n- article _The Art of Enbugging_ ."
+  },
+  {
+   "topic": 10,
+   "topic_title": "Orthogonality",
+   "chapter": 2,
+   "page_book": 92,
+   "text": "**Topic 10**\n\n#### Orthogonality\n\nOrthogonality is a critical concept if you want to produce systems that are easy to design, build, test, and extend. However, the concept of orthogonality is rarely taught directly. Often it is an implicit feature of various other methods and techniques you learn. This is a mistake. Once you learn to apply the principle of orthogonality directly, you'll notice an immediate improvement in the quality of systems you produce.\n\n#### **WHAT IS ORTHOGONALITY?**\n\n\"Orthogonality'' is a term borrowed from geometry. Two lines are orthogonal if they meet at right angles, such as the axes on a graph. In vector terms, the two lines are _independent_ . As the\n\nimages/orthogonality.png"
+  },
+  {
+   "topic": 8,
+   "topic_title": "The Essence of Good Design",
+   "chapter": 2,
+   "page_book": 75,
+   "text": "Second, treat this as a way to develop instincts. Note the situation in your engineering day book: the choices you have, and some guesses about change. Leave a tag in the source. Then, later, when this code has to change, you'll be able to look back and give yourself feedback. It might help the next time you reach a similar fork in the road.\n\nThe rest of the sections in this chapter have specific ideas on design, but all are motivated by this one principle.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 9, _DRY—The Evils of Duplication_\n\n- Topic 10, _<u>Orthogonality</u>_\n\n- Topic 11, _Reversibility_\n\n- Topic 14, _Domain Languages_\n\n- Topic 28, _Decoupling_\n\n- Topic 30, _Transforming Programming_\n\n- Topic 31, _Inheritance Tax_\n\n#### **CHALLENGES**"
+  },
+  {
+   "topic": 10,
+   "topic_title": "Orthogonality",
+   "chapter": 2,
+   "page_book": 92,
+   "text": "Perhaps surprisingly, orthogonality also applies to documentation. The axes are content and presentation. With truly orthogonal documentation, you should be able to change the appearance dramatically without changing the content. Word processors provide style sheets and macros that help. We personally prefer using a markup system such as Markdown: when writing we focus only on the content, and leave the presentation to whichever tool we use to render it ~~.~~ <u>[17]</u>\n\n#### **LIVING WITH ORTHOGONALITY**"
+  },
+  {
+   "topic": 10,
+   "topic_title": "Orthogonality",
+   "chapter": 2,
+   "page_book": 92,
+   "text": "Every time you write code you run the risk of reducing the orthogonality of your application. Unless you constantly monitor not just what you are doing but also the larger context of the application, you might unintentionally duplicate functionality in some other module, or express existing knowledge twice.\n\nThere are several techniques you can use to maintain orthogonality:\n\n_Keep your code decoupled_\n\nWrite shy code—modules that don't reveal anything unnecessary to other modules and that don't rely on other modules' implementations. Try the Law of Demeter, which we discuss in Topic 28, _<u>Decoupling</u>_ <u>. If</u> you need to change an object's state, get the object to do it for you. This way your code remains isolated from the other code's implementation and increases the chances"
+  }
+ ]
+}

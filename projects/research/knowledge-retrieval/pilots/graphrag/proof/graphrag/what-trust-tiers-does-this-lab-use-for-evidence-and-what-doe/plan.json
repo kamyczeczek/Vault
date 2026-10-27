@@ -1,0 +1,15 @@
+{
+  "pytanie": "What trust tiers does this lab use for evidence, and what does tier 3 mean?",
+  "slowa_kluczowe": [
+    "trust",
+    "tiers",
+    "lab",
+    "use",
+    "evidence",
+    "tier",
+    "mean"
+  ],
+  "typ_szukania": "fts_body",
+  "top_k": 10,
+  "data": "2026-10-11T01:00:16.288131Z"
+}

@@ -1,0 +1,41 @@
+name: vera-sim1-simplicity-ablation
+description: Replicate VERA SIM-1 simplicity ablation (S0 vs S1 vs S2) using ECC eval-harness
+repo: ../vera
+commit: "44172cafee34"
+runs_per_task: 3
+tasks:
+  - name: S0-full-protocol
+    description: Full VERA protocol with all gates G0-G3
+    prompt_file: prompts/sim1_s0.md
+    judge:
+      - type: code
+        command: python ../vera/scripts/score_claims.py --protocol S0 --questions Q1-Q23
+      - type: model
+        prompt_file: prompts/claim_quality_grader.md
+    metrics: [pass_rate, cost, time, consistency, token_usage, gate_pass_rate]
+
+  - name: S1-retrieve-answer-gate1
+    description: S1 protocol - retrieve, answer, grounding gate G1 only
+    prompt_file: prompts/sim1_s1.md
+    judge:
+      - type: code
+        command: python ../vera/scripts/score_claims.py --protocol S1 --questions Q1-Q23
+      - type: model
+        prompt_file: prompts/claim_quality_grader.md
+    metrics: [pass_rate, cost, time, consistency, token_usage, gate_pass_rate]
+
+  - name: S2-no-gate
+    description: S2 protocol - retrieve, answer, no verification gates
+    prompt_file: prompts/sim1_s2.md
+    judge:
+      - type: code
+        command: python ../vera/scripts/score_claims.py --protocol S2 --questions Q1-Q23
+      - type: model
+        prompt_file: prompts/claim_quality_grader.md
+    metrics: [pass_rate, cost, time, consistency, token_usage, gate_pass_rate]
+
+success_metrics:
+  capability:
+    pass@3: 0.80
+  regression:
+    pass^3: 1.00

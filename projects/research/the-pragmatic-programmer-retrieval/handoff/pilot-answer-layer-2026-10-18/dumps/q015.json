@@ -1,0 +1,76 @@
+{
+ "id": "q015",
+ "question": "Czym jest „Pragmatic Starter Kit” i dlaczego autorzy twierdzą, że jego trzy elementy są ze sobą nierozerwalnie związane? Jak łączą się z resztą książki?",
+ "type": "relational / multi-hop",
+ "header": "Relacyjne / multi-hop (Pragmatic Starter Kit)",
+ "gold_topics": [
+  51,
+  11,
+  12,
+  17,
+  19,
+  41,
+  42,
+  48,
+  50
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 51,
+   "topic_title": "Pragmatic Starter Kit",
+   "chapter": 9,
+   "page_book": 452,
+   "text": "**Topic 51**\n\n#### Pragmatic Starter Kit\n\n_Civilization advances by extending the number of important operations we can perform without thinking._\n\n_Alfred North Whitehead_\n\nBack when cars were a novelty, the instructions for starting a Model-T Ford were more than two pages long. With modern cars, you just push a button—the starting procedure is automatic and foolproof. A person following a list of instructions might flood the engine, but the automatic starter won't."
+  },
+  {
+   "topic": 51,
+   "topic_title": "Pragmatic Starter Kit",
+   "chapter": 9,
+   "page_book": 452,
+   "text": "basic, most important elements that _every_ team needs regardless of methodology, language, or technology stack. And so the idea of the _Pragmatic Starter Kit_ was born, covering these three critical and interrelated topics:\n\nVersion Control\n\nRegression Testing\n\nFull Automation\n\nThese are the three legs that support every project. Here's how.\n\n#### **DRIVE WITH VERSION CONTROL**\n\nAs we said in Topic 19, _<u>Version Control</u>_ <u>, you want to keep</u> everything needed to build your project under version control. That idea becomes even more important in the context of the project itself."
+  },
+  {
+   "topic": 11,
+   "topic_title": "Reversibility",
+   "chapter": 2,
+   "page_book": 104,
+   "text": "- Topic 19, _Version Control_\n\n- Topic 28, _Decoupling_\n\n- Topic 45, _The Requirements Pit_\n\n- Topic 51, _Pragmatic Starter Kit_\n\n#### **CHALLENGES**"
+  },
+  {
+   "topic": 50,
+   "topic_title": "Coconuts Don’t Cut It",
+   "chapter": 9,
+   "page_book": 446,
+   "text": "- Topic 27, _Don't Outrun Your Headlights_\n\n- Topic 48, _The Essence of Agility_\n\n- Topic 49, _Pragmatic Teams_\n\n- Topic 51, _Pragmatic Starter Kit_"
+  },
+  {
+   "topic": 21,
+   "topic_title": "Text Manipulation",
+   "chapter": 3,
+   "page_book": 181,
+   "text": "> **Tip 35** Learn a Text Manipulation Language\n\nTo show the wide-ranging applicability of text manipulation languages, here's a sample of some stuff we've done with Ruby and Python just related to the creation of this book:\n\n_Building the Book_\n\nThe build system for the Pragmatic Bookshelf is written in Ruby. Authors, editors, layout people, and support folks use Rake tasks to coordinate the building of PDFs and ebooks.\n\n##### _Code inclusion and highlighting_\n\nWe think it is important that any code presented in a book should have been tested first. Most of the code in this book has been. However, using the DRY principle (see Topic 9, _<u>DRY—The Evils of Duplication</u>_ <u>) we didn't</u> want to copy and paste lines of code from the tested programs into the book. That would mean we'd be"
+  },
+  {
+   "topic": 51,
+   "topic_title": "Pragmatic Starter Kit",
+   "chapter": 9,
+   "page_book": 452,
+   "text": "pushes to version control, and built in a container in the cloud. Release to staging or production is specified by using a tag in your version control system. Releases then become a much more low-ceremony part of every day life—true continuous delivery, not tied to any one build machine or developer's machine.\n\n#### **RUTHLESS AND CONTINUOUS TESTING**\n\nMany developers test gently, subconsciously knowing where the code will break and avoiding the weak spots. Pragmatic Programmers are different. We are _driven_ to find our bugs _now_ , so we don't have to endure the shame of others finding our bugs later."
+  },
+  {
+   "topic": 27,
+   "topic_title": "Don’t Outrun Your Headlights",
+   "chapter": 4,
+   "page_book": 222,
+   "text": "Around the time of the first edition of _The Pragmatic Programmer_ , debate raged in computer magazines and online forums over the burning question: \"Who would win the desktop GUI wars, Motif or OpenLook?\"[36] It was the wrong question. Odds are you've probably never heard of these technologies as neither \"won\" and the browser-centric web quickly dominated the landscape.\n\n**Tip 43**\n\n#### Avoid Fortune-Telling\n\nMuch of the time, tomorrow looks a lot like today. But don't count on it.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 12, _Tracer Bullets_\n\nTopic 13, _Prototypes and Post-it Notes_\n\nTopic 40, _Refactoring_\n\nTopic 41, _Test to Code_\n\nTopic 48, _The Essence of Agility_\n\nTopic 50, _<u>Coconuts Don't Cut It</u>_\n\n###### **Footnotes**"
+  },
+  {
+   "topic": 51,
+   "topic_title": "Pragmatic Starter Kit",
+   "chapter": 9,
+   "page_book": 452,
+   "text": "- Are your nightly or continuous builds automatic, but deploying to production isn't? Why? What's special about that server?\n\n- Can you automatically test your project completely? Many teams are forced to answer \"no.\" Why? Is it too hard to define the acceptable results? Won't this make it hard to prove to the sponsors that the project is \"done\"?\n\n- Is it too hard to test the application logic independent of the GUI? What does this say about the GUI? About coupling?"
+  }
+ ]
+}

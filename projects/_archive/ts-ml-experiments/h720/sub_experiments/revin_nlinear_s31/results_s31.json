@@ -1,0 +1,73 @@
+{
+  "slice": "S-31-revin-nlinear",
+  "L": 512,
+  "alphas": [
+    0.1,
+    1.0,
+    3.0,
+    10.0,
+    30.0,
+    100.0,
+    300.0,
+    1000.0,
+    3000.0,
+    10000.0,
+    30000.0
+  ],
+  "candidates_2": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10"
+  ],
+  "candidates_3": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "revin_nlinear_L512_a10"
+  ],
+  "res_2member": {
+    "label": "2-member",
+    "pool": [
+      "nlinear_L336_a1",
+      "nlinear_L336_a10"
+    ],
+    "held_mae": 2.51907740175763,
+    "best_alpha": 10000.0,
+    "disj_mae": 1.969616847749498,
+    "disj_rmse": 2.487586320185094,
+    "full_mae": 1.990897385574145,
+    "full_rmse": 2.470998626872596,
+    "n_test": 2161
+  },
+  "res_3member": {
+    "label": "3-member+RevIN512",
+    "pool": [
+      "nlinear_L336_a1",
+      "nlinear_L336_a10",
+      "revin_nlinear_L512_a10"
+    ],
+    "held_mae": 2.5122927187445008,
+    "best_alpha": 300.0,
+    "disj_mae": 1.9850639082456336,
+    "disj_rmse": 2.4962719223194916,
+    "full_mae": 2.0035845127255323,
+    "full_rmse": 2.4908179998670263,
+    "n_test": 2161
+  },
+  "singleton_held": {
+    "nlinear_L336_a10": 2.578702021760216,
+    "revin_L512_a10": 2.6064595448186463
+  },
+  "singleton_full": {
+    "nlinear_L336_a1": 2.057118861745735,
+    "nlinear_L336_a10": 2.0571160498462784,
+    "revin_nlinear_L512_a10": 2.1317431699356653
+  },
+  "verdict": "REJECT",
+  "reason": "full 2.0036 not < 1.9909-0.005 nor < inc 1.9909-0.005; disjoint 1.9851 > inc 1.9696+0.002",
+  "guards": {
+    "abs_guard": 1.9909,
+    "need_full_delta": 0.005,
+    "need_disjoint_slack": 0.002
+  },
+  "blast": "_lag_dataset d27 isolated \u2014 NLinear/RevIN do NOT call _lag_dataset (inline windows neural_models.py:165/233)",
+  "protocol": "S-20-clean: val members frozen on 8545, test members refrozen on 11425, n2=1080/1081, 11-alpha per-horizon ridge no-intercept"
+}

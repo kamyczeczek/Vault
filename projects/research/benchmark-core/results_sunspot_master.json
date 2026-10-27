@@ -1,0 +1,97 @@
+{
+  "origins_evaluation": {
+    "1800": {
+      "true_peak": 108.2,
+      "true_asymmetry": 0.6078394425445649,
+      "models": {
+        "AMR-FBS": {
+          "mae": 32.26031416729605,
+          "pred_peak": 82.98590051394714,
+          "peak_error": 25.21409948605286,
+          "pred_asymmetry": 0.5454515702641622,
+          "asymmetry_error": 0.062387872280402656
+        },
+        "AMR-Dynamo": {
+          "mae": 32.03553588336764,
+          "pred_peak": 75.439189633963,
+          "peak_error": 32.760810366037006,
+          "pred_asymmetry": 0.0232558085451608,
+          "asymmetry_error": 0.584583633999404
+        },
+        "DLinear": {
+          "mae": 19.394482379359378,
+          "pred_peak": 63.75713673833411,
+          "peak_error": 44.44286326166589,
+          "pred_asymmetry": 0.6326490587508528,
+          "asymmetry_error": 0.024809616206287854
+        }
+      }
+    },
+    "2000": {
+      "true_peak": 154.5,
+      "true_asymmetry": 0.6078394425445649,
+      "models": {
+        "AMR-FBS": {
+          "mae": 14.698694118140823,
+          "pred_peak": 101.8619484641288,
+          "peak_error": 52.6380515358712,
+          "pred_asymmetry": 0.5471668173891123,
+          "asymmetry_error": 0.060672625155452575
+        },
+        "AMR-Dynamo": {
+          "mae": 37.55958677603444,
+          "pred_peak": 48.67438783694571,
+          "peak_error": 105.82561216305429,
+          "pred_asymmetry": 0.013333331555555793,
+          "asymmetry_error": 0.5945061109890091
+        },
+        "DLinear": {
+          "mae": 15.841739620333886,
+          "pred_peak": 78.5314815231521,
+          "peak_error": 75.9685184768479,
+          "pred_asymmetry": 0.6078394425445649,
+          "asymmetry_error": 0.0
+        }
+      }
+    },
+    "2200": {
+      "true_peak": 165.3,
+      "true_asymmetry": 0.6078394425445649,
+      "models": {
+        "AMR-FBS": {
+          "mae": 25.275289965519196,
+          "pred_peak": 85.80965870229973,
+          "peak_error": 79.49034129770028,
+          "pred_asymmetry": 0.5151488613543506,
+          "asymmetry_error": 0.09269058119021434
+        },
+        "AMR-Dynamo": {
+          "mae": 48.96424816731865,
+          "pred_peak": 70.96789738629991,
+          "peak_error": 94.3321026137001,
+          "pred_asymmetry": 0.0232558085451608,
+          "asymmetry_error": 0.584583633999404
+        },
+        "DLinear": {
+          "mae": 24.770804821846315,
+          "pred_peak": 64.02306292584741,
+          "peak_error": 101.2769370741526,
+          "pred_asymmetry": 0.6249960937744139,
+          "asymmetry_error": 0.017156651229848996
+        }
+      }
+    }
+  },
+  "takens_ablation": {
+    "tau=1_dim=6": 22.53457620580308,
+    "tau=1_dim=12": 19.82887199757889,
+    "tau=1_dim=18": 19.661884392030654,
+    "tau=3_dim=6": 16.37300606296661,
+    "tau=3_dim=12": 16.45751849519364,
+    "tau=3_dim=18": 18.04159930825537,
+    "tau=6_dim=6": 18.512195071299136,
+    "tau=6_dim=12": 20.324891535660555,
+    "tau=6_dim=18": 19.3840602633282
+  },
+  "best_embedding": "tau=3_dim=6"
+}

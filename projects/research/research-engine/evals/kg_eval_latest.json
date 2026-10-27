@@ -1,0 +1,209 @@
+{
+  "cases": 7,
+  "arms": {
+    "resolve": {
+      "family_hit_rate": 1.0,
+      "mean_consistency": 1.0,
+      "mean_latency_ms": 16.7
+    },
+    "expand1": {
+      "family_hit_rate": 1.0,
+      "mean_consistency": 1.0,
+      "mean_latency_ms": 20.2
+    },
+    "expand2": {
+      "family_hit_rate": 1.0,
+      "mean_consistency": 1.0,
+      "mean_latency_ms": 23.1
+    },
+    "like": {
+      "family_hit_rate": 0.857,
+      "mean_consistency": 1.0,
+      "mean_latency_ms": 23.7
+    }
+  },
+  "cases_detail": {
+    "multiagent": {
+      "resolve": {
+        "hit": true,
+        "families": 1,
+        "consistency": 1.0,
+        "mean_latency_ms": 3.4
+      },
+      "expand1": {
+        "hit": true,
+        "families": 6,
+        "consistency": 1.0,
+        "mean_latency_ms": 6.8
+      },
+      "expand2": {
+        "hit": true,
+        "families": 16,
+        "consistency": 1.0,
+        "mean_latency_ms": 8.7
+      },
+      "like": {
+        "hit": true,
+        "families": 3,
+        "consistency": 1.0,
+        "mean_latency_ms": 3.3
+      }
+    },
+    "graph databases": {
+      "resolve": {
+        "hit": true,
+        "families": 1,
+        "consistency": 1.0,
+        "mean_latency_ms": 3.4
+      },
+      "expand1": {
+        "hit": true,
+        "families": 4,
+        "consistency": 1.0,
+        "mean_latency_ms": 6.8
+      },
+      "expand2": {
+        "hit": true,
+        "families": 12,
+        "consistency": 1.0,
+        "mean_latency_ms": 8.5
+      },
+      "like": {
+        "hit": true,
+        "families": 3,
+        "consistency": 1.0,
+        "mean_latency_ms": 4.0
+      }
+    },
+    "book of why": {
+      "resolve": {
+        "hit": true,
+        "families": 1,
+        "consistency": 1.0,
+        "mean_latency_ms": 3.1
+      },
+      "expand1": {
+        "hit": true,
+        "families": 4,
+        "consistency": 1.0,
+        "mean_latency_ms": 6.5
+      },
+      "expand2": {
+        "hit": true,
+        "families": 6,
+        "consistency": 1.0,
+        "mean_latency_ms": 8.5
+      },
+      "like": {
+        "hit": true,
+        "families": 1,
+        "consistency": 1.0,
+        "mean_latency_ms": 6.6
+      }
+    },
+    "automated machine learning": {
+      "resolve": {
+        "hit": true,
+        "families": 1,
+        "consistency": 1.0,
+        "mean_latency_ms": 3.1
+      },
+      "expand1": {
+        "hit": true,
+        "families": 5,
+        "consistency": 1.0,
+        "mean_latency_ms": 6.6
+      },
+      "expand2": {
+        "hit": true,
+        "families": 12,
+        "consistency": 1.0,
+        "mean_latency_ms": 8.7
+      },
+      "like": {
+        "hit": true,
+        "families": 2,
+        "consistency": 1.0,
+        "mean_latency_ms": 12.5
+      }
+    },
+    "building llms for production": {
+      "resolve": {
+        "hit": true,
+        "families": 1,
+        "consistency": 1.0,
+        "mean_latency_ms": 4.1
+      },
+      "expand1": {
+        "hit": true,
+        "families": 4,
+        "consistency": 1.0,
+        "mean_latency_ms": 7.0
+      },
+      "expand2": {
+        "hit": true,
+        "families": 19,
+        "consistency": 1.0,
+        "mean_latency_ms": 8.4
+      },
+      "like": {
+        "hit": true,
+        "families": 1,
+        "consistency": 1.0,
+        "mean_latency_ms": 49.2
+      }
+    },
+    "ai scientist": {
+      "resolve": {
+        "hit": true,
+        "families": 4,
+        "consistency": 1.0,
+        "mean_latency_ms": 50.1
+      },
+      "expand1": {
+        "hit": true,
+        "families": 11,
+        "consistency": 1.0,
+        "mean_latency_ms": 57.5
+      },
+      "expand2": {
+        "hit": true,
+        "families": 13,
+        "consistency": 1.0,
+        "mean_latency_ms": 65.0
+      },
+      "like": {
+        "hit": false,
+        "families": 5,
+        "consistency": 1.0,
+        "mean_latency_ms": 1.4
+      }
+    },
+    "plan compliance": {
+      "resolve": {
+        "hit": true,
+        "families": 1,
+        "consistency": 1.0,
+        "mean_latency_ms": 49.7
+      },
+      "expand1": {
+        "hit": true,
+        "families": 6,
+        "consistency": 1.0,
+        "mean_latency_ms": 50.5
+      },
+      "expand2": {
+        "hit": true,
+        "families": 6,
+        "consistency": 1.0,
+        "mean_latency_ms": 54.1
+      },
+      "like": {
+        "hit": true,
+        "families": 1,
+        "consistency": 1.0,
+        "mean_latency_ms": 89.2
+      }
+    }
+  }
+}

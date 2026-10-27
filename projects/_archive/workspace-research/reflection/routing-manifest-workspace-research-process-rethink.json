@@ -1,0 +1,154 @@
+{
+  "research_process": {
+    "tags": [
+      "reflection"
+    ],
+    "ids": [
+      "00_06_self_correction_grounding_requirement",
+      "00_08_lesson_persistence_eviction_requirement",
+      "00_adapt_as_needed_decomposition_and_planning_with",
+      "00_agent_memory_hierarchies",
+      "00_awesome_context_engineering",
+      "00_enhancing_llm_based_agents_via_global",
+      "00_from_plan_to_action_how_well_do_agents_follow_th",
+      "00_icm_43_copies_four_moves",
+      "00_icm_knowledge_big",
+      "00_improving_planning_with_large_language",
+      "00_interpretable_context_methodology_folder_structu",
+      "00_is_progressive_disclosure_all_you_need_for_long",
+      "00_measured_closed_families_need_frontier_state",
+      "00_memory_for_autonomous_llm_agents_mechanisms_eval"
+    ],
+    "depth": 0
+  },
+  "planning_horizon": {
+    "tags": [
+      "planning",
+      "reflection"
+    ],
+    "ids": [
+      "00_06_self_correction_grounding_requirement",
+      "00_adapt_as_needed_decomposition_and_planning_with",
+      "00_agent_memory_hierarchies",
+      "00_awesome_context_engineering",
+      "00_enhancing_llm_based_agents_via_global",
+      "00_from_plan_to_action_how_well_do_agents_follow_th",
+      "00_icm_knowledge_big",
+      "00_improving_planning_with_large_language",
+      "00_interpretable_context_methodology_folder_structu",
+      "00_is_progressive_disclosure_all_you_need_for_long",
+      "00_measured_closed_families_need_frontier_state",
+      "00_memory_for_autonomous_llm_agents_mechanisms_eval",
+      "00_modular_task_decomposition_anddynamiccollaborati",
+      "00_persistent_memory_hierarchies_agents"
+    ],
+    "depth": 0
+  },
+  "task_division": {
+    "tags": [
+      "planning",
+      "decomposition"
+    ],
+    "ids": [
+      "ai-planning-htn-pddl"
+    ],
+    "depth": 0
+  },
+  "reflection_process": {
+    "tags": [
+      "reflection",
+      "context-engineering"
+    ],
+    "ids": [
+      "00_08_lesson_persistence_eviction_requirement",
+      "00_adapt_as_needed_decomposition_and_planning_with",
+      "00_agent_memory_hierarchies",
+      "00_awesome_context_engineering",
+      "00_enhancing_llm_based_agents_via_global",
+      "00_from_plan_to_action_how_well_do_agents_follow_th",
+      "00_icm_43_copies_four_moves",
+      "00_icm_knowledge_big",
+      "00_improving_planning_with_large_language",
+      "00_interpretable_context_methodology_folder_structu",
+      "00_is_progressive_disclosure_all_you_need_for_long",
+      "00_memory_for_autonomous_llm_agents_mechanisms_eval",
+      "00_modular_task_decomposition_anddynamiccollaborati",
+      "00_persistent_memory_hierarchies_agents"
+    ],
+    "depth": 0
+  },
+  "problem_monitoring": {
+    "tags": [
+      "agents",
+      "reflection"
+    ],
+    "ids": [
+      "00_06_self_correction_grounding_requirement",
+      "00_adapt_as_needed_decomposition_and_planning_with",
+      "00_agent_memory_hierarchies",
+      "00_awesome_context_engineering",
+      "00_enhancing_llm_based_agents_via_global",
+      "00_from_plan_to_action_how_well_do_agents_follow_th",
+      "00_icm_43_copies_four_moves",
+      "00_icm_knowledge_big",
+      "00_improving_planning_with_large_language",
+      "00_interpretable_context_methodology_folder_structu",
+      "00_is_progressive_disclosure_all_you_need_for_long",
+      "00_measured_closed_families_need_frontier_state",
+      "00_memory_for_autonomous_llm_agents_mechanisms_eval",
+      "00_modular_task_decomposition_anddynamiccollaborati"
+    ],
+    "depth": 0
+  },
+  "knowledge_storing": {
+    "tags": [
+      "memory",
+      "retrieval"
+    ],
+    "ids": [
+      "00_graph_memory_starter_inventory",
+      "00_memory_for_autonomous_llm_agents_mechanisms_eval",
+      "00_reflection_closed_vocabulary_before_content",
+      "00_reflection_hybrid_retrieval_scale",
+      "00_reflection_retrieval_dominates_write",
+      "00_reflection_structure_substitutes_for_capability",
+      "01_graph_memory_starter_inventory",
+      "01_memory_for_autonomous_llm_agents_mechanisms_eval",
+      "02_expel_experiential_insight_extraction",
+      "02_memory_for_autonomous_llm_agents_mechanisms_eval",
+      "03_memory_for_autonomous_llm_agents_mechanisms_eval",
+      "04_memory_for_autonomous_llm_agents_mechanisms_eval",
+      "05_memory_for_autonomous_llm_agents_mechanisms_eval",
+      "06_memory_for_autonomous_llm_agents_mechanisms_eval"
+    ],
+    "depth": 0
+  },
+  "graph_building": {
+    "tags": [
+      "knowledge-graph",
+      "determinism"
+    ],
+    "ids": [
+      "00_graph_memory_starter_inventory",
+      "00_reflection_closed_vocabulary_before_content",
+      "00_reflection_structure_substitutes_for_capability",
+      "01_graph_memory_starter_inventory"
+    ],
+    "depth": 0
+  },
+  "unified_brain_routing": {
+    "tags": [
+      "knowledge-graph",
+      "retrieval"
+    ],
+    "ids": [
+      "00_agentic_rag_modular_graph",
+      "00_graph_memory_starter_inventory",
+      "00_reflection_closed_vocabulary_before_content",
+      "00_reflection_hybrid_retrieval_scale",
+      "00_reflection_structure_substitutes_for_capability",
+      "01_graph_memory_starter_inventory"
+    ],
+    "depth": 0
+  }
+}

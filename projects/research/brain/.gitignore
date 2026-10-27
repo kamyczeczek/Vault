@@ -1,0 +1,9 @@
+# Project Brain sidecar: derived, never committed.
+# Rebuilt from the source project by ../agentic-research-lab/scripts/bootstrap_project_brain.py
+# The corpus chunks the graph indexes must live in the project they describe,
+# not here — this folder holds the pattern and the tooling, not a copy of the data.
+.brain/
+
+__pycache__/
+*.pyc
+.pytest_cache/

@@ -1,0 +1,164 @@
+{
+ "purpose": "independent early-origin development selection",
+ "origins": [
+  8640,
+  9360,
+  10080,
+  10800
+ ],
+ "runs": [
+  {
+   "origin": 8640,
+   "date": "2017-06-26",
+   "methods": {
+    "bigdict_L96": {
+     "mae": 3.400466,
+     "mse": 15.640697,
+     "fit_s": 19.67
+    },
+    "sabl_compact_a10": {
+     "mae": 4.61432,
+     "mse": 36.459684,
+     "fit_s": 15.18
+    },
+    "sabl_compact_a30": {
+     "mae": 4.000861,
+     "mse": 24.293043,
+     "fit_s": 15.38
+    },
+    "sabl_compact_a100": {
+     "mae": 4.088484,
+     "mse": 27.167646,
+     "fit_s": 19.82
+    },
+    "sabl_compact_a300": {
+     "mae": 4.5737,
+     "mse": 35.976213,
+     "fit_s": 17.75
+    },
+    "sabl_compact_a1000": {
+     "mae": 4.564991,
+     "mse": 36.10372,
+     "fit_s": 23.59
+    }
+   }
+  },
+  {
+   "origin": 9360,
+   "date": "2017-07-26",
+   "methods": {
+    "bigdict_L96": {
+     "mae": 3.005373,
+     "mse": 14.03679,
+     "fit_s": 26.78
+    },
+    "sabl_compact_a10": {
+     "mae": 3.397254,
+     "mse": 19.35541,
+     "fit_s": 26.1
+    },
+    "sabl_compact_a30": {
+     "mae": 3.158417,
+     "mse": 17.567674,
+     "fit_s": 18.29
+    },
+    "sabl_compact_a100": {
+     "mae": 3.112379,
+     "mse": 17.491061,
+     "fit_s": 17.79
+    },
+    "sabl_compact_a300": {
+     "mae": 3.090575,
+     "mse": 17.227784,
+     "fit_s": 16.63
+    },
+    "sabl_compact_a1000": {
+     "mae": 3.042428,
+     "mse": 16.543817,
+     "fit_s": 14.55
+    }
+   }
+  },
+  {
+   "origin": 10080,
+   "date": "2017-08-25",
+   "methods": {
+    "bigdict_L96": {
+     "mae": 2.700546,
+     "mse": 12.091026,
+     "fit_s": 18.01
+    },
+    "sabl_compact_a10": {
+     "mae": 3.800295,
+     "mse": 24.455496,
+     "fit_s": 15.4
+    },
+    "sabl_compact_a30": {
+     "mae": 3.798359,
+     "mse": 24.43541,
+     "fit_s": 11.71
+    },
+    "sabl_compact_a100": {
+     "mae": 3.805121,
+     "mse": 24.652537,
+     "fit_s": 11.59
+    },
+    "sabl_compact_a300": {
+     "mae": 3.729997,
+     "mse": 23.390552,
+     "fit_s": 12.0
+    },
+    "sabl_compact_a1000": {
+     "mae": 3.716099,
+     "mse": 23.156492,
+     "fit_s": 11.32
+    }
+   }
+  },
+  {
+   "origin": 10800,
+   "date": "2017-09-24",
+   "methods": {
+    "bigdict_L96": {
+     "mae": 2.378448,
+     "mse": 8.646627,
+     "fit_s": 15.44
+    },
+    "sabl_compact_a10": {
+     "mae": 4.197466,
+     "mse": 27.354181,
+     "fit_s": 18.93
+    },
+    "sabl_compact_a30": {
+     "mae": 4.16194,
+     "mse": 27.240217,
+     "fit_s": 17.11
+    },
+    "sabl_compact_a100": {
+     "mae": 4.158211,
+     "mse": 27.040054,
+     "fit_s": 24.11
+    },
+    "sabl_compact_a300": {
+     "mae": 4.173865,
+     "mse": 27.065099,
+     "fit_s": 19.19
+    },
+    "sabl_compact_a1000": {
+     "mae": 4.197355,
+     "mse": 26.937323,
+     "fit_s": 18.18
+    }
+   }
+  }
+ ],
+ "mean_mae": {
+  "bigdict_L96": 2.871208,
+  "sabl_compact_a10": 4.002334,
+  "sabl_compact_a30": 3.779894,
+  "sabl_compact_a100": 3.791049,
+  "sabl_compact_a300": 3.892034,
+  "sabl_compact_a1000": 3.880218
+ },
+ "selected": "sabl_compact_a30"
+}

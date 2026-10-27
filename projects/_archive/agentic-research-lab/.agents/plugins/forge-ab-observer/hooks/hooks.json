@@ -1,0 +1,30 @@
+{
+  "_comment": [
+    "A/B observer plugin. Pure read-only instrumentation for the hooks ON vs OFF",
+    "experiment -- it never blocks and never writes forge state, so adding it",
+    "cannot change the treatment under test. Registered alongside",
+    ".agents/plugins/forge-guardrails/hooks/hooks.json (which stays the treatment).",
+    "Absolute forward-slash paths only: goose runs hooks via `sh -c`, which eats",
+    "the backslashes of an expanded C:\\... path (see HANDOFF.md, Windows scars)."
+  ],
+  "hooks": {
+    "PreToolUseResult": [
+      {
+        "hooks": [
+          { "type": "command",
+            "timeout": 10,
+            "command": "python C:/Users/Mateusz/Desktop/root_worksapce/projects/research/agentic-research-lab/scripts/_scratch/forge_ab_observe.py pretooluse_result" }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command",
+            "timeout": 10,
+            "command": "python C:/Users/Mateusz/Desktop/root_worksapce/projects/research/agentic-research-lab/scripts/_scratch/forge_ab_observe.py user_prompt_submit" }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "slice": "S-35-level-free-nonlinear",
+  "harness_command": "python projects/ts-ml-experiments/h720/sub_experiments/level_free_nonlinear_s35/rolling_arm.py",
+  "harness_log": "harness.log",
+  "pool": [
+    "nlinear_L96_a1",
+    "nlinear_L96_a10",
+    "nlinear_L96_a100",
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "nlinear_L720_a1",
+    "dlinear_L96_k25_a0",
+    "dlinear_L96_k49_a0",
+    "dlinear_L336_k25_a0",
+    "dlinear_L336_k49_a0",
+    "rlinear_L96_a0",
+    "rlinear_L336_a0",
+    "rf_L336_h32_a100",
+    "rf_L336_h64_a1000"
+  ],
+  "best_subset": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "nlinear_L720_a1",
+    "rf_L336_h32_a100",
+    "rf_L336_h64_a1000"
+  ],
+  "best_idx": [
+    3,
+    4,
+    5,
+    12,
+    13
+  ],
+  "best_fast": 2.5162966092945287,
+  "best_alpha": 3000.0,
+  "val_full": 2.8346073078614347,
+  "held_out": 2.5162966092945287,
+  "test_disjoint": {
+    "mae": 2.0869010334263383,
+    "rmse": 2.5966089315274457,
+    "window_1": {
+      "mae": 2.8053797560077873,
+      "rmse": 3.272420412334204
+    },
+    "window_2": {
+      "mae": 1.4071371765313345,
+      "rmse": 1.725798375116663
+    },
+    "window_3": {
+      "mae": 2.1868677391957214,
+      "rmse": 2.6464351177470458
+    },
+    "window_4": {
+      "mae": 1.9482194619705107,
+      "rmse": 2.5057489008459553
+    }
+  },
+  "test_full": {
+    "mae": 2.0111560373098762,
+    "rmse": 2.493460497784112,
+    "n": 2161,
+    "delta_vs_s26": 0.02025603730987635,
+    "target_met": false
+  },
+  "accept": false,
+  "metrics": {
+    "held_out": 2.5163,
+    "val_full": 2.8346,
+    "full": 2.0112,
+    "disjoint": 2.0869,
+    "alpha": 3000.0,
+    "verdict": "REJECTED"
+  },
+  "plan_impact": {
+    "invalidates": [
+      "S-35 hypothesis (level-free shallow non-linear readout on orthogonal temporal bands beats S-26 under S-20-clean): REJECTED \u2014 bounded-capacity non-linear heads on level-free deltas did not transfer to frozen test (full MAE >= 1.9909). Non-linear members were rejected by validation selection or added no edge over the 2-member linear stack."
+    ],
+    "confirms": [
+      "S-33/H2 scar holds: orthogonal temporal partitions of the same 336-dim window plus bounded non-linearity inherit the univariate linear saturation; S-20-clean filter prevents val-local non-linear overfit."
+    ],
+    "opens": [
+      "Exogenous-channel non-linear heads, volatility-gated weighting, or protocol change beyond univariate OT."
+    ]
+  },
+  "protocol": "S-20-clean: val frozen 8545, test refit 11425; chronological val-half alpha selection; per-horizon Ridge no-intercept; level-free deltas; no DWT/rFFT"
+}

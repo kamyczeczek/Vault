@@ -1,0 +1,15 @@
+{
+  "best_mse": 68.01597802767235,
+  "config": {
+    "input_length": 192,
+    "k_neighbors": 12,
+    "alpha": 25.0,
+    "bandwidth": 0.5,
+    "w_shape": 0.4166666666666667,
+    "w_deriv": 0.25,
+    "w_subband": 0.20833333333333334,
+    "w_scale": 0.125,
+    "blend_mode": "adaptive",
+    "default_amr_weight": 0.6
+  }
+}

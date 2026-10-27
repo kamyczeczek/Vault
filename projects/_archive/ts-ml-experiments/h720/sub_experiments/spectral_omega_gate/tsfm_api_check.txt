@@ -1,0 +1,37 @@
+torch 2.13.0+cpu
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/269 [00:00<?, ?it/s]Loading weights:   9%|▉         | 24/269 [00:00<00:01, 237.22it/s]Loading weights:  18%|█▊        | 48/269 [00:00<00:01, 196.06it/s]Loading weights:  26%|██▌       | 70/269 [00:00<00:00, 202.36it/s]Loading weights:  34%|███▍      | 91/269 [00:00<00:00, 200.21it/s]Loading weights:  42%|████▏     | 112/269 [00:00<00:00, 180.30it/s]Loading weights: 100%|██████████| 269/269 [00:00<00:00, 413.01it/s]
+pipeline type ChronosBoltPipeline
+predict sig (inputs: Union[torch.Tensor, List[torch.Tensor]], prediction_length: Optional[int] = None, limit_prediction_length: bool = False) -> torch.Tensor
+out type Tensor
+out len 1
+out0 type Tensor
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/269 [00:00<?, ?it/s]Loading weights:   4%|▎         | 10/269 [00:00<00:03, 76.87it/s]Loading weights:  10%|█         | 27/269 [00:00<00:01, 122.54it/s]Loading weights:  19%|█▊        | 50/269 [00:00<00:01, 163.65it/s]Loading weights:  25%|██▍       | 67/269 [00:00<00:01, 124.18it/s]Loading weights:  30%|███       | 82/269 [00:00<00:01, 128.34it/s]Loading weights: 100%|██████████| 269/269 [00:00<00:00, 394.34it/s]
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\Mateusz\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages\chronos\chronos_bolt.py", line 537, in predict
+    context_tensor = self._prepare_and_validate_context(context=inputs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Mateusz\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages\chronos\base.py", line 73, in _prepare_and_validate_context
+    assert context.ndim == 2
+           ^^^^^^^^^^^^^^^^^
+AssertionError
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/269 [00:00<?, ?it/s]Loading weights:   8%|▊         | 22/269 [00:00<00:01, 170.31it/s]Loading weights:  15%|█▍        | 40/269 [00:00<00:01, 150.45it/s]Loading weights:  21%|██        | 56/269 [00:00<00:01, 148.40it/s]Loading weights:  28%|██▊       | 74/269 [00:00<00:01, 157.82it/s]Loading weights:  38%|███▊      | 103/269 [00:00<00:00, 190.74it/s]Loading weights:  46%|████▌     | 123/269 [00:00<00:00, 171.09it/s]Loading weights: 100%|██████████| 269/269 [00:00<00:00, 330.52it/s]
+out type <class 'torch.Tensor'>
+out shape torch.Size([1, 9, 3])
+out dtype torch.float32
+out device cpu
+out tensor([[[ 2.7745,  1.6128,  0.6969],
+         [ 3.9829,  3.1894,  2.5044],
+         [ 4.7018,  4.1827,  3.6968],
+         [ 5.2121,  4.9445,  4.6160],
+         [ 5.6005,  5.5503,  5.3880],
+         [ 5.9485,  6.1081,  6.1313],
+         [ 6.3586,  6.7321,  6.9752],
+         [ 6.9413,  7.6507,  8.1820],
+         [ 8.5535,  9.9921, 11.0777]]])
+out0 shape torch.Size([9, 3])
+med shape torch.Size([1, 3])
+med tensor([[5.6005, 5.5503, 5.3880]])

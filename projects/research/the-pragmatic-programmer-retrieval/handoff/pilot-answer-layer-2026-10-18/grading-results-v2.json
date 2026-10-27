@@ -1,0 +1,187 @@
+{
+ "strict_pass": 3,
+ "answerable_denominator": 14,
+ "refusal": 8,
+ "canary": true,
+ "rows": [
+  {
+   "qid": "q001",
+   "refused": false,
+   "terms": {
+    "wiedz": true,
+    "intenc": true,
+    "duplikac": true,
+    "reprezentac": false
+   },
+   "pass": false
+  },
+  {
+   "qid": "q002",
+   "refused": false,
+   "terms": {
+    "szkielet": true,
+    "prototyp": true,
+    "wyrzuc": true,
+    "tracer": true
+   },
+   "pass": true
+  },
+  {
+   "qid": "q003",
+   "refused": false,
+   "terms": {
+    "coupling": true,
+    "delegow": false,
+    "mixin": true,
+    "interfejs": true
+   },
+   "pass": false
+  },
+  {
+   "qid": "q004",
+   "refused": false,
+   "terms": {
+    "warto": true,
+    "zasad": true,
+    "zmian": true
+   },
+   "pass": true
+  },
+  {
+   "qid": "q005",
+   "refused": false,
+   "terms": {
+    "napraw": true,
+    "zaraz": false
+   },
+   "pass": false
+  },
+  {
+   "qid": "q006",
+   "refused": false,
+   "terms": {
+    "precond": true,
+    "postcond": true,
+    "caller": false,
+    "invariant": true
+   },
+   "pass": false
+  },
+  {
+   "qid": "q007",
+   "refused": true,
+   "terms": {
+    "obserwat": false,
+    "pub": true,
+    "reaktywn": true,
+    "automata": false
+   },
+   "pass": false
+  },
+  {
+   "qid": "q008",
+   "refused": false,
+   "terms": {
+    "martw": true,
+    "uszkod": true,
+    "supervisor": false
+   },
+   "pass": false
+  },
+  {
+   "qid": "q009",
+   "refused": false,
+   "terms": {
+    "asercj": true,
+    "testow": false,
+    "zostaw": true
+   },
+   "pass": false
+  },
+  {
+   "qid": "q010",
+   "refused": false,
+   "terms": {
+    "duplikac": true,
+    "ortogonal": false,
+    "współzależ": false,
+    "zmian": false
+   },
+   "pass": false
+  },
+  {
+   "qid": "q011",
+   "refused": false,
+   "terms": {
+    "binarn": true,
+    "połow": true,
+    "zawęż": false
+   },
+   "pass": false
+  },
+  {
+   "qid": "q012",
+   "refused": true,
+   "terms": {
+    "aktor": false,
+    "blackboard": false,
+    "wiadomost": false
+   },
+   "pass": false
+  },
+  {
+   "qid": "q013",
+   "refused": false,
+   "terms": {
+    "przypadk": true,
+    "świadom": false,
+    "szczęści": true
+   },
+   "pass": false
+  },
+  {
+   "qid": "q015",
+   "refused": false,
+   "terms": {
+    "kontrol": true,
+    "test": true,
+    "automatyz": true
+   },
+   "pass": true
+  }
+ ],
+ "refusal_rows": [
+  {
+   "qid": "u001",
+   "refusal": true
+  },
+  {
+   "qid": "u002",
+   "refusal": true
+  },
+  {
+   "qid": "u003",
+   "refusal": true
+  },
+  {
+   "qid": "u004",
+   "refusal": true
+  },
+  {
+   "qid": "u005",
+   "refusal": true
+  },
+  {
+   "qid": "u006",
+   "refusal": true
+  },
+  {
+   "qid": "u007",
+   "refusal": true
+  },
+  {
+   "qid": "u008",
+   "refusal": true
+  }
+ ]
+}

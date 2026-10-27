@@ -1,0 +1,123 @@
+{
+  "experiment": "heuristic_lag_knn_recent10_grid_sweep",
+  "horizon": 720,
+  "results": [
+    {
+      "model": "k8_q3_recent10",
+      "k": 8,
+      "q": 3,
+      "horizon": 720,
+      "mae": 2.192077701679557,
+      "rmse": 2.641593798023492,
+      "status": "ok"
+    },
+    {
+      "model": "k8_q24_recent10",
+      "k": 8,
+      "q": 24,
+      "horizon": 720,
+      "mae": 2.790669861082361,
+      "rmse": 3.304514288238888,
+      "status": "ok"
+    },
+    {
+      "model": "k3_q3_recent10",
+      "k": 3,
+      "q": 3,
+      "horizon": 720,
+      "mae": 2.8565185606535044,
+      "rmse": 3.3663157612761014,
+      "status": "ok"
+    },
+    {
+      "model": "k16_q6_recent10",
+      "k": 16,
+      "q": 6,
+      "horizon": 720,
+      "mae": 2.8575272276945003,
+      "rmse": 3.3406652340030987,
+      "status": "ok"
+    },
+    {
+      "model": "k5_q3_recent10",
+      "k": 5,
+      "q": 3,
+      "horizon": 720,
+      "mae": 2.9053636325112495,
+      "rmse": 3.4166965048974878,
+      "status": "ok"
+    },
+    {
+      "model": "k8_q6_recent10",
+      "k": 8,
+      "q": 6,
+      "horizon": 720,
+      "mae": 2.959187441624235,
+      "rmse": 3.432106842622281,
+      "status": "ok"
+    },
+    {
+      "model": "k8_q12_recent10",
+      "k": 8,
+      "q": 12,
+      "horizon": 720,
+      "mae": 2.971605865097567,
+      "rmse": 3.5696418832170473,
+      "status": "ok"
+    },
+    {
+      "model": "k12_q6_recent10",
+      "k": 12,
+      "q": 6,
+      "horizon": 720,
+      "mae": 2.9761958540282776,
+      "rmse": 3.453704267220927,
+      "status": "ok"
+    },
+    {
+      "model": "k3_q12_recent10",
+      "k": 3,
+      "q": 12,
+      "horizon": 720,
+      "mae": 2.9886848542873405,
+      "rmse": 3.6865132009271298,
+      "status": "ok"
+    },
+    {
+      "model": "k5_q12_recent10",
+      "k": 5,
+      "q": 12,
+      "horizon": 720,
+      "mae": 2.9891154100993123,
+      "rmse": 3.5384676488332407,
+      "status": "ok"
+    },
+    {
+      "model": "k12_q12_recent10",
+      "k": 12,
+      "q": 12,
+      "horizon": 720,
+      "mae": 3.0518776417573354,
+      "rmse": 3.59135068893285,
+      "status": "ok"
+    },
+    {
+      "model": "k5_q6_recent10",
+      "k": 5,
+      "q": 6,
+      "horizon": 720,
+      "mae": 3.319866890039963,
+      "rmse": 3.827914073906838,
+      "status": "ok"
+    },
+    {
+      "model": "k3_q6_recent10",
+      "k": 3,
+      "q": 6,
+      "horizon": 720,
+      "mae": 3.5934239405963195,
+      "rmse": 4.092895919570041,
+      "status": "ok"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "experiment": "S-41",
+  "protocol": "S-20-clean",
+  "pool": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "rff_L336_raw_a1",
+    "calendar_rff_L336_a1"
+  ],
+  "router": "uniform",
+  "stack_alpha": 10000.0,
+  "full_mae": 2.358881,
+  "full_rmse": 2.999571,
+  "val_full_mae": 2.860981,
+  "transfer_delta": 0.502100,
+  "disjoint_4": 2.261481,
+  "disjoint": {
+    "W1": {
+      "mae": 2.984114,
+      "rmse": 3.595236
+    },
+    "W2": {
+      "mae": 1.716594,
+      "rmse": 2.267312
+    },
+    "W3": {
+      "mae": 2.376478,
+      "rmse": 2.988191
+    },
+    "W4": {
+      "mae": 1.968739,
+      "rmse": 2.554031
+    }
+  },
+  "accept": false,
+  "runtime_s": 12.31,
+  "rff_dim": 500,
+  "calendar": true,
+  "plan_impact": "S-41 RFF-MoE ensemble; 4-expert pool (2 S-26 linear controls + 2 RFF variants: raw L336 RFF and calendar-aware L336 RFF); uniform router and optional stack head alpha=10000; test MAE 2.3589 >= 1.9909 (REJECT)."
+}

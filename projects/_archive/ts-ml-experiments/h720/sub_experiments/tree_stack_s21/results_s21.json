@@ -1,0 +1,106 @@
+{
+  "slice": "S-21",
+  "protocol": {
+    "members": [
+      "nlinear_L336_a1",
+      "nlinear_L96_a1",
+      "nlinear_L720_a1",
+      "dlinear_L96_a0",
+      "dlinear_L336_a0",
+      "dlinear_L720_a0"
+    ],
+    "heads": [
+      "per-horizon DecisionTreeRegressor (720 trees)",
+      "shared DecisionTreeRegressor (horizon step as feature)"
+    ],
+    "selection": "grid on held-out second val half, pooled MAE over horizons",
+    "test": "frozen; members refit on 11,425; test never consulted"
+  },
+  "validation": {
+    "per_horizon_grid": {
+      "d2_l10": 3.8916,
+      "d3_l10": 3.797,
+      "d3_l25": 3.648,
+      "d4_l10": 3.8923,
+      "d4_l25": 3.7196,
+      "d5_l25": 3.6752
+    },
+    "shared_grid": {
+      "d3_l25": 3.6002,
+      "d4_l25": 4.0969,
+      "d5_l25": 3.6091,
+      "d6_l25": 3.5939,
+      "d7_l25": 3.8039,
+      "d8_l25": 3.76
+    },
+    "ridge_control_second_half": 2.5623,
+    "refit_all_val_insample": {
+      "per_horizon": 2.3262,
+      "shared": 2.4143,
+      "ridge": 2.8191
+    }
+  },
+  "test": {
+    "anchors": {
+      "nlinear_L336_a1": 2.0571,
+      "nlinear_L96_a1": 2.0925,
+      "nlinear_L720_a1": 2.1534,
+      "dlinear_L96_a0": 2.1163,
+      "dlinear_L336_a0": 2.122,
+      "dlinear_L720_a0": 2.1687
+    },
+    "per_horizon": {
+      "config": [
+        3,
+        25
+      ],
+      "rolling_mae": 8.5671,
+      "rolling_rmse": 9.1224,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 3.979167663406276
+        },
+        "window_2": {
+          "mae": 8.54439553567421
+        },
+        "window_3": {
+          "mae": 9.526119130298346
+        },
+        "window_4": {
+          "mae": 10.318527478545755
+        }
+      },
+      "delta_vs_s20": 6.5691
+    },
+    "shared": {
+      "config": [
+        6,
+        25
+      ],
+      "rolling_mae": 7.9024,
+      "rolling_rmse": 8.4484,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 3.36723150935266
+        },
+        "window_2": {
+          "mae": 7.8753511206886175
+        },
+        "window_3": {
+          "mae": 8.857074715312754
+        },
+        "window_4": {
+          "mae": 9.649483063560162
+        }
+      },
+      "delta_vs_s20": 5.9044
+    },
+    "ridge_control": {
+      "rolling_mae": 1.998,
+      "delta_vs_s20": 0.0
+    },
+    "baseline_best_member": 2.0571,
+    "baseline_equal_mean": 2.0852,
+    "winner_by_rolling": "shared"
+  }
+}

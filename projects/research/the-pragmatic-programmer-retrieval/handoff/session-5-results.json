@@ -1,0 +1,2049 @@
+{
+ "prereg": {
+  "thresholds": {
+   "real": 0.961,
+   "partly": 0.931,
+   "heavily": 0.9
+  },
+  "exclude_types": [
+   "related-sections",
+   "heading-only",
+   "code-listing"
+  ],
+  "candidate_pool": 40,
+  "final_top_k": 8,
+  "B_from_session4": 0.981
+ },
+ "timestamp": "2026-10-18",
+ "variant": "D (pre-retrieval filtered EN)",
+ "F_recall": 0.9808,
+ "mrr": 0.9119,
+ "p50_ms": 104.5,
+ "p95_ms": 133.2,
+ "misses": [
+  "q043"
+ ],
+ "per_category": {
+  "factual": {
+   "n": 12,
+   "hits": 12
+  },
+  "comparison": {
+   "n": 6,
+   "hits": 6
+  },
+  "reasoning": {
+   "n": 14,
+   "hits": 14
+  },
+  "relational": {
+   "n": 5,
+   "hits": 5
+  },
+  "false_premise": {
+   "n": 7,
+   "hits": 7
+  }
+ },
+ "q012_top8topics": [
+  32,
+  36,
+  35,
+  35,
+  33,
+  35,
+  35,
+  36
+ ],
+ "q012_sign_check": false,
+ "rows": [
+  {
+   "id": "q001",
+   "type": "factual / definition",
+   "category": "factual",
+   "gold_topics": [
+    9
+   ],
+   "top8topics": [
+    9,
+    9,
+    9,
+    9,
+    21,
+    9,
+    7,
+    22
+   ],
+   "top8ids": [
+    "ch_0093",
+    "ch_0094",
+    "ch_0089",
+    "ch_0092",
+    "ch_0303",
+    "ch_0106",
+    "ch_0072",
+    "ch_0316"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 510.13,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q002",
+   "type": "comparison / multi-chunk (dwa sąsiednie Topics)",
+   "category": "comparison",
+   "gold_topics": [
+    12,
+    13
+   ],
+   "top8topics": [
+    12,
+    12,
+    7,
+    12,
+    13,
+    12,
+    13,
+    12
+   ],
+   "top8ids": [
+    "ch_0166",
+    "ch_0164",
+    "ch_0081",
+    "ch_0154",
+    "ch_0173",
+    "ch_0156",
+    "ch_0176",
+    "ch_0165"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 99.36,
+   "filtered_out_count": 6,
+   "final_len": 8
+  },
+  {
+   "id": "q003",
+   "type": "reasoning / why + enumeration",
+   "category": "reasoning",
+   "gold_topics": [
+    31
+   ],
+   "top8topics": [
+    31,
+    31,
+    31,
+    31,
+    31,
+    31,
+    31,
+    10
+   ],
+   "top8ids": [
+    "ch_0474",
+    "ch_0481",
+    "ch_0477",
+    "ch_0476",
+    "ch_0480",
+    "ch_0479",
+    "ch_0484",
+    "ch_0141"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 95.98,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q004",
+   "type": "relational / multi-hop",
+   "category": "relational",
+   "gold_topics": [
+    8,
+    9,
+    10
+   ],
+   "top8topics": [
+    8,
+    8,
+    10,
+    11,
+    28,
+    9,
+    8,
+    8
+   ],
+   "top8ids": [
+    "ch_0084",
+    "ch_0088",
+    "ch_0139",
+    "ch_0146",
+    "ch_0396",
+    "ch_0093",
+    "ch_0086",
+    "ch_0085"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 133.23,
+   "filtered_out_count": 9,
+   "final_len": 8
+  },
+  {
+   "id": "q005",
+   "type": "false-premise (system powinien skorygować, nie potwierdzić)",
+   "category": "other",
+   "gold_topics": [
+    3
+   ],
+   "top8topics": [
+    3,
+    49,
+    3,
+    19,
+    40,
+    3,
+    49,
+    20
+   ],
+   "top8ids": [
+    "ch_0020",
+    "ch_0797",
+    "ch_0019",
+    "ch_0260",
+    "ch_0633",
+    "ch_0017",
+    "ch_0796",
+    "ch_0292"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 124.7,
+   "filtered_out_count": 6,
+   "final_len": 8
+  },
+  {
+   "id": "q006",
+   "type": "factual / definition",
+   "category": "factual",
+   "gold_topics": [
+    23
+   ],
+   "top8topics": [
+    23,
+    23,
+    23,
+    23,
+    23,
+    23,
+    23,
+    23
+   ],
+   "top8ids": [
+    "ch_0322",
+    "ch_0335",
+    "ch_0338",
+    "ch_0331",
+    "ch_0323",
+    "ch_0321",
+    "ch_0336",
+    "ch_0340"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 95.59,
+   "filtered_out_count": 6,
+   "final_len": 8
+  },
+  {
+   "id": "q007",
+   "type": "comparison / four-way",
+   "category": "comparison",
+   "gold_topics": [
+    29
+   ],
+   "top8topics": [
+    27,
+    29,
+    32,
+    29,
+    29,
+    33,
+    7,
+    29
+   ],
+   "top8ids": [
+    "ch_0394",
+    "ch_0432",
+    "ch_0507",
+    "ch_0417",
+    "ch_0433",
+    "ch_0517",
+    "ch_0064",
+    "ch_0416"
+   ],
+   "hit": true,
+   "hit_rank": 2,
+   "dt_ms": 96.94,
+   "filtered_out_count": 8,
+   "final_len": 8
+  },
+  {
+   "id": "q008",
+   "type": "reasoning / why",
+   "category": "reasoning",
+   "gold_topics": [
+    24,
+    25
+   ],
+   "top8topics": [
+    24,
+    20,
+    24,
+    38,
+    25,
+    24,
+    38,
+    51
+   ],
+   "top8ids": [
+    "ch_0349",
+    "ch_0296",
+    "ch_0351",
+    "ch_0591",
+    "ch_0357",
+    "ch_0347",
+    "ch_0601",
+    "ch_0829"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 89.06,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q009",
+   "type": "false-premise",
+   "category": "other",
+   "gold_topics": [
+    25
+   ],
+   "top8topics": [
+    25,
+    25,
+    25,
+    25,
+    42,
+    23,
+    25,
+    41
+   ],
+   "top8ids": [
+    "ch_0359",
+    "ch_0361",
+    "ch_0360",
+    "ch_0357",
+    "ch_0687",
+    "ch_0335",
+    "ch_0356",
+    "ch_0640"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 98.21,
+   "filtered_out_count": 0,
+   "final_len": 8
+  },
+  {
+   "id": "q010",
+   "type": "relational / multi-hop",
+   "category": "relational",
+   "gold_topics": [
+    9,
+    10
+   ],
+   "top8topics": [
+    9,
+    10,
+    10,
+    9,
+    7,
+    10,
+    10,
+    9
+   ],
+   "top8ids": [
+    "ch_0094",
+    "ch_0117",
+    "ch_0139",
+    "ch_0093",
+    "ch_0080",
+    "ch_0124",
+    "ch_0131",
+    "ch_0102"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 93.74,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "q011",
+   "type": "factual + procedure",
+   "category": "factual",
+   "gold_topics": [
+    20
+   ],
+   "top8topics": [
+    20,
+    20,
+    20,
+    39,
+    20,
+    20,
+    20,
+    21
+   ],
+   "top8ids": [
+    "ch_0283",
+    "ch_0282",
+    "ch_0284",
+    "ch_0625",
+    "ch_0281",
+    "ch_0285",
+    "ch_0270",
+    "ch_0303"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 95.36,
+   "filtered_out_count": 2,
+   "final_len": 8
+  },
+  {
+   "id": "q012",
+   "type": "comparison / two-model",
+   "category": "comparison",
+   "gold_topics": [
+    35,
+    36
+   ],
+   "top8topics": [
+    32,
+    36,
+    35,
+    35,
+    33,
+    35,
+    35,
+    36
+   ],
+   "top8ids": [
+    "ch_0509",
+    "ch_0564",
+    "ch_0551",
+    "ch_0542",
+    "ch_0513",
+    "ch_0541",
+    "ch_0549",
+    "ch_0559"
+   ],
+   "hit": true,
+   "hit_rank": 2,
+   "dt_ms": 94.83,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "q013",
+   "type": "reasoning / why + enumeration",
+   "category": "reasoning",
+   "gold_topics": [
+    38
+   ],
+   "top8topics": [
+    38,
+    38,
+    38,
+    36,
+    38,
+    38,
+    38,
+    38
+   ],
+   "top8ids": [
+    "ch_0591",
+    "ch_0592",
+    "ch_0598",
+    "ch_0570",
+    "ch_0593",
+    "ch_0601",
+    "ch_0600",
+    "ch_0597"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 106.22,
+   "filtered_out_count": 7,
+   "final_len": 8
+  },
+  {
+   "id": "q014",
+   "type": "false-premise",
+   "category": "other",
+   "gold_topics": [
+    45
+   ],
+   "top8topics": [
+    45,
+    45,
+    45,
+    45,
+    52,
+    45,
+    45,
+    14
+   ],
+   "top8ids": [
+    "ch_0751",
+    "ch_0749",
+    "ch_0750",
+    "ch_0753",
+    "ch_0847",
+    "ch_0748",
+    "ch_0752",
+    "ch_0185"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 126.92,
+   "filtered_out_count": 1,
+   "final_len": 8
+  },
+  {
+   "id": "q015",
+   "type": "relational / multi-hop",
+   "category": "relational",
+   "gold_topics": [
+    51,
+    11,
+    12,
+    17,
+    19,
+    41,
+    42,
+    48,
+    50
+   ],
+   "top8topics": [
+    51,
+    51,
+    21,
+    48,
+    46,
+    51,
+    41,
+    6
+   ],
+   "top8ids": [
+    "ch_0826",
+    "ch_0824",
+    "ch_0303",
+    "ch_0793",
+    "ch_0763",
+    "ch_0825",
+    "ch_0640",
+    "ch_0055"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 111.15,
+   "filtered_out_count": 10,
+   "final_len": 8
+  },
+  {
+   "id": "q016",
+   "type": "factual + rationale",
+   "category": "factual",
+   "gold_topics": [
+    16
+   ],
+   "top8topics": [
+    16,
+    16,
+    16,
+    16,
+    16,
+    6,
+    33,
+    16
+   ],
+   "top8ids": [
+    "ch_0227",
+    "ch_0229",
+    "ch_0228",
+    "ch_0233",
+    "ch_0232",
+    "ch_0055",
+    "ch_0516",
+    "ch_0236"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 123.11,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "q017",
+   "type": "reasoning + procedure",
+   "category": "reasoning",
+   "gold_topics": [
+    40
+   ],
+   "top8topics": [
+    40,
+    40,
+    40,
+    40,
+    40,
+    21,
+    36,
+    12
+   ],
+   "top8ids": [
+    "ch_0630",
+    "ch_0635",
+    "ch_0637",
+    "ch_0634",
+    "ch_0633",
+    "ch_0303",
+    "ch_0562",
+    "ch_0165"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 114.33,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q018",
+   "type": "comparison",
+   "category": "comparison",
+   "gold_topics": [
+    32
+   ],
+   "top8topics": [
+    16,
+    21,
+    32,
+    8,
+    30,
+    6,
+    51,
+    11
+   ],
+   "top8ids": [
+    "ch_0236",
+    "ch_0303",
+    "ch_0501",
+    "ch_0083",
+    "ch_0473",
+    "ch_0055",
+    "ch_0833",
+    "ch_0146"
+   ],
+   "hit": true,
+   "hit_rank": 3,
+   "dt_ms": 107.2,
+   "filtered_out_count": 6,
+   "final_len": 8
+  },
+  {
+   "id": "q019",
+   "type": "false-premise",
+   "category": "other",
+   "gold_topics": [
+    53
+   ],
+   "top8topics": [
+    53,
+    53,
+    48,
+    45,
+    22,
+    41,
+    41,
+    14
+   ],
+   "top8ids": [
+    "ch_0851",
+    "ch_0850",
+    "ch_0793",
+    "ch_0748",
+    "ch_0316",
+    "ch_0648",
+    "ch_0659",
+    "ch_0185"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 139.3,
+   "filtered_out_count": 2,
+   "final_len": 8
+  },
+  {
+   "id": "q020",
+   "type": "relational / multi-hop",
+   "category": "relational",
+   "gold_topics": [
+    23,
+    26,
+    27,
+    8
+   ],
+   "top8topics": [
+    22,
+    26,
+    27,
+    26,
+    23,
+    27,
+    28,
+    48
+   ],
+   "top8ids": [
+    "ch_0317",
+    "ch_0364",
+    "ch_0389",
+    "ch_0370",
+    "ch_0320",
+    "ch_0393",
+    "ch_0396",
+    "ch_0788"
+   ],
+   "hit": true,
+   "hit_rank": 2,
+   "dt_ms": 103.53,
+   "filtered_out_count": 9,
+   "final_len": 8
+  },
+  {
+   "id": "q021",
+   "type": "reasoning / enumeration",
+   "category": "reasoning",
+   "gold_topics": [
+    6
+   ],
+   "top8topics": [
+    6,
+    6,
+    6,
+    7,
+    6,
+    6,
+    6,
+    49
+   ],
+   "top8ids": [
+    "ch_0042",
+    "ch_0047",
+    "ch_0043",
+    "ch_0078",
+    "ch_0044",
+    "ch_0055",
+    "ch_0041",
+    "ch_0799"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 90.96,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "q022",
+   "type": "reasoning / why",
+   "category": "reasoning",
+   "gold_topics": [
+    44
+   ],
+   "top8topics": [
+    44,
+    44,
+    44,
+    8,
+    44,
+    44,
+    44,
+    44
+   ],
+   "top8ids": [
+    "ch_0713",
+    "ch_0714",
+    "ch_0724",
+    "ch_0084",
+    "ch_0718",
+    "ch_0722",
+    "ch_0721",
+    "ch_0728"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 103.08,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "q023",
+   "type": "reasoning / when-not-to",
+   "category": "reasoning",
+   "gold_topics": [
+    39
+   ],
+   "top8topics": [
+    39,
+    39,
+    39,
+    15,
+    39,
+    41,
+    39,
+    41
+   ],
+   "top8ids": [
+    "ch_0606",
+    "ch_0614",
+    "ch_0611",
+    "ch_0212",
+    "ch_0619",
+    "ch_0640",
+    "ch_0607",
+    "ch_0654"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 111.16,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q024",
+   "type": "factual + procedure",
+   "category": "factual",
+   "gold_topics": [
+    43
+   ],
+   "top8topics": [
+    43,
+    16,
+    43,
+    6,
+    43,
+    43,
+    6,
+    43
+   ],
+   "top8ids": [
+    "ch_0695",
+    "ch_0236",
+    "ch_0705",
+    "ch_0054",
+    "ch_0707",
+    "ch_0692",
+    "ch_0055",
+    "ch_0711"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 92.57,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q025",
+   "type": "reasoning / why",
+   "category": "reasoning",
+   "gold_topics": [
+    34
+   ],
+   "top8topics": [
+    34,
+    34,
+    32,
+    34,
+    34,
+    46,
+    34,
+    23
+   ],
+   "top8ids": [
+    "ch_0523",
+    "ch_0522",
+    "ch_0508",
+    "ch_0535",
+    "ch_0525",
+    "ch_0761",
+    "ch_0537",
+    "ch_0331"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 94.97,
+   "filtered_out_count": 7,
+   "final_len": 8
+  },
+  {
+   "id": "q026",
+   "type": "comparison",
+   "category": "comparison",
+   "gold_topics": [
+    30,
+    28
+   ],
+   "top8topics": [
+    28,
+    27,
+    40,
+    30,
+    30,
+    23,
+    32,
+    10
+   ],
+   "top8ids": [
+    "ch_0408",
+    "ch_0394",
+    "ch_0626",
+    "ch_0460",
+    "ch_0456",
+    "ch_0331",
+    "ch_0503",
+    "ch_0131"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 92.46,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "q027",
+   "type": "factual + procedure",
+   "category": "factual",
+   "gold_topics": [
+    7
+   ],
+   "top8topics": [
+    7,
+    7,
+    7,
+    7,
+    7,
+    53,
+    7,
+    19
+   ],
+   "top8ids": [
+    "ch_0070",
+    "ch_0063",
+    "ch_0066",
+    "ch_0058",
+    "ch_0076",
+    "ch_0853",
+    "ch_0059",
+    "ch_0268"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 105.16,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q028",
+   "type": "false-premise",
+   "category": "other",
+   "gold_topics": [
+    5
+   ],
+   "top8topics": [
+    5,
+    5,
+    5,
+    5,
+    5,
+    48,
+    36,
+    52
+   ],
+   "top8ids": [
+    "ch_0033",
+    "ch_0032",
+    "ch_0034",
+    "ch_0035",
+    "ch_0039",
+    "ch_0793",
+    "ch_0568",
+    "ch_0846"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 104.57,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q029",
+   "type": "reasoning / why",
+   "category": "reasoning",
+   "gold_topics": [
+    19
+   ],
+   "top8topics": [
+    19,
+    19,
+    19,
+    19,
+    19,
+    51,
+    19,
+    19
+   ],
+   "top8ids": [
+    "ch_0260",
+    "ch_0259",
+    "ch_0257",
+    "ch_0264",
+    "ch_0261",
+    "ch_0826",
+    "ch_0255",
+    "ch_0256"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 102.62,
+   "filtered_out_count": 2,
+   "final_len": 8
+  },
+  {
+   "id": "q030",
+   "type": "relational / multi-hop",
+   "category": "relational",
+   "gold_topics": [
+    49,
+    3,
+    4,
+    6,
+    9,
+    12,
+    53
+   ],
+   "top8topics": [
+    49,
+    49,
+    7,
+    21,
+    49,
+    48,
+    49,
+    48
+   ],
+   "top8ids": [
+    "ch_0796",
+    "ch_0795",
+    "ch_0076",
+    "ch_0303",
+    "ch_0794",
+    "ch_0792",
+    "ch_0802",
+    "ch_0781"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 95.52,
+   "filtered_out_count": 5,
+   "final_len": 8
+  },
+  {
+   "id": "u001",
+   "type": "unanswerable",
+   "category": "unanswerable",
+   "gold_topics": [],
+   "top8topics": [
+    32,
+    51,
+    43,
+    19,
+    5,
+    12,
+    28,
+    15
+   ],
+   "top8ids": [
+    "ch_0495",
+    "ch_0843",
+    "ch_0708",
+    "ch_0264",
+    "ch_0039",
+    "ch_0168",
+    "ch_0412",
+    "ch_0214"
+   ],
+   "hit": false,
+   "hit_rank": null,
+   "dt_ms": 105.59,
+   "filtered_out_count": 5,
+   "final_len": 8
+  },
+  {
+   "id": "u002",
+   "type": "unanswerable",
+   "category": "unanswerable",
+   "gold_topics": [],
+   "top8topics": [
+    29,
+    2,
+    38,
+    44,
+    29,
+    45,
+    50,
+    35
+   ],
+   "top8ids": [
+    "ch_0433",
+    "ch_0010",
+    "ch_0595",
+    "ch_0731",
+    "ch_0438",
+    "ch_0753",
+    "ch_0819",
+    "ch_0546"
+   ],
+   "hit": false,
+   "hit_rank": null,
+   "dt_ms": 113.83,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "u003",
+   "type": "unanswerable",
+   "category": "unanswerable",
+   "gold_topics": [],
+   "top8topics": [
+    43,
+    43,
+    43,
+    43,
+    43,
+    29,
+    35,
+    41
+   ],
+   "top8ids": [
+    "ch_0711",
+    "ch_0702",
+    "ch_0703",
+    "ch_0699",
+    "ch_0695",
+    "ch_0431",
+    "ch_0544",
+    "ch_0665"
+   ],
+   "hit": false,
+   "hit_rank": null,
+   "dt_ms": 93.57,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "u004",
+   "type": "unanswerable",
+   "category": "unanswerable",
+   "gold_topics": [],
+   "top8topics": [
+    12,
+    41,
+    44,
+    12,
+    11,
+    43,
+    16,
+    23
+   ],
+   "top8ids": [
+    "ch_0159",
+    "ch_0642",
+    "ch_0727",
+    "ch_0158",
+    "ch_0147",
+    "ch_0702",
+    "ch_0236",
+    "ch_0326"
+   ],
+   "hit": false,
+   "hit_rank": null,
+   "dt_ms": 108.5,
+   "filtered_out_count": 1,
+   "final_len": 8
+  },
+  {
+   "id": "u005",
+   "type": "unanswerable",
+   "category": "unanswerable",
+   "gold_topics": [],
+   "top8topics": [
+    19,
+    49,
+    19,
+    51,
+    49,
+    49,
+    48,
+    12
+   ],
+   "top8ids": [
+    "ch_0268",
+    "ch_0807",
+    "ch_0261",
+    "ch_0841",
+    "ch_0805",
+    "ch_0809",
+    "ch_0787",
+    "ch_0165"
+   ],
+   "hit": false,
+   "hit_rank": null,
+   "dt_ms": 96.94,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "u006",
+   "type": "unanswerable",
+   "category": "unanswerable",
+   "gold_topics": [],
+   "top8topics": [
+    51,
+    51,
+    25,
+    15,
+    19,
+    15,
+    49,
+    13
+   ],
+   "top8ids": [
+    "ch_0843",
+    "ch_0827",
+    "ch_0361",
+    "ch_0214",
+    "ch_0256",
+    "ch_0206",
+    "ch_0810",
+    "ch_0180"
+   ],
+   "hit": false,
+   "hit_rank": null,
+   "dt_ms": 108.06,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "u007",
+   "type": "unanswerable",
+   "category": "unanswerable",
+   "gold_topics": [],
+   "top8topics": [
+    12,
+    12,
+    16,
+    9,
+    51,
+    11,
+    26,
+    34
+   ],
+   "top8ids": [
+    "ch_0159",
+    "ch_0158",
+    "ch_0236",
+    "ch_0111",
+    "ch_0837",
+    "ch_0147",
+    "ch_0373",
+    "ch_0528"
+   ],
+   "hit": false,
+   "hit_rank": null,
+   "dt_ms": 87.81,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "u008",
+   "type": "unanswerable",
+   "category": "unanswerable",
+   "gold_topics": [],
+   "top8topics": [
+    11,
+    51,
+    42,
+    39,
+    14,
+    29,
+    39,
+    26
+   ],
+   "top8ids": [
+    "ch_0149",
+    "ch_0837",
+    "ch_0676",
+    "ch_0608",
+    "ch_0181",
+    "ch_0431",
+    "ch_0610",
+    "ch_0373"
+   ],
+   "hit": false,
+   "hit_rank": null,
+   "dt_ms": 102.9,
+   "filtered_out_count": 2,
+   "final_len": 8
+  },
+  {
+   "id": "fp001",
+   "type": "false_premise",
+   "category": "false_premise",
+   "gold_topics": [
+    41
+   ],
+   "top8topics": [
+    51,
+    51,
+    41,
+    51,
+    51,
+    10,
+    51,
+    53
+   ],
+   "top8ids": [
+    "ch_0830",
+    "ch_0832",
+    "ch_0658",
+    "ch_0835",
+    "ch_0828",
+    "ch_0136",
+    "ch_0831",
+    "ch_0854"
+   ],
+   "hit": true,
+   "hit_rank": 3,
+   "dt_ms": 98.84,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "fp002",
+   "type": "false_premise",
+   "category": "false_premise",
+   "gold_topics": [
+    40
+   ],
+   "top8topics": [
+    40,
+    40,
+    40,
+    40,
+    40,
+    49,
+    19,
+    40
+   ],
+   "top8ids": [
+    "ch_0636",
+    "ch_0629",
+    "ch_0630",
+    "ch_0633",
+    "ch_0635",
+    "ch_0807",
+    "ch_0260",
+    "ch_0631"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 114.41,
+   "filtered_out_count": 5,
+   "final_len": 8
+  },
+  {
+   "id": "fp003",
+   "type": "false_premise",
+   "category": "false_premise",
+   "gold_topics": [
+    31
+   ],
+   "top8topics": [
+    31,
+    31,
+    31,
+    31,
+    31,
+    28,
+    31,
+    31
+   ],
+   "top8ids": [
+    "ch_0488",
+    "ch_0477",
+    "ch_0481",
+    "ch_0479",
+    "ch_0474",
+    "ch_0410",
+    "ch_0480",
+    "ch_0484"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 97.98,
+   "filtered_out_count": 6,
+   "final_len": 8
+  },
+  {
+   "id": "fp004",
+   "type": "false_premise",
+   "category": "false_premise",
+   "gold_topics": [
+    48
+   ],
+   "top8topics": [
+    50,
+    50,
+    50,
+    48,
+    44,
+    48,
+    48,
+    50
+   ],
+   "top8ids": [
+    "ch_0818",
+    "ch_0820",
+    "ch_0815",
+    "ch_0783",
+    "ch_0730",
+    "ch_0781",
+    "ch_0787",
+    "ch_0819"
+   ],
+   "hit": true,
+   "hit_rank": 4,
+   "dt_ms": 98.69,
+   "filtered_out_count": 2,
+   "final_len": 8
+  },
+  {
+   "id": "fp005",
+   "type": "false_premise",
+   "category": "false_premise",
+   "gold_topics": [
+    37
+   ],
+   "top8topics": [
+    37,
+    9,
+    7,
+    41,
+    20,
+    37,
+    30,
+    37
+   ],
+   "top8ids": [
+    "ch_0586",
+    "ch_0094",
+    "ch_0063",
+    "ch_0666",
+    "ch_0278",
+    "ch_0580",
+    "ch_0467",
+    "ch_0582"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 97.72,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "fp006",
+   "type": "false_premise",
+   "category": "false_premise",
+   "gold_topics": [
+    24
+   ],
+   "top8topics": [
+    24,
+    26,
+    26,
+    49,
+    26,
+    41,
+    10,
+    9
+   ],
+   "top8ids": [
+    "ch_0349",
+    "ch_0375",
+    "ch_0378",
+    "ch_0807",
+    "ch_0376",
+    "ch_0654",
+    "ch_0128",
+    "ch_0090"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 98.23,
+   "filtered_out_count": 1,
+   "final_len": 8
+  },
+  {
+   "id": "fp007",
+   "type": "false_premise",
+   "category": "false_premise",
+   "gold_topics": [
+    4
+   ],
+   "top8topics": [
+    4,
+    45,
+    51,
+    7,
+    33,
+    7,
+    5,
+    50
+   ],
+   "top8ids": [
+    "ch_0026",
+    "ch_0751",
+    "ch_0825",
+    "ch_0065",
+    "ch_0512",
+    "ch_0063",
+    "ch_0035",
+    "ch_0819"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 111.47,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q031",
+   "type": "factual",
+   "category": "factual",
+   "gold_topics": [
+    1
+   ],
+   "top8topics": [
+    1,
+    53,
+    7,
+    1,
+    37,
+    2,
+    29,
+    44
+   ],
+   "top8ids": [
+    "ch_0002",
+    "ch_0853",
+    "ch_0076",
+    "ch_0001",
+    "ch_0580",
+    "ch_0004",
+    "ch_0415",
+    "ch_0718"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 114.05,
+   "filtered_out_count": 2,
+   "final_len": 8
+  },
+  {
+   "id": "q032",
+   "type": "procedural",
+   "category": "other",
+   "gold_topics": [
+    2
+   ],
+   "top8topics": [
+    2,
+    2,
+    20,
+    37,
+    38,
+    53,
+    20,
+    24
+   ],
+   "top8ids": [
+    "ch_0008",
+    "ch_0010",
+    "ch_0271",
+    "ch_0579",
+    "ch_0593",
+    "ch_0851",
+    "ch_0295",
+    "ch_0349"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 112.92,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q033",
+   "type": "reasoning",
+   "category": "reasoning",
+   "gold_topics": [
+    11
+   ],
+   "top8topics": [
+    11,
+    45,
+    27,
+    11,
+    11,
+    40,
+    23,
+    8
+   ],
+   "top8ids": [
+    "ch_0146",
+    "ch_0748",
+    "ch_0393",
+    "ch_0145",
+    "ch_0149",
+    "ch_0626",
+    "ch_0320",
+    "ch_0084"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 154.4,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "q034",
+   "type": "comparison",
+   "category": "comparison",
+   "gold_topics": [
+    14
+   ],
+   "top8topics": [
+    14,
+    43,
+    9,
+    10,
+    41,
+    14,
+    9,
+    41
+   ],
+   "top8ids": [
+    "ch_0189",
+    "ch_0694",
+    "ch_0109",
+    "ch_0129",
+    "ch_0656",
+    "ch_0192",
+    "ch_0110",
+    "ch_0664"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 107.35,
+   "filtered_out_count": 1,
+   "final_len": 8
+  },
+  {
+   "id": "q035",
+   "type": "factual",
+   "category": "factual",
+   "gold_topics": [
+    15
+   ],
+   "top8topics": [
+    15,
+    15,
+    15,
+    15,
+    15,
+    38,
+    39,
+    15
+   ],
+   "top8ids": [
+    "ch_0200",
+    "ch_0201",
+    "ch_0212",
+    "ch_0217",
+    "ch_0199",
+    "ch_0596",
+    "ch_0621",
+    "ch_0210"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 122.4,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "q036",
+   "type": "reasoning",
+   "category": "reasoning",
+   "gold_topics": [
+    17
+   ],
+   "top8topics": [
+    17,
+    16,
+    51,
+    25,
+    22,
+    45,
+    52,
+    49
+   ],
+   "top8ids": [
+    "ch_0240",
+    "ch_0232",
+    "ch_0841",
+    "ch_0354",
+    "ch_0313",
+    "ch_0742",
+    "ch_0848",
+    "ch_0795"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 112.96,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q037",
+   "type": "factual",
+   "category": "factual",
+   "gold_topics": [
+    18
+   ],
+   "top8topics": [
+    18,
+    18,
+    18,
+    18,
+    18,
+    37,
+    18,
+    8
+   ],
+   "top8ids": [
+    "ch_0246",
+    "ch_0247",
+    "ch_0250",
+    "ch_0249",
+    "ch_0248",
+    "ch_0584",
+    "ch_0253",
+    "ch_0088"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 120.68,
+   "filtered_out_count": 2,
+   "final_len": 8
+  },
+  {
+   "id": "q038",
+   "type": "reasoning",
+   "category": "reasoning",
+   "gold_topics": [
+    21
+   ],
+   "top8topics": [
+    21,
+    21,
+    21,
+    16,
+    21,
+    16,
+    16,
+    18
+   ],
+   "top8ids": [
+    "ch_0299",
+    "ch_0300",
+    "ch_0303",
+    "ch_0232",
+    "ch_0301",
+    "ch_0229",
+    "ch_0227",
+    "ch_0246"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 107.88,
+   "filtered_out_count": 4,
+   "final_len": 8
+  },
+  {
+   "id": "q039",
+   "type": "factual",
+   "category": "factual",
+   "gold_topics": [
+    22
+   ],
+   "top8topics": [
+    22,
+    22,
+    50,
+    22,
+    10,
+    10,
+    7,
+    19
+   ],
+   "top8ids": [
+    "ch_0309",
+    "ch_0308",
+    "ch_0821",
+    "ch_0310",
+    "ch_0122",
+    "ch_0130",
+    "ch_0076",
+    "ch_0260"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 101.33,
+   "filtered_out_count": 6,
+   "final_len": 8
+  },
+  {
+   "id": "q040",
+   "type": "factual",
+   "category": "factual",
+   "gold_topics": [
+    32
+   ],
+   "top8topics": [
+    32,
+    32,
+    32,
+    32,
+    32,
+    16,
+    19,
+    16
+   ],
+   "top8ids": [
+    "ch_0498",
+    "ch_0497",
+    "ch_0499",
+    "ch_0495",
+    "ch_0501",
+    "ch_0234",
+    "ch_0263",
+    "ch_0236"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 104.46,
+   "filtered_out_count": 5,
+   "final_len": 8
+  },
+  {
+   "id": "q041",
+   "type": "reasoning",
+   "category": "reasoning",
+   "gold_topics": [
+    33
+   ],
+   "top8topics": [
+    33,
+    33,
+    33,
+    32,
+    33,
+    33,
+    19,
+    33
+   ],
+   "top8ids": [
+    "ch_0513",
+    "ch_0512",
+    "ch_0511",
+    "ch_0507",
+    "ch_0515",
+    "ch_0518",
+    "ch_0259",
+    "ch_0517"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 106.97,
+   "filtered_out_count": 7,
+   "final_len": 8
+  },
+  {
+   "id": "q042",
+   "type": "reasoning",
+   "category": "reasoning",
+   "gold_topics": [
+    37
+   ],
+   "top8topics": [
+    37,
+    37,
+    37,
+    37,
+    37,
+    37,
+    37,
+    37
+   ],
+   "top8ids": [
+    "ch_0581",
+    "ch_0586",
+    "ch_0576",
+    "ch_0582",
+    "ch_0577",
+    "ch_0583",
+    "ch_0578",
+    "ch_0574"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 115.34,
+   "filtered_out_count": 6,
+   "final_len": 8
+  },
+  {
+   "id": "q043",
+   "type": "procedural",
+   "category": "other",
+   "gold_topics": [
+    46
+   ],
+   "top8topics": [
+    37,
+    36,
+    44,
+    41,
+    48,
+    21,
+    52,
+    38
+   ],
+   "top8ids": [
+    "ch_0580",
+    "ch_0570",
+    "ch_0729",
+    "ch_0654",
+    "ch_0791",
+    "ch_0303",
+    "ch_0848",
+    "ch_0591"
+   ],
+   "hit": false,
+   "hit_rank": null,
+   "dt_ms": 103.14,
+   "filtered_out_count": 3,
+   "final_len": 8
+  },
+  {
+   "id": "q044",
+   "type": "procedural",
+   "category": "other",
+   "gold_topics": [
+    47
+   ],
+   "top8topics": [
+    47,
+    47,
+    47,
+    47,
+    47,
+    47,
+    36,
+    53
+   ],
+   "top8ids": [
+    "ch_0774",
+    "ch_0772",
+    "ch_0776",
+    "ch_0775",
+    "ch_0777",
+    "ch_0779",
+    "ch_0570",
+    "ch_0852"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 108.04,
+   "filtered_out_count": 2,
+   "final_len": 8
+  },
+  {
+   "id": "q045",
+   "type": "factual",
+   "category": "factual",
+   "gold_topics": [
+    52
+   ],
+   "top8topics": [
+    52,
+    5,
+    50,
+    5,
+    47,
+    48,
+    52,
+    50
+   ],
+   "top8ids": [
+    "ch_0844",
+    "ch_0034",
+    "ch_0820",
+    "ch_0033",
+    "ch_0774",
+    "ch_0793",
+    "ch_0848",
+    "ch_0819"
+   ],
+   "hit": true,
+   "hit_rank": 1,
+   "dt_ms": 91.98,
+   "filtered_out_count": 3,
+   "final_len": 8
+  }
+ ]
+}

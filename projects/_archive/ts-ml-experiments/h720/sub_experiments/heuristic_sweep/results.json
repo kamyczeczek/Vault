@@ -1,0 +1,69 @@
+{
+  "experiment": "heuristic_lag_knn_sweep_with_recent20",
+  "horizon": 720,
+  "results": [
+    {
+      "model": "daily",
+      "horizon": 720,
+      "mae": 1.6720180662969748,
+      "rmse": 2.171948042164322,
+      "status": "ok"
+    },
+    {
+      "model": "nlinear",
+      "horizon": 720,
+      "mae": 2.350723802523661,
+      "rmse": 2.817339593600691,
+      "status": "ok"
+    },
+    {
+      "model": "k8_q12",
+      "horizon": 720,
+      "mae": 2.4104300936058776,
+      "rmse": 2.9877605980126294,
+      "status": "ok"
+    },
+    {
+      "model": "k8_q6",
+      "horizon": 720,
+      "mae": 2.4379418555535475,
+      "rmse": 2.9753191043717084,
+      "status": "ok"
+    },
+    {
+      "model": "k8_q6_recent20",
+      "horizon": 720,
+      "mae": 2.7530205111226476,
+      "rmse": 3.2779715907140448,
+      "status": "ok"
+    },
+    {
+      "model": "k5_default",
+      "horizon": 720,
+      "mae": 2.81952569419952,
+      "rmse": 3.455455923043198,
+      "status": "ok"
+    },
+    {
+      "model": "k8_q6_recent10",
+      "horizon": 720,
+      "mae": 2.959187441624235,
+      "rmse": 3.432106842622281,
+      "status": "ok"
+    },
+    {
+      "model": "k5_q6_recent20",
+      "horizon": 720,
+      "mae": 3.2702042290692606,
+      "rmse": 3.8116558977371606,
+      "status": "ok"
+    },
+    {
+      "model": "k8_q12_recent20",
+      "horizon": 720,
+      "mae": 3.7471569966476928,
+      "rmse": 4.167830913783472,
+      "status": "ok"
+    }
+  ]
+}

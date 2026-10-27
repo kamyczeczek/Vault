@@ -1,0 +1,16 @@
+{
+  "scanOnStartup": false,
+  "fixOnSave": false,
+  "liveCheckOnSave": true,
+  "autoGenerateIndex": false,
+  "generateIndexOnStartup": false,
+  "batchSize": 25,
+  "excludeFolders": [
+    "Templates",
+    "projects",
+    "scripts/_scratch",
+    "logs",
+    "agents",
+    ".export"
+  ]
+}

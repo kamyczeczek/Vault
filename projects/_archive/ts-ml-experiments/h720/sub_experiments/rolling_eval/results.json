@@ -1,0 +1,189 @@
+{
+  "slice": "S-01",
+  "protocol": {
+    "fit": "frozen, train.csv 11,425 rows, fit once",
+    "origins": 2161,
+    "stride": 1,
+    "horizon": 720,
+    "note": "per-origin history = all observed rows strictly before the scored window"
+  },
+  "results": [
+    {
+      "model": "elm_h64_full_fastlags",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.3092,
+      "rolling_rmse": 2.8046,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5923309463548625,
+          "rmse": 1.9823129280190273
+        },
+        "window_2": {
+          "mae": 1.8145564224871475,
+          "rmse": 2.236046049143698
+        },
+        "window_3": {
+          "mae": 1.6619488768935646,
+          "rmse": 2.2672602806133835
+        },
+        "window_4": {
+          "mae": 2.1615466427691765,
+          "rmse": 2.872775949016963
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h256_sobol_iid_full",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.3409,
+      "rolling_rmse": 2.8431,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6330071664314396,
+          "rmse": 2.055013669899532
+        },
+        "window_2": {
+          "mae": 1.7664583598601238,
+          "rmse": 2.215164532684328
+        },
+        "window_3": {
+          "mae": 1.7223152763793865,
+          "rmse": 2.2759464705344903
+        },
+        "window_4": {
+          "mae": 2.4496916696591495,
+          "rmse": 3.13270510089346
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "knn_q3_k32_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.5583,
+      "rolling_rmse": 3.0994,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7204022215138837,
+          "rmse": 2.140518059341063
+        },
+        "window_2": {
+          "mae": 4.909015824020376,
+          "rmse": 5.320957010538725
+        },
+        "window_3": {
+          "mae": 2.4162477067444916,
+          "rmse": 3.0946342209562143
+        },
+        "window_4": {
+          "mae": 2.815968450564001,
+          "rmse": 3.497057298251968
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "persistence",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.5985,
+      "rolling_rmse": 3.1282,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7952457486755318,
+          "rmse": 2.2503347360867134
+        },
+        "window_2": {
+          "mae": 2.1462069739898046,
+          "rmse": 2.6324969775393976
+        },
+        "window_3": {
+          "mae": 1.7779138766643074,
+          "rmse": 2.3889429847551824
+        },
+        "window_4": {
+          "mae": 2.180211087150706,
+          "rmse": 2.8509213353302125
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "daily",
+      "protocol": "rolling stride-1, 2161 origins, seasonal-naive lag 24",
+      "rolling_mae": 2.5491,
+      "rolling_rmse": 3.112,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6720180662969748,
+          "rmse": 2.171948042164322
+        },
+        "window_2": {
+          "mae": 1.9042791694402694,
+          "rmse": 2.3712428720780094
+        },
+        "window_3": {
+          "mae": 1.8620638797266615,
+          "rmse": 2.5054643959241902
+        },
+        "window_4": {
+          "mae": 2.919241687407096,
+          "rmse": 3.6344442181063386
+        }
+      },
+      "status": "ok"
+    }
+  ],
+  "anchors_t0": [
+    {
+      "model": "elm_h64_full_fastlags",
+      "t0_mae": 1.5923,
+      "t0_rmse": 1.9823,
+      "expected": [
+        1.5923,
+        1.9823
+      ],
+      "ok": true
+    },
+    {
+      "model": "elm_h256_sobol_iid_full",
+      "t0_mae": 1.633,
+      "t0_rmse": 2.055,
+      "expected": [
+        1.633,
+        2.055
+      ],
+      "ok": true
+    },
+    {
+      "model": "knn_q3_k32_recent10",
+      "t0_mae": 1.7204,
+      "t0_rmse": 2.1405,
+      "expected": [
+        1.7204,
+        2.1405
+      ],
+      "ok": true
+    },
+    {
+      "model": "persistence",
+      "t0_mae": 1.7952,
+      "t0_rmse": 2.2503,
+      "expected": [
+        1.7952,
+        2.2503
+      ],
+      "ok": true
+    },
+    {
+      "model": "daily",
+      "t0_mae": 1.672,
+      "t0_rmse": 2.1719,
+      "expected": [
+        1.672,
+        2.1719
+      ],
+      "ok": true
+    }
+  ]
+}

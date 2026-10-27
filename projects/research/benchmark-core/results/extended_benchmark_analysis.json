@@ -1,0 +1,310 @@
+{
+  "dataset_averages": {
+    "Electricity_Hourly": {
+      "AMR-FBS": {
+        "mean_mse": 9.2913,
+        "std_mse": 5.836951574666351,
+        "min_hmse": 5.328,
+        "max_mse": 19.3494
+      },
+      "StateSpaceHybrid": {
+        "mean_mse": 131.711725,
+        "std_mse": 17.585694643996156,
+        "min_hmse": 107.0277,
+        "max_mse": 149.7559
+      },
+      "KNNForecaster": {
+        "mean_mse": 14.363299999999999,
+        "std_mse": 8.405897592464472,
+        "min_hmse": 8.1516,
+        "max_mse": 28.8281
+      },
+      "BigDictELM": {
+        "mean_mse": 9.663375,
+        "std_mse": 6.27492998422094,
+        "min_hmse": 5.6235,
+        "max_mse": 20.4969
+      },
+      "DLinear": {
+        "mean_mse": 100.36424999999998,
+        "std_mse": 18.67508333053697,
+        "min_hmse": 74.1072,
+        "max_mse": 126.7725
+      },
+      "SpectralFFT": {
+        "mean_mse": 230.294325,
+        "std_mse": 19.06972541141783,
+        "min_hmse": 198.2284,
+        "max_mse": 248.4294
+      },
+      "Theta": {
+        "mean_mse": 1433.985775,
+        "std_mse": 1176.7637988917452,
+        "min_hmse": 404.0382,
+        "max_mse": 3381.8138
+      }
+    },
+    "Traffic_Flow": {
+      "AMR-FBS": {
+        "mean_mse": 15.098524999999999,
+        "std_mse": 3.1890384541229664,
+        "min_hmse": 11.2669,
+        "max_mse": 19.0875
+      },
+      "StateSpaceHybrid": {
+        "mean_mse": 100.7234,
+        "std_mse": 17.16574259914205,
+        "min_hmse": 79.8218,
+        "max_mse": 126.9148
+      },
+      "KNNForecaster": {
+        "mean_mse": 13.28855,
+        "std_mse": 2.3523628445671387,
+        "min_hmse": 10.8308,
+        "max_mse": 15.9605
+      },
+      "BigDictELM": {
+        "mean_mse": 22.247799999999998,
+        "std_mse": 6.074229125164773,
+        "min_hmse": 14.8184,
+        "max_mse": 30.0889
+      },
+      "DLinear": {
+        "mean_mse": 82.47982499999999,
+        "std_mse": 34.59723126880062,
+        "min_hmse": 44.9389,
+        "max_mse": 131.0842
+      },
+      "SpectralFFT": {
+        "mean_mse": 163.36575000000002,
+        "std_mse": 24.630670838357208,
+        "min_hmse": 128.2087,
+        "max_mse": 195.6847
+      },
+      "Theta": {
+        "mean_mse": 2116.726475,
+        "std_mse": 2349.9257157918164,
+        "min_hmse": 356.8924,
+        "max_mse": 6163.4809
+      }
+    },
+    "Financial_Returns": {
+      "AMR-FBS": {
+        "mean_mse": 927029.594425,
+        "std_mse": 153279.65023366234,
+        "min_hmse": 674239.9915,
+        "max_mse": 1087772.3182
+      },
+      "StateSpaceHybrid": {
+        "mean_mse": 1050374.3188,
+        "std_mse": 43724.16705486852,
+        "min_hmse": 1016052.2524,
+        "max_mse": 1125461.7082
+      },
+      "KNNForecaster": {
+        "mean_mse": 1143700.2202750002,
+        "std_mse": 56857.0838227262,
+        "min_hmse": 1053517.9615,
+        "max_mse": 1199888.5578
+      },
+      "BigDictELM": {
+        "mean_mse": 937741.4581,
+        "std_mse": 143525.69579052157,
+        "min_hmse": 695336.1488,
+        "max_mse": 1058104.2817
+      },
+      "DLinear": {
+        "mean_mse": 1028618.311375,
+        "std_mse": 50456.34119137756,
+        "min_hmse": 993061.3396,
+        "max_mse": 1115524.1911
+      },
+      "SpectralFFT": {
+        "mean_mse": 7396659.609175,
+        "std_mse": 1498762.9809146465,
+        "min_hmse": 5346992.993,
+        "max_mse": 9402085.0563
+      },
+      "Theta": {
+        "mean_mse": 1109005.700575,
+        "std_mse": 69954.43587079509,
+        "min_hmse": 1051035.2073,
+        "max_mse": 1225515.504
+      }
+    },
+    "Weather_Temperature": {
+      "AMR-FBS": {
+        "mean_mse": 21.058025,
+        "std_mse": 3.069005063839908,
+        "min_hmse": 17.9722,
+        "max_mse": 24.5257
+      },
+      "StateSpaceHybrid": {
+        "mean_mse": 32.256675,
+        "std_mse": 4.387167337459902,
+        "min_hmse": 25.4516,
+        "max_mse": 37.1942
+      },
+      "KNNForecaster": {
+        "mean_mse": 38.8502,
+        "std_mse": 3.5027697719090813,
+        "min_hmse": 35.822,
+        "max_mse": 44.5771
+      },
+      "BigDictELM": {
+        "mean_mse": 22.223725,
+        "std_mse": 1.6417927782990767,
+        "min_hmse": 19.8525,
+        "max_mse": 23.9556
+      },
+      "DLinear": {
+        "mean_mse": 77.7731,
+        "std_mse": 34.24236353349459,
+        "min_hmse": 42.1813,
+        "max_mse": 133.1453
+      },
+      "SpectralFFT": {
+        "mean_mse": 306.380475,
+        "std_mse": 55.76257654504385,
+        "min_hmse": 210.4831,
+        "max_mse": 344.9948
+      },
+      "Theta": {
+        "mean_mse": 2640.81955,
+        "std_mse": 2286.568971130057,
+        "min_hmse": 197.7302,
+        "max_mse": 5943.6612
+      }
+    },
+    "Web_Traffic": {
+      "AMR-FBS": {
+        "mean_mse": 69.81615000000001,
+        "std_mse": 12.058657197320935,
+        "min_hmse": 51.2302,
+        "max_mse": 81.0706
+      },
+      "StateSpaceHybrid": {
+        "mean_mse": 83.85107500000001,
+        "std_mse": 11.296686609881457,
+        "min_hmse": 65.3451,
+        "max_mse": 94.0107
+      },
+      "KNNForecaster": {
+        "mean_mse": 75.572175,
+        "std_mse": 12.988456448395821,
+        "min_hmse": 53.7076,
+        "max_mse": 86.807
+      },
+      "BigDictELM": {
+        "mean_mse": 70.7416,
+        "std_mse": 11.480695393790395,
+        "min_hmse": 53.7079,
+        "max_mse": 82.4873
+      },
+      "DLinear": {
+        "mean_mse": 90.53,
+        "std_mse": 23.67009230505872,
+        "min_hmse": 54.0413,
+        "max_mse": 119.9119
+      },
+      "SpectralFFT": {
+        "mean_mse": 1048.732425,
+        "std_mse": 293.1217746671797,
+        "min_hmse": 627.4999,
+        "max_mse": 1456.1829
+      },
+      "Theta": {
+        "mean_mse": 17898.365875,
+        "std_mse": 16511.491979509727,
+        "min_hmse": 3722.4064,
+        "max_mse": 45017.981
+      }
+    },
+    "Healthcare_Vitals": {
+      "AMR-FBS": {
+        "mean_mse": 16.839599999999997,
+        "std_mse": 9.898835456506992,
+        "min_hmse": 2.4198,
+        "max_mse": 27.2121
+      },
+      "StateSpaceHybrid": {
+        "mean_mse": 71.058,
+        "std_mse": 77.85160765530152,
+        "min_hmse": 12.6202,
+        "max_mse": 203.8668
+      },
+      "KNNForecaster": {
+        "mean_mse": 14.919974999999999,
+        "std_mse": 9.993007793546195,
+        "min_hmse": 2.7732,
+        "max_mse": 27.1954
+      },
+      "BigDictELM": {
+        "mean_mse": 16.896525,
+        "std_mse": 12.743124978664968,
+        "min_hmse": 2.4553,
+        "max_mse": 36.6535
+      },
+      "DLinear": {
+        "mean_mse": 117.539725,
+        "std_mse": 20.30949403522586,
+        "min_hmse": 93.0592,
+        "max_mse": 148.8809
+      },
+      "SpectralFFT": {
+        "mean_mse": 93.972125,
+        "std_mse": 18.961065897435066,
+        "min_hmse": 73.884,
+        "max_mse": 124.8418
+      },
+      "Theta": {
+        "mean_mse": 707.66525,
+        "std_mse": 785.5860150379477,
+        "min_hmse": 175.5827,
+        "max_mse": 2061.2062
+      }
+    }
+  },
+  "best_models": [
+    {
+      "dataset": "Electricity_Hourly",
+      "best_model": "AMR-FBS",
+      "mse": 9.2913
+    },
+    {
+      "dataset": "Traffic_Flow",
+      "best_model": "KNNForecaster",
+      "mse": 13.28855
+    },
+    {
+      "dataset": "Financial_Returns",
+      "best_model": "AMR-FBS",
+      "mse": 927029.594425
+    },
+    {
+      "dataset": "Weather_Temperature",
+      "best_model": "AMR-FBS",
+      "mse": 21.058025
+    },
+    {
+      "dataset": "Web_Traffic",
+      "best_model": "AMR-FBS",
+      "mse": 69.81615000000001
+    },
+    {
+      "dataset": "Healthcare_Vitals",
+      "best_model": "KNNForecaster",
+      "mse": 14.919974999999999
+    }
+  ],
+  "model_wins": {
+    "AMR-FBS": 4,
+    "StateSpaceHybrid": 0,
+    "KNNForecaster": 2,
+    "BigDictELM": 0,
+    "DLinear": 0,
+    "SpectralFFT": 0,
+    "Theta": 0
+  },
+  "overall_summary": "Evaluated 7 models on 6 datasets across 4 horizons"
+}

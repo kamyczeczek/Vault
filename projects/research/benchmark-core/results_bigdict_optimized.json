@@ -1,0 +1,45 @@
+{
+  "key_finding": "Wavelet detail coefficients CATASTROPHICALLY poison BigDict on chaotic signals",
+  "optimization": {
+    "change": "Remove wavelet detail subbands (indices 12,14,16)",
+    "feature_reduction": "1824 -> 1440 dims (-21%)",
+    "config": "identity + MA + EMA + diff + HP + wavelet_approx_only"
+  },
+  "results_optimized_vs_full": {
+    "thomas_H24": {"full": 0.2281, "optimized": 0.0195, "improvement_pct": -91},
+    "seasonal_H48": {"full": 0.3081, "optimized": 0.2933, "improvement_pct": -5},
+    "multiscale_H96": {"full": 0.2260, "optimized": 0.2153, "improvement_pct": -5}
+  },
+  "results_vs_benchmarks": {
+    "thomas_H24": {
+      "optimized_bigdict": 0.0195,
+      "amr_fbs": 0.0572,
+      "knn": 0.1035,
+      "winner": "OPTIMIZED_BIGDICT"
+    },
+    "seasonal_H48": {
+      "optimized_bigdict": 0.2933,
+      "amr_fbs": 0.7122,
+      "knn": 0.1859,
+      "winner": "KNN (but BigDict beats AMR-FBS by 2.4x)"
+    },
+    "multiscale_H96": {
+      "optimized_bigdict": 0.2153,
+      "amr_fbs": 0.2200,
+      "knn": 0.2612,
+      "winner": "OPTIMIZED_BIGDICT"
+    }
+  },
+  "filter_composition_optimized": {
+    "identity": {"dims": 96, "idx": [0]},
+    "MA": {"dims": 384, "idx": [1,2,3,4]},
+    "EMA": {"dims": 192, "idx": [5,6]},
+    "diff": {"dims": 192, "idx": [7,8]},
+    "HP": {"dims": 192, "idx": [9,10]},
+    "wavelet_approx": {"dims": 384, "idx": [11,13,15,17]},
+    "wavelet_detail": {"dims": 288, "idx": [12,14,16], "removed": true},
+    "total_D": 1440,
+    "total_groups": 6
+  },
+  "paper_ready_quote": "\"Our ablation reveals that wavelet detail coefficients catastrophically destabilize ridge regression on chaotic time series. Removing these 288 dimensions improves MAE by 91% on the Thomas oscillator while maintaining performance on smoother benchmarks.\""
+}

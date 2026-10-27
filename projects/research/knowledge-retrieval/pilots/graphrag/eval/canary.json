@@ -1,0 +1,11 @@
+{
+  "description": "Pytania, których NIE MA w graph.db. Każde zwrócenie matching_id = fail.",
+  "questions": [
+    {"qid": "CANARY_01", "text": "Jaki jest numer telefonu do dzialu HR firmy XYZ?"},
+    {"qid": "CANARY_02", "text": "Kiedy urodzila sie babcia Krystyna z Sierpca?"},
+    {"qid": "CANARY_03", "text": "Ile kosztuje bilet miesieczny w komunikacji miejskiej w Atlantis?"},
+    {"qid": "CANARY_04", "text": "Jaki jest numer NIP firmy Widmo Sp. z o.o.?"},
+    {"qid": "CANARY_05", "text": "Podaj wspolrzedne geograficzne miasta Eldoria."}
+  ],
+  "expected_refusal": true
+}

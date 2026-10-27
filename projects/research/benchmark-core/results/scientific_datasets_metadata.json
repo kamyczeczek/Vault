@@ -1,0 +1,26 @@
+{
+  "Electricity_Transformer_Load": {
+    "length": 8000,
+    "mean": 212.48377266242704,
+    "std": 35.504235709708894,
+    "min": 128.27105950696125,
+    "max": 290.8399103269977,
+    "source": "Electricity Transformer Load"
+  },
+  "Traffic_Flow": {
+    "length": 8000,
+    "mean": 334.1815369747267,
+    "std": 140.2188605215806,
+    "min": 41.10377019344418,
+    "max": 765.484562275091,
+    "source": "Traffic Flow"
+  },
+  "Solar_Activity_Cycle": {
+    "length": 8000,
+    "mean": 80.78993527988455,
+    "std": 58.61943636095702,
+    "min": 5.0,
+    "max": 236.60339242100125,
+    "source": "Solar Activity Cycle"
+  }
+}

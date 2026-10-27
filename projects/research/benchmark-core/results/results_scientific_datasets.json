@@ -1,0 +1,98 @@
+{
+  "Electricity_Transformer_Load": {
+    "AMR-FBS": {
+      "mse": 71.7016,
+      "mae": 6.791,
+      "smape": 6.63
+    },
+    "KNNForecaster": {
+      "mse": 80.1647,
+      "mae": 7.2872,
+      "smape": 7.11
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 121.1697,
+      "mae": 8.9224,
+      "smape": 8.65
+    },
+    "Meta_Ensemble (Ours+)": {
+      "mse": 121.1697,
+      "mae": 8.9224,
+      "smape": 8.65
+    },
+    "DLinear": {
+      "mse": 537.7424,
+      "mae": 19.6995,
+      "smape": 18.62
+    },
+    "SpectralFFT": {
+      "mse": 1617.9871,
+      "mae": 33.1385,
+      "smape": 31.76
+    }
+  },
+  "Traffic_Flow": {
+    "AMR-FBS": {
+      "mse": 1603.5687,
+      "mae": 31.952,
+      "smape": 23.7
+    },
+    "KNNForecaster": {
+      "mse": 1572.3489,
+      "mae": 31.7484,
+      "smape": 23.32
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 3075.759,
+      "mae": 43.7524,
+      "smape": 31.38
+    },
+    "Meta_Ensemble (Ours+)": {
+      "mse": 3075.759,
+      "mae": 43.7524,
+      "smape": 31.38
+    },
+    "DLinear": {
+      "mse": 19856.3205,
+      "mae": 106.8445,
+      "smape": 70.74
+    },
+    "SpectralFFT": {
+      "mse": 16102.6197,
+      "mae": 102.0622,
+      "smape": 65.21
+    }
+  },
+  "Solar_Activity_Cycle": {
+    "AMR-FBS": {
+      "mse": 63.5352,
+      "mae": 4.1564,
+      "smape": 20.43
+    },
+    "KNNForecaster": {
+      "mse": 65.5066,
+      "mae": 4.5561,
+      "smape": 28.63
+    },
+    "Adaptive_AMR_KNN (Ours)": {
+      "mse": 72.8985,
+      "mae": 4.7285,
+      "smape": 20.72
+    },
+    "Meta_Ensemble (Ours+)": {
+      "mse": 72.8985,
+      "mae": 4.7285,
+      "smape": 20.72
+    },
+    "DLinear": {
+      "mse": 70.5101,
+      "mae": 4.301,
+      "smape": 10.39
+    },
+    "SpectralFFT": {
+      "mse": 261.8963,
+      "mae": 13.9367,
+      "smape": 174.25
+    }
+  }
+}

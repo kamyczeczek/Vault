@@ -1,0 +1,49 @@
+{
+  "brain": "project_brain",
+  "corpus": {
+    "01_h720_evaluation_protocol.md": {
+      "mtime": 1789769270.7800224,
+      "size": 1979
+    },
+    "02_anti_leakage_invariants.md": {
+      "mtime": 1789769270.7800224,
+      "size": 1301
+    },
+    "03_model_registry_and_contracts.md": {
+      "mtime": 1789769270.7800224,
+      "size": 7814
+    },
+    "04_subexperiment_findings_leaderboard.md": {
+      "mtime": 1789769270.7834923,
+      "size": 94857
+    },
+    "06_ts_diverse_protocol.md": {
+      "mtime": 1789431226.1421762,
+      "size": 3470
+    },
+    "candidate_records.jsonl": {
+      "mtime": 1788727483.9776921,
+      "size": 4738
+    },
+    "change_experiments.jsonl": {
+      "mtime": 1788727581.9332514,
+      "size": 6046
+    },
+    "rejected_candidates.jsonl": {
+      "mtime": 1788727483.9776921,
+      "size": 2154
+    }
+  },
+  "graph": {
+    "schema_hash": "92f37f8d05d8fca49205cb8d411933eacf29154fe86f62041cd78e04d2ce1aaf"
+  },
+  "reflection": {
+    "path": "C:\\Users\\Mateusz\\Desktop\\timeseries_model_discovery_project\\brain\\reflection_index.json",
+    "sha256": "726fe9c954525414d54e0426cba42b53c8c703828d192ec7ce98c1696537a2b9"
+  },
+  "skills": {
+    "path": "C:\\Users\\Mateusz\\Desktop\\timeseries_model_discovery_project\\brain\\skills_index.json",
+    "sha256": "04791b94a3f4e4b58f0abc5b09374c069557485c54de400e5973506ac785853c"
+  },
+  "version": 1
+}

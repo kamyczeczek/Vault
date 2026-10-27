@@ -1,0 +1,2 @@
+interpreter: C:\Users\Mateusz\AppData\Local\hermes\hermes-agent\venv\Scripts\python.exe
+n=24 p50=90.9 ms p95=105.2 ms total=2606.7 ms

@@ -1,0 +1,380 @@
+{
+  "slice": "Bet3-patchtst-delta",
+  "harness_command": "C:/Users/Mateusz/AppData/Local/hermes/hermes-agent/venv/Scripts/python.exe projects/ts-ml-experiments/h720/sub_experiments/patchtst_delta_bet3/rolling_arm.py",
+  "device": "cpu (torch 2.13.0+cpu)",
+  "pool": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "patchtst_P24_D32_2L",
+    "patchtst_P48_D16_1L"
+  ],
+  "params": {
+    "L": 336,
+    "patch_sizes": [
+      24,
+      48
+    ],
+    "D": [
+      32,
+      16
+    ],
+    "layers": [
+      2,
+      1
+    ],
+    "heads": 2,
+    "ffn": [
+      64,
+      32
+    ],
+    "dropout": 0.3,
+    "stochastic_depth": 0.1,
+    "weight_decay": 0.01,
+    "attn_dropout": 0.2,
+    "lr": 0.0003,
+    "batch": 64,
+    "grad_clip": 1.0,
+    "H": 720,
+    "capacity_primary_params": 57648,
+    "capacity_ablation_params": 24304
+  },
+  "s26_anchor": {
+    "mae": 1.990897385574145,
+    "rmse": 2.470998626872596,
+    "disjoint": 1.9696168477494975,
+    "w4": 1.9579365851264652,
+    "expected_mae": 1.9909,
+    "expected_disjoint": 1.9696,
+    "test_full_bootstrap_mean": 1.990897385574145,
+    "test_full_bootstrap_ci_95": [
+      1.9722507715222344,
+      2.009223486688605
+    ]
+  },
+  "held_out_control": {
+    "type": "2-member S-26 delta-ridge (nlinear_L336_a1 + nlinear_L336_a10), no-intercept alpha=3000",
+    "mae_val_heldout": 2.5224798283169374,
+    "alpha": 10000.0
+  },
+  "singleton_val": {
+    "nlinear_L336_a1": 2.896975832201712,
+    "nlinear_L336_a10": 2.896964035619671,
+    "patchtst_P24_D32_2L": 3.026725290054874,
+    "patchtst_P48_D16_1L": 3.15167046606894
+  },
+  "patchtst_singleton_vals": {
+    "patchtst_P24_D32_2L": 3.026725290054874,
+    "patchtst_P48_D16_1L": 3.15167046606894
+  },
+  "best_patchtst_val": 3.026725290054874,
+  "best_patchtst_name": "patchtst_P24_D32_2L",
+  "trace": [
+    {
+      "iter": 0,
+      "cur": [
+        "nlinear_L336_a10",
+        "patchtst_P48_D16_1L"
+      ],
+      "fast": 2.5081230142095996,
+      "true": 2.499223938234064,
+      "alpha": 30000.0,
+      "best_fast": 2.5081230142095996,
+      "best_set": [
+        "nlinear_L336_a10",
+        "patchtst_P48_D16_1L"
+      ]
+    },
+    {
+      "iter": 1,
+      "cur": [
+        "nlinear_L336_a1",
+        "patchtst_P48_D16_1L"
+      ],
+      "fast": 2.5081289579073136,
+      "true": 2.5081289579073136,
+      "alpha": 3000.0,
+      "best_fast": 2.5081230142095996,
+      "best_set": [
+        "nlinear_L336_a10",
+        "patchtst_P48_D16_1L"
+      ]
+    },
+    {
+      "iter": 2,
+      "cur": [
+        "nlinear_L336_a1",
+        "patchtst_P24_D32_2L"
+      ],
+      "fast": 2.5084178636677743,
+      "true": 2.5084178636677743,
+      "alpha": 3000.0,
+      "best_fast": 2.5081230142095996,
+      "best_set": [
+        "nlinear_L336_a10",
+        "patchtst_P48_D16_1L"
+      ]
+    },
+    {
+      "iter": 3,
+      "cur": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "patchtst_P24_D32_2L"
+      ],
+      "fast": 2.5021117513632665,
+      "true": 2.493567251979277,
+      "alpha": 30000.0,
+      "best_fast": 2.5021117513632665,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "patchtst_P24_D32_2L"
+      ]
+    },
+    {
+      "iter": 4,
+      "cur": [
+        "nlinear_L336_a10",
+        "patchtst_P24_D32_2L"
+      ],
+      "fast": 2.5084135934731964,
+      "true": 2.5084135934731964,
+      "alpha": 3000.0,
+      "best_fast": 2.5021117513632665,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "patchtst_P24_D32_2L"
+      ]
+    },
+    {
+      "iter": 5,
+      "cur": [
+        "nlinear_L336_a10",
+        "patchtst_P24_D32_2L",
+        "patchtst_P48_D16_1L"
+      ],
+      "fast": 2.5170949631715818,
+      "true": 2.5170949631715818,
+      "alpha": 3000.0,
+      "best_fast": 2.5021117513632665,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "patchtst_P24_D32_2L"
+      ]
+    },
+    {
+      "iter": 6,
+      "cur": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "patchtst_P24_D32_2L",
+        "patchtst_P48_D16_1L"
+      ],
+      "fast": 2.5095687992943128,
+      "true": 2.492795400804633,
+      "alpha": 30000.0,
+      "best_fast": 2.5021117513632665,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "patchtst_P24_D32_2L"
+      ]
+    },
+    {
+      "iter": 7,
+      "cur": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "patchtst_P48_D16_1L"
+      ],
+      "fast": 2.512932687593591,
+      "true": 2.512932687593591,
+      "alpha": 3000.0,
+      "best_fast": 2.5021117513632665,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "patchtst_P24_D32_2L"
+      ]
+    },
+    {
+      "iter": 8,
+      "cur": [
+        "nlinear_L336_a1",
+        "patchtst_P24_D32_2L",
+        "patchtst_P48_D16_1L"
+      ],
+      "fast": 2.5170979850465343,
+      "true": 2.5170979850465343,
+      "alpha": 3000.0,
+      "best_fast": 2.5021117513632665,
+      "best_set": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "patchtst_P24_D32_2L"
+      ]
+    }
+  ],
+  "best_subset": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "patchtst_P24_D32_2L"
+  ],
+  "best_idx": [
+    0,
+    1,
+    2
+  ],
+  "best_fast": 2.5021117513632665,
+  "best_alpha": 30000.0,
+  "val_full": 2.493567251979277,
+  "heldout_gain_over_control": 0.020368076953670933,
+  "heldout_precondition_pass": true,
+  "regularity": {
+    "train_val_gap": {
+      "patchtst_P24_D32_2L": -0.08975544199915886,
+      "patchtst_P48_D16_1L": 0.1794969644130351
+    },
+    "max_gap": 0.1794969644130351,
+    "gap_flag": true,
+    "attention_entropy_last": {
+      "patchtst_P24_D32_2L": 2.392106533050537,
+      "patchtst_P48_D16_1L": 1.8587572574615479
+    },
+    "entropy_collapse": false,
+    "val_full_minus_held_out": -0.028912576337660312,
+    "transfer_delta": -0.5154408253964535,
+    "transfer_pass": true
+  },
+  "test_full": {
+    "mae": 1.9781264265828236,
+    "rmse": 2.4612639073807663,
+    "n": 2161,
+    "delta_vs_s26": -0.012773573417176332,
+    "bootstrap_B": 2000,
+    "bootstrap_mean": 1.9781264265828236,
+    "bootstrap_ci_95": [
+      1.958428321703728,
+      1.9975370783098847
+    ]
+  },
+  "bootstrap": {
+    "convention": "resample origins, B=2000, seed 0, percentile 2.5/97.5 of mean per-origin MAE",
+    "bet3_full": {
+      "mean": 1.9781264265828236,
+      "ci_95": [
+        1.958428321703728,
+        1.9975370783098847
+      ],
+      "B": 2000
+    },
+    "s26_full": {
+      "mean": 1.990897385574145,
+      "ci_95": [
+        1.9722507715222344,
+        2.009223486688605
+      ],
+      "B": 2000
+    },
+    "paired_delta": {
+      "mean": -0.01277095899132149,
+      "ci_95": [
+        -0.018505562732342832,
+        -0.006913352503709525
+      ],
+      "B": 2000,
+      "upper_bound_negative": true
+    }
+  },
+  "stratified": {
+    "disjoint_windows": [
+      {
+        "window": "W1",
+        "start": 0,
+        "bet3_mae": 2.1606949742408026,
+        "s26_mae": 2.133333944386102,
+        "delta": 0.027361029854700028
+      },
+      {
+        "window": "W2",
+        "start": 720,
+        "bet3_mae": 1.5655481914300127,
+        "s26_mae": 1.5655079239147454,
+        "delta": 4.02675152674386e-05
+      },
+      {
+        "window": "W3",
+        "start": 1440,
+        "bet3_mae": 2.208259044704783,
+        "s26_mae": 2.2738960673110973,
+        "delta": -0.0656370226063149
+      },
+      {
+        "window": "W4",
+        "start": 2160,
+        "bet3_mae": 1.8896163750508768,
+        "s26_mae": 1.9579365851264652,
+        "delta": -0.06832021007558842
+      }
+    ],
+    "horizon_terciles": [
+      {
+        "horizon_tercile": "h1_first240",
+        "bet3_mae": 1.8266208387593725,
+        "s26_mae": 1.8334543854196736,
+        "delta": -0.006833546660301115
+      },
+      {
+        "horizon_tercile": "h2_mid240",
+        "bet3_mae": 1.9787696953083398,
+        "s26_mae": 1.972775286196789,
+        "delta": 0.0059944091115506914
+      },
+      {
+        "horizon_tercile": "h3_last240",
+        "bet3_mae": 2.1289887456807577,
+        "s26_mae": 2.1664624851059724,
+        "delta": -0.0374737394252147
+      }
+    ]
+  },
+  "test_disjoint": {
+    "mae": 1.8634190252257932,
+    "rmse": 2.3707307285055
+  },
+  "test_w4": {
+    "mae": 1.8896163750508768,
+    "s26_incumbent_w4": 1.9579365851264652,
+    "s20_reference_w4": 1.8427,
+    "w4_delta_vs_s26": -0.06832021007558842,
+    "spec_cap": 1.9,
+    "within_cap": true
+  },
+  "acceptance": {
+    "full_le_19859": true,
+    "full_lt_s26": true,
+    "disjoint_le_19696": true,
+    "w4_le_190": true,
+    "heldout_gain_gt_005": true,
+    "val_full_minus_held_out_lt_010": true,
+    "train_val_gap_lt_015": false,
+    "accepted": false
+  },
+  "close": {
+    "condition": "PatchTST singleton val>2.90 OR held-out gain<0.005 OR frozen full>=1.9909 OR disjoint>1.9696",
+    "best_patchtst_val": 3.026725290054874,
+    "heldout_gain": 0.020368076953670933,
+    "close_trigger": true,
+    "message": "REJECT + close patch-attention non-linear family for ETTh1 H=720 under S-20-clean"
+  },
+  "plan_impact": {
+    "invalidates": null,
+    "confirms": "S-26 incumbent remains terminal for the patch-attention non-linear family on ETTh1 H=720 under S-20-clean",
+    "opens": null
+  },
+  "verdict": "REJECT (close family)",
+  "protocol": "S-20-clean: M=4 (2 NLinear anchors + 2 PatchTST-Delta), val members frozen on 8545, test members refrozen on 11425; tabu-7 fixed-alpha fast 3000; per-horizon ridge no-intercept 11-alpha grid; chronological val[0:1080)/val[1080:2161); held-out S-26 delta-ridge control precondition.",
+  "elapsed_s": 445.7530176639557
+}

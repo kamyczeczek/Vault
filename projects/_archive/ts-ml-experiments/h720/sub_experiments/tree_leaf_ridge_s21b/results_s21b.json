@@ -1,0 +1,102 @@
+{
+  "slice": "S-21b",
+  "protocol": {
+    "members": [
+      "nlinear_L336_a1",
+      "nlinear_L96_a1",
+      "nlinear_L720_a1",
+      "dlinear_L96_a0",
+      "dlinear_L336_a0",
+      "dlinear_L720_a0"
+    ],
+    "anchor": "last history value per origin (NLinear anchor; level-free)",
+    "features": "member deltas P_j-anchor; shared adds horizon step",
+    "heads": [
+      "per-horizon tree with per-leaf ridge (linear mixture)",
+      "shared tree with per-leaf ridge"
+    ],
+    "leaf_ridge_alpha": 10.0,
+    "selection": "held-out second val half pooled MAE",
+    "test": "frozen members refit 11425"
+  },
+  "validation": {
+    "ridge_control_delta_second_half": 2.7002,
+    "per_horizon_grid": {
+      "d2_l25": 3.1855,
+      "d3_l25": 3.2458,
+      "d4_l25": 3.2462,
+      "d5_l25": 3.2802,
+      "d6_l25": 3.3005
+    },
+    "shared_grid": {
+      "d4_l25": 3.0366,
+      "d6_l25": 3.2344,
+      "d8_l25": 3.2425,
+      "d10_l25": 3.3576,
+      "d12_l25": 3.4187
+    }
+  },
+  "test": {
+    "anchors": {
+      "nlinear_L336_a1": 2.0571,
+      "nlinear_L96_a1": 2.0925,
+      "nlinear_L720_a1": 2.1534,
+      "dlinear_L96_a0": 2.1163,
+      "dlinear_L336_a0": 2.122,
+      "dlinear_L720_a0": 2.1687
+    },
+    "per_horizon": {
+      "config": [
+        2,
+        25
+      ],
+      "rolling_mae": 2.2296,
+      "rolling_rmse": 2.771,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.6779504455881527
+        },
+        "window_2": {
+          "mae": 1.6449884768798484
+        },
+        "window_3": {
+          "mae": 2.4658724048807956
+        },
+        "window_4": {
+          "mae": 2.129024214315653
+        }
+      },
+      "delta_vs_s20": 0.2316
+    },
+    "shared": {
+      "config": [
+        4,
+        25
+      ],
+      "rolling_mae": 2.2236,
+      "rolling_rmse": 2.7543,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.558658778345209
+        },
+        "window_2": {
+          "mae": 1.329247978329517
+        },
+        "window_3": {
+          "mae": 2.8359190250609423
+        },
+        "window_4": {
+          "mae": 2.1202965091920527
+        }
+      },
+      "delta_vs_s20": 0.2256
+    },
+    "ridge_control_delta": {
+      "rolling_mae": 2.0778,
+      "delta_vs_s20": 0.0798
+    },
+    "baseline_best_member": 2.0571,
+    "baseline_equal_mean": 2.0852,
+    "winner_by_rolling": "shared"
+  }
+}

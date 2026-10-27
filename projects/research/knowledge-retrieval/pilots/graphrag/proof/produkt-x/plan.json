@@ -1,0 +1,8 @@
+{
+  "pytanie": "Kto zarządza firmą, która stworzyła produkt X?",
+  "seed_kinds": ["Produkt"],
+  "relacje": ["STWORZYŁ", "ZARZĄDZA"],
+  "glebokosc": 2,
+  "filtry": {"ontologia": "biznesowa"},
+  "strategia": "hybrydowa"
+}

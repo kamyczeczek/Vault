@@ -1,0 +1,12 @@
+# Library bytes are never committed: the material is mostly books, much of it
+# z-library, and git history cannot be scrubbed. `index.json` IS committed — it
+# is small, it diffs meaningfully, and it makes the library reviewable. Losing
+# the bytes is recoverable (re-download from the index); losing them from
+# history is not.
+*
+
+# The index, the reader, and the filing tool are the reviewable surface.
+!index.json
+!README.md
+!add.py
+!.gitignore

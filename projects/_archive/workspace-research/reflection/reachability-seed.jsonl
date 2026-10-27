@@ -1,0 +1,25 @@
+# reachability-seed.jsonl — questions a working agent is expected to ask.
+#
+# One {"question": ..., "expect": N} per line. `expect` is the expected answer count:
+#   expect > 0  the concept is reachable; 0 hits or < expect = violation
+#   expect = 0  a NEGATIVE CONTROL — a real zero-hit run. If it starts matching, the
+#               vocabulary gap closed and the seed must be updated (control flip is a
+#               failure, not a pass: a control that silently stops controlling is the
+#               defect this gate exists to catch).
+#
+# Seeds are recorded from actual observed runs, never invented. The zero-hit seeds
+# below were all reproduced on 2026-09-16 against fingerprint f6512b1b322d (633 nodes)
+# and are the exact questions the 2026-09-16 workspace-research-process-rethink
+# reflection could not answer.
+#
+# Positive controls were chosen to span the vocabulary the corpus is known to hold:
+# each is a 2-3 term FTS5 query (AND-semantics; longer queries return nothing by
+# design, which is correct behavior, not a bug).
+{"question": "planning horizon", "expect": 3}
+{"question": "task decomposition", "expect": 3}
+{"question": "confabulation memory lying", "expect": 2}
+{"question": "closed family frontier", "expect": 2}
+{"question": "vocabulary reflection", "expect": 3}
+{"question": "speculation horizon reality", "expect": 0}
+{"question": "verification negative control", "expect": 0}
+{"question": "idea inbox capture", "expect": 0}

@@ -50,6 +50,7 @@ file routes; it holds no content.
 | `../.smart-env/` | Smart Connections (vault) | Smart Connections vector index at the vault root; derived, gitignored except `smart_env.json`, regenerated after the plugin is installed (ADR-006) |
 | `../Notes/` | Vault notes (vault) | User notes at the vault root; tracked in the private repo (ADR-006) |
 | `../.git/` | Repo root (vault) | One repository for the whole vault; the workspace is a subfolder of it, not its own repo (ADR-006, ADR-007) |
+| `.export/` | Bulk dumps (vault) | Generated markdown the app must never parse: Repomix vault exports (`.export/vault_export.md` — 56 MB, 1.05 M lines). Dot-prefixed because Obsidian skips every path starting with `.`; a multi-MB `*.md` at the root stalls the metadata cache on each start and on each save. Written by `scripts/export_vault_repomix.bat`, gitignored |
 | `PLAN.md` | Plan | Workspace reorganization master plan |
 | `TASKS.md` | Tasks | Reorganization ticket list (TASKS.md) |
 

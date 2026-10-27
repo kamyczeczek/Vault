@@ -1,0 +1,68 @@
+{
+ "id": "q001",
+ "question": "Czym dokładnie jest zasada DRY według „The Pragmatic Programmer” i jaki jest test, który pozwala sprawdzić, czy kod ją łamie?",
+ "type": "factual / definition",
+ "header": "Definicja (factual, single-chunk)",
+ "gold_topics": [
+  9
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 27,
+   "topic_title": "Don’t Outrun Your Headlights",
+   "chapter": 4,
+   "page_book": 222,
+   "text": "Around the time of the first edition of _The Pragmatic Programmer_ , debate raged in computer magazines and online forums over the burning question: \"Who would win the desktop GUI wars, Motif or OpenLook?\"[36] It was the wrong question. Odds are you've probably never heard of these technologies as neither \"won\" and the browser-centric web quickly dominated the landscape.\n\n**Tip 43**\n\n#### Avoid Fortune-Telling\n\nMuch of the time, tomorrow looks a lot like today. But don't count on it.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 12, _Tracer Bullets_\n\nTopic 13, _Prototypes and Post-it Notes_\n\nTopic 40, _Refactoring_\n\nTopic 41, _Test to Code_\n\nTopic 48, _The Essence of Agility_\n\nTopic 50, _<u>Coconuts Don't Cut It</u>_\n\n###### **Footnotes**"
+  },
+  {
+   "topic": 9,
+   "topic_title": "DRY—The Evils of Duplication",
+   "chapter": 2,
+   "page_book": 79,
+   "text": "The alternative is to have the same thing expressed in two or more places. If you change one, you have to remember to change the others, or, like the alien computers, your program will be brought to its knees by a contradiction. It isn't a question of whether you'll remember: it's a question of when you'll forget.\n\nYou'll find the DRY principle popping up time and time again throughout this book, often in contexts that have nothing to do with coding. We feel that it is one of the most important tools in the Pragmatic Programmer's tool box.\n\nIn this section we'll outline the problems of duplication and\n\nsuggest general strategies for dealing with it.\n\n#### **DRY IS MORE THAN CODE**"
+  },
+  {
+   "topic": 36,
+   "topic_title": "Blackboards",
+   "chapter": 6,
+   "page_book": 317,
+   "text": "Pragmatic Programmers think critically about all code, including our own. We constantly see room for improvement in our programs and our designs. In Topic 40, _<u>Refactoring</u>_ , we look at techniques that help us fix up existing code continuously as we go.\n\nTesting is not about finding bugs, it's about getting feedback on your code: aspects of design, the API, coupling, and so on. That means that the major benefits of testing happen when you think about and write the tests, not just when you run them. We'll explore this idea in Topic 41, _<u>Test to Code</u>_ ."
+  },
+  {
+   "topic": 21,
+   "topic_title": "Text Manipulation",
+   "chapter": 3,
+   "page_book": 181,
+   "text": "> **Tip 35** Learn a Text Manipulation Language\n\nTo show the wide-ranging applicability of text manipulation languages, here's a sample of some stuff we've done with Ruby and Python just related to the creation of this book:\n\n_Building the Book_\n\nThe build system for the Pragmatic Bookshelf is written in Ruby. Authors, editors, layout people, and support folks use Rake tasks to coordinate the building of PDFs and ebooks.\n\n##### _Code inclusion and highlighting_\n\nWe think it is important that any code presented in a book should have been tested first. Most of the code in this book has been. However, using the DRY principle (see Topic 9, _<u>DRY—The Evils of Duplication</u>_ <u>) we didn't</u> want to copy and paste lines of code from the tested programs into the book. That would mean we'd be"
+  },
+  {
+   "topic": 49,
+   "topic_title": "Pragmatic Teams",
+   "chapter": 9,
+   "page_book": 437,
+   "text": "individual be a better programmer. Can these methods work for teams as well, even for teams of strong-willed, independent people? The answer is a resounding \"yes!'' There are advantages to being a pragmatic individual, but these advantages are multiplied manyfold if the individual is working on a pragmatic team.\n\nA team, in our view, is a small, mostly stable entity of its own. Fifty people aren't a team, they're a horde.[75] Teams where members are constantly being pulled onto other assignments and no one knows each other aren't a team either, they are merely strangers temporarily sharing a bus stop in the rain.\n\nA pragmatic team is small, under 10-12 or so members.\n\nMembers come and go rarely. Everyone knows everyone well, trusts each other, and depends on each other."
+  },
+  {
+   "topic": 14,
+   "topic_title": "Domain Languages",
+   "chapter": 2,
+   "page_book": 124,
+   "text": "We always try to write code using the vocabulary of the application domain (see _<u>Maintain a Glossary</u>_ ). In some cases, Pragmatic Programmers can go to the next level and actually program using the vocabulary, syntax, and semantics—the language—of the domain.\n\n> **Tip 22** Program Close to the Problem Domain\n\n#### **SOME REAL-WORLD DOMAIN LANGUAGES**\n\nLet's look at a few examples where folks have done just that.\n\n##### **RSpec**\n\nRSpe ~~c~~ <u>[19] is a testing library for Ruby. It inspired versions for</u> most other modern languages. A test in RSpec is intended to reflect the behavior you expect from your code."
+  },
+  {
+   "topic": 22,
+   "topic_title": "Engineering Daybooks",
+   "chapter": 3,
+   "page_book": 185,
+   "text": "Copyright © 2020 Pearson Education, Inc.\n\n## Chapter 4\n\n# **Pragmatic Paranoia**\n\n> **Tip 36** You Can't Write Perfect Software\n\nDid that hurt? It shouldn't. Accept it as an axiom of life. Embrace it. Celebrate it. Because perfect software doesn't exist. No one in the brief history of computing has ever written a piece of perfect software. It's unlikely that you'll be the first. And unless you accept this as a fact, you'll end up wasting time and energy chasing an impossible dream.\n\nSo, given this depressing reality, how does a Pragmatic Programmer turn it into an advantage? That's the topic of this chapter."
+  },
+  {
+   "topic": 9,
+   "topic_title": "DRY—The Evils of Duplication",
+   "chapter": 2,
+   "page_book": 79,
+   "text": "Let's get something out of the way up-front. In the first edition of this book we did a poor job of explaining just what we meant by _Don't Repeat Yourself_ . Many people took it to refer to code only: they thought that DRY means \"don't copy-and-paste lines of source.\"\n\nThat _is_ part of DRY, but it's a tiny and fairly trivial part.\n\nDRY is about the duplication of _knowledge_ , of _intent_ . It's about expressing the same thing in two different places, possibly in two totally different ways.\n\nHere's the acid test: when some single facet of the code has to change, do you find yourself making that change in multiple places, and in multiple different formats? Do you have to change code and documentation, or a database schema and a structure that holds it, or…? If so, your code isn't DRY."
+  }
+ ]
+}

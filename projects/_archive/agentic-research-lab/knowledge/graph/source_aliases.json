@@ -1,0 +1,76 @@
+{
+  "causal-intervention": [
+    "the_book_of_why_the_new_science_of_cause_and_eff"
+  ],
+  "scientific-discovery": [
+    "seed_ai_scientist",
+    "agentic_auto_research_frontier_10_sources",
+    "autonomous_scientific_research_ecosystems"
+  ],
+  "production-reliability": [
+    "building_llms_for_production_enhancing_llm_abili"
+  ],
+  "agent-memory": [
+    "agent_memory_hierarchies",
+    "plan_persistence_context_window_compaction"
+  ],
+  "planning-workflow": [
+    "seed_tree_of_thoughts",
+    "full_walkthrough_workflow_for_ai_coding_matt_poc"
+  ],
+  "graph-scaling": [
+    "graph_databases_new_opportunities_for_connected"
+  ],
+  "automl-experiment": [
+    "automated_machine_learning_methods_systems_chall"
+  ],
+  "multiagent-coordination": [
+    "multiagent_systems_algorithmic_game_theoretic_and_logical_foundations",
+    "autonomous_scientific_research_ecosystems",
+    "a_survey_of_multi_agent_deep_reinforcement_learn"
+  ],
+  "taxonomies": [
+    "agent_error_taxonomy_debugging_web_research"
+  ],
+  "oversight": [
+    "caging_the_agents_a_zero_trust_security_architec"
+  ],
+  "interactive": [
+    "agentic_auto_research_frontier_10_sources"
+  ],
+  "failure": [
+    "agent_error_taxonomy_debugging_web_research"
+  ],
+  "divide research labor": [
+    "autonomous_scientific_research_ecosystems",
+    "agentic_auto_research_frontier_10_sources"
+  ],
+  "peer review": [
+    "automated_peer_review_and_self_correction",
+    "agentic_auto_research_frontier_10_sources"
+  ],
+  "self correction": [
+    "self_correction_grounding_requirement",
+    "critic_external_tool_verification"
+  ],
+  "grounding": [
+    "self_correction_grounding_requirement",
+    "critic_external_tool_verification"
+  ],
+  "retrieval quality": [
+    "reflection_retrieval_dominates_write",
+    "reflection_hybrid_retrieval_scale"
+  ],
+  "literature search": [
+    "initial",
+    "agentic_auto_research_frontier_10_sources"
+  ],
+  "failure modes": [
+    "taxonomy_of_20_ai_research_failure_modes",
+    "agent_error_taxonomy_debugging_web_research"
+  ],
+  "write strategy": [
+    "reflection_retrieval_dominates_write",
+    "reflection_hybrid_retrieval_scale"
+  ]
+}

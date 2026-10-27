@@ -1,0 +1,19 @@
+---
+type: Concept
+title: "Designing for Human-Agent Alignment: Understanding what humans want from their agents"
+source: "http://arxiv.org/abs/2404.04289v1"
+tags: [agentic, scientific-discovery]
+generated: { by: okf-enforcer/0.6, at: 2026-10-24T23:21:09Z }
+---
+
+# Designing for Human-Agent Alignment: Understanding what humans want from their agents
+
+**Source:** http://arxiv.org/abs/2404.04289v1
+**Tags:** `agentic, scientific-discovery`
+
+## Core Methodology & Findings
+
+**Authors:** Nitesh Goyal, Minsuk Chang, Michael Terry
+
+### Abstract
+Our ability to build autonomous agents that leverage Generative AI continues to increase by the day. As builders and users of such agents it is unclear what parameters we need to align on before the agents start performing tasks on our behalf. To discover these parameters, we ran a qualitative empirical research study about designing agents that can negotiate during a fictional yet relatable task of selling a camera online. We found that for an agent to perform the task successfully, humans/users and agents need to align over 6 dimensions: 1) Knowledge Schema Alignment 2) Autonomy and Agency Alignment 3) Operational Alignment and Training 4) Reputational Heuristics Alignment 5) Ethics Alignment and 6) Human Engagement Alignment. These empirical findings expand previous work related to process and specification alignment and the need for values and safety in Human-AI interactions. Subsequently we discuss three design directions for designers who are imagining a world filled with Human-Agent collaborations.

@@ -1,0 +1,35 @@
+---
+type: Concept
+title: refusal_audit
+generated: { by: okf-enforcer/0.6, at: 2026-10-24T23:21:30Z }
+---
+
+# Refusal Audit — Out-of-Corpus (Faza 8c)
+
+| qid | pytanie | refusal (hybrid) | refusal (base) | top5_ids | top5_cosine |
+|---|---|---|---|---|---|
+| Q4 | Jaki wpis dodala sesja 04 do SCARS.md w sprawie CRLF (blizna R13)? | True | True | `reflection_rule_of_scars, 173_llm_engineers_handbook_iusztin_paul_labonne_z_li, 214_icm_knowledge_big, 01_measured_closed_families_need_frontier_state, 03_cerebras_second_brain` | `173_llm_engineers_handbook_iusztin_paul_labonne_z_li:0.502, 01_measured_closed_families_need_frontier_state:0.494, 370_harness_starter_kit:0.492, 819_paradigms_of_artificial_intelligence_programming:0.484, 90_the_mythical_man_month_frederick_p_brooks_jr_etc:0.483` |
+| Q5 | Co powiedzial Jan Kowalski na spotkaniu 2026-09-15? | True | True | `00_agentic_rag_modular_graph, 70_the_book_of_why_the_new_science_of_cause_and_eff, 00_agent_memory_hierarchies, 274_the_goal_a_process_of_ongoing_improvement_revise, 00_tool_orchestration_multi_tool` | `70_the_book_of_why_the_new_science_of_cause_and_eff:0.536, 274_the_goal_a_process_of_ongoing_improvement_revise:0.517, 283_the_goal_a_process_of_ongoing_improvement_revise:0.508, 245_the_goal_a_process_of_ongoing_improvement_revise:0.493, 214_icm_knowledge_big:0.490` |
+| Q23 | Jaka będzie prognoza pogody w Warszawie jutro o 14:00? | True | True | `36_the_goal_a_process_of_ongoing_improvement_revise, 121_beginning_software_engineering_2nd_edition_rod_s, 159_the_goal_a_process_of_ongoing_improvement_revise, 582_beginning_software_engineering_2nd_edition_rod_s, 237_building_llms_for_production_enhancing_llm_abili` | `36_the_goal_a_process_of_ongoing_improvement_revise:0.318, 121_beginning_software_engineering_2nd_edition_rod_s:0.313, 159_the_goal_a_process_of_ongoing_improvement_revise:0.308, 582_beginning_software_engineering_2nd_edition_rod_s:0.301, 237_building_llms_for_production_enhancing_llm_abili:0.294` |
+| Q24 | Jaki jest tradycyjny przepis na domowe pierogi ruskie? | True | True | `161_the_pragmatic_programmer_20th_anniversary_editio, 334_paradigms_of_artificial_intelligence_programming, 121_beginning_software_engineering_2nd_edition_rod_s, 335_paradigms_of_artificial_intelligence_programming, 221_psychology_of_computer_programming_gerald_m_wein` | `161_the_pragmatic_programmer_20th_anniversary_editio:0.409, 334_paradigms_of_artificial_intelligence_programming:0.372, 121_beginning_software_engineering_2nd_edition_rod_s:0.363, 335_paradigms_of_artificial_intelligence_programming:0.356, 221_psychology_of_computer_programming_gerald_m_wein:0.342` |
+| Q25 | Jaki padł wynik w ostatnim meczu siatkówki Polska - Brazylia? | True | True | `84_graph_engineering_for_agentic_ai_systems_ken_hua, 237_building_llms_for_production_enhancing_llm_abili, 317_building_llms_for_production_enhancing_llm_abili, 551_paradigms_of_artificial_intelligence_programming, 00_pocock_context_shared_language` | `237_building_llms_for_production_enhancing_llm_abili:0.554, 551_paradigms_of_artificial_intelligence_programming:0.476, 40_artificial_intelligence_a_modern_approach_4th_ed:0.439, 186_artificial_intelligence_a_modern_approach_4th_ed:0.428, 36_the_creative_act_a_way_of_being_rick_rubin_z_lib:0.428` |
+| Q26 | What is the latest release date and new features of Python 3.15? | False | False | `350_llm_engineers_handbook_iusztin_paul_labonne_z_li, 40_llm_engineers_handbook_iusztin_paul_labonne_z_li, 441_beginning_software_engineering_2nd_edition_rod_s, 164_harness_starter_kit, 381_llm_engineers_handbook_iusztin_paul_labonne_z_li` | `40_llm_engineers_handbook_iusztin_paul_labonne_z_li:0.506, 164_harness_starter_kit:0.453, 455_beginning_software_engineering_2nd_edition_rod_s:0.440, 170_harness_starter_kit:0.414, 167_harness_starter_kit:0.408` |
+| Q27 | What was Tesla's stock price at market close yesterday? | False | False | `382_multiagent_systems_algorithmic_game_theoretic_an, 385_beginning_software_engineering_2nd_edition_rod_s, 384_multiagent_systems_algorithmic_game_theoretic_an, 297_building_llms_for_production_enhancing_llm_abili, 383_multiagent_systems_algorithmic_game_theoretic_an` | `385_beginning_software_engineering_2nd_edition_rod_s:0.343, 297_building_llms_for_production_enhancing_llm_abili:0.337, 188_the_goal_a_process_of_ongoing_improvement_revise:0.300, 344_beginning_software_engineering_2nd_edition_rod_s:0.285, 178_the_goal_a_process_of_ongoing_improvement_revise:0.280` |
+| Q28 | What is the status of flight UA123 from New York to London? | False | False | `128_augmenting_human_intellect_a_conceptual_framewor, 84_the_book_of_why_the_new_science_of_cause_and_eff, 00_psychology_of_computer_programming_gerald_m_wein, 80_artificial_intelligence_a_modern_approach_4th_ed, 71_the_goal_a_process_of_ongoing_improvement_revise` | `84_the_book_of_why_the_new_science_of_cause_and_eff:0.496, 80_artificial_intelligence_a_modern_approach_4th_ed:0.414, 363_domain_driven_design_tackling_complexity_in_the:0.395, 393_domain_driven_design_tackling_complexity_in_the:0.392, 121_graph_databases_new_opportunities_for_connected:0.369` |
+| Q29 | Who is the current elected President of Mars colony in 2026? | False | False | `120_structure_and_interpretation_of_computer_program, 100_agentforce_harnessing_the_agency_of_ai_to_scale, 178_the_book_of_why_the_new_science_of_cause_and_eff, 135_building_llms_for_production_enhancing_llm_abili, 00_tool_orchestration_multi_tool` | `100_agentforce_harnessing_the_agency_of_ai_to_scale:0.400, 135_building_llms_for_production_enhancing_llm_abili:0.379, 115_agentforce_harnessing_the_agency_of_ai_to_scale:0.363, 00_the_mythical_man_month_frederick_p_brooks_jr_etc:0.355, 96_agentforce_harnessing_the_agency_of_ai_to_scale:0.354` |
+| Q30 | Which company announced quantum supremacy with 1 million qubits today? | False | False | `00_0d780aefeb5f_low_overhead_transversal_fault_tole, 528_beginning_software_engineering_2nd_edition_rod_s, 34_artificial_intelligence_a_modern_approach_4th_ed, 1030_artificial_intelligence_a_modern_approach_4th_ed, 29_icm_knowledge_big` | `00_0d780aefeb5f_low_overhead_transversal_fault_tole:0.483, 34_artificial_intelligence_a_modern_approach_4th_ed:0.410, 29_icm_knowledge_big:0.406, 315_structure_and_interpretation_of_computer_program:0.402, 01_cerebras_second_brain:0.397` |
+
+## Diagnoza n_pokrytych
+
+| qid | n_pokrytych (base) | n_pokrytych (hybrid) | refusal (hybrid) | stan |
+|---|---|---|---|---|
+| Q4 | 0 | 0 | True | Odmówił |
+| Q5 | 0 | 0 | True | Odmówił |
+| Q23 | 0 | 0 | True | Odmówił |
+| Q24 | 0 | 0 | True | Odmówił |
+| Q25 | 0 | 0 | True | Odmówił |
+| Q26 | 10 | 10 | False | Nie odmówił: base=10, hybrid=10 |
+| Q27 | 9 | 7 | False | Nie odmówił: base=9, hybrid=7 |
+| Q28 | 10 | 7 | False | Nie odmówił: base=10, hybrid=7 |
+| Q29 | 6 | 4 | False | Nie odmówił: base=6, hybrid=4 |
+| Q30 | 10 | 6 | False | Nie odmówił: base=10, hybrid=6 |

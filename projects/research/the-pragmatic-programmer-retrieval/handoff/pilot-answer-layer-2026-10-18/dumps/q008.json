@@ -1,0 +1,69 @@
+{
+ "id": "q008",
+ "question": "Dlaczego „crash early” jest lepsze niż ciche kontynuowanie programu po wykryciu błędu? Jak łączy się to z podejściem „Catch and Release is for Fish”?",
+ "type": "reasoning / why",
+ "header": "Rozumowanie (reasoning, two related topics)",
+ "gold_topics": [
+  24,
+  25
+ ],
+ "input_stage_hit": true,
+ "chunks": [
+  {
+   "topic": 24,
+   "topic_title": "Dead Programs Tell No Lies",
+   "chapter": 4,
+   "page_book": 203,
+   "text": "that the error can't happen, and choose to ignore it. Instead, Pragmatic Programmers tell themselves that if there is an error, something very, very bad has happened. Don't forget to Read the Damn Error Message (see _<u>Coder in a Strange Land</u>_ ).\n\n#### **CATCH AND RELEASE IS FOR FISH**\n\nSome developers feel that is it good style to catch or rescue all exceptions, re-raising them after writing some kind of message. Their code is full of things like this (where a bare raise statement reraises the current exception):"
+  },
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "You can try looking at the place it crashes and work backwards. But sometimes it's easier to start with the data. Get a copy of the dataset and feed it through a locally running copy of the app, making sure it still crashes. Then binary chop the data until you isolate exactly which input values are leading to the crash.\n\n##### **Regressions Across Releases**\n\nYou're on a good team, and you release your software into production. At some point a bug pops up in code that worked OK a week ago. Wouldn't it be nice if you could identify the specific change that introduced it? Guess what? Binary chop time.\n\n#### **THE BINARY CHOP**"
+  },
+  {
+   "topic": 51,
+   "topic_title": "Pragmatic Starter Kit",
+   "chapter": 9,
+   "page_book": 452,
+   "text": "Finding bugs is somewhat like fishing with a net. We use fine, small nets (unit tests) to catch the minnows, and big, coarse nets (integration tests) to catch the killer sharks. Sometimes the fish manage to escape, so we patch any holes that we find, in hopes of catching more and more slippery defects that are swimming about in our project pool.\n\n> **Tip 90** Test Early, Test Often, Test Automatically\n\nWe want to start testing as soon as we have code. Those tiny minnows have a nasty habit of becoming giant, man-eating sharks pretty fast, and catching a shark is quite a bit harder. So we write unit tests. A lot of unit tests."
+  },
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "more of your assumptions is wrong. Don't gloss over a routine or piece of code involved in the bug because you \"know\" it works. Prove it. Prove it in _this_ context, with _this_ data, with _these_ boundary conditions.\n\n> **Tip 34** Don't Assume It—Prove It\n\nWhen you come across a surprise bug, beyond merely fixing it, you need to determine why this failure wasn't caught earlier. Consider whether you need to amend the unit or other tests so that they would have caught it.\n\nAlso, if the bug is the result of bad data that was propagated through a couple of levels before causing the explosion, see if better parameter checking in those routines would have isolated it earlier (see the discussions on crashing early and assertions <u>here and here, respectively).</u>"
+  },
+  {
+   "topic": 23,
+   "topic_title": "Design by Contract",
+   "chapter": 4,
+   "page_book": 191,
+   "text": "By expressing the domain of the square root function in the precondition of the sqrt routine, you shift the burden of correctness to the caller—where it belongs. You can then design the sqrt routine secure in the knowledge that its input will be in range.\n\n#### **DBC AND CRASHING EARLY**\n\nDBC fits in nicely with our concept of crashing early (see Topic 24, _<u>Dead Programs Tell No Lies</u>_ <u>). By using an assert or DBC</u>\n\nmechanism to validate the preconditions, postconditions, and invariants, you can crash early and report more accurate information about the problem."
+  },
+  {
+   "topic": 20,
+   "topic_title": "Debugging",
+   "chapter": 3,
+   "page_book": 168,
+   "text": "If you \"changed only one thing'' and the system stopped working, that one thing was likely to be responsible, directly or indirectly, no matter how farfetched it seems. Sometimes the thing that changed is outside of your control: new versions of the OS, compiler, database, or other third-party software can wreak havoc with previously correct code. New bugs might show up. Bugs for which you had a workaround get fixed, breaking the workaround. APIs change, functionality changes; in short, it's a whole new ball game, and you must retest the system under these new conditions. So keep a close eye on the schedule when considering an upgrade; you may want to wait until _after_ the next release.\n\n#### **THE ELEMENT OF SURPRISE**"
+  },
+  {
+   "topic": 24,
+   "topic_title": "Dead Programs Tell No Lies",
+   "chapter": 4,
+   "page_book": 203,
+   "text": "We prefer it for two reasons. First, the application code isn't eclipsed by the error handling. Second, and perhaps more important, the code is less coupled. In the verbose example, we have to list every exception the add_score_to_board method could raise. If the writer of that method adds another exception, our code is subtly out of date. In the more pragmatic second version, the new exception is automatically propagated.\n\n> **Tip 38** Crash Early\n\n#### **CRASH, DON'T TRASH**\n\nOne of the benefits of detecting problems as soon as you can is that you can crash earlier, and crashing is often the best thing you can do. The alternative may be to continue, writing corrupted data to some vital database or commanding the washing machine into its twentieth consecutive spin cycle."
+  },
+  {
+   "topic": 24,
+   "topic_title": "Dead Programs Tell No Lies",
+   "chapter": 4,
+   "page_book": 203,
+   "text": "In other environments, it may be inappropriate simply to exit a running program. You may have claimed resources that might not get released, or you may need to write log messages, tidy up open transactions, or interact with other processes.\n\nHowever, the basic principle stays the same—when your code discovers that something that was supposed to be impossible just happened, your program is no longer viable. Anything it does from this point forward becomes suspect, so terminate it\n\nas soon as possible.\n\nA dead program normally does a lot less damage than a crippled one.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 20, _Debugging_\n\n- Topic 23, _Design by_ _<u>Contract</u>_\n\n- Topic 25, _Assertive Programming_\n\n- Topic 26, _How to Balance Resources_\n\n- Topic 43, _Stay Safe Out There_"
+  }
+ ]
+}

@@ -1,0 +1,104 @@
+{
+  "version": 2,
+  "description": "Gold-source benchmark for reliable agentic research retrieval",
+  "scoring": "Primary metrics are mean_family_recall (did we find the right source family?) and mean_concept_coverage (do the hits contain every required concept?). mean_exact_recall is diagnostic only: gold_sources name one arbitrary chunk per long book/document while many sibling chunks in the same family contain all required concepts (incomplete qrels), so exact chunk-ID recall cannot measure retrieval quality. Do not optimize it and do not add retriever-returned chunks as golds to raise it (evaluation leakage).",
+  "cases": [
+    {
+      "id": "causal-intervention",
+      "query": "causal inference intervention counterfactual",
+      "gold_sources": [
+        "25_the_book_of_why_the_new_science_of_cause_and_eff"
+      ],
+      "required_concepts": [
+        "intervention",
+        "counterfactual",
+        "causal"
+      ]
+    },
+    {
+      "id": "scientific-discovery",
+      "query": "automated scientific discovery hypothesis experiment",
+      "gold_sources": [
+        "00_agentic_auto_research_frontier_10_sources",
+        "00_seed_ai_scientist"
+      ],
+      "required_concepts": [
+        "scientific",
+        "discovery",
+        "experiment"
+      ]
+    },
+    {
+      "id": "production-reliability",
+      "query": "production LLM reliability retrieval tools prompting",
+      "gold_sources": [
+        "05_building_llms_for_production_enhancing_llm_abili"
+      ],
+      "required_concepts": [
+        "production",
+        "deployment",
+        "prompting"
+      ]
+    },
+    {
+      "id": "agent-memory",
+      "query": "agent memory hierarchy context compaction",
+      "gold_sources": [
+        "00_agent_memory_hierarchies",
+        "00_memory_eviction_forgetting_web_research",
+        "00_persistent_memory_hierarchies_agents",
+        "00_plan_persistence_context_window_compaction"
+      ],
+      "required_concepts": [
+        "memory",
+        "context"
+      ]
+    },
+    {
+      "id": "planning-workflow",
+      "query": "agent planning decomposition long horizon workflow",
+      "gold_sources": [
+        "00_plan_compliance_runtime_verification_web_researc",
+        "06_full_walkthrough_workflow_for_ai_coding_matt_poc"
+      ],
+      "required_concepts": [
+        "planning",
+        "workflow"
+      ]
+    },
+    {
+      "id": "graph-scaling",
+      "query": "graph database connected data graph traversal",
+      "gold_sources": [
+        "02_graph_databases_new_opportunities_for_connected"
+      ],
+      "required_concepts": [
+        "graph",
+        "database"
+      ]
+    },
+    {
+      "id": "automl-experiment",
+      "query": "automated machine learning experiment evaluation optimization",
+      "gold_sources": [
+        "31_automated_machine_learning_methods_systems_chall"
+      ],
+      "required_concepts": [
+        "machine",
+        "learning",
+        "automated"
+      ]
+    },
+    {
+      "id": "multiagent-coordination",
+      "query": "multiagent systems coordination game theory agents",
+      "gold_sources": [
+        "55_multiagent_systems_algorithmic_game_theoretic_an"
+      ],
+      "required_concepts": [
+        "multiagent",
+        "coordination"
+      ]
+    }
+  ]
+}

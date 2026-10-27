@@ -1,0 +1,66 @@
+{
+ "id": "u001",
+ "question": "Jak skonfigurować ingress controller i horizontal pod autoscaler w Kubernetes dla aplikacji mikrousługowej?",
+ "type": "unanswerable",
+ "header": "Unanswerable (Kubernetes HPA & Ingress)",
+ "gold_topics": [],
+ "input_stage_hit": false,
+ "chunks": [
+  {
+   "topic": 50,
+   "topic_title": "Coconuts Don’t Cut It",
+   "chapter": 9,
+   "page_book": 446,
+   "text": "Once your infrastructure is in order, you need to decide how to\n\norganize the work. Beginners might want to start with Scrum for project management, plus the technical practices from eXtreme Programming (XP). More disciplined and experienced teams might look to Kanban and Lean techniques, both for the team and perhaps for larger governance issues.\n\nBut don't take our word for it, investigate and try these approaches for yourself. Be careful, though, in overdoing it. Overly investing in any particular methodology can leave you blind to alternatives. You get used to it. Soon it becomes hard to see any other way. You've become calcified, and now you can't adapt quickly anymore.\n\nMight as well be using coconuts.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 12, _Tracer Bullets_"
+  },
+  {
+   "topic": 51,
+   "topic_title": "Pragmatic Starter Kit",
+   "chapter": 9,
+   "page_book": 452,
+   "text": "Everything depends on automation. You can't build the project on an anonymous cloud server unless the build is fully automatic. You can't deploy automatically if there are manual steps involved. And once you introduce manual steps (\"just for this one part…\") you've broken a very large window ~~.~~ <u>[83]</u>\n\nWith these three legs of version control, ruthless testing, and full automation, your project will have the firm foundation you need so you can concentrate on the hard part: delighting users.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 11, _Reversibility_\n\n- Topic 12, _Tracer Bullets_\n\n- Topic 17, _Shell Games_\n\n- Topic 19, _Version Control_\n\n- Topic 41, _Test to Code_\n\n- Topic 49, _Pragmatic Teams_\n\n- Topic 50, _<u>Coconuts Don't Cut It</u>_\n\n#### **CHALLENGES**"
+  },
+  {
+   "topic": 11,
+   "topic_title": "Reversibility",
+   "chapter": 2,
+   "page_book": 104,
+   "text": "How can you plan for this kind of architectural volatility? You can't.\n\nWhat you can do is make it easy to change. Hide third-party APIs behind your own abstraction layers. Break your code into components: even if you end up deploying them on a single massive server, this approach is a lot easier than taking a monolithic application and splitting it. (We have the scars to prove it.)\n\nAnd, although this isn't particularly a reversibility issue, one final piece of advice.\n\n#### **Tip 19** Forgo Following Fads\n\nNo one knows what the future may hold, especially not us! So enable your code to rock-n-roll: to \"rock on'' when it can, to roll with the punches when it must.\n\n#### **RELATED SECTIONS INCLUDE**\n\nTopic 8, _The Essence of_ _<u>Good Design</u>_\n\n- Topic 10, _<u>Orthogonality</u>_"
+  },
+  {
+   "topic": 11,
+   "topic_title": "Reversibility",
+   "chapter": 2,
+   "page_book": 104,
+   "text": "While many people try to keep their _code_ flexible, you also need to think about maintaining flexibility in the areas of architecture, deployment, and vendor integration.\n\nWe're writing this in 2019. Since the turn of the century we've seen the following \"best practice\" server-side architectures:\n\n- Big hunk of iron\n\n- Federations of big iron\n\n- Load-balanced clusters of commodity hardware\n\n- Cloud-based virtual machines running applications\n\n- Cloud-based virtual machines running services\n\n- Containerized versions of the above\n\n- Cloud-supported serverless applications\n\n- And, inevitably, an apparent move back to big hunks of iron for some tasks\n\nGo ahead and add the very latest and greatest fads to this list, and then regard it with awe: it's a miracle that anything ever worked."
+  },
+  {
+   "topic": 12,
+   "topic_title": "Tracer Bullets",
+   "chapter": 2,
+   "page_book": 109,
+   "text": "Like the gunners, you're trying to hit a target in the dark. Because your users have never seen a system like this before, their requirements may be vague. Because you may be using algorithms, techniques, languages, or libraries you aren't familiar with, you face a large number of unknowns. And because projects take time to complete, you can pretty much guarantee the environment you're working in will change before you're done.\n\nThe classic response is to specify the system to death. Produce reams of paper itemizing every requirement, tying down every unknown, and constraining the environment. Fire the gun using dead reckoning. One big calculation up front, then shoot and hope.\n\nPragmatic Programmers, however, tend to prefer using the software equivalent of tracer bullets."
+  },
+  {
+   "topic": 9,
+   "topic_title": "DRY—The Evils of Duplication",
+   "chapter": 2,
+   "page_book": 79,
+   "text": "Topic 8, _The Essence of_ _<u>Good Design</u>_\n\n- Topic 28, _Decoupling_\n\n- Topic 32, _<u>Configuration</u>_\n\n- Topic 38, _Programming by_ _<u>Coincidence</u>_\n\n- Topic 40, _Refactoring_"
+  },
+  {
+   "topic": 19,
+   "topic_title": "Version Control",
+   "chapter": 3,
+   "page_book": 161,
+   "text": "Many teams have their VCS configured so that a push to a particular branch will automatically build the system, run the tests, and if successful deploy the new code into production.\n\nSound scary? Not when you realize you're using version control. You can always roll it back.\n\n#### **RELATED SECTIONS INCLUDE**\n\n- Topic 11, _Reversibility_\n\n- Topic 49, _Pragmatic Teams_\n\n- Topic 51, _Pragmatic Starter Kit_\n\n#### **CHALLENGES**\n\n- Knowing you can roll back to any previous state using the VCS is one thing, but can you actually do it? Do you know the commands to do it properly? Learn them now, not when disaster strikes and you're under pressure."
+  },
+  {
+   "topic": 32,
+   "topic_title": "Configuration",
+   "chapter": 5,
+   "page_book": 284,
+   "text": "Don't push decisions to configuration out of laziness. If there's genuine debate about whether a feature should work this way or that, or if it should be the users' choice, try it out one way and get feedback on whether the decision was a good one.\n\n###### **Footnotes**\n\n- <u>[37]</u> So it's not really a law. It's more like The Jolly Good Idea of Demeter.\n\n- <u>[38]</u> https://media.pragprog.com/articles/jan_03_enbug.pdf\n\n- <u>[39]</u> Yes, we know that Ruby already has this capability with its at_exit function.\n\n- <u>[40]</u> https://media.pragprog.com/titles/tpp20/code/event/rxcommon/logger.js"
+  }
+ ]
+}

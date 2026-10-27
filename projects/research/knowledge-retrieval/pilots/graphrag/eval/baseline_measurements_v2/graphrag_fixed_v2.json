@@ -1,0 +1,717 @@
+{
+  "in_corpus_pl": {
+    "summary": {
+      "n": 10,
+      "n_refused": 0,
+      "mrr_mean": 0.7833333333333333,
+      "recall_mean": 0.9
+    },
+    "rows": [
+      {
+        "qid": "Q3",
+        "question": "Jakie sa metody kompresji sesji agentow?",
+        "refused": false,
+        "top_k": [
+          "01_session_compaction_for_ai_agents",
+          "01_session_compaction_for_ai_agents_research",
+          "00_session_compaction_for_ai_agents",
+          "00_session_compaction_for_ai_agents_research",
+          "38_multiagent_systems_algorithmic_game_theoretic_an",
+          "198_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "12_full_walkthrough_workflow_for_ai_coding_matt_poc",
+          "301_multiagent_systems_algorithmic_game_theoretic_an",
+          "00_reflection_reorientation_cost",
+          "85_agentforce_harnessing_the_agency_of_ai_to_scale"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q14",
+        "question": "Czym jest agentic engineering i jak prowadzi od chaosu do świadomego projektowania?",
+        "refused": false,
+        "top_k": [
+          "01_agentic_engineering_od_chaosu_do_wiadomego_proje",
+          "02_agentic_engineering_od_chaosu_do_wiadomego_proje",
+          "00_agentic_engineering_od_chaosu_do_wiadomego_proje",
+          "78_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "63_graph_engineering_for_agentic_ai_systems_ken_hua",
+          "00_harness_engineering_for_agentic_ai_coding_tools",
+          "423_domain_driven_design_tackling_complexity_in_the",
+          "00_graph_engineering_for_agentic_ai_systems_ken_hua",
+          "597_beginning_software_engineering_2nd_edition_rod_s",
+          "05_graph_engineering_for_agentic_ai_systems_ken_hua"
+        ],
+        "mrr": 0.3333333333333333,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q15",
+        "question": "Dlaczego ponowne wymyślanie koła w vibe coding jest problemem?",
+        "refused": false,
+        "top_k": [
+          "13_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "10_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "00_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "154_the_pragmatic_programmer_20th_anniversary_editio",
+          "36_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "48_domain_driven_design_tackling_complexity_in_the",
+          "02_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "251_beginning_software_engineering_2nd_edition_rod_s",
+          "199_working_effectively_with_legacy_code_michael_c_f",
+          "17_beyond_vibe_coding_from_coder_to_ai_era_develope"
+        ],
+        "mrr": 0.0,
+        "recall": 0.0
+      },
+      {
+        "qid": "Q16",
+        "question": "Jakie są techniki, żeby wycisnąć 2-3x wydajności z AI w kodowaniu?",
+        "refused": false,
+        "top_k": [
+          "02_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods",
+          "00_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods",
+          "01_jak_naprawd_wycisn_2_3x_z_ai_w_kodowaniu_na_pods",
+          "201_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "169_structure_and_interpretation_of_computer_program",
+          "71_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "103_structure_and_interpretation_of_computer_program",
+          "172_structure_and_interpretation_of_computer_program",
+          "105_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "465_paradigms_of_artificial_intelligence_programming"
+        ],
+        "mrr": 0.5,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q17",
+        "question": "Jak działa routowanie narzędzi oparte na grafie z samonaprawą?",
+        "refused": false,
+        "top_k": [
+          "00_32ecfce36290_graph_based_self_healing_tool_routi",
+          "168_graph_engineering_for_agentic_ai_systems_ken_hua",
+          "00_graph_database_architectural_reflection",
+          "17_graph_databases_new_opportunities_for_connected",
+          "142_graph_engineering_for_agentic_ai_systems_ken_hua",
+          "16_graph_databases_new_opportunities_for_connected",
+          "79_graph_databases_new_opportunities_for_connected",
+          "156_graph_databases_new_opportunities_for_connected",
+          "47_graph_engineering_for_agentic_ai_systems_ken_hua",
+          "64_graph_engineering_for_agentic_ai_systems_ken_hua"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q18",
+        "question": "Do czego służy message passing w analizie i odpornym projektowaniu systemów samonaprawczych?",
+        "refused": false,
+        "top_k": [
+          "00_524ade10f990_message_passing_for_analysis_and_re",
+          "00_32ecfce36290_graph_based_self_healing_tool_routi",
+          "214_harness_starter_kit",
+          "30_the_mythical_man_month_frederick_p_brooks_jr_etc",
+          "00_pending_request_req_20260922_165217",
+          "176_domain_driven_design_tackling_complexity_in_the",
+          "00_pending_request_req_20260922_163307",
+          "01_agentic_engineering_od_chaosu_do_wiadomego_proje",
+          "00_self_healing_dilemmas_in_distributed_systems_fau",
+          "21_the_mythical_man_month_frederick_p_brooks_jr_etc"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q19",
+        "question": "Jak działa rozproszona detekcja zmian o odporności bizantyjskiej?",
+        "refused": false,
+        "top_k": [
+          "00_32e1be065210_byzantine_fault_tolerant_distribute",
+          "00_e6cad2b3c51d_scheduling_and_checkpointing_optimi",
+          "03_the_mythical_man_month_frederick_p_brooks_jr_etc",
+          "00_self_healing_dilemmas_in_distributed_systems_fau",
+          "91_the_mythical_man_month_frederick_p_brooks_jr_etc",
+          "00_pending_request_req_20260922_163307",
+          "645_pattern_recognition_and_machine_learning_christo",
+          "119_llm_engineers_handbook_iusztin_paul_labonne_z_li",
+          "246_the_goal_a_process_of_ongoing_improvement_revise",
+          "01_layered_ai_work_engineering_control_stack"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q20",
+        "question": "Czym charakteryzuje się energetycznie oszczędne uczenie federacyjne z kwantyzacją?",
+        "refused": false,
+        "top_k": [
+          "00_225c8527385d_energy_efficient_quantized_federate",
+          "10_the_five_level_verification_ladder",
+          "1000_artificial_intelligence_a_modern_approach_4th_ed",
+          "236_multiagent_systems_algorithmic_game_theoretic_an",
+          "1017_artificial_intelligence_a_modern_approach_4th_ed",
+          "23_building_llms_for_production_enhancing_llm_abili",
+          "384_pattern_recognition_and_machine_learning_christo",
+          "07_the_five_level_verification_ladder",
+          "540_pattern_recognition_and_machine_learning_christo",
+          "207_multiagent_systems_algorithmic_game_theoretic_an"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q21",
+        "question": "Jak wygląda taksonomia błędów agentów i frameworki debugowania?",
+        "refused": false,
+        "top_k": [
+          "00_agent_error_taxonomy_debugging_web_research",
+          "01_agent_error_taxonomy_debugging_web_research",
+          "09_transferable_expertise_for_autonomous_agents_via",
+          "03_initial",
+          "02_prosea_problem_solving_via_exploration_agents",
+          "00_tool_orchestration_multi_tool",
+          "148_harness_starter_kit",
+          "00_seed_meta_agent_survey",
+          "214_harness_starter_kit",
+          "01_taxonomy_of_20_ai_research_failure_modes"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q22",
+        "question": "Jak realizowana jest niskonarzutowa odporność na błędy dla kwantowej uniwersalności?",
+        "refused": false,
+        "top_k": [
+          "00_0d780aefeb5f_low_overhead_transversal_fault_tole",
+          "1026_artificial_intelligence_a_modern_approach_4th_ed",
+          "139_artificial_intelligence_a_modern_approach_4th_ed",
+          "125_llm_engineers_handbook_iusztin_paul_labonne_z_li",
+          "244_the_book_of_why_the_new_science_of_cause_and_eff",
+          "105_domain_driven_design_tackling_complexity_in_the",
+          "31_icm_knowledge_big",
+          "01_plain_text_as_interface",
+          "238_structure_and_interpretation_of_computer_program",
+          "94_icm_knowledge_big"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      }
+    ]
+  },
+  "in_corpus_en": {
+    "summary": {
+      "n": 10,
+      "n_refused": 0,
+      "mrr_mean": 0.8166666666666667,
+      "recall_mean": 1.0
+    },
+    "rows": [
+      {
+        "qid": "Q1",
+        "question": "What is SEVerA and how does it relate to self-evolving agents?",
+        "refused": false,
+        "top_k": [
+          "00_severa_verified_synthesis_of_self_evolving_agent",
+          "00_a_comprehensive_survey_of_self_evolving_ai_agent",
+          "233_multiagent_systems_algorithmic_game_theoretic_an",
+          "00_self_evolving_world_models_foresight_web_researc",
+          "00_self_improvements_in_modern_agentic_systems_a_su",
+          "00_experience_graph_self_evolving_agents_web_resear",
+          "248_the_book_of_why_the_new_science_of_cause_and_eff",
+          "10_harness_r1_learning_to_edit_executable",
+          "16_augmenting_human_intellect_a_conceptual_framewor",
+          "00_direct_preference_optimization_for_reasoning_age"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q2",
+        "question": "What trust tiers does this lab use for evidence, and what does tier 3 mean?",
+        "refused": false,
+        "top_k": [
+          "00_okf_methodology_research",
+          "01_measured_record_surviving_positive_magnitude",
+          "02_the_five_level_verification_ladder",
+          "02_00_software_factory_isolate_build_prove_ship",
+          "109_domain_driven_design_tackling_complexity_in_the",
+          "46_agentforce_harnessing_the_agency_of_ai_to_scale",
+          "133_beginning_software_engineering_2nd_edition_rod_s",
+          "02_prosea_problem_solving_via_exploration_agents",
+          "00_reflection_structure_substitutes_for_capability",
+          "97_agentforce_harnessing_the_agency_of_ai_to_scale"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q6",
+        "question": "What are the core structures of agent memory hierarchies?",
+        "refused": false,
+        "top_k": [
+          "00_agent_memory_hierarchies",
+          "00_persistent_memory_hierarchies_agents",
+          "309_multiagent_systems_algorithmic_game_theoretic_an",
+          "00_self_improvements_in_modern_agentic_systems_a_su",
+          "03_transferable_expertise_for_autonomous_agents_via",
+          "05_01_session_graph_research",
+          "03_the_last_harness_you_ll_ever_build",
+          "00_seed_meta_agent_survey",
+          "313_multiagent_systems_algorithmic_game_theoretic_an",
+          "11_transferable_expertise_for_autonomous_agents_via"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q7",
+        "question": "How do agent execution hooks provide deterministic loop interception and guardrails?",
+        "refused": false,
+        "top_k": [
+          "01_agent_execution_hooks_guardrails",
+          "00_agent_execution_hooks_guardrails",
+          "00_agent_hooks_lifecycle_guardrails",
+          "02_agent_execution_hooks_guardrails",
+          "03_agent_execution_hooks_guardrails",
+          "11_full_walkthrough_workflow_for_ai_coding_matt_poc",
+          "00_caging_the_agents_a_zero_trust_security_architec",
+          "197_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "00_token_efficiency_strategies_for_jcode",
+          "316_multiagent_systems_algorithmic_game_theoretic_an"
+        ],
+        "mrr": 0.5,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q8",
+        "question": "What is the isolate build prove ship methodology in software factories?",
+        "refused": false,
+        "top_k": [
+          "00_00_software_factory_isolate_build_prove_ship",
+          "314_domain_driven_design_tackling_complexity_in_the",
+          "02_00_software_factory_isolate_build_prove_ship",
+          "03_00_software_factory_isolate_build_prove_ship",
+          "437_beginning_software_engineering_2nd_edition_rod_s",
+          "01_00_software_factory_isolate_build_prove_ship",
+          "103_harness_starter_kit",
+          "03_slop_code_bench",
+          "297_domain_driven_design_tackling_complexity_in_the",
+          "01_real_design_patterns_for_agentic_software_factor"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q9",
+        "question": "How does the engineering workspace function as an adaptive search environment?",
+        "refused": false,
+        "top_k": [
+          "00_adaptive_search_workspace_architecture",
+          "386_beginning_software_engineering_2nd_edition_rod_s",
+          "51_graph_engineering_for_agentic_ai_systems_ken_hua",
+          "827_artificial_intelligence_a_modern_approach_4th_ed",
+          "129_icm_knowledge_big",
+          "1076_artificial_intelligence_a_modern_approach_4th_ed",
+          "05_icm_ml_research_workflow",
+          "578_beginning_software_engineering_2nd_edition_rod_s",
+          "36_icm_knowledge_big",
+          "00_code_as_agent_harness"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q10",
+        "question": "What are the key version control paradigms and git discipline patterns for autonomous agents?",
+        "refused": false,
+        "top_k": [
+          "00_agentic_git_discipline_patterns",
+          "02_agentic_git_discipline_patterns",
+          "01_transferable_expertise_for_autonomous_agents_via",
+          "01_agentic_git_discipline_patterns",
+          "198_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "231_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "02_transferable_expertise_for_autonomous_agents_via",
+          "10_transferable_expertise_for_autonomous_agents_via",
+          "192_beyond_vibe_coding_from_coder_to_ai_era_develope",
+          "195_beyond_vibe_coding_from_coder_to_ai_era_develope"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q11",
+        "question": "How is modular graph structured in agentic RAG?",
+        "refused": false,
+        "top_k": [
+          "00_agentic_rag_modular_graph",
+          "17_graph_databases_new_opportunities_for_connected",
+          "00_agentic_auto_research_frontier_10_sources",
+          "11_graph_databases_new_opportunities_for_connected",
+          "01_modular_composition_strategy_research",
+          "64_graph_engineering_for_agentic_ai_systems_ken_hua",
+          "234_graph_engineering_for_agentic_ai_systems_ken_hua",
+          "12_graph_databases_new_opportunities_for_connected",
+          "00_llm_agents_for_interactive_workflow_provenance_r",
+          "179_graph_databases_new_opportunities_for_connected"
+        ],
+        "mrr": 1.0,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q12",
+        "question": "What is the CRITIC framework for verify-then-correct with external tools?",
+        "refused": false,
+        "top_k": [
+          "01_07_critic_external_tool_verification",
+          "00_grounded_tool_reliability_failure_modes_web_rese",
+          "00_07_critic_external_tool_verification",
+          "01_00_bend2_vibe_coding_reinventing_wheels",
+          "191_harness_starter_kit",
+          "00_world_models_long_horizon_web_research",
+          "296_harness_starter_kit",
+          "01_09_mistake_correction_abstraction_level",
+          "00_token_efficiency_strategies_for_jcode",
+          "50_harness_starter_kit"
+        ],
+        "mrr": 0.3333333333333333,
+        "recall": 1.0
+      },
+      {
+        "qid": "Q13",
+        "question": "How does lesson persistence and eviction work in ExpeL?",
+        "refused": false,
+        "top_k": [
+          "00_memory_eviction_forgetting_web_research",
+          "01_08_lesson_persistence_eviction_requirement",
+          "00_08_lesson_persistence_eviction_requirement",
+          "437_structure_and_interpretation_of_computer_program",
+          "12_cascade_case_based_continual_adaptation_for_larg",
+          "01_09_mistake_correction_abstraction_level",
+          "436_structure_and_interpretation_of_computer_program",
+          "00_09_mistake_correction_abstraction_level",
+          "07_cascade_case_based_continual_adaptation_for_larg",
+          "03_01_session_graph_research"
+        ],
+        "mrr": 0.3333333333333333,
+        "recall": 1.0
+      }
+    ]
+  },
+  "ooc_pl": {
+    "summary": {
+      "n": 5,
+      "n_refused": 5,
+      "mrr_mean": 0.0,
+      "recall_mean": 0.0
+    },
+    "rows": [
+      {
+        "qid": "Q4",
+        "question": "Jaki wpis dodala sesja 04 do SCARS.md w sprawie CRLF (blizna R13)?",
+        "refused": true,
+        "top_k": [
+          "reflection_rule_of_scars",
+          "173_llm_engineers_handbook_iusztin_paul_labonne_z_li",
+          "214_icm_knowledge_big",
+          "01_measured_closed_families_need_frontier_state",
+          "03_cerebras_second_brain",
+          "370_harness_starter_kit",
+          "02_cerebras_second_brain",
+          "819_paradigms_of_artificial_intelligence_programming",
+          "48_the_pragmatic_programmer_20th_anniversary_editio",
+          "90_the_mythical_man_month_frederick_p_brooks_jr_etc"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "Q5",
+        "question": "Co powiedzial Jan Kowalski na spotkaniu 2026-09-15?",
+        "refused": true,
+        "top_k": [
+          "00_agentic_rag_modular_graph",
+          "70_the_book_of_why_the_new_science_of_cause_and_eff",
+          "00_agent_memory_hierarchies",
+          "274_the_goal_a_process_of_ongoing_improvement_revise",
+          "00_tool_orchestration_multi_tool",
+          "283_the_goal_a_process_of_ongoing_improvement_revise",
+          "00_plan_persistence_context_window_compaction",
+          "245_the_goal_a_process_of_ongoing_improvement_revise",
+          "00_progressive_disclosure_icm_depth_orthogonality",
+          "214_icm_knowledge_big"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "Q23",
+        "question": "Jaka będzie prognoza pogody w Warszawie jutro o 14:00?",
+        "refused": true,
+        "top_k": [
+          "36_the_goal_a_process_of_ongoing_improvement_revise",
+          "121_beginning_software_engineering_2nd_edition_rod_s",
+          "159_the_goal_a_process_of_ongoing_improvement_revise",
+          "582_beginning_software_engineering_2nd_edition_rod_s",
+          "237_building_llms_for_production_enhancing_llm_abili",
+          "81_building_llms_for_production_enhancing_llm_abili",
+          "491_artificial_intelligence_a_modern_approach_4th_ed",
+          "257_the_book_of_why_the_new_science_of_cause_and_eff",
+          "537_beginning_software_engineering_2nd_edition_rod_s",
+          "13_the_creative_act_a_way_of_being_rick_rubin_z_lib"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "Q24",
+        "question": "Jaki jest tradycyjny przepis na domowe pierogi ruskie?",
+        "refused": true,
+        "top_k": [
+          "161_the_pragmatic_programmer_20th_anniversary_editio",
+          "334_paradigms_of_artificial_intelligence_programming",
+          "121_beginning_software_engineering_2nd_edition_rod_s",
+          "335_paradigms_of_artificial_intelligence_programming",
+          "221_psychology_of_computer_programming_gerald_m_wein",
+          "261_artificial_intelligence_a_modern_approach_4th_ed",
+          "63_the_creative_act_a_way_of_being_rick_rubin_z_lib",
+          "580_paradigms_of_artificial_intelligence_programming",
+          "410_paradigms_of_artificial_intelligence_programming",
+          "331_artificial_intelligence_a_modern_approach_4th_ed"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "Q25",
+        "question": "Jaki padł wynik w ostatnim meczu siatkówki Polska - Brazylia?",
+        "refused": true,
+        "top_k": [
+          "237_building_llms_for_production_enhancing_llm_abili",
+          "551_paradigms_of_artificial_intelligence_programming",
+          "40_artificial_intelligence_a_modern_approach_4th_ed",
+          "186_artificial_intelligence_a_modern_approach_4th_ed",
+          "36_the_creative_act_a_way_of_being_rick_rubin_z_lib",
+          "515_artificial_intelligence_a_modern_approach_4th_ed",
+          "51_the_book_of_why_the_new_science_of_cause_and_eff",
+          "188_artificial_intelligence_a_modern_approach_4th_ed",
+          "32_icm_knowledge_big",
+          "547_paradigms_of_artificial_intelligence_programming"
+        ],
+        "mrr": null,
+        "recall": null
+      }
+    ]
+  },
+  "ooc_en": {
+    "summary": {
+      "n": 5,
+      "n_refused": 5,
+      "mrr_mean": 0.0,
+      "recall_mean": 0.0
+    },
+    "rows": [
+      {
+        "qid": "Q26",
+        "question": "What is the latest release date and new features of Python 3.15?",
+        "refused": true,
+        "top_k": [
+          "40_llm_engineers_handbook_iusztin_paul_labonne_z_li",
+          "164_harness_starter_kit",
+          "455_beginning_software_engineering_2nd_edition_rod_s",
+          "170_harness_starter_kit",
+          "167_harness_starter_kit",
+          "13_building_llms_for_production_enhancing_llm_abili",
+          "46_llm_engineers_handbook_iusztin_paul_labonne_z_li",
+          "780_paradigms_of_artificial_intelligence_programming",
+          "315_graph_engineering_for_agentic_ai_systems_ken_hua",
+          "322_harness_starter_kit"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "Q27",
+        "question": "What was Tesla's stock price at market close yesterday?",
+        "refused": true,
+        "top_k": [
+          "385_beginning_software_engineering_2nd_edition_rod_s",
+          "297_building_llms_for_production_enhancing_llm_abili",
+          "188_the_goal_a_process_of_ongoing_improvement_revise",
+          "344_beginning_software_engineering_2nd_edition_rod_s",
+          "178_the_goal_a_process_of_ongoing_improvement_revise",
+          "293_the_goal_a_process_of_ongoing_improvement_revise",
+          "506_multiagent_systems_algorithmic_game_theoretic_an",
+          "50_the_mythical_man_month_frederick_p_brooks_jr_etc",
+          "191_beginning_software_engineering_2nd_edition_rod_s",
+          "17_the_goal_a_process_of_ongoing_improvement_revise"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "Q28",
+        "question": "What is the status of flight UA123 from New York to London?",
+        "refused": true,
+        "top_k": [
+          "84_the_book_of_why_the_new_science_of_cause_and_eff",
+          "80_artificial_intelligence_a_modern_approach_4th_ed",
+          "363_domain_driven_design_tackling_complexity_in_the",
+          "393_domain_driven_design_tackling_complexity_in_the",
+          "121_graph_databases_new_opportunities_for_connected",
+          "555_artificial_intelligence_a_modern_approach_4th_ed",
+          "157_domain_driven_design_tackling_complexity_in_the",
+          "190_domain_driven_design_tackling_complexity_in_the",
+          "93_domain_driven_design_tackling_complexity_in_the",
+          "259_multiagent_systems_algorithmic_game_theoretic_an"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "Q29",
+        "question": "Who is the current elected President of Mars colony in 2026?",
+        "refused": true,
+        "top_k": [
+          "100_agentforce_harnessing_the_agency_of_ai_to_scale",
+          "135_building_llms_for_production_enhancing_llm_abili",
+          "115_agentforce_harnessing_the_agency_of_ai_to_scale",
+          "00_the_mythical_man_month_frederick_p_brooks_jr_etc",
+          "96_agentforce_harnessing_the_agency_of_ai_to_scale",
+          "00_agentforce_harnessing_the_agency_of_ai_to_scale",
+          "1042_artificial_intelligence_a_modern_approach_4th_ed",
+          "985_artificial_intelligence_a_modern_approach_4th_ed",
+          "05_the_goal_a_process_of_ongoing_improvement_revise",
+          "936_artificial_intelligence_a_modern_approach_4th_ed"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "Q30",
+        "question": "Which company announced quantum supremacy with 1 million qubits today?",
+        "refused": true,
+        "top_k": [
+          "00_0d780aefeb5f_low_overhead_transversal_fault_tole",
+          "34_artificial_intelligence_a_modern_approach_4th_ed",
+          "29_icm_knowledge_big",
+          "315_structure_and_interpretation_of_computer_program",
+          "01_cerebras_second_brain",
+          "25_artificial_intelligence_a_modern_approach_4th_ed",
+          "55_structure_and_interpretation_of_computer_program",
+          "386_structure_and_interpretation_of_computer_program",
+          "291_domain_driven_design_tackling_complexity_in_the",
+          "655_artificial_intelligence_a_modern_approach_4th_ed"
+        ],
+        "mrr": null,
+        "recall": null
+      }
+    ]
+  },
+  "canary": {
+    "summary": {
+      "n": 5,
+      "n_refused": 5,
+      "mrr_mean": 0.0,
+      "recall_mean": 0.0
+    },
+    "rows": [
+      {
+        "qid": "CANARY_01",
+        "question": "Jaki jest numer telefonu do dzialu HR firmy XYZ?",
+        "refused": true,
+        "top_k": [
+          "77_structure_and_interpretation_of_computer_program",
+          "199_beginning_software_engineering_2nd_edition_rod_s",
+          "157_structure_and_interpretation_of_computer_program",
+          "551_beginning_software_engineering_2nd_edition_rod_s",
+          "78_structure_and_interpretation_of_computer_program",
+          "47_psychology_of_computer_programming_gerald_m_wein",
+          "81_structure_and_interpretation_of_computer_program",
+          "212_the_goal_a_process_of_ongoing_improvement_revise",
+          "232_paradigms_of_artificial_intelligence_programming",
+          "91_domain_driven_design_tackling_complexity_in_the"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "CANARY_02",
+        "question": "Kiedy urodzila sie babcia Krystyna z Sierpca?",
+        "refused": true,
+        "top_k": [
+          "334_the_book_of_why_the_new_science_of_cause_and_eff",
+          "03_artificial_intelligence_a_modern_approach_4th_ed",
+          "59_the_book_of_why_the_new_science_of_cause_and_eff",
+          "794_artificial_intelligence_a_modern_approach_4th_ed",
+          "246_the_goal_a_process_of_ongoing_improvement_revise",
+          "265_the_book_of_why_the_new_science_of_cause_and_eff",
+          "230_psychology_of_computer_programming_gerald_m_wein",
+          "170_the_goal_a_process_of_ongoing_improvement_revise",
+          "339_the_book_of_why_the_new_science_of_cause_and_eff",
+          "209_the_book_of_why_the_new_science_of_cause_and_eff"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "CANARY_03",
+        "question": "Ile kosztuje bilet miesieczny w komunikacji miejskiej w Atlantis?",
+        "refused": true,
+        "top_k": [
+          "228_building_llms_for_production_enhancing_llm_abili",
+          "157_domain_driven_design_tackling_complexity_in_the",
+          "192_multiagent_systems_algorithmic_game_theoretic_an",
+          "121_graph_databases_new_opportunities_for_connected",
+          "80_artificial_intelligence_a_modern_approach_4th_ed",
+          "88_artificial_intelligence_a_modern_approach_4th_ed",
+          "45_the_mythical_man_month_frederick_p_brooks_jr_etc",
+          "127_graph_databases_new_opportunities_for_connected",
+          "310_the_goal_a_process_of_ongoing_improvement_revise",
+          "123_graph_databases_new_opportunities_for_connected"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "CANARY_04",
+        "question": "Jaki jest numer NIP firmy Widmo Sp. z o.o.?",
+        "refused": true,
+        "top_k": [
+          "77_structure_and_interpretation_of_computer_program",
+          "128_augmenting_human_intellect_a_conceptual_framewor",
+          "157_structure_and_interpretation_of_computer_program",
+          "199_beginning_software_engineering_2nd_edition_rod_s",
+          "78_structure_and_interpretation_of_computer_program",
+          "819_paradigms_of_artificial_intelligence_programming",
+          "81_structure_and_interpretation_of_computer_program",
+          "89_the_mythical_man_month_frederick_p_brooks_jr_etc",
+          "232_paradigms_of_artificial_intelligence_programming",
+          "635_beginning_software_engineering_2nd_edition_rod_s"
+        ],
+        "mrr": null,
+        "recall": null
+      },
+      {
+        "qid": "CANARY_05",
+        "question": "Podaj wspolrzedne geograficzne miasta Eldoria.",
+        "refused": true,
+        "top_k": [
+          "47_graph_databases_new_opportunities_for_connected",
+          "15_the_goal_a_process_of_ongoing_improvement_revise",
+          "184_paradigms_of_artificial_intelligence_programming",
+          "187_paradigms_of_artificial_intelligence_programming",
+          "74_artificial_intelligence_a_modern_approach_4th_ed",
+          "186_paradigms_of_artificial_intelligence_programming",
+          "154_graph_databases_new_opportunities_for_connected",
+          "56_multiagent_systems_algorithmic_game_theoretic_an",
+          "89_artificial_intelligence_a_modern_approach_4th_ed",
+          "107_artificial_intelligence_a_modern_approach_4th_ed"
+        ],
+        "mrr": null,
+        "recall": null
+      }
+    ]
+  }
+}

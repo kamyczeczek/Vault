@@ -1,0 +1,4 @@
+# Derived fixture database — rebuilt by build_mini_graph.py, never hand-edited.
+*.db
+# Build/download logs — operational noise, never committed.
+*.log

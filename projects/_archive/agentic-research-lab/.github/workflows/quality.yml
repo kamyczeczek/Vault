@@ -1,0 +1,21 @@
+name: Quality gates
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python knowledge/graph/build_graph.py
+      - run: python scripts/quality_check.py
+      - run: git diff --check
