@@ -96,6 +96,10 @@ Single home per fact: intent → entry file routes live in `AGENTS.md`
   (D7). "Nothing known" is a valid sentence; a missing heading is not.
 - **Derived state is gitignored.** Graph databases, corpus dumps, and fetched
   datasets are rebuildable artifacts, not source.
+- **Symbol & code graph navigation (monorepo).** Before reading whole files in
+  `projects/` or `scripts/`, prefer CodeGraph CLI over blind read/grep:
+  `codegraph query <symbol>`, `codegraph callers <symbol>`, `codegraph impact <symbol>`,
+  `codegraph explore <task>`. Re-sync after edits via `codegraph sync`.
 - **Each project answers for its own gates.** Read its entry file before its code.
 - **The root holds only what this file lists.** A new root-level entry is a
   structural decision — the procedure lives in the gate's docstring

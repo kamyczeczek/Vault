@@ -145,6 +145,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `single-repo-codegraph-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `preflight-agent-and-s71-scar-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `okf-rag-scope-and-gate-2026-10-25` | 2026-10-28 | mateusz | opencode |
+| `codegraph-routing-claude-rules-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `codegraph-gate-residue-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `close-py-include-safety-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `benchmark-core-fev-multivariate-2026-10-27` | 2026-10-28 | mateusz | opencode |
