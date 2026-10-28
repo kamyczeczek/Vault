@@ -41,6 +41,8 @@ scripts/_scratch/
 scripts/out/
 tools/out/
 .export/
+# CodeGraph index: machine-local, rebuilt by `codegraph init` (~70 MB SQLite).
+.codegraph/
 # Derived FTS5/brain sidecars: rebuilt from sources, churn on every ingest.
 brain/*.db*
 .smart-env/*

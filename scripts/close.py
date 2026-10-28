@@ -38,8 +38,9 @@ Notes:
   default; the ritual forces it into the flag instead of leaving it for
   the reviewer to find.
 - `--verify-claims` (E6, decision B3) re-derives the flag body's claims that
-  have an *executable artifact*: a `commit <hash>` must exist in the root repo
-  or in a nested projects/ repo; a counter that names its artifact
+  have an *executable artifact*: a `commit <hash>` must exist in the repo
+  (or in a `repos=` path passed explicitly, e.g. restored `history.bundle`);
+  a counter that names its artifact
   (`handoff/flags/`, `brain.db`) must match the recomputed value; a bare gate
   claim is already enforced by this transaction's own `integrity` step, so it
   is reported rather than re-run a second time (96 s measured).
@@ -177,34 +178,14 @@ class ClaimsReport(NamedTuple):
     gate_covered: int     # gate claims enforced by the transaction's own gate
 
 
-def nested_repos(root: Path) -> list[Path]:
-    """Git repos nested under projects/ — own history, own commit objects.
+def _commit_repo(root: Path, rev: str, repos: list[Path] = ()) -> Path | None:
+    """First repo holding `rev` as a commit — root first, then `repos`.
 
-    A flag written during a knowledge-retrieval session cites a KR commit hash;
-    that object does not exist in the root repo. Re-deriving hashes against the
-    root alone reports a false divergence on 14 of the 33 commit claims in the
-    current corpus, so resolution is root-first, then nested.
+    Since `vault-monorepo-import-2026-10-27` (D24) every project is a plain
+    directory in the one root repo, so nothing is discovered here: `repos` is
+    an explicit opt-in for a history restored from `history.bundle`.
     """
-    base = root / "projects"
-    if not base.is_dir():
-        return []
-    seen: set[Path] = set()
-    found: list[Path] = []
-    for pattern in ("*/*", "*/*/*"):
-        for cand in sorted(base.glob(pattern)):
-            if cand in seen or not cand.is_dir():
-                continue
-            seen.add(cand)
-            if (cand / ".git").exists():
-                found.append(cand)
-    return found
-
-
-def _commit_repo(root: Path, rev: str, repos: list[Path] | None = None) -> Path | None:
-    """First repo holding `rev` as a commit — root first, then nested repos."""
-    if repos is None:
-        repos = nested_repos(root)
-    for repo in [root, *repos]:
+    for repo in [root, *(repos or [])]:
         if subprocess.run(["git", "cat-file", "-e", f"{rev}^{{commit}}"],
                           capture_output=True, cwd=str(repo)).returncode == 0:
             return repo
@@ -280,7 +261,7 @@ def _counter_artifact(root: Path, unit: str,
 
 
 def verify_claims(body: str, root: Path = ROOT,
-                  repos: list[Path] | None = None) -> ClaimsReport:
+                  repos: list[Path] = ()) -> ClaimsReport:
     """Re-derive the flag body's claims that have an executable artifact (B3).
 
     FAIL means the artifact contradicts the claim; WARN means there was no
@@ -297,8 +278,7 @@ def verify_claims(body: str, root: Path = ROOT,
         re_derived += 1
         if _commit_repo(root, rev, repos) is None:
             findings.append(
-                f"FAIL: claim `commit {rev}` — no such commit in the root repo "
-                "or any nested projects/ repo")
+                f"FAIL: claim `commit {rev}` — no such commit in the repo")
     for m in CLAIM_COUNTER_RX.finditer(body):
         claimed, unit = int(m.group(1)), m.group(2)
         clause = _clause_around(body, m.start())
@@ -473,7 +453,7 @@ def explain() -> None:
 - commit message = <flag>: <first-line[:96]> + blank + FULL body (S60)
 - brak --amend — poprawka flagi = retire + re-close
 - --correct <flag> — korekta istniejącej flagi w miejscu (ten sam commit gate)
-- --include nie działa z projects/research/... (zagnieżdżone repo)
+- --include works repo-wide: every project is a plain directory (D24, no nested .git)
 - --verify-claims: re-derywuje twierdzenia z artefaktem (commit <hash>, licznik
   z nazwanym źródłem); --dry-run FAILuje na sprzeczności, close tylko WARN (B3)
 """)
