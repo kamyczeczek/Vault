@@ -1,28 +1,12 @@
 ---
-type: Concept
 flag: okf-rag-scope-and-gate-2026-10-25
-since: 2026-10-25
+since: 2026-10-28
 owner: mateusz
 agent: opencode
-model: opencode/deepseek-v4.1-flash-free
-origin: Notes/OKF-rag/EXPERIMENT-benchmark-scope-2026-10-25.md
-title: okf-rag-scope-and-gate-2026-10-25
-generated: { by: opencode, at: 2026-10-25T00:00:00Z }
+model: omniroute/agy/gemini-3.8-flash-high
+origin: session-close
 ---
 
-`okf-rag-scope-and-gate-2026-10-25` — 2026-10-25: ustalono, że `Notes/OKF-rag`
-zostaje poza kontraktem projektu (ADR `handoff/decisions/notes-okf-rag-outside-project-contract.md`),
-maszyneria idzie do root `scripts/`, a gate do `check_workspace_integrity.py`
-jako advisory do czasu migracji. Dodano słownik artefaktów `Notes/OKF-rag/CONTEXT.md`,
-wiersz kontekstu w `CONTEXT-MAP.md` i pre-registered
-`EXPERIMENT-benchmark-scope-2026-10-25.md` z realnym przypadkiem adwersaryjnym
-(Q15: blok `napkin.md:3985–3998` zalicza `related`, choć nie zawiera
-odpowiedzi). Plan: 3 commity — (1) te artefakty, (2) migracja 5 notatek
-kuratorskich do strukturalnego `sources: [{file, lines}]` + allowlista 2 decyzji,
-(3) skill `retrieval-two-stage` + check w integrity. Next: dodać tryb `scoped`
-do `scripts/run_okf_rag_benchmark.py`, bo bez niego reguła scope jest
-niemierzalna i eksperyment nie jest uruchamialny jedną komendą.
+`okf-rag-scope-and-gate-2026-10-25` — 2026-10-28: commit 2 OKF-rag wdrożony — zmigrowano 5 notatek kuratorskich (`DECISION-minimalny-przeplyw-wiedzy.md`, `DECISION-kontrakt-odpowiedzi-retrieval.md`, `EXPERIMENT-benchmark-scope-2026-10-25.md`, `EXPERIMENT-retrieval-benchmark-20-2026-10-25.md`, `EXPERIMENT-retrieval-answer-contract-2026-10-25.md`) do formatu `sources: [{file, lines}]` z precyzyjnymi zakresami linii. Skill `retrieval-two-stage` istnieje w `skills/retrieval-two-stage/SKILL.md` (commit `653f87d`). Wszystkie 5 notatek zweryfikowane deterministycznym gate'em `scripts/gate_checks.py --gate g7-okf-sources` (PASS). Next: tryb `scoped` w runnerze benchmarku, gate cytowań i adnotacje `related`.
 
-not checked: nie zmierzono przebiegu ze scope (brak trybu `scoped`); nie
-zmigrowano frontmattera żadnej notatki; gate cytowań nie istnieje; skill
-`retrieval-two-stage` nie istnieje; Q02 i Q20 nadal bez `exact`/`related`.
+not checked: tryb `scoped` w `scripts/run_okf_rag_benchmark.py`; gate cytowań w integrity; adnotacje `related` dla pytań Q01–Q20.

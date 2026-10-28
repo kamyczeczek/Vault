@@ -141,6 +141,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
 | `unlazy-workflow-closure-2026-10-27` | 2026-10-28 | mateusz | opencode |
+| `okf-rag-scope-and-gate-2026-10-25` | 2026-10-28 | mateusz | opencode |
 | `close-py-include-safety-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `benchmark-core-fev-multivariate-2026-10-27` | 2026-10-28 | mateusz | opencode |
 | `vault-monorepo-import-2026-10-27` | 2026-10-27 | mateusz | opencode |
@@ -152,7 +153,6 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `benchmark-core-fev-honest-2026-10-26` | 2026-10-26 | mateusz | opencode |
 | `vault-root-flatten-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `smart-connections-cache-exclusions-2026-10-25` | 2026-10-25 | mateusz | codex |
-| `okf-rag-scope-and-gate-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `okf-rag-corpus-pin-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `okf-rag-benchmark-rerun-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `okf-rag-benchmark-local-2026-10-25` | 2026-10-25 | codex | codex |

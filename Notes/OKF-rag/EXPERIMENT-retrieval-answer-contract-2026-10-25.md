@@ -5,8 +5,8 @@ description: Pięć realnych pytań sprawdzających przejście od huba semantycz
 status: complete
 tags: [okf-rag, retrieval, evidence, benchmark]
 sources:
-  - EXPERIMENT-retrieval-2026-10-25.md
-  - DECISION-kontrakt-odpowiedzi-retrieval.md
+  - { file: EXPERIMENT-retrieval-2026-10-25.md, lines: "33-85" }
+  - { file: DECISION-kontrakt-odpowiedzi-retrieval.md, lines: "29-72" }
 generated:
   by: codex
   at: 2026-10-25T00:00:00Z

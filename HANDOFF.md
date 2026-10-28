@@ -37,6 +37,11 @@ Stan:
 Next: optimize FEV fit loop / subset origins before full run; migrate OKF-rag C2-C6 notes.
 not checked: FEV multivariate end-to-end artifact generation; OKF-rag C2-C6 notes migration; remote CI pipeline (non-existent).
 
+<!-- handoff/flags/okf-rag-scope-and-gate-2026-10-25.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
+`okf-rag-scope-and-gate-2026-10-25` — 2026-10-28: commit 2 OKF-rag wdrożony — zmigrowano 5 notatek kuratorskich (`DECISION-minimalny-przeplyw-wiedzy.md`, `DECISION-kontrakt-odpowiedzi-retrieval.md`, `EXPERIMENT-benchmark-scope-2026-10-25.md`, `EXPERIMENT-retrieval-benchmark-20-2026-10-25.md`, `EXPERIMENT-retrieval-answer-contract-2026-10-25.md`) do formatu `sources: [{file, lines}]` z precyzyjnymi zakresami linii. Skill `retrieval-two-stage` istnieje w `skills/retrieval-two-stage/SKILL.md` (commit `653f87d`). Wszystkie 5 notatek zweryfikowane deterministycznym gate'em `scripts/gate_checks.py --gate g7-okf-sources` (PASS). Next: tryb `scoped` w runnerze benchmarku, gate cytowań i adnotacje `related`.
+
+not checked: tryb `scoped` w `scripts/run_okf_rag_benchmark.py`; gate cytowań w integrity; adnotacje `related` dla pytań Q01–Q20.
+
 <!-- handoff/flags/close-py-include-safety-2026-10-28.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
 `close-py-include-safety-2026-10-28` — 2026-10-28: `close.py` odblokowuje `--include projects/...` i zabrania `--include .`. Usunięto przestarzały check blokujący ścieżki pod `projects/research/`, dodano walidację przez `git check-ignore -q --no-index --`, zachowano obsługę staged deletions (`_is_staged_deletion`) i katalogów. Usunięto zindexowane śmieci `close_body.txt` i `correct_body.txt` z `handoff/`. Testy w `scripts/test_close.py` (`NewSafetyChecksTests`) zielone, 42 testy w `scripts/test_close.py` przechodzą.
 
@@ -188,24 +193,6 @@ trybu `scoped`, gate'u cytowań, migracji 5 notatek, Q02/Q20, 10 passage'ów
 
 <!-- handoff/flags/smart-connections-cache-exclusions-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
 `smart-connections-cache-exclusions-2026-10-25` — 2026-10-25: corrected Smart Connections folder exclusions for the active vault root by adding the root-level `scripts/`, `projects/`, and `handoff/` paths while preserving the legacy `root_workspace/` paths. Because the old cache continued to load excluded entries, the derived `smart_sources`, `smart_blocks`, `embedding_models`, and `event_logs` directories were moved to `.smart-env/_recovery-2026-10-25`; notes and `smart_env.json` were preserved. Next step: reopen Obsidian and allow Smart Connections to rebuild with the corrected scope.
-
-<!-- handoff/flags/okf-rag-scope-and-gate-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`okf-rag-scope-and-gate-2026-10-25` — 2026-10-25: ustalono, że `Notes/OKF-rag`
-zostaje poza kontraktem projektu (ADR `handoff/decisions/notes-okf-rag-outside-project-contract.md`),
-maszyneria idzie do root `scripts/`, a gate do `check_workspace_integrity.py`
-jako advisory do czasu migracji. Dodano słownik artefaktów `Notes/OKF-rag/CONTEXT.md`,
-wiersz kontekstu w `CONTEXT-MAP.md` i pre-registered
-`EXPERIMENT-benchmark-scope-2026-10-25.md` z realnym przypadkiem adwersaryjnym
-(Q15: blok `napkin.md:3985–3998` zalicza `related`, choć nie zawiera
-odpowiedzi). Plan: 3 commity — (1) te artefakty, (2) migracja 5 notatek
-kuratorskich do strukturalnego `sources: [{file, lines}]` + allowlista 2 decyzji,
-(3) skill `retrieval-two-stage` + check w integrity. Next: dodać tryb `scoped`
-do `scripts/run_okf_rag_benchmark.py`, bo bez niego reguła scope jest
-niemierzalna i eksperyment nie jest uruchamialny jedną komendą.
-
-not checked: nie zmierzono przebiegu ze scope (brak trybu `scoped`); nie
-zmigrowano frontmattera żadnej notatki; gate cytowań nie istnieje; skill
-`retrieval-two-stage` nie istnieje; Q02 i Q20 nadal bez `exact`/`related`.
 
 <!-- handoff/flags/okf-rag-corpus-pin-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `okf-rag-corpus-pin-2026-10-25` — 2026-10-25: historia jest **liniowa, bez

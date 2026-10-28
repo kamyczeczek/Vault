@@ -5,9 +5,9 @@ description: Dwudziestopytaniowy test Smart Connections po dodaniu precyzyjnych 
 status: draft
 tags: [experiment, benchmark, retrieval, passages, smart-connections]
 sources:
-  - EXPERIMENT-retrieval-benchmark-2026-10-25.md
-  - SYNTHESIS.md
-  - SYNTHESIS-kompilacja-i-wyszukiwanie.md
+  - { file: EXPERIMENT-retrieval-benchmark-2026-10-25.md, lines: "34-87" }
+  - { file: SYNTHESIS.md, lines: "126-154" }
+  - { file: SYNTHESIS-kompilacja-i-wyszukiwanie.md, lines: "87-118" }
 generated:
   by: codex
   at: 2026-10-25T00:00:00Z

@@ -5,10 +5,10 @@ description: Minimalny format łączący tezę z dowodem, cytatem i poziomem pew
 status: draft
 tags: [okf-rag, retrieval, evidence, citations]
 sources:
-  - EXPERIMENT-retrieval-benchmark-20-2026-10-25.md
-  - EXPERIMENT-retrieval-raw-only-2026-10-25.md
-  - EXPERIMENT-retrieval-misses-2026-10-25.md
-  - SYNTHESIS-kompilacja-i-wyszukiwanie.md
+  - { file: EXPERIMENT-retrieval-benchmark-20-2026-10-25.md, lines: "33-80" }
+  - { file: EXPERIMENT-retrieval-raw-only-2026-10-25.md, lines: "41-85" }
+  - { file: EXPERIMENT-retrieval-misses-2026-10-25.md, lines: "22-73" }
+  - { file: SYNTHESIS-kompilacja-i-wyszukiwanie.md, lines: "37-134" }
 generated:
   by: codex
   at: 2026-10-25T00:00:00Z

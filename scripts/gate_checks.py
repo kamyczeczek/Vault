@@ -62,8 +62,9 @@ def gate_g2_fev_flag() -> str | None:
     if not has_loop:
         return "bench.py has no per-origin fit loop (for w in windows: + train_cols_w)"
     flag = _read(FEV_FLAG)
-    if "not checked: per-origin fit" in flag:
-        return "flag still says `not checked: per-origin fit` while bench.py fits per origin"
+    not_checked_lines = [line for line in flag.splitlines() if line.startswith("not checked:")]
+    if any("per-origin fit" in line.lower() for line in not_checked_lines):
+        return "flag's `not checked:` line still claims per-origin fit is unverified"
     protocol = _read(FEV_PROTOCOL)
     if "per-origin" not in protocol.lower():
         return "FEV_PROTOCOL.md does not mention per-origin fit at all"

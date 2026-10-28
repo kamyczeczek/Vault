@@ -6,11 +6,11 @@ status: planned
 blocked_on: runner nie ma trybu scoped — patrz §Blocker
 tags: [okf-rag, retrieval, benchmark, metric-design, pre-registered]
 sources:
-  - EXPERIMENT-retrieval-benchmark-20-2026-10-25.md
-  - EXPERIMENT-source-slices-2026-10-25.md
-  - benchmark-questions.json
-  - ../../scripts/run_okf_rag_benchmark.py
-  - ../../SCARS.md
+  - { file: EXPERIMENT-retrieval-benchmark-20-2026-10-25.md, lines: "33-67" }
+  - { file: EXPERIMENT-source-slices-2026-10-25.md, lines: "75-127" }
+  - { file: benchmark-questions.json, lines: "1-120" }
+  - { file: ../../scripts/run_okf_rag_benchmark.py, lines: "750-760" }
+  - { file: ../../SCARS.md, lines: "11-11" }
 generated: { by: opencode, at: 2026-10-25T00:00:00Z }
 ---
 

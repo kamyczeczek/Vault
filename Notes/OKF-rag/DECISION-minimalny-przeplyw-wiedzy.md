@@ -5,10 +5,10 @@ description: Roboczy sposób zamieniania surowych materiałów w koncepty, synte
 status: draft
 tags: [knowledge-management, workflow, okf, vault]
 sources:
-  - SYNTHESIS.md
-  - SPEC.md
-  - ontoship.md
-  - napkin.md
+  - { file: SYNTHESIS.md, lines: "34-154" }
+  - { file: SPEC.md, lines: "159-245" }
+  - { file: ontoship.md, lines: "271-330" }
+  - { file: napkin.md, lines: "316-360" }
 generated:
   by: codex
   at: 2026-10-25T00:00:00Z
