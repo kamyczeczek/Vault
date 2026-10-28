@@ -36,6 +36,11 @@ Stan:
 - DEFERRED (P2, osobne sesje): P2.1 (FEV multivariate end-to-end z bench_fev_mini.json po optymalizacji fitów), P2.2 (.unlazy root cause).
 not checked: FEV multivariate end-to-end artifact generation; tryb scoped w run_okf_rag_benchmark.py.
 
+<!-- handoff/flags/skills-wiring-and-unlazy-enable-2026-10-28.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
+`skills-wiring-and-unlazy-enable-2026-10-28` — 2026-10-28: Wpięto katalog `skills/` do konfiguracji OpenCode, jCode i Claude Code przez junctions na dysku (`~/.config/opencode/skills`, `~/.jcode/skills`, `~/.claude/skills`). Usunięto flagę `disable-model-invocation: true` ze skilla `unlazy` (`skills/unlazy/SKILL.md`), dzięki czemu skill jest teraz natywnie wykrywany i ładowalny przez harness OpenCode (wcześniej zwracał `Unable to load skill unlazy`). Weryfikacja: wywołanie narzedzia `skill(id='unlazy')` zakończone sukcesem i załadowaniem pełnej treści skilla.
+
+not checked: test wywołania skilla z poziomu jcode i claude-code CLI (junctions istnieją na poziomie systemu plików).
+
 <!-- handoff/flags/preflight-agent-and-s71-scar-2026-10-28.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
 `preflight-agent-and-s71-scar-2026-10-28` — 2026-10-28: Wprowadzono S71 do `SCARS.md` i zindeksowano w `brain.db` (50 wpisów problemów). Wdrożono deterministyczny preflight agenta `scripts/preflight_agent.py` z testami jednostkowymi `scripts/test_preflight_agent.py` (5/5 zielone). Skrypt czyści deadlockujące locki `.unlazy/locks` i `.git/index.lock` oraz mierzy czas reakcji interpretera Pythona (< 2.5 s) i polecenia git (< 5.0 s). 47 testów w pakiecie `test_close.py` i `test_preflight_agent.py` przechodzi.
 
