@@ -21,5 +21,5 @@ Scope: wpisanie reguły wywoływania CodeGraph CLI do CLAUDE.md §Rules (poza R1
   EVIDENCE: exit=0, EXPECT matched
 
 - [ ] G3: [DEFERRED: sesja etth1-h720] empiryczny dowód zmiany zachowania (spadek read vs użycie codegraph)
-  EXPECT: W następnej sesji badawczej (bez słowa 'codegraph' w zadaniu użytkownika): liczba wywołań CLI `codegraph` > 0 oraz brak blind read całych plików .py w projects/research/etth1-h720/. Jeśli nie zajdzie — odrzucenie CLI i wpięcie MCP.
+  EXPECT: W następnej sesji badawczej (bez słowa 'codegraph' w zadaniu użytkownika): liczba wywołań CLI `codegraph` w shell/bash > 0 oraz brak blind read całych plików .py w projects/research/etth1-h720/. Uwaga: wywołanie przez MCP nie zalicza tej bramki (to byłby dowód na Wariant C, a nie na skuteczność routera w CLAUDE.md). Jeśli nie zajdzie w shellu — odrzucenie CLI i świadome przejście na MCP.
   EVIDENCE: DEFERRED to next session owner
