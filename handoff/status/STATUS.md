@@ -142,10 +142,10 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | --- | --- | --- | --- |
 | `unlazy-workflow-closure-2026-10-27` | 2026-10-28 | mateusz | opencode |
 | `close-py-include-safety-2026-10-28` | 2026-10-28 | mateusz | opencode |
+| `benchmark-core-fev-multivariate-2026-10-27` | 2026-10-28 | mateusz | opencode |
 | `vault-monorepo-import-2026-10-27` | 2026-10-27 | mateusz | opencode |
 | `vault-monorepo-decisions-2026-10-27` | 2026-10-27 | mateusz | opencode |
 | `etth1-h720-s49-closeout-2026-10-27` | 2026-10-27 | mateusz | opencode |
-| `benchmark-core-fev-multivariate-2026-10-27` | 2026-10-27 | mateusz | opencode |
 | `benchmark-core-fev-g2-fix-2026-10-27` | 2026-10-27 | mateusz | opencode |
 | `research-engine-s47-2026-10-26` | 2026-10-26 | mateusz | opencode |
 | `obsidian-index-overload-2026-10-26` | 2026-10-26 | mateusz | opencode |

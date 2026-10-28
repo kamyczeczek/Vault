@@ -361,17 +361,26 @@ def extract_series_from_window(window):
     targets = list(getattr(window, "target_columns", []) or [])
     if not targets:
         targets = [c for c in past.column_names if c not in ("id", getattr(window, "timestamp_column", "timestamp"))]
+    def _unwrap(v):
+        # fev stores each target as a single-element container around the series.
+        if not isinstance(v, (np.ndarray,)):
+            try:
+                if len(v) == 1 and hasattr(v[0], "__len__"):
+                    return v[0]
+            except Exception:
+                pass
+        return v
     past_cols = []
     for c in targets:
         if c in past.column_names:
-            v = past[c]
-            arr = np.asarray(v[0] if isinstance(v, (list, tuple)) and len(v) == 1 else v, dtype=float)
+            v = _unwrap(past[c])
+            arr = np.asarray(v, dtype=float)
             past_cols.append(np.ravel(arr))
     fut_cols = []
     for c in targets:
         if c in future.column_names:
-            v = future[c]
-            arr = np.asarray(v[0] if isinstance(v, (list, tuple)) and len(v) == 1 else v, dtype=float)
+            v = _unwrap(future[c])
+            arr = np.asarray(v, dtype=float)
             fut_cols.append(np.ravel(arr))
     n_targets = min(len(past_cols), len(fut_cols))
     past_cols = past_cols[:n_targets]

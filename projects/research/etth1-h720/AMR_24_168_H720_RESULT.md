@@ -71,13 +71,13 @@ does.
 - **G3** (no-regression at H96/H336, within +5% of the member's S47-pool best):
   **PASS** — H96 mean 2.0132 (ref 3.2641, +5% 3.4273); H336 mean 3.5592
   (ref 6.7378, +5% 7.0747). Artifact `results/etth1_h720_amr24168_g3.json`.
-- **G4** (mean rank <= 2 across members + SOTA baselines, 5 seeds): **not claimed**
-  — 5-seed sweep was not run to completion; G1 and G2 already fail decisively, so
-  the candidate is rejected regardless of G4.
+- **G4** (mean rank <= 2 across members + SOTA baselines, 5 seeds): **FAIL**
+  — mean_rank 6.1, per_seed 5.33–6.83, `pass: false`.
+  Artifact `results/etth1_h720_amr24168_g4.json` (commit `653f87d`).
 
 PASS = G1 ∧ G2 ∧ G3. G1 and G2 fail, so the candidate is rejected regardless of
-G3/G4. G3 is reported because it was the unmeasured gate flagged for every
-H720 candidate in this line.
+G3/G4. G3 and G4 are reported because they were the unmeasured gates flagged for
+every H720 candidate in this line.
 
 ## Interpretation and next step
 
