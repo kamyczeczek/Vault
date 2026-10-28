@@ -29,13 +29,12 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
-<!-- handoff/flags/unlazy-workflow-closure-2026-10-27.md · owner: mateusz · agent: opencode · model: openai-api/gpt-5.6-luna -->
-`unlazy-workflow-closure-2026-10-27` — 2026-10-27: Unlazy checklist execution partial / corrected status.
+<!-- handoff/flags/unlazy-workflow-closure-2026-10-27.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
+`unlazy-workflow-closure-2026-10-27` — 2026-10-28: Unlazy checklist domknięta dla zadań P0/P1.
 Stan:
-- CLOSED: A (ETTh1-H720 G4 sweep results/etth1_h720_amr24168_g4.json), C (Monorepo D24 workspace integrity), E (S47_DESIGN.md adnotacja), G (retrieval-two-stage skill catalog).
-- STALE / INCOMPLETE: B (FEV multivariate code landed and py_compile passed, but full end-to-end execution/artifact pending due to high fit volume ~21k fits), D (OKF-rag EXPERIENCE.md triage note added, but C2-C6 migration/gate/scoped mode pending), F (workspace hygiene cleanup: close_body.txt artifact dropped, did_sessions.bat reverted/reviewed).
-Next: optimize FEV fit loop / subset origins before full run; migrate OKF-rag C2-C6 notes.
-not checked: FEV multivariate end-to-end artifact generation; OKF-rag C2-C6 notes migration; remote CI pipeline (non-existent).
+- CLOSED: P0.1 (AMR_24_168_H720_RESULT.md zsynchronizowany z artefaktem G4 results/etth1_h720_amr24168_g4.json), P0.2 (FEV protocol multivariate support i per-origin fit w bench.py zsynchronizowane z flagą), P1.1 (OKF-rag commit 2: 5 notatek zmigrowanych do sources: [{file, lines}]), P1.2 (benchmark-core/MAP.md zsynchronizowany z modułami, --check exit 0), P1.3 (close.py odblokowuje --include projects/... i odrzuca --include ., 42 testy w test_close.py zielone), P1.4 (did_sessions.bat COUNT=5 zweryfikowane), higiena repo (usunięto zindexowane śmieci close_body.txt i correct_body.txt).
+- DEFERRED (P2, osobne sesje): P2.1 (FEV multivariate end-to-end z bench_fev_mini.json po optymalizacji fitów), P2.2 (.unlazy root cause).
+not checked: FEV multivariate end-to-end artifact generation; tryb scoped w run_okf_rag_benchmark.py.
 
 <!-- handoff/flags/okf-rag-scope-and-gate-2026-10-25.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
 `okf-rag-scope-and-gate-2026-10-25` — 2026-10-28: commit 2 OKF-rag wdrożony — zmigrowano 5 notatek kuratorskich (`DECISION-minimalny-przeplyw-wiedzy.md`, `DECISION-kontrakt-odpowiedzi-retrieval.md`, `EXPERIMENT-benchmark-scope-2026-10-25.md`, `EXPERIMENT-retrieval-benchmark-20-2026-10-25.md`, `EXPERIMENT-retrieval-answer-contract-2026-10-25.md`) do formatu `sources: [{file, lines}]` z precyzyjnymi zakresami linii. Skill `retrieval-two-stage` istnieje w `skills/retrieval-two-stage/SKILL.md` (commit `653f87d`). Wszystkie 5 notatek zweryfikowane deterministycznym gate'em `scripts/gate_checks.py --gate g7-okf-sources` (PASS). Next: tryb `scoped` w runnerze benchmarku, gate cytowań i adnotacje `related`.
