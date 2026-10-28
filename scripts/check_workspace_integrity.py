@@ -214,7 +214,10 @@ PROJECTS = sorted(
     if p.is_dir() and not p.name.startswith(".") and not p.name.startswith("_")
 ) if (ROOT / "projects" / "research").is_dir() else []
 
-RESIDUE_DIRS = {"__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".ipynb_checkpoints"}
+RESIDUE_DIRS = {"__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".ipynb_checkpoints",
+                # CodeGraph's local index (~70 MB SQLite): rebuilt by `codegraph init`,
+                # gitignored, never authored — same class as the caches above.
+                ".codegraph"}
 RESIDUE_SUFFIX = {".pyc", ".pyo", ".tmp", ".orig", ".rej", ".bak", ".log"}
 
 # Declared runtime-output directories: regenerable per-run telemetry a tool owns

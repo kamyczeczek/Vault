@@ -51,6 +51,15 @@ not checked: automatyczny hook wpięty przed każdą sesją w konfiguracji harne
 
 not checked: tryb `scoped` w `scripts/run_okf_rag_benchmark.py`; gate cytowań w integrity; adnotacje `related` dla pytań Q01–Q20.
 
+<!-- handoff/flags/codegraph-gate-residue-2026-10-28.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
+`codegraph-gate-residue-2026-10-28` — 2026-10-28: `.codegraph/` uznany za artefakt narzędzia w `RESIDUE_DIRS`, nie za wpis katalogu workspace.
+
+Stan: `codegraph init` tworzy w root `.codegraph/` (~70 MB SQLite, wpisane do `.gitignore`), a `check_workspace_integrity.check_r1_root_shape` zgłaszał go jako `unexpected directory at workspace root`. Wyjątek jest świadomy i wąski: `.codegraph` dołącza do `__pycache__`, `.pytest_cache`, `.mypy_cache`, `.ruff_cache`, `.ipynb_checkpoints` — ta sama klasa (gitignored, odtwarzalne przez narzędzie, nigdy nie autorskie). `ALLOWED_ROOT` **nie** poszerzono: indeks nie istnieje w świeżym klonie i nie jest treścią workspace, więc deklarowanie go jako wpisu katalogu kazałoby bramce wymagać artefaktu runtime. Komentarz w kodzie nazywa powód.
+
+Next: domknięcie sesji `single-repo-codegraph-2026-10-28` (`.gitignore`, `scripts/close.py`) osobnym commitem.
+
+not checked: czy `RESIDUE_DIRS` wpływa na reguły inne niż R1 — sprawdzono tylko wyjście bramki; zachowanie drzewa po `codegraph uninit`.
+
 <!-- handoff/flags/close-py-include-safety-2026-10-28.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
 `close-py-include-safety-2026-10-28` — 2026-10-28: `close.py` odblokowuje `--include projects/...` i zabrania `--include .`. Usunięto przestarzały check blokujący ścieżki pod `projects/research/`, dodano walidację przez `git check-ignore -q --no-index --`, zachowano obsługę staged deletions (`_is_staged_deletion`) i katalogów. Usunięto zindexowane śmieci `close_body.txt` i `correct_body.txt` z `handoff/`. Testy w `scripts/test_close.py` (`NewSafetyChecksTests`) zielone, 42 testy w `scripts/test_close.py` przechodzą.
 
