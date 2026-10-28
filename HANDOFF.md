@@ -36,6 +36,11 @@ Stan:
 - DEFERRED (P2, osobne sesje): P2.1 (FEV multivariate end-to-end z bench_fev_mini.json po optymalizacji fitów), P2.2 (.unlazy root cause).
 not checked: FEV multivariate end-to-end artifact generation; tryb scoped w run_okf_rag_benchmark.py.
 
+<!-- handoff/flags/preflight-agent-and-s71-scar-2026-10-28.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
+`preflight-agent-and-s71-scar-2026-10-28` — 2026-10-28: Wprowadzono S71 do `SCARS.md` i zindeksowano w `brain.db` (50 wpisów problemów). Wdrożono deterministyczny preflight agenta `scripts/preflight_agent.py` z testami jednostkowymi `scripts/test_preflight_agent.py` (5/5 zielone). Skrypt czyści deadlockujące locki `.unlazy/locks` i `.git/index.lock` oraz mierzy czas reakcji interpretera Pythona (< 2.5 s) i polecenia git (< 5.0 s). 47 testów w pakiecie `test_close.py` i `test_preflight_agent.py` przechodzi.
+
+not checked: automatyczny hook wpięty przed każdą sesją w konfiguracji harnessu (wymaga kroku 3 i 4).
+
 <!-- handoff/flags/okf-rag-scope-and-gate-2026-10-25.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
 `okf-rag-scope-and-gate-2026-10-25` — 2026-10-28: commit 2 OKF-rag wdrożony — zmigrowano 5 notatek kuratorskich (`DECISION-minimalny-przeplyw-wiedzy.md`, `DECISION-kontrakt-odpowiedzi-retrieval.md`, `EXPERIMENT-benchmark-scope-2026-10-25.md`, `EXPERIMENT-retrieval-benchmark-20-2026-10-25.md`, `EXPERIMENT-retrieval-answer-contract-2026-10-25.md`) do formatu `sources: [{file, lines}]` z precyzyjnymi zakresami linii. Skill `retrieval-two-stage` istnieje w `skills/retrieval-two-stage/SKILL.md` (commit `653f87d`). Wszystkie 5 notatek zweryfikowane deterministycznym gate'em `scripts/gate_checks.py --gate g7-okf-sources` (PASS). Next: tryb `scoped` w runnerze benchmarku, gate cytowań i adnotacje `related`.
 
