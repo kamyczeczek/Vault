@@ -342,13 +342,16 @@ def pool_blend_mae(P_dict, A, names):
         Ph=P[:,h,:]; Ah=A[:,h]
         for w in range(W):
             mask=np.arange(W)!=w
-            if W==1:
-                blended[w,h]=float(np.median(Ph[w]))
+            mask_finite = mask & np.isfinite(Ah) & np.all(np.isfinite(Ph), axis=1)
+            if np.sum(mask_finite) < 2 or W == 1 or not np.all(np.isfinite(Ph[w])):
+                finite_p = Ph[w][np.isfinite(Ph[w])]
+                blended[w,h]=float(np.median(finite_p)) if len(finite_p)>0 else 0.0
             else:
                 m=Ridge(alpha=1000.0, fit_intercept=True)
-                m.fit(Ph[mask], Ah[mask])
+                m.fit(Ph[mask_finite], Ah[mask_finite])
                 blended[w,h]=float(m.predict(Ph[w:w+1])[0])
-    return float(np.mean(np.abs(blended-A)))
+    diff = np.abs(blended - A)
+    return float(np.nanmean(diff)) if np.isfinite(diff).any() else float("nan")
 def extract_series_from_window(window):
     """Return past float array(s) and horizon length for fev window.
 
@@ -362,10 +365,11 @@ def extract_series_from_window(window):
     if not targets:
         targets = [c for c in past.column_names if c not in ("id", getattr(window, "timestamp_column", "timestamp"))]
     def _unwrap(v):
-        # fev stores each target as a single-element container around the series.
+        # fev stores each target as a container around the series (one per entity/item).
+        # Take the first series (item 0) for consistent 1-D evaluation across targets.
         if not isinstance(v, (np.ndarray,)):
             try:
-                if len(v) == 1 and hasattr(v[0], "__len__"):
+                if len(v) >= 1 and hasattr(v[0], "__len__"):
                     return v[0]
             except Exception:
                 pass
@@ -404,27 +408,38 @@ def main_fev(bench, out_dir=None):
     }
     if _HAS_ELM:
         fits_simple["wavelet_pooled"] = (fit_pooled, pred_pooled)
+    def _clean_series(arr):
+        if not np.isnan(arr).any():
+            return arr
+        import pandas as pd
+        s = pd.Series(arr)
+        return s.interpolate(method="linear").bfill().ffill().fillna(0.0).to_numpy(dtype=float)
+    def _pad_train(arr, H):
+        arr = _clean_series(arr)
+        min_len = 96 + H + 10
+        if len(arr) < min_len:
+            arr = np.pad(arr, (min_len - len(arr), 0), mode="edge")
+        return arr[-2000:]
     task_results=[]
     for ti, task in enumerate(bench.tasks):
-        windows=list(task.iter_windows())
-        if len(windows)>5: windows=windows[:5]
-        # Use H from first window's future length
-        past0_cols, fut0_cols, H, n_targets = extract_series_from_window(windows[0])
+        windows = []
+        for w in task.iter_windows(num_proc=1):
+            windows.append(w)
+            if len(windows) >= 5:
+                break
+        if not windows:
+            out("  skip: no windows")
+            continue
+        extracted_windows = [extract_series_from_window(w) for w in windows]
+        past0_cols, fut0_cols, H, n_targets = extracted_windows[0]
         if n_targets == 0:
             out("  skip: no target columns")
             continue
         out(f"\n-- task {ti+1}/{len(bench.tasks)} {task.dataset_path}:{task.dataset_config} H={H} W={len(windows)}")
-        # Ensure past0 long enough; pad/truncate to 2000 or available (per target)
-        train_cols = [p[-2000:] if len(p) >= 96 else p for p in past0_cols]
         # Collect per-window futures (per target)
-        A_list_per_target = [[] for _ in range(n_targets)]
-        for wi, w in enumerate(windows):
-            past_cols, fut_cols, _, _ = extract_series_from_window(w)
-            for t_idx in range(n_targets):
-                A_list_per_target[t_idx].append(fut_cols[t_idx])
         A_true_per_target = []
         for t_idx in range(n_targets):
-            cols = A_list_per_target[t_idx]
+            cols = [ew[1][t_idx] for ew in extracted_windows]
             if cols and len(set(len(a) for a in cols)) == 1:
                 A_true_per_target.append(np.array(cols))
             else:
@@ -437,20 +452,19 @@ def main_fev(bench, out_dir=None):
             try:
                 # Per-origin fit: fit on each window's own past, then predict its future.
                 preds_per_target = [[] for _ in range(n_targets)]
-                for w in windows:
-                    past_cols, fut_cols, _, _ = extract_series_from_window(w)
-                    train_cols_w = [p[-2000:] if len(p) >= 96 else p for p in past_cols]
+                for past_cols, fut_cols, _, _ in extracted_windows:
+                    train_cols_w = [_pad_train(p, H) for p in past_cols]
                     models = [ff(train_cols_w[t_idx], H) for t_idx in range(n_targets)]
                     for t_idx in range(n_targets):
-                        past = past_cols[t_idx]
-                        hist = past[-96:] if len(past) >= 96 else past
-                        p = pf(models[t_idx], hist) if name != "wavelet_pooled" else pf(models[t_idx], hist)
+                        past = train_cols_w[t_idx]
+                        hist = past[-96:]
+                        p = pf(models[t_idx], hist)
                         preds_per_target[t_idx].append(np.asarray(p).ravel()[:H])
                 # Stack predictions per target, compute MAE per target, average
                 maes_per_target = []
                 for t_idx in range(n_targets):
                     P = np.stack(preds_per_target[t_idx], axis=0)
-                    maes_per_target.append(float(np.mean(np.abs(P - A_true_per_target[t_idx]))))
+                    maes_per_target.append(float(np.nanmean(np.abs(P - A_true_per_target[t_idx]))))
                 # Store P_dict as the first target's predictions (for pool blending)
                 P = np.stack(preds_per_target[0], axis=0)
                 P_dict[name] = P
@@ -483,8 +497,8 @@ def main_fev(bench, out_dir=None):
     winsB=sum(1 for a,b in zip(maesA,maesB) if b<a)
     order_ranks=[]
     for a,b,c,i in zip(maesA,maesB,maesC,maesI):
-        order=sorted([(a,"A"),(b,"B"),(c,"C"),(i,"I")])
-        r={n:i+1 for i,(_,n) in enumerate(order)}
+        order=sorted([(x, n) for x, n in [(a,"A"),(b,"B"),(c,"C"),(i,"I")] if np.isfinite(x)])
+        r={n:idx+1 for idx,(_,n) in enumerate(order)}
         order_ranks.append(r.get("B",2))
     mean_rankB=float(np.mean(order_ranks)) if order_ranks else 2
     out(f"\n=== fev Aggregate ({len(task_results)} tasks) ===")
@@ -521,6 +535,11 @@ def run_fev_bench(mini=True, url=None):
     reachable from a test.
     """
     import fev
+    try:
+        import fev.constants
+        fev.constants.DEFAULT_NUM_PROC = 1
+    except Exception:
+        pass
     _bol = "https://raw.githubusercontent.com/autogluon/fev/main/benchmarks/fev_bench/"
     if url is None:
         url = os.environ.get("FEV_TASKS_URL") or _bol + ("tasks_mini.yaml" if mini else "tasks.yaml")

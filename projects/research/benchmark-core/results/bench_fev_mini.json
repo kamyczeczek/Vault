@@ -1,0 +1,25 @@
+{
+  "suite": "fev",
+  "data_source": "real",
+  "confirmatory": true,
+  "fev": {
+    "url": "https://raw.githubusercontent.com/autogluon/fev/main/benchmarks/fev_bench/tasks_mini.yaml",
+    "mini": true,
+    "n_tasks": 20
+  },
+  "tasks": 20,
+  "meanA": 1394255.177348712,
+  "meanB": 162480.4585472606,
+  "meanC": 126113.3114349723,
+  "winsB": 8,
+  "winsI": 10,
+  "meanI": 218548.28480375576,
+  "mean_rankB": 2.4,
+  "verdict": "REJECTED",
+  "gates": {
+    "G2_majority_win": false,
+    "G2_wins": 8,
+    "G2_total": 20
+  },
+  "elapsed_s": 2376.178362607956
+}

@@ -1,0 +1,226 @@
+fev bench: 20 tasks
+
+-- task 1/20 autogluon/fev_datasets:boomlet_1282 H=60 W=5
+  nlinear_a1             MAE 0.5889 (avg over 35 targets)
+  nlinear_a10            MAE 0.5879 (avg over 35 targets)
+  rff_h64                MAE 0.8773 (avg over 35 targets)
+  subband_cA1            MAE 0.5824 (avg over 35 targets)
+  subband_d1             MAE 0.6854 (avg over 35 targets)
+  knn_forecaster         MAE 0.5788 (avg over 35 targets)
+  wavelet_pooled         MAE 1.4103 (avg over 35 targets)
+  Pool I (KNN Feature) blend 0.5624
+  Pool A blend 0.5624  B 0.5623  C 0.5631
+
+-- task 2/20 autogluon/fev_datasets:boomlet_1676 H=96 W=5
+  nlinear_a1             MAE 0.3913 (avg over 100 targets)
+  nlinear_a10            MAE 0.3909 (avg over 100 targets)
+  rff_h64                MAE 0.4231 (avg over 100 targets)
+  subband_cA1            MAE 0.3899 (avg over 100 targets)
+  subband_d1             MAE 0.3879 (avg over 100 targets)
+  knn_forecaster         MAE 0.4251 (avg over 100 targets)
+  wavelet_pooled         MAE 0.8058 (avg over 100 targets)
+  Pool I (KNN Feature) blend 0.7205
+  Pool A blend 0.7209  B 0.7202  C 0.7209
+
+-- task 3/20 autogluon/fev_datasets:boomlet_619 H=60 W=5
+  nlinear_a1             MAE 0.3200 (avg over 52 targets)
+  nlinear_a10            MAE 0.3198 (avg over 52 targets)
+  rff_h64                MAE 0.6601 (avg over 52 targets)
+  subband_cA1            MAE 0.3180 (avg over 52 targets)
+  subband_d1             MAE 0.6511 (avg over 52 targets)
+  knn_forecaster         MAE 0.3024 (avg over 52 targets)
+  wavelet_pooled         MAE 0.8952 (avg over 52 targets)
+  Pool I (KNN Feature) blend 0.9358
+  Pool A blend 0.9385  B 0.9358  C 0.9346
+
+-- task 4/20 autogluon/fev_datasets:bizitobs_l2c_5T H=288 W=5
+  nlinear_a1             MAE 9.0128 (avg over 7 targets)
+  nlinear_a10            MAE 9.0111 (avg over 7 targets)
+  rff_h64                MAE 11.4688 (avg over 7 targets)
+  subband_cA1            MAE 8.9937 (avg over 7 targets)
+  subband_d1             MAE 8.6814 (avg over 7 targets)
+  knn_forecaster         MAE 13.9234 (avg over 7 targets)
+  wavelet_pooled         MAE 17.4014 (avg over 7 targets)
+  Pool I (KNN Feature) blend 16.3527
+  Pool A blend 15.5275  B 16.0040  C 15.6199
+
+-- task 5/20 autogluon/fev_datasets:epf_np H=24 W=5
+  nlinear_a1             MAE 3.4435
+  nlinear_a10            MAE 3.4431
+  rff_h64                MAE 3.6051
+  subband_cA1            MAE 3.4175
+  subband_d1             MAE 3.6254
+  knn_forecaster         MAE 2.4636
+  wavelet_pooled         MAE 45.0424
+  Pool I (KNN Feature) blend 4.0647
+  Pool A blend 4.0968  B 4.1006  C 4.1183
+
+-- task 6/20 autogluon/fev_datasets:ETT_15T H=96 W=5
+  nlinear_a1             MAE 1.4267 (avg over 7 targets)
+  nlinear_a10            MAE 1.4262 (avg over 7 targets)
+  rff_h64                MAE 2.4811 (avg over 7 targets)
+  subband_cA1            MAE 1.4197 (avg over 7 targets)
+  subband_d1             MAE 2.3442 (avg over 7 targets)
+  knn_forecaster         MAE 1.4130 (avg over 7 targets)
+  wavelet_pooled         MAE 4.6795 (avg over 7 targets)
+  Pool I (KNN Feature) blend 3.7837
+  Pool A blend 3.7610  B 3.7787  C 3.7755
+
+-- task 7/20 autogluon/fev_datasets:ETT_1H H=168 W=5
+  nlinear_a1             MAE 2.0792 (avg over 7 targets)
+  nlinear_a10            MAE 2.0791 (avg over 7 targets)
+  rff_h64                MAE 3.2204 (avg over 7 targets)
+  subband_cA1            MAE 2.0787 (avg over 7 targets)
+  subband_d1             MAE 2.6513 (avg over 7 targets)
+  knn_forecaster         MAE 2.5674 (avg over 7 targets)
+  wavelet_pooled         MAE 5.0210 (avg over 7 targets)
+  Pool I (KNN Feature) blend 5.1128
+  Pool A blend 5.1235  B 5.1003  C 5.0974
+
+-- task 8/20 autogluon/fev_datasets:proenfo_gfc14 H=168 W=5
+  nlinear_a1             MAE 240.0017
+  nlinear_a10            MAE 240.0016
+  rff_h64                MAE 605.5732
+  subband_cA1            MAE 240.2955
+  subband_d1             MAE 213.5685
+  knn_forecaster         MAE 258.8436
+  wavelet_pooled         MAE 2896.1021
+  Pool I (KNN Feature) blend 464.2778
+  Pool A blend 381.2739  B 482.9616  C 525.9716
+
+-- task 9/20 autogluon/fev_datasets:hospital_admissions_1W H=13 W=5
+  nlinear_a1             MAE 11.5739
+  nlinear_a10            MAE 11.5583
+  rff_h64                MAE 14.1942
+  subband_cA1            MAE 13.9737
+  subband_d1             MAE 10.9064
+  knn_forecaster         MAE 10.7373
+  wavelet_pooled         MAE 45.4118
+  Pool I (KNN Feature) blend 11.3885
+  Pool A blend 11.4397  B 11.4007  C 11.5998
+
+-- task 10/20 autogluon/fev_datasets:hospital_admissions_1D H=28 W=5
+  nlinear_a1             MAE 2.8549
+  nlinear_a10            MAE 2.8548
+  rff_h64                MAE 3.5855
+  subband_cA1            MAE 2.8692
+  subband_d1             MAE 2.9823
+  knn_forecaster         MAE 2.7456
+  wavelet_pooled         MAE 5.3691
+  Pool I (KNN Feature) blend 3.3267
+  Pool A blend 3.3272  B 3.3284  C 3.3284
+
+-- task 11/20 autogluon/fev_datasets:jena_weather_1H H=24 W=5
+  nlinear_a1             MAE 8.4046 (avg over 21 targets)
+  nlinear_a10            MAE 8.4044 (avg over 21 targets)
+  rff_h64                MAE 14.5177 (avg over 21 targets)
+  subband_cA1            MAE 8.3743 (avg over 21 targets)
+  subband_d1             MAE 9.2047 (avg over 21 targets)
+  knn_forecaster         MAE 8.0976 (avg over 21 targets)
+  wavelet_pooled         MAE 163.2674 (avg over 21 targets)
+  Pool I (KNN Feature) blend 4.4230
+  Pool A blend 4.6963  B 4.2354  C 4.7068
+
+-- task 12/20 autogluon/fev_datasets:M_DENSE_1D H=28 W=5
+  nlinear_a1             MAE 312.7615
+  nlinear_a10            MAE 312.7615
+  rff_h64                MAE 522.0201
+  subband_cA1            MAE 312.9115
+  subband_d1             MAE 332.6077
+  knn_forecaster         MAE 341.9727
+  wavelet_pooled         MAE 2656.8532
+  Pool I (KNN Feature) blend 592.0743
+  Pool A blend 470.5589  B 542.3770  C 818.9142
+
+-- task 13/20 autogluon/fev_datasets:rohlik_orders_1D H=61 W=5
+  nlinear_a1             MAE 564.9547
+  nlinear_a10            MAE 564.9547
+  rff_h64                MAE 862.2329
+  subband_cA1            MAE 564.4386
+  subband_d1             MAE 510.7657
+  knn_forecaster         MAE 652.7977
+  wavelet_pooled         MAE 7777.2026
+  Pool I (KNN Feature) blend 2120.5455
+  Pool A blend 1587.2457  B 1997.7061  C 2127.9878
+
+-- task 14/20 autogluon/fev_datasets:rossmann_1W H=13 W=5
+  nlinear_a1             MAE 5833.0764
+  nlinear_a10            MAE 5833.0746
+  rff_h64                MAE 5039.5619
+  subband_cA1            MAE 14594.6861
+  subband_d1             MAE 25138.4534
+  knn_forecaster         MAE 981989388.2082
+  wavelet_pooled         MAE 25063.2191
+  Pool I (KNN Feature) blend 64880.4914
+  Pool A blend 6235.1025  B 22073.7518  C 16950.1546
+
+-- task 15/20 autogluon/fev_datasets:rossmann_1D H=48 W=5
+  nlinear_a1             MAE 878.5655
+  nlinear_a10            MAE 878.5655
+  rff_h64                MAE 2035.9187
+  subband_cA1            MAE 868.5920
+  subband_d1             MAE 860.8536
+  knn_forecaster         MAE 862.3582
+  wavelet_pooled         MAE 3337.0746
+  Pool I (KNN Feature) blend 6137.2193
+  Pool A blend 3225.3195  B 4115.3668  C 6833.6284
+
+-- task 16/20 autogluon/fev_datasets:solar_with_weather_1H H=24 W=5
+  nlinear_a1             MAE 750.3816
+  nlinear_a10            MAE 750.3816
+  rff_h64                MAE 4454.8834
+  subband_cA1            MAE 751.8807
+  subband_d1             MAE 786.3257
+  knn_forecaster         MAE 1409.4095
+  wavelet_pooled         MAE 2190.9276
+  Pool I (KNN Feature) blend 1047.9289
+  Pool A blend 845.0475  B 1298.5634  C 1076.9116
+
+-- task 17/20 autogluon/fev_datasets:uci_air_quality_1H H=168 W=5
+  nlinear_a1             MAE 59.0483 (avg over 4 targets)
+  nlinear_a10            MAE 59.0483 (avg over 4 targets)
+  rff_h64                MAE 85.5019 (avg over 4 targets)
+  subband_cA1            MAE 59.0893 (avg over 4 targets)
+  subband_d1             MAE 66.0245 (avg over 4 targets)
+  knn_forecaster         MAE 59.0122 (avg over 4 targets)
+  wavelet_pooled         MAE 210.4548 (avg over 4 targets)
+  Pool I (KNN Feature) blend 5.6455
+  Pool A blend 5.6517  B 5.6889  C 5.6237
+
+-- task 18/20 autogluon/fev_datasets:uk_covid_nation_1D H=28 W=5
+  nlinear_a1             MAE 33552.0252 (avg over 3 targets)
+  nlinear_a10            MAE 33552.3129 (avg over 3 targets)
+  rff_h64                MAE 70243.3987 (avg over 3 targets)
+  subband_cA1            MAE 34448.2681 (avg over 3 targets)
+  subband_d1             MAE 36378.0182 (avg over 3 targets)
+  knn_forecaster         MAE 31715.4932 (avg over 3 targets)
+  wavelet_pooled         MAE 334747.0610 (avg over 3 targets)
+  Pool I (KNN Feature) blend 20276.3758
+  Pool A blend 13248.8718  B 17841.0453  C 17751.4408
+
+-- task 19/20 autogluon/fev_datasets:us_consumption_1Y H=5 W=5
+  nlinear_a1             MAE 22672257.2533
+  nlinear_a10            MAE 22260076.2052
+  rff_h64                MAE 275981.0375
+  subband_cA1            MAE 21080201.5805
+  subband_d1             MAE 3499591.1735
+  knn_forecaster         MAE 1165430841874.3694
+  wavelet_pooled         MAE 1567107.0846
+  Pool I (KNN Feature) blend 4272839.8314
+  Pool A blend 27855219.5426  B 3199402.8380  C 2474874.5816
+
+-- task 20/20 autogluon/fev_datasets:world_co2_emissions H=5 W=5
+  nlinear_a1             MAE 3813.2242
+  nlinear_a10            MAE 3344.8141
+  rff_h64                MAE 411.2402
+  subband_cA1            MAE 4372.4353
+  subband_d1             MAE 3543.0006
+  knn_forecaster         MAE 107539.1231
+  wavelet_pooled         MAE 2002.0871
+  Pool I (KNN Feature) blend 2550.6355
+  Pool A blend 3834.7392  B 1798.7057  C 1250.5496
+
+=== fev Aggregate (20 tasks) ===
+meanA 1394255.1773 meanB 162480.4585 meanC 126113.3114 meanI 218548.2848 winsB 8/20 winsI 10/20 rankB 2.40
+verdict REJECTED
+G2 (Pool B beats A on majority of tasks): 8/20 -> FAIL
