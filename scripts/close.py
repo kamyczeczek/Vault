@@ -581,8 +581,11 @@ def check_includes(includes: list[str]) -> str | None:
     every file under it without expanding 686 paths into one command line.
     """
     for raw in includes:
-        if "projects/research/" in raw or raw.startswith("projects/research/") or raw.startswith("projects\\research\\"):
-            return f"--include projects/research/... is ignored by root .gitignore (nested repo); commit in KR instead: {raw}"
+        if raw == ".":
+            return "--include . is forbidden for safety; specify explicit file or directory paths instead"
+        ignore_res = subprocess.run(["git", "check-ignore", "-q", "--no-index", "--", raw], capture_output=True, cwd=str(ROOT))
+        if ignore_res.returncode == 0:
+            return f"--include path is ignored by git (.gitignore): {raw}"
         exists_on_disk = (ROOT / Path(raw)).exists()
         is_tracked = subprocess.run(["git", "ls-files", "--error-unmatch", raw], capture_output=True, cwd=str(ROOT)).returncode == 0
         if not exists_on_disk and not is_tracked and not _is_staged_deletion(raw):

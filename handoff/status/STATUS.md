@@ -141,6 +141,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
 | `unlazy-workflow-closure-2026-10-27` | 2026-10-28 | mateusz | opencode |
+| `close-py-include-safety-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `vault-monorepo-import-2026-10-27` | 2026-10-27 | mateusz | opencode |
 | `vault-monorepo-decisions-2026-10-27` | 2026-10-27 | mateusz | opencode |
 | `etth1-h720-s49-closeout-2026-10-27` | 2026-10-27 | mateusz | opencode |

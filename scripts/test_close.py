@@ -405,5 +405,44 @@ class FindStraysRenameTests(unittest.TestCase):
             self.assertEqual(c.find_strays(root, {"handoff"}), [])
 
 
+class NewSafetyChecksTests(unittest.TestCase):
+    def test_include_dot_is_forbidden(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _init_git_repo(root)
+            with mock.patch.object(c, "ROOT", root):
+                err = c.check_includes(["."])
+                self.assertIsNotNone(err)
+                self.assertIn("forbidden for safety", err)
+
+    def test_include_ignored_path_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _init_git_repo(root)
+            (root / ".gitignore").write_text("secret.txt\n", encoding="utf-8")
+            (root / "secret.txt").write_text("shh", encoding="utf-8")
+            subprocess.run(["git", "add", ".gitignore"], cwd=root, check=True)
+            subprocess.run(["git", "commit", "-m", "ignore"], cwd=root, check=True)
+
+            with mock.patch.object(c, "ROOT", root):
+                err = c.check_includes(["secret.txt"])
+                self.assertIsNotNone(err)
+                self.assertIn("ignored by git", err)
+
+    def test_include_project_path_is_allowed(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            _init_git_repo(root)
+            nested = root / "projects" / "research" / "kr" / "benchmark-core"
+            nested.mkdir(parents=True)
+            (nested / "bench.py").write_text("# bench\n", encoding="utf-8")
+            subprocess.run(["git", "add", "-A"], cwd=root, check=True)
+            subprocess.run(["git", "commit", "-m", "seed"], cwd=root, check=True)
+
+            with mock.patch.object(c, "ROOT", root):
+                self.assertIsNone(c.check_includes(["projects/research/kr/benchmark-core/bench.py"]))
+                self.assertIsNone(c.check_includes(["projects/research/kr/benchmark-core"]))
+
+
 if __name__ == "__main__":
     unittest.main()
