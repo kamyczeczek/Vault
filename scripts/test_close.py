@@ -3,6 +3,7 @@
 itself is dogfooded by real closes, not mocked)."""
 from __future__ import annotations
 
+import argparse
 import shutil
 import sqlite3
 import subprocess
@@ -297,6 +298,21 @@ class VerifyClaimsTests(unittest.TestCase):
         body = "aaa. bbb; ccc\nddd"
         self.assertEqual(c._clause_around(body, body.index("bbb")), " bbb")
         self.assertEqual(c._clause_around(body, body.index("ddd")), "ddd")
+
+    def test_dry_run_verify_claims_rejects_empty_claims(self):
+        body = "`test-empty-claims-2026-10-28` — 2026-10-28: purely narrative.\nnot checked: —"
+        ns = argparse.Namespace(
+            flag="test-empty-claims-2026-10-28",
+            correct=False,
+            body_file=None,
+            body=body,
+            model="test/provider",
+            include=[],
+            verify_claims=True,
+        )
+        with mock.patch("scripts.close.load_body", return_value=body):
+            rc = c.dry_run(ns)
+            self.assertEqual(rc, 1)
 
 
 class CorrectFlagTests(unittest.TestCase):

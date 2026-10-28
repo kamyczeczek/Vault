@@ -87,6 +87,15 @@ Next: domknięcie sesji `single-repo-codegraph-2026-10-28` (`.gitignore`, `scrip
 
 not checked: czy `RESIDUE_DIRS` wpływa na reguły inne niż R1 — sprawdzono tylko wyjście bramki; zachowanie drzewa po `codegraph uninit`.
 
+<!-- handoff/flags/close-py-verify-claims-hardening-2026-10-28.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
+`close-py-verify-claims-hardening-2026-10-28` — 2026-10-28: Wymuszono obecność sprawdzalnych twierdzeń przy jawnym `--verify-claims`; dodano test `COUNT=5` w `scripts/test_did_sessions.py`.
+
+Stan: Poprzedni commit d62ad7d domknął residue `self-modifications.log`. W tej sesji uszczelniono warstwę weryfikacji w `scripts/close.py`: `verify_claims()` pozostaje czystą funkcją bez zmian zachowania (42 istniejące testy przechodzą), natomiast w miejscach CLI (`dry_run` i `main`) jawne podanie `--verify-claims` przy `rep.re_derived == 0 and rep.gate_covered == 0` kończy się natychmiastowym `fail("verify-claims")`. Dodano test jednostkowy weryfikujący to zachowanie w `scripts/test_close.py` (łącznie 43 passed). Utworzono `scripts/test_did_sessions.py` zabezpieczający domyślną wartość `COUNT=5` w `scripts/did_sessions.bat` przed cichym regresem (1 passed). Integrity gate pozostaje zielony.
+
+Next: Osobna sesja badawcza na `projects/research/benchmark-core/` dla end-to-end FEV runu (`ValueError: inhomogeneous shape` na multi-series).
+
+not checked: FEV end-to-end na benchmark-core (zgodnie z zasadą one project per session odroczone do kolejnej dedykowanej sesji); zachowanie innych harnessów niż opencode.
+
 <!-- handoff/flags/close-py-include-safety-2026-10-28.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
 `close-py-include-safety-2026-10-28` — 2026-10-28: `close.py` odblokowuje `--include projects/...` i zabrania `--include .`. Usunięto przestarzały check blokujący ścieżki pod `projects/research/`, dodano walidację przez `git check-ignore -q --no-index --`, zachowano obsługę staged deletions (`_is_staged_deletion`) i katalogów. Usunięto zindexowane śmieci `close_body.txt` i `correct_body.txt` z `handoff/`. Testy w `scripts/test_close.py` (`NewSafetyChecksTests`) zielone, 42 testy w `scripts/test_close.py` przechodzą.
 

@@ -606,6 +606,11 @@ def dry_run(a: argparse.Namespace) -> int:
                         "flag body claims something the worktree contradicts "
                         "(B3: fail-loud in --dry-run):\n"
                         + "\n".join(f"  {f}" for f in contradicted))
+        if rep.re_derived == 0 and rep.gate_covered == 0:
+            return fail("verify-claims",
+                        "flag body has 0 re-derivable claims and 0 gate-covered claims — "
+                        "--verify-claims requires at least one `commit <hash>`, a named "
+                        "counter, or an exit-0 gate claim")
         # WARNs are printed, not dropped: a claim with no artifact to re-derive
         # from must be *named*, or --verify-claims becomes a silent skip.
         for f in rep.findings:
@@ -685,9 +690,15 @@ def main() -> int:
     if model_err is not None:
         return fail("validate", model_err)
     if a.verify_claims:
-        # B3: a real close WARNs, never blocks — verification must not be able
-        # to strand a session over a false positive.
+        # B3: a real close WARNs, never blocks on contradiction — verification
+        # must not be able to strand a session over a false positive.
+        # But an explicit --verify-claims on a body with NO claims at all is a usage error.
         rep = verify_claims(body)
+        if rep.re_derived == 0 and rep.gate_covered == 0:
+            return fail("verify-claims",
+                        "flag body has 0 re-derivable claims and 0 gate-covered claims — "
+                        "--verify-claims requires at least one `commit <hash>`, a named "
+                        "counter, or an exit-0 gate claim")
         for f in rep.findings:
             msg = f.split(": ", 1)[1]
             if f.startswith("FAIL"):

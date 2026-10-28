@@ -148,6 +148,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `codegraph-routing-claude-rules-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `codegraph-residue-and-gate3-tighten-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `codegraph-gate-residue-2026-10-28` | 2026-10-28 | mateusz | opencode |
+| `close-py-verify-claims-hardening-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `close-py-include-safety-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `benchmark-core-fev-multivariate-2026-10-27` | 2026-10-28 | mateusz | opencode |
 | `vault-monorepo-import-2026-10-27` | 2026-10-27 | mateusz | opencode |
