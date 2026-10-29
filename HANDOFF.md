@@ -29,6 +29,22 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/etth1-h720-s49-honest-closeout-2026-10-29.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
+`etth1-h720-s49-honest-closeout-2026-10-29` — 2026-10-29: S49 ETTh1 H720 zamknięta (REJECT) po audycie zgodności protokołu.
+
+Stan:
+- Wzmocniono ledger `projects/research/etth1-h720/GATES-s49-closeout.md`: G1 liczy wartosci z artefaktow, G2 parsuje wiersz tabeli w CONTEXT.md, G5 sprawdza czysty status OWNS i obecnosc flagi w HEAD.
+- Audyt protokołu (20 zadeklarowanych originow vs 12 wykonanych; 5 zadeklarowanych seedow vs seed 42 w glownych tabelach; próg S44 z 2161 originow) zapisany w ADR 0001 i Aneksie Wykonawczym 2026-10-29.
+- ADR: `projects/research/etth1-h720/docs/adr/0001-s49-closeout-and-protocol-discrepancies.md`.
+
+Weryfikacja:
+- `python -m pytest projects/research/etth1-h720/` — 14 passed.
+- Bramka integralności workspace — integrity exit 0.
+
+Next: nie stroic modeli H720 na obecnym zestawie 12 originow; nastepna sesja — nowa linia badawcza.
+
+not checked: kalibracja progu S44 na 12 originach (osobna sesja).
+
 <!-- handoff/flags/unlazy-workflow-closure-2026-10-27.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
 `unlazy-workflow-closure-2026-10-27` — 2026-10-28: Unlazy checklist domknięta dla zadań P0/P1.
 Stan:
@@ -201,166 +217,7 @@ not checked:
 Next: protokół FEV — zadania, metryki, sposób raportowania — i pierwszy run na realnych danych, z commitem artefaktu. To jedyna ścieżka, która może cokolwiek promować; S-47 zostaje sondą.
 not checked: `main_fev()` nadal liczy werdykt starym hardcoded `mean_rankB < 2` zamiast definicji G2 z pre-rejestracji, dopasowuje raz na pierwszym oknie i ignoruje multivariate. To należy do protokołu FEV, nie do tej poprawki.
 
-<!-- handoff/flags/vault-root-flatten-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`vault-root-flatten-2026-10-25` — 2026-10-25: zawartość `root_workspace/` była
-już przeniesiona do korzenia repo **na dysku**, ale nie w indeksie: HEAD trzymał
-cały vault pod prefiksem `root_workspace/`, a korzeń miał te same pliki jako
-nieśledzone. Ten commit zapisuje przeniesienie: 866 wpisów, z czego 577 to
-czyste rename'y (`R100`, `root_workspace/X → X`), 148 dodatków i 135 usunięć;
-dla każdego z 30 wpisów najwyższego poziomu `missing=0` (porównanie
-`git ls-files root_workspace` z dyskiem). Dopóki tego nie było, `git status`
-pokazywał ~1000 wpisów, a `close.py` odmawiał **każdego** commita na `[stage]`
-z listą 711 usunięć.
-
-Konsekwencja, której nie da się rozdzielić: **`handoff/` wchodzi do repo
-w całości** — 325 plików, z czego śledzone były 3. Usunięcie
-`root_workspace/handoff/*` bez dodania `handoff/*` wykasowałoby te pliki z HEAD
-bez odpowiednika, więc „handoff jako osobna sesja" jest nierozłączny od
-spłaszczenia. To domyka lukę z raportu: bez tego żadna deklaracja „domknięte" nie
-jest weryfikowalna ze świeżego klonu.
-
-**Blokada, która wymusiła zmianę `.gitignore`.** `close.py` nie umie wyrazić
-katalogu, którego *wszystkie* śledzone pliki są usunięte: `git add --
-root_workspace` kończy się `fatal: pathspec 'root_workspace' did not match any
-files` (git nie dopasowuje pathspecca do katalogu nieistniejącego na dysku; to
-samo `-A`/`-u`). `find_strays` dodatkowo nie rozumie linii `R  a -> b`, więc 577
-rename'ów byłoby strayami niezależnie od `--include`. Jedyna sankcjonowana droga
-dla migracji strukturalnej to `--include .` (flaga
-`close-include-whole-tree-2026-10-24`), ale ona robi `git add -- .`, a w drzewie
-było `projects/` = 67 720 plików / 2,4 GB i `library/` = 225 MB. Dlatego ten
-commit dodaje 11 reguł ignore dla tego, co **nigdy** nie jest treścią vaulta:
-`projects/` (niezmiennik, który close.py deklarował tylko w komunikacie błędu),
-`library/`, `agents/backup/`, `brain/*.db*`, `tools/out/`, `logs/`, `.pi/`, kopie
-`.obsidian/{repair-backup,plugins.disabled}-*` / `*.bak-*`, `scan-cache.json`.
-`library/` (225 MB PDF-ów) zostaje **wyłącznie na dysku** — to świadoma decyzja,
-nie przeoczenie: wersjonowanie tych plików wymaga LFS albo backupu poza gitem.
-
-Weszły też 4 pliki lokalnego stanu aplikacji, bo blokowały commit jako strays:
-`.obsidian/community-plugins.json`, `.obsidian/plugins/obsidian-git/data.json`,
-`.obsidian/plugins/smart-connections/data.json`, `.smart-env/smart_env.json`
-(oraz plugin `ideaverse-maps`, 10 MB — inne pluginy są śledzone, więc dla
-spójności ten też). Next: close z re-runem benchmarku pod pinem `85038826`,
-potem commit 2 (migracja 5 notatek do `sources: [{file, lines}]`).
-
-not checked: `--include .` **wyłącza sprawdzanie strayów w całości** — to
-udokumentowane zachowanie tej flagi, ale znaczy, że ten commit nie dowodzi
-„nic obcego się nie wciągnęło" poza tym, co sam sprawdziłem (866 wpisów
-obejrzanych przez `git diff --cached --shortstat` i listę `??` przed commitem).
-Nie naprawiono `close.py` — błąd z `git add -- <usunięty katalog>` i z liniami
-`R  a -> b` w `find_strays` nadal tam jest i wróci przy następnej migracji; to
-kandydat na osobny commit i scar. Nie sprawdzono, ile z 711 par jest bajtowo
-identycznych (próbka: `AGENTS.md` identyczny, `handoff/flags/T101.md` różny).
-Nie pushowano — `master` wyprzedza `origin/master` o 8 commitów. Nie ruszono
-trybu `scoped`, gate'u cytowań, migracji 5 notatek, Q02/Q20, 10 passage'ów
-`related`, ani otwartej decyzji o `CONTEXT.md` w `raw_only`.
-
-<!-- handoff/flags/smart-connections-cache-exclusions-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
-`smart-connections-cache-exclusions-2026-10-25` — 2026-10-25: corrected Smart Connections folder exclusions for the active vault root by adding the root-level `scripts/`, `projects/`, and `handoff/` paths while preserving the legacy `root_workspace/` paths. Because the old cache continued to load excluded entries, the derived `smart_sources`, `smart_blocks`, `embedding_models`, and `event_logs` directories were moved to `.smart-env/_recovery-2026-10-25`; notes and `smart_env.json` were preserved. Next step: reopen Obsidian and allow Smart Connections to rebuild with the corrected scope.
-
-<!-- handoff/flags/okf-rag-corpus-pin-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`okf-rag-corpus-pin-2026-10-25` — 2026-10-25: historia jest **liniowa, bez
-rozjazdu** — `e356f08` jest dzieckiem `eeba3fc` (nie dwoma równoległymi
-domknięciami). Naprawiono przyczynę „rozgrzebanego repo": `edba1b8`
-(„vault-migrated") usunął **111 plików `scripts/`**, czego message nie
-wspominał, więc HEAD śledził 5 plików przy 98 na dysku — bramki
-(`check_workspace_integrity.py`) i harness (`run_okf_rag_benchmark.py`) były
-nieodtwarzalne z klonu; przywrócone w `6890b66` razem z ignorowaniem
-`_scratch/` (407.7 MB), `out/`, `__pycache__/` i tokenu. `8271f41` wciągnął
-do repo `CONTEXT.md` i `EXPERIMENT-benchmark-scope` oraz rozstrzygnął pusty
-`source-slices/index.md` (generator pisze do `_slices/`, więc katalog był
-samym indeksem folderu Obsidiana). `84ba387` przeniósł pin korpusu z dysku na
-drzewo git: `corpus_paths()`/`corpus_blobs()` liczą z `git ls-tree` +
-`cat-file --batch`, a `corpus_drift()` odmawia przebiegu, gdy korpus roboczy
-różni się od HEAD. Pin `2f0491bd` **nie odpowiadał żadnemu commitowi** (drzewo
-HEAD: `d4c2db0d`, dysk: `56774761`), więc `benchmark-results-20.json` mierzył
-korpus nieodtwarzalny z repo. Nowy pin: `85038826`, 40 plików,
-`corpus_drift=0`.
-
-**Korekta 2026-10-25 (commit `okf-rag-benchmark-rerun`):** przebieg 20 pytań
-pod nowym pinem **został wykonany** — nie było to „nieprzetestowane". Wynik:
-wszystkie metryki identyczne jak w `e356f08` (`exact@10` 10/20,
-`any_exact_or_related@10` 18/20, `source_recall@10` 19/20, OOC01 abstain),
-mimo przebudowanego indeksu wektorowego. Czyli liczby baseline'u były poprawne,
-a nieodtwarzalna była tylko ich proweniencja — i ta jest już naprawiona.
-Next: dodać tryb `scoped` do `run_okf_rag_benchmark.py` (bez niego
-`EXPERIMENT-benchmark-scope` pozostaje `blocked_on`), potem commit 2 (migracja
-5 notatek do `sources: [{file, lines}]`).
-
-not checked: tryb `scoped` nadal nie istnieje; 5 notatek nie zmigrowano do
-`sources: [{file, lines}]`; gate cytowań i skill `retrieval-two-stage` nie
-istnieją; Q02 i Q20 nadal bez ręcznego przeglądu; 10 passage'ów `related` bez
-adnotacji „zawiera zdanie odpowiedzi: tak/nie"; determinizm przebiegu nie
-sprawdzony (jeden przebieg). `CONTEXT.md` jest słownikiem warstwy nawigacji,
-ale `CURATED_PREFIXES` go nie obejmuje, więc `raw_only` traktuje go jako
-materiał surowy — otwarta decyzja, świadomie nierozstrzygnięta. Proces:
-`SCARS.md` przeczytany **po** pierwszej edycji `scripts/**`, oraz jedno użycie
-`python -c` na starcie wbrew scarowi o Windows tooling — oba bez skutku, ale
-powtarzalne.
-
-<!-- handoff/flags/okf-rag-benchmark-rerun-2026-10-25.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`okf-rag-benchmark-rerun-2026-10-25` — 2026-10-25: `benchmark-results-20.json`
-przeliczony pod pinem `85038826` (40 plików, `corpus_drift=0`), bo zapisany
-wynik z `e356f08` deklarował `2f0491bd` — hash, który nie odpowiadał żadnemu
-stanowi repo (drzewo HEAD: `d4c2db0d`, dysk: `56774761`). Przebieg: tryby `all`
-i `raw_only`, 20 pytań + OOC01, ten sam runner i te same ustawienia
-(`top_k=10`, `min_score=0.55`), bez `--allow-corpus-drift`.
-
-**Wszystkie metryki pozostały identyczne**: `exact@10` 10/20,
-`any_exact_or_related@10` 18/20, `related@10` 10/20, `exact@1` 9/20,
-`source_recall@10` 19/20, `source_recall@1` 15/20 (`all`) i 17/20 (`raw_only`),
-`citation_target_correct@1` 11/20 (`all`) i 12/20 (`raw_only`),
-`citation_target_valid@1` 20/20, OOC01 abstain w obu trybach. Żadna metryka
-liczona z pozycji 1 nie drgnęła, więc **wnioski baseline'u zostają w mocy** —
-kłamała wyłącznie proweniencja, nie liczby.
-
-Zmieniły się: `corpus` (hash + 40 plików), `created_at`, `index_inventory`
-(`in_scope` 44→45, `rankable` 37→39, `without_vector` 2→1, wektory źródeł
-478→510, wektory bloków 2506→2600, bloki 374→387) i ogony list kandydatów
-(od pozycji 2–4 w dół; pierwsze pozycje bez zmian). Indeks wektorowy był w
-międzyczasie przebudowany, więc to nie jest ten sam stan indeksu — a mimo to
-ranking czołówki jest stabilny.
-
-Skorygowano też pin korpusu w `EXPERIMENT-benchmark-scope-2026-10-25.md`:
-dokument miał w treści martwy `2f0491bd` (39 plików) i twierdził „korpus bez
-zmian". Status to `planned`, eksperyment nie wystartował, więc korekta pinu
-**przed** przebiegiem jest dozwolona przez jego własną regułę — bez niej runner
-odrzuciłby własny przebieg eksperymentu jako drift. Next: commit 2 z planu
-(migracja 5 notatek kuratorskich do `sources: [{file, lines}]` + allowlista
-`DECISION-minimalny` i `DECISION-kontrakt`), bo bez niej gate cytowań nie ma
-czego pilnować.
-
-not checked: nie sprawdzono determinizmu — drugi przebieg nie wykonany
-(embeddingi idą przez Obsidian CLI; dowiedziona jest proweniencja, nie
-powtarzalność wyniku). Tryb `scoped` nadal nie istnieje, więc
-`EXPERIMENT-benchmark-scope` pozostaje `blocked_on`. `EXPERIMENT-retrieval-
-benchmark-20` nie był przeliczany pod nowym pinem — nie zawierał starego hasha,
-więc nie kłamał jawnie. Q02 i Q20 nadal bez ręcznego przeglądu; 10 passage'ów
-`related` nadal bez adnotacji „zawiera zdanie odpowiedzi: tak/nie", więc próg
-`any@10` pozostaje warunkowy. `CONTEXT.md` nadal poza `CURATED_PREFIXES`, czyli
-`raw_only` traktuje słownik warstwy nawigacji jako materiał surowy — otwarta
-decyzja. Nie pushowano (`master` wyprzedza `origin/master` o 9 commitów).
-
-<!-- handoff/flags/okf-rag-benchmark-local-2026-10-25.md · owner: codex · agent: codex · model: openai/gpt-6 -->
-`okf-rag-benchmark-local-2026-10-25` — 2026-10-25: utrwalono pełne, jawnie zrekonstruowane 20 pytań, hash korpusu i ranking source/passage dla `all` oraz `raw_only`; powtarzalne missy Q17–Q18 dostały dwa slice'y z mapą oryginalnych linii. Next: ręcznie przejrzeć Q02 i Q20 — jedyne pytania bez exact/related w top-10 — przed decyzją o potrzebie OKF-RAG.
-
-not checked: nie oceniano treści generowanej odpowiedzi ani literalnej poprawności cytatu; OOC sprawdza retrieval abstention. Oryginalne prompty baseline nie zachowały się, więc zgodność prompt-for-prompt nie jest potwierdzona.
-
-<!-- handoff/flags/notes-txt-to-md-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
-`notes-txt-to-md-2026-10-25` — 2026-10-25: renamed all 12 `.txt` files under `Notes/` (including `Notes/OKF-rag/`) to `.md`; no target-name collisions existed. Obsidian updated the affected index links. Next step: review and commit the rename set if desired.
-
-<!-- handoff/flags/mcp-smart-connections-v4-2026-10-25.md · owner: mateusz · agent: codex · model: openai/gpt-5 -->
-MCP `smart-connections` jest enabled w globalnej konfiguracji Codexa i wskazuje
-na `C:\Users\Mateusz\Desktop\vault`. Zmieniono serwer z pakietu npm v2,
-który oczekuje starego katalogu `.smart-env\multi`, na kompatybilny z
-Smart Connections v4 serwer `cusster/smart-connections-mcp` uruchamiany przez
-`npx --package=https://github.com/cusster/smart-connections-mcp/archive/refs/heads/main.tar.gz smart-connections-mcp`.
-Ustawiono także `SMART_EMBED_MODEL=TaylorAI/bge-micro-v2`, osobny cache npm i
-cache modelu. Rejestracja jest poprawna (`codex mcp get`), a tarball uruchamia
-się bez błędu `spawn EPERM`; bieżący proces rozmowy nadal nie ma załadowanych
-narzędzi Smart Connections. Po ponownym restarcie Codexa trzeba potwierdzić
-`index_status` i wykonać wyszukiwanie; pierwszy start wymaga pobrania modelu.
-
-Starsze flagi (222): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
+Starsze flagi (229): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
 
 ## where-the-work-landed
 

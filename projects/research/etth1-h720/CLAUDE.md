@@ -20,6 +20,7 @@ Depends on `../benchmark-core` for the model interface and the evaluation protoc
 | `SAB_L_H720_RESULT.md` | Reference (L3) | SAB-L rejected — read before reviving it |
 | `H2K_H720_RESULT.md` | Reference (L3) | H2K evaluated, not promoted — the partial-success record |
 | `AMR_24_168_H720_RESULT.md` | Reference (L3) | AMR-24/168 evaluated, rejected — closes the S49 line |
+| `docs/adr/` | Reference (L3) | Architecture Decision Records (0001: S49 closeout & protocol audit) |
 | `members/` | Factory (L3) | The three long-horizon specialists |
 | `results/` | Product (L4) | H720 metrics per origin |
 | `../benchmark-core/` | Dependency | Model interface, baselines, frozen-fit harness |

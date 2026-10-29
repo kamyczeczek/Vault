@@ -13,8 +13,9 @@ on a locked origin suite.
 
 - Working (this run): `members/<candidate>.py`
 - Reference (every run): `LONGTERM_ETTH1_H720_DESIGN.md` — why H720 breaks standard models
+- Reference (every run): `docs/adr/0001-s49-closeout-and-protocol-discrepancies.md` — S49 closeout & protocol audit
 - Reference (every run): `../benchmark-core/CONTEXT.md` §Evaluation protocol
-- Reference (every run): `SAB_L_H720_RESULT.md` — a killed candidate, and why
+- Reference (every run): `SAB_L_H720_RESULT.md`, `H2K_H720_RESULT.md`, `AMR_24_168_H720_RESULT.md` — evaluated candidates
 - Working (this run): `../../_archive/datasets/data/ETTh1_h1.csv`
 
 ## Process
@@ -45,9 +46,9 @@ delta. The models here fall into three families:
 
 | Model | Idea | Status |
 |---|---|---|
-| `h2k.py` | Horizon-decomposed, drift-corrected KNN retrieval | current lead |
+| `h2k.py` | Horizon-decomposed, drift-corrected KNN retrieval | **rejected** — 2.7270 vs BigDict 2.4777, not promoted |
 | `sab_l.py` | Signal-adaptive BigDict bank, L=336, scale-mismatch corrected | **rejected** — 4.4611 vs BigDict 2.4777, 0/12 origins |
-| `amr_24_168.py` | Explicit daily/weekly envelope specialist | candidate |
+| `amr_24_168.py` | Explicit daily/weekly envelope specialist | **rejected** — 3.1480 vs BigDict 2.4777, 1/12 origins |
 
 ## Kill budget
 
@@ -57,42 +58,40 @@ is the record — read it before spending a third iteration on anything similar.
 
 ## Open work
 
-Recorded from the project as it stands: both H720 candidates that were carried
-to a locked protocol are rejected, and the third has never been run.
+Recorded from the project as it stands: the S49 H720 line is CLOSED (REJECT).
+All three pre-registered candidate models have been implemented, tested, and
+evaluated on the locked 12-origin sliding suite:
 
-### AMR-24/168 is the next candidate and is not yet evaluated
+- `SAB-L`: rejected (mean raw MAE 4.4611 vs BigDict 2.4777, 0/12 origins).
+- `H2K`: rejected (mean raw MAE 2.7270 vs BigDict 2.4777, not promoted).
+- `AMR-24/168`: rejected (mean raw MAE 3.1480 vs BigDict 2.4777, std 1.3573,
+  1/12 origins < 1.9781). Cleared G3 regression guard (H96 2.0132, H336 3.5592),
+  but failed mandatory H720 gates G1 and G2. 5-seed G4 sweep evaluated in
+  `results/etth1_h720_amr24168_g4.json` (mean rank 6.1 -> FAIL). See
+  `AMR_24_168_H720_RESULT.md`.
 
-`LONGTERM_ETTH1_H720_DESIGN.md` and `SAB_L_H720_RESULT.md` both name it the next
-S49 candidate; `H2K_H720_RESULT.md` repeats that. What exists today is only a
-skeleton — `members/amr_24_168.py` subclasses `AMRFBSForecaster` and has never
-been scored. Nothing in this project has run it. Open, in order:
+Meta-H selector was not run and was closed with the line.
 
-1. **Finish the model.** Done 2026-10-27: the no-op weekly anchor
-   (`p + 0.0 * anchor`) is replaced by a real, first-class `anchor_rule`
-   (`last` / `weekly` / `blend`) routed through the base class's
-   `_anchor_level` hook, so the base ELM core, feature bank and random
-   dictionary are reused and the level anchoring is identical in `fit` and
-   `predict_hist` (train/serve consistency). The `weekly` rule (7-day mean) is
-   the design intent. `daily_weight`/`weekly_weight` set the 24h/168h harmonic
-   envelope amplitudes (both default 1.0). Documented in
-   `members/amr_24_168.py` and covered by `test_amr_24_168.py`.
-2. **Add the two missing diagnostics.** Done 2026-10-27:
-   `diag_amr_early_dev.py` (early-origin anchor-rule selection, recipe copied
-   from `diag_sabl_early_dev.py`) and `run_amr_h720_final.py` (one locked pass
-   over the 12 later origins, plus G3/G4 gates). The 2-iteration kill budget in
-   the Kill budget section applies to this candidate too.
-3. **Run it on the same locked suite** and record the per-origin table, not just
-   the mean, per the Human check above.
+### Protocol fidelity audit & closeout findings
 
-### G3 has never been evaluated for either candidate
+A detailed protocol fidelity audit was conducted (ADR 0001,
+`docs/adr/0001-s49-closeout-and-protocol-discrepancies.md` and Execution Annex in
+`LONGTERM_ETTH1_H720_DESIGN.md`):
 
-G3 (no-regression at H96/H336, within +5% of the member's S47-pool best) is
-recorded as "not claimed" in `H2K_H720_RESULT.md` and cannot be evaluated for
-SAB-L either — both were killed on the H720 gates before the regression suite
-ran. G4 (mean rank across 5 seeds) is likewise unclaimed: every H720 number in
-this line is a single seed, so the frozen-random variability the design doc
-pre-registered was never quantified at H720. If S49 is ever revived rather than
-closed, these are the unmeasured gates.
+1. **Origins count**: Pre-registration declared 20 eval origins; execution ran
+   on 12 locked origins (step=720h, sliding 360-day window).
+2. **Seed coverage**: Pre-registration specified 5 seeds across all stochastic
+   methods; main tables recorded seed 42, with 5 seeds measured only for G4.
+3. **Threshold comparability**: The G1 threshold 1.9781 originated in S-44 from
+   a 3-member blend evaluated over 2161 dense rolling origins (step=1), whereas
+   S49 applied it directly to single models across 12 sparse origins. While not
+   proving single models cannot achieve this, empirical performance shows all
+   three candidates also lost to simple baselines on this suite (BigDictELM
+   2.4777, DLinear 2.5384).
+
+**Next step rule**: Do not run further iterations of these models or tune against
+the locked origins. A new research line requires a genuinely new inductive bias,
+freshly registered dev origins, and an aligned benchmark protocol.
 
 ### The project could not run its own entry points — RESOLVED 2026-09-27
 

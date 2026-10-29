@@ -16,6 +16,31 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 ## Stale
 
+- `state-export-levels-v3` — since 2026-10-14 (older than 14 days)
+- `state-export-levels-v2` — since 2026-10-14 (older than 14 days)
+- `state-export-final` — since 2026-10-14 (older than 14 days)
+- `retrieval-walkthrough-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `retrieval-paradox-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `retrieval-active-recall-slice-shim-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `planning-debt-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `plan-audit-verify-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `plan-audit-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `pageindex-nara-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `pageindex-first-run-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `memory-index-verify-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `local-rag-plan-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `local-rag-pageindex-plan-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `kr-pilot-terminated-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `kr-closed-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `kr-benchmark-scope-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `handoff-inline-window-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `guard-wiring-audit-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `close-py-ls-files-flag-fix-retrospective-retired-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `chain-non-convergence-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `chain-closed-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `T402-walk-test-2026-10-14` — since 2026-10-14 (older than 14 days)
+- `T102` — since 2026-10-14 (older than 14 days)
+- `T101` — since 2026-10-14 (older than 14 days)
 - `workflow-verification-retired-2026-10-13` — since 2026-10-13 (older than 14 days)
 - `workflow-verification-fix-2026-10-13` — since 2026-10-13 (older than 14 days)
 - `workflow-fix-hardening-2026-10-13` — since 2026-10-13 (older than 14 days)
@@ -140,6 +165,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `etth1-h720-s49-honest-closeout-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `unlazy-workflow-closure-2026-10-27` | 2026-10-28 | mateusz | opencode |
 | `skills-wiring-and-unlazy-enable-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `single-repo-codegraph-2026-10-28` | 2026-10-28 | mateusz | opencode |

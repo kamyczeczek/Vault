@@ -4,6 +4,13 @@
 
 | flag | since | owner | agent | summary |
 | --- | --- | --- | --- | --- |
+| `vault-root-flatten-2026-10-25` | 2026-10-25 | mateusz | opencode | zawartość `root_workspace/` była |
+| `smart-connections-cache-exclusions-2026-10-25` | 2026-10-25 | mateusz | codex | corrected Smart Connections folder exclusions for the active vault root by adding the root-level `scripts/`,… |
+| `okf-rag-corpus-pin-2026-10-25` | 2026-10-25 | mateusz | opencode | historia jest **liniowa, bez |
+| `okf-rag-benchmark-rerun-2026-10-25` | 2026-10-25 | mateusz | opencode | `benchmark-results-20.json` |
+| `okf-rag-benchmark-local-2026-10-25` | 2026-10-25 | codex | codex | utrwalono pełne, jawnie zrekonstruowane 20 pytań, hash korpusu i ranking source/passage dla `all` oraz `raw_only`;… |
+| `notes-txt-to-md-2026-10-25` | 2026-10-25 | mateusz | codex | renamed all 12 `.txt` files under `Notes/` (including `Notes/OKF-rag/`) to `.md`; no target-name collisions existed.… |
+| `mcp-smart-connections-v4-2026-10-25` | 2026-10-25 | mateusz | codex | MCP `smart-connections` jest enabled w globalnej konfiguracji Codexa i wskazuje |
 | `vault-single-repo-2026-10-24` | 2026-10-24 | mateusz | opencode | rozstrzygnięty spór o root vaulta. `Desktop\vault` jest jedynym vaultem i jedynym repo; `root_workspace` staje się… |
 | `vault-repo-rel-paths-2026-10-24` | 2026-10-24 | mateusz | opencode | przygotowanie `scripts/**` na repo, którego root jest o poziom wyżej (ADR-006). Nowy `scripts/git_paths.py`… |
 | `vault-migrated-2026-10-24` | 2026-10-24 | mateusz | opencode | `Desktop\vault` został single-vault single-repo. `.git` przeniesiony z `root_workspace/` do `vault/`; `root_workspace`… |
