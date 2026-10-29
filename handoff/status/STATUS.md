@@ -169,6 +169,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `kb-cleanup-residue-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `etth1-h720-s49-honest-closeout-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `cleanup-red-tests-2026-10-29` | 2026-10-29 | mateusz | opencode |
+| `benchmark-core-full-tests-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `unlazy-workflow-closure-2026-10-27` | 2026-10-28 | mateusz | opencode |
 | `skills-wiring-and-unlazy-enable-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `single-repo-codegraph-2026-10-28` | 2026-10-28 | mateusz | opencode |
