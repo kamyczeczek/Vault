@@ -38,8 +38,8 @@ Ledger history:
   CWD: ../../..
   EVIDENCE: exit=0; shell=C:\WINDOWS\system32\cmd.exe; cwd=C:\Users\Mateusz\Desktop\vault; path=a51e8458bfcf/131 entries; EXPECT=matched; output-sha256=612edfccf600147365e000fcf315d311a89a7d19d468fe33b590084634cbe799; output-bytes=221
 
-- [ ] G5: Rytuał zamknięcia sesji (Handoff freshness and integrity)
+- [x] G5: Rytuał zamknięcia sesji (Handoff freshness and integrity)
   CHECK: python -c "from pathlib import Path; import subprocess, sys; flag='handoff/flags/etth1-h720-s49-honest-closeout-2026-10-29.md'; assert Path(flag).is_file(), 'flag missing'; st=subprocess.run(['git','status','--short','--','projects/research/etth1-h720','handoff/flags/etth1-h720-s49-honest-closeout-2026-10-29.md'],capture_output=True,text=True); assert st.stdout.strip()=='', 'OWNS still dirty: '+st.stdout; r=subprocess.run(['git','cat-file','-e','HEAD:'+flag],capture_output=True,text=True); assert r.returncode==0, 'flag not in HEAD tree'; r2=subprocess.run([sys.executable,'scripts/build_handoff.py','--check'],capture_output=True,text=True); assert r2.returncode==0, r2.stdout+r2.stderr; print('HANDOFF_RITUAL_OK')"
   EXPECT: HANDOFF_RITUAL_OK
   CWD: ../../..
-  EVIDENCE: pending
+  EVIDENCE: exit=0; shell=C:\WINDOWS\system32\cmd.exe; cwd=C:\Users\Mateusz\Desktop\vault; path=a51e8458bfcf/131 entries; EXPECT=matched; output-sha256=183b43a210da434bb6d23b4f5a03452d2c24b8dd45be553236cdb7ae0428e668; output-bytes=19
