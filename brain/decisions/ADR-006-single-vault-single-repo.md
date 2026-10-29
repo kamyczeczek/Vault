@@ -11,6 +11,10 @@ generated: { by: okf-enforcer/0.6, at: 2026-10-24T23:17:45Z }
 Accepted (2026-10-24). Zastępuje w części D6 („root jest repozytorium git") i flagę
 `vault-layout-root-2026-10-24`.
 
+> **Superseded by [ADR-008](ADR-008-kb-subfolder.md) (2026-10-29).** Decyzja o
+> jednym vaulcie i jednym repo zostaje; błędne okazało się położenie granicy —
+> wiedza wyszła nad workspace zamiast zejść do `kb/`.
+
 ## Kontekst
 
 Przez sesje 1, 9, 10 i 13 istniały dwa korzenie vaulta: `Desktop\vault` (utworzony

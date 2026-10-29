@@ -22,11 +22,13 @@ from typing import Any, Iterable
 
 
 ROOT = Path(__file__).resolve().parents[1]
-NOTES_ROOT = ROOT / "Notes" / "OKF-rag"
+# ADR-008: the knowledge layer lives under kb/, never at the workspace root.
+KB = ROOT / "kb"
+NOTES_ROOT = KB / "Notes" / "OKF-rag"
 QUESTIONS_PATH = NOTES_ROOT / "benchmark-questions.json"
-SOURCE_INDEX_PATH = ROOT / ".smart-env" / "smart_sources" / "smart_sources.ajson"
-SOURCE_VECTORS_PATH = ROOT / ".smart-env" / "smart_sources" / "mf_ccarbz"
-BLOCK_VECTORS_PATH = ROOT / ".smart-env" / "smart_blocks" / "mf_ccarbz"
+SOURCE_INDEX_PATH = KB / ".smart-env" / "smart_sources" / "smart_sources.ajson"
+SOURCE_VECTORS_PATH = KB / ".smart-env" / "smart_sources" / "mf_ccarbz"
+BLOCK_VECTORS_PATH = KB / ".smart-env" / "smart_blocks" / "mf_ccarbz"
 OBSIDIAN_CLI = Path(r"C:\Program Files\Obsidian\Obsidian.com")
 MODEL_KEY = "TaylorAI/bge-micro-v2"
 VECTOR_DIMS = 384
@@ -62,7 +64,7 @@ def corpus_paths() -> list[str]:
     untracked or Obsidian-generated note must not be able to change the
     fingerprint, because a clone cannot reproduce it.
     """
-    raw = _git("ls-tree", "-r", "-z", "--name-only", "HEAD", "--", "Notes/OKF-rag")
+    raw = _git("ls-tree", "-r", "-z", "--name-only", "HEAD", "--", "kb/Notes/OKF-rag")
     names = [name for name in raw.decode("utf-8").split("\0") if name]
     return sorted(name for name in names if name.lower().endswith(".md"))
 
@@ -111,7 +113,7 @@ def corpus_drift() -> list[str]:
     corpus therefore means the index may contain material the pinned
     fingerprint does not cover, so the run would not be reproducible.
     """
-    raw = _git("status", "--porcelain", "-z", "--", "Notes/OKF-rag")
+    raw = _git("status", "--porcelain", "-z", "--", "kb/Notes/OKF-rag")
     drift: list[str] = []
     for entry in raw.decode("utf-8").split("\0"):
         if len(entry) < 4:
@@ -134,7 +136,7 @@ def normalize_path(value: str) -> str:
 
 
 def in_corpus(path: str) -> bool:
-    return path.startswith("Notes/OKF-rag/") and path.lower().endswith(".md")
+    return path.startswith("kb/Notes/OKF-rag/") and path.lower().endswith(".md")
 
 
 def raw_only(path: str) -> bool:
@@ -241,7 +243,7 @@ def export_block_metadata(timeout: int) -> list[dict[str, Any]]:
         "if(!p?.env)throw new Error(\"Smart Connections is not loaded\");"
         "const items=p.env.smart_blocks.items||{},out=[];"
         "for(const [key,b] of Object.entries(items)){"
-        "if(!key.startsWith(\"Notes/OKF-rag/\"))continue;"
+        "if(!key.startsWith(\"kb/Notes/OKF-rag/\"))continue;"
         "const d=b.data||{},r=d.embedding?.default?.mf_ccarbz;"
         "if(!r||!Number.isInteger(r.file_i))continue;"
         "out.push({key,source_key:b.source_key||key.split(\"#\")[0],"
@@ -610,7 +612,7 @@ def run(args: argparse.Namespace) -> int:
     if fingerprint != expected_fingerprint and not args.allow_corpus_drift:
         raise ValueError(
             f"Corpus fingerprint changed: questions={expected_fingerprint}, current={fingerprint}. "
-            "This pin is the HEAD tree of Notes/OKF-rag; review the corpus, update the pinned hash, "
+            "This pin is the HEAD tree of kb/Notes/OKF-rag; review the corpus, update the pinned hash, "
             "or pass --allow-corpus-drift for an explicit drift run."
         )
     drift = corpus_drift()

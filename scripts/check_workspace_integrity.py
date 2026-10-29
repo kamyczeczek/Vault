@@ -165,10 +165,9 @@ ALLOWED_ROOT = {
     "GLOSSARY.md",
     "HANDOFF.md",       # D16: portable cold-start state; hand-written, links project detail (never copies)
     ".ralph",           # ralph-loop generated projection (INDEX.md + registry.json); rebuilt by skills/ralph-loop/scripts/ralph.py, never hand-edited
-    "library",          # raw source documents; content-addressed, bytes never committed
     "scripts",          # this gate and its siblings
     "__pycache__",
-    # `.git` is vault-owned (ADR-006): see VAULT_OWNED below, not a workspace entry.
+    # `.git` is repository-owned: it lives at ROOT and never inside kb/. See ROOT_OWNED.
     ".gitignore",
     ".gitattributes",
     ".pi",              # pi coding-agent harness working dir (settings.json); runtime artifact, declared not tracked
@@ -189,7 +188,7 @@ ALLOWED_ROOT = {
     "brain",
     "wayfinder",
     "logs",
-    # `.obsidian`, `.smart-env`, `Notes` are vault-owned (ADR-006): VAULT_OWNED.
+    # `.obsidian`, `.smart-env`, `Notes`, `library` are knowledge-owned (ADR-008): VAULT_OWNED.
     # Commit-approval token: minted by scripts/close.py immediately before its
     # own commit, consumed by scripts/commit_gate_guard.py from the pre-commit
     # hook. Runtime artifact — declared in CLAUDE.md, listed in .gitignore, never
@@ -199,12 +198,21 @@ ALLOWED_ROOT = {
     # dot-prefixed on purpose, gitignored, written only by
     # scripts/export_vault_repomix.bat. Declared in CLAUDE.md.
     ".export",
+    # ADR-008: the knowledge layer Obsidian reads. A subfolder of this repo, so
+    # moving knowledge into it does not move the repository root (ADR-006 put
+    # the vault *above* the workspace; that split-brain is what this replaces).
+    "kb",
 }
 
-# R1b: entries owned by the vault root, not the workspace root (ADR-006). Each
-# must exist in exactly one of ROOT / VAULT — "both" and "neither" are failures.
-VAULT = ROOT.parent
-VAULT_OWNED = {".git", ".obsidian", ".smart-env", "Notes"}
+# R1b: entries owned by the knowledge layer, not the workspace root (ADR-008).
+# Each must exist inside `kb/` and must NOT exist at ROOT — a copy in both is the
+# split-brain ADR-006 removed, and a copy in neither means the move regressed.
+VAULT = ROOT / "kb"
+VAULT_OWNED = {".obsidian", ".smart-env", "Notes", "library"}
+
+# R1b: entries that must stay at ROOT and never appear inside kb/. Version
+# control is the repository's, not the knowledge layer's.
+ROOT_OWNED = {".git"}
 
 # Live projects live one level down in `projects/research/` (the research
 # group); `projects/_archive/` stays directly under `projects/` and is
@@ -243,10 +251,10 @@ WARNS: list[str] = []
 def check_r1_root_shape() -> None:
     """The root holds only what the catalog declares. Stray files are failures."""
     actual = {p.name for p in ROOT.iterdir() if p.name not in RESIDUE_DIRS}
-    # Vault-owned entries are governed by R1b (exactly one of ROOT / VAULT), so
+    # Vault-owned entries are governed by R1b (inside kb/, never at ROOT), so
     # R1 must not report them as strays in either location — only as "wrong place"
     # when both copies exist, which R1b owns.
-    unexpected = actual - ALLOWED_ROOT - VAULT_OWNED
+    unexpected = actual - ALLOWED_ROOT - VAULT_OWNED - ROOT_OWNED
     # Declared but legitimately absent. __pycache__ exists only after a Python
     # run; scripts/ is tooling-created; .commit-approved exists only while a
     # close.py commit is in flight — it is minted immediately before that commit
@@ -262,21 +270,32 @@ def check_r1_root_shape() -> None:
 
 
 def check_r1b_vault_owned() -> None:
-    """R1b: vault-owned entries live in exactly one of ROOT and VAULT.
+    """R1b: the knowledge layer lives inside `kb/`, the repository stays at ROOT.
 
-    ADR-006 makes `Desktop\\vault` the vault and repository root; `root_workspace`
-    is a subfolder. `.git`, `.obsidian`, `.smart-env` and `Notes` therefore belong
-    to one of the two levels and to exactly one: a copy in both is the split-brain
-    this decision removed, and a copy in neither means the layout regressed.
+    ADR-008 makes `kb/` a subfolder of the repository root: `Desktop\\vault` stays
+    the git root and the agent workspace, and the four directories Obsidian reads
+    (`.obsidian`, `.smart-env`, `Notes`, `library`) live one level down. A copy at
+    ROOT is the layout ADR-006 flattened back; a copy in neither means the move
+    regressed. `.git` is the mirror image: it belongs to ROOT and must never
+    appear inside `kb/`, or the knowledge layer would become its own repository.
     """
     for name in sorted(VAULT_OWNED):
         here = (ROOT / name).exists()
         there = (VAULT / name).exists()
-        if here == there:
-            where = "both" if here else "neither"
+        if not there or here:
+            where = "both places" if here else "neither place"
             FAILS.append(
-                f"vault-owned entry {name!r} is present in {where} of "
-                f"{ROOT.name}/ and {VAULT.name}/ — it must live in exactly one (ADR-006)"
+                f"knowledge-layer entry {name!r} is in {where} — it must live in "
+                f"{VAULT.name}/{name} and nowhere else (ADR-008)"
+            )
+    for name in sorted(ROOT_OWNED):
+        here = (ROOT / name).exists()
+        there = (VAULT / name).exists()
+        if not here or there:
+            where = "inside kb/" if there else "neither place"
+            FAILS.append(
+                f"repository-owned entry {name!r} is {where} — it must live at the "
+                f"workspace root and never inside {VAULT.name}/ (ADR-008)"
             )
 
 

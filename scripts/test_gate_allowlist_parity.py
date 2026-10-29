@@ -23,22 +23,22 @@ def is_declared_in_claude_table(entry, claude_content):
     return any(p in claude_content for p in patterns)
 
 def is_declared_as_vault_row(entry, claude_content):
-    """Vault-owned entries (ADR-006) are declared one level up: `| `../name/` |`."""
+    """Knowledge-layer entries (ADR-008) are declared as rows into `kb/`."""
     clean = entry.strip('/')
-    return any(p in claude_content for p in (f"| `../{entry}` |", f"| `../{clean}/` |"))
+    return any(p in claude_content for p in (f"| `kb/{entry}` |", f"| `kb/{clean}/` |"))
 
 def parity_ok(allowed_entries, claude_content, gitignore_content):
     system_entries = {
         "CLAUDE.md", "AGENTS.md", "projects", "skills", "CONTEXT-MAP.md",
         "TOOLS.md", "DECISIONS.md", "PHILOSOPHY.md", "TOKEN-EFFICIENCY.md",
-        "GLOSSARY.md", "HANDOFF.md", ".ralph", "library", "scripts",
+        "GLOSSARY.md", "HANDOFF.md", ".ralph", "scripts", "kb",
         ".git", ".gitignore", ".gitattributes",
         ".agents", ".forge", "WORKFLOW_GOOSE_ICM.md", ".dgc-evidence",
         "STATE.md", "handoff", "docs", "tools", "agents", "hooks",
-        "SCARS.md"
+        "SCARS.md", ".pi", "logs",
     }
     runtime_entries = {
-        "__pycache__", ".pi", "logs"
+        "__pycache__",
     }
     new_entries = allowed_entries - system_entries
     for entry in new_entries:
@@ -71,14 +71,14 @@ def test_parity():
     system_entries = {
         "CLAUDE.md", "AGENTS.md", "projects", "skills", "CONTEXT-MAP.md",
         "TOOLS.md", "DECISIONS.md", "PHILOSOPHY.md", "TOKEN-EFFICIENCY.md",
-        "GLOSSARY.md", "HANDOFF.md", ".ralph", "library", "scripts",
+        "GLOSSARY.md", "HANDOFF.md", ".ralph", "scripts", "kb",
         ".git", ".gitignore", ".gitattributes",
         ".agents", ".forge", "WORKFLOW_GOOSE_ICM.md", ".dgc-evidence",
         "STATE.md", "handoff", "docs", "tools", "agents", "hooks",
-        "SCARS.md"
+        "SCARS.md", ".pi", "logs",
     }
     runtime_entries = {
-        "__pycache__", ".pi", "logs"
+        "__pycache__",
     }
 
     new_entries = ALLOWED_ROOT - system_entries
@@ -110,10 +110,10 @@ def test_parity():
 
     if failed:
         print(f"\nERROR: {len(failed)} ALLOWED_ROOT entries lack CLAUDE.md table declaration: {failed}")
-        sys.exit(1)
-    else:
-        print("\nSUCCESS: All ALLOWED_ROOT entries have CLAUDE.md table declarations.")
-        sys.exit(0)
+        raise SystemExit(1)
+
+    print("\nSUCCESS: All ALLOWED_ROOT entries have CLAUDE.md table declarations.")
+
 
 if __name__ == "__main__":
     test_false_positive_brain()

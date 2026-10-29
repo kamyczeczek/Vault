@@ -8,9 +8,9 @@ Examples::
 
     python scripts/generate_source_slices.py
     python scripts/generate_source_slices.py --check
-    python scripts/generate_source_slices.py --source Notes/OKF-rag/okf-rag.md \
+    python scripts/generate_source_slices.py --source kb/Notes/OKF-rag/okf-rag.md \
         --spec scripts/source_slice_specs/okf-rag.json \
-        --output Notes/OKF-rag/_slices/okf-rag
+        --output kb/Notes/OKF-rag/_slices/okf-rag
 """
 
 from __future__ import annotations
@@ -378,8 +378,8 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--source",
         type=Path,
-        default=Path("Notes/OKF-rag/okf-rag.md"),
-        help="vault-relative Markdown source",
+        default=Path("kb/Notes/OKF-rag/okf-rag.md"),
+        help="workspace-relative Markdown source",
     )
     parser.add_argument(
         "--spec",
@@ -390,7 +390,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument(
         "--output",
         type=Path,
-        default=Path("Notes/OKF-rag/_slices/okf-rag"),
+        default=Path("kb/Notes/OKF-rag/_slices/okf-rag"),
         help="generated output directory",
     )
     parser.add_argument(

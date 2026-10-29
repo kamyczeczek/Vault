@@ -38,6 +38,7 @@ file routes; it holds no content.
 | `scripts/` | Gate | `check_workspace_integrity.py` — the only check that sees the workspace root. Run before every commit **by convention, not by a hook**: as of 2026-10-03 there is no `core.hooksPath` and no CI in this repo, so nothing enforces it. See the `gate_has_no_automatic_caller` flag |
 | `hooks/` | Git hooks | Repository hooks; `hooks/pre-commit` runs `git diff --cached --check` and the workspace integrity gate before a commit. **Per-clone**: a fresh clone must run `git config core.hooksPath hooks` — the setting is local, not versioned |
 | `tools/` | Tools | Small single-file tools (one file = one job = one `--selftest`); router `tools/README.md`, contract per tool `tools/<name>.md` |
+| `logs/` | Logs | Workspace-level run logs. Tracked only as `.gitkeep` so a fresh clone keeps the directory; nothing in the knowledge layer reads it |
 | `scripts/memory/` | Recall (L1) | Session memory: the contract for the FTS5 index over past agent sessions — when an agent must query it (a convention, not an automatic call: nothing invokes it), the survey-then-`get` pair, and the ingest cadence. Store (`scripts/_scratch/sessions/05_store/memory.db`) is derived and gitignored; R14 keeps it a day fresh and refuses to pass when it cannot compare. Run it with `python.exe` — the WSL `python3` sees no agent store |
 | `scripts/_scratch/sessions/` | Sessions lab (derived) | Readable views of agent sessions: raw / did / merged / ground-truth products, per-session records, tool payloads, the memory store. Entry: `scripts/_scratch/sessions/CLAUDE.md`; contract per folder `CONTEXT.md`. Everything is derived and gitignored — regenerate, never hand-edit |
 | `WORKFLOW_GOOSE_ICM.md` | Design | Goose research-to-implementation workflow (ICM Pipeline design); factory vs per-run product, human gates |
@@ -47,10 +48,11 @@ file routes; it holds no content.
 | `agents/` | Registry | Where every AI agent's config, data and secrets live on this machine: `agents/REGISTRY.md` (path table per agent), `agents/RESTORE.md`, `agents/backup-agents.ps1` + the `agents/backup/` snapshot dir. Bookkeeping, not source; created 2026-10-04. **Docs are tracked; `agents/backup/` (snapshot zips containing live agent configs + auth) is gitignored and never committed** |
 | `brain/` | Database | Project Brain SQLite FTS5 database (derived, gitignored) + the curated layer: scars/decisions/lessons, rebuilt from `SCARS.md`/`DECISIONS.md`/`brain/lessons.md` by `python.exe scripts/ingest_brain.py`. Door: `python.exe scripts/brain.py "<topic>"` — answers *what is the rule about X?*; the other layer (session memory, *did I try this before?*) is `scripts/memory/`. Contract: `brain/CONTEXT.md`; gate: R21 |
 | `wayfinder/` | Planning | Wayfinder maps and architecture plans |
-| `../.obsidian/` | Obsidian state (vault) | Obsidian per-device state at the vault root, beside the workspace folder; community plugins and configs tracked, workspace/cache/graph gitignored (ADR-006) |
-| `../.smart-env/` | Smart Connections (vault) | Smart Connections vector index at the vault root; derived, gitignored except `smart_env.json`, regenerated after the plugin is installed (ADR-006) |
-| `../Notes/` | Vault notes (vault) | User notes at the vault root; tracked in the private repo (ADR-006) |
-| `../.git/` | Repo root (vault) | One repository for the whole vault; the workspace is a subfolder of it, not its own repo (ADR-006, ADR-007) |
+| `kb/.obsidian/` | Obsidian state (knowledge) | Obsidian per-device state for the `kb/` vault; community plugins and configs tracked, workspace/cache/graph gitignored (ADR-008) |
+| `kb/.smart-env/` | Smart Connections (knowledge) | Smart Connections vector index for `kb/`; derived, gitignored except `smart_env.json`, regenerated after the plugin is installed (ADR-008) |
+| `kb/Notes/` | Knowledge notes | User notes and the OKF-rag corpus — the only notes Obsidian indexes (ADR-008) |
+| `kb/library/` | Source documents | Raw content-addressed documents; index and tooling tracked, bytes gitignored (ADR-008) |
+| `.git/` | Repo root | One repository for the whole workspace. `kb/` is a subfolder of it, so the knowledge layer never moves the repository root (ADR-008, superseding ADR-006) |
 | `.export/` | Bulk dumps (vault) | Generated markdown the app must never parse: Repomix vault exports (`.export/vault_export.md` — 56 MB, 1.05 M lines). Dot-prefixed because Obsidian skips every path starting with `.`; a multi-MB `*.md` at the root stalls the metadata cache on each start and on each save. Written by `scripts/export_vault_repomix.bat`, gitignored |
 | `PLAN.md` | Plan | Workspace reorganization master plan |
 | `TASKS.md` | Tasks | Reorganization ticket list (TASKS.md) |

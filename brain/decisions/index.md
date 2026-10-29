@@ -5,3 +5,4 @@
 * [ADR-005-session-digest-fact-judgment](ADR-005-session-digest-fact-judgment.md)
 * [ADR-006-single-vault-single-repo](ADR-006-single-vault-single-repo.md)
 * [ADR-007-git-baseline-and-remote](ADR-007-git-baseline-and-remote.md)
+* [ADR-008-kb-subfolder](ADR-008-kb-subfolder.md)

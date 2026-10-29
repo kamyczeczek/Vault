@@ -24,7 +24,7 @@ than unifies.
 | Skills | `skills/` at root, plus a `skills/` home per project | Agent workflow instructions | Project source code |
 | Agentic research (archived) | `projects/_archive/agentic-research-lab/` (archived 2026-10-08, `grade: demoted`) | Corpus, knowledge graph, reflection, VERA study (frozen; read-only precedent source for `tools/`) | Retrieval quality (that is `knowledge-retrieval`) |
 | Knowledge retrieval | `projects/research/knowledge-retrieval/` | The read path: ranking, quoting, corpus health | Corpus construction (that is ARL) |
-| OKF-rag notes | `Notes/OKF-rag/` (not a project — see `handoff/decisions/notes-okf-rag-outside-project-contract.md`) | Artifact vocabulary (hub, slice, `evidence_status`, source vs locator), the evidence contract, the gold set and its benchmark | Ranking, indexes and retrieval systems (that is `retrieval-v2` / `knowledge-retrieval`) |
+| OKF-rag notes | `kb/Notes/OKF-rag/` (not a project — see `handoff/decisions/notes-okf-rag-outside-project-contract.md`) | Artifact vocabulary (hub, slice, `evidence_status`, source vs locator), the evidence contract, the gold set and its benchmark | Ranking, indexes and retrieval systems (that is `retrieval-v2` / `knowledge-retrieval`) |
 | Forecasting models | `projects/research/benchmark-core/` | Architectures, the cross-domain benchmark harness | The H720 research line |
 | Long-horizon forecasting | `projects/research/etth1-h720/` | H720 ETTh1 accuracy: H2K, SAB-L, AMR-24/168 | General model zoo |
 | Model discovery | `projects/research/research-engine/` | Autonomous mutation and discovery loops | Fixed benchmark evaluation |

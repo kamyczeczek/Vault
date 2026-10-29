@@ -1,17 +1,21 @@
 # --- Per-machine editor state: never content --------------------------------
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-.obsidian/cache/
-.obsidian/graph.json
+# ADR-008: anchored patterns follow the knowledge layer into kb/, because a
+# pattern containing a slash is resolved against this file's directory.
+kb/.obsidian/workspace.json
+kb/.obsidian/workspace-mobile.json
+kb/.obsidian/cache/
+kb/.obsidian/graph.json
 .trash/
 # Per-plugin scan cache (rebuildable), not settings.
-.obsidian/plugins/*/scan-cache.json
+kb/.obsidian/plugins/*/scan-cache.json
 # One-off Obsidian repair/disable backups taken during the 2026-10-25 migration.
-.obsidian/repair-backup-*/
-.obsidian/plugins.disabled-*/
-.obsidian/*.bak-*
+kb/.obsidian/repair-backup-*/
+kb/.obsidian/plugins.disabled-*/
+kb/.obsidian/*.bak-*
+# obsidian-git writes this passphrase helper at plugin init on every install.
+kb/.obsidian/plugins/obsidian-git/obsidian_askpass.sh
 # Obsidian auto-recreates this empty folder index; canonical slices live in _slices/
-Notes/OKF-rag/source-slices/index.md
+kb/Notes/OKF-rag/source-slices/index.md
 
 # --- Toolchain: installed, never authored -----------------------------------
 # 36 766 files / 1 041 MB of third-party code. `pip install` / `npm ci` rebuild
@@ -45,9 +49,9 @@ tools/out/
 .codegraph/
 # Derived FTS5/brain sidecars: rebuilt from sources, churn on every ingest.
 brain/*.db*
-.smart-env/*
-!.smart-env/smart_env.json
-
+# Derived Smart Connections index: machine-local vectors, one tracked config.
+kb/.smart-env/*
+!kb/.smart-env/smart_env.json
 # --- GitHub's hard limit: any file > 100 MB is rejected outright ------------
 # Both are derived graphs, regenerable from the corpus next to them.
 projects/research/knowledge-retrieval/pilots/graphrag/fixtures/graph_vec.db

@@ -89,7 +89,7 @@ def gate_g7_okf_sources() -> str | None:
     """Five OKF-rag notes must carry structured sources with line ranges."""
     migrated = 0
     for name in OKF_NOTES:
-        text = _read(ROOT / "Notes" / "OKF-rag" / name)
+        text = _read(ROOT / "kb" / "Notes" / "OKF-rag" / name)
         block = re.search(r"^sources:\s*\n((?:[ \t]+.*\n)+)", text, re.M)
         if not block:
             continue

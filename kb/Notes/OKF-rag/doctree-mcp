@@ -16416,7 +16416,7 @@ Response:
 
 \`\`\`bash
 curl https://api.example.com/users/me \\
-  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIs..."
+  -H "Authorization: Bearer <token>"
 \`\`\`
 `;
 
