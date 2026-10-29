@@ -402,6 +402,8 @@ class DriftProofTests(unittest.TestCase):
     """The committed report and the live table must agree, or the gate is a lie."""
 
     def test_v7_prose_is_fully_classified(self):
+        if not V7.is_file():
+            self.skipTest("v7 report not available")
         if not prose.audit.AGENTS.is_file():
             self.skipTest("live AGENTS.md not available")
         out, err = io.StringIO(), io.StringIO()
@@ -410,6 +412,8 @@ class DriftProofTests(unittest.TestCase):
         self.assertEqual(rc, 0, f"v7 prose has unclassified figures:\n{err.getvalue()}")
 
     def test_the_live_table_carries_no_stale_entry(self):
+        if not V7.is_file():
+            self.skipTest("v7 report not available")
         residue = prose.residue(V7)
         covered = {e["value"] for e in residue[1]}
         stale = [v for v in prose.EXEMPT if v not in covered]

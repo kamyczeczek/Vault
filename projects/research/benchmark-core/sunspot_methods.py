@@ -2,8 +2,7 @@
 from __future__ import annotations
 import numpy as np
 from bench import (fit_nlinear, pred_nlinear, fit_rff, pred_rff, fit_subbands,
-                   pred_subband, fit_bigdict, pred_bigdict,
-                   fit_amr, pred_amr, fit_bigdict_tree,
+                   pred_subband, fit_bigdict, pred_bigdict, fit_bigdict_tree,
                    pred_bigdict_tree, fit_subband_bigdict, pred_subband_bigdict,
                    fit_esn, pred_esn, fit_det_esn, pred_det_esn,
                    fit_knn_forecaster, pred_knn_forecaster)
