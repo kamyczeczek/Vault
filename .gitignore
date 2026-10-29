@@ -47,6 +47,8 @@ tools/out/
 .export/
 # CodeGraph index: machine-local, rebuilt by `codegraph init` (~70 MB SQLite).
 .codegraph/
+# unlazy skill session state: locks, approvals, hook state — runtime, never authored.
+.unlazy/
 # Derived FTS5/brain sidecars: rebuilt from sources, churn on every ingest.
 brain/*.db*
 # Derived Smart Connections index: machine-local vectors, one tracked config.

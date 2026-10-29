@@ -7,7 +7,8 @@ title: ADR-008-kb-subfolder
 
 ## Status
 
-Accepted (2026-10-29). Zastępuje ADR-006 w całości.
+Accepted (2026-10-29). **Supersedes ADR-006** in full — the one-vault/one-repo
+decision stands, but the boundary moves from above the workspace to `kb/` below it.
 
 > Numeracja: polecenie brzmiało „ADR-007", ale `ADR-007-git-baseline-and-remote`
 > już istnieje i opisuje inną decyzję. Przepisanie historii byłoby gorsze niż

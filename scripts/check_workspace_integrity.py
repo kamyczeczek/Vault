@@ -225,7 +225,10 @@ PROJECTS = sorted(
 RESIDUE_DIRS = {"__pycache__", ".pytest_cache", ".mypy_cache", ".ruff_cache", ".ipynb_checkpoints",
                 # CodeGraph's local index (~70 MB SQLite): rebuilt by `codegraph init`,
                 # gitignored, never authored — same class as the caches above.
-                ".codegraph"}
+                ".codegraph",
+                # unlazy skill's session state (locks, approvals): created at
+                # runtime by gate-check.mjs, gitignored, never authored.
+                ".unlazy"}
 RESIDUE_SUFFIX = {".pyc", ".pyo", ".tmp", ".orig", ".rej", ".bak", ".log"}
 
 # Declared runtime-output directories: regenerable per-run telemetry a tool owns
