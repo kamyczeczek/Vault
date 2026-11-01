@@ -16,6 +16,36 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 ## Stale
 
+- `review-debt-named-s80-2026-10-17` — since 2026-10-17 (older than 14 days)
+- `recall-protocol-curated-2026-10-17` — since 2026-10-17 (older than 14 days)
+- `e4-rescue-model-contract` — since 2026-10-17 (older than 14 days)
+- `debug-py-type-curated-correction-2026-10-17` — since 2026-10-17 (older than 14 days)
+- `agent-session-memory-recall-s75` — since 2026-10-17 (older than 14 days)
+- `wayfinder-brain-e7-expect-hash-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `wayfinder-brain-e6-verify-claims-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `wayfinder-brain-e1-schema-drift-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `wayfinder-brain-e1-drift-regression-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `wayfinder-brain-answers-execution-convention-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `the-pragmatic-programmer-retrieval-zadanie5-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `residue-closeout-2026-10-15` — since 2026-10-16 (older than 14 days)
+- `opencode-v2-store-loader-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `kr-dirty-tree-resolved-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `kr-0746-artifact-resolved-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `e6-verify-claims-session-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `close-py-diff-check-fixes-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `brain-memory-v1-landed-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `brain-fresh-agent-section-v2-2026-10-16` — since 2026-10-16 (older than 14 days)
+- `workspace-gate-exclusion-audit-2026-10-15` — since 2026-10-15 (older than 14 days)
+- `review-and-guard-closure-2026-10-15` — since 2026-10-15 (older than 14 days)
+- `retro-close-01a13cf0-2026-10-15` — since 2026-10-15 (older than 14 days)
+- `retrieval-v1-deployed-2026-10-15` — since 2026-10-15 (older than 14 days)
+- `meta-loop-stopped-2026-10-15` — since 2026-10-15 (older than 14 days)
+- `memory-eval-and-guards-decision-2026-10-15` — since 2026-10-15 (older than 14 days)
+- `guard-implementation-option-a` — since 2026-10-15 (older than 14 days)
+- `guard-implementation-corrective-2026-10-15` — since 2026-10-15 (older than 14 days)
+- `guard-implementation-2026-10-15` — since 2026-10-15 (older than 14 days)
+- `governance-ontology-prototype-2026-10-15` — since 2026-10-15 (older than 14 days)
+- `brain-ingest-versioning-measurement-2026-10-15` — since 2026-10-15 (older than 14 days)
 - `state-export-levels-v3` — since 2026-10-14 (older than 14 days)
 - `state-export-levels-v2` — since 2026-10-14 (older than 14 days)
 - `state-export-final` — since 2026-10-14 (older than 14 days)
@@ -165,6 +195,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `etth1-h720-s44-calibration-2026-10-30` | 2026-11-01 | mateusz | opencode |
 | `kb-knowledge-split-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `kb-cleanup-residue-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `etth1-h720-s49-honest-closeout-2026-10-29` | 2026-10-29 | mateusz | opencode |

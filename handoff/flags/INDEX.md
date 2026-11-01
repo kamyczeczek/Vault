@@ -4,6 +4,25 @@
 
 | flag | since | owner | agent | summary |
 | --- | --- | --- | --- | --- |
+| `unlazy-workflow-closure-2026-10-27` | 2026-10-28 | mateusz | opencode | Unlazy checklist domknięta dla zadań P0/P1. |
+| `skills-wiring-and-unlazy-enable-2026-10-28` | 2026-10-28 | mateusz | opencode | Wpięto katalog `skills/` do konfiguracji OpenCode, jCode i Claude Code przez junctions na dysku… |
+| `single-repo-codegraph-2026-10-28` | 2026-10-28 | mateusz | opencode | monorepo zweryfikowany, CodeGraph indeksuje `projects/` bez `includeIgnored`; `close.py` bez martwego `nested_repos()`. |
+| `preflight-agent-and-s71-scar-2026-10-28` | 2026-10-28 | mateusz | opencode | Wprowadzono S71 do `SCARS.md` i zindeksowano w `brain.db` (50 wpisów problemów). Wdrożono deterministyczny preflight… |
+| `okf-rag-scope-and-gate-2026-10-25` | 2026-10-28 | mateusz | opencode | commit 2 OKF-rag wdrożony — zmigrowano 5 notatek kuratorskich (`DECISION-minimalny-przeplyw-wiedzy.md`,… |
+| `drive-upload-did-sessions-2026-10-28` | 2026-10-28 | mateusz | opencode | Ręczne wgrywanie `did_sessions.md` na Google Drive zamienione na **kopię do folderu Google Drive dla komputerów** —… |
+| `codegraph-routing-claude-rules-2026-10-28` | 2026-10-28 | mateusz | opencode | Wpisano regułę nawigacji CodeGraph CLI do `CLAUDE.md` §Rules; zdefiniowano G3 jako DEFERRED orakuł różnicowy. |
+| `codegraph-residue-and-gate3-tighten-2026-10-28` | 2026-10-28 | mateusz | opencode | Domknięto residue `self-modifications.log` po edycji `CLAUDE.md`; uściślono orakuł G3 w ledgerze bramek. |
+| `codegraph-gate-residue-2026-10-28` | 2026-10-28 | mateusz | opencode | `.codegraph/` uznany za artefakt narzędzia w `RESIDUE_DIRS`, nie za wpis katalogu workspace. |
+| `close-py-verify-claims-hardening-2026-10-28` | 2026-10-28 | mateusz | opencode | Wymuszono obecność sprawdzalnych twierdzeń przy jawnym `--verify-claims`; dodano test `COUNT=5` w… |
+| `close-py-include-safety-2026-10-28` | 2026-10-28 | mateusz | opencode | `close.py` odblokowuje `--include projects/...` i zabrania `--include .`. Usunięto przestarzały check blokujący ścieżki… |
+| `benchmark-core-fev-multivariate-2026-10-27` | 2026-10-28 | mateusz | opencode | FEV protocol multivariate support oraz per-origin fit w `bench.py`. `extract_series_from_window` zwraca listę 1-D array… |
+| `vault-monorepo-import-2026-10-27` | 2026-10-27 | mateusz | opencode | cały vault w jednym repo GitHub. |
+| `vault-monorepo-decisions-2026-10-27` | 2026-10-27 | mateusz | opencode | D24 zapisuje, co repo zawiera i jak odtworzyć historię. |
+| `etth1-h720-s49-closeout-2026-10-27` | 2026-10-27 | mateusz | opencode | linia S49 H720 domknięta. Trzeci i ostatni kandydat AMR-24/168 został dokończony (kotwica tygodniowa z no-op… |
+| `benchmark-core-fev-g2-fix-2026-10-27` | 2026-10-27 | mateusz | opencode | FEV protocol G2 gate aligned with S49 pre-registration. W `main_fev()` zmieniono definicję G2 z hardcoded `mean_rankB <… |
+| `research-engine-s47-2026-10-26` | 2026-10-26 | mateusz | opencode | zagnieżdżone repo `research-engine` jest domknięte (dwa commity: 0b08562, 70ce0eb; drzewo czyste). Q9 rozstrzygnięte… |
+| `obsidian-index-overload-2026-10-26` | 2026-10-26 | mateusz | opencode | przyczyną zadyszki był nie |
+| `benchmark-core-fev-honest-2026-10-26` | 2026-10-26 | mateusz | opencode | `bench.py --fev` przestało kłamać (nested commits `726daa6` kod + testy, `e54644d` MAP.md; tylko `bench.py` +… |
 | `vault-root-flatten-2026-10-25` | 2026-10-25 | mateusz | opencode | zawartość `root_workspace/` była |
 | `smart-connections-cache-exclusions-2026-10-25` | 2026-10-25 | mateusz | codex | corrected Smart Connections folder exclusions for the active vault root by adding the root-level `scripts/`,… |
 | `okf-rag-corpus-pin-2026-10-25` | 2026-10-25 | mateusz | opencode | historia jest **liniowa, bez |

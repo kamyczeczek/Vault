@@ -93,6 +93,37 @@ A detailed protocol fidelity audit was conducted (ADR 0001,
 the locked origins. A new research line requires a genuinely new inductive bias,
 freshly registered dev origins, and an aligned benchmark protocol.
 
+### Threshold comparability — measured 2026-11-01
+
+The ADR 0001 caveat ("the two numbers are not directly comparable") is now a number.
+The S44 blend (NLinear L336 a=1 + NLinear L336 a=10 + PatchTST-Delta P24 D32 2L,
+per-horizon ridge, no intercept, `alpha=30000`, frozen) was scored on the S49
+protocol — 12 locked origins, step 720 h, 8640..16560 — with its ridge weights
+refitted out-of-sample per origin (members frozen at row 5760, ridge on the first
+1080 of the 2161 out-of-sample tail origins; the exact structural mirror of S44's
+`val[0:1080)`).
+
+| method | mean raw MAE | wins vs DLinear |
+|---|---|---|
+| S44 blend (seed 42) | 4.1255 | 4/12 |
+| S44 blend (5-seed mean) | 4.1721 | — |
+| PatchTST-Delta P24 D32 2L (seed 42) | 2.6065 | 6/12 |
+| NLinear L336 a=1 / a=10 | 2.6996 | 5/12 |
+| BigDictELM L96 | 2.4777 | 6/12 |
+| DLinear | 2.5384 | 0/12 |
+
+Verdict, produced by the rule fixed before the run: 4.1255 >= 2.4777, so 1.9781 was
+a protocol artifact (2161 dense step-1 origins), not a level reachable on 12 sparse
+step-720 origins. The blend is also worse than each of its own members: with no
+intercept the ridge can only learn a level multiplier, and the multiplier learned on
+a biased-low out-of-sample region over-corrects at the scored origin.
+
+Consistency control: the identical S44 frozen test reproduces 1.978126 (rel diff
+4.2e-11) on both data files. Artifacts: `S44_CALIBRATION_RESULT.md`,
+`results/s44_calibration.json`, `results/s44_calibration_reproduction.json`,
+pre-registration `GATES-s44-calibration.md` (Amendment A1). S49 stays closed; no
+model is promoted and nothing is re-tuned.
+
 ### The project could not run its own entry points — RESOLVED 2026-09-27
 
 All three causes were real; each is now fixed and each fix is verified by a run

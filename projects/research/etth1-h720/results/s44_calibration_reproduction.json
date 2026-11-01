@@ -1,0 +1,50 @@
+{
+  "stage": "s44_reproduction_control",
+  "tolerance": 0.01,
+  "reported": 1.9781264265828236,
+  "runs": [
+    {
+      "label": "s44_data_file",
+      "data_file": "C:\\Users\\Mateusz\\Desktop\\vault\\projects\\_archive\\ts-ml-experiments\\h720\\ETTh1.csv",
+      "patchtst_seed": 0,
+      "n_val_origins": 2161,
+      "n_test_origins": 2161,
+      "stack_fit_origins": 1080,
+      "alpha": 30000.0,
+      "test_full_mae": 1.9781264266659242,
+      "test_full_rmse": 2.461263907506816,
+      "s44_reported_mae": 1.9781264265828236,
+      "abs_diff": 8.310063748240282e-11,
+      "rel_diff": 4.2009770642393984e-11,
+      "within_1pct": true,
+      "singleton_test_mae": {
+        "nlinear_L336_a1": 2.057118861745735,
+        "nlinear_L336_a10": 2.0571160498462784,
+        "patchtst_P24_D32_2L": 2.18638818133913
+      },
+      "elapsed_s": 207.7
+    },
+    {
+      "label": "s49_data_file",
+      "data_file": "C:\\Users\\Mateusz\\Desktop\\vault\\projects\\_archive\\datasets\\data\\ETTh1_h1.csv",
+      "patchtst_seed": 0,
+      "n_val_origins": 2161,
+      "n_test_origins": 2161,
+      "stack_fit_origins": 1080,
+      "alpha": 30000.0,
+      "test_full_mae": 1.9781264266659242,
+      "test_full_rmse": 2.461263907506816,
+      "s44_reported_mae": 1.9781264265828236,
+      "abs_diff": 8.310063748240282e-11,
+      "rel_diff": 4.2009770642393984e-11,
+      "within_1pct": true,
+      "singleton_test_mae": {
+        "nlinear_L336_a1": 2.057118861745735,
+        "nlinear_L336_a10": 2.0571160498462784,
+        "patchtst_P24_D32_2L": 2.18638818133913
+      },
+      "elapsed_s": 204.4
+    }
+  ],
+  "all_within_1pct": true
+}

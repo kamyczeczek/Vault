@@ -33,3 +33,33 @@ Jednocześnie audyt zgodności protokołu ujawnił istotne rozbieżności metody
 - Zapobiega dalszemu strojeniu modeli na zużytym zestawie 12 originów testowych.
 - Eliminuje fałszywy obraz stanu badań w repozytorium (AMR-24/168 nie figuruje już jako otwarty kandydat).
 - Ewentualne przyszłe badania nad H720 wymagają sformułowania nowej hipotezy, nowych originów deweloperskich oraz zweryfikowania protokołu porównawczego przed uruchomieniem eksperymentu.
+
+## Aneks Wykonawczy 2026-11-01 — kalibracja progu 1,9781 na protokole S49
+
+Pierwotny tekst ADR pozostaje niezmieniony (pkt 3 decyzji). Poniższe dopisanie
+utrwala wynik pomiaru, który zamienia zastrzeżenie nr 3 z Kontekstu („oceny te nie są
+bezpośrednio porównywalnymi pomiarami") na liczbę.
+
+**Pytanie.** Ile osiąga dokładnie ten sam obiekt, który dał 1,9781 — blend S44
+(`NLinear L336 a=1` + `NLinear L336 a=10` + `PatchTST-Delta P24 D32 2L`, ridge
+per-horyzont bez interceptu, `alpha=30000`) — oceniony na protokole S49 (12
+zablokowanych originów, krok 720 h, 8640..16560)?
+
+**Protokół i pre-rejestracja.** Pełna pre-rejestracja w
+`GATES-s44-calibration.md` (poprawka A1: wagi ridge'a dopasowywane wyłącznie na
+prognozach out-of-sample członków — członkowie zamrożeni na pierwszych 5760 wierszach
+okna, ridge na pierwszych 1080 z 2161 originów regionu OOS). Reguła interpretacji,
+zbiór originów, zbiór seedów, alpha i punkt odniesienia 2,4777 zostały ustalone przed
+uruchomieniem i nie zmieniono ich po zobaczeniu wyników.
+
+**Wynik.** Zob. `S44_CALIBRATION_RESULT.md` oraz
+`results/s44_calibration.json` (mean, std, mediana, wygrane vs DLinear per metoda;
+PatchTST i blend w rozkładzie 5 seedów).
+
+**Kontrola spójności.** Ten sam zamrożony test S44 odtworzony 1:1 (członkowie na
+wierszach 0..11424, stack na `val[0:1080)`, 2161 gęstych originów kroku 1) odtwarza
+1,978126 w granicy 1% — inaczej pomiar zostałby zatrzymany przed interpretacją.
+
+**Znaczenie dla zastrzeżenia nr 3.** Pomiar nie zmienia decyzji o zamknięciu S49 i nie
+promuje żadnego modelu. Rozstrzyga wyłącznie, czy 1,9781 było własnością modelu, czy
+własnością protokołu (2161 gęstych originów kroku 1 vs 12 rzadkich originów kroku 720).
