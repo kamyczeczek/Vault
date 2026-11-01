@@ -196,6 +196,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
 | `etth1-h720-s44-calibration-2026-10-30` | 2026-11-01 | mateusz | opencode |
+| `divide-and-conquer-skill-2026-11-01` | 2026-11-01 | mateusz | opencode |
 | `kb-knowledge-split-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `kb-cleanup-residue-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `etth1-h720-s49-honest-closeout-2026-10-29` | 2026-10-29 | mateusz | opencode |
