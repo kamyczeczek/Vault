@@ -219,6 +219,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `fev-full-guard-implemented` | 2026-11-02 | mateusz | opencode |
 | `benchmark-core-phase1b-freeze-2026-11-02` | 2026-11-02 | mateusz | opencode |
 | `benchmark-core-phase1b-dev-analysis-2026-11-02` | 2026-11-02 | mateusz | opencode |
 | `benchmark-core-lockbox-a6-disclosure-2026-11-02` | 2026-11-02 | mateusz | opencode |

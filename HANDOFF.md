@@ -29,6 +29,11 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/fev-full-guard-implemented.md · owner: mateusz · agent: opencode · model: omniroute/gemini-flash-lite-latest -->
+`fev-full-guard-implemented` — 2026-11-03: Implemented and tested FEV-full guard / hard stop protocol in benchmark-core (bench.py & test_benchmark_protocol.py), all 42 tests passing successfully.
+
+not checked: none — all protocol tests executed and passed.
+
 <!-- handoff/flags/benchmark-core-phase1b-freeze-2026-11-02.md · owner: mateusz · agent: opencode · model: omniroute/agy/claude-opus-4-6-thinking -->
 `benchmark-core-phase1b-freeze-2026-11-02` — 2026-11-02: Phase 1 + 1b of the v2
 multi-domain generalization protocol is complete and frozen.
