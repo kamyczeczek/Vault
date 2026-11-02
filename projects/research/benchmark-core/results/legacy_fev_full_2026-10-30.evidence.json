@@ -1,0 +1,59 @@
+{
+ "artifact": "legacy_fev_full_2026-10-30.log",
+ "artifact_sha256": "273ed6bdb8f568acc5d096bc79d444633cea8f5043f45ffa5583234fe923b795",
+ "artifact_bytes": 91620,
+ "encoding": "UTF-16-LE with BOM, bare LF (PowerShell > redirect); bytes preserved bit-exact",
+ "log_headers_parsed": 74,
+ "positions_seen": [
+  1,
+  74
+ ],
+ "name_comparison": {
+  "match": 74
+ },
+ "matched_by_partition": {
+  "quarantine": 22,
+  "dev": 16,
+  "lockbox": 36
+ },
+ "contaminated_lockbox_positions": [
+  8,
+  9,
+  10,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  30,
+  31,
+  36,
+  37,
+  38,
+  41,
+  42,
+  43,
+  46,
+  47,
+  48,
+  49,
+  50,
+  57,
+  63,
+  64,
+  66,
+  67,
+  68,
+  69,
+  70
+ ],
+ "mismatches": [],
+ "note": "Log adds two model lines for position 74 (uk_covid_nation_1D) before the process exited, so positions 1..73 are complete. That last position belongs to the dev partition, so the partial window does not touch the Lockbox."
+}

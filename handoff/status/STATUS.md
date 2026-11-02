@@ -220,6 +220,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
 | `benchmark-core-phase1b-freeze-2026-11-02` | 2026-11-02 | mateusz | opencode |
+| `benchmark-core-phase1b-dev-analysis-2026-11-02` | 2026-11-02 | mateusz | opencode |
 | `benchmark-core-lockbox-a6-disclosure-2026-11-02` | 2026-11-02 | mateusz | opencode |
 | `etth1-h720-s44-calibration-2026-10-30` | 2026-11-01 | mateusz | opencode |
 | `divide-and-conquer-skill-2026-11-01` | 2026-11-01 | mateusz | opencode |
