@@ -96,7 +96,7 @@ the set of sibling modules that import it.
 | `sunspot_selector.py` | Simple horizon-aware selector using development-origin validation. | choose_methods(methods, series, development_origins, horizon, lookback) | choose_methods → expr | test_sunspot_eval |
 | `test_alpha_momentum.py` | Evaluation script for AlphaMomentumHybrid on AAPL stock data. | get_apple_data(n); evaluate() | get_apple_data → expr | — |
 | `test_benchmark_protocol.py` | _(no docstring)_ | test_seed_sweep_aggregates_every_task_over_every_seed(); test_seed_sweep_separates_a_real_win_from_a_noise_margin(); test_strict_mode_fails_closed_when_dependen… (+204 chars) | — | — |
-| `test_benchmark_v2.py` | Comprehensive test suite for benchmark-core v2 foundation modules. | test_manifest_build_and_invariants(); test_window_selection(); test_seasonal_error_and_mase(); test_relative_error_clipping_and_skill(); test_cluster_bootstrap_… (+243 chars) | — | — |
+| `test_benchmark_v2.py` | Comprehensive test suite for benchmark-core v2 foundation modules. | test_manifest_build_and_invariants(); test_window_selection(); test_seasonal_error_and_mase(); test_relative_error_clipping_and_skill(); test_cluster_bootstrap_… (+539 chars) | — | — |
 | `test_chaos_protocol.py` | _(no docstring)_ | test_evaluation_is_causal_and_horizon_wise(); test_evaluation_rejects_invalid_prediction() | test_evaluation_is_causal_and_horizon_wise → value; test_evaluation_rejects_invalid_prediction → value | — |
 | `test_financial_hybrid.py` | _(no docstring)_ | get_apple_data(n); evaluate() | get_apple_data → expr | — |
 | `test_lasso.py` | _(no docstring)_ | test_lasso() | — | — |
