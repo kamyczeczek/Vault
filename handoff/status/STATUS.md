@@ -16,6 +16,30 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 ## Stale
 
+- `ticket-s84b-check-includes-git-rm-trap-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `ticket-s76-parse-scars-leak-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `ticket-r14-sessions-meta-shelf-freshness-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `the-pragmatic-programmer-retrieval-zadanie3-2-answerpilot-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `the-pragmatic-programmer-retrieval-answerpilot-run-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `session-16-closure` — since 2026-10-18 (older than 14 days)
+- `r18-parser-scope-fix-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `owner-decisions-2026-10-18-v2` — since 2026-10-18 (older than 14 days)
+- `open-tickets-s76-s84b-r14-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `handoff-status-p4-repair-and-check-r24-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `handoff-status-folder-created-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `handoff-status-flags-refresh-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `handoff-status-exit-code-and-scar-doc-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `handoff-status-context-refresh-4-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `handoff-status-context-refresh-3-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `handoff-status-context-refresh-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `handoff-status-context-refresh-2-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `handoff-status-build-status-cleanup-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `handoff-status-build-status-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `cold-start-recall-proof-2026-10-17` — since 2026-10-18 (older than 14 days)
+- `close-py-git-rm-trap-fixed-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `close-py-correct-flag-landed-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `close-pipeline-determinism-2026-10-18` — since 2026-10-18 (older than 14 days)
+- `close-artifacts-s82-s83-2026-10-18` — since 2026-10-18 (older than 14 days)
 - `review-debt-named-s80-2026-10-17` — since 2026-10-17 (older than 14 days)
 - `recall-protocol-curated-2026-10-17` — since 2026-10-17 (older than 14 days)
 - `e4-rescue-model-contract` — since 2026-10-17 (older than 14 days)
@@ -195,13 +219,13 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `benchmark-core-phase1b-freeze-2026-11-02` | 2026-11-02 | mateusz | opencode |
 | `etth1-h720-s44-calibration-2026-10-30` | 2026-11-01 | mateusz | opencode |
 | `divide-and-conquer-skill-2026-11-01` | 2026-11-01 | mateusz | opencode |
 | `kb-knowledge-split-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `kb-cleanup-residue-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `etth1-h720-s49-honest-closeout-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `cleanup-red-tests-2026-10-29` | 2026-10-29 | mateusz | opencode |
-| `benchmark-core-full-tests-2026-10-29` | 2026-10-29 | mateusz | opencode |
 | `unlazy-workflow-closure-2026-10-27` | 2026-10-28 | mateusz | opencode |
 | `skills-wiring-and-unlazy-enable-2026-10-28` | 2026-10-28 | mateusz | opencode |
 | `single-repo-codegraph-2026-10-28` | 2026-10-28 | mateusz | opencode |
@@ -220,7 +244,6 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `benchmark-core-fev-g2-fix-2026-10-27` | 2026-10-27 | mateusz | opencode |
 | `research-engine-s47-2026-10-26` | 2026-10-26 | mateusz | opencode |
 | `obsidian-index-overload-2026-10-26` | 2026-10-26 | mateusz | opencode |
-| `benchmark-core-fev-honest-2026-10-26` | 2026-10-26 | mateusz | opencode |
 | `vault-root-flatten-2026-10-25` | 2026-10-25 | mateusz | opencode |
 | `smart-connections-cache-exclusions-2026-10-25` | 2026-10-25 | mateusz | codex |
 | `okf-rag-corpus-pin-2026-10-25` | 2026-10-25 | mateusz | opencode |

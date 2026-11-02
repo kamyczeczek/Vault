@@ -29,6 +29,50 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/benchmark-core-phase1b-freeze-2026-11-02.md · owner: mateusz · agent: opencode · model: omniroute/agy/claude-opus-4-6-thinking -->
+`benchmark-core-phase1b-freeze-2026-11-02` — 2026-11-02: Phase 1 + 1b of the v2
+multi-domain generalization protocol is complete and frozen.
+
+Stan:
+- **PROTOCOL.md** (304 linie, §0–§15): normatywny dokument v2 zamrożony. Hierarchia
+  normatywna (Protokół > Proces > Raport), 3 bramki decyzyjne, populacja N≤8,
+  budżet czasu 20 min/metoda, lockbox 42 zadań z limitem 3 użyć, reguły STOP,
+  audyt niezależny w §9, rejestr poprawek A1–A4.
+- **Manifest zamrożony** (`manifest_sha256 = 34b35abc…b42da`): 20 Dev / 38 kwarantanna /
+  42 Lockbox = 100 zadań pełnego zbioru fev-bench. Twarde odcięcie rodzeństwa (15 rodzin
+  Dev ∩ Lockbox = ∅, ETT ∉ Lockbox). Lockbox pokrywa 5 z 7 domen (brak cloud, nature).
+  247 kolumn targetu × 3 okna = 741 jednostek; 2767 serii, 8301 ewaluacji item × okno.
+- **Ledger** (`ledger.jsonl`): Genesis + A1–A4, łańcuch SHA-256 integralny (audit_v2 CLEAN).
+- **Moduły bazowe**: `manifest.py` (klasyfikacja rodzin/domen, odcięcie rodzeństwa,
+  3 ostatnie okna), `metrics.py` (MASE, clipping [0.01,100], skill score),
+  `bootstrap.py` (klaster po 15 rodzinach B=10000, iid, stratyfikowany),
+  `ledger.py` (append-only kanoniczny JSON, SHA-256 chain), `guards.py` (Gate 1–3,
+  populacja, STOP), `audit_v2.py` (niezależny audyt proceduralny §9).
+- **Skan mianowników MASE** (`scan_denominator_anomalies.py`): 20/20 zadań, 0 itemów
+  z zerowym błędem sezonowym → brak wykluczeń w manifeście.
+- **Testy**: 11 passed (`test_benchmark_v2.py`), czas <4s.
+- **Poprawki docs**: CLAUDE.md (9 nowych wpisów w tabelach Where/Route), CONTEXT.md
+  (bench.py --fev RESOLVED), MAP.md (10 nowych modułów w mapie).
+- Dwie wycofane flagi: `benchmark-core-fev-honest-2026-10-26` (zastąpiona pełną fazą 1b),
+  `benchmark-core-full-tests-2026-10-29` (zastąpiona bieżącą fazą).
+- Wszystkie punkty z recenzji planu v2 wprowadzone: r=100 dla timeoutów (§6), kontrast
+  vs Champion (§4 Bramka 2/3), §9 „ma zakaz", MDE w Fazie 1b (§14), Amendment A2,
+  „46 konfiguracji" → 42 zadania (A1).
+
+Weryfikacja:
+- `python audit_v2.py` → verdict: CLEAN (0 hard findings), chain intact, partition 100.
+- `pytest test_benchmark_v2.py` → 11 passed in 3.13s.
+- `python scripts/check_workspace_integrity.py` → OK (36 declared entries, 7 projects).
+- `git diff --check` → exit 0.
+
+not checked: mapowanie domen vs papier fev-bench (Appendix E/Tabela 15) — weryfikacja
+manualna; pełen suchy przebieg SNaive/NLinear/DLinear na Dewie (Faza 1b checklist §14);
+analiza mocy i MDE; budżet ściany Lockboxa; `s44_calib_insample_failed.log` nie został
+skopiowany z $env:TEMP do etth1-h720/results/ (plik istnieje, 4520B, nie jest w repozytorium).
+
+Next step: suchy przebieg Seasonal Naive + NLinear + DLinear na 20 zadaniach Dev (3 okna
+każde), pomiar czasu i wyznaczenie MDE. To otwiera Fazę 2 (populacja startowa, dashboard).
+
 <!-- handoff/flags/etth1-h720-s44-calibration-2026-10-30.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
 `etth1-h720-s44-calibration-2026-10-30` — 2026-11-01: The ADR 0001 threshold-comparability
 caveat is now a number. The S44 blend (NLinear L336 a=1 + NLinear L336 a=10 +
@@ -109,103 +153,7 @@ it — one parallel batch of 4 (manifest, metrics, bootstrap, ledger) plus 1
 serialized (guards), with conftest.py written by the orchestrator first — and
 amend the skill from what that run teaches.
 
-<!-- handoff/flags/kb-knowledge-split-2026-10-29.md · owner: mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash-free -->
-`kb-knowledge-split-2026-10-29` — 2026-10-29: warstwa wiedzy schodzi do `kb/`, root repo zostaje `Desktop\vault` (ADR-008 zastępuje ADR-006).
-
-Stan:
-- `git mv` czterech katalogów, które czyta Obsidian i człowiek: `.obsidian`, `.smart-env`, `Notes`, `library` → `kb/`. 77 rename'ów, PDF-y z `library/` (9 plików, ignorowane) przeniesione fizycznie, więc klon ich nie odtworzy — to nadal świadoma decyzja z D24.
-- Root repo bez zmian: `Desktop\vault` dalej jest `.git`-em i workspace'em. Nazwa `kb/`, nie `vault/`, żeby `Desktop\vault\vault` nie myliło się z rootem i żeby zmienna `VAULT` nie wskazywała katalogu o nazwie repo.
-- `check_workspace_integrity.py`: `VAULT = ROOT / "kb"`, `VAULT_OWNED = {.obsidian, .smart-env, Notes, library}` musi istnieć **w kb/ i nigdzie indziej**, nowy `ROOT_OWNED = {.git}` musi być w root i nigdy w `kb/`. `library` usunięte z `ALLOWED_ROOT`, `kb` dodane. Liczba wpisów roota bez zmian: 36.
-- `.gitignore`: wzorce z ukośnikiem (`.obsidian/workspace.json`, `.smart-env/*`, `Notes/OKF-rag/source-slices/index.md`) dostały prefiks `kb/`, bo wzorzec z `/` jest rozstrzygany względem katalogu pliku `.gitignore` i po przeniesieniu przestałby cokolwiek ignorować. Dodano `kb/.obsidian/plugins/obsidian-git/obsidian_askpass.sh` (wtyczka tworzy ten helper przy starcie, nigdy nie był trackowany).
-- Ścieżki w kodzie: `run_okf_rag_benchmark.py` (`NOTES_ROOT`, oba `.smart-env`, `git ls-tree/status -- kb/Notes/OKF-rag`, filtr w JS), `gate_checks.py` (g7), `generate_source_slices.py` (defaulty `--source`/`--output` + docstring), `CONTEXT-MAP.md` (routing OKF-rag), `skills/retrieval-two-stage/SKILL.md`.
-- Nowa bramka `scripts/check_kb_layout.py`: `--layout` (kb/ ma treść, root nie ma nic), `--stale` (żywe powierzchnie: `scripts/**`, `tools/**`, `hooks/`, `skills/**`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `CONTEXT-MAP.md`, `.gitignore`), `--selftest` (negatywna kontrola matchera). Historia — `handoff/`, `docs/`, `brain/decisions/` — jest świadomie poza skanem: to zapis stanu z dnia, w którym powstał.
-- `kb/Notes/OKF-rag/doctree-mcp:16419` — jedyne trafienie `scan_secrets` w całym przeniesionym drzewie: w przykładzie `curl` stał nagłówek `Authorization` z tokenem JWT obciętym wielokropkiem. Fałszywy alarm kształtu, ale naprawiony w danych, nie w bramce: wartość zamieniona na `<token>`. Plik był trackowany od `edba1b8`, więc przeniesienie tylko wystawiło go na skan staged.
-- `test_gate_allowlist_parity.py`: wiersze wiedzy deklarowane jako `kb/<entry>`, `library` usunięte z `system_entries`, `.pi` i `logs` przeniesione z `runtime_entries` do `system_entries` (oba są trackowane deklaracje, nie runtime — test był czerwony na HEAD 9ae0b71), a `sys.exit` w `test_parity` zamienione na `raise SystemExit`, bo pytest zgłaszał wyjście 0 jako błąd.
-- ADR: `brain/decisions/ADR-008-kb-subfolder.md`, z adnotacją „Superseded by ADR-008" w ADR-006 i wpisem w `brain/decisions/index.md`. Numer 008, nie 007: `ADR-007-git-baseline-and-remote` już istnieje i opisuje inną decyzję.
-
-Weryfikacja:
-- `python.exe scripts/check_workspace_integrity.py` — exit 0 (`OK: workspace root holds 36 declared entries, 7 projects`).
-- `python.exe scripts/check_kb_layout.py --layout --stale` — `KB-LAYOUT OK · KB-STALE OK`; `--selftest` — `KB-SELFTEST OK` (dodatnia złapana, ujemna czysta).
-- pytest `scripts/` — 221 passed, 1 skipped, 2 deselected (deselect: dwa testy `test_audit_prose_numbers` pinujące usunięty `architecture-review-20261003-v7.html`, czerwone już na HEAD).
-- `scripts/test_generate_source_slices.py`, `test_gate_allowlist_parity.py`, `test_brain_db.py`, `test_workspace_structure.py` — 6 passed.
-- Trzy testy trybu skryptowego (`test_memory_index*.py`) — zielone uruchomione bezpośrednio.
-
-Next: otworzyć `kb/` w Obsidianie (nowy vault root) i zreindeksować Smart Connections; dopiero potem ocenić, czy `projects/` znika z grafu.
-
-not checked: ręczne otwarcie `kb/` w Obsidianie i reindeks Smart Connections — poza sesją; zachowanie wtyczek, które zapisywały ścieżki względem starego roota vaulta; pełny `pytest projects/research` — czerwony przed tą zmianą (`benchmark-core` nie importuje `fit_amr`), osobny projekt; `skills/ralph-loop/tests` — 8 błędów `PermissionError` na Windows, czerwone przed tą zmianą; dwa testy `test_audit_prose_numbers` — pinują usunięty v7.
-
-Odstępstwo od polecenia: miały być dwa commity (sam `git mv`, potem ścieżki). Commit z samym `git mv` nie przechodzi bramki — `ALLOWED_ROOT` i R1b wskazują wtedy ścieżki, które właśnie zniknęły z roota, a `hooks/pre-commit` uruchamia integrity gate, więc commit zostałby zablokowany. Podział na dwa commity zostawiłby albo czerwone okno, albo commity z nieruncznymi skryptami. Całość jest jednym commitem; rename'y są nadal izolowane w `git show --find-renames --stat`.
-
-<!-- handoff/flags/kb-cleanup-residue-2026-10-29.md · owner: mateusz · agent: opencode · model: omniroute/agy/claude-opus-4-6-thinking -->
-`kb-cleanup-residue-2026-10-29` — 2026-10-29: domknięcie residue po kb-knowledge-split.
-
-Stan:
-- `.unlazy/` dopisane do `RESIDUE_DIRS` w `check_workspace_integrity.py` i do `.gitignore` — ta sama klasa co `.codegraph/` (runtime, odtwarzalne, nigdy autorskie). Bramka integralności przestała zgłaszać `unexpected directory at workspace root: '.unlazy'`.
-- `brain/decisions/ADR-008-kb-subfolder.md`: status line przełączony na angielski (`Supersedes ADR-006 in full`) — diff z HEAD zaciągnięty.
-- `handoff/audit/self-modifications.log`: zaległy wpis `SENSITIVE_MODIFICATION: M CLAUDE.md` z sesji codegraph-residue zaciągnięty; CRLF naprawiony na LF.
-- `STATE.md` przebudowany z nowym HEAD.
-
-Weryfikacja:
-- `python.exe scripts/check_workspace_integrity.py` — exit 0 (`OK: 36 declared entries, 7 projects`).
-- `python.exe scripts/check_kb_layout.py --layout --stale` — `KB-LAYOUT OK · KB-STALE OK`.
-- `git diff --check` — exit 0 (no whitespace errors).
-- `python.exe scripts/build_handoff.py --check` — OK.
-
-not checked: —
-
-<!-- handoff/flags/etth1-h720-s49-honest-closeout-2026-10-29.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-high -->
-`etth1-h720-s49-honest-closeout-2026-10-29` — 2026-10-29: S49 ETTh1 H720 zamknięta (REJECT) po audycie zgodności protokołu.
-
-Stan:
-- Wzmocniono ledger `projects/research/etth1-h720/GATES-s49-closeout.md`: G1 liczy wartosci z artefaktow, G2 parsuje wiersz tabeli w CONTEXT.md, G5 sprawdza czysty status OWNS i obecnosc flagi w HEAD.
-- Audyt protokołu (20 zadeklarowanych originow vs 12 wykonanych; 5 zadeklarowanych seedow vs seed 42 w glownych tabelach; próg S44 z 2161 originow) zapisany w ADR 0001 i Aneksie Wykonawczym 2026-10-29.
-- ADR: `projects/research/etth1-h720/docs/adr/0001-s49-closeout-and-protocol-discrepancies.md`.
-
-Weryfikacja:
-- `python -m pytest projects/research/etth1-h720/` — 14 passed.
-- Bramka integralności workspace — integrity exit 0.
-
-Next: nie stroic modeli H720 na obecnym zestawie 12 originow; nastepna sesja — nowa linia badawcza.
-
-not checked: kalibracja progu S44 na 12 originach (osobna sesja).
-
-<!-- handoff/flags/cleanup-red-tests-2026-10-29.md · owner: mateusz · agent: opencode · model: omniroute/agy/claude-opus-4-6-thinking -->
-`cleanup-red-tests-2026-10-29` — 2026-10-29: domknięcie czerwonych testów i residue po kb-knowledge-split.
-
-Stan:
-- **benchmark-core fit_amr import** — usunięto martwy import `fit_amr, pred_amr` z `sunspot_methods.py` (linia 6). Nazwy nigdy nie istniały jako top-level w `bench.py`; zostały przeniesione do `members/amr_fbs.py` jako `fit_amr_fbs`/`pred_amr_fbs`. Import nie był używany w rejestrze metod `get_sunspot_methods()`. 24 testy benchmark-core zbierane bez błędów.
-- **test_audit_prose_numbers v7** — dodano guard `skipTest("v7 report not available")` do `test_v7_prose_is_fully_classified` i `test_the_live_table_carries_no_stale_entry`, bo plik `docs/reviews/architecture-review-20261003-v7.html` nigdy nie trafił do repo. Trzeci test (`test_regenerating_the_block_does_not_launder_the_prose`) miał guard od początku. 31 passed, 3 skipped.
-- **ralph-loop PermissionError** — dodano `skills/ralph-loop/tests/conftest.py` z fixture `tmp_path` opartą o `TemporaryDirectory` zamiast pytest-owego `tmp_path_factory`, który padał na `PermissionError` w `%TEMP%\pytest-of-Mateusz` (zepsute ACL na Windows). 8 passed.
-- **did_sessions COUNT=20** — zmieniono default z 5 na 20 w `did_sessions.bat` i `did_sessions_drive.bat`. Test `test_default_count_is_5` → `test_default_count_is_20` w `test_did_sessions.py`.
-- **.unlazy/locks** — usunięto zaległy katalog `locks`, preflight_agent wraca do OK.
-- restored `handoff/audit/self-modifications.log` (deleted from disk but tracked in HEAD).
-
-Weryfikacja:
-- `python.exe scripts/check_workspace_integrity.py` — exit 0 (36 declared entries, 7 projects).
-- pytest `scripts/` — 221 passed, 3 skipped.
-- pytest `skills/ralph-loop/tests/` — 8 passed.
-- pytest `projects/research/etth1-h720/` — 14 passed.
-- benchmark-core: 24 testy zebrane, import OK (testy właściwe są zbyt wolne na timeout, ale `import sunspot_methods` i `get_sunspot_methods()` → 17 metod).
-- `git diff --check` — exit 0.
-
-not checked: benchmark-core full test execution (timeout >5 min na trenowanie modeli); push do remote.
-
-<!-- handoff/flags/benchmark-core-full-tests-2026-10-29.md · owner: mateusz · agent: opencode · model: omniroute/agy/claude-opus-4-6-thinking -->
-`benchmark-core-full-tests-2026-10-29` — 2026-10-29: pełny suite benchmark-core przeszedł 24/24.
-
-Stan:
-- `python.exe -m pytest -v projects/research/benchmark-core/` — **24 passed, 1 warning, 540.88s (9:00)**. Jedyny warning: statsmodels SARIMAX `Non-invertible starting MA parameters found` — kosmetyczny, nie wpływa na wynik.
-- Poprzednio (flaga `cleanup-red-tests-2026-10-29`) uruchomiono tylko collect + import smoketest z powodu timeoutu >5 min. Pełne uruchomienie potwierdza, że fix martwego importu `fit_amr` w `sunspot_methods.py` nie złamał żadnego testu trenującego modele.
-- Pliki testowe: `test_benchmark_protocol` (6), `test_chaos_protocol` (2), `test_lasso` (1), `test_sunspot_eval` (3), `test_sunspot_longterm` (2), `test_thomas` (5), `test_thomas_compare` (2), `test_thomas_forecasts` (2), `test_thomas_methods` (1).
-
-Weryfikacja:
-- pytest 24 passed (pełne uruchomienie z trenowaniem modeli).
-- `check_workspace_integrity` — exit 0.
-- `git diff --check` — exit 0.
-
-not checked: FEV 100-task `tasks.yaml` run (osobny punkt); push do remote (wykonany w tej sesji dla wcześniejszych commitów).
-
-Starsze flagi (248): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
+Starsze flagi (251): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
 
 ## where-the-work-landed
 

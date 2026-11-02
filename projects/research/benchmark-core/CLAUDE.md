@@ -21,6 +21,15 @@ one and none re-vendors it.
 | `REFLECTION_PROMISING_METHODS.md` | Reference (L3) | Post-reflection evidence ranking: what won, what was demoted or frozen |
 | `members/` | Factory (L3) | Every forecaster, one file each, common fit/pred interface |
 | `bench.py` | Factory (L3) | The S-47 diverse mini-suite: 8 tasks, 5 rolling origins, frozen fit, looped over seeds |
+| `PROTOCOL.md` | Contract (L1) | Normative v2 multi-domain generalization protocol (frozen; §15 amendment register) |
+| `manifest.py` → `results/manifest.json` | Factory (L3) | Dev / quarantine / Lockbox split, families, domains, frozen SHA-256 |
+| `metrics.py` | Factory (L3) | MASE, FEV clipping to [0.01, 100], skill score |
+| `bootstrap.py` | Factory (L3) | Cluster bootstrap over dataset families, B = 10 000 |
+| `ledger.py` → `ledger.jsonl` | Factory (L3) | Append-only hash-chained audit ledger (Genesis + amendments A1–A4) |
+| `guards.py` | Factory (L3) | Gates 1–3, population N ≤ 8, STOP rules |
+| `audit_v2.py` | Factory (L3) | Independent procedural audit (PROTOCOL.md §9) |
+| `scan_denominator_anomalies.py` | Factory (L3) | Phase 1b MASE-denominator scan (20/20 tasks, 0 anomalies) |
+| `test_benchmark_v2.py` | Test (L3) | 11 unit tests for the v2 foundation (incl. scanner regression) |
 | `results/` | Product (L4) | Metrics per experiment |
 | `plots/` | Product (L4) | Figures generated from `results/` |
 | `scripts/` | Factory (L3) | `diebold_mariano_test.py` — significance testing for paired forecasts |
@@ -31,6 +40,11 @@ one and none re-vendors it.
 | Intent | Go to |
 |---|---|
 | Add a forecasting architecture | `members/<name>.py`, interface in `CONTEXT.md` §1 |
+| Read the normative benchmark protocol | `PROTOCOL.md` |
+| Verify the ledger + manifest independently | `python audit_v2.py` |
+| Rebuild the frozen manifest | `python build_manifest_v2.py --offline` |
+| Re-scan MASE denominators | `python scan_denominator_anomalies.py --layer dev` |
+| Initialize the ledger (once, refuses if present) | `python init_ledger_v2.py` |
 | Run the full benchmark suite | `python bench.py` |
 | Write a run somewhere other than the committed artifact | `python bench.py --out-dir <dir>` |
 | Re-run the suite over N seeds (default 5) | `python bench.py --seeds 5` |

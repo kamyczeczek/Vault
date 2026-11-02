@@ -4,6 +4,10 @@
 
 | flag | since | owner | agent | summary |
 | --- | --- | --- | --- | --- |
+| `kb-knowledge-split-2026-10-29` | 2026-10-29 | mateusz | opencode | warstwa wiedzy schodzi do `kb/`, root repo zostaje `Desktop\vault` (ADR-008 zastępuje ADR-006). |
+| `kb-cleanup-residue-2026-10-29` | 2026-10-29 | mateusz | opencode | domknięcie residue po kb-knowledge-split. |
+| `etth1-h720-s49-honest-closeout-2026-10-29` | 2026-10-29 | mateusz | opencode | S49 ETTh1 H720 zamknięta (REJECT) po audycie zgodności protokołu. |
+| `cleanup-red-tests-2026-10-29` | 2026-10-29 | mateusz | opencode | domknięcie czerwonych testów i residue po kb-knowledge-split. |
 | `unlazy-workflow-closure-2026-10-27` | 2026-10-28 | mateusz | opencode | Unlazy checklist domknięta dla zadań P0/P1. |
 | `skills-wiring-and-unlazy-enable-2026-10-28` | 2026-10-28 | mateusz | opencode | Wpięto katalog `skills/` do konfiguracji OpenCode, jCode i Claude Code przez junctions na dysku… |
 | `single-repo-codegraph-2026-10-28` | 2026-10-28 | mateusz | opencode | monorepo zweryfikowany, CodeGraph indeksuje `projects/` bez `includeIgnored`; `close.py` bez martwego `nested_repos()`. |
@@ -22,7 +26,6 @@
 | `benchmark-core-fev-g2-fix-2026-10-27` | 2026-10-27 | mateusz | opencode | FEV protocol G2 gate aligned with S49 pre-registration. W `main_fev()` zmieniono definicję G2 z hardcoded `mean_rankB <… |
 | `research-engine-s47-2026-10-26` | 2026-10-26 | mateusz | opencode | zagnieżdżone repo `research-engine` jest domknięte (dwa commity: 0b08562, 70ce0eb; drzewo czyste). Q9 rozstrzygnięte… |
 | `obsidian-index-overload-2026-10-26` | 2026-10-26 | mateusz | opencode | przyczyną zadyszki był nie |
-| `benchmark-core-fev-honest-2026-10-26` | 2026-10-26 | mateusz | opencode | `bench.py --fev` przestało kłamać (nested commits `726daa6` kod + testy, `e54644d` MAP.md; tylko `bench.py` +… |
 | `vault-root-flatten-2026-10-25` | 2026-10-25 | mateusz | opencode | zawartość `root_workspace/` była |
 | `smart-connections-cache-exclusions-2026-10-25` | 2026-10-25 | mateusz | codex | corrected Smart Connections folder exclusions for the active vault root by adding the root-level `scripts/`,… |
 | `okf-rag-corpus-pin-2026-10-25` | 2026-10-25 | mateusz | opencode | historia jest **liniowa, bez |

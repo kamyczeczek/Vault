@@ -156,10 +156,13 @@ being trusted.
   `new_datasets_catalog` at module level with no `sys.path` setup. Run from this
   project it fails with `ModuleNotFoundError: No module named
   'new_datasets_catalog'` (that module lives in `../../_archive/datasets`).
-- **`bench.py --fev` cannot write its output.** Lines 468–469 write to
-  `projects/ts-diverse/results/bench_{tag}.{json,log}`, a path from before the
-  project was renamed. That directory does not exist in the workspace, so the
-  run dies at the write. (`fev` is also not installed here.)
+- **RESOLVED 2026-11-01: `bench.py --fev` writes to `results/`, and `fev` is
+  installed.** The stale `projects/ts-diverse/results/` path is gone — line 516
+  now writes to `HERE / "results"`, and `results/bench_fev_mini.json` is the
+  committed artifact of a real 20-task run. `fev 0.10.0` is installed in the
+  hermes venv. The confirmatory line has moved to the v2 protocol
+  (`PROTOCOL.md`); `bench.py --fev` remains the exploratory S-47 suite and its
+  numbers are not comparable to v2 numbers.
 
 ### Docs that will mislead the next session
 
