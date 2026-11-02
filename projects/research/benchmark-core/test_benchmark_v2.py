@@ -24,21 +24,36 @@ import guards
 # ---------------------------------------------------------------- manifest
 def test_manifest_build_and_invariants():
     # Use real mini and full task definitions cached in scripts/_scratch/
-    scratch_dir = Path(__file__).resolve().parent.parent.parent / "scripts" / "_scratch"
-    mini_path = scratch_dir / "mini_tasks.json"
-    full_path = scratch_dir / "full_tasks.json"
+    base = Path(__file__).resolve().parent
+    # Prefer task definitions shipped with the repo (fresh-clone friendly);
+    # fall back to the legacy scratch cache, then skip explicitly.
+    candidates = [
+        (base / "results" / "fev_tasks_mini.json", base / "results" / "fev_tasks_full.json"),
+        (base.parent.parent.parent / "scripts" / "_scratch" / "mini_tasks.json",
+         base.parent.parent.parent / "scripts" / "_scratch" / "full_tasks.json"),
+    ]
+    mini_path = full_path = None
+    for mini_cand, full_cand in candidates:
+        if mini_cand.exists() and full_cand.exists():
+            mini_path, full_path = mini_cand, full_cand
+            break
 
-    if mini_path.exists() and full_path.exists():
-        mini_tasks = json.loads(mini_path.read_text(encoding="utf-8"))
-        full_tasks = json.loads(full_path.read_text(encoding="utf-8"))
-        m = manifest.build_manifest(mini_tasks, full_tasks)
-        assert m["counts"]["dev_tasks"] == 20
-        assert m["counts"]["dev_families"] == 15
-        assert "ETT" not in set(t["family"] for t in m["lockbox_tasks"])
-        assert any(q["dataset_config"] == "ETT_1D" for q in m["unused_sibling_quarantine"])
-        assert any(l["dataset_config"] == "m5_1D" for l in m["lockbox_tasks"])
-        sha = manifest.compute_manifest_sha256(m)
-        assert len(sha) == 64
+    if mini_path is None:
+        pytest.skip(
+            "Brak definicji zadan (results/fev_tasks_*.json ani "
+            "scripts/_scratch/*_tasks.json); test pomija sprawdzenia manifestu."
+        )
+
+    mini_tasks = json.loads(mini_path.read_text(encoding="utf-8"))
+    full_tasks = json.loads(full_path.read_text(encoding="utf-8"))
+    m = manifest.build_manifest(mini_tasks, full_tasks)
+    assert m["counts"]["dev_tasks"] == 20
+    assert m["counts"]["dev_families"] == 15
+    assert "ETT" not in set(t["family"] for t in m["lockbox_tasks"])
+    assert any(q["dataset_config"] == "ETT_1D" for q in m["unused_sibling_quarantine"])
+    assert any(l["dataset_config"] == "m5_1D" for l in m["lockbox_tasks"])
+    sha = manifest.compute_manifest_sha256(m)
+    assert len(sha) == 64
 
 
 def test_window_selection():
@@ -244,3 +259,90 @@ def test_scanner_seasonal_error_matches_fev_semantics():
     assert scan.seasonal_error_per_item([np.array([1.0, 5.0, 1.0, 5.0])], m=2)[0] == 0.0
     # Mean absolute seasonal difference.
     assert scan.seasonal_error_per_item([np.array([1.0, 5.0, 2.0, 6.0])], m=2)[0] == 1.0
+
+
+# ---------------------------------------------------------------- metrics extra (risk 3.2)
+def test_compute_mase_zero_seasonal_raises():
+    import numpy as np
+    with pytest.raises(ZeroDivisionError):
+        metrics.compute_mase(np.array([1.0, 2.0]), np.array([1.0, 2.0]), seasonal_error=0.0)
+
+
+def test_evaluate_task_ratios_and_aggregate():
+    ratios = metrics.evaluate_task_ratios({"t1": 0.5, "t2": 2.0}, {"t1": 1.0, "t2": 1.0})
+    assert ratios == {"t1": 0.5, "t2": 2.0}
+    with pytest.raises(ValueError):
+        metrics.evaluate_task_ratios({"t1": 1.0}, {"t1": 0.0})
+
+    summary = metrics.aggregate_benchmark_summary({"t1": 0.5, "t2": 2.0}, {"t1": "cloud", "t2": "energy"})
+    assert "skill_score" in summary
+    assert "worst_task" in summary
+
+
+# ---------------------------------------------------------------- bootstrap extra (risk 3.2)
+def test_cluster_bootstrap_zero_families_raises():
+    with pytest.raises(ValueError, match="0 families"):
+        bootstrap.cluster_bootstrap_families({}, {}, n_resamples=10, alpha=0.05, seed=1)
+
+
+def test_cluster_bootstrap_single_family():
+    ratios = {"t1": 0.8, "t2": 0.9}
+    fams = {"t1": "famA", "t2": "famA"}
+    res = bootstrap.cluster_bootstrap_families(ratios, fams, n_resamples=50, alpha=0.05, seed=7)
+    assert res["n_families"] == 1
+    assert res["n_tasks"] == 2
+    assert "passes_gate" in res
+
+
+# ---------------------------------------------------------------- guards extra (risk 3.2)
+def test_check_stop_conditions_variants():
+    # lockbox burn
+    stop, reason = guards.check_stop_conditions(False, 3, 0, 1)
+    assert stop is True and "Lockbox burned" in reason
+    # stagnation
+    stop, reason = guards.check_stop_conditions(False, 0, 6, 1)
+    assert stop is True and "stagnation" in reason
+    # global budget
+    stop, reason = guards.check_stop_conditions(False, 0, 0, 20)
+    assert stop is True and "Global cycle budget" in reason
+    # continue
+    stop, reason = guards.check_stop_conditions(False, 0, 0, 1)
+    assert stop is False and reason == "CONTINUE"
+
+
+def test_validate_cycle_card_missing_and_capacity():
+    pop = guards.PopulationManager([])
+    valid, reason = pop.validate_cycle_card({})
+    assert not valid and "candidate_name" in reason
+
+    # capacity eviction of protected role is blocked
+    pop2 = guards.PopulationManager([{"name": "A", "roles": ["anchor"]}])
+    # fill to capacity artificially by adding 7 more
+    for i in range(7):
+        pop2.models.append({"name": f"x{i}", "roles": ["challenger"]})
+    assert len(pop2.models) == 8
+    valid, reason = pop2.validate_cycle_card({"candidate_name": "new", "hypothesis": "h", "falsifier": "f", "replaces": "A"})
+    assert not valid and "protected" in reason
+
+
+# ---------------------------------------------------------------- ledger extra (risk 3.2)
+def test_ledger_corruption_detection():
+    scratch_dir = Path(__file__).resolve().parent / "__pycache__" / "_ledger_scratch2"
+    scratch_dir.mkdir(parents=True, exist_ok=True)
+    led_file = scratch_dir / "ledger2.jsonl"
+    if led_file.exists():
+        led_file.unlink()
+
+    led = ledger.Ledger.initialize_genesis(led_file, manifest_sha256="shaX")
+    led.append_entry({"type": "cycle_card", "candidate": "m"})
+    led.verify_integrity(expected_manifest_sha256="shaX")
+
+    # tamper manifest in genesis
+    content = led_file.read_text(encoding="utf-8")
+    tampered = content.replace("shaX", "shaY", 1)
+    led_file.write_text(tampered, encoding="utf-8")
+    with pytest.raises(ValueError):
+        led.verify_integrity(expected_manifest_sha256="shaX")
+
+    if led_file.exists():
+        led_file.unlink()
