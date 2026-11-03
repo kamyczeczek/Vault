@@ -225,6 +225,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
 | `orchestrator-worker-recursion-2026-11-03` | 2026-11-03 | mateusz | opencode |
+| `latest-session-export` | 2026-11-03 | mateusz | opencode |
 | `fev-full-guard-implemented` | 2026-11-02 | mateusz | opencode |
 | `benchmark-core-phase1b-freeze-2026-11-02` | 2026-11-02 | mateusz | opencode |
 | `benchmark-core-phase1b-dev-analysis-2026-11-02` | 2026-11-02 | mateusz | opencode |

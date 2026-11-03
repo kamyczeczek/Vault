@@ -33,6 +33,10 @@ stopped holding (delete the file), and compress closed threads into
 `orchestrator-worker-recursion-2026-11-03` — 2026-11-03: D25 PENDING: recursion E2E did not reach GRANDCHILD-OK-7731; observed 401 provider authentication error via local proxy, not evidence of toolscope or depth cap. tools/orchestrator.md remains a hypothesis.
 not checked: provider key rotation and repeat E2E.
 
+<!-- handoff/flags/latest-session-export.md · owner: mateusz · agent: opencode · model: omniroute/gemini/gemini-flash-lite-latest -->
+`latest-session-export` — 2026-11-03: Exporter now merges Pi, OpenCode, OMP, and DSH sessions and selects the requested count globally by last activity; Drive wrapper syncs the generated file to G:\My Drive.
+not checked: remote Google Drive propagation latency after local copy.
+
 <!-- handoff/flags/fev-full-guard-implemented.md · owner: mateusz · agent: opencode · model: omniroute/gemini-flash-lite-latest -->
 `fev-full-guard-implemented` — 2026-11-03: Implemented and tested FEV-full guard / hard stop protocol in benchmark-core (bench.py & test_benchmark_protocol.py), all 42 tests passing successfully.
 

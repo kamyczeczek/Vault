@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 """Generate an EXACT (no truncation) transcript of the last N agent sessions.
 
-Sources: opencode (sqlite) + omp (jsonl). No use of agent_sessions renderers (they truncate).
+Sources: Pi, OpenCode, OMP, and DSH sessions. All sources are merged by each
+session's last recorded timestamp, newest first; agent type does not affect order.
 Output: one markdown file, streaming.
 """
 
@@ -10,13 +11,15 @@ from __future__ import annotations
 import argparse
 import json
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTDIR = ROOT / "scripts" / "_scratch" / "sessions" / "02_products"
 OC_DB = Path.home() / ".local" / "share" / "opencode" / "opencode.db"
 OMP_DIR = Path.home() / ".omp" / "agent" / "sessions"
+PI_DIR = Path.home() / ".pi" / "agent" / "sessions"
+DSH_DIR = Path.home() / ".deepseek-harness" / "sessions"
 
 
 def load_oc_sessions(limit):
@@ -153,6 +156,62 @@ def render_oc(session, f):
     f.write("---\n\n")
 
 
+def json_timestamp(value):
+    if isinstance(value, (int, float)):
+        return float(value) / 1000 if value > 10_000_000_000 else float(value)
+    if isinstance(value, str):
+        try:
+            return datetime.fromisoformat(value.replace("Z", "+00:00")).timestamp()
+        except ValueError:
+            return 0.0
+    return 0.0
+
+
+def session_last_timestamp(path: Path):
+    latest = 0.0
+    try:
+        for line in path.open(encoding="utf-8", errors="replace"):
+            try:
+                record = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            latest = max(latest, json_timestamp(record.get("timestamp")))
+            message = record.get("message") or {}
+            latest = max(latest, json_timestamp(message.get("timestamp")))
+    except OSError:
+        return 0.0
+    return latest
+
+
+def render_jsonl(path: Path, f, agent_name: str):
+    records = []
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        try:
+            records.append(json.loads(line))
+        except json.JSONDecodeError:
+            continue
+    sid = path.stem
+    cwd = ""
+    for record in records:
+        if record.get("type") == "session":
+            sid = record.get("id", sid)
+            cwd = record.get("cwd", cwd)
+    f.write(f"## Sesja {agent_name} — {sid}\n")
+    f.write(f"- agent: {agent_name}\n- cwd: {cwd}\n- id: {sid}\n")
+    f.write(f"- ostatnia aktywność: {datetime.fromtimestamp(session_last_timestamp(path), timezone.utc).isoformat()}\n\n")
+    for record in records:
+        message = record.get("message") or {}
+        if record.get("type") != "message" or not message:
+            continue
+        role = message.get("role", "?")
+        content = message.get("content", "")
+        if isinstance(content, list):
+            content = "\n".join(str(item.get("text", item.get("content", ""))) for item in content if isinstance(item, dict))
+        if content:
+            f.write(f"### [{role}]\n{content}\n\n")
+    f.write("---\n\n")
+
+
 def render_omp(path: Path, f):
     lines = path.read_text(encoding="utf-8").splitlines()
     # parse session header
@@ -245,42 +304,33 @@ def main():
     sys.modules["agent_sessions"] = m
     spec.loader.exec_module(m)
 
-    oc = m.load_opencode_sessions(max(args.count, 10))
-    omp_paths = sorted(OMP_DIR.rglob("*.jsonl"), key=lambda p: p.stat().st_mtime, reverse=True)[: max(args.count, 10)]
-    omp_sessions = []
-    for p in omp_paths:
-        # wrap as lightweight object
-        class S:
-            pass
-        s = S()
-        s.agent = "omp"
-        s.title = p.stem
-        s.model = ""
-        s.message_count = 0
-        s.created_at = ""
-        s.updated_at = ""
-        s.id = p.stem
-        s._path = p
-        omp_sessions.append(s)
-
-    # sort combined by mtime proxy: opencode by updated_at desc already; omp by file mtime desc
-    # We'll just render opencode first then omp, total N
+    oc = m.load_opencode_sessions(args.count)
     combined = []
-    for s in oc[: args.count]:
-        combined.append(("oc", s))
-    remaining = args.count - len(combined)
-    if remaining > 0:
-        for s in omp_sessions[:remaining]:
-            combined.append(("omp", s))
+    for s in oc:
+        try:
+            stamp = datetime.fromisoformat(str(s.updated_at).replace("Z", "+00:00")).timestamp()
+        except (ValueError, TypeError):
+            stamp = 0.0
+        combined.append((stamp, "oc", s))
+
+    for agent_name, directory in (("pi", PI_DIR), ("omp", OMP_DIR), ("dsh", DSH_DIR)):
+        if directory.is_dir():
+            for path in directory.rglob("*.jsonl"):
+                combined.append((session_last_timestamp(path), agent_name, path))
+
+    combined.sort(key=lambda item: item[0], reverse=True)
+    combined = combined[:args.count]
 
     with open(out, "w", encoding="utf-8", newline="\n") as f:
         f.write(f"# Exact sessions — last {len(combined)}\n\n")
         f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
-        for kind, s in combined:
+        for _, kind, session in combined:
             if kind == "oc":
-                render_oc(s, f)
+                render_oc(session, f)
+            elif kind == "omp":
+                render_omp(session, f)
             else:
-                render_omp(s._path, f)
+                render_jsonl(session, f, kind)
     print(f"Wrote {out} ({out.stat().st_size // 1024} KB)")
 
 
