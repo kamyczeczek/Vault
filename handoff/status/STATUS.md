@@ -16,6 +16,11 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 ## Stale
 
+- `transcript-fix-p1-p6-2026-10-19` — since 2026-10-19 (older than 14 days)
+- `ticket-scratch-test-bat-runs-exports-on-import-2026-10-19` — since 2026-10-19 (older than 14 days)
+- `merged-session-loss-declarations-2026-10-19` — since 2026-10-19 (older than 14 days)
+- `close-py-final-2026-10-18` — since 2026-10-19 (older than 14 days)
+- `close-py-correction-path-2026-10-18` — since 2026-10-19 (older than 14 days)
 - `ticket-s84b-check-includes-git-rm-trap-2026-10-18` — since 2026-10-18 (older than 14 days)
 - `ticket-s76-parse-scars-leak-2026-10-18` — since 2026-10-18 (older than 14 days)
 - `ticket-r14-sessions-meta-shelf-freshness-2026-10-18` — since 2026-10-18 (older than 14 days)
@@ -219,6 +224,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `orchestrator-worker-recursion-2026-11-03` | 2026-11-03 | mateusz | opencode |
 | `fev-full-guard-implemented` | 2026-11-02 | mateusz | opencode |
 | `benchmark-core-phase1b-freeze-2026-11-02` | 2026-11-02 | mateusz | opencode |
 | `benchmark-core-phase1b-dev-analysis-2026-11-02` | 2026-11-02 | mateusz | opencode |

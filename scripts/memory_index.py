@@ -88,6 +88,7 @@ EXCLUDED_SESSION_IDS = {
     "01a14d3f-d533-70d4-a56c-bc0a86ba7388": "meta-session: instructions for a fresh agent (cleanup)",
     "01a14d44-6b35-7486-b04e-dff16a7c8c53": "meta-session: instructions for a fresh agent (close-out)",
     "ses_e997f9f91ffewuLps3BjtP7AOI": "meta-session: durable exclusion implementation (2026-10-23)",
+    "01a1a30e-17fe-7084-82fc-21d81e850615": "meta-session: recursion test exposed provider environment (2026-11-03)",
 }
 
 

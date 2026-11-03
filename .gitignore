@@ -42,6 +42,9 @@ agents/backup/
 
 # --- Generated in place: rerunning the producer is the source of truth ------
 scripts/_scratch/
+# Raw session exports may contain secrets; never publish them.
+raw_sessions.md
+**/raw_sessions.md
 scripts/out/
 tools/out/
 .export/

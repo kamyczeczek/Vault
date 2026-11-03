@@ -639,3 +639,13 @@ what changed is that the split is no longer visible to git in this tree.
   library reviewable and re-downloadable).
 - Gitlinks for the absorbed projects (rejected: satisfies neither "files on
   GitHub" nor "history preserved").
+---
+## D25 — Orchestrator contract and explicit tool scope for worker recursion
+
+**Decision.** When worker-level recursion fails to pass the E2E test due to missing tool scopes or auth constraints, define an explicit orchestrator configuration (`tools/orchestrator.md`) with explicit tools (`read, grep, find, ls, bash, Agent, get_subagent_result`), and record the decision with `IMPLEMENTACJA: PENDING` until successful E2E recursion verification passes.
+
+**Why.** Default worker contracts may lack explicit nested agent tool scopes or encounter capability restrictions. An explicit orchestrator definition provides precise control over tool permissions for multi-level agent delegation.
+
+**Rejected.**
+- Implicitly assuming worker subagents inherit all root tools without explicit override.
+- Marking implementation complete before E2E recursion verification passes.

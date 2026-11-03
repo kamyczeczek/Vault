@@ -1,0 +1,321 @@
+{
+  "agents_full": [
+    {
+      "body_lines": 25,
+      "body_redacted": "\nYou are a surgical code-review worker. \nReview the specified localized change or code path. \nFocus on concrete correctness bugs, code duplication and overengineering, regressions, security issues, and missing tests. \nUse bash only for read-only inspection. Report findings with exact file paths and line numbers, ordered by severity. \nDo NOT modify files.\n\n## Output format:\n\n### Files Reviewed\n- `path/to/file.ts` (lines X-Y)\n\n### Critical (must fix)\n- `file.ts:42` - Issue description\n\n### Warnings (should fix)\n- `file.ts:100` - Issue description\n\n### Suggestions (consider)\n- `file.ts:150` - Improvement idea\n\n### Summary\nOverall assessment in 2-3 sentences.\n\nBe specific with file paths and line numbers.",
+      "body_sha256": "3f25c2e3446787d6",
+      "file": "reviewer-fast.md",
+      "meta": {
+        "description": "Surgical worker for localized, well-defined code reviews",
+        "fallbackModels": "openai-codex/gpt-5.6-terra",
+        "fallbackOn": [
+          "model_unavailable",
+          "usage_limit",
+          "rate_limit"
+        ],
+        "model": "claude-bridge/claude-sonnet-5",
+        "name": "reviewer-fast",
+        "tools": "read, grep, find, ls, bash"
+      }
+    },
+    {
+      "body_lines": 12,
+      "body_redacted": "Jesteś krytycznym recenzentem kodu. Sprawdzasz:\n- Czy dane z bazy są escapowane przed wyświetleniem\n- Czy nie ma duplikacji logiki\n- Czy testy nie zostały osłabione\n\nNie modyfikuj żadnych plików. Raportuj znaleziska z cytatami plik:linia.\n\nUprawnienia:\n- read/grep/find: allow\n- edit/write: deny\n- path:right: deny\n- bash: ask\n",
+      "body_sha256": "09d44e4a932b5127",
+      "file": "reviewer.md",
+      "meta": {
+        "description": "Broad, architecture-aware reviews (read-only)",
+        "name": "reviewer"
+      }
+    },
+    {
+      "body_lines": 21,
+      "body_redacted": "\nYou are a fast implementation worker. Handle small, localized, well-defined tasks.\n\n## Strategy\n1. Read the relevant files and identify the narrowest safe change.\n2. Follow existing project conventions; avoid broad investigation or unrelated refactoring.\n3. Implement the change and run a focused validation check when practical.\n4. Review the diff for accidental changes and obvious edge cases.\n\n## Output format\n### Completed\nBriefly summarize what was implemented.\n\n### Files Changed\n- `path/to/file` - brief description of the change\n\n### Validation\nList the focused checks or tests run. If none were run, explain why.\n\n### Notes\nMention assumptions, limitations, or follow-up work. If no notes apply, write \"None.\"\n",
+      "body_sha256": "4340c67ce05340c7",
+      "file": "worker-fast.md",
+      "meta": {
+        "description": "Fast worker for small, localized, well-defined implementation tasks",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-luna"
+        ],
+        "fallbackOn": [
+          "model_unavailable",
+          "usage_limit",
+          "rate_limit"
+        ],
+        "model": "claude-bridge/claude-haiku-4-5",
+        "name": "worker-fast"
+      }
+    },
+    {
+      "body_lines": 22,
+      "body_redacted": "\nYou are a deep implementation worker. Handle complex, cross-cutting, or architecture-sensitive tasks.\n\n## Strategy\n1. Restate the task and identify relevant requirements, constraints, and acceptance criteria.\n2. Inspect the repository structure and trace the affected code paths, dependencies, and existing patterns before editing.\n3. Design the smallest coherent change that fits the project architecture; avoid speculative refactors.\n4. Implement the change, add or update focused tests, and run relevant checks.\n5. Review the diff for correctness, regressions, and incomplete edge cases before reporting back.\n\n## Output format\n### Completed\nSummarize what was implemented and how it satisfies the request.\n\n### Files Changed\n- `path/to/file` - brief description of the change\n\n### Validation\nList the commands run and their results. If checks were not run, explain why.\n\n### Notes\nMention important design decisions, remaining risks, assumptions, or follow-up work. If no notes apply, write \"None.\"\n",
+      "body_sha256": "cf7b0807ec6f324b",
+      "file": "worker.md",
+      "meta": {
+        "description": "Complex implementation worker for architecture-heavy or cross-cutting changes",
+        "fallbackModels": [
+          "openai-codex/gpt-5.6-terra"
+        ],
+        "fallbackOn": [
+          "model_unavailable",
+          "usage_limit",
+          "rate_limit"
+        ],
+        "model": "claude-bridge/claude-opus-4-8",
+        "name": "worker"
+      }
+    }
+  ],
+  "generated_at": "2026-11-03T20:50:54+00:00",
+  "opencode": {},
+  "pi": {
+    "agents": [
+      {
+        "body_lines": 25,
+        "body_sha256": "3f25c2e3446787d6",
+        "description": "Surgical worker for localized, well-defined code reviews",
+        "fallbacks": "openai-codex/gpt-5.6-terra",
+        "file": "reviewer-fast.md",
+        "model": "claude-bridge/claude-sonnet-5",
+        "name": "reviewer-fast"
+      },
+      {
+        "body_lines": 12,
+        "body_sha256": "09d44e4a932b5127",
+        "description": "Broad, architecture-aware reviews (read-only)",
+        "fallbacks": null,
+        "file": "reviewer.md",
+        "model": null,
+        "name": "reviewer"
+      },
+      {
+        "body_lines": 21,
+        "body_sha256": "4340c67ce05340c7",
+        "description": "Fast worker for small, localized, well-defined implementation tasks",
+        "fallbacks": [
+          "openai-codex/gpt-5.6-luna"
+        ],
+        "file": "worker-fast.md",
+        "model": "claude-bridge/claude-haiku-4-5",
+        "name": "worker-fast"
+      },
+      {
+        "body_lines": 22,
+        "body_sha256": "cf7b0807ec6f324b",
+        "description": "Complex implementation worker for architecture-heavy or cross-cutting changes",
+        "fallbacks": [
+          "openai-codex/gpt-5.6-terra"
+        ],
+        "file": "worker.md",
+        "model": "claude-bridge/claude-opus-4-8",
+        "name": "worker"
+      }
+    ],
+    "mcp_servers": [
+      "jcodemunch"
+    ],
+    "settings": {
+      "compaction": {
+        "threshold": 0.6
+      },
+      "defaultModel": "gemini/gemini-flash-lite-latest",
+      "defaultProvider": "omniroute",
+      "defaultThinkingLevel": "low",
+      "lastChangelogVersion": "1.4.0",
+      "modelThinkingLevels": {
+        "omniroute/gemini/gemini-flash-lite-latest": "low"
+      },
+      "packages": [
+        "npm:pi-playwright",
+        "npm:@wbline/pi-opencode-adapter"
+      ],
+      "pi-plan": {
+        "autoFlow": true,
+        "workspaceGuard": "block"
+      },
+      "piBolt": {
+        "packages": [
+          "npm:opensec-pi-subagents",
+          "npm:opensec-pi-todo",
+          "npm:opensec-pi-fff"
+        ],
+        "packagesOverlay": true
+      },
+      "shellPath": "C:\\Users\\Mateusz\\AppData\\Local\\hermes\\git\\bin\\bash.exe"
+    }
+  },
+  "redaction": "Secret-shaped keys (apiKey/token/secret/...) and secret-shaped values are replaced by '<redacted sha256:... len=N>'. auth.json, models.json content, npm/, sessions/ and extensions/ are excluded on purpose.",
+  "schema": 1,
+  "sources": {
+    "append_system": {
+      "bytes": 3589,
+      "exists": true,
+      "path": "C:\\Users\\Mateusz\\.pi\\agent\\APPEND_SYSTEM.md",
+      "sha256": "3d549f102f1a2353f8ce8ca99e2edd4f4bf374e9f7f5b1cab6ca45d47e69a274"
+    },
+    "auth": {
+      "bytes": 111,
+      "exists": true,
+      "path": "C:\\Users\\Mateusz\\.pi\\agent\\auth.json",
+      "sha256": "8e15418f362ed7f566eedf9b17fdd1b4c2667c5871ec4b407a29ce22b3b7be8f"
+    },
+    "models": {
+      "bytes": 13793,
+      "exists": true,
+      "path": "C:\\Users\\Mateusz\\.pi\\agent\\models.json",
+      "sha256": "b3e5d377f7fe4bf9a68db8b4c4acb51d540069f2c0969f170710a887fa9f172e"
+    },
+    "opencode": {
+      "bytes": 6945,
+      "exists": true,
+      "parse_error": "JSONDecodeError: Unexpected UTF-8 BOM (decode using utf-8-sig): line 1 column 1 (char 0)",
+      "path": "C:\\Users\\Mateusz\\.config\\opencode\\opencode.jsonc",
+      "sha256": "f75800d2ff0e5070bb23adc1314ad0e8134f62009ace14f277de0666e948e7e7"
+    },
+    "pi_mcp": {
+      "bytes": 310,
+      "exists": true,
+      "path": "C:\\Users\\Mateusz\\.pi\\agent\\mcp.json",
+      "redacted": {
+        "mcpServers": {
+          "jcodemunch": {
+            "command": "jcodemunch-mcp",
+            "exposure": "codemode",
+            "toolExposure": {
+              "announce_model": "hidden",
+              "jcodemunch_guide": "hidden",
+              "menu": "direct",
+              "route": "direct",
+              "set_tool_tier": "direct"
+            }
+          }
+        }
+      },
+      "redactions": 0,
+      "sha256": "7a37734bec41ce5b96fefe3855074795c3b756ac5eddcb8f87892f1d4161bfef"
+    },
+    "pi_permissions": {
+      "bytes": 1955,
+      "exists": true,
+      "path": "C:\\Users\\Mateusz\\.pi\\agent\\pi-permissions.jsonc",
+      "redacted": {
+        "defaultPolicy": {
+          "bash": {
+            "*": "ask",
+            "Remove-Item *root_worksapce*": "deny",
+            "Remove-Item -Recurse *root_worksapce*": "deny",
+            "curl *": "deny",
+            "del /s *": "deny",
+            "format *": "deny",
+            "git branch *": "allow",
+            "git clean -fd *": "deny",
+            "git clean -fdx *": "deny",
+            "git commit *": "ask",
+            "git diff": "allow",
+            "git log *": "allow",
+            "git push *": "ask",
+            "git reset --hard *": "deny",
+            "git status": "allow",
+            "net user *": "deny",
+            "netsh *": "deny",
+            "npm test": "allow",
+            "powershell -EncodedCommand *": "deny",
+            "powershell -enc *": "deny",
+            "pytest": "allow",
+            "python -m pytest *": "allow",
+            "reg delete *": "deny",
+            "rm -rf *": "deny",
+            "scp *": "deny",
+            "shutdown *": "deny",
+            "ssh *": "deny",
+            "wget *": "deny"
+          },
+          "mcp": "ask",
+          "path:right": {
+            "*": "ask",
+            "**/*.key": "deny",
+            "**/*.pem": "deny",
+            "**/.aws/**": "deny",
+            "**/.env": "deny",
+            "**/.env.*": "deny",
+            "**/.gnupg/**": "deny",
+            "**/.ssh/**": "deny",
+            "**/credentials*": "<redacted sha256:5b89213e len=6>",
+            "**/id_ed25519*": "deny",
+            "**/id_rsa*": "deny",
+            "C:/Program Files (x86)/**": "deny",
+            "C:/Program Files/**": "deny",
+            "C:/Users/Mateusz/.pi/**": "ask",
+            "C:/Users/Mateusz/Desktop/root_worksapce/**": "allow",
+            "C:/Windows/**": "deny"
+          },
+          "read": {
+            "*": "allow",
+            "**/*.key": "deny",
+            "**/*.pem": "deny",
+            "**/.aws/**": "deny",
+            "**/.env": "deny",
+            "**/.env.*": "deny",
+            "**/.git-credentials": "<redacted sha256:5b89213e len=6>",
+            "**/.gnupg/**": "deny",
+            "**/.npmrc": "deny",
+            "**/.ssh/**": "deny",
+            "**/AppData/Local/**": "deny",
+            "**/AppData/Roaming/**": "deny",
+            "**/credentials*": "<redacted sha256:5b89213e len=6>",
+            "**/id_ed25519*": "deny",
+            "**/id_rsa*": "deny"
+          },
+          "skills": "ask",
+          "tools": "ask"
+        }
+      },
+      "redactions": 3,
+      "sha256": "09b203ffd34f5a9edd1778e0caaff8ba647fb13a067dccc3b2f65d4f78e5271a"
+    },
+    "pi_settings": {
+      "bytes": 687,
+      "exists": true,
+      "path": "C:\\Users\\Mateusz\\.pi\\agent\\settings.json",
+      "redacted": {
+        "compaction": {
+          "threshold": 0.6
+        },
+        "defaultModel": "gemini/gemini-flash-lite-latest",
+        "defaultProvider": "omniroute",
+        "defaultThinkingLevel": "low",
+        "lastChangelogVersion": "1.4.0",
+        "modelThinkingLevels": {
+          "omniroute/gemini/gemini-flash-lite-latest": "low"
+        },
+        "packages": [
+          "npm:pi-playwright",
+          "npm:@wbline/pi-opencode-adapter"
+        ],
+        "pi-plan": {
+          "autoFlow": true,
+          "workspaceGuard": "block"
+        },
+        "piBolt": {
+          "packages": [
+            "npm:opensec-pi-subagents",
+            "npm:opensec-pi-todo",
+            "npm:opensec-pi-fff"
+          ],
+          "packagesOverlay": true
+        },
+        "shellPath": "C:\\Users\\Mateusz\\AppData\\Local\\hermes\\git\\bin\\bash.exe"
+      },
+      "redactions": 0,
+      "sha256": "4bc0596da34a7b2843cf5779ff8fb24cbda71358dc69792aba5b66136206e77a"
+    },
+    "vault_settings": {
+      "bytes": 75,
+      "exists": true,
+      "path": "C:\\Users\\Mateusz\\Desktop\\vault\\.pi\\settings.json",
+      "sha256": "a370a4659178076102b7d177ef58ff6d6ddcffef184c9a04f57a5d3d1312d401"
+    }
+  },
+  "vault": "C:\\Users\\Mateusz\\Desktop\\vault"
+}
