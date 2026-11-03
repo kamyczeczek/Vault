@@ -16,6 +16,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 ## Stale
 
+- `raw-did-session-extractors-2026-10-20` — since 2026-10-20 (older than 14 days)
 - `transcript-fix-p1-p6-2026-10-19` — since 2026-10-19 (older than 14 days)
 - `ticket-scratch-test-bat-runs-exports-on-import-2026-10-19` — since 2026-10-19 (older than 14 days)
 - `merged-session-loss-declarations-2026-10-19` — since 2026-10-19 (older than 14 days)
@@ -224,6 +225,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `pi-agents-preflight-and-closer-2026-11-04` | 2026-11-04 | mateusz | opencode |
 | `orchestrator-worker-recursion-2026-11-03` | 2026-11-03 | mateusz | opencode |
 | `latest-session-export` | 2026-11-03 | mateusz | opencode |
 | `fev-full-guard-implemented` | 2026-11-02 | mateusz | opencode |

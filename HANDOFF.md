@@ -29,6 +29,10 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/pi-agents-preflight-and-closer-2026-11-04.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-low -->
+`pi-agents-preflight-and-closer-2026-11-04` — 2026-11-04: Added project-level Pi subagents in .pi/agents/ (preflight-runner and handoff-closer) and verified preflight-runner execution; captured raw_sessions_drive.bat default count update.
+not checked: handoff-closer subagent full transaction run on a dirty tree.
+
 <!-- handoff/flags/orchestrator-worker-recursion-2026-11-03.md · owner: mateusz · agent: opencode · model: omniroute/gemini/gemini-flash-lite-latest -->
 `orchestrator-worker-recursion-2026-11-03` — 2026-11-03: D25 PENDING: recursion E2E did not reach GRANDCHILD-OK-7731; observed 401 provider authentication error via local proxy, not evidence of toolscope or depth cap. tools/orchestrator.md remains a hypothesis.
 not checked: provider key rotation and repeat E2E.

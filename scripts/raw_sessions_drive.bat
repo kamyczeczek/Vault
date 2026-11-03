@@ -4,7 +4,7 @@ setlocal
 cd /d "%~dp0.."
 
 set COUNT=%1
-if "%COUNT%"=="" set COUNT=30
+if "%COUNT%"=="" set COUNT=1
 set OUT=%2
 if "%OUT%"=="" set OUT=scripts\_scratch\sessions\02_products\raw_sessions.md
 set DRIVE_TARGET=%~3
