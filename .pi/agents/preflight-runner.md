@@ -9,8 +9,9 @@ Your responsibility is to ensure the execution environment and target project ar
 
 ## Strategy & Workflow
 1. **Root Environment Verification**:
-   - Run `python scripts/preflight_agent.py --check` to verify that Python/Git are responsive and no orphaned locks exist (`.unlazy/locks`, `.git/index.lock`).
-   - If stale locks are found, run `python scripts/preflight_agent.py` to clear them safely.
+   - Run `python scripts/preflight_agent.py` to verify that Python/Git are responsive, no orphaned locks exist (`.unlazy/locks`, `.git/index.lock`), and git hooks are active (`HOOK_ACTIVE`).
+   - If stale locks are found and git is not running, run `python scripts/preflight_agent.py --clean-stale-locks` to clear them safely.
+   - If `HOOK_INACTIVE` is reported, report the command to enable it: `git config core.hooksPath hooks`.
 2. **Workspace Integrity Quick-Check**:
    - Run `python scripts/check_workspace_integrity.py` to ensure workspace gates (R1 shape, R9 routing, R14 memory freshness) are passing.
 3. **Target Project Preflight** (when a project path or name is specified):

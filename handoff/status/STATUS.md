@@ -225,6 +225,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `pi-subagents-hardening-and-e2e-2026-11-04` | 2026-11-04 | mateusz | opencode |
 | `pi-agents-preflight-and-closer-2026-11-04` | 2026-11-04 | mateusz | opencode |
 | `orchestrator-worker-recursion-2026-11-03` | 2026-11-03 | mateusz | opencode |
 | `latest-session-export` | 2026-11-03 | mateusz | opencode |

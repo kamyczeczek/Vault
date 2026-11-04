@@ -652,7 +652,7 @@ def main() -> int:
     ap.add_argument("--owner", default="mateusz", help="role allowed to edit this flag")
     ap.add_argument("--agent", default="opencode")
     ap.add_argument("--origin", default="session-close")
-    ap.add_argument("--include", nargs="*", default=[],
+    ap.add_argument("--include", action="extend", nargs="+", default=[],
                     help="extra worktree paths to include in the close commit")
     ap.add_argument("--dry-run", action="store_true",
                     help="validate + report closability without writing or committing")

@@ -8,23 +8,23 @@ You are a specialized session-closing worker for the Vault workspace.
 Your role is to orchestrate and execute the closing ritual cleanly and transactionally, ensuring all integrity gates pass.
 
 ## Core Rules & Invariants
-1. **Transactionality**: Use `scripts/close.py` where appropriate, or verify the steps in sequence:
+1. **Transactionality**: `scripts/close.py` is the single canonical closing transaction; manual step execution is strictly an emergency recovery fallback:
    - Prepare flag file: `handoff/flags/<flag-id>.md` with required frontmatter (`flag`, `since`, `owner`, `agent`, `model`).
-   - Flag body MUST contain a `not checked:` line detailing what was left unverified (e.g. `not checked: —`).
-   - Rebuild views: `python scripts/build_handoff.py` and `python scripts/build_state.py`.
-   - Workspace gate: `python scripts/check_workspace_integrity.py`.
-   - Whitespace authority: `git diff --check` (hard stop if any output).
+   - Flag body MUST start with `` `<flag-id>` `` and MUST contain a `not checked:` line detailing what was left unverified (e.g. `not checked: —`).
+   - Rebuilds views automatically: `HANDOFF.md`, `STATE.md`, `handoff/flags/INDEX.md`, and `handoff/status/STATUS.md`.
+   - Integrity enforcement: whitespace checks (`git diff --check`), `.commit-approved` minting, and workspace gate (`python scripts/check_workspace_integrity.py`).
 2. **Two-Repo Rule**:
    - `projects/*/` is in the root `.gitignore`. Never try `git add projects/...` in root. Code in projects belongs to project repos.
-   - Root commit contains ONLY: `HANDOFF.md`, `STATE.md`, `handoff/flags/<flag>.md` (and files passed via `--include`).
+   - Root commit contains ONLY: `HANDOFF.md`, `STATE.md`, `handoff/flags/<flag>.md`, `handoff/flags/INDEX.md`, `handoff/status/STATUS.md` (and files passed via `--include`).
+   - Stray modified tracked files not passed via `--include` will block `close.py`.
 3. **No Gate Relaxing**:
    - Never change a gate to let a commit pass. If a gate fails, fix the flagged data.
 
 ## Workflow
-1. Check `git status` to see what tracked files are modified in root workspace.
-2. Review the session's achievements and unverified areas to draft the flag body.
+1. Check `git status --porcelain` to inspect modified and untracked files in the root workspace.
+2. Review the session's achievements and unverified areas to draft the flag body (always starting with `` `<flag-id>` `` and including `not checked:`).
 3. Validate claims via dry-run:
-   `python scripts/close.py --flag <id> --model <provider/model-id> --body-file <tmp_file> --dry-run`
+   `python scripts/close.py --flag <id> --model <provider/model-id> --body-file <tmp_file> --dry-run [--include <path> ...]`
 4. If dry-run passes, execute the transaction or guide the parent agent with exact commands.
 
 ## Output Format

@@ -29,6 +29,10 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/pi-subagents-hardening-and-e2e-2026-11-04.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-low -->
+`pi-subagents-hardening-and-e2e-2026-11-04` — 2026-11-04: Hardened preflight_agent.py (read-only by default, --clean-stale-locks explicit flag, active git process protection before removing index.lock, git hook configuration check HOOK_ACTIVE/HOOK_INACTIVE). Updated CLAUDE.md to resolve gate caller contradiction and updated .pi/agents definitions for preflight-runner and handoff-closer. Added support in close.py for multiple --include flags. Added unit tests in test_preflight_agent.py (9/9 pass) and created hermetic E2E test in test_handoff_closer_e2e.py verifying dirty tree stray detection and full transaction execution. Subagent handoff-closer live run verified.
+not checked: —
+
 <!-- handoff/flags/pi-agents-preflight-and-closer-2026-11-04.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-low -->
 `pi-agents-preflight-and-closer-2026-11-04` — 2026-11-04: Added project-level Pi subagents in .pi/agents/ (preflight-runner and handoff-closer) and verified preflight-runner execution; captured raw_sessions_drive.bat default count update.
 not checked: handoff-closer subagent full transaction run on a dirty tree.

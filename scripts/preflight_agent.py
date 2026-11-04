@@ -2,15 +2,16 @@
 """Deterministic preflight for coding agents and skill executions.
 
 Verifies the execution environment before an agent starts working, preventing
-deadlocks caused by orphaned lock directories (.unlazy/locks, .git/index.lock)
-or unresponsive Python/Git processes.
+deadlocks caused by orphaned lock directories (.unlazy/locks, .git/index.lock),
+unresponsive Python/Git processes, or unconfigured repository git hooks.
 
-Exit 0: Environment is responsive, locks are clear, ready for work.
+Exit 0: Environment is responsive, locks are clear, hooks active, ready for work.
 Exit 1: Environment is degraded, blocked, or timed out.
 
 Usage:
-    python scripts/preflight_agent.py          # clean locks and verify
-    python scripts/preflight_agent.py --check  # read-only check
+    python scripts/preflight_agent.py                      # read-only check (default)
+    python scripts/preflight_agent.py --clean-stale-locks  # clean stale locks and verify
+    python scripts/preflight_agent.py --check              # read-only check (alias)
 """
 
 from __future__ import annotations
@@ -29,7 +30,7 @@ DEFAULT_PYTHON_TIMEOUT = 2.5
 DEFAULT_GIT_TIMEOUT = 5.0
 
 
-def check_and_clean_unlazy_locks(clean: bool = True) -> tuple[bool, str]:
+def check_and_clean_unlazy_locks(clean: bool = False) -> tuple[bool, str]:
     """Check for and remove .unlazy/locks directory which deadlocks Windows Python."""
     unlazy_locks = ROOT / ".unlazy" / "locks"
     unlazy_root = ROOT / ".unlazy"
@@ -42,9 +43,9 @@ def check_and_clean_unlazy_locks(clean: bool = True) -> tuple[bool, str]:
             except Exception as exc:
                 return False, f"error removing {unlazy_locks}: {exc}"
         else:
-            return False, f"deadlock directory exists: {unlazy_locks}"
+            return False, f"deadlock directory exists: {unlazy_locks} (run with --clean-stale-locks to remove)"
 
-    # If .unlazy exists and is empty or only has locks, clean it
+    # If .unlazy exists and is empty or only has locks, clean it if clean=True
     if clean and unlazy_root.exists():
         try:
             entries = list(unlazy_root.iterdir())
@@ -56,8 +57,42 @@ def check_and_clean_unlazy_locks(clean: bool = True) -> tuple[bool, str]:
     return True, "OK"
 
 
-def check_and_clean_git_lock(clean: bool = True) -> tuple[bool, str]:
-    """Check for stale .git/index.lock and remove if git is not running."""
+def is_git_process_running() -> bool:
+    """Check if any git process is currently running on the system."""
+    try:
+        if os.name == "nt":
+            p = subprocess.run(
+                ["tasklist", "/FI", "IMAGENAME eq git.exe", "/FO", "CSV", "/NH"],
+                capture_output=True,
+                text=True,
+                timeout=3.0,
+            )
+            return "git.exe" in p.stdout.lower()
+        else:
+            try:
+                p = subprocess.run(
+                    ["pgrep", "-x", "git"],
+                    capture_output=True,
+                    timeout=3.0,
+                )
+                return p.returncode == 0
+            except FileNotFoundError:
+                p = subprocess.run(
+                    ["ps", "-A", "-o", "comm="],
+                    capture_output=True,
+                    text=True,
+                    timeout=3.0,
+                )
+                commands = {line.strip() for line in p.stdout.splitlines()}
+                return "git" in commands
+    except Exception:
+        # If process check fails or times out, err on side of caution
+        return True
+
+
+def check_and_clean_git_lock(clean: bool = False,
+                             git_running_check: callable | None = None) -> tuple[bool, str]:
+    """Check for .git/index.lock and remove if clean=True, age > 30s, and git is not running."""
     lock_file = ROOT / ".git" / "index.lock"
     if not lock_file.exists():
         return True, "OK"
@@ -67,19 +102,45 @@ def check_and_clean_git_lock(clean: bool = True) -> tuple[bool, str]:
         mtime = lock_file.stat().st_mtime
         age = time.time() - mtime
     except OSError:
-        age = 0
+        age = 0.0
 
-    if clean:
-        # If lock is older than 30s, check if git is running
-        if age > 30.0:
-            try:
-                lock_file.unlink()
-                return True, f"removed stale .git/index.lock (age {age:.1f}s)"
-            except OSError as exc:
-                return False, f"failed to remove stale .git/index.lock: {exc}"
-        else:
-            return False, f".git/index.lock is active (age {age:.1f}s) — git process may be running"
-    return False, f".git/index.lock exists (age {age:.1f}s)"
+    if not clean:
+        return False, f".git/index.lock exists (age {age:.1f}s) — run with --clean-stale-locks to remove if stale"
+
+    # clean=True: verify git process is not running
+    git_running = git_running_check() if git_running_check is not None else is_git_process_running()
+    if git_running:
+        return False, f".git/index.lock exists (age {age:.1f}s) and git process is running — refusing to remove"
+
+    if age <= 30.0:
+        return False, f".git/index.lock is recent (age {age:.1f}s <= 30s) — refusing to remove as stale"
+
+    try:
+        lock_file.unlink()
+        return True, f"removed stale .git/index.lock (age {age:.1f}s, git process not running)"
+    except OSError as exc:
+        return False, f"failed to remove stale .git/index.lock: {exc}"
+
+
+def check_git_hooks(root: Path = ROOT) -> tuple[bool, str]:
+    """Check if repository pre-commit hook is active (core.hooksPath configured)."""
+    try:
+        p = subprocess.run(
+            ["git", "config", "--get", "core.hooksPath"],
+            capture_output=True,
+            text=True,
+            cwd=str(root),
+            timeout=DEFAULT_GIT_TIMEOUT,
+        )
+        hooks_path = p.stdout.strip()
+        if p.returncode == 0 and hooks_path:
+            hook_file = (root / hooks_path / "pre-commit") if not Path(hooks_path).is_absolute() else (Path(hooks_path) / "pre-commit")
+            if hook_file.exists():
+                return True, f"HOOK_ACTIVE (core.hooksPath='{hooks_path}')"
+            return False, f"HOOK_INACTIVE (core.hooksPath='{hooks_path}' set, but {hook_file} does not exist)"
+        return False, "HOOK_INACTIVE (core.hooksPath not configured; run: git config core.hooksPath hooks)"
+    except Exception as exc:
+        return False, f"HOOK_INACTIVE (error checking git hooks: {exc})"
 
 
 def check_python_responsive(timeout: float = DEFAULT_PYTHON_TIMEOUT) -> tuple[bool, float, str]:
@@ -131,7 +192,7 @@ def check_git_responsive(timeout: float = DEFAULT_GIT_TIMEOUT) -> tuple[bool, fl
         return False, elapsed, f"failed to execute git: {exc}"
 
 
-def run_preflight(clean: bool = True,
+def run_preflight(clean: bool = False,
                   python_timeout: float = DEFAULT_PYTHON_TIMEOUT,
                   git_timeout: float = DEFAULT_GIT_TIMEOUT) -> tuple[bool, list[str]]:
     """Run all preflight checks and return overall status and log lines."""
@@ -154,7 +215,15 @@ def run_preflight(clean: bool = True,
     else:
         logs.append(f"[PASS] .git/index.lock: {msg_git_lock}")
 
-    # 3. python responsiveness
+    # 3. git hook configuration
+    ok_hook, msg_hook = check_git_hooks()
+    if not ok_hook:
+        success = False
+        logs.append(f"[FAIL] git hooks: {msg_hook}")
+    else:
+        logs.append(f"[PASS] git hooks: {msg_hook}")
+
+    # 4. python responsiveness
     ok_py, elapsed_py, msg_py = check_python_responsive(timeout=python_timeout)
     if not ok_py:
         success = False
@@ -162,7 +231,7 @@ def run_preflight(clean: bool = True,
     else:
         logs.append(f"[PASS] python responsiveness: {elapsed_py:.3f}s (< {python_timeout}s)")
 
-    # 4. git responsiveness
+    # 5. git responsiveness
     ok_git, elapsed_git, msg_git = check_git_responsive(timeout=git_timeout)
     if not ok_git:
         success = False
@@ -175,15 +244,18 @@ def run_preflight(clean: bool = True,
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--clean-stale-locks", "--clean", action="store_true",
+                    dest="clean", default=False,
+                    help="clean stale locks (.unlazy/locks, aged .git/index.lock)")
     ap.add_argument("--check", action="store_true",
-                    help="read-only check, do not clean locks")
+                    help="read-only check (default behavior)")
     ap.add_argument("--python-timeout", type=float, default=DEFAULT_PYTHON_TIMEOUT,
                     help="timeout in seconds for python check")
     ap.add_argument("--git-timeout", type=float, default=DEFAULT_GIT_TIMEOUT,
                     help="timeout in seconds for git check")
     args = ap.parse_args()
 
-    clean = not args.check
+    clean = args.clean and not args.check
     ok, logs = run_preflight(
         clean=clean,
         python_timeout=args.python_timeout,

@@ -310,7 +310,7 @@ class VerifyClaimsTests(unittest.TestCase):
             include=[],
             verify_claims=True,
         )
-        with mock.patch("scripts.close.load_body", return_value=body):
+        with mock.patch.object(c, "load_body", return_value=body):
             rc = c.dry_run(ns)
             self.assertEqual(rc, 1)
 
