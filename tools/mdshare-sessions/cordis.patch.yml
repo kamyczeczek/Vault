@@ -1,0 +1,3 @@
+- insert:
+    - id: mdshare-sessions
+      name: '@local/mdshare-sessions'
