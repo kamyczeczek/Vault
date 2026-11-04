@@ -20,21 +20,91 @@ import scripts.preflight_agent as pfa
 
 class PreflightAgentTests(unittest.TestCase):
     def test_normal_run_passes(self):
-        ok, logs = pfa.run_preflight(clean=False)
-        self.assertTrue(ok)
-        self.assertTrue(any("python responsiveness" in line for line in logs))
-        self.assertTrue(any("git responsiveness" in line for line in logs))
+        with mock.patch.object(pfa, "check_and_clean_unlazy_locks", return_value=(True, "OK")), \
+             mock.patch.object(pfa, "check_and_clean_git_lock", return_value=(True, "OK")), \
+             mock.patch.object(pfa, "check_git_hooks", return_value=(True, "HOOK_ACTIVE (core.hooksPath='hooks')")), \
+             mock.patch.object(pfa, "check_python_responsive", return_value=(True, 0.05, "OK")), \
+             mock.patch.object(pfa, "check_git_responsive", return_value=(True, 0.05, "OK")):
+            ok, logs = pfa.run_preflight(clean=False)
+            self.assertTrue(ok)
+            self.assertTrue(any("python responsiveness" in line for line in logs))
+            self.assertTrue(any("git responsiveness" in line for line in logs))
+            self.assertTrue(all("[PASS]" in line for line in logs))
+
+    def test_run_preflight_fails_when_check_fails(self):
+        with mock.patch.object(pfa, "check_and_clean_unlazy_locks", return_value=(True, "OK")), \
+             mock.patch.object(pfa, "check_and_clean_git_lock", return_value=(True, "OK")), \
+             mock.patch.object(pfa, "check_git_hooks", return_value=(False, "HOOK_INACTIVE")), \
+             mock.patch.object(pfa, "check_python_responsive", return_value=(True, 0.05, "OK")), \
+             mock.patch.object(pfa, "check_git_responsive", return_value=(True, 0.05, "OK")):
+            ok, logs = pfa.run_preflight(clean=False)
+            self.assertFalse(ok)
+            self.assertTrue(any("[FAIL] git hooks: HOOK_INACTIVE" in line for line in logs))
 
     def test_unlazy_locks_cleaned_when_clean_true(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
             locks = root / ".unlazy" / "locks"
             locks.mkdir(parents=True)
-            (locks / "deadlock.lock").write_text("lock", encoding="utf-8")
+            lock_file = locks / "deadlock.lock"
+            lock_file.write_text("lock", encoding="utf-8")
+
+            # Set mtime to 100s in the past (stale)
+            past = time.time() - 100.0
+            os.utime(lock_file, (past, past))
 
             with mock.patch.object(pfa, "ROOT", root):
                 self.assertTrue(locks.exists())
                 ok, msg = pfa.check_and_clean_unlazy_locks(clean=True)
+                self.assertTrue(ok)
+                self.assertFalse(locks.exists())
+
+    def test_unlazy_locks_retained_when_fresh(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            locks = root / ".unlazy" / "locks"
+            locks.mkdir(parents=True)
+            lock_file = locks / "active.lock"
+            lock_file.write_text("lock", encoding="utf-8")
+
+            # Lock is brand new (age ~0s <= 30s)
+            with mock.patch.object(pfa, "ROOT", root):
+                ok, msg = pfa.check_and_clean_unlazy_locks(clean=True)
+                self.assertFalse(ok)
+                self.assertIn("recent", msg)
+                self.assertTrue(lock_file.exists())
+
+    def test_unlazy_locks_retained_when_pid_running(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            locks = root / ".unlazy" / "locks"
+            locks.mkdir(parents=True)
+            lock_file = locks / "process.filelock"
+            lock_file.write_text('{"token": "abc", "pid": 4321}', encoding="utf-8")
+
+            # Set mtime to 100s in the past, but process is running
+            past = time.time() - 100.0
+            os.utime(lock_file, (past, past))
+
+            with mock.patch.object(pfa, "ROOT", root):
+                ok, msg = pfa.check_and_clean_unlazy_locks(clean=True, pid_running_check=lambda pid: pid == 4321)
+                self.assertFalse(ok)
+                self.assertIn("owner PID 4321 is still running", msg)
+                self.assertTrue(lock_file.exists())
+
+    def test_unlazy_locks_cleaned_when_pid_dead(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            locks = root / ".unlazy" / "locks"
+            locks.mkdir(parents=True)
+            lock_file = locks / "process.filelock"
+            lock_file.write_text('{"token": "abc", "pid": 4321}', encoding="utf-8")
+
+            past = time.time() - 100.0
+            os.utime(lock_file, (past, past))
+
+            with mock.patch.object(pfa, "ROOT", root):
+                ok, msg = pfa.check_and_clean_unlazy_locks(clean=True, pid_running_check=lambda pid: False)
                 self.assertTrue(ok)
                 self.assertFalse(locks.exists())
 
@@ -144,6 +214,21 @@ class PreflightAgentTests(unittest.TestCase):
                 self.assertFalse(ok)
                 self.assertIn("HOOK_INACTIVE", msg)
                 self.assertIn("git config core.hooksPath hooks", msg)
+
+    def test_check_git_hooks_inactive_when_not_executable(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            hooks_dir = root / "hooks"
+            hooks_dir.mkdir(parents=True)
+            (hooks_dir / "pre-commit").write_text("#!/bin/sh\nexit 0", encoding="utf-8")
+
+            fake_cp = mock.Mock(returncode=0, stdout="hooks\n")
+            with mock.patch("subprocess.run", return_value=fake_cp):
+                # When executable check returns False
+                ok, msg = pfa.check_git_hooks(root=root, is_executable=lambda p: False)
+                self.assertFalse(ok)
+                self.assertIn("HOOK_INACTIVE", msg)
+                self.assertIn("not executable", msg)
 
 
 if __name__ == "__main__":

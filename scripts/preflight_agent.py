@@ -17,6 +17,7 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import shutil
 import subprocess
@@ -28,33 +29,111 @@ ROOT = Path(__file__).resolve().parent.parent
 
 DEFAULT_PYTHON_TIMEOUT = 2.5
 DEFAULT_GIT_TIMEOUT = 5.0
+DEFAULT_STALE_LOCK_AGE = 30.0
 
 
-def check_and_clean_unlazy_locks(clean: bool = False) -> tuple[bool, str]:
-    """Check for and remove .unlazy/locks directory which deadlocks Windows Python."""
-    unlazy_locks = ROOT / ".unlazy" / "locks"
-    unlazy_root = ROOT / ".unlazy"
-    if unlazy_locks.exists():
-        if clean:
-            try:
-                shutil.rmtree(unlazy_locks, ignore_errors=True)
-                if unlazy_locks.exists():
-                    return False, f"failed to remove deadlock directory: {unlazy_locks}"
-            except Exception as exc:
-                return False, f"error removing {unlazy_locks}: {exc}"
-        else:
-            return False, f"deadlock directory exists: {unlazy_locks} (run with --clean-stale-locks to remove)"
+def is_pid_running(pid: int) -> bool:
+    """Check if a process with given PID is currently running."""
+    if pid <= 0:
+        return False
+    try:
+        os.kill(pid, 0)
+        return True
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        # Process exists, but caller lacks permission to signal it
+        return True
+    except OSError:
+        return False
 
-    # If .unlazy exists and is empty or only has locks, clean it if clean=True
-    if clean and unlazy_root.exists():
+
+def check_and_clean_unlazy_locks(
+    clean: bool = False,
+    pid_running_check: callable | None = None,
+    stale_age: float = DEFAULT_STALE_LOCK_AGE,
+    root: Path | None = None,
+) -> tuple[bool, str]:
+    """Check for and remove stale .unlazy/locks directory which deadlocks Windows Python.
+
+    In clean mode, verifies each lock file's age (> stale_age) and ensures any recorded
+    owner PID in JSON metadata is no longer running before removal.
+    """
+    base = root if root is not None else ROOT
+    unlazy_locks = base / ".unlazy" / "locks"
+    unlazy_root = base / ".unlazy"
+    if not unlazy_locks.exists():
+        return True, "OK"
+
+    try:
+        entries = list(unlazy_locks.iterdir())
+    except OSError as exc:
+        return False, f"cannot read {unlazy_locks}: {exc}"
+
+    if not clean:
+        count = len(entries)
+        return False, (
+            f"deadlock directory exists: {unlazy_locks} "
+            f"({count} lock(s) present — run with --clean-stale-locks to remove if stale)"
+            if count
+            else f"deadlock directory exists: {unlazy_locks} (run with --clean-stale-locks to remove)"
+        )
+
+    # clean=True: inspect and verify individual lock entries
+    if not entries:
         try:
-            entries = list(unlazy_root.iterdir())
-            if not entries or entries == [unlazy_locks]:
-                shutil.rmtree(unlazy_root, ignore_errors=True)
-        except Exception:
-            pass
+            unlazy_locks.rmdir()
+            if unlazy_root.exists() and not list(unlazy_root.iterdir()):
+                unlazy_root.rmdir()
+            return True, f"removed empty deadlock directory: {unlazy_locks}"
+        except OSError as exc:
+            return False, f"failed to remove empty deadlock directory {unlazy_locks}: {exc}"
 
-    return True, "OK"
+    pid_check = pid_running_check if pid_running_check is not None else is_pid_running
+
+    removed: list[str] = []
+    for entry in entries:
+        try:
+            mtime = entry.stat().st_mtime
+            age = time.time() - mtime
+        except OSError:
+            age = 0.0
+
+        # Inspect JSON lock metadata for owner PID
+        owner_pid: int | None = None
+        if entry.is_file():
+            try:
+                data = json.loads(entry.read_text(encoding="utf-8"))
+                if isinstance(data, dict):
+                    p = data.get("pid")
+                    if isinstance(p, int):
+                        owner_pid = p
+            except Exception:
+                pass
+
+        if owner_pid is not None and pid_check(owner_pid):
+            return False, f"lock '{entry.name}' owner PID {owner_pid} is still running — refusing to remove"
+
+        if age <= stale_age:
+            return False, f"lock '{entry.name}' is recent (age {age:.1f}s <= {stale_age:.0f}s) — refusing to remove as stale"
+
+        try:
+            if entry.is_file():
+                entry.unlink()
+            elif entry.is_dir():
+                shutil.rmtree(entry, ignore_errors=False)
+            removed.append(entry.name)
+        except OSError as exc:
+            return False, f"failed to remove lock '{entry.name}': {exc}"
+
+    try:
+        if not list(unlazy_locks.iterdir()):
+            unlazy_locks.rmdir()
+        if unlazy_root.exists() and not list(unlazy_root.iterdir()):
+            unlazy_root.rmdir()
+        return True, f"removed {len(removed)} stale lock(s) and directory: {unlazy_locks}"
+    except OSError as exc:
+        return False, f"failed to remove directory {unlazy_locks} after cleaning locks: {exc}"
 
 
 def is_git_process_running() -> bool:
@@ -122,8 +201,9 @@ def check_and_clean_git_lock(clean: bool = False,
         return False, f"failed to remove stale .git/index.lock: {exc}"
 
 
-def check_git_hooks(root: Path = ROOT) -> tuple[bool, str]:
-    """Check if repository pre-commit hook is active (core.hooksPath configured)."""
+def check_git_hooks(root: Path = ROOT,
+                    is_executable: callable | None = None) -> tuple[bool, str]:
+    """Check if repository pre-commit hook is active (core.hooksPath configured and executable on Unix)."""
     try:
         p = subprocess.run(
             ["git", "config", "--get", "core.hooksPath"],
@@ -136,6 +216,10 @@ def check_git_hooks(root: Path = ROOT) -> tuple[bool, str]:
         if p.returncode == 0 and hooks_path:
             hook_file = (root / hooks_path / "pre-commit") if not Path(hooks_path).is_absolute() else (Path(hooks_path) / "pre-commit")
             if hook_file.exists():
+                check_x = is_executable if is_executable is not None else (lambda p: os.access(p, os.X_OK))
+                if os.name != "nt" or is_executable is not None:
+                    if not check_x(hook_file):
+                        return False, f"HOOK_INACTIVE ({hook_file} is not executable; run: chmod +x {hook_file})"
                 return True, f"HOOK_ACTIVE (core.hooksPath='{hooks_path}')"
             return False, f"HOOK_INACTIVE (core.hooksPath='{hooks_path}' set, but {hook_file} does not exist)"
         return False, "HOOK_INACTIVE (core.hooksPath not configured; run: git config core.hooksPath hooks)"
