@@ -35,6 +35,11 @@ stopped holding (delete the file), and compress closed threads into
 2. Przyczyna problemu 2 (`stream went silent for 120s` / brak darmowych modeli): zapytania szły przez proxy omniroute do płatnych/niestabilnych endpointów zamiast natywnego darmowego providera opencode. Wykonano kopię zapasową configu do `C:/Users/Mateusz/.config/opencode/opencode.jsonc.bak.20261105`. Zaktualizowano `opencode.jsonc` ustawiając domyślny model i mały model na `opencode/deepseek-v4.1-flash-free`. Przeładowano konfigurację (`opencode reload`, exit code 0) i wykonano smoke test poza UI: `opencode run --model opencode/deepseek-v4.1-flash-free "hi"` zakończony sukcesem (exit code 0, odpowiedź: "Hey! What are we working on today?").
 not checked: działanie pozostałych darmowych modeli z listy opencode poza deepseek-v4.1-flash-free; zachowanie proxy omniroute pod długimi zapytaniami.
 
+<!-- handoff/flags/l1-contracts-slimming-2026-11-05.md · owner: mateusz · agent: omp · model: omniroute/cx/gpt-5.6-luna-low -->
+`l1-contracts-slimming-2026-11-05` — 2026-11-05: domknięto techniczną ścieżkę odchudzenia kontraktu L1. `scripts/build_handoff.py` inline'uje tylko flagi z ostatnich 3 dni, starsze przenosi do `handoff/flags/INDEX.md`; bieżący `HANDOFF.md` ma 26,807 B. Weryfikacja: test_build_handoff 17/17, integrity OK, build_handoff/build_status checks OK, git diff --check OK. Cudze zmiany zostały odłożone poza ten commit.
+
+not checked: brak.
+
 <!-- handoff/flags/pi-subagents-hardening-and-e2e-2026-11-04.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-low -->
 `pi-subagents-hardening-and-e2e-2026-11-04` — 2026-11-04: Hardened preflight_agent.py (read-only by default, --clean-stale-locks explicit flag, active git process protection before removing index.lock, git hook configuration check HOOK_ACTIVE/HOOK_INACTIVE). Updated CLAUDE.md to resolve gate caller contradiction and updated .pi/agents definitions for preflight-runner and handoff-closer. Added support in close.py for multiple --include flags. Added unit tests in test_preflight_agent.py (9/9 pass) and created hermetic E2E test in test_handoff_closer_e2e.py verifying dirty tree stray detection and full transaction execution. Subagent handoff-closer live run verified.
 not checked: —

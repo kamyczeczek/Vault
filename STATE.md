@@ -6,25 +6,24 @@ generated: { by: okf-enforcer/0.6, at: 2026-10-25T02:18:55Z }
 
 # STATE — root workspace (generated)
 
-> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-11-05 02:42 · HEAD `57fe56f` (master).
+> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-11-05 20:02 · HEAD `6ce469f` (master).
 
 ## Drzewo
 
-brudne pliki (6):
+brudne pliki (5):
 - `M HANDOFF.md`
-- ` M handoff/flags/INDEX.md`
-- ` M scripts/raw_sessions_drive.bat`
-- `?? .pi/settings.json.bak.20261104`
-- `?? handoff/flags/opencode-free-models-and-shell-perm-2026-11-05.md`
-- `?? projects/_archive.backup-20261104/`
+- ` M STATE.md`
+- ` M handoff/status/STATUS.md`
+- `?? handoff/flags/l1-contracts-slimming-2026-11-05.md`
+- `?? handoff/l1-close-body.md`
 
 ## Ostatnie commity
 
-- `57fe56f test: shell permission check`
-- `a0e133f chore: remove opencode shell restrictions`
-- `39c39cf preflight: safe unlazy lock cleanup + hermetic tests`
-- `59464eb pi-subagents-hardening-and-e2e-2026-11-04: `pi-subagents-hardening-and-e2e-2026-11-04` — 2026-11-04: Hardened preflight_agent.py (read-only`
-- `5584105 pi-agents-preflight-and-closer-2026-11-04: `pi-agents-preflight-and-closer-2026-11-04` — 2026-11-04: Added project-level Pi subagents in .p`
+- `6ce469f feat(omp): harden project config`
+- `b439e93 chore: sync remaining workspace state`
+- `75c35c9 feat(omp): make project agents model-neutral`
+- `cc0bdea feat(omp): add public local omp configuration and documentation`
+- `a680c12 opencode-free-models-and-shell-perm-2026-11-05: opencode-free-models-and-shell-perm-2026-11-05 — 2026-11-05: set free default model and documented shell permission fix`
 
 ## Runy (`.dgc-evidence/runs/`)
 LATEST (czeka na werdykt): `goose-pstack-2026-10-03`
