@@ -1,0 +1,427 @@
+{
+  "slice": "S-01-q3",
+  "protocol": {
+    "fit": "frozen, train.csv 11,425 rows, fit once",
+    "origins": 2161,
+    "stride": 1,
+    "horizon": 720,
+    "family": "HeuristicLagKNN(q=3, history_fraction=0.1, delays=(1,2,3,6,12,24))",
+    "k_grid": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      8,
+      10,
+      12,
+      16,
+      20,
+      24,
+      32
+    ],
+    "note": "per-origin history = all observed rows strictly before the scored window"
+  },
+  "results": [
+    {
+      "model": "knn_q3_k1_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 3.6756,
+      "rolling_rmse": 4.45,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 3.383631824536455,
+          "rmse": 4.127920047498161
+        },
+        "window_2": {
+          "mae": 6.726672102676495,
+          "rmse": 7.416280386500512
+        },
+        "window_3": {
+          "mae": 5.007666264543378,
+          "rmse": 5.977829635017247
+        },
+        "window_4": {
+          "mae": 3.2865398376352255,
+          "rmse": 4.164106593919773
+        }
+      },
+      "status": "ok",
+      "k": 1,
+      "max_min_ratio": 2.047,
+      "legacy_t0_mae": 3.3836,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k2_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 3.2669,
+      "rolling_rmse": 3.9515,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.8346674154891986,
+          "rmse": 3.4315726997247196
+        },
+        "window_2": {
+          "mae": 4.68408184317874,
+          "rmse": 5.352491166965003
+        },
+        "window_3": {
+          "mae": 4.952762509777187,
+          "rmse": 5.916536950465917
+        },
+        "window_4": {
+          "mae": 3.2184116530769606,
+          "rmse": 4.088795181124861
+        }
+      },
+      "status": "ok",
+      "k": 2,
+      "max_min_ratio": 1.747,
+      "legacy_t0_mae": 2.8347,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k3_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 3.1138,
+      "rolling_rmse": 3.7624,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.8565185606535044,
+          "rmse": 3.3663157612761014
+        },
+        "window_2": {
+          "mae": 5.21123738613694,
+          "rmse": 5.855061839190039
+        },
+        "window_3": {
+          "mae": 4.992498824532584,
+          "rmse": 5.9487212028933945
+        },
+        "window_4": {
+          "mae": 3.021901408521221,
+          "rmse": 3.8330787346167368
+        }
+      },
+      "status": "ok",
+      "k": 3,
+      "max_min_ratio": 1.824,
+      "legacy_t0_mae": 2.8565,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k4_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 3.0166,
+      "rolling_rmse": 3.6462,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.951609633309815,
+          "rmse": 3.4605467439934525
+        },
+        "window_2": {
+          "mae": 4.755923982909692,
+          "rmse": 5.328268272204497
+        },
+        "window_3": {
+          "mae": 4.284038884559257,
+          "rmse": 5.158903948384236
+        },
+        "window_4": {
+          "mae": 3.0505365200494103,
+          "rmse": 3.8781422192228594
+        }
+      },
+      "status": "ok",
+      "k": 4,
+      "max_min_ratio": 1.611,
+      "legacy_t0_mae": 2.9516,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k5_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.9592,
+      "rolling_rmse": 3.5738,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.9053636325112495,
+          "rmse": 3.4166965048974878
+        },
+        "window_2": {
+          "mae": 4.5274059267075595,
+          "rmse": 5.132492755410395
+        },
+        "window_3": {
+          "mae": 3.9199384330668208,
+          "rmse": 4.805525998159616
+        },
+        "window_4": {
+          "mae": 3.0278426794660755,
+          "rmse": 3.796239197180581
+        }
+      },
+      "status": "ok",
+      "k": 5,
+      "max_min_ratio": 1.558,
+      "legacy_t0_mae": 2.9054,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k6_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.9093,
+      "rolling_rmse": 3.5137,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.7639081287171794,
+          "rmse": 3.2311614392620815
+        },
+        "window_2": {
+          "mae": 4.250395808870264,
+          "rmse": 4.885991493130067
+        },
+        "window_3": {
+          "mae": 3.61948041484979,
+          "rmse": 4.446860771803613
+        },
+        "window_4": {
+          "mae": 3.07455108839492,
+          "rmse": 3.8372513325035396
+        }
+      },
+      "status": "ok",
+      "k": 6,
+      "max_min_ratio": 1.538,
+      "legacy_t0_mae": 2.7639,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k8_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.8301,
+      "rolling_rmse": 3.4186,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.192077701679557,
+          "rmse": 2.641593798023492
+        },
+        "window_2": {
+          "mae": 4.539092367905791,
+          "rmse": 5.102243102353569
+        },
+        "window_3": {
+          "mae": 3.2828482199331273,
+          "rmse": 4.05798391541411
+        },
+        "window_4": {
+          "mae": 3.2233519617107516,
+          "rmse": 4.0192558293206995
+        }
+      },
+      "status": "ok",
+      "k": 8,
+      "max_min_ratio": 2.071,
+      "legacy_t0_mae": 2.1921,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k10_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.7813,
+      "rolling_rmse": 3.3601,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.2421407446876116,
+          "rmse": 2.7239826311698194
+        },
+        "window_2": {
+          "mae": 4.7602803530326705,
+          "rmse": 5.277545295225006
+        },
+        "window_3": {
+          "mae": 3.112901781232133,
+          "rmse": 3.874407770105012
+        },
+        "window_4": {
+          "mae": 3.2468072907964345,
+          "rmse": 4.054144119213982
+        }
+      },
+      "status": "ok",
+      "k": 10,
+      "max_min_ratio": 2.123,
+      "legacy_t0_mae": 2.2421,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k12_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.7379,
+      "rolling_rmse": 3.3099,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.0514894430199617,
+          "rmse": 2.532116172096394
+        },
+        "window_2": {
+          "mae": 4.800547277563303,
+          "rmse": 5.284923765012518
+        },
+        "window_3": {
+          "mae": 2.962101814143076,
+          "rmse": 3.7022979227586306
+        },
+        "window_4": {
+          "mae": 3.1781375440931003,
+          "rmse": 3.9512161691550953
+        }
+      },
+      "status": "ok",
+      "k": 12,
+      "max_min_ratio": 2.34,
+      "legacy_t0_mae": 2.0515,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k16_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.6865,
+      "rolling_rmse": 3.2485,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.0080651042864206,
+          "rmse": 2.453767325432884
+        },
+        "window_2": {
+          "mae": 4.961863241447059,
+          "rmse": 5.404355703378081
+        },
+        "window_3": {
+          "mae": 2.769060524148783,
+          "rmse": 3.484796432789247
+        },
+        "window_4": {
+          "mae": 3.070338841251096,
+          "rmse": 3.7953510863614697
+        }
+      },
+      "status": "ok",
+      "k": 16,
+      "max_min_ratio": 2.471,
+      "legacy_t0_mae": 2.0081,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k20_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.6402,
+      "rolling_rmse": 3.1954,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.774659776144352,
+          "rmse": 2.2006209718648173
+        },
+        "window_2": {
+          "mae": 4.870195572224657,
+          "rmse": 5.318224460221264
+        },
+        "window_3": {
+          "mae": 2.6777629596034185,
+          "rmse": 3.396721248406335
+        },
+        "window_4": {
+          "mae": 2.993063805491281,
+          "rmse": 3.699331205206145
+        }
+      },
+      "status": "ok",
+      "k": 20,
+      "max_min_ratio": 2.744,
+      "legacy_t0_mae": 1.7747,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k24_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.6058,
+      "rolling_rmse": 3.1549,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7552840572680426,
+          "rmse": 2.1662749833768498
+        },
+        "window_2": {
+          "mae": 4.78482173585815,
+          "rmse": 5.208555476993793
+        },
+        "window_3": {
+          "mae": 2.5976199066817873,
+          "rmse": 3.3186337586272607
+        },
+        "window_4": {
+          "mae": 2.969447204288858,
+          "rmse": 3.66372481220587
+        }
+      },
+      "status": "ok",
+      "k": 24,
+      "max_min_ratio": 2.726,
+      "legacy_t0_mae": 1.7553,
+      "t0_matches_legacy": true
+    },
+    {
+      "model": "knn_q3_k32_recent10",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.5583,
+      "rolling_rmse": 3.0994,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7204022215138837,
+          "rmse": 2.140518059341063
+        },
+        "window_2": {
+          "mae": 4.909015824020376,
+          "rmse": 5.320957010538725
+        },
+        "window_3": {
+          "mae": 2.4162477067444916,
+          "rmse": 3.0946342209562143
+        },
+        "window_4": {
+          "mae": 2.815968450564001,
+          "rmse": 3.497057298251968
+        }
+      },
+      "status": "ok",
+      "k": 32,
+      "max_min_ratio": 2.853,
+      "legacy_t0_mae": 1.7204,
+      "t0_matches_legacy": true
+    }
+  ],
+  "anchors_t0": [
+    {
+      "model": "knn_q3_k32_recent10",
+      "t0_mae": 1.7204,
+      "t0_rmse": 2.1405,
+      "expected": [
+        1.7204,
+        2.1405
+      ],
+      "ok": true
+    },
+    {
+      "model": "knn_q3_k3_recent10",
+      "t0_mae": 2.8565,
+      "t0_rmse": 3.3663,
+      "expected": [
+        2.8565,
+        3.3663
+      ],
+      "ok": true
+    }
+  ]
+}

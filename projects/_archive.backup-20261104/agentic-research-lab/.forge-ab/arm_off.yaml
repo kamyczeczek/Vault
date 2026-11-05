@@ -1,0 +1,26 @@
+# Forge guardrails A/B arm policy — the OFF arm's switch.
+#
+# .forge/policy.yaml is the single source of truth for enforcement. This file
+# exists so the measurement can turn enforcement OFF without editing policy.yaml:
+# a harness under test must not be reconfigured between arms, or the arms
+# differ by more than the treatment.
+#
+# Arm assignment per run:
+#   ON  -- arm: on   (default; no override file present)
+#   OFF -- arm: off  (this file committed in the task sandbox)
+#
+# Semantics: arm=off is a *sham* arm. The plugin stays loaded, .forge/context.md
+# is still written on SessionStart, the journal still records observations --
+# only the two authoritative actions are suppressed:
+#   1. PreToolUse never blocks (every would-be block is journalled instead).
+#   2. Stop never blocks and never re-runs test suites.
+# That keeps the ON/OFF difference equal to enforcement and nothing else. Note
+# this differs from the "plugin absent" arm, which also removes the state file
+# and the context file; if you need that arm, delete the plugin directory from
+# the sandbox instead and say so in the run manifest.
+#
+# Downstream reading: scripts/forge_ab_score.py reads the per-run arm from this
+# field, so a run's arm is recorded from configuration, not inferred after the
+# fact from the outcome.
+
+arm: off

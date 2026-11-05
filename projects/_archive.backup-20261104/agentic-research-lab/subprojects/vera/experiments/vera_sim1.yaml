@@ -1,0 +1,27 @@
+name: vera-sim1-simplicity-ablation
+description: Replicate VERA SIM-1 simplicity ablation (S0 vs S1 vs S2) on VERA benchmark questions
+repo: ./subprojects/vera
+commit: "44172cafee34"
+tasks:
+  - name: S0-full-protocol
+    prompt: |
+      Run full VERA protocol (retrieve -> answer -> gates G0-G3) on benchmark questions.
+      Use context_gateway.py with fingerprint 44172cafee34.
+    grader:
+      type: code
+      command: python scripts/score_claims.py --protocol S0
+  - name: S1-retrieve-answer-gate1
+    prompt: |
+      Run S1 protocol (retrieve -> answer -> grounding gate G1 only) on benchmark questions.
+    grader:
+      type: code
+      command: python scripts/score_claims.py --protocol S1
+  - name: S2-no-gate
+    prompt: |
+      Run S2 protocol (retrieve -> answer, no verification gates) on benchmark questions.
+    grader:
+      type: code
+      command: python scripts/score_claims.py --protocol S2
+success_metrics:
+  pass_rate: 0.80
+  regression_tolerance: 0.0

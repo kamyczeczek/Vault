@@ -1,0 +1,85 @@
+{
+  "slice": "S-34-multivariate-nlinear",
+  "harness_command": "python projects/ts-ml-experiments/h720/sub_experiments/multivariate_nlinear_s34/rolling_arm.py",
+  "harness_log": "harness.log",
+  "pool": [
+    "nlinear_L96_a1",
+    "nlinear_L96_a10",
+    "nlinear_L96_a100",
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "nlinear_L720_a1",
+    "dlinear_L96_k25_a0",
+    "dlinear_L96_k49_a0",
+    "dlinear_L336_k25_a0",
+    "dlinear_L336_k49_a0",
+    "rlinear_L96_a0",
+    "rlinear_L336_a0",
+    "multivar_nlinear_L96_a1",
+    "multivar_nlinear_L96_a10",
+    "multivar_nlinear_L96_a100",
+    "multivar_nlinear_L336_a1",
+    "multivar_nlinear_L336_a10",
+    "multivar_nlinear_L336_a100",
+    "multivar_nlinear_L720_a1",
+    "multivar_nlinear_L720_a10",
+    "multivar_nlinear_L720_a100"
+  ],
+  "best_subset": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10"
+  ],
+  "best_idx": [
+    3,
+    4
+  ],
+  "best_fast": 2.5224798283169374,
+  "best_alpha": 10000.0,
+  "val_full": 2.852669942273521,
+  "test_disjoint": {
+    "window_1": {
+      "mae": 2.2132333034914104,
+      "rmse": 2.6685859740529575
+    },
+    "window_2": {
+      "mae": 1.250550300976523,
+      "rmse": 1.6395357948243163
+    },
+    "window_3": {
+      "mae": 1.8385732912534575,
+      "rmse": 2.3787766550730307
+    },
+    "window_4": {
+      "mae": 1.7459384594191316,
+      "rmse": 2.1972173154868514
+    }
+  },
+  "test_full": {
+    "mae": 1.9908865767512805,
+    "rmse": 2.471010373802319,
+    "n": 2161,
+    "delta_vs_s26": 0.0
+  },
+  "accept": false,
+  "metrics": {
+    "held_out_mae": 2.5191,
+    "val_full_mae": 2.8527,
+    "full_rolling_mae": 1.9909,
+    "disjoint_4_mae": 1.9696,
+    "alpha": 10000.0,
+    "verdict": "REJECTED"
+  },
+  "plan_impact": {
+    "invalidates": [
+      "S-34 hypothesis (exogenous-channel multivariate NLinear members across all 7 ETTh1 channels without sparse regularization improve over S-26): REJECTED — unconstrained 7-channel multivariate NLinear members overfit validation cross-channel correlations (val MAE 3.77 to 38.91 vs univariate ~2.89), so validation selection completely rejected all multivariate members. Tabu search selected the exact 2-member univariate S-26 incumbent subset [nlinear_L336_a1, nlinear_L336_a10], alpha=10000."
+    ],
+    "confirms": [
+      "S-20-clean validation protocol robustness: rigorous out-of-sample chronological validation selection successfully prevents the S-24 val-local cross-channel overfitting/regime trap by discarding unregularized multi-channel members.",
+      "S-26 incumbent resilience: 2-member univariate NLinear mixture remains the top linear pool configuration."
+    ],
+    "opens": [
+      "Sparse channel selection, channel-dropout regularization, or regularized cross-attention / non-linear readouts on orthogonal channel representations."
+    ]
+  },
+  "protocol": "S-20-clean: val members frozen on 8545, test members refrozen on 11425"
+}

@@ -1,0 +1,115 @@
+{
+  "fingerprint": "f3b9a1f2811e",
+  "nodes": [
+    {
+      "id": "01_classical-models",
+      "title": "Classical time series models",
+      "tags": [
+        "classical",
+        "arima",
+        "sarima",
+        "exponential-smoothing",
+        "baseline"
+      ],
+      "headings": [
+        "Classical time series models",
+        "ARIMA/SARIMA",
+        "Exponential Smoothing (ETS)",
+        "The Baseline Rule"
+      ],
+      "path": "knowledge\\corpus\\01_classical-models.md",
+      "size": 1342
+    },
+    {
+      "id": "02_ml-models",
+      "title": "Machine learning models for time series",
+      "tags": [
+        "ml",
+        "xgboost",
+        "lightgbm",
+        "feature-engineering",
+        "tabular"
+      ],
+      "headings": [
+        "Machine learning models for time series",
+        "XGBoost / LightGBM / CatBoost",
+        "Feature engineering patterns",
+        "The hybrid pattern",
+        "When ML beats deep learning"
+      ],
+      "path": "knowledge\\corpus\\02_ml-models.md",
+      "size": 1356
+    },
+    {
+      "id": "03_deep-learning-models",
+      "title": "Deep learning models for time series",
+      "tags": [
+        "deep-learning",
+        "transformer",
+        "lstm",
+        "tcn",
+        "nlinear",
+        "patchtst"
+      ],
+      "headings": [
+        "Deep learning models for time series",
+        "LSTMs / GRUs",
+        "Temporal Convolutional Networks (TCN)",
+        "Transformers for time series",
+        "NLinear / DLinear",
+        "Model selection heuristic"
+      ],
+      "path": "knowledge\\corpus\\03_deep-learning-models.md",
+      "size": 1688
+    },
+    {
+      "id": "04_evaluation-metrics",
+      "title": "Evaluation metrics for forecasting",
+      "tags": [
+        "metrics",
+        "mae",
+        "mse",
+        "mape",
+        "smape",
+        "coverage",
+        "calibration"
+      ],
+      "headings": [
+        "Evaluation metrics for forecasting",
+        "Scale-dependent metrics",
+        "Scale-free metrics",
+        "Probabilistic metrics",
+        "The metric selection rule",
+        "The baseline rule"
+      ],
+      "path": "knowledge\\corpus\\04_evaluation-metrics.md",
+      "size": 1523
+    },
+    {
+      "id": "05_forecasting-best-practices",
+      "title": "Forecasting best practices",
+      "tags": [
+        "best-practices",
+        "data-splitting",
+        "leakage",
+        "backtesting",
+        "reproducibility"
+      ],
+      "headings": [
+        "Forecasting best practices",
+        "Data splitting",
+        "Avoiding leakage",
+        "Backtesting strategies",
+        "Experiment documentation",
+        "The reproducibility rule"
+      ],
+      "path": "knowledge\\corpus\\05_forecasting-best-practices.md",
+      "size": 1520
+    }
+  ],
+  "edges": [],
+  "counts": {
+    "nodes": 5,
+    "edges": 0
+  }
+}

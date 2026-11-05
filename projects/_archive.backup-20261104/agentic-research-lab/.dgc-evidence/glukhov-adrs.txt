@@ -1,0 +1,960 @@
+![site logo](/img/aa-128w.jpg)
+
+Notes on the margins
+
+Rost Glukhov - AI Systems & Infrastructure Publication
+
+Menu
+
+  * AI Systems
+  * Doc tools
+  * Hardware
+  * LLM Architecture
+  * LLM Hosting
+  * LLM Performance
+  * RAG
+  * Data
+  * Architecture
+  * Observability
+  * AI DevTools
+  * DevTools
+  * OpenClaw
+  * Web Infra
+  * Cheatsheets
+  * Knowledge
+  * Partnerships
+  * About
+
+# Decision Records for AI-Driven Software Development
+
+Keep intent close to the code.
+
+Page content
+
+  * Decision records are the missing memory layer
+  * What are decision records?
+  * Architecture Decision Records
+  * Product Decision Records
+  * Design Decision Records
+  * Why decision records matter more with AI
+    * AI may reopen settled debates
+    * AI may optimize locally and damage globally
+    * AI may preserve code but lose intent
+    * AI may generate plausible but wrong rationale
+  * Decision records as part of a broader methodology
+  * Decision records and docs as code
+  * A practical decision record template
+  * What belongs in a decision record?
+  * Status values and lifecycle
+  * How AI should generate decision records
+  * How AI should read decision records
+  * Decision records in pull requests
+  * Decision records and architecture governance
+  * Decision records and product management
+  * Decision records and design systems
+  * How decision records support spec-driven development
+  * Decision records are not specifications
+  * Decision records are not a replacement for tests
+  * Decision records are not a replacement for code comments
+  * Common mistakes
+    * Writing records too late
+    * Making records too long
+    * Recording decisions without consequences
+    * Editing old records as if history changed
+    * Letting AI-generated records merge without review
+    * Hiding records outside the repository
+  * A lightweight operating model
+  * Example ADR
+  * Example PDR
+  * Example DDR
+  * Suggested prompt library
+  * Related reading
+
+Decision records are the missing memory layer in AI-assisted software
+development. They capture not just what was built, but why — and that
+distinction becomes critical when AI tools are writing your code.
+
+![Decision records — ADR, PDR, DDR — connecting intent to code](/img/decision-
+records-ai_w1000.jpg)
+
+## Decision records are the missing memory layer
+
+AI-driven programming changes the economics of software development by making
+code cheaper to generate, easier to refactor, and faster to throw away. That
+is useful. It is also dangerous, because when code becomes easier to produce,
+the scarce resource is no longer typing — the scarce resource is judgment.
+
+Why did the team choose PostgreSQL instead of DynamoDB? Why does the product
+require human review before sending AI-generated emails? Why does the
+interface show suggestions in a side panel instead of applying them directly?
+Why was a simpler approach rejected six months ago? The code may show what
+exists, but it rarely explains why it exists.
+
+Decision records solve this problem by providing a short, version-controlled
+document that captures an important choice, the context behind it, the
+alternatives considered, and the consequences the team accepted. In an AI-
+assisted codebase, these records become more than documentation — they become
+durable project memory that both humans and AI coding agents can read before
+making future changes. The practical operating rule is simple: keep decision
+records as Markdown files in the repository, review them like code, and let
+future AI tools read them before proposing or implementing changes.
+
+## What are decision records?
+
+A decision record is a written record of a meaningful decision, structured to
+answer four basic questions: what did we decide, why did we decide it, what
+alternatives did we consider, and what consequences did we accept? The most
+common form is the Architecture Decision Record, shortened to ADR. ADRs are
+widely used to document technical decisions, and the same pattern can be
+extended beyond architecture into product and design work.
+
+For AI-driven programming, three types are especially useful:
+
+Record type | Captures | Example
+---|---|---
+ADR | Architecture and technical decisions | Use PostgreSQL as the primary database
+PDR | Product behavior and scope decisions | AI-generated emails must remain drafts
+DDR | Design and interaction decisions | Show AI suggestions in a side panel
+
+Together, ADRs, PDRs, and DDRs describe not only the structure of the system
+but also the intent of the product and the reasoning behind the user
+experience. That combination matters because AI agents can read code, but code
+alone does not contain enough context to make good decisions. Decision records
+give AI systems a reviewed, durable, human-approved source of project intent.
+
+## Architecture Decision Records
+
+Architecture Decision Records capture technical and structural decisions. Use
+an ADR when a decision affects the shape of the system — its boundaries,
+dependencies, operational model, or long-term maintainability.
+
+Examples of decisions worth recording as ADRs include:
+
+  * Choosing PostgreSQL as the primary database
+  * Using an event-driven architecture for background processing
+  * Keeping the application as a modular monolith
+  * Introducing a message queue
+  * Choosing REST instead of GraphQL
+  * Using server-side rendering for the web application
+  * Requiring all background jobs to be idempotent
+  * Adopting a specific authentication and authorization model
+
+An ADR is not a full architecture document — it is intentionally small,
+recording one important decision at a specific moment in time. A good ADR
+prevents architectural amnesia: without it, future contributors may rediscover
+the same tradeoffs, reopen old debates, or accidentally undo important
+constraints.
+
+In AI-driven programming, ADRs carry even more weight. AI tools are often
+skilled at local optimization, and they may propose a technically plausible
+change that violates a larger architectural constraint. An ADR gives the AI a
+clear boundary: "This is how this system is supposed to be shaped."
+
+## Product Decision Records
+
+Product Decision Records capture product behavior, scope, and user-facing
+intent. This is less common than ADRs, but it is often just as valuable —
+product decisions are frequently scattered across tickets, roadmap tools, chat
+threads, meeting notes, and people's memories, making them easy for humans to
+forget and almost impossible for AI tools to infer reliably.
+
+Use a PDR when a decision affects what the product does, who it serves, what
+is intentionally out of scope, or how a user-facing feature should behave.
+Examples include:
+
+  * AI-generated messages must remain drafts until reviewed by a human
+  * Free-tier users can create up to three projects
+  * Deleted workspaces are recoverable for 30 days
+  * Team billing is out of scope for version 1
+  * Users can export their data without contacting support
+  * Low-confidence AI summaries show a warning instead of being hidden
+
+A PDR is especially useful when a product choice looks arbitrary from the
+code. The code might contain a limit of three projects for free users, and
+without a PDR an AI tool may treat that number as a magic constant and suggest
+changing it. With a PDR, the AI can see that the limit is tied to pricing
+strategy, onboarding cost, or support load — and that changing it requires a
+deliberate product decision, not a quick edit.
+
+## Design Decision Records
+
+Design Decision Records capture user experience, interaction, visual, and
+content-design decisions. Use a DDR when a decision affects how users interact
+with the product, how information is presented, or how a design principle
+should be applied across future work.
+
+Examples of design decisions worth recording include:
+
+  * Use inline validation instead of validation only on submit
+  * Put AI suggestions in a side panel instead of directly in the editor
+  * Use progressive disclosure for advanced settings
+  * Require confirmation before destructive actions
+  * Use "Draft" and "Published" instead of "Inactive" and "Active"
+  * Keep primary actions visible on mobile screens
+
+Design intent is easy to lose during implementation. A developer may simplify
+a flow, or an AI agent may generate a component that technically works but
+breaks the intended interaction model. For example, a DDR might record: "We
+show AI writing suggestions beside the document, not inside it, because users
+need to compare generated text with their own draft before accepting changes."
+That record gives future contributors a principle to preserve, not just a
+layout to copy.
+
+## Why decision records matter more with AI
+
+AI coding tools are powerful, but they are often stateless or only partially
+aware of project history. They can inspect files, infer patterns, and generate
+changes — but they do not automatically know which decisions are intentional,
+which are accidental, and which were already debated and resolved. This
+creates several distinct risks.
+
+### AI may reopen settled debates
+
+If the team already decided to use a modular monolith, an AI agent may still
+propose extracting a service because that looks clean in isolation. Without an
+ADR, the AI has no durable way to know that the team already considered and
+rejected that path, and the result is wasted effort or a subtle regression in
+system coherence.
+
+### AI may optimize locally and damage globally
+
+A generated refactor may make one file cleaner while violating system
+boundaries. A UI change may reduce component complexity while weakening the
+intended user experience. A product change may simplify the implementation
+while breaking pricing or compliance assumptions. Decision records give the AI
+a larger frame of reference before it acts on narrowly scoped signals.
+
+### AI may preserve code but lose intent
+
+A model can follow existing patterns in the codebase, but patterns are not the
+same as principles. Sometimes existing code is a compromise. Sometimes it is
+transitional. Sometimes it exists because of an external constraint that is
+not visible in the file. Decision records explain the difference between "this
+is how it works" and "this is why it was built this way."
+
+### AI may generate plausible but wrong rationale
+
+AI can draft decision records, but it can also invent confident-sounding
+explanations that do not match the real decision. This is why human review is
+non-negotiable: AI may generate the first draft of a record, but a human must
+verify that it accurately describes the actual decision, alternatives, and
+consequences before the record is merged.
+
+## Decision records as part of a broader methodology
+
+Decision records are not just documentation — they are part of a broader way
+of working that sits at the intersection of lightweight architecture
+governance, docs as code, AI-augmented knowledge management workflows, product
+discovery, design rationale, AI governance, and code review. A useful way to
+describe the larger process is Decision-Oriented Development.
+
+Most AI-driven programming workflows focus narrowly on the generate-review-
+commit loop:
+
+flowchart LR A[Prompt] --> B[Generate code] B --> C[Test] C --> D[Commit]
+
+That cycle is too thin for serious systems work. A stronger workflow treats
+the repository as a store of both code and intent — the diagrams here use
+Mermaid, a lightweight format that works well inside Markdown decision records
+too:
+
+flowchart TB subgraph top[" "] direction LR A[Frame the problem] -->
+B[Identify existing decisions] --> C[Explore options and tradeoffs] -->
+D[Record the selected decision] end subgraph bottom[" "] direction LR
+E[Generate or modify code] --> F[Review code vs decisions] --> G[Merge
+implementation and memory] --> H[Use record to guide future work] end D --> E
+
+This process turns the repository into more than a code store. It becomes the
+source of truth for implementation, intent, and reasoning — a durable artifact
+that accumulates value with every decision made.
+
+## Decision records and docs as code
+
+Decision records work best when they follow docs-as-code principles, which
+means they should be stored in the same repository as the code, written in
+plain Markdown, reviewed in pull requests, versioned with Git, linked to
+related issues and pull requests, and searchable by both humans and AI tools.
+This is far more reliable than storing important decisions in chat, wiki
+pages, slide decks, or meeting notes — those tools may still be useful for
+discussion, but the accepted decision should always live close to the code.
+Keeping Specs, Tests, And Code In Sync In AI Development extends this same
+"link it back to the record" habit into a full traceability model that ties
+requirement and design decision IDs to tests and pull requests.
+
+A well-organized repository structure for decision records might look like
+this:
+
+
+
+    docs/
+      decisions/
+        architecture/
+          0001-use-postgresql-for-primary-storage.md
+          0002-keep-billing-inside-the-core-app.md
+        product/
+          0001-ai-generated-email-requires-human-review.md
+          0002-free-tier-project-limit.md
+        design/
+          0001-use-inline-validation.md
+          0002-place-ai-suggestions-in-side-panel.md
+
+
+For smaller projects, a flatter structure works equally well. The exact folder
+organization matters less than consistency — the records must be easy to find,
+easy to review, and easy for AI tools to load as context before acting on the
+codebase. For Go teams, this `docs/decisions/` structure fits naturally
+alongside the `cmd/`, `internal/`, and `api/` layout described in Go Project
+Structure: Practices & Patterns, which recommends `docs/` as the home for
+architecture decisions and API references.
+
+## A practical decision record template
+
+A useful decision record template should be short enough that people actually
+use it. Here is a practical Markdown template that includes an optional but
+valuable AI guidance section:
+
+
+
+    # Decision: Short title
+
+    Status: Proposed | Accepted | Superseded | Deprecated
+    Date: YYYY-MM-DD
+    Type: Architecture | Product | Design
+    Owners: Team or names
+
+    ## Context
+
+    Describe the problem, constraints, goals, user needs, technical facts,
+    and business factors that led to this decision.
+
+    ## Decision
+
+    State the decision clearly.
+
+    ## Alternatives considered
+
+    ### Option 1
+
+    Pros:
+    - ...
+
+    Cons:
+    - ...
+
+    ## Consequences
+
+    Describe what becomes easier, what becomes harder, and what risks
+    or follow-up work this creates.
+
+    ## AI guidance
+
+    When an AI assistant works in this area, it should:
+    - Preserve ...
+    - Avoid ...
+    - Prefer ...
+    - Ask for review when ...
+
+    ## Links
+
+    - Related issues:
+    - Related pull requests:
+    - Related files:
+    - Supersedes:
+    - Superseded by:
+
+
+The "AI guidance" section is optional, but for AI-driven programming it is
+extremely valuable — it turns the decision record into a durable instruction
+for future agents working in the same area of the codebase.
+
+## What belongs in a decision record?
+
+Not every choice deserves a record, and if every small implementation detail
+becomes a decision record the process collapses into noise. Create a decision
+record when a choice is meaningful and likely to matter later.
+
+Good candidates are decisions that:
+
+  * Affect multiple parts of the system
+  * Encode a product promise
+  * Resolve a real debate
+  * Introduce a long-term tradeoff
+  * Depend on business, compliance, or operational constraints
+  * Would be expensive to rediscover later
+  * Future AI tools might plausibly get wrong
+  * Future contributors might be tempted to reverse casually
+
+Poor candidates include tiny refactor choices, obvious bug fixes, temporary
+experiments, local naming decisions, and implementation details with no
+lasting consequence. A good rule of thumb is straightforward: if reversing the
+decision would require discussion, record the decision.
+
+## Status values and lifecycle
+
+Decision records should have a lifecycle to signal their current standing. The
+simplest status values are sufficient.
+
+**Proposed** — The decision is being considered but not yet accepted. Use this
+when the team wants to discuss a decision in a pull request before committing
+to it.
+
+**Accepted** — The decision is active and should guide future work. Most
+useful decision records will spend most of their life in this state.
+
+**Superseded** — The decision has been replaced by a newer record. Do not
+delete old records; keep them for history and link to the newer decision so
+the evolution of thinking stays visible.
+
+**Deprecated** — The decision is no longer recommended but may still describe
+existing parts of the system. This is particularly useful during migrations,
+when old patterns exist in the codebase alongside newer approaches.
+
+The important principle is that decision records should be append-friendly.
+When the team changes direction, create a new record and link the old one
+rather than rewriting history to make the past look cleaner.
+
+## How AI should generate decision records
+
+AI can help create decision records, and this is one of the better uses of AI
+in software development — it is fast at drafting structured documents from
+context. After a discussion, architecture review, or pull request, you can ask
+an AI assistant to draft a record:
+
+
+
+    Draft an Architecture Decision Record for the decision in this pull request.
+    Include context, alternatives, consequences, and AI guidance.
+    Save it as Markdown under docs/decisions/architecture.
+
+
+For product work:
+
+
+
+    Draft a Product Decision Record explaining why AI-generated messages
+    must remain drafts until reviewed by the user.
+    Include user impact, out-of-scope behavior, tradeoffs, and AI guidance.
+
+
+The AI-generated record should not be trusted automatically, however. Human
+review should verify that the context is accurate, that the AI has not
+invented rationale, that the alternatives listed are real, that the
+consequences are honest, and that the AI guidance matches the team's actual
+intent. AI is a drafting assistant — it is not the owner of the decision.
+
+## How AI should read decision records
+
+The other half of the practice is instructing AI to read the records before
+acting. Before asking an AI assistant to implement a change, include an
+instruction like this:
+
+
+
+    Before modifying this feature, read docs/decisions.
+    Identify any Architecture, Product, or Design Decision Records that apply.
+    Follow accepted decisions. If your proposed change conflicts with a decision
+    record, explain the conflict before changing code.
+
+
+For larger tasks, reinforce the role of the records as project memory:
+
+
+
+    Use the decision records as project memory.
+    Do not reverse accepted decisions without proposing a new superseding decision.
+    When you generate code, explain which decision records influenced the implementation.
+
+
+This changes the AI's role from "predict plausible code" to "operate inside a
+documented system of constraints" — a significant improvement in reliability
+for complex or long-lived projects.
+
+## Decision records in pull requests
+
+Decision records should be part of normal pull request review rather than a
+separate process. A simple PR checklist entry makes the habit visible:
+
+
+
+    ## Decision record checklist
+
+    - [ ] This PR does not introduce a significant architecture, product, or design decision.
+    - [ ] This PR introduces a significant decision and includes a new decision record.
+    - [ ] This PR changes a previous decision and includes a superseding record.
+    - [ ] Relevant existing decision records were considered.
+    - [ ] AI-generated code follows the accepted decision records.
+    - [ ] AI-generated decision records were reviewed by a human.
+
+
+This checklist is simple, but it changes behavior by reminding the team that
+code is not the only artifact that matters in a pull request. It also makes it
+natural to catch when an AI-generated change silently violates a prior
+decision.
+
+## Decision records and architecture governance
+
+Traditional architecture governance often fails because it is too heavy, too
+slow, or too disconnected from implementation — central approval boards, large
+upfront documents, and gatekeeping processes that block rather than guide.
+Decision records offer a lighter alternative that integrates directly into the
+development workflow.
+
+They do not require a central architecture board for every change, nor do they
+block teams from learning and adapting. Instead, they create a trail of
+decisions that can be reviewed, referenced, and built on over time. This
+supports evolutionary architecture: the architecture can change, but it
+changes with memory rather than in spite of it. The team can revisit old
+decisions without having to rediscover why they were made, which is a
+healthier and more honest form of governance:
+
+  * Small records instead of giant documents
+  * Review near the code instead of separate approval theater
+  * Historical context instead of tribal knowledge
+  * Explicit tradeoffs instead of hidden assumptions
+
+## Decision records and product management
+
+Product work also needs decision memory, and this is an area where the value
+of decision records is often underestimated. A roadmap says what might happen.
+A ticket says what to build next. Analytics say what users did. None of those
+fully explain why a product behavior exists.
+
+Product Decision Records fill that gap and are especially useful for pricing
+and packaging decisions, permission models, limits and quotas, AI safety and
+review flows, onboarding choices, user role definitions, collaboration rules,
+data retention policies, and feature scope boundaries. Once implemented,
+product decisions become invisible in the code — later, someone sees only the
+code and asks, "Why does it work this way?" A PDR gives the answer in a form
+that both humans and AI tools can find and use.
+
+## Decision records and design systems
+
+Design systems often document components, tokens, and usage rules, but they
+rarely document why the system works that way. Design Decision Records fill
+this gap. A component library might say "use the confirmation dialog for
+destructive actions," while a DDR explains the rationale: "We require
+confirmation for destructive actions because users often work with shared team
+data, and accidental deletion has a high recovery cost."
+
+That rationale matters beyond the specific component. It helps future
+designers, developers, and AI tools apply the principle correctly in new
+situations. Without the DDR, an AI agent may generate a faster interaction
+that skips confirmation because it appears more efficient. With the DDR, the
+agent can recognize that preserving the safety property is intentional and
+non-negotiable.
+
+## How decision records support spec-driven development
+
+Spec-driven development explains what the system should do. Decision records
+explain why the team chose that direction, and the distinction matters
+significantly for AI-assisted work.
+
+A feature specification may say that AI-generated emails must be saved as
+drafts. A Product Decision Record explains why automatic sending was rejected,
+what risks were considered, and which future changes would require a new
+decision. A design specification may describe a side-panel interaction, while
+the corresponding DDR explains why inline AI edits were explicitly rejected
+and why preserving user control was weighted more heavily than workflow speed.
+An architecture specification may define a service boundary, and its ADR
+explains why the team chose that boundary over a simpler or more distributed
+alternative.
+
+The spec guides implementation. The decision record preserves judgment.
+Together, they give AI coding agents both instructions and context - the
+"what" and the "why" - which is what makes the combination so effective for
+complex, long-lived systems. When you adopt a spec-driven toolchain, compare
+how each option surfaces that context; GitHub Spec Kit vs Kiro vs Claude Code
+SDD Workflows breaks down portability, review gates, and repository grounding
+across the main setups. For the tool-neutral five-phase process those tools
+implement, see Spec-Driven Development Workflow From Requirements to Code.
+Most SDD tools only handle the "shipped" half of that loop cleanly; OpenSpec
+Rejected Proposals: A Decision Memory Convention covers the other half -
+recording a rejected decision durably enough that an agent checks it before
+re-proposing the same idea.
+
+## Decision records are not specifications
+
+Decision records are related to specifications, but they serve a different
+purpose. A specification says "the system shall do X," while a decision record
+says "we chose X instead of Y because of these constraints and tradeoffs."
+That "instead of Y" is the valuable part. AI tools often generate solutions by
+finding a plausible path to the requested outcome, but decision records tell
+them which plausible paths have already been explored, evaluated, and rejected
+— reducing churn and improving the quality of AI-assisted work.
+
+## Decision records are not a replacement for tests
+
+Tests verify behavior; decision records explain intent. Both are necessary and
+they work together. A test can enforce that AI-generated emails must be saved
+as drafts, while a Product Decision Record explains that this is required
+because users must review AI-generated communication before it leaves the
+system. The test protects behavior. The decision record protects meaning.
+Together, they make future changes safer and more predictable.
+
+## Decision records are not a replacement for code comments
+
+Code comments explain local implementation details, while decision records
+explain broader decisions. Use comments for surprising lines, edge cases,
+workarounds, and functions that cannot be simplified. Use decision records for
+why an architecture exists, why a product behavior exists, why an interaction
+pattern exists, and why the team chose one direction over another. If the
+explanation affects only a few lines, a comment is the right tool. If it
+affects the system's direction, a decision record is the right tool.
+
+## Common mistakes
+
+### Writing records too late
+
+A decision record should be written when the decision is made, not months
+later when everyone has forgotten the tradeoffs. It is fine to draft one
+during a pull request. It is better still to draft it before implementation,
+while the decision is still being actively discussed and the alternatives are
+fresh.
+
+### Making records too long
+
+A decision record is not an essay. It should be detailed enough to preserve
+judgment but short enough that people will actually read it. Prefer clarity
+over completeness — a concise record that gets read is far more valuable than
+a comprehensive one that gets skipped.
+
+### Recording decisions without consequences
+
+The consequences section is the heart of the record. A decision without stated
+consequences is often just a preference rather than a real decision. Good
+records admit tradeoffs honestly, including what becomes harder or riskier as
+a result of the choice.
+
+### Editing old records as if history changed
+
+When a decision changes, create a new record and mark the old one as
+superseded. Silently rewriting an old decision to match the current state
+destroys the historical context that makes decision records valuable. History
+is useful precisely because it shows how thinking evolved. Compiled knowledge
+bases face the identical problem under a different name — LLM Wiki
+Maintenance: Drift, Contradictions and Review calls it decision drift, and
+applies the same supersede-rather-than-overwrite rule to wiki pages.
+
+### Letting AI-generated records merge without review
+
+AI can produce a polished, well-structured record that is subtly wrong. Treat
+AI-generated decision records exactly like AI-generated code — review them
+carefully, verify the rationale is accurate, and ensure the consequences
+section reflects what the team actually accepted.
+
+### Hiding records outside the repository
+
+If decision records live in a separate wiki or documentation system, they are
+less likely to be updated alongside code changes and far less likely to be
+read by AI coding tools loading context for a task. Keeping them in the
+repository is not just a convenience — it is what makes the practice work for
+AI-assisted development.
+
+## A lightweight operating model
+
+A practical team process that adds minimal overhead looks like this:
+
+  1. During planning or implementation, identify whether a meaningful decision is being made.
+  2. Ask an AI assistant to draft an ADR, PDR, or DDR based on the discussion.
+  3. Review the draft as a team, verifying context, alternatives, and consequences.
+  4. Commit the record as Markdown in the repository.
+  5. Link it from the related issue or pull request.
+  6. Instruct AI coding tools to read relevant records before making future changes in the area.
+  7. Supersede records when decisions change, preserving the old record for history.
+
+This does not require a new bureaucracy or a dedicated documentation role. It
+requires a small habit: preserving important judgment at the moment it is
+created, close to the code where it will be needed.
+
+## Example ADR
+
+
+
+    # Decision: Use PostgreSQL for primary application storage
+
+    Status: Accepted
+    Date: 2026-06-25
+    Type: Architecture
+    Owners: Platform team
+
+    ## Context
+
+    The application needs durable relational storage for accounts, projects,
+    permissions, and audit events. The team expects frequent reporting queries
+    and strong consistency requirements for permission checks.
+
+    ## Decision
+
+    We will use PostgreSQL as the primary application database.
+
+    ## Alternatives considered
+
+    ### DynamoDB
+
+    Pros:
+    - Operationally scalable
+    - Good fit for predictable key-value access patterns
+
+    Cons:
+    - More complex for relational queries
+    - Harder for ad hoc reporting
+    - Less familiar to the current team
+
+    ### MySQL
+
+    Pros:
+    - Mature relational database
+    - Familiar operational model
+
+    Cons:
+    - PostgreSQL better matches the team's needs for JSON support,
+      indexing options, and existing expertise
+
+    ## Consequences
+
+    PostgreSQL becomes a core operational dependency. The team must manage
+    migrations carefully and monitor query performance. In return, the
+    application gets strong relational modeling, mature indexing, and
+    flexible reporting support.
+
+    ## AI guidance
+
+    When modifying persistence code, prefer relational modeling in PostgreSQL.
+    Do not introduce a second primary database without a superseding ADR.
+
+
+## Example PDR
+
+
+
+    # Decision: AI-generated emails must remain drafts
+
+    Status: Accepted
+    Date: 2026-06-25
+    Type: Product
+    Owners: Product team
+
+    ## Context
+
+    The product can generate email replies using AI. Sending email is a
+    high-trust action because mistakes may reach customers, partners, or
+    internal teams.
+
+    ## Decision
+
+    AI-generated emails must be created as drafts. A human user must
+    review and send them.
+
+    ## Alternatives considered
+
+    ### Send automatically
+
+    Pros:
+    - Faster workflow
+    - Less user effort
+
+    Cons:
+    - Higher risk of incorrect or inappropriate messages
+    - Lower user trust
+    - Harder to recover from mistakes
+
+    ### Ask for confirmation only after generation
+
+    Pros:
+    - Keeps the workflow simple
+    - Provides some user control
+
+    Cons:
+    - Still encourages shallow review
+    - Does not fit existing email client behavior as well as drafts
+
+    ## Consequences
+
+    The workflow is slightly slower, but safer and more trustworthy.
+    Future automation can improve review speed, but must not bypass
+    human approval without a superseding PDR.
+
+    ## AI guidance
+
+    When building email-generation features, create drafts by default.
+    Do not add automatic sending unless a new accepted PDR explicitly allows it.
+
+
+## Example DDR
+
+
+
+    # Decision: Show AI writing suggestions in a side panel
+
+    Status: Accepted
+    Date: 2026-06-25
+    Type: Design
+    Owners: Design team
+
+    ## Context
+
+    Users need help improving written content, but they also need to stay
+    in control of the final text. Inline AI edits can make it hard to
+    distinguish user-written content from generated suggestions.
+
+    ## Decision
+
+    AI writing suggestions will appear in a side panel. Users can accept,
+    reject, or copy suggestions into the main editor.
+
+    ## Alternatives considered
+
+    ### Apply suggestions inline
+
+    Pros:
+    - Fast
+    - Feels integrated
+
+    Cons:
+    - Blurs authorship
+    - Makes review harder
+    - Can surprise users
+
+    ### Show suggestions in a modal
+
+    Pros:
+    - Focused experience
+    - Easy to implement
+
+    Cons:
+    - Interrupts writing flow
+    - Harder to compare suggestion and original text
+
+    ## Consequences
+
+    The side panel takes more screen space, especially on small screens.
+    However, it preserves user control and makes review clearer.
+
+    ## AI guidance
+
+    When adding writing-assistance features, preserve separation between
+    user text and AI suggestions. Do not apply generated text directly
+    into the document without explicit user action.
+
+
+## Suggested prompt library
+
+Use these prompts to make decision records part of daily AI-assisted
+development.
+
+**Find relevant records before working on a feature:**
+
+
+
+    Read docs/decisions and identify any accepted decision records that apply
+    to this task. Summarize the constraints before proposing code changes.
+
+
+**Draft a new ADR:**
+
+
+
+    Draft an Architecture Decision Record for this technical decision.
+    Include context, decision, alternatives, consequences, and AI guidance.
+    Keep it concise and specific.
+
+
+**Draft a new PDR:**
+
+
+
+    Draft a Product Decision Record for this product behavior.
+    Include user impact, scope, alternatives, consequences, and AI guidance.
+
+
+**Draft a new DDR:**
+
+
+
+    Draft a Design Decision Record for this interaction pattern.
+    Include user problem, alternatives, tradeoffs, consequences, and AI guidance.
+
+
+**Review a pull request against existing decisions:**
+
+
+
+    Review this pull request against the accepted decision records in docs/decisions.
+    Identify any conflicts, missing decision records, or decisions that should
+    be superseded.
+
+
+**Supersede a decision:**
+
+
+
+    Create a new decision record that supersedes the existing one.
+    Preserve the historical rationale, explain what changed, and link both records.
+
+
+## Related reading
+
+  * Michael Nygard's original ADR format — the foundational post that started the ADR movement
+  * ADR GitHub organization — tooling, templates, and community resources for managing decision records
+  * What Is Spec-Driven Development? The Spec as Source of Truth — the canonical SDD definition explaining how feature specs complement decision records: both make intent durable, at different levels of the system
+  * Spec-Driven Development vs Vibe Coding: Waterfall? — when to use SDD and when to stay with faster, looser workflows
+  * App Architecture in Production: Integration Patterns, Code Design, and Data Access — the cluster home covering integration, testing, data access, and software documentation patterns
+  * OpenSpec Rejected Proposals: A Decision Memory Convention — applying this decision-record pattern specifically inside OpenSpec's change archive
+  * AI for Knowledge Management: Real Workflows That Hold Up — practical AI-augmented knowledge workflows that complement the decision-record practice
+
+  * architecture
+  * AI Coding
+  * documentation
+  * markdown
+
+## Subscribe
+
+Get new posts on AI systems, Infrastructure, and AI engineering.
+
+Email
+
+Subscribe
+
+![Rost Glukhov avatar](/img/ava-90x90.jpg)
+
+About Rost Glukhov
+
+Rost Glukhov is a polyglot developer, has a special interest in web, mobile,
+backend, AI, devops and other areas. For more details have a look at the About
+page. For partnership and sponsored content inquiries, see Partnerships.
+
+« Previous
+
+Go Error Handling Architecture: Boundaries and Patterns
+
+Next »
+
+What Is Spec-Driven Development? The Spec as Source of Truth
+
+#### Recent Posts
+
+  * Go Web Frameworks in 2026: net/http, chi, Gin, Echo, Fiber Compared
+  * Best Newsletter Platforms in 2026: Pricing, Hosting and SEO
+  * WordPress SEO Plugins Compared: Yoast to Local AI
+  * Self-Hosted SEO Tools and Platforms: Open Source Guide
+  * gstack: AI Software Engineering Stack
+
+#### Tags
+
+AI AI Coding AI Agents Alerting Anaconda Android API Architecture AWS AWS
+Amplify Backup Bash Cheatsheet Cloud Coding Community Cookbook Cursor Data
+Database Deeplearning Dev DevOps DGX Spark Digital Detox Docker Documentation
+Embeddings Filofax Flutter Garage Git Gitea GitHub Go Golang GPU Grafana
+Hardware Hermes Hosting Hugo Images Infrastructure Integration JavaScript K8s
+Knowledge-Management Kubernetes LabelStudio Latex Linux Llama.cpp Llamacpp LLM
+Logging Logseq Machine Learning Mainroad Markdown Melbourne Microservices
+Minio Mmdetection Monitoring Node.js NVIDIA ObjectDetection Observability
+Obsidian Offline Ollama Open Source Openai Openclaw Opencode Performance
+Perplexica PostgreSQL Printing Privacy Prometheus Python PyTorch RAG S3
+Security Self-Hosting SelfHosting SEO Serverless SQL Terraform TypeScript
+Ubuntu Vector Database Vector Databases VLLM VS Code VSCode Web Hosting Wiki
+Windows
+
+Contact | Privacy Policy | Sponsored Technical Contributions | Terms and Conditions
+
+(C) 2026 Rost Glukhov.

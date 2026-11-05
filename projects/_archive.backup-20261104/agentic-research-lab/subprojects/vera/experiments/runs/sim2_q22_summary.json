@@ -1,0 +1,34 @@
+{
+  "experiment": "SIM-2b Q22 causal-chain follow-up",
+  "verdict": "PASS",
+  "checks": {
+    "r1_B_reorient_le_A": true,
+    "r2_B_ttfva_le_A": true,
+    "r3_B_ungrounded_eq_A": true,
+    "r4_C_reorient_gt_B": true
+  },
+  "disqualified_sessions": [],
+  "per_condition": {
+    "A": {
+      "n_sessions": 5,
+      "reorient_cum_median": 2,
+      "ungrounded_median": 1,
+      "ttfva_median": 3,
+      "disqualified_sessions": []
+    },
+    "B": {
+      "n_sessions": 5,
+      "reorient_cum_median": 1,
+      "ungrounded_median": 1,
+      "ttfva_median": 2,
+      "disqualified_sessions": []
+    },
+    "C": {
+      "n_sessions": 2,
+      "reorient_cum_median": 3,
+      "ungrounded_median": 3,
+      "ttfva_median": "NA",
+      "disqualified_sessions": []
+    }
+  }
+}

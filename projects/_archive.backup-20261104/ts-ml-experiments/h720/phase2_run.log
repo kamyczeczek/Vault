@@ -1,0 +1,24 @@
+=== Omega-Gated TSFM Ensemble — Phase 2 Harness ===
+Gate: Omega_336 > 0.5 -> TSFM, else S-26
+S-26 frozen refit on 11425; TSFM zero-shot Chronos-Bolt Base
+Horizon H=720, origins=2161, L_omega=336
+Data loaded: train=8545, val=2880, test=2880, concat=14305
+Collecting S-26 val predictions (members frozen on 8545)...
+Fitting S-26 stack map (alpha=10000.0) on val predictions...
+Collecting S-26 test predictions (members refrozen on 11425)...
+S-26 anchor -> full MAE 1.990897, RMSE 2.470999
+Computing Omega_336 for 2161 test origins (Hann taper)...
+Omega_336 val mean=0.4755, std=0.0862
+Omega_336 test mean=0.5086, std=0.0661
+Stationarity shift: 0.3832 sigma (guard < 0.5)
+Call rate (Omega > 0.5): 0.5391 (guard >= 0.10)
+Spearman rho(Omega_336, S-26 MAE) = -0.0802 (p=1.8897e-04)
+Building Omega-gated ensemble predictions...
+Loading weights:   0%|          | 0/269 [00:00<?, ?it/s]Loading weights:   3%|▎         | 8/269 [00:00<00:03, 74.06it/s]Loading weights:   6%|▌         | 16/269 [00:00<00:05, 46.06it/s]Loading weights:   8%|▊         | 22/269 [00:00<00:05, 46.28it/s]Loading weights:  10%|█         | 27/269 [00:00<00:06, 36.67it/s]Loading weights:  13%|█▎        | 35/269 [00:00<00:04, 47.41it/s]Loading weights:  15%|█▌        | 41/269 [00:00<00:06, 36.94it/s]Loading weights:  17%|█▋        | 46/269 [00:01<00:06, 34.86it/s]Loading weights:  19%|█▊        | 50/269 [00:01<00:06, 31.87it/s]Loading weights:  20%|██        | 54/269 [00:01<00:07, 29.85it/s]Loading weights:  22%|██▏       | 60/269 [00:01<00:05, 35.71it/s]Loading weights:  24%|██▍       | 64/269 [00:01<00:07, 28.76it/s]Loading weights:  26%|██▌       | 69/269 [00:01<00:06, 29.05it/s]Loading weights:  28%|██▊       | 74/269 [00:02<00:05, 32.58it/s]Loading weights:  29%|██▉       | 78/269 [00:02<00:05, 32.21it/s]Loading weights:  32%|███▏      | 86/269 [00:02<00:06, 30.21it/s]Loading weights:  33%|███▎      | 90/269 [00:02<00:06, 29.66it/s]Loading weights:  35%|███▍      | 94/269 [00:02<00:06, 26.62it/s]Loading weights:  42%|████▏     | 113/269 [00:02<00:02, 52.61it/s]Loading weights:  44%|████▍     | 119/269 [00:03<00:03, 42.94it/s]Loading weights:  46%|████▋     | 125/269 [00:03<00:03, 40.90it/s]Loading weights:  48%|████▊     | 130/269 [00:03<00:03, 39.81it/s]Loading weights:  50%|█████     | 135/269 [00:03<00:04, 32.20it/s]Loading weights:  52%|█████▏    | 139/269 [00:04<00:05, 26.00it/s]Loading weights:  53%|█████▎    | 142/269 [00:04<00:04, 26.55it/s]Loading weights:  54%|█████▍    | 145/269 [00:04<00:04, 26.72it/s]Loading weights:  75%|███████▍  | 201/269 [00:04<00:00, 137.98it/s]Loading weights: 100%|██████████| 269/269 [00:04<00:00, 61.55it/s]
+Gate decisions: TSFM=1165, S-26=996, total=2161
+Building 1165 TSFM history windows...
+History array built: shape=(1165, 336), dtype=float64
+Calling TSFM predict_batch on 1165 histories...
+  TSFM batch chunk 0:20 (20 histories)...
+C:\Users\Mateusz\AppData\Local\hermes\hermes-agent\venv\Lib\site-packages\chronos\chronos_bolt.py:550: UserWarning: We recommend keeping prediction length <= 64. The quality of longer predictions may degrade since the model is not optimized for it.
+  warnings.warn(msg)

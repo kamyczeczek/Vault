@@ -1,0 +1,20 @@
+#!/bin/sh
+set -eu
+
+ROOT=$(git rev-parse --show-toplevel) || exit 1
+SCRIPT="$ROOT/scripts/quality_check.py"
+
+if [ -n "${VIRTUAL_ENV:-}" ] && [ -x "$VIRTUAL_ENV/Scripts/python.exe" ]; then
+    exec "$VIRTUAL_ENV/Scripts/python.exe" "$SCRIPT"
+elif [ -n "${VIRTUAL_ENV:-}" ] && [ -x "$VIRTUAL_ENV/bin/python" ]; then
+    exec "$VIRTUAL_ENV/bin/python" "$SCRIPT"
+elif command -v py >/dev/null 2>&1; then
+    exec py -3 "$SCRIPT"
+elif command -v python >/dev/null 2>&1; then
+    exec python "$SCRIPT"
+elif command -v python3 >/dev/null 2>&1; then
+    exec python3 "$SCRIPT"
+else
+    echo "ERROR: No suitable Python interpreter found for pre-commit gate." >&2
+    exit 1
+fi

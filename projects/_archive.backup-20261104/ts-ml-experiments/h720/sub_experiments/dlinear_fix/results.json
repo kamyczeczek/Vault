@@ -1,0 +1,187 @@
+{
+  "slice": "S-05",
+  "protocol": {
+    "fix": "RevIN-standardize window before decomposition; joint seasonal+trend OLS; per-window de-standardize",
+    "fit": "frozen, train.csv 11,425 rows, fit once",
+    "origins": 2161,
+    "stride": 1,
+    "horizon": 720
+  },
+  "results": [
+    {
+      "model": "dlinear_L96_k25_a0",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1163,
+      "rolling_rmse": 2.6045,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.2670179918159175,
+          "rmse": 2.6798832985537437
+        },
+        "window_2": {
+          "mae": 1.19525182363128,
+          "rmse": 1.481711884377198
+        },
+        "window_3": {
+          "mae": 1.7207447818730357,
+          "rmse": 2.24324677925658
+        },
+        "window_4": {
+          "mae": 2.0622889060934178,
+          "rmse": 2.7482842912509216
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "dlinear_L96_k25_a1",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1163,
+      "rolling_rmse": 2.6045,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.2670029540901067,
+          "rmse": 2.6798682819211406
+        },
+        "window_2": {
+          "mae": 1.1952465138386128,
+          "rmse": 1.4817072701451677
+        },
+        "window_3": {
+          "mae": 1.7207437269506516,
+          "rmse": 2.243247669562624
+        },
+        "window_4": {
+          "mae": 2.062292211955816,
+          "rmse": 2.7482897314424717
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "dlinear_L336_k25_a0",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.122,
+      "rolling_rmse": 2.6025,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.5760464874074653,
+          "rmse": 3.035737623458836
+        },
+        "window_2": {
+          "mae": 1.4649069570034632,
+          "rmse": 1.804226319518046
+        },
+        "window_3": {
+          "mae": 1.849317853776912,
+          "rmse": 2.3341755462969602
+        },
+        "window_4": {
+          "mae": 2.006886416880338,
+          "rmse": 2.6248265100948545
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "dlinear_L336_k25_a1",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.122,
+      "rolling_rmse": 2.6025,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.5760231846397335,
+          "rmse": 3.0357119243547133
+        },
+        "window_2": {
+          "mae": 1.4648806652679396,
+          "rmse": 1.8041910692358922
+        },
+        "window_3": {
+          "mae": 1.8493079899389984,
+          "rmse": 2.3341684813056656
+        },
+        "window_4": {
+          "mae": 2.0068701200671697,
+          "rmse": 2.6248099645719636
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h64_full_fastlags",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.3092,
+      "rolling_rmse": 2.8046,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5923309463548625,
+          "rmse": 1.9823129280190273
+        },
+        "window_2": {
+          "mae": 1.8145564224871475,
+          "rmse": 2.236046049143698
+        },
+        "window_3": {
+          "mae": 1.6619488768935646,
+          "rmse": 2.2672602806133835
+        },
+        "window_4": {
+          "mae": 2.1615466427691765,
+          "rmse": 2.872775949016963
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "persistence",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.5985,
+      "rolling_rmse": 3.1282,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7952457486755318,
+          "rmse": 2.2503347360867134
+        },
+        "window_2": {
+          "mae": 2.1462069739898046,
+          "rmse": 2.6324969775393976
+        },
+        "window_3": {
+          "mae": 1.7779138766643074,
+          "rmse": 2.3889429847551824
+        },
+        "window_4": {
+          "mae": 2.180211087150706,
+          "rmse": 2.8509213353302125
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "daily",
+      "protocol": "rolling stride-1, 2161 origins, seasonal-naive lag 24",
+      "rolling_mae": 2.5491,
+      "rolling_rmse": 3.112,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6720180662969748,
+          "rmse": 2.171948042164322
+        },
+        "window_2": {
+          "mae": 1.9042791694402694,
+          "rmse": 2.3712428720780094
+        },
+        "window_3": {
+          "mae": 1.8620638797266615,
+          "rmse": 2.5054643959241902
+        },
+        "window_4": {
+          "mae": 2.919241687407096,
+          "rmse": 3.6344442181063386
+        }
+      },
+      "status": "ok"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+=== PEFT Bet 1 — Chronos-Bolt LoRA r=8 + S-26 Ridge Stack H=720 ===
+Protocol S-20-clean | M=3 ['nlinear_L336_a1', 'nlinear_L336_a10', 'chronos_bolt_lora_r8'] | H=720 L=336
+Model pin amazon/chronos-bolt-base@main | LoRA r=8 a=16 d=0.1 q/v only ~0.3% trainable
+AdamW lr=0.0001 wd=0.01 batch=32 early-stop patience=5 max=50
+hermes venv python: C:/Users/Mateusz/AppData/Local/hermes/hermes-agent/venv/Scripts/python.exe
+Data: train=8545 val=2880 test=2880 concat=14305
+Re-deriving S-26 anchor (frozen refit on 11425, full 2161)...
+S-26 anchor -> full MAE 1.990897 RMSE 2.470999
+S-26 disjoint-4 MAE 1.969617 (expected ~1.9696)
+Omega L=336 val 0.4755±0.0862 test 0.5086±0.0661 shift 0.3832σ (guard <0.5 True)
+Spearman rho(Omega_336,S-26 MAE) -0.0802 p=1.890e-04 (guard rho<0 p<0.01 True)
+Call rate P(Omega>0.5) 0.5391 diagnostic only (ridge blending, not hard gate)
+Val-phase adapter: is_stub=True model_hash=amazon/chronos-bolt-base@main#54823f9d1fca
+Fine-tuning LoRA on train 8545 (val-phase) -> C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\peft_tsfm_bet1\lora_ckpt_val ...
+Val-phase train summary: best_val_mae=4.579339751666959 best_epoch=0 is_stub=True
+Val-phase adapter after train: is_stub=True
+Collecting val M=3 predictions (train-frozen members + LoRA)...
+P_val_m3 shape (2161, 3, 720)
+LoRA singleton val MAE 4.3854 (guard >2.8527 -> close family)
+Alpha grid select: best_alpha=0.1 sel MAE 2.575750
+  alpha      0.1 -> sel MAE 2.575750 *
+  alpha        1 -> sel MAE 2.575763
+  alpha       10 -> sel MAE 2.575861
+  alpha      100 -> sel MAE 2.576851
+  alpha      300 -> sel MAE 2.579052
+  alpha     1000 -> sel MAE 2.586534
+  alpha     3000 -> sel MAE 2.605595
+  alpha    10000 -> sel MAE 2.651097
+  alpha    30000 -> sel MAE 2.704823
+WARNING: best alpha 0.1 is at grid edge — flag for close condition
+Val held_out 2.575750 val_full 2.838485 val_disjoint-4 3.447190 @alpha 0.1
+TSFM weight non-degeneracy: mean|w|=0.0654 std=0.0789 (guards >0.02 / >0.01)
+Test-phase LoRA is stub (val-phase was stub) — reusing stub adapter
+Collecting test M=3 predictions (refit S-26 on 11425 + LoRA)...
+P_test_m3 shape (2161, 3, 720)
+Frozen test blended -> full MAE 2.006206 RMSE 2.490074 @alpha 0.1
+Frozen test disjoint-4 MAE 1.969282 RMSE 2.507953
+W1-4 MAE [2.511013343795983, 1.299010995703127, 2.033906776820703, 2.0331981845775715]
+LoRA singleton test MAE 3.5378
+Bootstrap 95% CI [1.9880, 2.0244] B=2000
+Stratified (Omega diagnostic): A 2.1345 B 2.0110 C 1.9901
+Ridge weights mean [-0.011083864286234521, 0.9626170800104245, 0.008812357730333165] |abs|mean [0.07321924464637171, 0.9626170800104245, 0.06537565561853623] std [0.10023762324297131, 0.14203117728601322, 0.07888134798263555]
+CLOSE FAMILY: LoRA singleton val 4.3854 > 2.8527; frozen test full 2.0062 >= 1.9909 -> close foundation-model adaptation family for ETTh1 H=720 under S-20-clean
+  (alpha at edge 0.1)
+Verdict: REJECTED | primary False disjoint True nondeg True close_family True
+Wrote results to C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\peft_tsfm_bet1\results_peft_bet1.json
+Harness completed in 91.9s | verdict=REJECTED tsfm_stub=True full 2.006206 disjoint 1.969282

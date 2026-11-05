@@ -1,0 +1,279 @@
+{
+  "protocol": "fit train.csv (11,425 rows), forecast H=720, score vs test.csv[:720] \u2014 via data.py shared split",
+  "lags_selected": [
+    14,
+    28,
+    42,
+    56,
+    70
+  ],
+  "tau": 14,
+  "m": 5,
+  "fnn_curve": [
+    0.9382486026084642,
+    0.6876053588856357,
+    0.30751486114807913,
+    0.07186585041256321,
+    0.007985094490284802,
+    0.001064679265371307,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "results": [
+    {
+      "model": "tree_d4_L5",
+      "mae": 2.526738984254859,
+      "rmse": 2.975540444497872,
+      "fit_seconds": 21.4,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 4,
+          "min_samples_leaf": 5
+        }
+      }
+    },
+    {
+      "model": "tree_d4_L25",
+      "mae": 2.526738984254859,
+      "rmse": 2.975540444497872,
+      "fit_seconds": 19.3,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 4,
+          "min_samples_leaf": 25
+        }
+      }
+    },
+    {
+      "model": "tree_d4_L100",
+      "mae": 2.526738984254859,
+      "rmse": 2.975540444497872,
+      "fit_seconds": 16.8,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 4,
+          "min_samples_leaf": 100
+        }
+      }
+    },
+    {
+      "model": "tree_d6_L5",
+      "mae": 2.7748100734777617,
+      "rmse": 3.2310535407312773,
+      "fit_seconds": 25.6,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 6,
+          "min_samples_leaf": 5
+        }
+      }
+    },
+    {
+      "model": "tree_d6_L25",
+      "mae": 2.8054847390934765,
+      "rmse": 3.2609351309639742,
+      "fit_seconds": 20.3,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 6,
+          "min_samples_leaf": 25
+        }
+      }
+    },
+    {
+      "model": "tree_d6_L100",
+      "mae": 2.8745351672848427,
+      "rmse": 3.331212776976546,
+      "fit_seconds": 18.6,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 6,
+          "min_samples_leaf": 100
+        }
+      }
+    },
+    {
+      "model": "tree_d8_L5",
+      "mae": 3.2015308115962804,
+      "rmse": 3.638660454384956,
+      "fit_seconds": 25.8,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 8,
+          "min_samples_leaf": 5
+        }
+      }
+    },
+    {
+      "model": "tree_d8_L25",
+      "mae": 3.237853509721722,
+      "rmse": 3.6736692085379987,
+      "fit_seconds": 24.5,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 8,
+          "min_samples_leaf": 25
+        }
+      }
+    },
+    {
+      "model": "tree_d8_L100",
+      "mae": 2.9029106167543697,
+      "rmse": 3.3699851830442262,
+      "fit_seconds": 21.7,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 8,
+          "min_samples_leaf": 100
+        }
+      }
+    },
+    {
+      "model": "tree_d12_L5",
+      "mae": 4.627658073548918,
+      "rmse": 4.965369192421324,
+      "fit_seconds": 36.4,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 12,
+          "min_samples_leaf": 5
+        }
+      }
+    },
+    {
+      "model": "tree_d12_L25",
+      "mae": 2.5332972239203313,
+      "rmse": 2.969453341933168,
+      "fit_seconds": 30.4,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 12,
+          "min_samples_leaf": 25
+        }
+      }
+    },
+    {
+      "model": "tree_d12_L100",
+      "mae": 2.308120895382318,
+      "rmse": 2.7765400854261535,
+      "fit_seconds": 23.3,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": 12,
+          "min_samples_leaf": 100
+        }
+      }
+    },
+    {
+      "model": "tree_dfull_L5",
+      "mae": 5.669752052674692,
+      "rmse": 6.166750156539552,
+      "fit_seconds": 44.5,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": null,
+          "min_samples_leaf": 5
+        }
+      }
+    },
+    {
+      "model": "tree_dfull_L25",
+      "mae": 2.1562070186005697,
+      "rmse": 2.8692865690530387,
+      "fit_seconds": 32.3,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": null,
+          "min_samples_leaf": 25
+        }
+      }
+    },
+    {
+      "model": "tree_dfull_L100",
+      "mae": 2.308120895382318,
+      "rmse": 2.7765400854261535,
+      "fit_seconds": 23.1,
+      "params": {
+        "tree_kwargs": {
+          "max_depth": null,
+          "min_samples_leaf": 100
+        }
+      }
+    },
+    {
+      "model": "ridge_ref_same_lags",
+      "mae": 2.0366905578361902,
+      "rmse": 2.500399826248796,
+      "fit_seconds": 0.0,
+      "params": {
+        "delays": [
+          14,
+          28,
+          42,
+          56,
+          70
+        ],
+        "hidden_dim": 256
+      }
+    },
+    {
+      "model": "ridge_ref_fastlags",
+      "mae": 1.8945502371540976,
+      "rmse": 2.4039134386877126,
+      "fit_seconds": 0.0,
+      "params": {
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "hidden_dim": 256
+      }
+    },
+    {
+      "model": "tree_best_h64",
+      "mae": 2.551214069954775,
+      "rmse": 3.226175184934818,
+      "fit_seconds": 8.5,
+      "params": {
+        "hidden_dim": 64,
+        "tree_kwargs": {
+          "max_depth": null,
+          "min_samples_leaf": 25
+        }
+      }
+    },
+    {
+      "model": "tree_best_h512",
+      "mae": 1.7813664139502938,
+      "rmse": 2.373925528961091,
+      "fit_seconds": 66.1,
+      "params": {
+        "hidden_dim": 512,
+        "tree_kwargs": {
+          "max_depth": null,
+          "min_samples_leaf": 25
+        }
+      }
+    },
+    {
+      "model": "tree_best_h1024",
+      "mae": 2.173515051099475,
+      "rmse": 2.8909452177276114,
+      "fit_seconds": 127.6,
+      "params": {
+        "hidden_dim": 1024,
+        "tree_kwargs": {
+          "max_depth": null,
+          "min_samples_leaf": 25
+        }
+      }
+    }
+  ]
+}

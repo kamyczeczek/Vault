@@ -1,0 +1,61 @@
+{
+  "slice": "S-30-calendar-scalar",
+  "feature": "sin(2*pi*(hour+h)/24) hour=t%24 per horizon scalar, m=2->m=3, per-horizon Ridge no-intercept",
+  "alphas_grid": [
+    0.1,
+    1.0,
+    3.0,
+    10.0,
+    30.0,
+    100.0,
+    300.0,
+    1000.0,
+    3000.0,
+    10000.0,
+    30000.0
+  ],
+  "incumbent_mae": 1.9909,
+  "pooled": {
+    "alpha": 10000.0,
+    "held_out_mae": 2.51907740175763,
+    "val_full": 2.852669942273521,
+    "disjoint": {
+      "mae": 1.969616847749498,
+      "rmse": 2.487586320185094
+    },
+    "full": {
+      "mae": 1.990897385574145,
+      "rmse": 2.470998626872596,
+      "n": 2161
+    }
+  },
+  "calendar": {
+    "alpha": 10000.0,
+    "held_out_mae": 2.519046535915589,
+    "val_full": 2.852604594189145,
+    "disjoint": {
+      "mae": 1.9695166582226036,
+      "rmse": 2.4874401927179313
+    },
+    "full": {
+      "mae": 1.9909277847188998,
+      "rmse": 2.471051674820709,
+      "n": 2161
+    }
+  },
+  "checks": {
+    "interior": true,
+    "held_beats": true,
+    "full_beats_0.005": false,
+    "disjoint_not_worse_0.002": true,
+    "delta_held": -3.0865842040928015e-05,
+    "delta_full_vs_incumbent": 2.778471889985923e-05,
+    "delta_disjoint_cal_minus_pooled": -0.00010018952689438976
+  },
+  "verdict": "REJECT",
+  "reasons": [
+    "full 1.9909 not >0.005 better than 1.9909 (need <=1.9859)"
+  ],
+  "protocol": "S-20-clean: preds_for_train_fit for val (8545 frozen), preds_for_full_fit for test (11425 refrozen); calendar scalar from history t%24 only; full 2161 selector, disjoint-4 diagnostic only; no _lag_dataset change",
+  "hotspot_guard": "_lag_dataset @ base.py:197 untouched \u2014 map-level +1 scalar only"
+}

@@ -1,0 +1,70 @@
+{
+  "slice": "S-27-horizon-band-alpha",
+  "bands": [
+    [
+      0,
+      240
+    ],
+    [
+      240,
+      480
+    ],
+    [
+      480,
+      720
+    ]
+  ],
+  "alphas_grid": [
+    0.1,
+    1.0,
+    3.0,
+    10.0,
+    30.0,
+    100.0,
+    300.0,
+    1000.0,
+    3000.0,
+    10000.0,
+    30000.0
+  ],
+  "incumbent_mae": 1.9909,
+  "pooled": {
+    "alpha": 10000.0,
+    "held_out_mae": 2.51907740175763,
+    "val_full": 2.852669942273521,
+    "disjoint": {
+      "mae": 1.969616847749498,
+      "rmse": 2.487586320185094
+    },
+    "full": {
+      "mae": 1.990897385574145,
+      "rmse": 2.470998626872596,
+      "n": 2161
+    }
+  },
+  "banded": {
+    "alphas": [
+      10000.0,
+      30000.0,
+      10000.0
+    ],
+    "held_out_mae": 2.516339056472559,
+    "val_full": 2.858933339835126,
+    "disjoint": {
+      "mae": 1.9709102335423672,
+      "rmse": 2.490737103719649
+    },
+    "full": {
+      "mae": 1.9864467364246843,
+      "rmse": 2.46488884951607,
+      "n": 2161
+    }
+  },
+  "verdict": "REJECT",
+  "reasons": [
+    "banded full 1.9864 not >0.005 better than 1.9909",
+    "disjoint 1.9709 not < pooled disjoint 1.9696"
+  ],
+  "protocol": "S-20-clean: preds_for_train_fit for val (members frozen 8545), preds_for_full_fit for test (refrozen 11425); bands 0-240/240-480/480-720; 11-alpha grid interior check; full 2161 selector, disjoint diagnostic only",
+  "fingerprint": null
+}

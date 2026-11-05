@@ -1,0 +1,323 @@
+{
+  "slice": "S-09-rolling",
+  "protocol": "frozen fit on train.csv; 2,161 stride-1 origins; identical windows to every rolling-scored config",
+  "lags_selected": [
+    14,
+    28,
+    42,
+    56,
+    70
+  ],
+  "tree_config": {
+    "t0_model": "tree_best_h512",
+    "grid_row": "tree_dfull_L25",
+    "tree_kwargs": {
+      "max_depth": null,
+      "min_samples_leaf": 25
+    },
+    "hidden_dim": 512
+  },
+  "results": [
+    {
+      "model": "tree_best",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.6665,
+      "rolling_rmse": 3.1966,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7813664139502938,
+          "rmse": 2.373925528961091
+        },
+        "window_2": {
+          "mae": 2.056098804636686,
+          "rmse": 2.5817209755672046
+        },
+        "window_3": {
+          "mae": 1.9346686506342072,
+          "rmse": 2.3982899780528215
+        },
+        "window_4": {
+          "mae": 2.0728461308332817,
+          "rmse": 2.7547950005039867
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "ridge_same_lags",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 3.7473,
+      "rolling_rmse": 4.5474,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.0366905578361902,
+          "rmse": 2.500399826248796
+        },
+        "window_2": {
+          "mae": 4.9223069468971605,
+          "rmse": 5.532994690961961
+        },
+        "window_3": {
+          "mae": 3.041494830404266,
+          "rmse": 3.8158179298569563
+        },
+        "window_4": {
+          "mae": 4.773596053548473,
+          "rmse": 5.805484769978916
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "ridge_fastlags_h256",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.889,
+      "rolling_rmse": 3.4967,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.8945502371540976,
+          "rmse": 2.4039134386877126
+        },
+        "window_2": {
+          "mae": 3.2116258929128625,
+          "rmse": 3.637847926190667
+        },
+        "window_3": {
+          "mae": 2.066218539457761,
+          "rmse": 2.697365946557524
+        },
+        "window_4": {
+          "mae": 3.884786490720655,
+          "rmse": 4.745872290129182
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h64_full_fastlags",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.3092,
+      "rolling_rmse": 2.8046,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5923309463548625,
+          "rmse": 1.9823129280190273
+        },
+        "window_2": {
+          "mae": 1.8145564224871475,
+          "rmse": 2.236046049143698
+        },
+        "window_3": {
+          "mae": 1.6619488768935646,
+          "rmse": 2.2672602806133835
+        },
+        "window_4": {
+          "mae": 2.1615466427691765,
+          "rmse": 2.872775949016963
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "daily",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.5491,
+      "rolling_rmse": 3.112,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6720180662969748,
+          "rmse": 2.171948042164322
+        },
+        "window_2": {
+          "mae": 1.9042791694402694,
+          "rmse": 2.3712428720780094
+        },
+        "window_3": {
+          "mae": 1.8620638797266615,
+          "rmse": 2.5054643959241902
+        },
+        "window_4": {
+          "mae": 2.919241687407096,
+          "rmse": 3.6344442181063386
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "persistence",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.5985,
+      "rolling_rmse": 3.1282,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7952457486755318,
+          "rmse": 2.2503347360867134
+        },
+        "window_2": {
+          "mae": 2.1462069739898046,
+          "rmse": 2.6324969775393976
+        },
+        "window_3": {
+          "mae": 1.7779138766643074,
+          "rmse": 2.3889429847551824
+        },
+        "window_4": {
+          "mae": 2.180211087150706,
+          "rmse": 2.8509213353302125
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "grid_tree_dfull_L25",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.6317,
+      "rolling_rmse": 3.159,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.1562070186005697,
+          "rmse": 2.8692865690530387
+        },
+        "window_2": {
+          "mae": 1.7337030909965725,
+          "rmse": 2.1719385785834393
+        },
+        "window_3": {
+          "mae": 1.8067926735211262,
+          "rmse": 2.42501094394054
+        },
+        "window_4": {
+          "mae": 2.2586262111276874,
+          "rmse": 2.8231643887946243
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "grid_tree_best_h1024",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.6468,
+      "rolling_rmse": 3.1706,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.173515051099475,
+          "rmse": 2.8909452177276114
+        },
+        "window_2": {
+          "mae": 1.6465071184146736,
+          "rmse": 2.0244904455683996
+        },
+        "window_3": {
+          "mae": 2.573165079456361,
+          "rmse": 3.278933303663398
+        },
+        "window_4": {
+          "mae": 2.1635553198826747,
+          "rmse": 3.006293718861336
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "grid_tree_d12_L100",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.3049,
+      "rolling_rmse": 2.7854,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.308120895382318,
+          "rmse": 2.7765400854261535
+        },
+        "window_2": {
+          "mae": 1.6350390327728204,
+          "rmse": 2.0595551901341556
+        },
+        "window_3": {
+          "mae": 1.8226276685557476,
+          "rmse": 2.514556974320301
+        },
+        "window_4": {
+          "mae": 2.9901897524764203,
+          "rmse": 3.839098657463359
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "grid_tree_dfull_L100",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.3106,
+      "rolling_rmse": 2.7916,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.308120895382318,
+          "rmse": 2.7765400854261535
+        },
+        "window_2": {
+          "mae": 1.6350390327728204,
+          "rmse": 2.0595551901341556
+        },
+        "window_3": {
+          "mae": 1.8226276685557476,
+          "rmse": 2.514556974320301
+        },
+        "window_4": {
+          "mae": 2.9901897524764203,
+          "rmse": 3.8390986574633588
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "grid_tree_d4_L5",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit",
+      "rolling_mae": 2.1706,
+      "rolling_rmse": 2.6423,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.526738984254859,
+          "rmse": 2.975540444497872
+        },
+        "window_2": {
+          "mae": 1.361041717458767,
+          "rmse": 1.6841860455294988
+        },
+        "window_3": {
+          "mae": 1.7037347416340134,
+          "rmse": 2.2275418511325156
+        },
+        "window_4": {
+          "mae": 2.332280439963302,
+          "rmse": 3.122255574902348
+        }
+      },
+      "status": "ok"
+    }
+  ],
+  "t0_cross_check": {
+    "tree_best": {
+      "mae": 1.7814,
+      "rmse": 2.3739
+    },
+    "ridge_same_lags": {
+      "mae": 2.0367,
+      "rmse": 2.5004
+    },
+    "ridge_fastlags_h256": {
+      "mae": 1.8946,
+      "rmse": 2.4039
+    },
+    "elm_h64_full_fastlags": {
+      "mae": 1.5923,
+      "rmse": 1.9823
+    },
+    "daily": {
+      "mae": 1.672,
+      "rmse": 2.1719
+    },
+    "persistence": {
+      "mae": 1.7952,
+      "rmse": 2.2503
+    }
+  }
+}

@@ -1,0 +1,2426 @@
+Repository: glitch-cat-club/graph-memory-starter
+Files analyzed: 53
+
+Estimated tokens: 19.8k
+
+Directory structure:
+└── glitch-cat-club-graph-memory-starter/
+    ├── README.md
+    ├── extract-prompt.md
+    ├── hooks.json
+    ├── LICENSE
+    ├── corpus/
+    │   ├── customer-support-sop.md
+    │   ├── delegation-memo.md
+    │   ├── incident-response.md
+    │   ├── onboarding-process.md
+    │   ├── org-chart.md
+    │   ├── refund-policy.md
+    │   ├── supplier-payments.md
+    │   └── tooling-inventory.md
+    ├── corpus-before/
+    │   ├── brand-voice.md
+    │   ├── customer-ops-handbook.md
+    │   ├── expenses.md
+    │   ├── holiday-rota-2026.md
+    │   ├── incident-log-january.md
+    │   ├── it-setup.md
+    │   ├── meeting-notes-2026-02-14.md
+    │   ├── newsletter-march-draft.md
+    │   ├── ooo-march-sarah.md
+    │   ├── refunds-policy-2024-superseded.md
+    │   ├── supplier-notes.md
+    │   └── team.md
+    ├── digest/
+    │   ├── common.py
+    │   ├── config.json
+    │   ├── digest-prompt.md
+    │   ├── headless_run.py
+    │   ├── hooks.json
+    │   ├── session_end.py
+    │   └── session_start.py
+    ├── extraction/
+    │   ├── customer-support-sop.json
+    │   ├── delegation-memo.json
+    │   ├── incident-response.json
+    │   ├── onboarding-process.json
+    │   ├── org-chart.json
+    │   ├── refund-policy.json
+    │   ├── supplier-payments.json
+    │   └── tooling-inventory.json
+    ├── rag/
+    │   ├── README.md
+    │   ├── build_index.py
+    │   ├── distil-prompt.md
+    │   ├── distil.py
+    │   ├── hooks.json
+    │   ├── recall_hook.py
+    │   ├── search.py
+    │   └── distilled/
+    │       ├── customer-ops-handbook.md
+    │       ├── ooo-march-sarah.md
+    │       └── supplier-notes.md
+    └── src/
+        ├── build_graph.py
+        ├── recall.py
+        ├── recall_hook.py
+        └── schema.sql
+
+
+================================================
+FILE: README.md
+================================================
+# graph-memory-starter
+
+A knowledge graph your AI assistant reads before it answers.
+Three SQLite tables, one recursive query, one prompt hook. No server, no API key.
+Purpose: demonstrate the design's effectiveness so you can apply it to your own system.
+
+## Which one
+
+    rag/    works on notes as they are, matches meaning when words differ
+    graph   modelled docs, typed links, multi-hop answers walked by code
+
+Start with rag/. Move up when your questions chain facts across
+documents and you are willing to model for it.
+
+## Set up
+
+Two pastes, both for Claude Code, opened in the folder you keep your notes in.
+The first is the RAG. The second is the digest, which turns every session you
+close into a note the RAG can find.
+
+Check Python first. In a terminal, try `python3 --version`, then
+`python --version`, then `py --version`. One of them prints a 3.x version. If
+none does, install Python from python.org with "Add to PATH" ticked.
+
+### Paste one, the RAG
+
+```
+Set up the memory starter for me, one step at a time, and stop if a step fails.
+1. Check Python 3.10 or newer runs here (try python3, python, then py). If none runs, or the one that runs is older than 3.10, stop and tell me to install it from python.org with "Add to PATH" ticked.
+2. Clone https://github.com/Glitch-Cat-Club/graph-memory-starter into a folder called memory-starter here, inside this folder and nowhere else (no git installed: download the zip from that page and unzip it as memory-starter). Then run: python -m pip install fastembed
+3. Ask me which folder my markdown notes are in. Then run: python memory-starter/rag/build_index.py --corpus <that folder>
+4. Run: python memory-starter/rag/search.py "a question about my notes" and show me the top hits.
+5. Merge the recall hook from memory-starter/rag/hooks.json into .claude/settings.json here. Keep any permissions and model already in it. Use python3 in the hook command if that is the one that runs.
+6. Tell me in five lines what you did, and how to rebuild the index when I add notes.
+```
+
+Then `/exit` and open Claude Code again, so the hook loads.
+
+### Paste two, the digest
+
+```
+Add the digest to my memory starter, one step at a time, and stop if a step fails.
+1. Merge the three hooks from memory-starter/digest/hooks.json into .claude/settings.json here. Keep everything already in it, including the recall hook from lesson 1. Use python3 in the hook commands if that is the one that runs.
+2. Open memory-starter/digest/config.json. It ships as "session". If claude -p runs from this folder (try: claude -p "say ok"), set "mode" to "headless". If it does not, leave it and tell me.
+3. Tell me in three lines where the daily log will land and how to switch the digest off.
+```
+
+Then `/exit` and open Claude Code again.
+
+### Which model does what
+
+    bge-small-en-v1.5   local, 67 MB, your CPU, no key. Turns text into a
+                        384-dim vector for the meaning leg of the search. Downloaded
+                        once on the first index build, by fastembed.
+    Claude              distils a note into questions, writes the session
+                        entry, answers you. Through claude -p on your
+                        subscription, so no API key here either.
+
+Markdown files, subfolders included. Hidden folders, `.git`, `node_modules`,
+`__pycache__` and this starter's own folder are skipped, so a starter cloned
+inside your notes never indexes itself.
+
+### The two digest modes
+
+    session    the filtered text waits in digest/pending/. Your next session
+               hands it to a background sub-agent, so you carry on working.
+    headless   the hook starts claude -p with no window. The entry lands about
+               a minute later, and your next session opens clean.
+
+One switch, `"mode"` in `digest/config.json`. Headless needs `claude` on your
+PATH.
+
+### The dials
+
+All of them are one line in `digest/config.json`, apart from the voice, which
+is `digest/digest-prompt.md`.
+
+    max_turns    30       how much of the session is read
+    max_chars    15000    the character budget, the end kept
+    min_turns    5        below this the session is not memory
+    model        sonnet   which Claude writes the entry
+    log_dir      daily    the folder inside your notes the entry lands in
+    distil       true     whether the entry feeds the index
+    mode         session  session or headless
+
+What is kept from a session is not a dial, it is code: your words and the
+replies. Tool calls, results, file dumps and thinking are dropped before any
+model reads it, so nothing is judged out by mistake.
+
+### Switch it off
+
+Take the hook entries back out of `.claude/settings.json`, the recall hook and
+the three digest ones. Your notes, your logs and the index all stay, and the
+index rebuilds any time.
+
+## Prerequisites
+
+Python 3, SQLite included. Claude Code, or another assistant with prompt hooks.
+For the meaning leg of the search, `python -m pip install fastembed`. Without
+it the search runs keyword only and says so. The graph half needs nothing
+installed.
+
+## Layout
+
+    rag/               the semantic layer: index, search, recall hook, distil
+    digest/            the session write up: hooks, config, prompt
+    corpus/            8 modelled docs (front matter)
+    corpus-before/     12 unstructured docs (the A/B control)
+    extraction/        LLM output per doc: nodes, edges, aliases
+    src/               schema.sql, build_graph.py, recall.py, recall_hook.py
+    hooks.json         the graph recall hook, copy into .claude/settings.json
+    extract-prompt.md  the extraction prompt, for your own docs
+
+## Modelling
+
+Ontology: a closed vocabulary, fixed before writing any doc.
+Entity types: PERSON, ROLE, POLICY, PROCESS, DOCUMENT.
+Relationships: approved_by, held_by, delegates_to, part_of, references.
+Logical model: entities with hashed identity (uuid5 of type + name), typed
+relations carrying their source doc, aliases for name variants. Each doc
+declares its type, entities and links in front matter.
+Apply the same design to your own docs; your AI assistant can do the extraction.
+
+## Run
+
+    python src/build_graph.py
+    python src/recall.py "A customer wants an £800 refund in March. Who signs it off?"
+
+Wire hooks.json and the same lookup runs before every prompt, injected as context.
+
+## Test cases
+
+| Question | Expected | Why |
+|---|---|---|
+| A customer wants an £800 refund in March. Who signs it off? | Marcus Webb | 3 hops: policy, role, holder, delegate |
+| Who approves supplier payments over £2,000? | Alex Doyle | 2 hops: policy, role, holder |
+| What is the onboarding process? | Ops Manager, day-one checklist | 1 hop, several edges |
+| What does Priya do? | Support Lead | alias seeding |
+| Who is in charge when the boss is away? | no memory matches | outside the vocabulary; fails loudly, never guesses |
+
+## Evals
+
+Glitch Cat Club evals, Aug 2026. One question, three model tiers, two conditions.
+The answer needs a 3-hop chain: policy -> role -> holder -> delegate.
+
+Search condition: ask in corpus-before/, no hook. Tooling: the model drives
+Grep and Read itself.
+Graph condition: wire hooks.json and ask. Tooling: a SQLite recursive query
+runs inside the hook before the model is invoked; the model receives the
+result as text. Reproduce both yourself.
+
+| Model   | Condition | Tooling          | Result  | Hops reached | Tool calls | Docs read | Context read |
+|---------|-----------|------------------|---------|-------------:|-----------:|----------:|-------------:|
+| Fable 5 | search    | Grep+Read, model | correct |       3 of 3 |          6 |         4 |  ~780 tokens |
+| Fable 5 | graph     | SQL walk, code   | correct |       3 of 3 |          0 |         0 |  ~400 tokens |
+| Sonnet  | search    | Grep+Read, model | correct |       3 of 3 |         13 |         8 | ~1180 tokens |
+| Sonnet  | graph     | SQL walk, code   | correct |       3 of 3 |          0 |         0 |  ~400 tokens |
+| Haiku   | search    | Grep+Read, model | wrong   |       1 of 3 |          5 |         3 |  ~660 tokens |
+| Haiku   | graph     | SQL walk, code   | correct |       3 of 3 |          0 |         0 |  ~400 tokens |
+
+Retrieval: 2 ms per query. The ~400-token injection is fixed at any corpus size;
+search reads grow with it. Live terminal runs: 20 s of visible searching vs an
+answer that starts immediately after the 2 ms recall line.
+
+In the graph condition the model does no retrieval. Zero tool calls, zero
+searching, zero multi-hop reasoning: the traversal ran as code before the model
+was invoked, and the model reads the injected facts and states the answer.
+Proof: the smallest model reaches 1 of 3 hops searching, and 3 of 3 through the
+graph, because the graph walks the hops, never the model. Two places a model
+still exists: one call speaks the final answer, and a strong model built the
+graph once at write time. Spend intelligence at build; answer from structure.
+
+
+
+================================================
+FILE: extract-prompt.md
+================================================
+Read the document below. Extract a knowledge graph using ONLY this vocabulary.
+
+Entity types: PERSON, ROLE, POLICY, PROCESS, DOCUMENT
+Relationships: approved_by, held_by, delegates_to, part_of, references
+
+Return JSON:
+{"source_doc": "...",
+ "nodes": [{"name","type","description"}],
+ "edges": [{"source","predicate","target"}],
+ "aliases": [{"entity","alias"}]}
+
+Rules:
+- Use the most complete form of each name. Add short forms as aliases.
+- Put conditions (amounts, dates, time windows) in the entity description.
+- Extract only facts stated in the document.
+- Every edge endpoint must appear in nodes.
+
+
+
+================================================
+FILE: hooks.json
+================================================
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python src/recall_hook.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+
+================================================
+FILE: LICENSE
+================================================
+MIT License
+
+Copyright (c) 2026 Glitch Cat Club
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+
+================================================
+FILE: corpus/customer-support-sop.md
+================================================
+---
+type: process
+title: Customer support SOP
+entities: [Customer support SOP, Support Lead]
+links: [refund-policy, org-chart]
+---
+Support agents answer tickets within one business day.
+Refunds under £500 are processed directly by the agent, per the refund approvals policy.
+Complaints and anything unresolved after two replies escalate to the **Support Lead**.
+
+
+
+================================================
+FILE: corpus/delegation-memo.md
+================================================
+---
+type: document
+title: Delegation memo
+entities: [Sarah Chen, Marcus Webb]
+links: [org-chart]
+---
+Sarah Chen is on leave from 1 to 31 March.
+During this period all of her sign-offs and approvals are delegated to **Marcus Webb**.
+Marcus has full authority on operational decisions while the cover is in place.
+
+
+
+================================================
+FILE: corpus/incident-response.md
+================================================
+---
+type: process
+title: Incident response
+entities: [Incident response, Support Lead, Founder]
+links: [org-chart]
+---
+Incidents are raised in the ops channel and triaged by the **Support Lead**.
+Severity-1 incidents (site down, payments failing) escalate to the **Founder** immediately.
+Every incident gets a short write-up within 48 hours of being resolved.
+
+
+
+================================================
+FILE: corpus/onboarding-process.md
+================================================
+---
+type: process
+title: Onboarding process
+entities: [Onboarding process, Ops Manager]
+links: [org-chart, tooling-inventory]
+---
+New starters are onboarded over their first week, owned by the **Ops Manager**.
+Day one covers accounts and access, using the tooling inventory as the checklist.
+Week one ends with a shadowing shift alongside the support team.
+
+
+
+================================================
+FILE: corpus/org-chart.md
+================================================
+---
+type: document
+title: Org chart
+entities: [Founder, Alex Doyle, Ops Manager, Sarah Chen, Support Lead, Priya Patel]
+links: []
+---
+**Founder:** Alex Doyle. Sets pricing, signs anything customer-facing.
+**Ops Manager:** Sarah Chen. Owns day-to-day operations, budgets and sign-offs.
+**Support Lead:** Priya Patel. Runs the support rota and handles escalations.
+
+
+
+================================================
+FILE: corpus/refund-policy.md
+================================================
+---
+type: policy
+title: Refund approvals
+entities: [Refund approvals, Ops Manager]
+links: [org-chart, customer-support-sop]
+---
+Refunds over £500 require approval by the **Ops Manager** before payment is released.
+Standard refunds under £500 are processed by any support agent within 48 hours.
+Approved refunds are paid back to the original payment method only.
+
+
+
+================================================
+FILE: corpus/supplier-payments.md
+================================================
+---
+type: policy
+title: Supplier payments
+entities: [Supplier payments, Founder]
+links: [org-chart]
+---
+Supplier invoices are paid on 30-day terms.
+Any payment over £2,000 requires **Founder** sign-off before it is scheduled.
+New suppliers must be added to the tooling inventory before their first invoice.
+
+
+
+================================================
+FILE: corpus/tooling-inventory.md
+================================================
+---
+type: document
+title: Tooling inventory
+entities: [Tooling inventory]
+links: [onboarding-process]
+---
+The systems the company runs on: helpdesk, payments, accounting, and the shared drive.
+Each entry lists the owner, the billing cycle, and who holds admin access.
+The onboarding process uses this document as its day-one checklist.
+
+
+
+================================================
+FILE: corpus-before/brand-voice.md
+================================================
+# Brand voice, one page
+
+We sound like a competent friend, not a corporation and not a mate at the pub. Plain words beat clever ones. We never say "utilise", "reach out", or "as per".
+
+We admit mistakes fast and specifically. "We sent the wrong size and we're sorry" beats any apology template ever written.
+
+Numbers over adjectives: "delivered in 2 days" not "lightning-fast delivery".
+
+
+
+================================================
+FILE: corpus-before/customer-ops-handbook.md
+================================================
+# Customer Operations Handbook
+
+Last reviewed: January 2026. Owner: operations.
+
+## Our promise
+
+We answer every customer like a human being who has read their message. No canned openers, no "we apologise for any inconvenience caused". If we got it wrong, we say so and fix it.
+
+## Tickets
+
+Every ticket gets a first reply within one business day. If you can resolve it in the first reply, do. If a ticket needs someone else's input, say who you're asking and when you'll be back. Nothing sits unanswered over a weekend without a holding reply.
+
+Tag tickets properly. The monthly report is built from tags and untagged tickets make the numbers lie.
+
+## Refunds and credits
+
+We'd rather refund quickly than argue slowly. If the product didn't do what we said it would, the customer gets their money back, no forms.
+
+For amounts up to £500, any support agent can process the refund directly, and it should be done within 48 hours of the request. Any refund exceeding £500 must be signed off by the Operations Manager before Finance releases the payment. Refunds always go back to the original payment method; we don't do bank transfers or credit-in-lieu unless the original method no longer exists.
+
+Partial refunds follow the same thresholds as full ones. Goodwill credits under £50 are at the agent's discretion, once per customer per quarter.
+
+## Complaints
+
+A complaint that isn't resolved after two replies escalates to the support lead. If a customer uses the word "legal" or mentions a regulator, escalate immediately regardless of reply count.
+
+## Tone of voice
+
+Plain words. Short sentences. Never blame the customer, the courier, or "the system". Read your reply out loud before sending; if you wouldn't say it across a counter, rewrite it.
+
+
+
+================================================
+FILE: corpus-before/expenses.md
+================================================
+# Expenses
+
+Keep receipts for everything. Photos are fine, screenshots of banking apps are not.
+
+Anything under £100: spend it, log it, claim it monthly. Between £100 and £500: log it in advance where you can. Any single expense over £500 needs approval from your manager before you spend, no exceptions, and Dee will bounce claims that skipped it.
+
+Mileage at the HMRC rate. No alcohol on expenses at customer meetings.
+
+
+
+================================================
+FILE: corpus-before/holiday-rota-2026.md
+================================================
+# Holiday rota 2026 (first half)
+
+| Who | When | Notes |
+|---|---|---|
+| Priya P | 3–10 March | Half-term |
+| Sarah C | 1–31 March | Sabbatical month |
+| Alex D | 24–28 March | Ski trip |
+| Marcus W | 14–18 April | — |
+| Dee | Fridays in May | Reduced hours |
+
+Book leave in the shared calendar as well as here, or it doesn't exist.
+
+
+
+================================================
+FILE: corpus-before/incident-log-january.md
+================================================
+# Incident log — January 2026
+
+**8 Jan** — Payments provider outage, 40 minutes. Checkout down. Escalated to Alex, status page updated, no refunds needed.
+
+**17 Jan** — Courier mislabelling batch. 61 orders affected. Support handled case-by-case; credits issued where delivery passed 5 days.
+
+**29 Jan** — Helpdesk spam wave, auto-close rule added. No customer impact.
+
+Write-ups within 48 hours of resolution, always.
+
+
+
+================================================
+FILE: corpus-before/it-setup.md
+================================================
+# New starter IT setup
+
+Day one: email, helpdesk seat, shared drive, password manager. Ask Marcus for the checklist; don't improvise access levels.
+
+Laptops are ordered the week before start date. Everyone gets the standard build; exceptions need a reason in writing.
+
+Leavers: access revoked same day, hardware back within a week.
+
+
+
+================================================
+FILE: corpus-before/meeting-notes-2026-02-14.md
+================================================
+# Ops sync — 14 Feb 2026
+
+Present: Sarah, Priya, Marcus. Apologies: Alex.
+
+- Refund volumes up 12% in January, mostly the courier issue. Priya to include a breakdown in the monthly report.
+- Q2 supplier renewals: Sarah approving before her leave; Dee to schedule payments.
+- March cover: Sarah to send the out-of-office plan this week so nobody is guessing.
+- Helpdesk macros need a cleanup; Marcus volunteered.
+- Next sync: 28 Feb.
+
+
+
+================================================
+FILE: corpus-before/newsletter-march-draft.md
+================================================
+# March newsletter — draft 2
+
+Subject line options:
+- "Spring cleaning, the useful kind"
+- "What we fixed in February"
+
+Body: lead with the courier fix and the new refund guarantee ("if it's our fault, your money's back within 48 hours, no forms"). Middle section: customer story (the bakery, pending their sign-off on the quote). Close: April webinar plug.
+
+Do not send before the pricing page is updated. Check with Alex.
+
+
+
+================================================
+FILE: corpus-before/ooo-march-sarah.md
+================================================
+Subject: Out of office — March
+
+Hi all,
+
+I'm away from the 1st to the 31st of March (finally taking the sabbatical month).
+
+While I'm out, anything that needs my sign-off goes to Marcus — he has full authority on ops decisions for the month, so please don't queue things up waiting for me. Genuine emergencies: Alex knows how to reach me.
+
+Supplier renewals for Q2 are already approved and with Dee.
+
+See you in April,
+Sarah
+
+
+
+================================================
+FILE: corpus-before/refunds-policy-2024-superseded.md
+================================================
+# Refunds policy (2024)
+
+> ⚠️ Superseded January 2026 — refunds are now covered by the Customer Operations Handbook. Kept for reference only.
+
+Refund requests are logged in the shared sheet and processed weekly on Fridays.
+
+Refunds over £250 require director approval. Refunds under £250 can be approved by any team member after checking the order history.
+
+Store credit is offered first in all cases; cash refunds only where the customer insists or the law requires it.
+
+
+
+================================================
+FILE: corpus-before/supplier-notes.md
+================================================
+# Suppliers — working notes
+
+Couriers: current contract to September. The January delivery issues are credited on the February invoice; chase if the credit isn't showing.
+
+Packaging: two quotes in, waiting on a third. Anything we commit over £2,000 needs Alex's sign-off first.
+
+Helpdesk software: renews in June, seats increased to 8. Dee has the payment schedule.
+
+
+
+================================================
+FILE: corpus-before/team.md
+================================================
+# Who's who
+
+- Alex Doyle — founder. Pricing, partnerships, anything customer-facing that commits us publicly.
+- Sarah Chen — runs operations day to day (the Operations Manager). Budgets, sign-offs, supplier relationships.
+- Priya Patel — support lead. Owns the rota, handles escalations, writes the monthly support report.
+- Marcus Webb — operations analyst. Reporting, process docs, covers for Sarah when she's away.
+- Dee (freelance) — bookkeeping, two days a week.
+
+
+
+================================================
+FILE: digest/common.py
+================================================
+"""What the three digest scripts all need: the config, your notes, the log."""
+
+import json
+import sqlite3
+from datetime import datetime
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+CONFIG = HERE / "config.json"
+PROMPT = HERE / "digest-prompt.md"
+PENDING = HERE / "pending"
+LOG = HERE / "log"
+RAG_DB = HERE.parent / "rag" / "rag.db"
+
+DEFAULTS = {
+    "mode": "session",
+    "min_turns": 5,
+    "max_turns": 30,
+    "max_chars": 15000,
+    "model": "sonnet",
+    "log_dir": "daily",
+    "distil": True,
+}
+
+
+def config():
+    """config.json over the defaults. A broken file never stops the digest."""
+    cfg = dict(DEFAULTS)
+    try:
+        loaded = json.loads(CONFIG.read_text(encoding="utf-8"))
+        if isinstance(loaded, dict):
+            cfg.update(loaded)
+    except Exception:
+        pass
+    return cfg
+
+
+def corpus():
+    """Your notes folder, as build_index recorded it. None when there is no index."""
+    if not RAG_DB.is_file():
+        return None
+    try:
+        db = sqlite3.connect(RAG_DB)
+        row = db.execute("SELECT value FROM meta WHERE key='corpus'").fetchone()
+        db.close()
+    except Exception:
+        return None
+    if not row or not row[0]:
+        return None
+    path = Path(row[0])
+    return path if path.is_dir() else None
+
+
+def today_log(notes, cfg, when=None):
+    """Today's log file inside your notes. The folder is made if it is missing."""
+    when = when or datetime.now()
+    folder = Path(notes) / cfg["log_dir"]
+    folder.mkdir(parents=True, exist_ok=True)
+    return folder / f"{when:%Y-%m-%d}.md"
+
+
+def note_failure(name, message):
+    """Write a failure where a member can find it, and never raise doing it."""
+    try:
+        LOG.mkdir(parents=True, exist_ok=True)
+        stamp = datetime.now().isoformat(timespec="seconds")
+        with (LOG / "digest.log").open("a", encoding="utf-8") as handle:
+            handle.write(f"{stamp} {name}: {message}\n")
+    except Exception:
+        pass
+
+
+
+================================================
+FILE: digest/config.json
+================================================
+{
+  "mode": "session",
+  "min_turns": 5,
+  "max_turns": 30,
+  "max_chars": 15000,
+  "model": "sonnet",
+  "log_dir": "daily",
+  "distil": true
+}
+
+
+
+================================================
+FILE: digest/digest-prompt.md
+================================================
+# How to write the entry
+
+This is the voice. It is meant to be edited. Change it and the next session is
+written your way.
+
+---
+
+You are writing the memory of a session that has just ended. Below the line is
+what was said in it, filtered in code: the member's words and the replies, with
+tool calls, results, file dumps and thinking already removed.
+
+Write one entry. Output the entry and nothing else. No preamble, no sign off.
+
+## Structure
+
+Use these headings in this order. Leave a heading out when you have nothing
+real to put under it.
+
+    ### What happened
+    One paragraph. The member reads this back as their own day.
+
+    ### Decisions
+    - what was decided, and what was decided against
+
+    ### Lessons
+    - what was learned, and what it cost to learn
+
+    ### Facts
+    - a number, a name, a rule, a path worth finding again
+
+    ### Open loops
+    - [open] what is still pending, and where it could be checked
+
+    ### For the index
+    Dense, for the machine. Exact names, exact identifiers, exact paths.
+    No style rules apply in here at all.
+
+## Tone
+
+Grounded or dropped. Every line traces to the text below. If it is not in
+there it does not go in.
+
+The member's own words carry the weight. Their prompts are where the intent
+is. Read the replies for outcomes, what was done, what was found, what was
+concluded.
+
+Say when the session was thin. A short session gets a short entry that says so.
+A thin session written up as though it were complete is worse than no entry,
+because it looks like the whole of what happened.
+
+No praise, no padding, no narration. Cut the words that carry nothing, never
+the words that carry the grammar. Write complete sentences. Vary their length.
+Lead with the point.
+
+What lands is permanent. The log is appended to, never edited. Write the
+version that stands.
+
+---
+
+
+
+================================================
+FILE: digest/headless_run.py
+================================================
+"""Write up one staged session with no window, then feed it to the index.
+
+    python headless_run.py digest/pending/<session>.md
+
+session_end.py spawns this detached in headless mode. It reads the staged text,
+asks Claude for the entry, appends it to today's log inside your notes, then
+distils that log file and rebuilds the index.
+
+Nothing is thrown away on a failure. The staged file stays where it is and the
+reason lands in digest/log/digest.log, so the next run can try again.
+"""
+
+import sys
+from datetime import datetime
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+sys.path.insert(0, str(HERE.parent / "rag"))
+
+import common  # noqa: E402
+import distil  # noqa: E402
+
+
+def append(log, entry, when=None):
+    """Add the entry under its own time heading. The log is only appended to."""
+    when = when or datetime.now()
+    block = f"\n## Session {when:%H:%M}\n\n{entry.strip()}\n"
+    with log.open("a", encoding="utf-8") as handle:
+        handle.write(block)
+
+
+def main(staged):
+    cfg = common.config()
+    notes = common.corpus()
+    if notes is None:
+        raise RuntimeError("no index yet, so there is nowhere for the entry to live")
+    text = staged.read_text(encoding="utf-8")
+    if not text.strip():
+        staged.unlink(missing_ok=True)
+        return
+
+    entry = distil.ask(cfg["model"], common.PROMPT.read_text(encoding="utf-8"), text)
+    if not entry.strip():
+        raise RuntimeError("the model returned nothing")
+
+    log = common.today_log(notes, cfg)
+    append(log, entry)
+    staged.unlink(missing_ok=True)
+    print(f"wrote {log}")
+
+    if cfg["distil"]:
+        # the entry reaches the index whether or not it distilled, because a
+        # dropped distil still leaves a note that should be searchable
+        distil.run(notes, paths=[log], rebuild=False)
+        distil.rebuild_index(notes)
+
+
+if __name__ == "__main__":
+    distil.utf8_out()
+    if len(sys.argv) < 2:
+        sys.exit("usage: python headless_run.py <staged file>")
+    path = Path(sys.argv[1])
+    try:
+        main(path)
+    except Exception as exc:
+        common.note_failure("headless_run", f"{path.name}: {type(exc).__name__} {exc}")
+        sys.exit(1)
+
+
+
+================================================
+FILE: digest/hooks.json
+================================================
+{
+  "hooks": {
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${CLAUDE_PROJECT_DIR}/memory-starter/digest/session_end.py\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${CLAUDE_PROJECT_DIR}/memory-starter/digest/session_end.py\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${CLAUDE_PROJECT_DIR}/memory-starter/digest/session_start.py\"",
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+
+================================================
+FILE: digest/session_end.py
+================================================
+"""SessionEnd and PreCompact hook: filter the session, then stage or spawn.
+
+Code does the filtering, so nothing is judged out by mistake. What survives is
+your words and the replies. Tool calls, results, file dumps, thinking and
+anything this file does not recognise are dropped.
+
+Then the mode in config.json decides who writes the entry:
+
+    headless   spawn headless_run.py detached and get out of the way
+    session    leave the text staged for your next session to write up
+
+This hook returns in well under a second and always exits 0. A session is
+never held up by its own memory.
+"""
+
+import json
+import os
+import re
+import subprocess
+import sys
+from datetime import datetime
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+import common  # noqa: E402
+
+# Harness written user events. None of these are you typing.
+INJECTED = (
+    "<local-command-stdout>",
+    "<local-command-stderr>",
+    "<local-command-caveat>",
+    "<command-message>",
+    "<command-name>",
+    "<command-args>",
+    "<bash-input>",
+    "<bash-stdout>",
+    "<bash-stderr>",
+    "<user-prompt-submit-hook>",
+    "<session-start-hook>",
+    "<post-tool-use-hook>",
+    "<task-notification>",
+    "<teammate-message",
+    "[Request interrupted",
+    "Caveat: The messages below were generated by the user",
+)
+
+REMINDER = re.compile(r"<system-reminder>.*?</system-reminder>", re.DOTALL)
+
+
+def read_stdin():
+    """The hook payload. Windows can hand us lone backslashes in a path."""
+    raw = sys.stdin.read()
+    try:
+        return json.loads(raw)
+    except ValueError:
+        return json.loads(re.sub(r'(?<!\\)\\(?!["\\])', r"\\\\", raw))
+
+
+def text_blocks(content):
+    """Text out of a message. Every other kind of block is dropped."""
+    if isinstance(content, str):
+        return content
+    if not isinstance(content, list):
+        return ""
+    parts = []
+    for block in content:
+        if isinstance(block, dict) and block.get("type") == "text":
+            value = block.get("text")
+            if isinstance(value, str):
+                parts.append(value)
+    return "\n".join(parts)
+
+
+def turns(transcript):
+    """The conversation out of the transcript, in order. Default is to drop."""
+    kept = []
+    with Path(transcript).open(encoding="utf-8", errors="replace") as handle:
+        for raw in handle:
+            line = raw.strip()
+            if not line:
+                continue
+            try:
+                event = json.loads(line)
+            except ValueError:
+                continue
+            if not isinstance(event, dict):
+                continue
+            if event.get("isSidechain") is True:  # a sub agent's own talk
+                continue
+            if event.get("type") not in ("user", "assistant"):
+                continue
+            if event.get("toolUseResult") is not None:  # a tool result carrier
+                continue
+            if event.get("isMeta") is True or event.get("isCompactSummary") is True:
+                continue
+            message = event.get("message")
+            if not isinstance(message, dict):
+                continue
+            role = message.get("role")
+            if role not in ("user", "assistant"):
+                continue
+            body = text_blocks(message.get("content")).strip()
+            if role == "user":
+                body = REMINDER.sub("", body).strip()
+                if body.startswith(INJECTED):
+                    continue
+            if not body:
+                continue
+            kept.append(("You" if role == "user" else "Claude", body))
+    return kept
+
+
+def filtered(transcript, cfg):
+    """The last turns, cut to the character budget, keeping the end."""
+    recent = turns(transcript)[-cfg["max_turns"] :]
+    if len(recent) < cfg["min_turns"]:
+        return None
+    text = "\n\n".join(f"**{who}:** {body}" for who, body in recent)
+    if len(text) > cfg["max_chars"]:
+        text = text[-cfg["max_chars"] :]
+        cut = text.find("\n\n**")  # start at a whole turn, never mid sentence
+        if cut > 0:
+            text = text[cut + 2 :]
+    return text
+
+
+def spawn(staged):
+    """Run the write up detached, so closing the session does not wait on it."""
+    common.LOG.mkdir(parents=True, exist_ok=True)
+    handle = (common.LOG / f"{staged.stem}.out").open("ab")
+    extra = {}
+    if os.name == "nt":
+        extra["creationflags"] = (
+            subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP
+        )
+    else:
+        extra["start_new_session"] = True
+    subprocess.Popen(
+        # -u so the log fills as it goes, not only when the run finishes
+        [sys.executable, "-u", str(HERE / "headless_run.py"), str(staged)],
+        stdin=subprocess.DEVNULL,
+        stdout=handle,
+        stderr=handle,
+        close_fds=True,
+        **extra,
+    )
+
+
+def main():
+    if os.environ.get("MEMORY_STARTER_CHILD"):  # our own headless call closing
+        return
+    try:
+        payload = read_stdin()
+    except Exception:
+        return
+    transcript = payload.get("transcript_path") or ""
+    session_id = str(payload.get("session_id") or "session")
+    if not transcript or not Path(transcript).is_file():
+        return
+
+    cfg = common.config()
+    notes = common.corpus()
+    if notes is None:  # no index yet, so nowhere for an entry to live
+        return
+    try:
+        text = filtered(transcript, cfg)
+    except Exception as exc:
+        common.note_failure("session_end", f"{type(exc).__name__} {exc}")
+        return
+    if not text:
+        return
+
+    # the stamp matters: one long session can close twice, once before a
+    # compaction and once at the end, and neither half may overwrite the other
+    safe = re.sub(r"[^A-Za-z0-9_-]+", "-", session_id)[:64] or "session"
+    common.PENDING.mkdir(parents=True, exist_ok=True)
+    staged = common.PENDING / f"{safe}-{datetime.now():%Y%m%d-%H%M%S}.md"
+    staged.write_text(text, encoding="utf-8")
+
+    if cfg["mode"] == "headless":
+        try:
+            spawn(staged)
+        except Exception as exc:
+            common.note_failure("session_end", f"spawn: {type(exc).__name__} {exc}")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as exc:  # a session close is never blocked by this
+        common.note_failure("session_end", f"{type(exc).__name__} {exc}")
+    sys.exit(0)
+
+
+
+================================================
+FILE: digest/session_start.py
+================================================
+"""SessionStart hook: hand a staged session to this one to write up.
+
+Session mode only. When a session closed and left its text staged, this hands
+that text, the voice and one instruction to the session opening now. The write
+up goes to a background sub-agent, so the session you are in carries on and is
+never waiting on it.
+
+In headless mode there is nothing to do here and nothing is printed.
+"""
+
+import json
+import sys
+from datetime import datetime
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+import common  # noqa: E402
+
+DISTIL = HERE.parent / "rag" / "distil.py"
+
+
+def main():
+    cfg = common.config()
+    if cfg["mode"] != "session":
+        return
+    staged = sorted(common.PENDING.glob("*.md")) if common.PENDING.is_dir() else []
+    if not staged:
+        return
+    notes = common.corpus()
+    if notes is None:
+        return
+
+    first = staged[0]
+    text = first.read_text(encoding="utf-8")
+    if not text.strip():
+        first.unlink(missing_ok=True)
+        return
+
+    log = common.today_log(notes, cfg)
+    steps = [
+        f"1. Write the entry into {log} under a new heading: "
+        f"## Session {datetime.now():%H:%M}. The file is appended to, never edited.",
+        f"2. Delete the staged file {first}.",
+    ]
+    if cfg["distil"]:
+        steps.append(f'3. Run: python "{DISTIL}" "{notes}"')
+
+    body = (
+        "A session closed and left its text to be written up.\n\n"
+        "Hand this to a background sub-agent NOW, before you answer anything else, "
+        "and then carry on with whatever I ask. Do not do it yourself and do not "
+        "make me wait for it. Spawn one background sub-agent with the steps, the "
+        "voice and the session text below, exactly as they are, then tell me in one "
+        "line that the last session is being written up.\n\n"
+        "=== the steps, for the sub-agent ===\n\n"
+        + "\n".join(steps)
+        + "\n\n=== how to write it ===\n\n"
+        + common.PROMPT.read_text(encoding="utf-8")
+        + "\n\n=== the session ===\n\n"
+        + text
+    )
+    count = len(staged)
+    print(
+        json.dumps(
+            {
+                "systemMessage": (
+                    f"memory: {count} session{'' if count == 1 else 's'} to write up"
+                ),
+                "hookSpecificOutput": {
+                    "hookEventName": "SessionStart",
+                    "additionalContext": body,
+                },
+            }
+        )
+    )
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except Exception as exc:  # a session opening is never blocked by this
+        common.note_failure("session_start", f"{type(exc).__name__} {exc}")
+    sys.exit(0)
+
+
+
+================================================
+FILE: extraction/customer-support-sop.json
+================================================
+{
+  "source_doc": "customer-support-sop.md",
+  "nodes": [
+    {"name": "Customer support SOP", "type": "PROCESS",
+     "description": "Tickets answered within one business day; refunds under £500 processed by agents; escalation after two replies"},
+    {"name": "Support Lead", "type": "ROLE", "description": "Escalation point for complaints"}
+  ],
+  "edges": [
+    {"source": "Customer support SOP", "predicate": "references", "target": "Refund approvals"},
+    {"source": "Customer support SOP", "predicate": "references", "target": "Support Lead"}
+  ],
+  "aliases": []
+}
+
+
+
+================================================
+FILE: extraction/delegation-memo.json
+================================================
+{
+  "source_doc": "delegation-memo.md",
+  "nodes": [
+    {"name": "Sarah Chen", "type": "PERSON", "description": "On leave 1-31 March"},
+    {"name": "Marcus Webb", "type": "PERSON",
+     "description": "Covers Sarah Chen's sign-offs and approvals during her March leave; full operational authority"}
+  ],
+  "edges": [
+    {"source": "Sarah Chen", "predicate": "delegates_to", "target": "Marcus Webb"}
+  ],
+  "aliases": [
+    {"entity": "Marcus Webb", "alias": "Marcus"}
+  ]
+}
+
+
+
+================================================
+FILE: extraction/incident-response.json
+================================================
+{
+  "source_doc": "incident-response.md",
+  "nodes": [
+    {"name": "Incident response", "type": "PROCESS",
+     "description": "Incidents triaged by the Support Lead; severity-1 escalates to the Founder; write-up within 48h"}
+  ],
+  "edges": [
+    {"source": "Incident response", "predicate": "references", "target": "Support Lead"},
+    {"source": "Incident response", "predicate": "references", "target": "Founder"}
+  ],
+  "aliases": [
+    {"entity": "Incident response", "alias": "incident"},
+    {"entity": "Incident response", "alias": "incidents"}
+  ]
+}
+
+
+
+================================================
+FILE: extraction/onboarding-process.json
+================================================
+{
+  "source_doc": "onboarding-process.md",
+  "nodes": [
+    {"name": "Onboarding process", "type": "PROCESS",
+     "description": "First-week onboarding owned by the Ops Manager; day one is accounts and access; ends with a support shadowing shift"}
+  ],
+  "edges": [
+    {"source": "Onboarding process", "predicate": "references", "target": "Ops Manager"},
+    {"source": "Onboarding process", "predicate": "references", "target": "Tooling inventory"}
+  ],
+  "aliases": [
+    {"entity": "Onboarding process", "alias": "onboarding"}
+  ]
+}
+
+
+
+================================================
+FILE: extraction/org-chart.json
+================================================
+{
+  "source_doc": "org-chart.md",
+  "nodes": [
+    {"name": "Founder", "type": "ROLE", "description": "Sets pricing, signs anything customer-facing"},
+    {"name": "Alex Doyle", "type": "PERSON", "description": "Founder"},
+    {"name": "Ops Manager", "type": "ROLE", "description": "Owns day-to-day operations, budgets and sign-offs"},
+    {"name": "Sarah Chen", "type": "PERSON", "description": "Ops Manager"},
+    {"name": "Support Lead", "type": "ROLE", "description": "Runs the support rota and handles escalations"},
+    {"name": "Priya Patel", "type": "PERSON", "description": "Support Lead"}
+  ],
+  "edges": [
+    {"source": "Founder", "predicate": "held_by", "target": "Alex Doyle"},
+    {"source": "Ops Manager", "predicate": "held_by", "target": "Sarah Chen"},
+    {"source": "Support Lead", "predicate": "held_by", "target": "Priya Patel"}
+  ],
+  "aliases": [
+    {"entity": "Alex Doyle", "alias": "Alex"},
+    {"entity": "Sarah Chen", "alias": "Sarah"},
+    {"entity": "Priya Patel", "alias": "Priya"}
+  ]
+}
+
+
+
+================================================
+FILE: extraction/refund-policy.json
+================================================
+{
+  "source_doc": "refund-policy.md",
+  "nodes": [
+    {"name": "Refund approvals", "type": "POLICY",
+     "description": "Refunds over £500 need Ops Manager sign-off; under £500 any agent processes within 48h, original payment method only"},
+    {"name": "Ops Manager", "type": "ROLE",
+     "description": "Approves refunds over £500"}
+  ],
+  "edges": [
+    {"source": "Refund approvals", "predicate": "approved_by", "target": "Ops Manager"}
+  ],
+  "aliases": [
+    {"entity": "Refund approvals", "alias": "refund"},
+    {"entity": "Refund approvals", "alias": "refunds"}
+  ]
+}
+
+
+
+================================================
+FILE: extraction/supplier-payments.json
+================================================
+{
+  "source_doc": "supplier-payments.md",
+  "nodes": [
+    {"name": "Supplier payments", "type": "POLICY",
+     "description": "30-day terms; payments over £2,000 need Founder sign-off; new suppliers registered in tooling inventory first"},
+    {"name": "Founder", "type": "ROLE", "description": "Signs off supplier payments over £2,000"}
+  ],
+  "edges": [
+    {"source": "Supplier payments", "predicate": "approved_by", "target": "Founder"},
+    {"source": "Supplier payments", "predicate": "references", "target": "Tooling inventory"}
+  ],
+  "aliases": []
+}
+
+
+
+================================================
+FILE: extraction/tooling-inventory.json
+================================================
+{
+  "source_doc": "tooling-inventory.md",
+  "nodes": [
+    {"name": "Tooling inventory", "type": "DOCUMENT",
+     "description": "The systems the company runs on, with owner, billing cycle and admin access per entry; the onboarding day-one checklist"}
+  ],
+  "edges": [],
+  "aliases": [
+    {"entity": "Tooling inventory", "alias": "tooling"}
+  ]
+}
+
+
+
+================================================
+FILE: rag/README.md
+================================================
+# rag
+
+A semantic layer over messy notes. One index, two search legs, no
+vector database, no API key. The model is 67 MB and runs on your CPU.
+
+Point your AI assistant at this folder and ask it to set it up. The one paste
+that does it is in the repo README.
+
+## What makes this different
+
+Standard RAG chops text into fixed-size windows, embeds them, and
+searches by similarity alone. Three changes here, each measured on a
+real corpus before it earned its place:
+
+1. Chunks follow the document's own headings, and every chunk carries
+   its source label: [file § section]. The label is part of what gets
+   embedded and keyword-indexed.
+2. Search runs two legs, keyword (BM25) and meaning (embeddings), and
+   merges the rankings with reciprocal rank fusion (k=60).
+3. Notes can be distilled at write time into the questions you would
+   ask later. Distilled entries are indexed beside the chunks, and the
+   build checks each entry's quote against its source file. No quote,
+   no entry. See distil-prompt.md and distilled/.
+
+Hits return with the lines around them; context lines wear a dot.
+
+Measured on my corpus: 3.1x retrieval quality over the standard build.
+The biggest single lever was the embedding model.
+
+## Which model does what
+
+    bge-small-en-v1.5   local, 67 MB, your CPU. Text into 384 numbers, for the
+                        meaning leg. Downloaded once on the first build.
+    Claude              distils a note into the questions it answers. Through
+                        claude -p, on your subscription.
+
+## Setup
+
+    python -m pip install fastembed
+    python build_index.py
+    python search.py "your question"
+
+First run downloads the model once (67 MB). Without fastembed
+installed, search runs keyword-only and says so.
+
+## Test cases
+
+The corpus is ../corpus-before, the same twelve messy docs the graph
+was built from. Every row below is a real run.
+
+| Question | Top hits | Why |
+|---|---|---|
+| what is the mileage rate | expenses.md, both legs | plain keywords, both legs agree |
+| how do we talk to customers in writing | handbook § Tone of voice and brand-voice.md, meaning leg | keywords match "in writing" in the wrong doc; meaning finds the right ones |
+| who has sign-off while Sarah is away | the distilled entry, then the memo itself | a distilled question meets the question you ask |
+| A customer wants an £800 refund in March. Who signs it off? | the £500 rule, first hit | the rule surfaces; chaining March to Marcus is the graph's job, one folder up |
+
+## Your own notes
+
+    python build_index.py --corpus path/to/your/markdown
+
+Markdown files, subfolders included. Hidden folders, `.git`, `node_modules`,
+`__pycache__` and this starter's own folder are skipped, so a starter cloned
+inside your notes never indexes itself. A note in a subfolder is indexed under
+its path inside your notes, so `daily/2026-08-30.md` is found and read back as
+that.
+
+Rebuild any time. The files stay the truth; the index is disposable.
+
+## Distil
+
+    python distil.py path/to/your/markdown
+    python distil.py path/to/your/markdown --limit 20
+
+One short Claude call per note, so start with a folder of tens. Each answer is
+checked before it is kept: it needs a question and a quote, and the quote has
+to be in the note word for word. Anything else is dropped and named.
+
+A note already distilled is skipped unless it has changed. State lives in
+`distilled/.state.json`, keyed by the note's path with a sha256 of what was
+read. The index is rebuilt at the end.
+
+Which Claude it uses is `"model"` in `../digest/config.json`, sonnet by
+default.
+
+## The recall hook
+
+    hooks.json  ->  merge into .claude/settings.json
+
+`recall_hook.py` runs on every prompt you submit. It searches the index and
+hands the top five hits back as context, under about 1,500 characters, with a
+one-line note saying how many. It never blocks a prompt: no index, no hits, or
+any failure at all and it prints nothing.
+
+It is a fresh process each time, so it loads the embedding model before every
+prompt. Measured on a laptop: about 0.9 seconds with the meaning leg, under
+0.1 without it.
+
+
+
+================================================
+FILE: rag/build_index.py
+================================================
+"""Build the index: chunk markdown on headings, index keywords and meaning.
+
+Reads ../corpus-before by default, plus any distilled entries in distilled/.
+Subfolders are included, so the digest's daily/ folder is indexed like any note.
+Writes rag.db next to this script. Run again any time; the index is disposable.
+"""
+
+import argparse
+import re
+import sqlite3
+import struct
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+DB = HERE / "rag.db"
+CHUNK_BUDGET = 1600  # characters, roughly 400 tokens
+SKIP_DIRS = {".git", "node_modules", "__pycache__"}
+
+SCHEMA = """
+DROP TABLE IF EXISTS chunks;
+DROP TABLE IF EXISTS chunks_fts;
+DROP TABLE IF EXISTS vectors;
+DROP TABLE IF EXISTS meta;
+CREATE TABLE chunks (
+    id INTEGER PRIMARY KEY,
+    file TEXT NOT NULL,
+    section TEXT NOT NULL,
+    start_line INTEGER NOT NULL,
+    end_line INTEGER NOT NULL,
+    text TEXT NOT NULL,
+    kind TEXT NOT NULL DEFAULT 'chunk'
+);
+CREATE VIRTUAL TABLE chunks_fts USING fts5(text, file, section);
+CREATE TABLE vectors (id INTEGER PRIMARY KEY, vec BLOB NOT NULL);
+CREATE TABLE meta (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+"""
+
+
+def note_files(corpus):
+    """Every markdown file under the corpus, subfolders included.
+
+    Skipped: hidden files and folders, .git, node_modules, __pycache__, and
+    this starter's own folder when it has been cloned inside the notes.
+    """
+    root = Path(corpus).resolve()
+    starter = HERE.parent.resolve()
+    # the starter is skipped only when it sits INSIDE your notes, which is the
+    # case the rule exists for. A corpus inside the starter is the bundled demo
+    # folders, and those are meant to be indexed.
+    skip_starter = starter != root and root in starter.parents
+    out = []
+    for path in sorted(root.rglob("*.md")):
+        rel = path.relative_to(root)
+        if any(part.startswith(".") or part in SKIP_DIRS for part in rel.parts):
+            continue
+        if skip_starter and (starter == path.parent or starter in path.parents):
+            continue
+        out.append(path)
+    return out
+
+
+def sections(lines):
+    """Split markdown lines into (heading, start, end) sections."""
+    out = []
+    heading, start = None, 0
+    for i, line in enumerate(lines):
+        if re.match(r"^#{1,3} ", line):
+            if i > start or heading is not None:
+                out.append((heading, start, i))
+            heading, start = line.lstrip("# ").strip(), i
+    out.append((heading, start, len(lines)))
+    return [(h, s, e) for h, s, e in out if any(l.strip() for l in lines[s:e])]
+
+
+def chunk_file(path):
+    """Yield (section, start_line, end_line, text) chunks packed to the budget."""
+    lines = path.read_text(encoding="utf-8").splitlines()
+    packed = []
+    for heading, s, e in sections(lines):
+        text = "\n".join(lines[s:e]).strip()
+        title = heading or path.stem
+        if len(text) <= CHUNK_BUDGET:
+            packed.append((title, s + 1, e, text))
+            continue
+        # oversized section: split on line groups within the budget
+        buf, buf_start = [], s
+        for i in range(s, e):
+            buf.append(lines[i])
+            if sum(len(l) + 1 for l in buf) >= CHUNK_BUDGET:
+                packed.append((title, buf_start + 1, i + 1, "\n".join(buf).strip()))
+                buf, buf_start = [], i + 1
+        if any(l.strip() for l in buf):
+            packed.append((title, buf_start + 1, e, "\n".join(buf).strip()))
+    return packed
+
+
+def parse_entry(text):
+    """Read a distilled entry: source, questions, summary, rule, quote.
+
+    distil.py checks its own output through this, so the writer and the reader
+    can never drift into two spellings of the format.
+    """
+    entry = {"questions": []}
+    for line in text.splitlines():
+        if line.startswith("source:"):
+            entry["source"] = line.split(":", 1)[1].strip()
+        elif line.startswith("- "):
+            entry["questions"].append(line[2:].strip())
+        elif line.startswith("summary:"):
+            entry["summary"] = line.split(":", 1)[1].strip()
+        elif line.startswith("rule:"):
+            entry["rule"] = line.split(":", 1)[1].strip()
+        elif line.startswith("quote:"):
+            entry["quote"] = line.split(":", 1)[1].strip().strip('"')
+    return entry
+
+
+def parse_distilled(path):
+    """Read a distilled entry from a file."""
+    return parse_entry(path.read_text(encoding="utf-8"))
+
+
+def normalise(text):
+    return " ".join(text.split())
+
+
+def utf8_out():
+    """Write UTF-8 whatever the console's code page is.
+
+    Windows consoles default to cp1252, which cannot encode an arrow, a curly
+    quote or a pound sign, and file names and notes are full of them.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
+
+
+def main():
+    utf8_out()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--corpus", default=str(HERE.parent / "corpus-before"))
+    args = ap.parse_args()
+    corpus = Path(args.corpus)
+
+    db = sqlite3.connect(DB)
+    db.executescript(SCHEMA)
+    db.execute("INSERT INTO meta VALUES ('corpus', ?)", (str(corpus.resolve()),))
+
+    docs = []  # (embed_text, row)
+    files = note_files(corpus)
+    root = corpus.resolve()
+    for path in files:
+        # the relative path is the file's name in the index, so a note in a
+        # subfolder can still be read back for context
+        rel = path.relative_to(root).as_posix()
+        for section, s, e, text in chunk_file(path):
+            label = f"[{rel} § {section}]"
+            row = (rel, section, s, e, text, "chunk")
+            docs.append((label + "\n" + text, row))
+
+    dropped = 0
+    distilled_dir = HERE / "distilled"
+    distilled_files = sorted(distilled_dir.glob("*.md")) if distilled_dir.is_dir() else []
+    for path in distilled_files:
+        entry = parse_distilled(path)
+        source = corpus / entry.get("source", "")
+        quote = entry.get("quote", "")
+        # grounding check: the quote must appear in the source, word for word
+        if not source.is_file() or normalise(quote) not in normalise(source.read_text(encoding="utf-8")):
+            dropped += 1
+            print(f"dropped {path.name}: quote not found in {entry.get('source', '?')}")
+            continue
+        body = "\n".join(
+            entry["questions"]
+            + [entry.get("summary", ""), entry.get("rule", ""), quote]
+        ).strip()
+        label = f"[{entry['source']} § distilled]"
+        row = (entry["source"], "distilled", 0, 0, body, "distilled")
+        docs.append((label + "\n" + body, row))
+
+    for embed_text, row in docs:
+        cur = db.execute(
+            "INSERT INTO chunks (file, section, start_line, end_line, text, kind) VALUES (?,?,?,?,?,?)",
+            row,
+        )
+        db.execute(
+            "INSERT INTO chunks_fts (rowid, text, file, section) VALUES (?,?,?,?)",
+            (cur.lastrowid, embed_text, row[0], row[1]),
+        )
+
+    model_line = "keyword only (pip install fastembed for the meaning leg)"
+    if not docs:
+        model_line = "nothing to index: no markdown found under the corpus"
+    else:
+        try:
+            from fastembed import TextEmbedding
+
+            model = TextEmbedding()  # default: BAAI/bge-small-en-v1.5
+            vecs = list(model.embed([t for t, _ in docs]))
+            for rowid, vec in enumerate(vecs, start=1):
+                norm = sum(x * x for x in vec) ** 0.5 or 1.0
+                blob = struct.pack(f"{len(vec)}f", *(x / norm for x in vec))
+                db.execute("INSERT INTO vectors (id, vec) VALUES (?,?)", (rowid, blob))
+            model_line = f"model {model.model_name} ({len(vecs[0])}d) + keyword sqlite fts5"
+        except ImportError:
+            pass
+
+    db.commit()
+    db.close()
+    n_distilled = len(distilled_files) - dropped
+    print(f"indexed {len(files)} files, {len(docs) - n_distilled} chunks, {n_distilled} distilled entries, {dropped} dropped")
+    print(model_line)
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+================================================
+FILE: rag/distil-prompt.md
+================================================
+# Distil a note into the questions it answers
+
+Run this prompt over a note. Save the output in distilled/ as markdown.
+build_index.py picks it up automatically and verifies the quote before
+indexing. No quote, no entry.
+
+---
+
+Read the note below. Produce exactly this format:
+
+    source: <the note's file name>
+    - <a question someone would search for months later>
+    - <another, phrased the way they would actually ask>
+    summary: <one line>
+    rule: <the rule or resolution, if the note contains one>
+    quote: "<one quote from the note, copied exactly, that proves the answer>"
+
+Ask for the facts: the number, the name, the rule. Do not ask about
+the occasion. If no exact quote proves the answer, produce nothing.
+
+---
+
+<paste the note here>
+
+
+
+================================================
+FILE: rag/distil.py
+================================================
+"""Distil your notes into the questions they answer, through claude -p.
+
+    python distil.py path/to/your/notes
+    python distil.py path/to/your/notes --limit 20
+
+One short call per note, subfolders included. Every answer is checked before it
+is kept: it needs a question and a quote, and the quote has to be in the note
+word for word. Anything else is dropped and named. A note already distilled is
+skipped unless it has changed since. The index is rebuilt at the end.
+
+State lives in distilled/.state.json, keyed by the note's path inside your
+notes folder with the sha256 of what was read.
+"""
+
+import argparse
+import hashlib
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+from build_index import normalise, note_files, parse_entry, utf8_out  # noqa: E402
+
+DISTILLED = HERE / "distilled"
+STATE = DISTILLED / ".state.json"
+PROMPT = HERE / "distil-prompt.md"
+CONFIG = HERE.parent / "digest" / "config.json"
+CALL_TIMEOUT = 300  # seconds for one claude -p call
+
+
+def model_name():
+    """The model in digest/config.json, or sonnet when there is no config."""
+    try:
+        return json.loads(CONFIG.read_text(encoding="utf-8")).get("model") or "sonnet"
+    except Exception:
+        return "sonnet"
+
+
+def child_env():
+    """The environment for a claude -p child, with our own markers removed.
+
+    Claude Code stamps CLAUDECODE and a set of CLAUDE_* variables into every
+    session. Left in place they tell the child it is nested inside the session
+    that started it. MEMORY_STARTER_CHILD goes the other way: it tells our own
+    SessionEnd hook that this session is the digest, so it is not digested.
+    """
+    env = {k: v for k, v in os.environ.items() if not k.startswith("CLAUDE")}
+    env["MEMORY_STARTER_CHILD"] = "1"
+    return env
+
+
+def claude_argv(model):
+    """The command that runs one headless call, resolved for this machine."""
+    exe = shutil.which("claude")
+    if exe is None:
+        raise RuntimeError("claude is not on your PATH")
+    argv = [exe, "-p", "--model", model, "--output-format", "text"]
+    if exe.lower().endswith((".cmd", ".bat")):
+        argv = ["cmd", "/c", *argv]  # a shim, not an executable
+    return argv
+
+
+def ask(model, prompt_text, payload):
+    """One claude -p call. The prompt file and the payload go in on stdin.
+
+    It runs in an empty folder on purpose. The child reads what we hand it and
+    nothing else: no project, no settings, no hooks of ours firing inside it.
+    """
+    with tempfile.TemporaryDirectory(prefix="memory-starter-") as scratch:
+        proc = subprocess.run(
+            claude_argv(model),
+            input=prompt_text + "\n\n---\n\n" + payload,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            env=child_env(),
+            cwd=scratch,
+            timeout=CALL_TIMEOUT,
+        )
+    if proc.returncode != 0:
+        raise RuntimeError((proc.stderr or "claude failed").strip()[:200])
+    return proc.stdout
+
+
+def slug_for(rel):
+    """A file name for a note's distilled entry, unique across subfolders."""
+    stem = rel[:-3] if rel.endswith(".md") else rel
+    return (re.sub(r"[^a-z0-9]+", "-", stem.lower()).strip("-") or "note") + ".md"
+
+
+def load_state():
+    try:
+        return json.loads(STATE.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def save_state(state):
+    DISTILLED.mkdir(parents=True, exist_ok=True)
+    STATE.write_text(json.dumps(state, indent=2, sort_keys=True), encoding="utf-8")
+
+
+def render(rel, entry):
+    """The distilled entry as build_index reads it."""
+    lines = [f"source: {rel}"]
+    lines += [f"- {q}" for q in entry["questions"]]
+    if entry.get("summary"):
+        lines.append(f"summary: {entry['summary']}")
+    if entry.get("rule"):
+        lines.append(f"rule: {entry['rule']}")
+    lines.append(f'quote: "{entry["quote"]}"')
+    return "\n".join(lines) + "\n"
+
+
+def distil_one(path, rel, model, prompt_text):
+    """Distil one note. Returns the entry text, or None with the reason said."""
+    body = path.read_text(encoding="utf-8", errors="replace")
+    entry = parse_entry(ask(model, prompt_text, f"file name: {rel}\n\n{body}"))
+    quote = entry.get("quote", "")
+    if not entry["questions"] or not quote:
+        print(f"dropped {rel}: no question or no quote")
+        return None
+    if normalise(quote) not in normalise(body):
+        print(f"dropped {rel}: quote not found in the note")
+        return None
+    return render(rel, entry)
+
+
+def run(corpus, paths=None, limit=None, rebuild=True):
+    """Distil the notes under corpus that have changed. Returns the counts."""
+    corpus = Path(corpus).resolve()
+    if not corpus.is_dir():
+        raise RuntimeError(f"not a folder: {corpus}")
+    prompt_text = PROMPT.read_text(encoding="utf-8")
+    model = model_name()
+    files = [Path(p).resolve() for p in paths] if paths else note_files(corpus)
+
+    state = load_state()
+    counts = {"distilled": 0, "skipped": 0, "dropped": 0}
+    for path in files:
+        if limit is not None and counts["distilled"] + counts["dropped"] >= limit:
+            counts["skipped"] += 1
+            continue
+        rel = path.relative_to(corpus).as_posix()
+        body = path.read_bytes()
+        digest = hashlib.sha256(body).hexdigest()
+        known = state.get(rel)
+        slug = slug_for(rel)
+        if known and known.get("sha256") == digest and (DISTILLED / slug).is_file():
+            counts["skipped"] += 1
+            continue
+        try:
+            text = distil_one(path, rel, model, prompt_text)
+        except Exception as exc:  # one bad note never stops the run
+            print(f"dropped {rel}: {type(exc).__name__} {exc}")
+            counts["dropped"] += 1
+            continue
+        if text is None:
+            counts["dropped"] += 1
+            continue
+        DISTILLED.mkdir(parents=True, exist_ok=True)
+        (DISTILLED / slug).write_text(text, encoding="utf-8")
+        state[rel] = {"sha256": digest, "slug": slug}
+        counts["distilled"] += 1
+        print(f"distilled {rel} -> distilled/{slug}")
+    save_state(state)
+
+    print(
+        f"distilled {counts['distilled']}, skipped {counts['skipped']}, "
+        f"dropped {counts['dropped']}"
+    )
+    if rebuild and counts["distilled"]:
+        rebuild_index(corpus)
+    return counts
+
+
+def rebuild_index(corpus):
+    """Rebuild the index over a folder. The index is disposable, always."""
+    subprocess.run(
+        [sys.executable, str(HERE / "build_index.py"), "--corpus", str(corpus)],
+        check=False,
+    )
+
+
+def main():
+    utf8_out()
+    ap = argparse.ArgumentParser(description="Distil notes into questions.")
+    ap.add_argument("corpus", help="the folder your markdown notes are in")
+    ap.add_argument("--limit", type=int, default=None, help="stop after N notes")
+    args = ap.parse_args()
+    try:
+        run(args.corpus, limit=args.limit)
+    except Exception as exc:
+        sys.exit(f"distil: {exc}")
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+================================================
+FILE: rag/hooks.json
+================================================
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"${CLAUDE_PROJECT_DIR}/memory-starter/rag/recall_hook.py\"",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+
+================================================
+FILE: rag/recall_hook.py
+================================================
+"""UserPromptSubmit hook: your notes, read before Claude answers.
+
+Claude Code hands this hook the prompt on stdin as JSON. It runs the same two
+legs as search.py and hands the top hits back as additionalContext.
+
+It never blocks a prompt. No index, no prompt, no hits, or any failure at all,
+and it prints nothing and exits 0.
+"""
+
+import json
+import sqlite3
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+
+DB = HERE / "rag.db"
+TOP = 5
+BUDGET = 1500  # characters of context in total
+PER_HIT = 280  # characters of chunk text per hit
+
+
+def hits(query):
+    """The top rows for a query, as (label, one-line text) pairs."""
+    from search import fuse, keyword_leg, meaning_leg
+
+    db = sqlite3.connect(DB)
+    try:
+        legs = {"keyword": keyword_leg(db, query)}
+        meaning = meaning_leg(db, query)
+        if meaning is not None:
+            legs["meaning"] = meaning
+        ranked, _ = fuse(legs)
+        out = []
+        for rowid in ranked[:TOP]:
+            file, section, text = db.execute(
+                "SELECT file, section, text FROM chunks WHERE id=?", (rowid,)
+            ).fetchone()
+            out.append((f"[{file} § {section}]", " ".join(text.split())))
+        return out
+    finally:
+        db.close()
+
+
+def block(found):
+    """The hits trimmed to the budget. Whole hits only, never a half one."""
+    kept, used = [], 0
+    for label, text in found:
+        piece = text[:PER_HIT] + ("..." if len(text) > PER_HIT else "")
+        entry = f"{label}\n{piece}"
+        if kept and used + len(entry) > BUDGET:
+            break
+        kept.append(entry)
+        used += len(entry) + 2
+    return kept
+
+
+def main():
+    try:
+        prompt = json.load(sys.stdin).get("prompt", "")
+    except Exception:
+        return
+    if not isinstance(prompt, str) or not prompt.strip() or not DB.is_file():
+        return
+    try:
+        kept = block(hits(prompt))
+    except Exception:
+        return
+    if not kept:
+        return
+    count = len(kept)
+    print(
+        json.dumps(
+            {
+                "systemMessage": f"memory: {count} hit{'' if count == 1 else 's'}",
+                "hookSpecificOutput": {
+                    "hookEventName": "UserPromptSubmit",
+                    "additionalContext": "From your notes:\n\n" + "\n\n".join(kept),
+                },
+            }
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()
+    sys.exit(0)
+
+
+
+================================================
+FILE: rag/search.py
+================================================
+"""Search the index: keyword leg + meaning leg, merged with rank fusion.
+
+Usage: python search.py "your question"
+Prints the top hits with the lines around them, and which leg found each.
+"""
+
+import re
+import sqlite3
+import struct
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+DB = HERE / "rag.db"
+K = 60  # rank fusion smoothing constant
+TOP = 3
+CONTEXT_LINES = 6
+QUERY_PREFIX = "Represent this sentence for searching relevant passages: "  # bge query instruction
+
+
+STOPWORDS = {
+    "a", "an", "and", "are", "at", "can", "do", "does", "for", "how", "i",
+    "in", "is", "it", "my", "of", "on", "or", "our", "the", "to", "we",
+    "what", "when", "where", "who", "why", "with", "you", "your",
+}
+
+
+def keyword_leg(db, query):
+    terms = [t for t in re.findall(r"\w+", query.lower()) if t not in STOPWORDS]
+    if not terms:
+        return []
+    match = " OR ".join(f'"{t}"' for t in terms)
+    rows = db.execute(
+        "SELECT rowid FROM chunks_fts WHERE chunks_fts MATCH ? ORDER BY bm25(chunks_fts) LIMIT 10",
+        (match,),
+    ).fetchall()
+    return [r[0] for r in rows]
+
+
+def meaning_leg(db, query):
+    try:
+        from fastembed import TextEmbedding
+    except ImportError:
+        return None
+    rows = db.execute("SELECT id, vec FROM vectors").fetchall()
+    if not rows:
+        return None
+    model = TextEmbedding()
+    q = list(model.embed([QUERY_PREFIX + query]))[0]
+    qnorm = sum(x * x for x in q) ** 0.5 or 1.0
+    q = [x / qnorm for x in q]
+    scored = []
+    for rowid, blob in rows:
+        vec = struct.unpack(f"{len(blob) // 4}f", blob)
+        scored.append((sum(a * b for a, b in zip(q, vec)), rowid))
+    scored.sort(reverse=True)
+    return [rowid for _, rowid in scored[:10]]
+
+
+def fuse(legs):
+    scores, found_by = {}, {}
+    for name, ids in legs.items():
+        for rank, rowid in enumerate(ids):
+            scores[rowid] = scores.get(rowid, 0.0) + 1.0 / (K + rank)
+            found_by.setdefault(rowid, []).append(name)
+    ranked = sorted(scores, key=scores.get, reverse=True)
+    return ranked, found_by
+
+
+def show(db, rowid, position, legs):
+    file, section, start, end, text, kind = db.execute(
+        "SELECT file, section, start_line, end_line, text, kind FROM chunks WHERE id=?",
+        (rowid,),
+    ).fetchone()
+    print(f"{position}. [{file} § {section}]  legs: {'+'.join(legs)}")
+    out = []
+    if kind == "distilled":
+        out = text.splitlines()
+    else:
+        corpus = db.execute("SELECT value FROM meta WHERE key='corpus'").fetchone()
+        source = Path(corpus[0]) / file if corpus else HERE.parent / "corpus-before" / file
+        if source.is_file():
+            lines = source.read_text(encoding="utf-8").splitlines()
+            s = max(0, start - 1 - CONTEXT_LINES)
+            e = min(len(lines), end + CONTEXT_LINES)
+            # context lines wear a dot; the chunk itself is bare
+            out = ["· " + l for l in lines[s : start - 1]]
+            out += lines[start - 1 : end]
+            out += ["· " + l for l in lines[end:e]]
+        else:
+            out = text.splitlines()
+    print("\n".join("   " + l for l in out).rstrip())
+    print()
+
+
+def utf8_out():
+    """Write UTF-8 whatever the console's code page is.
+
+    Windows consoles default to cp1252, which cannot encode an arrow, a curly
+    quote or a pound sign, and notes are full of them.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
+
+
+def main():
+    utf8_out()
+    if len(sys.argv) < 2:
+        sys.exit('usage: python search.py "your question"')
+    query = " ".join(sys.argv[1:])
+    if not DB.is_file():
+        sys.exit("no index yet: run python build_index.py first")
+    db = sqlite3.connect(DB)
+
+    legs = {"keyword": keyword_leg(db, query)}
+    meaning = meaning_leg(db, query)
+    if meaning is None:
+        print("meaning leg off (pip install fastembed), keyword only\n")
+    else:
+        legs["meaning"] = meaning
+
+    ranked, found_by = fuse(legs)
+    if not ranked:
+        print("no matches")
+        return
+    for position, rowid in enumerate(ranked[:TOP], start=1):
+        show(db, rowid, position, found_by[rowid])
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+================================================
+FILE: rag/distilled/customer-ops-handbook.md
+================================================
+source: customer-ops-handbook.md
+- who signs off refunds over £500?
+- how fast should a refund be processed?
+summary: Agents refund up to £500 within 48 hours; bigger refunds need the Operations Manager.
+rule: Refunds over £500 need Operations Manager sign-off before Finance pays.
+quote: "Any refund exceeding £500 must be signed off by the Operations Manager before Finance releases the payment."
+
+
+
+================================================
+FILE: rag/distilled/ooo-march-sarah.md
+================================================
+source: ooo-march-sarah.md
+- who has sign-off while Sarah is away in March?
+- who is covering for Sarah during her sabbatical?
+summary: Sarah is out for all of March; Marcus holds her authority.
+rule: Marcus has full authority on ops decisions for March.
+quote: "anything that needs my sign-off goes to Marcus"
+
+
+
+================================================
+FILE: rag/distilled/supplier-notes.md
+================================================
+source: supplier-notes.md
+- who approves supplier spend over £2,000?
+summary: Supplier commitments above £2,000 go to Alex first.
+rule: Anything over £2,000 needs Alex's sign-off before we commit.
+quote: "Anything we commit over £2,000 needs Alex's sign-off first."
+
+
+
+================================================
+FILE: src/build_graph.py
+================================================
+"""Load extraction/*.json into graph.db. Deterministic: same input, same db."""
+import json
+import sqlite3
+import uuid
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DB = ROOT / "graph.db"
+
+
+def normalise(name: str) -> str:
+    return name.lower().strip().replace(" ", "_")
+
+
+def entity_id(type_: str, name: str) -> str:
+    key = f"{type_}:{normalise(name)}"
+    return str(uuid.uuid5(uuid.NAMESPACE_OID, key))
+    # "Ops Manager" in doc 1 and doc 4 -> the same node. No ML, no lookup.
+
+
+def main() -> None:
+    DB.unlink(missing_ok=True)
+    db = sqlite3.connect(DB)
+    db.executescript((ROOT / "src" / "schema.sql").read_text(encoding="utf-8"))
+
+    files = sorted((ROOT / "extraction").glob("*.json"))
+    docs = [json.loads(f.read_text(encoding="utf-8")) for f in files]
+
+    # Pass 1 - every node from every doc, content-addressed.
+    for doc in docs:
+        for n in doc["nodes"]:
+            db.execute(
+                "INSERT OR IGNORE INTO entities VALUES (?,?,?,?,?)",
+                (entity_id(n["type"], n["name"]), n["name"], n["type"],
+                 n.get("description", ""), doc["source_doc"]),
+            )
+
+    by_name = {normalise(name): eid
+               for eid, name in db.execute("SELECT id, name FROM entities")}
+
+    # Pass 2 - edges and aliases, endpoints resolved by normalised name.
+    skipped = []
+    for doc in docs:
+        for e in doc["edges"]:
+            s = by_name.get(normalise(e["source"]))
+            t = by_name.get(normalise(e["target"]))
+            if s and t:
+                db.execute("INSERT INTO relations VALUES (?,?,?,?)",
+                           (s, t, e["predicate"], doc["source_doc"]))
+            else:
+                skipped.append((doc["source_doc"], e))
+        for a in doc.get("aliases", []):
+            eid = by_name.get(normalise(a["entity"]))
+            if eid:
+                db.execute("INSERT INTO aliases VALUES (?,?)", (eid, a["alias"]))
+
+    db.commit()
+    counts = {t: db.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0]  # noqa: S608
+              for t in ("entities", "relations", "aliases")}
+    print(f"built {DB.name}: {counts['entities']} entities, "
+          f"{counts['relations']} relations, {counts['aliases']} aliases "
+          f"from {len(files)} docs")
+    for doc_name, e in skipped:
+        print(f"  skipped edge in {doc_name}: "
+              f"{e['source']} --[{e['predicate']}]--> {e['target']} (unknown endpoint)")
+
+
+if __name__ == "__main__":
+    main()
+
+
+
+================================================
+FILE: src/recall.py
+================================================
+"""Query the graph: seed entities from the question, walk k hops, return triples.
+
+Pure SQLite, no model call anywhere in this file. This is the code that runs
+inside the prompt hook, so it has to be deterministic and fast.
+"""
+import re
+import sqlite3
+import sys
+import time
+from dataclasses import dataclass
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+DB = ROOT / "graph.db"
+
+WALK = """
+WITH RECURSIVE walk(entity_id, depth) AS (
+  SELECT id, 0 FROM entities WHERE id IN ({seeds})
+  UNION
+  SELECT CASE WHEN r.source_id = w.entity_id
+              THEN r.target_id ELSE r.source_id END,
+         w.depth + 1
+  FROM relations r JOIN walk w
+    ON w.entity_id IN (r.source_id, r.target_id)
+  WHERE w.depth < ?
+)
+SELECT e1.name, r.predicate, e2.name, r.source_doc,
+       MIN((SELECT MIN(depth) FROM walk WHERE entity_id = r.source_id),
+           (SELECT MIN(depth) FROM walk WHERE entity_id = r.target_id)) AS near
+FROM relations r
+JOIN entities e1 ON e1.id = r.source_id
+JOIN entities e2 ON e2.id = r.target_id
+WHERE r.source_id IN (SELECT entity_id FROM walk)
+  AND r.target_id IN (SELECT entity_id FROM walk)
+ORDER BY near
+"""
+
+
+@dataclass
+class Facts:
+    triples: list  # (source, predicate, target, source_doc)
+    notes: list  # (entity_name, description) for entities in the triples
+    ms: float
+
+    def as_text(self) -> str:
+        header = f"memory: {len(self.triples)} facts recalled in {self.ms:.0f} ms"
+        if not self.triples:
+            return header + "\n(no memory matches for this prompt)"
+        width = max(len(f"{s} --[{p}]--> {t}") for s, p, t, _ in self.triples)
+        lines = [f"{f'{s} --[{p}]--> {t}':<{width}}   ({doc})"
+                 for s, p, t, doc in self.triples]
+        text = header + "\n\n" + "\n".join(lines)
+        if self.notes:
+            # The conditions live on the entities, not the edges - carry them.
+            text += "\n\nwhere:\n" + "\n".join(
+                f"  {name}: {desc}" for name, desc in self.notes)
+        return text
+
+
+def _seeds(db: sqlite3.Connection, question: str) -> list:
+    """An entity is a seed when its name or an alias appears in the question."""
+    q = question.lower()
+    found = {}
+    rows = list(db.execute("SELECT id, name FROM entities"))
+    rows += list(db.execute("SELECT entity_id, alias FROM aliases"))
+    for eid, text in rows:
+        if re.search(rf"\b{re.escape(text.lower())}\b", q):
+            found[eid] = True
+    return list(found)
+
+
+def recall(question: str, hops: int = 3, top_k: int = 8) -> Facts:
+    t0 = time.perf_counter()
+    db = sqlite3.connect(DB)
+    seeds = _seeds(db, question)
+    if not seeds:
+        return Facts([], [], (time.perf_counter() - t0) * 1000)
+    marks = ",".join("?" * len(seeds))
+    rows = db.execute(WALK.format(seeds=marks), (*seeds, hops)).fetchall()
+    triples = [(s, p, t, doc) for s, p, t, doc, _ in rows[:top_k]]
+    names = {n for s, _, t, _ in triples for n in (s, t)}
+    marks = ",".join("?" * len(names))
+    notes = db.execute(
+        f"SELECT name, description FROM entities "  # noqa: S608
+        f"WHERE name IN ({marks}) AND description != '' ORDER BY name",
+        (*names,)).fetchall()
+    return Facts(triples, notes, (time.perf_counter() - t0) * 1000)
+
+
+if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8")  # Windows consoles default to cp1252
+    question = " ".join(sys.argv[1:]) or "what do we know?"
+    print(recall(question).as_text())
+
+
+
+================================================
+FILE: src/recall_hook.py
+================================================
+"""UserPromptSubmit hook. additionalContext is the injection."""
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from recall import recall
+
+prompt = json.load(sys.stdin).get("prompt", "")
+facts = recall(prompt, hops=3, top_k=8)
+text = facts.as_text()
+
+print(json.dumps({
+    "systemMessage": text.split("\n")[0],  # shown to the user at submit
+    "hookSpecificOutput": {
+        "hookEventName": "UserPromptSubmit",
+        "additionalContext": text,
+    }
+}))
+
+
+
+================================================
+FILE: src/schema.sql
+================================================
+CREATE TABLE entities  (id TEXT PRIMARY KEY,   -- uuid5(type + normalised name)
+                        name TEXT, type TEXT,
+                        description TEXT, source_doc TEXT);
+CREATE TABLE relations (source_id TEXT, target_id TEXT,
+                        predicate TEXT, source_doc TEXT);
+CREATE TABLE aliases   (entity_id TEXT, alias TEXT);

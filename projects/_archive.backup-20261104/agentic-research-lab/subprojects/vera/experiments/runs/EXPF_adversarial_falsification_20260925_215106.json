@@ -1,0 +1,128 @@
+{
+  "experiment": "F_adversarial_falsification",
+  "timestamp": "2026-09-25T21:51:02.888780",
+  "fingerprint": "44172cafee34",
+  "candidates_tested": 1,
+  "verdicts": [
+    {
+      "candidate_id": "vera-expf-final-001",
+      "rule": "When all candidates in a reflection batch pass adversarial falsification plus post-promotion audit, promote them in the same gate cycle and record pairwise-redundancy lessons as meta-candidates about the pipeline itself.",
+      "evidence_ids": [
+        "00_agent_memory_hierarchies",
+        "00_automated_peer_review_and_self_correction",
+        "00_agent_error_taxonomy_debugging_web_research"
+      ],
+      "verdict": "pass_falsification",
+      "scores": {
+        "grounding_score": 1.0,
+        "logical_consistency": 1.0,
+        "external_verifiability": 0.667
+      },
+      "falsification": {
+        "F1_counterfactual_ablation": {
+          "nodes_tested": 3,
+          "avg_evidence_retention": 0.542,
+          "fragility_score": 0.458,
+          "status": "partial",
+          "per_node": {
+            "00_agent_memory_hierarchies": {
+              "lost_in_results": true,
+              "evidence_retention": 0.5,
+              "baseline_size": 8,
+              "after_size": 7,
+              "removed_query": "agentic agents context-engineering evaluation memory planning"
+            },
+            "00_automated_peer_review_and_self_correction": {
+              "lost_in_results": true,
+              "evidence_retention": 0.125,
+              "baseline_size": 8,
+              "after_size": 8,
+              "removed_query": "agentic agents context-engineering icm memory planning"
+            },
+            "00_agent_error_taxonomy_debugging_web_research": {
+              "lost_in_results": true,
+              "evidence_retention": 1.0,
+              "baseline_size": 8,
+              "after_size": 8,
+              "removed_query": "agentic agents context-engineering evaluation icm memory"
+            }
+          },
+          "cause_diagnostics": {
+            "baseline_top_terms": [
+              "agentic",
+              "agents",
+              "context-engineering",
+              "evaluation",
+              "icm",
+              "memory"
+            ],
+            "term_holders": {
+              "agentic": [
+                "00_agent_error_taxonomy_debugging_web_research",
+                "00_agent_memory_hierarchies",
+                "00_automated_peer_review_and_self_correction"
+              ],
+              "agents": [
+                "00_agent_error_taxonomy_debugging_web_research",
+                "00_agent_memory_hierarchies"
+              ],
+              "context-engineering": [
+                "00_agent_error_taxonomy_debugging_web_research",
+                "00_agent_memory_hierarchies"
+              ],
+              "evaluation": [
+                "00_automated_peer_review_and_self_correction"
+              ],
+              "icm": [
+                "00_agent_memory_hierarchies"
+              ],
+              "memory": [
+                "00_agent_error_taxonomy_debugging_web_research",
+                "00_agent_memory_hierarchies"
+              ]
+            },
+            "load_bearing_terms": {
+              "evaluation": [
+                "00_automated_peer_review_and_self_correction"
+              ],
+              "icm": [
+                "00_agent_memory_hierarchies"
+              ]
+            },
+            "covered_terms": {
+              "agentic": [
+                "00_agent_error_taxonomy_debugging_web_research",
+                "00_agent_memory_hierarchies",
+                "00_automated_peer_review_and_self_correction"
+              ],
+              "agents": [
+                "00_agent_error_taxonomy_debugging_web_research",
+                "00_agent_memory_hierarchies"
+              ],
+              "context-engineering": [
+                "00_agent_error_taxonomy_debugging_web_research",
+                "00_agent_memory_hierarchies"
+              ],
+              "memory": [
+                "00_agent_error_taxonomy_debugging_web_research",
+                "00_agent_memory_hierarchies"
+              ]
+            },
+            "fragility_risk": "high",
+            "revision_advice": "fragile: 'evaluation' held only by 00_automated_peer_review_and_self_correction, 'icm' held only by 00_agent_memory_hierarchies is load-bearing — add a second node sharing that tag, or pin query terms"
+          }
+        },
+        "F2_counter_evidence": {
+          "counter_nodes_found": 0,
+          "contradictory_queries": 0,
+          "status": "uncontested"
+        },
+        "F3_defect_injection": {
+          "defects_tested": 5,
+          "avg_drift_score": 0.0,
+          "status": "resilient"
+        }
+      }
+    }
+  ]
+}

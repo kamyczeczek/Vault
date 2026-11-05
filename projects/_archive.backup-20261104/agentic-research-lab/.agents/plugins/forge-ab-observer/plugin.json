@@ -1,0 +1,5 @@
+{
+  "name": "forge-ab-observer",
+  "version": "0.1.0",
+  "description": "Read-only A/B instrumentation for the forge-guardrails hooks ON/OFF experiment (PreToolUseResult audit + prompt capture). Never blocks."
+}

@@ -1,0 +1,78 @@
+S-47 Diverse Mini Suite (6 tasks, W=5, 5+subband/pooled contrasts)
+ task etth1_H96          H= 96 n=2600
+ task seasonal_H48       H= 48 n=2600
+ task trending_H48       H= 48 n=2600
+ task spiky_H48          H= 48 n=2600
+ task ou_H24             H= 24 n=2600
+ task multiscale_H96     H= 96 n=2600
+
+-- etth1_H96 H=96 --
+  nlinear_a1             MAE 3.1933
+  nlinear_a10            MAE 3.1934
+  rff_h64                MAE 4.4286
+  subband_cA1            MAE 3.1977
+  subband_d1             MAE 3.7370
+  wavelet_pooled         MAE 4.2062
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 8.3560
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 6.6128
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 7.4476
+
+-- seasonal_H48 H=48 --
+  nlinear_a1             MAE 0.1272
+  nlinear_a10            MAE 0.1265
+  rff_h64                MAE 0.8777
+  subband_cA1            MAE 0.1263
+  subband_d1             MAE 1.0436
+  wavelet_pooled         MAE 1.1032
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.6910
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.6895
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.6901
+
+-- trending_H48 H=48 --
+  nlinear_a1             MAE 0.8581
+  nlinear_a10            MAE 0.8571
+  rff_h64                MAE 1.0585
+  subband_cA1            MAE 0.8539
+  subband_d1             MAE 0.8893
+  wavelet_pooled         MAE 0.9271
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 5.4307
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 4.9007
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 5.1417
+
+-- spiky_H48 H=48 --
+  nlinear_a1             MAE 0.4874
+  nlinear_a10            MAE 0.4869
+  rff_h64                MAE 0.6620
+  subband_cA1            MAE 0.4786
+  subband_d1             MAE 0.5407
+  wavelet_pooled         MAE 0.6508
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.4437
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.4437
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.4437
+
+-- ou_H24 H=24 --
+  nlinear_a1             MAE 0.8190
+  nlinear_a10            MAE 0.8201
+  rff_h64                MAE 1.0408
+  subband_cA1            MAE 0.8256
+  subband_d1             MAE 0.8538
+  wavelet_pooled         MAE 1.0250
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.7794
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.7794
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.7795
+
+-- multiscale_H96 H=96 --
+  nlinear_a1             MAE 0.2135
+  nlinear_a10            MAE 0.2128
+  rff_h64                MAE 0.8880
+  subband_cA1            MAE 0.2105
+  subband_d1             MAE 0.9463
+  wavelet_pooled         MAE 1.1145
+  Pool A ['nlinear_a1', 'nlinear_a10', 'rff_h64'] blend 0.7319
+  Pool B ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'subband_cA1', 'subband_d1'] blend 0.7302
+  Pool C ['nlinear_a1', 'nlinear_a10', 'rff_h64', 'wavelet_pooled'] blend 0.7315
+
+=== Aggregate ===
+meanA 2.7388 meanB 2.3594 meanC 2.5390
+wins B over A 4/6  mean_rankB 1.33
+Gates G1 True G2 True G3 True all True -> PROMOTE subband family

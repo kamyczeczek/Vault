@@ -1,0 +1,137 @@
+{
+  "slice": "S-37-sparse-subset-multivariate-nlinear",
+  "harness_command": "projects/ts-ml-experiments/h720/sub_experiments/multivariate_nlinear_s37/rolling_arm.py",
+  "pool": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10",
+    "mv_nlinear_L336_a1_ot_hufl",
+    "mv_nlinear_L336_a1_ot_lufl",
+    "mv_nlinear_L336_a1_ot_all7",
+    "mv_nlinear_L336_a10_ot_hufl",
+    "mv_nlinear_L336_a10_ot_lufl",
+    "mv_nlinear_L336_a10_ot_all7"
+  ],
+  "trace": [
+    {
+      "iter": 0,
+      "cur": [
+        "nlinear_L336_a1"
+      ],
+      "fast": 2.5205846911461407,
+      "true": 2.8448050201242285,
+      "alpha": 0.1,
+      "best_fast": 2.5205706315314473,
+      "best_set": [
+        "nlinear_L336_a10"
+      ]
+    },
+    {
+      "iter": 1,
+      "cur": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10"
+      ],
+      "fast": 2.5224798283169374,
+      "true": 2.5224798283169374,
+      "alpha": 3000.0,
+      "best_fast": 2.5205706315314473,
+      "best_set": [
+        "nlinear_L336_a10"
+      ]
+    },
+    {
+      "iter": 2,
+      "cur": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "mv_nlinear_L336_a10_ot_hufl"
+      ],
+      "fast": 2.526258848036829,
+      "true": 2.526258848036829,
+      "alpha": 3000.0,
+      "best_fast": 2.5205706315314473,
+      "best_set": [
+        "nlinear_L336_a10"
+      ]
+    },
+    {
+      "iter": 3,
+      "cur": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "mv_nlinear_L336_a1_ot_hufl"
+      ],
+      "fast": 2.526286506648046,
+      "true": 2.8371931140388935,
+      "alpha": 300.0,
+      "best_fast": 2.5205706315314473,
+      "best_set": [
+        "nlinear_L336_a10"
+      ]
+    },
+    {
+      "iter": 4,
+      "cur": [
+        "nlinear_L336_a1",
+        "nlinear_L336_a10",
+        "mv_nlinear_L336_a1_ot_hufl",
+        "mv_nlinear_L336_a10_ot_hufl"
+      ],
+      "fast": 2.5328822800129593,
+      "true": 2.5328822800129593,
+      "alpha": 3000.0,
+      "best_fast": 2.5205706315314473,
+      "best_set": [
+        "nlinear_L336_a10"
+      ]
+    }
+  ],
+  "best_subset": [
+    "nlinear_L336_a10"
+  ],
+  "best_idx": [
+    1
+  ],
+  "best_alpha": 0.1,
+  "validation": {
+    "refit_all_val_mae": 2.8448,
+    "alpha_scores_second_half": {},
+    "selected_alpha": 0.1
+  },
+  "test": {
+    "rolling_mae": 2.0244,
+    "rolling_rmse": 2.5175,
+    "disjoint_windows": {
+      "window_1": {
+        "mae": 2.5459417187621987,
+        "rmse": 3.027264818044012
+      },
+      "window_2": {
+        "mae": 1.3645459584822615,
+        "rmse": 1.672019503912397
+      },
+      "window_3": {
+        "mae": 2.0011762887486992,
+        "rmse": 2.480772725134422
+      },
+      "window_4": {
+        "mae": 2.0520260245472057,
+        "rmse": 2.709234523104372
+      }
+    },
+    "delta_vs_s26": 0.0335
+  },
+  "transfer": {
+    "delta": -0.8204,
+    "cap": 0.01,
+    "pass": true
+  },
+  "acceptance": {
+    "verdict": "REJECT",
+    "full_mae_pass": false,
+    "disjoint_pass": false,
+    "transfer_pass": true
+  },
+  "protocol": "S-20-clean: val members frozen on 8545, test members refrozen on 11425",
+  "plan_impact": "No change; S-26 1.9909/2.4710 remains terminal."
+}

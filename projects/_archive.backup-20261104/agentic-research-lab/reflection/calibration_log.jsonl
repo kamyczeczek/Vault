@@ -1,0 +1,80 @@
+{"timestamp": "2026-09-25T06:14:29.853398", "rule_id": "bm25_agentic_search_reflection", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T06:14:29.853398", "rule_id": "causal-falsification-loops", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T06:14:29.853398", "rule_id": "research-quality-external-grounding", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T06:14:29.853398", "rule_id": "research-breadth-retrieval-first", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T06:14:29.853398", "rule_id": "research-depth-skeletal-triples", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:39:11.610095", "rule_id": "bm25_agentic_search_reflection", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:39:11.611093", "rule_id": "causal-falsification-loops", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:39:11.611093", "rule_id": "research-quality-external-grounding", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:39:11.611093", "rule_id": "research-breadth-retrieval-first", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:39:11.611093", "rule_id": "research-depth-skeletal-triples", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:40:21.254028", "rule_id": "bm25_agentic_search_reflection", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:40:21.254028", "rule_id": "causal-falsification-loops", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:40:21.254028", "rule_id": "research-quality-external-grounding", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:40:21.254028", "rule_id": "research-breadth-retrieval-first", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:40:21.255029", "rule_id": "research-depth-skeletal-triples", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:48:19.793480", "rule_id": "bm25_agentic_search_reflection", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:48:19.793480", "rule_id": "causal-falsification-loops", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:48:19.793480", "rule_id": "research-quality-external-grounding", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:48:19.793480", "rule_id": "research-breadth-retrieval-first", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:48:19.793480", "rule_id": "research-depth-skeletal-triples", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:50:08.176339", "rule_id": "bm25_agentic_search_reflection", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:50:08.176339", "rule_id": "causal-falsification-loops", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:50:08.176339", "rule_id": "research-quality-external-grounding", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:50:08.176339", "rule_id": "research-breadth-retrieval-first", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:50:08.176339", "rule_id": "research-depth-skeletal-triples", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T19:50:08.176339", "rule_id": "vera-expa-003", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:09:05.578368", "rule_id": "bm25_agentic_search_reflection", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:09:05.578368", "rule_id": "causal-falsification-loops", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:09:05.578368", "rule_id": "research-quality-external-grounding", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:09:05.578368", "rule_id": "research-breadth-retrieval-first", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:09:05.578368", "rule_id": "research-depth-skeletal-triples", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:09:05.578368", "rule_id": "vera-expa-003", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:22:37.320643", "rule_id": "bm25_agentic_search_reflection", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:22:37.320643", "rule_id": "causal-falsification-loops", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:22:37.320643", "rule_id": "research-quality-external-grounding", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:22:37.320643", "rule_id": "research-breadth-retrieval-first", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:22:37.320643", "rule_id": "research-depth-skeletal-triples", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:22:37.320643", "rule_id": "vera-expa-003", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:22:37.320643", "rule_id": "vera-expa-002", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:22:37.320643", "rule_id": "vera-expa-001", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:22:37.320643", "rule_id": "vera-expa-004", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:34:12.104018", "rule_id": "bm25_agentic_search_reflection", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:34:12.104018", "rule_id": "causal-falsification-loops", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:34:12.104018", "rule_id": "research-quality-external-grounding", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:34:12.104018", "rule_id": "research-breadth-retrieval-first", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:34:12.104018", "rule_id": "research-depth-skeletal-triples", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:34:12.104018", "rule_id": "vera-expa-003", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:34:12.104018", "rule_id": "vera-expa-002", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:34:12.104018", "rule_id": "vera-expa-001", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T20:34:12.104018", "rule_id": "vera-expa-004", "status": "valid", "unresolved_evidence": []}
+{"timestamp": "2026-09-25T21:04:16.602342", "rule_id": "bm25_agentic_search_reflection", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:04:16.602342", "rule_id": "causal-falsification-loops", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:04:16.602342", "rule_id": "research-quality-external-grounding", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:04:16.602342", "rule_id": "research-breadth-retrieval-first", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:04:16.602342", "rule_id": "research-depth-skeletal-triples", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:04:16.602342", "rule_id": "vera-expa-003", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:04:16.602342", "rule_id": "vera-expa-002", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:04:16.602342", "rule_id": "vera-expa-001", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:04:16.602342", "rule_id": "vera-expa-004", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:11:23.795144", "rule_id": "bm25_agentic_search_reflection", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:11:23.795144", "rule_id": "causal-falsification-loops", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:11:23.795144", "rule_id": "research-quality-external-grounding", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:11:23.795144", "rule_id": "research-breadth-retrieval-first", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:11:23.795144", "rule_id": "research-depth-skeletal-triples", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:11:23.795144", "rule_id": "vera-expa-003", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:11:23.795144", "rule_id": "vera-expa-002", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:11:23.795144", "rule_id": "vera-expa-001", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:11:23.795144", "rule_id": "vera-expa-004", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "bm25_agentic_search_reflection", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "causal-falsification-loops", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "research-quality-external-grounding", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "research-breadth-retrieval-first", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "research-depth-skeletal-triples", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "vera-expa-003", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "vera-expa-002", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "vera-expa-001", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "vera-expa-004", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "vera-expf-rev-001", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "vera-expf-rev-002", "status": "valid", "unresolved_evidence": [], "score": 1.0}
+{"timestamp": "2026-09-25T21:59:10.400896", "rule_id": "vera-expf-final-001", "status": "valid", "unresolved_evidence": [], "score": 1.0}

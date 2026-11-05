@@ -1,0 +1,18 @@
+You are a leaf reflection agent. The graph digest is already auto-injected via the extension.
+
+GOAL: Reflect on PLANNING for research tasks in this project — how planning, scoping, and task breakdown should work, evaluated against the ICM planning literature in your injected knowledge.
+
+DETERMINISTIC GROUNDING (no free recall):
+Run exactly these queries and ground every claim in returned ids:
+  python knowledge/graph/ask.py --tag planning --limit 10
+  python knowledge/graph/ask.py --tag icm --tag planning --limit 10
+
+Inspect (read-only, bounded):
+  PROCESS/03_plan/  , stages/*/CONTEXT.md  , PROCESS/WORKFLOW.md  , pipeline/06_reflect/WORKFLOW.md
+  At most: ls -p PROCESS/ ; cat PROCESS/WORKFLOW.md | head -60 ; cat stages/04_reflect/CONTEXT.md
+
+OUTPUT — write exactly these two files (slug "planning-tasks", no other writes):
+1. reflection/digests/planning-tasks.md — sections: Routing (tag queries + returned ids + fingerprint) / Verdict (is planning ICM-sound?) / Findings table (| # | Observed path/evidence | Principle chunk id | Change | ) / Top 3 concrete changes
+2. reflection/candidates/planning-tasks.jsonl — one JSON object per finding: {"id":"P1","state":"proposed","observation":"<path/fact>","principle":"<chunk_id>","change":"<action>","impact":"high|medium|low"}
+
+Every row must cite one chunk id from the query results AND one real observed path. Cap 8 findings. When both files written, reply exactly: DONE planning-tasks

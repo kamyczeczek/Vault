@@ -1,0 +1,80 @@
+{
+  "daily": {
+    "mae": 1.672,
+    "rmse": 2.1719
+  },
+  "identity_gate": {
+    "parent_direct_t0_mae": 1.5923,
+    "parent_t0_mae": 1.5923,
+    "pass": true,
+    "res_raw_t0_mae": 1.5923
+  },
+  "parent_elm_direct": {
+    "fit_s": 0.21,
+    "mae": 1.5923,
+    "rmse": 1.9823
+  },
+  "persistence": {
+    "mae": 1.7952,
+    "rmse": 2.2503
+  },
+  "rbf_norm168": {
+    "fit_s": 0.4,
+    "mae": 1.6785,
+    "rmse": 2.0747
+  },
+  "rbf_norm720": {
+    "fit_s": 0.41,
+    "mae": 1.7001,
+    "rmse": 2.0889
+  },
+  "rbf_raw": {
+    "fit_s": 0.25,
+    "mae": 1.7271,
+    "rmse": 2.1212
+  },
+  "rbf_raw_h256": {
+    "fit_s": 0.42,
+    "mae": 1.6828,
+    "rmse": 2.0674
+  },
+  "rbf_raw_h32": {
+    "fit_s": 0.22,
+    "mae": 1.6867,
+    "rmse": 2.0762
+  },
+  "rbf_res24": {
+    "fit_s": 0.54,
+    "mae": 1.7581,
+    "rmse": 2.1636
+  },
+  "rbf_res24_norm720": {
+    "fit_s": 0.93,
+    "mae": 1.7357,
+    "rmse": 2.1433
+  },
+  "res_tanh_eq_parent": {
+    "fit_s": 0.25,
+    "mae": 1.5923,
+    "rmse": 1.9823
+  },
+  "res_tanh_m168": {
+    "fit_s": 0.53,
+    "mae": 2.8643,
+    "rmse": 3.3898
+  },
+  "res_tanh_m24": {
+    "fit_s": 0.6,
+    "mae": 1.6683,
+    "rmse": 2.0741
+  },
+  "res_tanh_m24_h256": {
+    "fit_s": 0.6,
+    "mae": 1.7775,
+    "rmse": 2.2108
+  },
+  "weekly168": {
+    "mae": 2.3788,
+    "rmse": 2.902
+  }
+}

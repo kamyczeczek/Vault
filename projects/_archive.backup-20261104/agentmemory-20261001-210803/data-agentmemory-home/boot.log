@@ -1,0 +1,32 @@
+[?25l│
+◇  [32miii-engine process started[39m
+[?25h[?25l│
+◒  Waiting for iii-engine to be ready[1G[J◐  Waiting for iii-engine to be ready[1G[J◓  Waiting for iii-engine to be ready[1G[J◑  Waiting for iii-engine to be ready[1G[J◒  Waiting for iii-engine to be ready[1G[J◇  [32miii-engine is ready[39m
+[?25h[OTel] Traces initialized: engine=ws://localhost:49134, service=agentmemory
+[OTel] Metrics initialized: interval=30000ms
+[OTel] Global fetch instrumentation enabled
+[OTel] Logs initialized: delay=100ms, batch=1
+[OTel] Connected to engine at ws://localhost:49134/otel
+[iii] Worker registered with ID: 1dcb7777-ec9a-4856-98f0-582d7c6934e4
+[agentmemory] Viewer: http://localhost:3113
+│
+◇  agentmemory v[1m[33m0.9.29[39m[22m ───────────────────────────────────────────────╮
+│                                                                     │
+│  [1mREST API[22m     [36mhttp://localhost:3111[39m                                 │
+│  [1mViewer[22m       [36mhttp://localhost:3113[39m                                 │
+│  [1mStreams[22m      [36mws://localhost:3112[39m                                   │
+│  [1mEngine[22m       [36mws://localhost:49134[39m                                  │
+│  [1miii console[22m  [2m(install: # PowerShell:                               │
+│    $env:VERSION = "0.11.2"                                          │
+│    iwr -useb https://install.iii.dev/iii/main/install.sh -OutFile   │
+│  install.sh                                                         │
+│    bash install.sh   # WSL or Git Bash required                     │
+│  # Or grab the pinned release directly:                             │
+│    https://github.com/iii-hq/iii/releases/tag/iii%2Fv0.11.2)[22m        │
+│                                                                     │
+├─────────────────────────────────────────────────────────────────────╯
+
+[2mTry:[22m [1m[36mnpx @agentmemory/agentmemory demo[39m[22m
+[iii] Reconnecting in 830ms (attempt 1)...
+[OTel] Disconnected from engine, will reconnect...
+[OTel] Reconnecting in 1094ms (attempt 1)...

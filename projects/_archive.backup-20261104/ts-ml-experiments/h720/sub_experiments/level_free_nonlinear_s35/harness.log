@@ -1,0 +1,50 @@
+collecting P_val for 14 candidates (val 2161 origins)...
+  nlinear_L96_a1            L= 96 ok (2161, 720) 0.6s
+  nlinear_L96_a10           L= 96 ok (2161, 720) 0.5s
+  nlinear_L96_a100          L= 96 ok (2161, 720) 0.5s
+  nlinear_L336_a1           L=336 ok (2161, 720) 0.6s
+  nlinear_L336_a10          L=336 ok (2161, 720) 0.6s
+  nlinear_L720_a1           L=720 ok (2161, 720) 1.5s
+  dlinear_L96_k25_a0        L= 96 ok (2161, 720) 1.8s
+  dlinear_L96_k49_a0        L= 96 ok (2161, 720) 1.8s
+  dlinear_L336_k25_a0       L=336 ok (2161, 720) 3.2s
+  dlinear_L336_k49_a0       L=336 ok (2161, 720) 3.2s
+  rlinear_L96_a0            L= 96 ok (2161, 720) 0.9s
+  rlinear_L336_a0           L=336 ok (2161, 720) 1.4s
+  rf_L336_h32_a100          L=336 ok (2161, 720) 2.2s
+  rf_L336_h64_a1000         L=336 ok (2161, 720) 4.4s
+  nlinear_L96_a1            val 2.9742
+  nlinear_L96_a10           val 2.9742
+  nlinear_L96_a100          val 2.9741
+  nlinear_L336_a1           val 2.8970
+  nlinear_L336_a10          val 2.8970
+  nlinear_L720_a1           val 3.0192
+  dlinear_L96_k25_a0        val 3.0108
+  dlinear_L96_k49_a0        val 3.0108
+  dlinear_L336_k25_a0       val 2.9830
+  dlinear_L336_k49_a0       val 2.9830
+  rlinear_L96_a0            val 3.0108
+  rlinear_L336_a0           val 2.9830
+  rf_L336_h32_a100          val 3.1712
+  rf_L336_h64_a1000         val 3.1279
+
+init singleton ['nlinear_L336_a10'] fast 2.5787 true 2.5787
+iter  0 cur ['nlinear_L336_a10', 'rf_L336_h64_a1000'] fast 2.5191 true 2.5186 a=1000.0 best_fast 2.5191 ['nlinear_L336_a10', 'rf_L336_h64_a1000']
+iter  1 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'rf_L336_h64_a1000'] fast 2.5165 true 2.5132 a=30000.0 best_fast 2.5165 ['nlinear_L336_a1', 'nlinear_L336_a10', 'rf_L336_h64_a1000']
+iter  2 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'rf_L336_h32_a100', 'rf_L336_h64_a1000'] fast 2.5181 true 2.5181 a=3000.0 best_fast 2.5165 ['nlinear_L336_a1', 'nlinear_L336_a10', 'rf_L336_h64_a1000']
+iter  3 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'rf_L336_h32_a100', 'rf_L336_h64_a1000'] fast 2.5163 true 2.5163 a=3000.0 best_fast 2.5163 ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'rf_L336_h32_a100', 'rf_L336_h64_a1000']
+iter  4 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'rf_L336_h64_a1000'] fast 2.5208 true 2.5208 a=3000.0 best_fast 2.5163 ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'rf_L336_h32_a100', 'rf_L336_h64_a1000']
+iter  5 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'rf_L336_h32_a100'] fast 2.5225 true 2.5225 a=3000.0 best_fast 2.5163 ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'rf_L336_h32_a100', 'rf_L336_h64_a1000']
+iter  6 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'rf_L336_h32_a100'] fast 2.5224 true 2.5224 a=3000.0 best_fast 2.5163 ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'rf_L336_h32_a100', 'rf_L336_h64_a1000']
+iter  7 cur ['nlinear_L336_a1', 'nlinear_L336_a10'] fast 2.5225 true 2.5225 a=3000.0 best_fast 2.5163 ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'rf_L336_h32_a100', 'rf_L336_h64_a1000']
+iter  8 cur ['nlinear_L336_a1', 'rf_L336_h64_a1000'] fast 2.5191 true 2.5191 a=3000.0 best_fast 2.5163 ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'rf_L336_h32_a100', 'rf_L336_h64_a1000']
+  no improve 5 iters -> stop
+
+best subset fast 2.5163: ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'rf_L336_h32_a100', 'rf_L336_h64_a1000']
+refit all val MAE 2.8346 held_out 2.5163 alpha 3000.0
+
+S-26 Incumbent MAE 1.9909 / RMSE 2.4710
+S-35 Best Subset: ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'rf_L336_h32_a100', 'rf_L336_h64_a1000'] alpha=3000.0
+S-35 Test Disjoint MAE 2.0869, Full Rolling MAE 2.0112 / RMSE 2.4935 -> REJECTED (delta +0.0203)
+Val->test transfer: held_out 2.5163 val_full 2.8346 full 2.0112 (incumbent val_full 2.8527 held 2.5191)
+wrote C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\level_free_nonlinear_s35\results_s35.json elapsed 401.7s

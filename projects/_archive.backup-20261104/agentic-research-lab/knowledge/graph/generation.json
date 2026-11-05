@@ -1,0 +1,37 @@
+{
+  "schema_version": 2,
+  "generation_id": "4880aab33ca4",
+  "corpus_fingerprint": "4880aab33ca4",
+  "nodes": 10373,
+  "edges": 13457,
+  "created_at": 1791116392.6748893,
+  "tag_filter": {
+    "dropped_tag_types": 120,
+    "exempt_registered": [
+      "agentic",
+      "agents",
+      "anti-leakage",
+      "audit",
+      "benchmark",
+      "code-generation",
+      "context-engineering",
+      "determinism",
+      "evaluation",
+      "eviction",
+      "icm",
+      "knowledge-graph"
+    ],
+    "dropped_tag_types_sample": [
+      "ACMEWidget",
+      "Aircraft",
+      "Batch",
+      "BatchEvalRunner",
+      "Blip",
+      "Book",
+      "Class",
+      "Cont",
+      "Customer",
+      "Detections"
+    ]
+  }
+}

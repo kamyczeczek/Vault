@@ -1,0 +1,14 @@
+{"question":"What taxonomies are proposed for classifying scientific agents?","expect":1}
+{"question":"How do multi-agent architectures divide research labor across hypothesis generation, experimentation, and analysis?","expect":1}
+{"question":"What failure modes are commonly documented for autonomous research systems?","expect":1}
+{"question":"What components distinguish an interactive, extensible research-agent framework?","expect":1}
+{"question":"What does the literature say about human oversight in AI-assisted scientific research?","expect":1}
+{"question":"zzzz_nonexistent_quality_control","expect":0}
+{"question":"agent","expect":1}
+{"question":"research breadth coverage literature search retrieval","expect":1}
+{"question":"automated peer review self-correction grounding verification","expect":1}
+{"question":"How should research findings be verified before promotion","expect":1}
+{"question":"Does retrieval or write strategy matter more for accuracy","expect":1}
+{"question":"How should reusable lessons from failures be recorded","expect":1}
+{"question":"How should candidate robustness be evaluated before promotion via adversarial falsification","expect":1}
+{"question":"How are accepted rules audited after promotion against held-out questions","expect":1}

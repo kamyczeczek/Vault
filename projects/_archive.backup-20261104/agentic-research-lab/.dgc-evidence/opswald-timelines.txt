@@ -1,0 +1,259 @@
+![Opswald](/logo-icon.png) Opswald
+
+Blog Contact Request Early Access →
+
+✕ Blog Contact Request Early Access →
+
+← Back to blog
+
+# Why Agent Debugging Needs Decision Graphs, Not Just Timelines
+
+Timelines show order. Decision graphs show causality. Agent debugging needs
+both.
+
+By Opswald Team • April 9, 2026 • 12 min read
+
+**Short answer:** Agent debugging needs decision graphs because the hardest
+failures are causal, not chronological. Timelines show when model calls and
+tool calls happened; AI agent debugging also needs the evidence, skipped
+branches, and assumptions that explain why the agent chose a path.
+
+For teams instrumenting this layer, the OpenTelemetry GenAI semantic
+conventions provide trace vocabulary for model and tool spans, and the OpenAI
+Agents SDK tracing guide shows how agent runs can be captured as traces.
+
+A timeline is the first thing most developers want when an AI agent fails. It
+feels concrete: model call, tool call, tool result, model call, final answer.
+You can scroll through events, check timestamps, and find the red span. For
+simple systems, that may be enough.
+
+For agents, it is not. Agents do not only execute steps in order. They make
+decisions, branch, retry, summarize context, choose tools, skip alternatives,
+and act on assumptions. A timeline shows sequence. An **AI agent decision
+graph** shows causality.
+
+Use a fictional Northstar Outfitters refunds agent as the example. The agent
+can inspect orders, read policy, check shipment state, issue refunds, add
+notes, and escalate edge cases. A customer asks for a refund on an opened item
+that arrived defective. The correct outcome is original payment refund because
+the defect exception overrides the opened item rule. The agent issues store
+credit instead.
+
+The timeline looks clean. The agent read the order, read policy, checked
+shipment, called the refund tool, and responded to the customer. Nothing
+crashed. Every API returned success. The failure is not visible as a broken
+step. It is visible only when you inspect how one decision depended on
+another.
+
+## What timelines are good at
+
+Timelines are still useful. They answer ordering questions. What happened
+first? How long did it take? Which tool returned an error? Was there a retry?
+Did the model call happen before or after the policy lookup? You need that
+information during incident response.
+
+A timeline is especially good for infrastructure failures. If the shipment API
+timed out, the timeline will show it. If the model call took twelve seconds,
+the timeline will show it. If a write happened twice, the timeline can show
+the duplicate calls.
+
+timeline.txt
+
+
+
+    10:04:12 lookup_order success
+    10:04:14 read_refund_policy success
+    10:04:15 check_shipment_status success
+    10:04:17 create_store_credit success
+    10:04:18 final_response success
+
+The problem is that this timeline cannot explain why `create_store_credit` was
+selected. It only proves that it happened after three reads. That is not
+enough when the bug is a wrong decision rather than a failed call.
+
+## Where timelines hide the bug
+
+Agent failures often sit in the gaps between events. A timeline records the
+policy lookup, but not which policy sentence the model treated as decisive. It
+records the shipment status result, but not whether the defect flag made it
+into the next model context. It records the refund tool call, but not which
+rejected alternative was considered.
+
+In the Northstar case, the timeline says the shipment status was checked
+before the refund. The decision graph might show that the shipment result was
+disconnected from the refund decision because a summarizer reduced it to “item
+delivered” and dropped “warehouse marked item defective.” That is the causal
+bug.
+
+Timeline shows
+
+Event order
+
+The agent checked shipment status before issuing store credit.
+
+Decision graph shows
+
+Dependency
+
+The store credit decision depended on the opened item policy, not on the
+defect exception.
+
+Timeline shows
+
+Retry count
+
+The policy lookup was retried once after a timeout.
+
+Decision graph shows
+
+State reuse
+
+The retry reused a stale summary from the first attempt.
+
+## Decision graphs expose branches
+
+Agents often consider multiple paths even when only one path becomes an
+action. A linear trace usually records the action that happened. A decision
+graph can show the branch that was skipped and the condition that caused it to
+be skipped.
+
+That matters because many bugs are wrong branch bugs. The agent does not fail
+to call a tool; it calls the wrong tool because it classifies the situation
+incorrectly. If the graph shows “opened item means store credit” and does not
+connect the “defective item” observation, the engineer knows where to look.
+
+Branches are also important for reviewing human approval paths. If the agent
+could have escalated but did not, the team needs to see the decision that
+bypassed escalation. A timeline that only shows no escalation event cannot
+tell you whether escalation was considered and rejected, or never considered
+at all.
+
+## Decision graphs expose retries and loops
+
+Retries are not always harmless. In agent systems, a retry can reuse stale
+state, duplicate a side effect, or cause the model to reinterpret a previous
+result. Timelines show repeated events. Decision graphs show whether the
+repeated event came from a deliberate retry policy, a model loop, or missing
+termination condition.
+
+For Northstar, imagine the refund tool returns an ambiguous response: “pending
+review.” The agent calls it again because it interprets the result as failure.
+A timeline shows two refund attempts. A decision graph can show the missing
+edge: the agent never mapped “pending review” to “stop and wait,” so it looped
+into another write.
+
+Debugging rule
+
+If a repeated call changes external state, you need to understand the decision
+that produced the retry, not only the fact that two calls happened.
+
+## Decision graphs expose hidden assumptions
+
+Models often make assumptions that are not obvious from final answers. They
+infer that store credit is safer, that a missing field means false, that a
+short policy summary is complete, or that a previous tool result is still
+valid. Those assumptions can be invisible in a timeline because no event is
+named “assumption.”
+
+A useful decision graph gives teams a place to attach those assumptions to the
+run. The graph does not need to read the model’s mind. It needs to connect
+evidence to action: which observed facts were used, which facts were absent,
+and which decision followed.
+
+  * Did the refund decision use the latest order state?
+  * Did it depend on a policy summary or the raw policy text?
+  * Did it treat missing shipment damage data as “not damaged”?
+  * Did it choose a write action before validating account ownership?
+  * Did it skip escalation because confidence was high or because escalation was unavailable?
+
+## Decision graphs make reviews faster
+
+A production agent failure review should not require every engineer to read a
+full transcript from top to bottom. The graph should let reviewers jump to the
+disputed decision and inspect its parents: the user request, retrieved
+context, tool results, prompt rules, and prior decisions that shaped the
+action.
+
+This is especially useful when product, support, and engineering review the
+same incident. Support cares about the customer outcome. Product cares about
+expected behavior. Engineering cares about the mechanism. A decision graph
+gives them a shared map of why the agent did what it did.
+
+## You still need timelines
+
+The argument is not that timelines are bad. The argument is that timelines are
+a foundation, not the debugging interface. A good agent debugging system
+should let you move between chronological trace and decision graph. The
+timeline answers “when.” The graph answers “why.”
+
+Opswald’s approach combines agent tracing, replay, and decision graphs for
+that reason. Traces capture the run. Replay lets developers reproduce and
+experiment with the path. Decision graphs expose the causal structure behind
+model and tool choices.
+
+When the Northstar agent issues the wrong refund, the team should not have to
+guess from five green spans. They should be able to open the decision, see
+which facts fed it, replay the step with the missing defect exception, and add
+a regression that protects the correct path.
+
+## The practical standard for agent debugging
+
+If your agent can call tools, mutate state, or make multi step decisions, a
+flat timeline is not enough. Ask whether your debugging system can answer
+these questions: Why did the agent choose this tool? What alternatives were
+skipped? Which observation made the decision change? Did a retry reuse stale
+state? Which hidden assumption was wrong? Can the disputed step be replayed?
+
+Those are graph questions. As agents become more capable, the hardest bugs
+will not look like crashes. They will look like valid actions chosen for
+invalid reasons. Timelines can show that those actions happened. Decision
+graphs show why.
+
+## What belongs in an agent decision graph
+
+A decision graph does not need to be complicated to be useful. Start with the
+nodes developers actually inspect during failures: user goal, retrieved
+context, model decision, tool call, tool result, validation result, retry,
+escalation, and final response. Then add edges that explain dependency: this
+decision used that policy paragraph; this write used that validation result;
+this retry followed that ambiguous tool response.
+
+The key is to avoid making the graph a decorative diagram. It should be
+clickable evidence. When a reviewer opens the store credit decision, they
+should see the exact order facts, policy text, prompt version, and tool
+arguments behind it. When they open a retry edge, they should see whether the
+retry was framework driven, model driven, or caused by a tool error.
+
+That level of structure makes the graph operational. Engineers can debug with
+it, support can explain outcomes from it, and future evals can assert against
+it. If the correct path requires the defect exception to feed the refund
+method decision, the graph can make that dependency visible and testable.
+Teams comparing agent observability tools can also use the LangSmith
+alternative guide to evaluate whether their stack exposes those causal links.
+
+That is the practical reason decision graphs belong beside timelines in every
+serious agent debugging workflow, especially once agents begin writing to real
+business systems.
+
+Debug agents from the run, not the guess
+
+Opswald gives engineering teams traces, replay, and decision graphs for
+understanding why AI agents behaved the way they did.
+
+Request Early Access →
+
+![Opswald](/logo-icon.png) Debug and control autonomous AI systems
+
+Request Early Access Blog Contact Docs
+
+Guides AI agent debugging AI agent replay AI agent tracing Tool calling
+debugging MCP debugging
+
+Frameworks CrewAI debugging LangChain debugging OpenAI Agents SDK tracing
+OpenTelemetry AI agents
+
+Docs Quick start Traces overview Replay sessions API reference © 2026 Opswald
+
+We use cookies for analytics to improve your experience. Learn more
+
+DeclineAccept

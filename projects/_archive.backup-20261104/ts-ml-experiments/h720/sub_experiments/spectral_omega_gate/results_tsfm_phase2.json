@@ -1,0 +1,86 @@
+{
+  "slice": "spectral_omega_gate_phase2",
+  "harness_command": "C:/Users/Mateusz/AppData/Local/hermes/hermes-agent/venv/Scripts/python.exe projects/ts-ml-experiments/h720/sub_experiments/spectral_omega_gate/rolling_arm_phase2.py --origins sampled",
+  "harness_log": "harness.log",
+  "protocol": "S-20-clean adapted: S-26 members frozen 8545 for val, refit 11425 for test; TSFM Chronos-Bolt Base zero-shot; hard gate Omega_336>0.5; TSFMAdapter(context_length=336), CHUNK=8, warmup, guard 750s",
+  "mode": "sampled",
+  "tsfm_calls": 22,
+  "elapsed_tsfm": 94.65522122383118,
+  "truncated": false,
+  "estimated": true,
+  "estimated_full_mae": 2.1218034461452935,
+  "guard_pass": true,
+  "gate": {
+    "omega_L": 336,
+    "threshold": 0.5,
+    "condition": "hann",
+    "call_rate": 0.5391022674687644,
+    "n_tsfm": 1165,
+    "n_s26": 996
+  },
+  "stationarity": {
+    "val_mean": 0.4755176596692655,
+    "val_std": 0.08623084682913697,
+    "test_mean": 0.5085652773823636,
+    "test_std": 0.0661383387781187,
+    "delta_mean_sigma336": 0.3832458464210857,
+    "guard_pass": true
+  },
+  "correlation": {
+    "rho_omega336_mae": -0.08022672404579656,
+    "pval_mae": 0.0001889683994841448,
+    "guard_pass": true
+  },
+  "call_rate_sanity": {
+    "call_rate": 0.5391022674687644,
+    "guard_pass": true
+  },
+  "s26_anchor": {
+    "full_mae": 1.990897385574145,
+    "full_rmse": 2.470998626872596,
+    "disjoint_4_mae": 1.9696,
+    "n": 2161
+  },
+  "metrics": {
+    "full_mae": 2.1218034461452935,
+    "full_rmse": 2.6737634634103244,
+    "disjoint_4_mae": 1.8739256237318158,
+    "disjoint_4_rmse": 2.444777135090984,
+    "n": 2161,
+    "improvement_vs_s26": -0.1309034461452936,
+    "verdict": "REJECTED"
+  },
+  "stratified_mae_gated": {
+    "A_lt04_mae": 2.199350059353929,
+    "B_04_05_mae": 1.9109220651452805,
+    "C_gt05_mae": 2.274117173295882,
+    "count_A": 21,
+    "count_B": 21,
+    "count_C": 22,
+    "pop_N_A": 113,
+    "pop_N_B": 883,
+    "pop_N_C": 1165,
+    "weight_A": 0.05229060620083295,
+    "weight_B": 0.4086071263304026,
+    "weight_C": 0.5391022674687644,
+    "sampled_simple_mae": 2.1304108191717623
+  },
+  "plan_impact": {
+    "invalidates": [
+      "Omega-gated TSFM as SOTA promotion (gated MAE 2.1218034461452935 >= acceptance 1.9859 or >= S-26 1.9909 or truncated=False)."
+    ],
+    "confirms": [
+      "S-26 remains terminal incumbent at 1.9909 MAE; TSFM zero-shot does not transfer to ETTh1 H=720 under Omega gate."
+    ],
+    "opens": [
+      "Document negative result; univariate linear family formally closed."
+    ]
+  },
+  "bootstrap_ci_95": [
+    1.97331544187866,
+    2.2847120571058643
+  ],
+  "bootstrap_B": 2000,
+  "sampled_n": 64,
+  "sampled_seed": 0
+}

@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "agentmemory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@agentmemory/mcp"
+      ],
+      "cwd": "~/.agentmemory"
+    },
+    "jcodemunch": {
+      "command": "jcodemunch-mcp",
+      "exposure": "codemode",
+      "toolExposure": {
+        "menu": "direct",
+        "route": "direct",
+        "set_tool_tier": "direct",
+        "jcodemunch_guide": "hidden",
+        "announce_model": "hidden"
+      }
+    }
+  }
+}

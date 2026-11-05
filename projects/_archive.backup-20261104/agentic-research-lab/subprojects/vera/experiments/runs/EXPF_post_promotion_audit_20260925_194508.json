@@ -1,0 +1,220 @@
+{
+  "experiment": "F_post_promotion_audit",
+  "timestamp": "2026-09-25T19:45:08.053199",
+  "fingerprint": "44172cafee34",
+  "rules_tested": 5,
+  "questions_tested": 23,
+  "rule_scores": {
+    "bm25_agentic_search_reflection": {
+      "average_score": 0.5,
+      "tests_run": 23,
+      "violations": 23
+    },
+    "causal-falsification-loops": {
+      "average_score": 1.0,
+      "tests_run": 23,
+      "violations": 0
+    },
+    "research-quality-external-grounding": {
+      "average_score": 1.0,
+      "tests_run": 23,
+      "violations": 0
+    },
+    "research-breadth-retrieval-first": {
+      "average_score": 1.0,
+      "tests_run": 23,
+      "violations": 0
+    },
+    "research-depth-skeletal-triples": {
+      "average_score": 1.0,
+      "tests_run": 23,
+      "violations": 0
+    }
+  },
+  "violations": [
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q1",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q2",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q3",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q4",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q5",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q6",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q7",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q8",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q9",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q10",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q11",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q12",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q13",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q14",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q15",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q16",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q17",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q18",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q19",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q20",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q21",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q22",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    },
+    {
+      "rule_id": "bm25_agentic_search_reflection",
+      "question_id": "Q23",
+      "issues": [
+        "vague_action"
+      ],
+      "applies": true
+    }
+  ]
+}

@@ -1,0 +1,362 @@
+{
+ "experiment": "heuristic_lag_elm_sweep",
+ "horizon": 720,
+ "results": [
+  {
+   "model": "h64_recent100",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 64,
+    "history_fraction": 1.0
+   },
+   "mae": 2.1714151101557193,
+   "rmse": 2.574381289269771,
+   "status": "ok"
+  },
+  {
+   "model": "h64_recent50",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 64,
+    "history_fraction": 0.5
+   },
+   "mae": 1.8134580612530653,
+   "rmse": 2.2495406903656496,
+   "status": "ok"
+  },
+  {
+   "model": "h64_recent20",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 64,
+    "history_fraction": 0.2
+   },
+   "mae": 3.491521786636777,
+   "rmse": 3.950576206131298,
+   "status": "ok"
+  },
+  {
+   "model": "h64_recent10",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 64,
+    "history_fraction": 0.1
+   },
+   "mae": 2.7942215733526887,
+   "rmse": 3.306558410258481,
+   "status": "ok"
+  },
+  {
+   "model": "h256_recent100",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "history_fraction": 1.0
+   },
+   "mae": 1.6771022800625568,
+   "rmse": 2.0312935981755693,
+   "status": "ok"
+  },
+  {
+   "model": "h256_recent50",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "history_fraction": 0.5
+   },
+   "mae": 1.6987217991375372,
+   "rmse": 2.1642919524053545,
+   "status": "ok"
+  },
+  {
+   "model": "h256_recent20",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "history_fraction": 0.2
+   },
+   "mae": 2.3494297686934584,
+   "rmse": 2.7900672928909116,
+   "status": "ok"
+  },
+  {
+   "model": "h256_recent10",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "history_fraction": 0.1
+   },
+   "mae": 3.172271422173211,
+   "rmse": 3.6719154196838915,
+   "status": "ok"
+  },
+  {
+   "model": "h1024_recent100",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 1024,
+    "history_fraction": 1.0
+   },
+   "mae": 2.1273488333435164,
+   "rmse": 2.615515862571284,
+   "status": "ok"
+  },
+  {
+   "model": "h1024_recent50",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 1024,
+    "history_fraction": 0.5
+   },
+   "mae": 2.3326014810014386,
+   "rmse": 2.8414837947824467,
+   "status": "ok"
+  },
+  {
+   "model": "h1024_recent20",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 1024,
+    "history_fraction": 0.2
+   },
+   "mae": 2.5406661624809135,
+   "rmse": 3.060452095804343,
+   "status": "ok"
+  },
+  {
+   "model": "h1024_recent10",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 1024,
+    "history_fraction": 0.1
+   },
+   "mae": 2.602122329036062,
+   "rmse": 3.191331652725724,
+   "status": "ok"
+  },
+  {
+   "model": "h4096_recent100",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 4096,
+    "history_fraction": 1.0
+   },
+   "mae": 2.12526904371448,
+   "rmse": 2.7107076158907586,
+   "status": "ok"
+  },
+  {
+   "model": "h4096_recent50",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 4096,
+    "history_fraction": 0.5
+   },
+   "mae": 2.784463173118632,
+   "rmse": 3.5075111567581554,
+   "status": "ok"
+  },
+  {
+   "model": "h4096_recent20",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 4096,
+    "history_fraction": 0.2
+   },
+   "mae": 3.1892571441731667,
+   "rmse": 4.027796881814188,
+   "status": "ok"
+  },
+  {
+   "model": "h4096_recent10",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 4096,
+    "history_fraction": 0.1
+   },
+   "mae": 2.579883840926716,
+   "rmse": 3.2311279439229152,
+   "status": "ok"
+  },
+  {
+   "model": "default_lags_h256_recent100",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0
+   },
+   "mae": 1.6771022800625568,
+   "rmse": 2.0312935981755693,
+   "status": "ok"
+  },
+  {
+   "model": "default_lags_h256_recent50",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.5
+   },
+   "mae": 1.6987217991375372,
+   "rmse": 2.1642919524053545,
+   "status": "ok"
+  },
+  {
+   "model": "extended_lags_h256_recent100",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24,
+     48,
+     168
+    ],
+    "history_fraction": 1.0
+   },
+   "mae": 2.5449419907769824,
+   "rmse": 3.00120045160802,
+   "status": "ok"
+  },
+  {
+   "model": "extended_lags_h256_recent50",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24,
+     48,
+     168
+    ],
+    "history_fraction": 0.5
+   },
+   "mae": 2.1399847863350954,
+   "rmse": 2.598786075710366,
+   "status": "ok"
+  },
+  {
+   "model": "seasonal_lags_h256_recent100",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "delays": [
+     24,
+     48,
+     168
+    ],
+    "history_fraction": 1.0
+   },
+   "mae": 2.5253897455746706,
+   "rmse": 2.9949007373558487,
+   "status": "ok"
+  },
+  {
+   "model": "seasonal_lags_h256_recent50",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "delays": [
+     24,
+     48,
+     168
+    ],
+    "history_fraction": 0.5
+   },
+   "mae": 2.632606041913289,
+   "rmse": 3.172142292654172,
+   "status": "ok"
+  },
+  {
+   "model": "fast_lags_h256_recent100",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12
+    ],
+    "history_fraction": 1.0
+   },
+   "mae": 1.7108028604154608,
+   "rmse": 2.142473125952603,
+   "status": "ok"
+  },
+  {
+   "model": "fast_lags_h256_recent50",
+   "horizon": 720,
+   "params": {
+    "hidden_dim": 256,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12
+    ],
+    "history_fraction": 0.5
+   },
+   "mae": 1.6344219573923806,
+   "rmse": 2.1714771403092676,
+   "status": "ok"
+  },
+  {
+   "model": "elm_default",
+   "horizon": 720,
+   "params": {},
+   "mae": 3.172271422173211,
+   "rmse": 3.6719154196838915,
+   "status": "ok"
+  },
+  {
+   "model": "persistence",
+   "horizon": 720,
+   "params": null,
+   "mae": 1.7952457486755318,
+   "rmse": 2.2503347360867134,
+   "status": "ok"
+  },
+  {
+   "model": "daily",
+   "horizon": 720,
+   "params": null,
+   "mae": 1.6720180662969748,
+   "rmse": 2.171948042164322,
+   "status": "ok"
+  },
+  {
+   "model": "nlinear",
+   "horizon": 720,
+   "params": null,
+   "mae": 2.350723802523661,
+   "rmse": 2.817339593600691,
+   "status": "ok"
+  }
+ ]
+}

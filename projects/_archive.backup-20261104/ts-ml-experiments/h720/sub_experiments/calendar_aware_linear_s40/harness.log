@@ -1,0 +1,5 @@
+harness_command: python projects/ts-ml-experiments/h720/sub_experiments/calendar_aware_linear_s40/rolling_arm.py
+plan_impact: S-40 calendar-aware linear ensemble; 7-dim calendar features (hour sin/cos, dow sin/cos, month sin/cos, holiday) concatenated to anchor-differenced OT window at member level; 8-member pool (2 S-26 controls + 6 calendar-aware variants); member-level observation: calendar-aware members collapsed to identical OT-only linear combinations (no unique calendar signal)
+metrics: test_mae=1.9941 test_rmse=2.4757 disjoint_4_mae=1.8760
+acceptance: primary=FAIL stability=PASS transfer_delta=FAIL
+runtime: 65.81s

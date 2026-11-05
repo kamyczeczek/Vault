@@ -1,0 +1,20 @@
+You are a leaf reflection agent. The graph digest is already auto-injected via the extension.
+
+GOAL: Reflect on how to IMPROVE `projects/workspace-research` itself (INBOX → corpus → graph → reflection pipeline). Use ICM principles from your injected knowledge as the rubric.
+
+DETERMINISTIC GROUNDING (no free recall):
+Run exactly these queries and ground every claim in returned ids:
+  python knowledge/graph/ask.py --tag icm --tag reflection --limit 10
+  python knowledge/graph/ask.py --tag context-engineering --tag planning --limit 10
+
+AUDIT SCOPE — inspect only these paths (bounded, read-only):
+  INBOX/ , knowledge/{corpus,graph,raw}/*.md , pipeline/06_reflect/ , reflection/ , scripts/ , .omp/extensions/
+  Run at most: find knowledge/corpus -maxdepth 1 | head -20
+               ls -p pipeline/06_reflect/ ; ls -p reflection/digests/ | head -20
+  Do not open more than 8 corpus files beyond your queried ids.
+
+OUTPUT — write exactly these two files (slug "improve-workspace-research", no other writes):
+1. reflection/digests/improve-workspace-research.md — sections: Verdict (is the project ICM-sound?) / Findings table (| # | Observed evidence (path) | Principle (chunk id) | Change | ) / Top 3 changes concrete
+2. reflection/candidates/improve-workspace-research.jsonl — one JSON object per finding: {"id":"W1","state":"proposed","observation":"<path/fact>","principle":"<chunk_id>","change":"<action>","impact":"high|medium|low"}
+
+Every row must cite one chunk id from the query results AND one real observed path. Rank by impact, cap 8 findings. When both files written, reply exactly: DONE improve-workspace-research

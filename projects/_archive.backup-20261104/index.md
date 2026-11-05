@@ -1,0 +1,48 @@
+# Subdirectories
+
+* [agentic-research-lab](agentic-research-lab/index.md)
+* [agentmemory-20261001-210803](agentmemory-20261001-210803/index.md)
+* [ai_workspace](ai_workspace/index.md)
+* [datasets](datasets/index.md)
+* [reviews](reviews/index.md)
+* [timeseries_model_discovery_project](timeseries_model_discovery_project/index.md)
+* [timeseries_research](timeseries_research/index.md)
+* [ts-ml-experiments](ts-ml-experiments/index.md)
+* [ts-diverse-pre-split](ts-diverse-pre-split/index.md)
+* [workspace-research](workspace-research/index.md)
+
+# Concepts
+
+* [CLAUDE](CLAUDE.md)
+* [CONTEXT](CONTEXT.md)
+* [HANDOFF](HANDOFF.md)
+* [README](README.md)
+
+# Files
+
+* [clean_bench_fits.py](clean_bench_fits.py)
+* [check_bench.py](check_bench.py)
+* [check_indent.py](check_indent.py)
+* [debug_indent.py](debug_indent.py)
+* [finalize_fev_knn.py](finalize_fev_knn.py)
+* [fix_amr_import.py](fix_amr_import.py)
+* [fix_bench_import.py](fix_bench_import.py)
+* [finalize_knn.py](finalize_knn.py)
+* [fix_bench_fits.py](fix_bench_fits.py)
+* [fix_bench_syntax.py](fix_bench_syntax.py)
+* [fix_fev_knn.py](fix_fev_knn.py)
+* [fix_bench_membership.py](fix_bench_membership.py)
+* [fix_indent_fits.py](fix_indent_fits.py)
+* [fix_future_import.py](fix_future_import.py)
+* [fix_pool_i.py](fix_pool_i.py)
+* [fix_sota_bench.py](fix_sota_bench.py)
+* [fix_wavelet.py](fix_wavelet.py)
+* [fix_line495.py](fix_line495.py)
+* [fix_sota_wrappers.py](fix_sota_wrappers.py)
+* [inspect_bench_singleton.py](inspect_bench_singleton.py)
+* [patch_amr.py](patch_amr.py)
+* [migrate_structure.py](migrate_structure.py)
+* [perfect_fix_bench.py](perfect_fix_bench.py)
+* [update_bench.py](update_bench.py)
+* [wire_sota_to_bench.py](wire_sota_to_bench.py)
+* [update_fev_knn.py](update_fev_knn.py)

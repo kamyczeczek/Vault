@@ -1,0 +1,1356 @@
+{
+  "slice": "S-02",
+  "protocol": {
+    "fit_rows": 8545,
+    "fit": "validation phase: frozen fit on train.csv[:8545] (train-only slice), fit once per candidate",
+    "val_rows": 2880,
+    "val_origins": 2161,
+    "stride": 1,
+    "horizon": 720,
+    "test_fit": "test phase: frozen fit on all of train.csv (11,425 rows) \u2014 the locked protocol, fit once",
+    "test_origins": 2161,
+    "selection_criterion": "lowest val_rolling_mae per family (train-only frozen fit, 2,161 stride-1 validation origins); test region scored once per candidate, never used for selection",
+    "note": "per-origin history = all observed rows strictly before the scored window"
+  },
+  "results": [
+    {
+      "model": "elm_h64_f10_normal",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 64,
+        "history_fraction": 0.1,
+        "weight_init": "normal",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.8759,
+      "val_rolling_rmse": 4.7369,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 3.825398057256167,
+          "rmse": 4.570278920504093
+        },
+        "window_2": {
+          "mae": 4.209895090400997,
+          "rmse": 5.034168389659935
+        },
+        "window_3": {
+          "mae": 3.5121686576836217,
+          "rmse": 4.496969858672507
+        },
+        "window_4": {
+          "mae": 4.450407761472949,
+          "rmse": 5.2646572904234565
+        }
+      },
+      "test_rolling_mae": 2.6316,
+      "test_rolling_rmse": 3.1859,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.8775630060913948,
+          "rmse": 2.3248536290250477
+        },
+        "window_2": {
+          "mae": 3.6521186495803466,
+          "rmse": 4.039334452450652
+        },
+        "window_3": {
+          "mae": 2.001963875908082,
+          "rmse": 2.5995960986835938
+        },
+        "window_4": {
+          "mae": 2.769079189480073,
+          "rmse": 3.5973682701543175
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h64_f10_sobol_iid",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 64,
+        "history_fraction": 0.1,
+        "weight_init": "sobol_iid",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.8503,
+      "val_rolling_rmse": 4.6847,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 3.8063821017636434,
+          "rmse": 4.541148683694691
+        },
+        "window_2": {
+          "mae": 4.088498402335973,
+          "rmse": 4.926429925347008
+        },
+        "window_3": {
+          "mae": 3.733827609326791,
+          "rmse": 4.753960785767959
+        },
+        "window_4": {
+          "mae": 5.179113282170925,
+          "rmse": 6.025676777174662
+        }
+      },
+      "test_rolling_mae": 2.6525,
+      "test_rolling_rmse": 3.2096,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.115014189832573,
+          "rmse": 2.5681109370631687
+        },
+        "window_2": {
+          "mae": 2.657675223181636,
+          "rmse": 3.0715940028671707
+        },
+        "window_3": {
+          "mae": 1.9380802704151954,
+          "rmse": 2.643665001907229
+        },
+        "window_4": {
+          "mae": 2.696076277178364,
+          "rmse": 3.4906631111060062
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h64_f50_normal",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 64,
+        "history_fraction": 0.5,
+        "weight_init": "normal",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.851,
+      "val_rolling_rmse": 4.6502,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 1.9560035467787322,
+          "rmse": 2.476396596241796
+        },
+        "window_2": {
+          "mae": 5.271991702036629,
+          "rmse": 6.264902255010296
+        },
+        "window_3": {
+          "mae": 2.482117315131867,
+          "rmse": 3.101376934488296
+        },
+        "window_4": {
+          "mae": 5.883086487133687,
+          "rmse": 6.728174796609903
+        }
+      },
+      "test_rolling_mae": 2.5828,
+      "test_rolling_rmse": 3.1268,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.545654501943688,
+          "rmse": 2.0030982710994425
+        },
+        "window_2": {
+          "mae": 1.5688570040152077,
+          "rmse": 1.9859115660712119
+        },
+        "window_3": {
+          "mae": 1.8701692671244072,
+          "rmse": 2.500147388819114
+        },
+        "window_4": {
+          "mae": 2.8934784201340165,
+          "rmse": 3.6516838370583207
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h64_f50_sobol_iid",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 64,
+        "history_fraction": 0.5,
+        "weight_init": "sobol_iid",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.8533,
+      "val_rolling_rmse": 4.6507,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 1.8876570484832322,
+          "rmse": 2.441730278333733
+        },
+        "window_2": {
+          "mae": 5.035800269183724,
+          "rmse": 6.033872389216305
+        },
+        "window_3": {
+          "mae": 2.7303682665777522,
+          "rmse": 3.351507036020222
+        },
+        "window_4": {
+          "mae": 6.085099344321299,
+          "rmse": 6.907535134320162
+        }
+      },
+      "test_rolling_mae": 2.5869,
+      "test_rolling_rmse": 3.1316,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7951533043102448,
+          "rmse": 2.2335575322696535
+        },
+        "window_2": {
+          "mae": 1.627788252322859,
+          "rmse": 2.04308533775789
+        },
+        "window_3": {
+          "mae": 2.0230499379066993,
+          "rmse": 2.7061393662337108
+        },
+        "window_4": {
+          "mae": 2.910207860790495,
+          "rmse": 3.668002362596423
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h64_f100_normal",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 64,
+        "history_fraction": 1.0,
+        "weight_init": "normal",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": true,
+      "selected_on_val": true,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.1901,
+      "val_rolling_rmse": 3.8551,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 3.064175599918559,
+          "rmse": 3.6577906800574964
+        },
+        "window_2": {
+          "mae": 3.4528274437205417,
+          "rmse": 4.266906296261005
+        },
+        "window_3": {
+          "mae": 2.2697972991371853,
+          "rmse": 2.763083704884546
+        },
+        "window_4": {
+          "mae": 4.092551464866628,
+          "rmse": 4.779674928191039
+        }
+      },
+      "test_rolling_mae": 2.3092,
+      "test_rolling_rmse": 2.8046,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5923309463548625,
+          "rmse": 1.9823129280190273
+        },
+        "window_2": {
+          "mae": 1.8145564224871475,
+          "rmse": 2.236046049143698
+        },
+        "window_3": {
+          "mae": 1.6619488768935646,
+          "rmse": 2.2672602806133835
+        },
+        "window_4": {
+          "mae": 2.1615466427691765,
+          "rmse": 2.872775949016963
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h64_f100_sobol_iid",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 64,
+        "history_fraction": 1.0,
+        "weight_init": "sobol_iid",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.1904,
+      "val_rolling_rmse": 3.8537,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 2.9032687805471866,
+          "rmse": 3.5051549486182108
+        },
+        "window_2": {
+          "mae": 3.268005593844712,
+          "rmse": 4.0802642862358125
+        },
+        "window_3": {
+          "mae": 2.182325562477301,
+          "rmse": 2.7232584686793238
+        },
+        "window_4": {
+          "mae": 4.428840259835945,
+          "rmse": 5.1308827126136505
+        }
+      },
+      "test_rolling_mae": 2.3144,
+      "test_rolling_rmse": 2.8068,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.031730187300012,
+          "rmse": 2.441922159917886
+        },
+        "window_2": {
+          "mae": 1.7167794183960108,
+          "rmse": 2.1364387820258894
+        },
+        "window_3": {
+          "mae": 1.7444570138864208,
+          "rmse": 2.3318481410298206
+        },
+        "window_4": {
+          "mae": 2.1885943150408043,
+          "rmse": 2.8935294581514537
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h256_f10_normal",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 256,
+        "history_fraction": 0.1,
+        "weight_init": "normal",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 4.1909,
+      "val_rolling_rmse": 5.1474,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 4.217614183349334,
+          "rmse": 5.04148102637648
+        },
+        "window_2": {
+          "mae": 4.1310339189492815,
+          "rmse": 4.964345056634381
+        },
+        "window_3": {
+          "mae": 3.6832058867443656,
+          "rmse": 4.731229530596724
+        },
+        "window_4": {
+          "mae": 4.922005748208366,
+          "rmse": 5.798885775189962
+        }
+      },
+      "test_rolling_mae": 2.889,
+      "test_rolling_rmse": 3.4967,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.8945502371540976,
+          "rmse": 2.4039134386877126
+        },
+        "window_2": {
+          "mae": 3.2116258929128625,
+          "rmse": 3.637847926190667
+        },
+        "window_3": {
+          "mae": 2.066218539457761,
+          "rmse": 2.697365946557524
+        },
+        "window_4": {
+          "mae": 3.884786490720655,
+          "rmse": 4.745872290129182
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h256_f10_sobol_iid",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 256,
+        "history_fraction": 0.1,
+        "weight_init": "sobol_iid",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 4.2524,
+      "val_rolling_rmse": 5.2179,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 4.0500290108372985,
+          "rmse": 4.870809958597798
+        },
+        "window_2": {
+          "mae": 4.243363076575648,
+          "rmse": 5.069573487289676
+        },
+        "window_3": {
+          "mae": 4.105928302869882,
+          "rmse": 5.239144507868435
+        },
+        "window_4": {
+          "mae": 4.998192131713443,
+          "rmse": 5.855648950086054
+        }
+      },
+      "test_rolling_mae": 2.9287,
+      "test_rolling_rmse": 3.5388,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.0211865917466065,
+          "rmse": 2.44354651630982
+        },
+        "window_2": {
+          "mae": 4.638708825499974,
+          "rmse": 5.123870485017942
+        },
+        "window_3": {
+          "mae": 2.1794283170834703,
+          "rmse": 2.8699832298821337
+        },
+        "window_4": {
+          "mae": 3.436758731187236,
+          "rmse": 4.28718032222618
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h256_f50_normal",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 256,
+        "history_fraction": 0.5,
+        "weight_init": "normal",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.9643,
+      "val_rolling_rmse": 4.782,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 2.0517173215223314,
+          "rmse": 2.539258126535937
+        },
+        "window_2": {
+          "mae": 4.651044229815189,
+          "rmse": 5.690798003662511
+        },
+        "window_3": {
+          "mae": 2.520892887720328,
+          "rmse": 3.1734918630556415
+        },
+        "window_4": {
+          "mae": 5.772588315804033,
+          "rmse": 6.561289462083682
+        }
+      },
+      "test_rolling_mae": 2.6467,
+      "test_rolling_rmse": 3.2012,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6344219573923806,
+          "rmse": 2.1714771403092676
+        },
+        "window_2": {
+          "mae": 1.8259890064292916,
+          "rmse": 2.271114970387613
+        },
+        "window_3": {
+          "mae": 2.177941361688885,
+          "rmse": 2.921262566130952
+        },
+        "window_4": {
+          "mae": 2.8513691879296417,
+          "rmse": 3.59174018217381
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h256_f50_sobol_iid",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 256,
+        "history_fraction": 0.5,
+        "weight_init": "sobol_iid",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.9636,
+      "val_rolling_rmse": 4.7822,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 1.8628988987190636,
+          "rmse": 2.411041276846613
+        },
+        "window_2": {
+          "mae": 4.9523587652998,
+          "rmse": 5.978928736813713
+        },
+        "window_3": {
+          "mae": 2.403196845261003,
+          "rmse": 3.0466125026811226
+        },
+        "window_4": {
+          "mae": 5.545681866900385,
+          "rmse": 6.376625196558043
+        }
+      },
+      "test_rolling_mae": 2.6515,
+      "test_rolling_rmse": 3.2068,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5988136766267689,
+          "rmse": 2.110376798378232
+        },
+        "window_2": {
+          "mae": 1.6617183504076112,
+          "rmse": 2.0984386468120366
+        },
+        "window_3": {
+          "mae": 2.049017260782982,
+          "rmse": 2.6944829673217567
+        },
+        "window_4": {
+          "mae": 2.921209777519408,
+          "rmse": 3.6289149570640933
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h256_f100_normal",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 256,
+        "history_fraction": 1.0,
+        "weight_init": "normal",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.2488,
+      "val_rolling_rmse": 3.9262,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 3.09434358579765,
+          "rmse": 3.655196957742555
+        },
+        "window_2": {
+          "mae": 3.0137653408064216,
+          "rmse": 3.788601457618132
+        },
+        "window_3": {
+          "mae": 2.1892539114063254,
+          "rmse": 2.80426026306993
+        },
+        "window_4": {
+          "mae": 4.132773430773394,
+          "rmse": 4.825327763280054
+        }
+      },
+      "test_rolling_mae": 2.3365,
+      "test_rolling_rmse": 2.8387,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7108028604154608,
+          "rmse": 2.142473125952603
+        },
+        "window_2": {
+          "mae": 2.1559121168227766,
+          "rmse": 2.5907818709152433
+        },
+        "window_3": {
+          "mae": 1.9147634291998763,
+          "rmse": 2.5028561300202186
+        },
+        "window_4": {
+          "mae": 2.2082078260341227,
+          "rmse": 2.896378531861449
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h256_f100_sobol_iid",
+      "family": "elm",
+      "params": {
+        "hidden_dim": 256,
+        "history_fraction": 1.0,
+        "weight_init": "sobol_iid",
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "q": 3
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.2314,
+      "val_rolling_rmse": 3.9073,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 2.8685301780184127,
+          "rmse": 3.4470548571087374
+        },
+        "window_2": {
+          "mae": 3.253677768609142,
+          "rmse": 4.094121808433009
+        },
+        "window_3": {
+          "mae": 2.125210257745598,
+          "rmse": 2.7106208132280063
+        },
+        "window_4": {
+          "mae": 4.049321432679862,
+          "rmse": 4.7511206480270545
+        }
+      },
+      "test_rolling_mae": 2.3409,
+      "test_rolling_rmse": 2.8431,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6330071664314396,
+          "rmse": 2.055013669899532
+        },
+        "window_2": {
+          "mae": 1.7664583598601238,
+          "rmse": 2.215164532684328
+        },
+        "window_3": {
+          "mae": 1.7223152763793865,
+          "rmse": 2.2759464705344903
+        },
+        "window_4": {
+          "mae": 2.4496916696591495,
+          "rmse": 3.13270510089346
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "knn_q3_k8_recent10",
+      "family": "knn",
+      "params": {
+        "q": 3,
+        "neighbors": 8,
+        "history_fraction": 0.1,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12,
+          24
+        ]
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.6118,
+      "val_rolling_rmse": 4.3913,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 3.4087548165828934,
+          "rmse": 4.145100453695513
+        },
+        "window_2": {
+          "mae": 3.858109722307397,
+          "rmse": 4.726977706252671
+        },
+        "window_3": {
+          "mae": 4.008416467645154,
+          "rmse": 4.768721048412292
+        },
+        "window_4": {
+          "mae": 5.584715203223071,
+          "rmse": 6.369380926729263
+        }
+      },
+      "test_rolling_mae": 2.8301,
+      "test_rolling_rmse": 3.4186,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.192077701679557,
+          "rmse": 2.641593798023492
+        },
+        "window_2": {
+          "mae": 4.539092367905791,
+          "rmse": 5.102243102353569
+        },
+        "window_3": {
+          "mae": 3.2828482199331273,
+          "rmse": 4.05798391541411
+        },
+        "window_4": {
+          "mae": 3.2233519617107516,
+          "rmse": 4.0192558293206995
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "knn_q3_k16_recent10",
+      "family": "knn",
+      "params": {
+        "q": 3,
+        "neighbors": 16,
+        "history_fraction": 0.1,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12,
+          24
+        ]
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.5105,
+      "val_rolling_rmse": 4.262,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 3.4970710434895653,
+          "rmse": 4.186634590236606
+        },
+        "window_2": {
+          "mae": 3.93187534285068,
+          "rmse": 4.8319731856893124
+        },
+        "window_3": {
+          "mae": 3.7389338506695626,
+          "rmse": 4.2799269091200935
+        },
+        "window_4": {
+          "mae": 5.412529401834968,
+          "rmse": 6.147517188104755
+        }
+      },
+      "test_rolling_mae": 2.6865,
+      "test_rolling_rmse": 3.2485,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.0080651042864206,
+          "rmse": 2.453767325432884
+        },
+        "window_2": {
+          "mae": 4.961863241447059,
+          "rmse": 5.404355703378081
+        },
+        "window_3": {
+          "mae": 2.769060524148783,
+          "rmse": 3.484796432789247
+        },
+        "window_4": {
+          "mae": 3.070338841251096,
+          "rmse": 3.7953510863614697
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "knn_q3_k24_recent10",
+      "family": "knn",
+      "params": {
+        "q": 3,
+        "neighbors": 24,
+        "history_fraction": 0.1,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12,
+          24
+        ]
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.4671,
+      "val_rolling_rmse": 4.2077,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 3.527286096873844,
+          "rmse": 4.204172564685423
+        },
+        "window_2": {
+          "mae": 3.831429447441024,
+          "rmse": 4.715640756696662
+        },
+        "window_3": {
+          "mae": 3.5239692212230915,
+          "rmse": 4.068919888735614
+        },
+        "window_4": {
+          "mae": 5.363306461626869,
+          "rmse": 6.101625401030691
+        }
+      },
+      "test_rolling_mae": 2.6058,
+      "test_rolling_rmse": 3.1549,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7552840572680426,
+          "rmse": 2.1662749833768498
+        },
+        "window_2": {
+          "mae": 4.78482173585815,
+          "rmse": 5.208555476993793
+        },
+        "window_3": {
+          "mae": 2.5976199066817873,
+          "rmse": 3.3186337586272607
+        },
+        "window_4": {
+          "mae": 2.969447204288858,
+          "rmse": 3.66372481220587
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "knn_q3_k32_recent10",
+      "family": "knn",
+      "params": {
+        "q": 3,
+        "neighbors": 32,
+        "history_fraction": 0.1,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12,
+          24
+        ]
+      },
+      "is_legacy_window_tuned": true,
+      "selected_on_val": true,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.4465,
+      "val_rolling_rmse": 4.1819,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 3.5692357196573994,
+          "rmse": 4.245234882880766
+        },
+        "window_2": {
+          "mae": 3.741228517996227,
+          "rmse": 4.606729350319536
+        },
+        "window_3": {
+          "mae": 3.3992543284386834,
+          "rmse": 3.991956643213507
+        },
+        "window_4": {
+          "mae": 5.258842602652245,
+          "rmse": 5.985910465067428
+        }
+      },
+      "test_rolling_mae": 2.5583,
+      "test_rolling_rmse": 3.0994,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7204022215138837,
+          "rmse": 2.140518059341063
+        },
+        "window_2": {
+          "mae": 4.909015824020376,
+          "rmse": 5.320957010538725
+        },
+        "window_3": {
+          "mae": 2.4162477067444916,
+          "rmse": 3.0946342209562143
+        },
+        "window_4": {
+          "mae": 2.815968450564001,
+          "rmse": 3.497057298251968
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "daily",
+      "family": "reference",
+      "params": {
+        "kind": "seasonal-naive lag 24"
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.4977,
+      "val_rolling_rmse": 4.2683,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 2.4644610656632326,
+          "rmse": 2.977122170978406
+        },
+        "window_2": {
+          "mae": 4.000102774302165,
+          "rmse": 4.9799629019963065
+        },
+        "window_3": {
+          "mae": 2.5958972606394024,
+          "rmse": 3.370435144177077
+        },
+        "window_4": {
+          "mae": 5.896868091159397,
+          "rmse": 6.712801159732465
+        }
+      },
+      "test_rolling_mae": 2.5491,
+      "test_rolling_rmse": 3.112,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6720180662969748,
+          "rmse": 2.171948042164322
+        },
+        "window_2": {
+          "mae": 1.9042791694402694,
+          "rmse": 2.3712428720780094
+        },
+        "window_3": {
+          "mae": 1.8620638797266615,
+          "rmse": 2.5054643959241902
+        },
+        "window_4": {
+          "mae": 2.919241687407096,
+          "rmse": 3.6344442181063386
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "persistence",
+      "family": "reference",
+      "params": {
+        "kind": "last-value repeat"
+      },
+      "is_legacy_window_tuned": false,
+      "selected_on_val": false,
+      "protocol": "val: train-only frozen fit (8,545 rows), 2,161 stride-1 validation origins; test: frozen fit on full train.csv (11,425 rows), 2,161 stride-1 origins",
+      "val_rolling_mae": 3.5972,
+      "val_rolling_rmse": 4.2934,
+      "val_disjoint_windows": {
+        "window_1": {
+          "mae": 3.236530768871307,
+          "rmse": 3.7233312170787216
+        },
+        "window_2": {
+          "mae": 3.8949023405710856,
+          "rmse": 4.738703547973376
+        },
+        "window_3": {
+          "mae": 2.2765916685263314,
+          "rmse": 2.839864894845764
+        },
+        "window_4": {
+          "mae": 4.127467754152086,
+          "rmse": 4.8942428655380095
+        }
+      },
+      "test_rolling_mae": 2.5985,
+      "test_rolling_rmse": 3.1282,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7952457486755318,
+          "rmse": 2.2503347360867134
+        },
+        "window_2": {
+          "mae": 2.1462069739898046,
+          "rmse": 2.6324969775393976
+        },
+        "window_3": {
+          "mae": 1.7779138766643074,
+          "rmse": 2.3889429847551824
+        },
+        "window_4": {
+          "mae": 2.180211087150706,
+          "rmse": 2.8509213353302125
+        }
+      },
+      "status": "ok"
+    }
+  ],
+  "selection": {
+    "criterion": "lowest val_rolling_mae per family (train-only frozen fit, 2,161 stride-1 validation origins); test region scored once per candidate, never used for selection",
+    "elm": {
+      "val_selected": {
+        "model": "elm_h64_f100_normal",
+        "params": {
+          "hidden_dim": 64,
+          "history_fraction": 1.0,
+          "weight_init": "normal",
+          "delays": [
+            1,
+            2,
+            3,
+            6,
+            12
+          ],
+          "q": 3
+        },
+        "val_rolling_mae": 3.1901,
+        "val_rolling_rmse": 3.8551,
+        "test_rolling_mae": 2.3092,
+        "test_rolling_rmse": 2.8046
+      },
+      "legacy_window_tuned": {
+        "model": "elm_h64_f100_normal",
+        "params": {
+          "hidden_dim": 64,
+          "history_fraction": 1.0,
+          "weight_init": "normal",
+          "delays": [
+            1,
+            2,
+            3,
+            6,
+            12
+          ],
+          "q": 3
+        },
+        "val_rolling_mae": 3.1901,
+        "val_rolling_rmse": 3.8551,
+        "test_rolling_mae": 2.3092,
+        "test_rolling_rmse": 2.8046
+      },
+      "same_config": true,
+      "tuning_artifact_test_mae_delta": 0.0,
+      "note": "delta = legacy_test_mae - selected_test_mae; positive => the window-tuned choice cost test-region accuracy"
+    },
+    "knn": {
+      "val_selected": {
+        "model": "knn_q3_k32_recent10",
+        "params": {
+          "q": 3,
+          "neighbors": 32,
+          "history_fraction": 0.1,
+          "delays": [
+            1,
+            2,
+            3,
+            6,
+            12,
+            24
+          ]
+        },
+        "val_rolling_mae": 3.4465,
+        "val_rolling_rmse": 4.1819,
+        "test_rolling_mae": 2.5583,
+        "test_rolling_rmse": 3.0994
+      },
+      "legacy_window_tuned": {
+        "model": "knn_q3_k32_recent10",
+        "params": {
+          "q": 3,
+          "neighbors": 32,
+          "history_fraction": 0.1,
+          "delays": [
+            1,
+            2,
+            3,
+            6,
+            12,
+            24
+          ]
+        },
+        "val_rolling_mae": 3.4465,
+        "val_rolling_rmse": 4.1819,
+        "test_rolling_mae": 2.5583,
+        "test_rolling_rmse": 3.0994
+      },
+      "same_config": true,
+      "tuning_artifact_test_mae_delta": 0.0,
+      "note": "delta = legacy_test_mae - selected_test_mae; positive => the window-tuned choice cost test-region accuracy"
+    },
+    "references": {
+      "daily": {
+        "val_rolling_mae": 3.4977,
+        "test_rolling_mae": 2.5491,
+        "test_rolling_rmse": 3.112
+      },
+      "persistence": {
+        "val_rolling_mae": 3.5972,
+        "test_rolling_mae": 2.5985,
+        "test_rolling_rmse": 3.1282
+      }
+    }
+  },
+  "anchors_t0": [
+    {
+      "model": "daily",
+      "phase": "validation_t0",
+      "t0_mae": 2.4645,
+      "t0_rmse": 2.9771,
+      "expected": [
+        2.4645,
+        2.9771
+      ],
+      "ok": true
+    },
+    {
+      "model": "persistence",
+      "phase": "validation_t0",
+      "t0_mae": 3.2365,
+      "t0_rmse": 3.7233,
+      "expected": [
+        3.2365,
+        3.7233
+      ],
+      "ok": true
+    },
+    {
+      "model": "elm_h64_f100_normal",
+      "phase": "test_t0",
+      "t0_mae": 1.5923,
+      "t0_rmse": 1.9823,
+      "expected": [
+        1.5923,
+        1.9823
+      ],
+      "ok": true
+    },
+    {
+      "model": "elm_h64_f100_sobol_iid",
+      "phase": "test_t0",
+      "t0_mae": 2.0317,
+      "t0_rmse": 2.4419,
+      "expected": [
+        2.0317,
+        2.4419
+      ],
+      "ok": true
+    },
+    {
+      "model": "elm_h256_f100_normal",
+      "phase": "test_t0",
+      "t0_mae": 1.7108,
+      "t0_rmse": 2.1425,
+      "expected": [
+        1.7108,
+        2.1425
+      ],
+      "ok": true
+    },
+    {
+      "model": "elm_h256_f100_sobol_iid",
+      "phase": "test_t0",
+      "t0_mae": 1.633,
+      "t0_rmse": 2.055,
+      "expected": [
+        1.633,
+        2.055
+      ],
+      "ok": true
+    },
+    {
+      "model": "knn_q3_k32_recent10",
+      "phase": "test_t0",
+      "t0_mae": 1.7204,
+      "t0_rmse": 2.1405,
+      "expected": [
+        1.7204,
+        2.1405
+      ],
+      "ok": true
+    },
+    {
+      "model": "daily",
+      "phase": "test_t0",
+      "t0_mae": 1.672,
+      "t0_rmse": 2.1719,
+      "expected": [
+        1.672,
+        2.1719
+      ],
+      "ok": true
+    },
+    {
+      "model": "persistence",
+      "phase": "test_t0",
+      "t0_mae": 1.7952,
+      "t0_rmse": 2.2503,
+      "expected": [
+        1.7952,
+        2.2503
+      ],
+      "ok": true
+    },
+    {
+      "model": "elm_h64_f100_normal",
+      "phase": "test_rolling_s01",
+      "t0_mae": 2.3092,
+      "t0_rmse": 2.8046,
+      "expected": [
+        2.3092,
+        2.8046
+      ],
+      "ok": true
+    },
+    {
+      "model": "elm_h256_f100_sobol_iid",
+      "phase": "test_rolling_s01",
+      "t0_mae": 2.3409,
+      "t0_rmse": 2.8431,
+      "expected": [
+        2.3409,
+        2.8431
+      ],
+      "ok": true
+    },
+    {
+      "model": "knn_q3_k32_recent10",
+      "phase": "test_rolling_s01",
+      "t0_mae": 2.5583,
+      "t0_rmse": 3.0994,
+      "expected": [
+        2.5583,
+        3.0994
+      ],
+      "ok": true
+    },
+    {
+      "model": "daily",
+      "phase": "test_rolling_s01",
+      "t0_mae": 2.5491,
+      "t0_rmse": 3.112,
+      "expected": [
+        2.5491,
+        3.112
+      ],
+      "ok": true
+    },
+    {
+      "model": "persistence",
+      "phase": "test_rolling_s01",
+      "t0_mae": 2.5985,
+      "t0_rmse": 3.1282,
+      "expected": [
+        2.5985,
+        3.1282
+      ],
+      "ok": true
+    }
+  ]
+}

@@ -1,0 +1,149 @@
+.claude/*
+!.claude/session-handoff.md
+.unlazy/backups/
+
+# VERA 2026-09-24: operational artifacts + untracked binaries (CI builds graph from manifest; see 2026-09-21 handoff)
+__pycache__/
+knowledge/graph/graph.db
+knowledge/graph/graph_index.json
+knowledge/graph/sessions.db
+reflection/stale/
+reflection/trace/
+reflection/events.jsonl
+# Provenance ledger: the PostToolUse hook appends to it on every tool use
+# (scripts/provenance_logger.py). Generated audit state like events.jsonl
+# above, not source - committing it would leave the worktree permanently
+# dirty. The chain is per-clone by design; \`verify\` checks it.
+reflection/provenance_ledger.jsonl
+# Per-candidate root-cause output written by pipeline/06_reflect/spawn.py and
+# scripts/root_cause_attribution.py. An empty copy was tracked here and
+# deleted 2026-09-28; a generated output dir does not belong in VCS.
+reflection/diagnostics/
+# Background-reflection supervisor runtime state (pipeline/06_reflect/background_worker.py):
+#   {topic}.status.json  terminal state the worker must never fake (done|failed|timeout|error)
+#   {topic}.lock         PID of the in-flight worker, for same-topic mutual exclusion
+#   {topic}.log          agent stdout/stderr plus the gate's failure output
+# All three are regenerable per-run telemetry. The digests/candidates a run
+# PRODUCES are tracked separately and must never be deleted on failure - a
+# gate-flagged artifact is the evidence (see CLAUDE.md tooling hygiene).
+reflection/logs/
+knowledge/raw_local/
+# Every binary type ingest accepts. `*.pdf` alone was narrower than
+# `scripts/ingest.py`, which takes .epub and .txt as well — so an ingested
+# epub landed in knowledge/raw/ as untracked debris, which is exactly how the
+# Agentforce source was deleted on 2026-09-21 (74b922e). Workspace `library/`
+# is where binaries live; this project keeps a working copy only.
+knowledge/raw/*.pdf
+knowledge/raw/*.epub
+knowledge/raw/*.txt
+# knowledge/corpus/ is derived, not source: 10,337 chunk files projected from
+# ~110 raw sources, a 21:1 ratio that puts a rebuildable projection in version
+# control and makes the repo unreadable. Chunking is deterministic and
+# byte-identical — verified by regenerating a source through INBOX/ and diffing
+# against the committed chunk. Rebuild with `python scripts/ingest.py`.
+# knowledge/raw/manifest.jsonl stays tracked: it is the reverse index
+# (source -> chunk ids) a fresh clone needs to know what it is missing.
+# Untracked 2026-09-28 per D5; see ADR-0003.
+knowledge/corpus/
+
+# operational archive (mirrors emptied INBOX; audit content, not lab knowledge)
+INBOX_archive/
+
+# VERA E-suite temporary artifacts (generated during injection test; regenerated from scripts)
+subprojects/vera/experiments/runs/E_injection/clean_claims.jsonl
+subprojects/vera/experiments/runs/E_injection/clean_gate_c_results.jsonl
+subprojects/vera/experiments/runs/E_injection/planted_claims.jsonl
+subprojects/vera/experiments/runs/E_injection/positions.jsonl
+_tmp_pool_digest.txt
+# External experimental workspaces
+# 2026-10-27: no longer ignored. ecc was a nested repo, so this rule existed to
+# keep its gitlink out of the archive. The nested .git is gone and its history
+# lives in subprojects/ecc/history.bundle, so the files are ordinary content now.
+# subprojects/ecc/
+# SIM-2/SIM-2b worktrees (ephemeral experimental workspaces)
+.worktrees/
+# SIM-2 task scripts (ephemeral experimental)
+scripts/sim2_task_*.py
+# SIM-2 run outputs (ephemeral experimental)
+subprojects/vera/experiments/runs/SIM2_*.json
+# SIM-2b Q22 run logs: kept (v1 SIM2_* logs lost with deleted worktrees; protocol
+# puts q22 logs on the main tree precisely so they survive). core.ignorecase=true
+# makes the SIM2_* pattern swallow sim2_q22_*, so negate it explicitly.
+!subprojects/vera/experiments/runs/sim2_q22_*.json
+# Experiment A (query decomposition) transient outputs
+subprojects/vera/experiments/runs/EXPA_*.json
+# Ralph pilot state. Generated: scripts/ralph_pilot.py writes it every iteration
+# (--state defaults here), and the committed copy was stale pilot output
+# ("verdict: red" from a run whose worker file was later deleted). CONTEXT.md is
+# the real handoff; this name must not imply otherwise. Untracked 2026-09-29.
+STATE.md
+
+# Ralph pilot loop state. Generated event log (sha hash) written by the
+# background reflection loop; the pilot is superseded by the ralph-loop skill
+# (STATE.md note, 2026-10-02). Per-run scratch, not source. Untracked 2026-10-02.
+reflection/loop_state.json
+
+# Ralph loop phase state. Generated: scripts/ralph_pilot.py writes the official
+# .goose/ralph/ file contract (task.md, iteration.txt, work-summary.txt,
+# review-result.txt, review-feedback.txt, work-complete.txt, RALPH-BLOCKED.md,
+# .ralph-complete) on every run. This is per-run scratch, not source: the task
+# lives in the repo or in task.md, and every claim a run makes belongs in a
+# committed artifact instead. Untracked 2026-09-29.
+.goose/
+
+# Repomix generated context pack (regenerable: run_repomix.bat). 5MB+; never commit; repomix would otherwise self-pack it.
+project-context.txt
+# Derived digest regenerated by knowledge/graph/build_graph.py (preflight + CI). Match its gitignored siblings: fresh clones rebuild, never serve a stale committed copy.
+knowledge/graph/GRAPH-DIGEST.md
+
+# agentmemory standalone MCP server drops these startup logs in the project cwd when launched from here (npx @agentmemory/mcp). Regenerable; never commit.
+agentmemory.log
+agentmemory-mcp.log
+
+# one-shot helper scripts: keep the repo root clean (scar 2026-09-30: check_anchors.py/check_p1.py)
+scripts/_scratch/
+
+# Forge guardrails A/B run artifacts (docs/research/forge-guardrails-ab.md).
+# Per-run evidence: pretooluse_result.jsonl, goose.log, held-out test exit codes,
+# diff_audit.json. Generated by .agents/plugins/forge-ab-observer on every
+# PreToolUseResult, so it would otherwise churn `git status` on every run.
+# The design and the decision rule are NOT here: .forge-ab/tasks.yaml and
+# scripts/forge_ab_power.py are the tracked, pre-registered artifacts.
+ab_runs/
+
+# T1 runner-comparison explorations. G12 is undecided (the human has not chosen
+# the canonical runner), so these stay on disk but out of the index. Not junk:
+# GATES-T1-phase04-runner.md records why each was kept and what would retire it.
+# If G12 elects reflect.py or presearch.py, entry is one edit here plus
+# `git add -f` — never `git add .`.
+pipeline/06_reflect/reflect_fast.py
+pipeline/06_reflect/backend_probe.py
+pipeline/06_reflect/single_call_test.py
+pipeline/06_reflect/presearch.py
+# G1/G2 targets of GATES-reflection-fastpath.md. That ledger is also held back
+# (its G4/G5 name scripts/verify_reflection_fastpath.py, which does not exist),
+# so nothing tracked references these yet.
+tests/test_presearch.py
+
+# Superseded gate ledger, held back 2026-10-02. Its G4/G5 name
+# scripts/verify_reflection_fastpath.py, which does not exist, so the ledger
+# cannot be run as written — and GATES-T1-phase04-runner.md's own rule is that
+# "a gate that cannot run is a finding; a gate that is quietly removed is a
+# lie." Staged as-is it would commit an unrunnable ledger; deleted it would lose
+# the G1-G5 history. So it stays on disk and out of the index until either the
+# verify script is written (remeasure G4/G5, then stage) or the fast path is
+# retired. No tracked file references it.
+GATES-reflection-fastpath.md
+# Routing cache rebuilt by knowledge/graph routing; regenerated on demand,
+# never source. Sibling of the ignored graph.db / GRAPH-DIGEST.md above.
+knowledge/graph/.route_cache.json
+
+# Reflection run scratch. scratch/ is `--scratch` output (verification runs that
+# must never touch the graded corpus); .snapshots/ is written by
+# scripts/snapshot_graded.py before a gate reads graded artifacts. Both are
+# regenerable from a re-run and both grow without bound, so neither is source.
+# .snapshots/ exists as the recovery path when a gate flags an artifact, which
+# is why it is ignored rather than deleted: the copies stay on disk and simply
+# do not enter the index.
+reflection/scratch/
+reflection/.snapshots/

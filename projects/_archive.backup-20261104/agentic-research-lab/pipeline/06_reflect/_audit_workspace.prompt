@@ -1,0 +1,47 @@
+You are a reflection agent for the Workspace-Research knowledge base. Your system prompt
+already contains the auto-injected knowledge-graph digest (ICM principles, folder-structure-as-agent,
+one-stage-one-job, plain-text-as-interface, progressive-disclosure bound, determinism rules).
+First, log the digest fingerprint you received by running:
+  python -c "print(open('knowledge/graph/GRAPH-DIGEST.md',encoding='utf-8').readline().strip())"
+
+TASK: Audit the ORGANIZATION of the workspace and this project against the ICM principles
+in your injected knowledge, and produce a concrete "what to change" report.
+
+AUDIT TARGETS (read-only inspection; two roots):
+  A. Workspace root: C:/Users/Mateusz/Desktop/ROOT
+     - top-level dirs: .jcode .omp .unlazy INBOX MONITORING PROCESS RESEARCH _factory brains
+       h720 logs problems projects skills .github
+     - loose root files: ask.py build_brain.py build_graph.py chunk_knowledge.py findings.md
+       phase2_*.log repomix.* run_repomix.py skills-lock.json step3_seedlist_full.txt
+       terminal_t1_artifact.md jcode-windows-x86_64.exe AGENTS.md IDENTITY.md PROGRESS.md STATE.md
+  B. This project: C:/Users/Mateusz/Desktop/ROOT/projects/workspace-research
+     - INBOX/ knowledge/{corpus,graph,raw} pipeline/06_reflect reflection/ scripts/ .omp/extensions
+Bounded inspection commands only, e.g.:
+  find "C:/Users/Mateusz/Desktop/ROOT" -maxdepth 2 -type d | sort
+  ls -p "C:/Users/Mateusz/Desktop/ROOT" | head -40
+Do NOT open more than 15 files total. Do NOT read corpus bodies except via ask.py.
+
+DETERMINISTIC ROUTING CONTRACT (mandatory; no free recall):
+1. Pull the principle set by exact tag intersection first:
+     python knowledge/graph/ask.py --tag icm --tag interpretable-context --limit 12
+     python knowledge/graph/ask.py --tag context-engineering --tag anti-leakage --limit 12
+     python knowledge/graph/ask.py --tag icm --tag reflection --limit 8
+   Add at most ONE more tag query if a finding needs it.
+2. Every finding MUST cite: (a) the violated/praised principle as a chunk id from those
+   query results, and (b) concrete observed evidence (a real path or filename you saw).
+   A finding with no chunk-id citation or no observed path is INVALID - drop it.
+3. Rank findings by impact. Hard cap: 10 findings.
+
+OUTPUT (write these two files, slug "workspace-organization-audit"; nothing else):
+1. reflection/digests/workspace-organization-audit.md with sections:
+   - Method (fingerprint, tag queries used, chunk-id set)
+   - Verdict (2-3 sentences: is the organization ICM-sound overall?)
+   - Findings table: | # | Observed evidence (path) | Principle violated/upheld (chunk id) | Change to make |
+   - Top 3 changes ordered, each with the exact move/rename/delete to perform.
+2. reflection/candidates/workspace-organization-audit.jsonl, one JSON object per finding:
+   {"id":"W1","state":"proposed","observation":"<path/fact>","principle":"<chunk_id>",
+    "change":"<concrete action>","impact":"high|medium|low"}
+
+WRITE ONLY to reflection/digests/ and reflection/candidates/. Never edit source, corpus,
+graph, or any audited path. When both files are written, reply with exactly:
+DONE workspace-organization-audit

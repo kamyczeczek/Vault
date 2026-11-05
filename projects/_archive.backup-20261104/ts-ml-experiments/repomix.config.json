@@ -1,0 +1,38 @@
+{
+  "output": {
+    "filePath": "repomix-output.md",
+    "style": "markdown",
+    "headerText": "Timeseries Forecasting Project — Full-Fidelity Codebase Mirror (verbatim file contents)",
+    "removeComments": false,
+    "showLineNumbers": false,
+    "topFilesLength": 15,
+    "compress": false
+  },
+  "include": [
+    "h720/CONTEXT.md",
+    "h720/config.json",
+    "h720/methods/**/*.py",
+    "h720/sub_experiments/**/CONTEXT.md"
+  ],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      "output/**",
+      "datasets/**",
+      "**/*.csv",
+      "**/*.png",
+      "**/*.html",
+      "**/*.bak",
+      "**/*.bak2",
+      "**/*.lnk",
+      "**/__pycache__/**",
+      ".venv/**",
+      ".vscode/**",
+      "3rdparty/**"
+    ]
+  },
+  "security": {
+    "enableSecretLint": true
+  }
+}

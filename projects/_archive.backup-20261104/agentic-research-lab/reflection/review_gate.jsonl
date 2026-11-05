@@ -1,0 +1,65 @@
+{"ts": "2026-09-21T21:50:50", "phase": "before", "label": "causal-falsification-loops", "fingerprint": "fc0231ca4172", "metrics": {"auditor_issues": 2.0}}
+{"ts": "2026-09-21T21:50:50", "phase": "after", "label": "causal-falsification-loops", "fingerprint": "fc0231ca4172", "metrics": {"auditor_issues": 0.0}}
+{"ts": "2026-09-21T22:11:08", "phase": "before", "label": "research-quality-external-grounding", "fingerprint": "fc0231ca4172", "metrics": {"evidence_unresolvable": 0.0, "auditor_issues": 0.0}}
+{"ts": "2026-09-21T22:11:08", "phase": "after", "label": "research-quality-external-grounding", "fingerprint": "fc0231ca4172", "metrics": {"evidence_unresolvable": 0.0, "auditor_issues": 0.0}}
+{"ts": "2026-09-21T22:11:08", "phase": "before", "label": "research-breadth-retrieval-first", "fingerprint": "fc0231ca4172", "metrics": {"evidence_unresolvable": 0.0, "auditor_issues": 0.0}}
+{"ts": "2026-09-21T22:11:08", "phase": "after", "label": "research-breadth-retrieval-first", "fingerprint": "fc0231ca4172", "metrics": {"evidence_unresolvable": 0.0, "auditor_issues": 0.0}}
+{"ts": "2026-09-21T22:11:08", "phase": "before", "label": "research-depth-skeletal-triples", "fingerprint": "fc0231ca4172", "metrics": {"evidence_unresolvable": 0.0, "auditor_issues": 0.0}}
+{"ts": "2026-09-21T22:11:08", "phase": "after", "label": "research-depth-skeletal-triples", "fingerprint": "fc0231ca4172", "metrics": {"evidence_unresolvable": 0.0, "auditor_issues": 0.0}}
+{"ts": "2026-09-25T19:33:20", "phase": "after", "label": "vera-expa-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:33:20", "phase": "after", "label": "vera-expa-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:33:20", "phase": "after", "label": "vera-expa-003", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:33:20", "phase": "after", "label": "vera-expa-004", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:36:12", "phase": "after", "label": "vera-expa-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:36:13", "phase": "after", "label": "vera-expa-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:36:13", "phase": "after", "label": "vera-expa-003", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:36:13", "phase": "after", "label": "vera-expa-004", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:38:10", "phase": "after", "label": "vera-expa-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:38:10", "phase": "after", "label": "vera-expa-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:38:11", "phase": "after", "label": "vera-expa-003", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:38:11", "phase": "after", "label": "vera-expa-004", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T19:48:01", "phase": "before", "label": "vera-expa-003", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0}}
+{"ts": "2026-09-25T19:48:01", "phase": "after", "label": "vera-expa-003", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0}}
+{"ts": "2026-09-25T19:48:01", "phase": "before", "label": "vera-expa-003", "fingerprint": "44172cafee34", "metrics": {"logical_consistency": 1.0}}
+{"ts": "2026-09-25T19:48:01", "phase": "after", "label": "vera-expa-003", "fingerprint": "44172cafee34", "metrics": {"logical_consistency": 1.0}}
+{"ts": "2026-09-25T19:48:02", "phase": "before", "label": "vera-expa-003", "fingerprint": "44172cafee34", "metrics": {"external_verifiability": 0.667}}
+{"ts": "2026-09-25T19:48:02", "phase": "after", "label": "vera-expa-003", "fingerprint": "44172cafee34", "metrics": {"external_verifiability": 0.667}}
+{"ts": "2026-09-25T20:02:17", "phase": "after", "label": "vera-expa-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:02:17", "phase": "after", "label": "vera-expa-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:02:18", "phase": "after", "label": "vera-expa-003", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:02:18", "phase": "after", "label": "vera-expa-004", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:05:56", "phase": "after", "label": "vera-expa-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:05:57", "phase": "after", "label": "vera-expa-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:05:57", "phase": "after", "label": "vera-expa-003", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:05:57", "phase": "after", "label": "vera-expa-004", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:15:28", "phase": "after", "label": "vera-expa-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:18:47", "phase": "before", "label": "vera-expa-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0}}
+{"ts": "2026-09-25T20:18:47", "phase": "before", "label": "vera-expa-001", "fingerprint": "44172cafee34", "metrics": {"external_verifiability": 0.667}}
+{"ts": "2026-09-25T20:18:47", "phase": "after", "label": "vera-expa-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0}}
+{"ts": "2026-09-25T20:18:47", "phase": "after", "label": "vera-expa-001", "fingerprint": "44172cafee34", "metrics": {"external_verifiability": 0.667}}
+{"ts": "2026-09-25T20:18:47", "phase": "before", "label": "vera-expa-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0}}
+{"ts": "2026-09-25T20:18:47", "phase": "before", "label": "vera-expa-002", "fingerprint": "44172cafee34", "metrics": {"external_verifiability": 0.667}}
+{"ts": "2026-09-25T20:18:48", "phase": "after", "label": "vera-expa-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0}}
+{"ts": "2026-09-25T20:18:48", "phase": "after", "label": "vera-expa-002", "fingerprint": "44172cafee34", "metrics": {"external_verifiability": 0.667}}
+{"ts": "2026-09-25T20:18:48", "phase": "before", "label": "vera-expa-004", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0}}
+{"ts": "2026-09-25T20:18:48", "phase": "before", "label": "vera-expa-004", "fingerprint": "44172cafee34", "metrics": {"external_verifiability": 0.667}}
+{"ts": "2026-09-25T20:18:48", "phase": "after", "label": "vera-expa-004", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0}}
+{"ts": "2026-09-25T20:18:48", "phase": "after", "label": "vera-expa-004", "fingerprint": "44172cafee34", "metrics": {"external_verifiability": 0.667}}
+{"ts": "2026-09-25T20:31:17", "phase": "after", "label": "vera-expf-rev-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:31:17", "phase": "after", "label": "vera-expf-rev-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:32:02", "phase": "after", "label": "vera-expf-rev-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:32:03", "phase": "after", "label": "vera-expf-rev-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:32:15", "phase": "after", "label": "vera-expf-final-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:49:01", "phase": "after", "label": "vera-expf-rev-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T20:49:02", "phase": "after", "label": "vera-expf-rev-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T21:51:06", "phase": "after", "label": "vera-expf-final-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": "1.000 logical_consistency=1.000 external_verifiability=0.667"}}
+{"ts": "2026-09-25T21:52:34", "phase": "before", "label": "vera-expf-rev-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0, "logical_consistency": 1.0, "external_verifiability": 0.667}}
+{"ts": "2026-09-25T21:52:34", "phase": "after", "label": "vera-expf-rev-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0, "logical_consistency": 1.0, "external_verifiability": 0.667}}
+{"ts": "2026-09-25T21:52:35", "phase": "before", "label": "vera-expf-rev-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0, "logical_consistency": 1.0, "external_verifiability": 0.667}}
+{"ts": "2026-09-25T21:52:36", "phase": "after", "label": "vera-expf-rev-002", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0, "logical_consistency": 1.0, "external_verifiability": 0.667}}
+{"ts": "2026-09-25T21:52:37", "phase": "before", "label": "vera-expf-final-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0, "logical_consistency": 1.0, "external_verifiability": 0.667}}
+{"ts": "2026-09-25T21:52:38", "phase": "after", "label": "vera-expf-final-001", "fingerprint": "44172cafee34", "metrics": {"grounding_score": 1.0, "logical_consistency": 1.0, "external_verifiability": 0.667}}
+{"ts": "2026-09-25T23:38:44", "phase": "before", "label": "vera-expf-001", "fingerprint": "44172cafee34", "metrics": {"verified_link": 0.0, "content_audit": 0.0}}
+{"ts": "2026-09-25T23:38:45", "phase": "after", "label": "vera-expf-001", "fingerprint": "44172cafee34", "metrics": {"verified_link": 1.0, "content_audit": 1.0}}
+{"ts": "2026-09-25T23:38:45", "phase": "before", "label": "vera-expf-audit-001", "fingerprint": "44172cafee34", "metrics": {"verified_link": 0.0, "content_audit": 0.0}}
+{"ts": "2026-09-25T23:38:45", "phase": "after", "label": "vera-expf-audit-001", "fingerprint": "44172cafee34", "metrics": {"verified_link": 1.0, "content_audit": 1.0}}

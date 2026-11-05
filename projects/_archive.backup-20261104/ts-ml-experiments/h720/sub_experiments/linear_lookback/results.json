@@ -1,0 +1,303 @@
+{
+  "slice": "S-06",
+  "protocol": {
+    "fit": "frozen, train.csv 11,425 rows, fit once",
+    "origins": 2161,
+    "stride": 1,
+    "horizon": 720,
+    "note": "NLinear alpha=1.0 chain (legacy default); RLinear new model, both alphas; DLinear L720 completes S-05 chain"
+  },
+  "results": [
+    {
+      "model": "nlinear_L96_a1",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.0925,
+      "rolling_rmse": 2.5612,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.227182844051363,
+          "rmse": 2.6376679835827397
+        },
+        "window_2": {
+          "mae": 1.2750556169102594,
+          "rmse": 1.5988039052147716
+        },
+        "window_3": {
+          "mae": 1.765479030578173,
+          "rmse": 2.2873655093956846
+        },
+        "window_4": {
+          "mae": 2.0349860211944235,
+          "rmse": 2.7640182038645484
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "nlinear_L336_a1",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.0571,
+      "rolling_rmse": 2.5071,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.350723802523661,
+          "rmse": 2.817339593600691
+        },
+        "window_2": {
+          "mae": 1.4811903331480785,
+          "rmse": 1.8203046082131953
+        },
+        "window_3": {
+          "mae": 1.9701212446984102,
+          "rmse": 2.4474409259374443
+        },
+        "window_4": {
+          "mae": 1.9625797090832287,
+          "rmse": 2.599097297271028
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "nlinear_L720_a1",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1534,
+      "rolling_rmse": 2.6003,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.4898165210934273,
+          "rmse": 3.015204083035961
+        },
+        "window_2": {
+          "mae": 1.4603872425449356,
+          "rmse": 1.7763236904300492
+        },
+        "window_3": {
+          "mae": 2.118522672100389,
+          "rmse": 2.6365305659066105
+        },
+        "window_4": {
+          "mae": 1.824557377172714,
+          "rmse": 2.3275851342666276
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "rlinear_L336_a0",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.122,
+      "rolling_rmse": 2.6025,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.5760464874074627,
+          "rmse": 3.0357376234588322
+        },
+        "window_2": {
+          "mae": 1.4649069570034663,
+          "rmse": 1.8042263195180495
+        },
+        "window_3": {
+          "mae": 1.849317853776912,
+          "rmse": 2.3341755462969602
+        },
+        "window_4": {
+          "mae": 2.006886416880336,
+          "rmse": 2.6248265100948522
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "rlinear_L336_a1",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.122,
+      "rolling_rmse": 2.6025,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.57598747704526,
+          "rmse": 3.0356782640301816
+        },
+        "window_2": {
+          "mae": 1.4648936984447591,
+          "rmse": 1.8042047758652138
+        },
+        "window_3": {
+          "mae": 1.849294845931727,
+          "rmse": 2.3341590167795623
+        },
+        "window_4": {
+          "mae": 2.006882944916891,
+          "rmse": 2.6248238570956945
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "rlinear_L720_a0",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1687,
+      "rolling_rmse": 2.6356,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.4922850016349503,
+          "rmse": 3.0229115677809175
+        },
+        "window_2": {
+          "mae": 1.7466768765874798,
+          "rmse": 2.092817355711845
+        },
+        "window_3": {
+          "mae": 1.9422051633129311,
+          "rmse": 2.4687630402957033
+        },
+        "window_4": {
+          "mae": 1.8216482144194415,
+          "rmse": 2.3615189171208373
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "rlinear_L720_a1",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1687,
+      "rolling_rmse": 2.6356,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.4921819141838992,
+          "rmse": 3.022800673966947
+        },
+        "window_2": {
+          "mae": 1.7466488281356178,
+          "rmse": 2.092781610747972
+        },
+        "window_3": {
+          "mae": 1.942198090406996,
+          "rmse": 2.4687522179418497
+        },
+        "window_4": {
+          "mae": 1.8216281952735331,
+          "rmse": 2.361496240600967
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "dlinear_L720_a0",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1687,
+      "rolling_rmse": 2.6356,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.4922850016349476,
+          "rmse": 3.022911567780915
+        },
+        "window_2": {
+          "mae": 1.7466768765874794,
+          "rmse": 2.092817355711845
+        },
+        "window_3": {
+          "mae": 1.9422051633129311,
+          "rmse": 2.4687630402957033
+        },
+        "window_4": {
+          "mae": 1.8216482144194421,
+          "rmse": 2.361518917120838
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h64_full_fastlags",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.3092,
+      "rolling_rmse": 2.8046,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5923309463548625,
+          "rmse": 1.9823129280190273
+        },
+        "window_2": {
+          "mae": 1.8145564224871475,
+          "rmse": 2.236046049143698
+        },
+        "window_3": {
+          "mae": 1.6619488768935646,
+          "rmse": 2.2672602806133835
+        },
+        "window_4": {
+          "mae": 2.1615466427691765,
+          "rmse": 2.872775949016963
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "persistence",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.5985,
+      "rolling_rmse": 3.1282,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7952457486755318,
+          "rmse": 2.2503347360867134
+        },
+        "window_2": {
+          "mae": 2.1462069739898046,
+          "rmse": 2.6324969775393976
+        },
+        "window_3": {
+          "mae": 1.7779138766643074,
+          "rmse": 2.3889429847551824
+        },
+        "window_4": {
+          "mae": 2.180211087150706,
+          "rmse": 2.8509213353302125
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "daily",
+      "protocol": "rolling stride-1, 2161 origins, seasonal-naive lag 24",
+      "rolling_mae": 2.5491,
+      "rolling_rmse": 3.112,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6720180662969748,
+          "rmse": 2.171948042164322
+        },
+        "window_2": {
+          "mae": 1.9042791694402694,
+          "rmse": 2.3712428720780094
+        },
+        "window_3": {
+          "mae": 1.8620638797266615,
+          "rmse": 2.5054643959241902
+        },
+        "window_4": {
+          "mae": 2.919241687407096,
+          "rmse": 3.6344442181063386
+        }
+      },
+      "status": "ok"
+    }
+  ],
+  "lookback_chains": {
+    "nlinear_alpha1": {
+      "L96": 2.0925,
+      "L336": 2.0571,
+      "L720": 2.1534
+    },
+    "dlinear_alpha0_k25": {
+      "L96": 2.1163,
+      "L336": 2.122,
+      "L720": 2.1687
+    },
+    "rlinear_alpha0": {
+      "L336": 2.122,
+      "L720": 2.1687
+    }
+  }
+}

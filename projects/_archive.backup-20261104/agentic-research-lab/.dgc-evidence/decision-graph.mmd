@@ -1,0 +1,16 @@
+flowchart TD
+  A[User asks agent to perform task] --> B[Agent plans next step]
+  B --> C{Tool required?}
+  C -- yes --> D[Validate tool capability]
+  D --> E{Approval needed?}
+  E -- yes --> F[Suspend and request approval]
+  E -- no --> G[Execute tool call]
+  F --> H[Resume after approval]
+  H --> G
+  G --> I{Tool succeeded?}
+  I -- yes --> J[Update run state]
+  I -- no --> K[Record failure evidence]
+  K --> L{Retry safe?}
+  L -- yes --> G
+  L -- no --> M[Stop with actionable error]
+  J --> N[Final response]

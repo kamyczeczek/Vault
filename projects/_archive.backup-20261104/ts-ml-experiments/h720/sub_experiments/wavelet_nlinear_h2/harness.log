@@ -1,0 +1,75 @@
+H2 — Dyadic Wavelet NLinear J=3 — S-20-clean protocol
+pool 9: nlinear_L336_a1, nlinear_L336_a10, w_haar_base100_r3, w_haar_base10_r30, w_db2_base100_r3, w_db2_base10_r30, w_haar_base100_r10, w_db2_base100_r10, w_haar_base1000_r10
+train=8545 fit=11425 test=2880
+val split: search [0:1080) / select [1080:2161)
+collecting P_val (val members frozen on 8545)...
+  nlinear_L336_a1        L=336 ok (2161, 720)
+  nlinear_L336_a10       L=336 ok (2161, 720)
+  w_haar_base100_r3      L=336 ok (2161, 720)
+  w_haar_base10_r30      L=336 ok (2161, 720)
+  w_db2_base100_r3       L=336 ok (2161, 720)
+  w_db2_base10_r30       L=336 ok (2161, 720)
+  w_haar_base100_r10     L=336 ok (2161, 720)
+  w_db2_base100_r10      L=336 ok (2161, 720)
+  w_haar_base1000_r10    L=336 ok (2161, 720)
+
+singleton val MAE (raw members, held-out half [1080:2161)):
+  nlinear_L336_a1        held-out 2.5787  full 2.8970
+  nlinear_L336_a10       held-out 2.5787  full 2.8970
+  w_haar_base100_r3      held-out 2.5774  full 2.8960
+  w_haar_base10_r30      held-out 2.5761  full 2.8951
+  w_db2_base100_r3       held-out 2.5775  full 2.8960
+  w_db2_base10_r30       held-out 2.5762  full 2.8952
+  w_haar_base100_r10     held-out 2.5759  full 2.8950
+  w_db2_base100_r10      held-out 2.5760  full 2.8951
+  w_haar_base1000_r10    held-out 2.5749  full 2.8951
+
+init singleton ['w_haar_base1000_r10'] fast 2.5749 true 2.5749 a=None
+iter  0 cur ['w_db2_base100_r10', 'w_haar_base1000_r10'] fast 2.5188 true 2.5154 a=10000.0 best_fast 2.5188 ['w_db2_base100_r10', 'w_haar_base1000_r10']
+iter  1 cur ['w_db2_base10_r30', 'w_haar_base1000_r10'] fast 2.5189 true 2.5189 a=3000.0 best_fast 2.5188 ['w_db2_base100_r10', 'w_haar_base1000_r10']
+iter  2 cur ['w_haar_base100_r10', 'w_haar_base1000_r10'] fast 2.5189 true 2.5189 a=3000.0 best_fast 2.5188 ['w_db2_base100_r10', 'w_haar_base1000_r10']
+iter  3 cur ['w_haar_base10_r30', 'w_haar_base1000_r10'] fast 2.5190 true 2.5156 a=10000.0 best_fast 2.5188 ['w_db2_base100_r10', 'w_haar_base1000_r10']
+iter  4 cur ['w_haar_base100_r3', 'w_haar_base1000_r10'] fast 2.5193 true 2.5193 a=3000.0 best_fast 2.5188 ['w_db2_base100_r10', 'w_haar_base1000_r10']
+iter  5 cur ['w_db2_base100_r3', 'w_haar_base1000_r10'] fast 2.5193 true 2.5193 a=3000.0 best_fast 2.5188 ['w_db2_base100_r10', 'w_haar_base1000_r10']
+  no improve 5 iters -> stop
+
+best subset fast 2.5188: ['w_db2_base100_r10', 'w_haar_base1000_r10']
+best subset held-out select-half MAE 2.5154 alpha 10000.0
+refit-all-val MAE 2.8503 alpha 10000.0
+
+subband coefficient stability (refit-all-val vs frozen-8545):
+  w_haar_base100_r3      worst subband norm ratio (refit/frozen) 0.964 stable=True
+  w_haar_base10_r30      worst subband norm ratio (refit/frozen) 1.151 stable=True
+  w_db2_base100_r3       worst subband norm ratio (refit/frozen) 0.972 stable=True
+  w_db2_base10_r30       worst subband norm ratio (refit/frozen) 1.165 stable=True
+  w_haar_base100_r10     worst subband norm ratio (refit/frozen) 1.138 stable=True
+  w_db2_base100_r10      worst subband norm ratio (refit/frozen) 1.152 stable=True
+  w_haar_base1000_r10    worst subband norm ratio (refit/frozen) 1.207 stable=True
+
+collecting P_test (members refrozen on 11425; 4 disjoint + 2161 full)...
+  nlinear_L336_a1        L=336 ok (2165, 720)
+  nlinear_L336_a10       L=336 ok (2165, 720)
+  w_haar_base100_r3      L=336 ok (2165, 720)
+  w_haar_base10_r30      L=336 ok (2165, 720)
+  w_db2_base100_r3       L=336 ok (2165, 720)
+  w_db2_base10_r30       L=336 ok (2165, 720)
+  w_haar_base100_r10     L=336 ok (2165, 720)
+  w_db2_base100_r10      L=336 ok (2165, 720)
+  w_haar_base1000_r10    L=336 ok (2165, 720)
+  member w_db2_base100_r10      full 2.0570
+  member w_haar_base1000_r10    full 2.0566
+  singleton nlinear_L336_a1        full-test 2.0571 / rmse 2.5624
+  singleton nlinear_L336_a10       full-test 2.0571 / rmse 2.5624
+  singleton w_haar_base100_r3      full-test 2.0569 / rmse 2.5620
+  singleton w_haar_base10_r30      full-test 2.0570 / rmse 2.5619
+  singleton w_db2_base100_r3       full-test 2.0569 / rmse 2.5621
+  singleton w_db2_base10_r30       full-test 2.0570 / rmse 2.5620
+  singleton w_haar_base100_r10     full-test 2.0569 / rmse 2.5618
+  singleton w_db2_base100_r10      full-test 2.0570 / rmse 2.5619
+  singleton w_haar_base1000_r10    full-test 2.0566 / rmse 2.5613
+
+S-26 incumbent full 1.9909 / disjoint 1.9696; NLinear L336 a1 singleton 2.0571
+H2 best full 1.9906 disjoint 1.9656 (delta vs S-26 -0.0003)
+ACCEPT=False
+
+wrote C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\wavelet_nlinear_h2\results_h2.json elapsed 124.9s

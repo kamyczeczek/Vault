@@ -1,0 +1,78 @@
+S-48 subband-expert stack re-registration of the Bet 3 PatchTST-Delta blend (S48_DESIGN.md, binding).
+Identical frozen pool/seed/protocol as Bet 3 (D3/D4); binding gate BLEND-based per S-43 P1 (D2);
+singleton & regularity conditions demoted to non-binding diagnostics (D5); W1-W4 vs in-harness S-26 anchor (D7).
+PatchTST members import the encoder from the sibling Bet 3 dir (architecture-identical code): C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\patchtst_delta_bet3\patchtst_encoder.py
+Verifying S-26 anchor (D9: MAE/RMSE/disjoint/W4 vs Bet 3 full precision, tol 1e-4)...
+S-26 anchor OK: MAE 1.9909 RMSE 2.4710 disjoint 1.9696 W4 1.9579
+Collecting P_val for 8 candidates (val 2161 origins, members frozen on 8545)...
+  nlinear_L336_a1      ok (2161, 720) (0.6s)
+  nlinear_L336_a10     ok (2161, 720) (0.6s)
+  training patchtst_P24_D32_2L on train 8545 (small encoder, this may take minutes)...
+  patchtst_P24_D32_2L  ok (2161, 720) (98.0s)
+  training patchtst_P48_D16_1L on train 8545 (small encoder, this may take minutes)...
+  patchtst_P48_D16_1L  ok (2161, 720) (34.0s)
+  subband_cA3          ok (2161, 720) (0.6s)
+  subband_d3           ok (2161, 720) (0.7s)
+  subband_d2           ok (2161, 720) (0.6s)
+  subband_d1           ok (2161, 720) (0.6s)
+  singleton nlinear_L336_a1      val 2.8970
+  singleton nlinear_L336_a10     val 2.8970
+  singleton patchtst_P24_D32_2L  val 3.0267
+  singleton patchtst_P48_D16_1L  val 3.1517
+  singleton subband_cA3          val 3.1244
+  singleton subband_d3           val 3.3358
+  singleton subband_d2           val 3.3529
+  singleton subband_d1           val 3.4547
+Held-out S-26 delta-ridge control MAE (val[1080:2161)) = 2.5225 (alpha 10000.0)
+
+init singleton ['nlinear_L336_a10'] fast 2.5206
+iter  0 cur ['nlinear_L336_a10', 'patchtst_P48_D16_1L'] fast 2.5081 true 2.4992 a=30000.0 best_fast 2.5081 ['nlinear_L336_a10', 'patchtst_P48_D16_1L']
+iter  1 cur ['nlinear_L336_a1', 'patchtst_P48_D16_1L'] fast 2.5081 true 2.5081 a=3000.0 best_fast 2.5081 ['nlinear_L336_a10', 'patchtst_P48_D16_1L']
+iter  2 cur ['nlinear_L336_a1', 'patchtst_P24_D32_2L'] fast 2.5084 true 2.5084 a=3000.0 best_fast 2.5081 ['nlinear_L336_a10', 'patchtst_P48_D16_1L']
+iter  3 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L'] fast 2.5021 true 2.4936 a=30000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  4 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L', 'subband_cA3'] fast 2.5075 true 2.5075 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  5 cur ['nlinear_L336_a10', 'patchtst_P24_D32_2L', 'subband_cA3'] fast 2.5092 true 2.5092 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  6 cur ['nlinear_L336_a10', 'patchtst_P24_D32_2L'] fast 2.5084 true 2.5029 a=30000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  7 cur ['nlinear_L336_a10', 'patchtst_P24_D32_2L', 'patchtst_P48_D16_1L'] fast 2.5171 true 2.5171 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+iter  8 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L', 'patchtst_P48_D16_1L'] fast 2.5096 true 2.5096 a=3000.0 best_fast 2.5021 ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+  no improve 5 iters -> stop
+
+best subset fast 2.5021: ['nlinear_L336_a1', 'nlinear_L336_a10', 'patchtst_P24_D32_2L']
+best_alpha 30000.0
+refit half-split val MAE 2.4936 alpha 30000.0
+
+Held-out precondition: control 2.5225  best_subset fast 2.5021  gain +0.0204
+  AUDIT patchtst_P24_D32_2L: train-val gap -0.0898  attention_entropy_last 2.392
+  AUDIT patchtst_P48_D16_1L: train-val gap 0.1795  attention_entropy_last 1.859
+Regularity (non-binding diagnostics, D5): max train-val gap 0.1795 (>0.15=True)  entropy_collapse(<0.5)=False
+  REGULARITY FLAG (D5/D6): train-val gap > 0.15 or entropy collapse — reported, non-binding; cannot flip the verdict.
+  nlinear_L336_a1      test ok (0.6s)
+  nlinear_L336_a10     test ok (0.6s)
+  training patchtst_P24_D32_2L on full 11425 (frozen test)...
+  patchtst_P24_D32_2L  test ok (114.2s)
+  training patchtst_P48_D16_1L on full 11425 (frozen test)...
+  patchtst_P48_D16_1L  test ok (66.1s)
+  subband_cA3          test ok (0.7s)
+  subband_d3           test ok (0.8s)
+  subband_d2           test ok (0.7s)
+  subband_d1           test ok (0.7s)
+  member nlinear_L336_a1      full 2.0571
+  member nlinear_L336_a10     full 2.0571
+  member patchtst_P24_D32_2L  full 2.1864
+Bootstrap 95% CI (B=2000): S-44 full [1.9584, 1.9975] mean 1.9781; S-26 [1.9723, 2.0092] mean 1.9909
+Paired delta (S44-S26) mean -0.0128 95% CI [-0.0185, -0.0069] (UPPER BOUND < 0 => promotion-supported)
+  strat W1 (origin    0): S-44 2.1607  S-26 2.1333  delta +0.0274
+  strat W2 (origin  720): S-44 1.5655  S-26 1.5655  delta +0.0000
+  strat W3 (origin 1440): S-44 2.2083  S-26 2.2739  delta -0.0656
+  strat W4 (origin 2160): S-44 1.8896  S-26 1.9579  delta -0.0683
+  horizon h1_first240: S-44 1.8266  S-26 1.8335  delta -0.0068
+  horizon h2_mid240: S-44 1.9788  S-26 1.9728  delta +0.0060
+  horizon h3_last240: S-44 2.1290  S-26 2.1665  delta -0.0375
+
+S-26 incumbent (in-harness): full 1.9909 / 1.9696 disjoint / W4 1.9579
+S-44 blend best full 1.9781 / 2.4613 disjoint 1.8634 W4 1.8896 val_full 2.4936
+W4 (non-binding diagnostic, D7): S-44 1.8896 vs in-harness S-26 anchor 1.9579 -> -0.0683
+PARITY (D8): 53 checks vs Bet 3, all_pass=True (tol 1e-4)
+Binding gate (D2): G1 full<=1.9859 True (1.9781)  G2 full<1.9909 True  G3 disjoint<=1.9696 True (1.8634)  G4 paired-CI-upper<0 True (-0.0069)  all_binding_pass=True
+Close conditions (D5): C1 no-PatchTST False  C2 heldout_gain<=0.005 False  C3 CI-upper>=0 False  C4 any-G1-G3-fails False  trigger=False
+Overall VERDICT=PROMOTED

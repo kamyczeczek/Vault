@@ -1,0 +1,851 @@
+Skip to content
+
+Independent research: GraphRAG makes AI agents 80% more truthful | Read the report
+
+![The Neo4j Graph Platform – The #1 Platform for Connected
+Data](https://dist.neo4j.com/wp-
+content/uploads/20230926084108/Logo_FullColor_RGB_TransBG.svg) Menu
+
+![](https://dist.neo4j.com/wp-
+content/uploads/20230926084108/Logo_FullColor_RGB_TransBG.svg) Search Close
+Menu
+
+  * Products
+    * FULLY-MANAGED
+    * AuraDB  Store and query connected data at scale
+    * Virtual Graph  Create and query a knowledge graph on existing data
+    * Aura Graph Analytics  Run graph algorithms on any data, any cloud
+    * Aura Agent  Build and deploy context-aware agents fast
+    * SELF-MANAGED
+    * Graph Database  Store connected data with a graph database
+    * Graph Analytics  Run graph algorithms on self-managed graph databases
+    * Graph Data Science  Run graph algorithms on connected data
+    * Enterprise Studio  Securely query, explore, and visualize data
+    * Fleet Manager  Manage all your Neo4j deployments from one place
+    * AI CAPABILITIES
+    * Knowledge layer
+    * AI systems
+    * AI integrations
+    * GraphRAG
+  * Solutions
+    * INDUSTRIES
+    * Financial services
+    * Healthcare & life sciences
+    * Public sector
+    * Retail
+    * Telecommunications
+    * TECHNICAL PATTERNS
+    * Digital twin
+    * Knowledge graphs
+    * Pattern matching
+    * GRAPHAWARE
+    * Intelligence analysis
+    * Financial crime intelligence
+    * USE CASES
+    * AI systems
+    * Customer experiences
+    * Data privacy, risk, & compliance
+    * Fraud detection & analytics
+    * Identify & access management
+    * Master data management
+    * Network & IT
+    * Real-time recommendations
+    * Supply chain
+    * PARTNERS
+    * AWS
+    * Databricks
+    * Google Cloud
+    * Microsoft Azure
+    * Snowflake
+    * Partner directory
+    * Become a partner
+    *     * Customer success stories  Case studies, customer videos, proof points, and more
+    * Neo4j Startup Program
+  * Why Neo4j
+    * FOR EXECUTIVES
+    * Executive insights
+    * AI systems
+    * IDC business value study
+    * Business value calculator
+    * CUSTOMERS
+    * Customer success stories  Case studies, customer videos, proof points, and more
+    *     * Contact Sales
+  * Developers
+    * LEARNING CENTERS
+    * Dev Center  Best practices, guides, tutorials, and downloads
+    * GraphAcademy  Free online courses and certifications. Join the 100k+ Neo4j experts.
+    * DEV RESOURCES
+    * Community
+    * Discord
+    * Developer blog
+    * Documentation
+    * Deployment Center
+    * BUILD WITH AI
+    * AI + graph
+    * GraphRAG
+    * Agent memory
+    * Model Context Protocol (MCP)
+    *     * Customer support
+  * Resources
+    * LEARN
+    * Blog  Announcements, guides, and best practices
+    * Customer success stories  Case studies, customer videos, proof points, and more
+    * Events hub  Live and on-demand events, training, webinars, and demos
+    * GraphAcademy  Free online courses and certifications. Join the 100k+ Neo4j experts.
+    * Newsroom  Latest news, awards, press releases, and media resources
+    * Resource library  Whitepapers, datasheets, and more
+    * Video hub  Covering graph databases, data science, analytics, and AI
+    * FEATURED EVENTS
+    * GraphSummit 2026  The knowledge layer for trustworthy AI
+    * NODES 2026 | November 12  Virtual Conference: Engineering better intelligence
+    *     * Careers
+  * Pricing
+  * Aura Login
+  * Support
+
+Get started free Contact us
+
+![Neo4j logo](https://dist.neo4j.com/wp-
+content/uploads/20230926084108/Logo_FullColor_RGB_TransBG.svg)
+
+  * Products __ Products: submenu
+
+## Graph Intelligence Platform
+
+We are the knowledge layer that delivers accurate, explainable, and trusted
+AI.
+
+    *     * Get started free
+
+Fully-managed
+
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260408083548/aura.svg) AuraDB  Store and query connected data at scale
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260608171404/virtual_graph.svg) Virtual Graph  Create and query a knowledge graph on existing data
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260528134827/graph-1.svg) Aura Graph Analytics  Run graph algorithms on any data, any cloud
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260408083551/neo4j_aura_agent.svg) Aura Agent AI Build and deploy context-aware agents fast
+
+Self-managed
+
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260408083552/Neo4j_db.svg) Graph Database  Store connected data with a graph database
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260911103900/icon-neo4j-graph-analytics.svg) Graph Analytics  Run graph algorithms on self-managed graph databases
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260408083550/Graph_data_science.svg) Graph Data Science  Run graph algorithms on connected data
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260623121722/icon-enterpise-studio.svg) Enterprise Studio  Securely query, explore, and visualize data
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260528134724/fleet-manager.svg) Fleet Manager  Manage all your Neo4j deployments from one place
+
+AI Capabilities AI
+
+    * Knowledge layer
+    * AI systems
+    * AI integrations
+    * GraphRAG
+
+  * Solutions __ Solutions: submenu
+
+## Solutions
+
+AI and graph technologies give agents the understanding they need to generate
+trustworthy outputs, and humans the understanding they need to make better
+decisions.
+
+    * Customer success stories
+    * Neo4j Startup Program
+    *     * Get started free
+
+Industries
+
+    * Financial services
+    * Healthcare & life sciences
+    * Public sector
+    * Retail
+    * Telecommunications
+
+Technical patterns
+
+    * Digital twin
+    * Knowledge graphs
+    * Pattern matching
+
+GraphAware
+
+    * Intelligence analysis
+    * Financial crime intelligence
+
+Use cases
+
+    * AI systems AI
+    * Customer experiences
+    * Data privacy, risk, & compliance
+    * Fraud detection & analytics
+    * Identify & access management
+    * Master data management
+    * Network & IT
+    * Real-time recommendations
+    * Supply chain
+
+Partners
+
+    * AWS
+    * Databricks
+    * Google Cloud
+    * Microsoft Azure
+    * Snowflake
+    * Partner directory
+    * Become a partner
+
+  * Why Neo4j __ Why Neo4j: submenu
+
+## Why Neo4j
+
+The knowledge layer that makes AI precise, trusted, and built to scale.
+
+    * Contact Sales
+    *     * Get started free
+
+For executives
+
+    * Executive insights
+    * AI systems AI
+    * IDC business value study
+    * Business value calculator
+
+Customers
+
+    * Customer success stories
+
+The business value of Neo4j
+
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260528135119/idc.png) IDC business value study Better context. Trustworthy AI. 230% ROI. See full story
+
+  * Developers __ Developers: submenu
+
+## Developers
+
+Discover how to model a knowledge graph, retrieve context with GraphRAG,
+connect agents with MCP, and build trustworthy AI that reasons over connected
+data.
+
+    * Customer support
+    *     * Get started free
+
+Learning centers
+
+    * Dev Center Best practices, guides, tutorials, and downloads
+    * GraphAcademy Free online courses and certifications. Join the 100k+ Neo4j experts.
+
+Dev resources
+
+    * Community
+    * Discord
+    * Developer blog
+    * Documentation
+    * Deployment Center
+
+Build with AI AI
+
+    * AI + graph
+    * GraphRAG
+    * Agent memory
+    * Model Context Protocol (MCP)
+
+  * Resources __ Resources: submenu
+
+## Resources
+
+Everything you need to take AI from concept to production.
+
+    * Careers
+    * Customer support
+    *     * Get started free
+
+Learn
+
+    * Blog Announcements, guides, and best practices
+    * Customer success stories Case studies, customer videos, proof points, and more
+    * Events hub Live and on-demand events, training, webinars, and demos
+    * GraphAcademy Free online courses and certifications
+    * Newsroom Latest news, awards, press releases, and media resources
+    * Resource library Whitepapers, datasheets, and more
+    * Video hub Covering graph databases, data science, analytics, and AI
+
+Featured events
+
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260528145556/graph-summit.svg) World tour 2026 The knowledge layer for trustworthy AI
+    * ![](https://dist.neo4j.com/wp-content/uploads/20260610112511/nodes26mainnav.svg) Free 24-hour global event The largest online conference dedicated to engineering better intelligence.
+
+  * Pricing
+  *     *     * Contact
+    * Aura login
+    * Get started free
+
+### Warning: JavaScript is disabled on your browser. Parts of Neo4j.com will
+not work properly.
+
+Blog home
+
+Close
+
+  * Blog home
+  * Developer
+  * GenAI
+  * News
+
+  * Agentic AI
+
+# What are decision traces in a context graph? How they reveal agentic
+reasoning
+
+![Photo of John Stegeman](https://dist.neo4j.com/wp-
+content/uploads/20221026130018/head-150x132.jpg)
+
+John Stegeman
+
+Graph Database Product Specialist, Neo4j
+
+September 8, 2026
+
+10 min read
+
+![Context graph diagram illustrating decision traces for AI
+agents](https://dist.neo4j.com/wp-content/uploads/20260908140110/context-
+graph-decision-traces-1024x536.png)
+
+Your AI agent approved a refund outside the standard time frame. Now a
+compliance officer wants to know why, and whether the support agent granted a
+refund like this before. The chat log shows the conversation between the
+customer and the agent. The log doesn’t show what the agent checked before
+granting the refund or how it handled similar situations previously.
+
+Without a decision trace, you can try to piece together why an agent made a
+decision, but its reasoning is really a black box. With a decision trace, you
+get a structured record of how an AI agent reached a decision. It captures not
+only the outcome but also the reasons and tools the agent used. This is stored
+in a context graph, where those steps stay connected to the conversations,
+facts, and other information the agent relied on, so you can follow them to
+the outcome.
+
+Here's why that matters, and what it takes to give your agents that kind of
+persistent, queryable memory.
+
+More in this guide:
+
+  * Why AI agents need a record of their reasoning
+  * What does a decision trace record?
+  * Decision traces vs. LLM traces vs. logs
+  * Decision traces in a context graph
+  * How to record decision traces with Neo4j
+  * Give your agents reasoning memory
+  * Decision traces: FAQs
+
+## Why AI agents need a record of their reasoning
+
+AI agents make many decisions as they work through a task. They use the
+information available to them, choose tools, apply policies, and decide what
+to do next. Because a nondeterministic LLM sits at the center of this process,
+the same input doesn't always produce the same path or outcome, and once the
+run ends, the context behind those choices can disappear. Over a long
+workflow, an agent may also lose track of earlier decisions or drift from the
+original goal.
+
+Decision traces give those decisions a durable record. You can inspect that
+history when an agent behaves unexpectedly or when another team needs to
+review how the agent handled a case. That record supports the governance and
+audit requirements for production systems.
+
+Past traces can become part of the context for future tasks, too. Alongside
+enterprise knowledge and conversations, an agent can retrieve relevant past
+decisions as precedents, and humans can weigh in so that precedents reflect
+business needs and mistakes don't get repeated.
+
+Recording decision traces pays off every time a past decision gets looked at
+again:
+
+  * **Explainability:** Every decision stays connected to the information and previous decisions that shaped it, so you can trace the rationale behind it directly. For example, when that refund gets questioned later, the trace shows the policy the agent applied and the order details it checked.
+  * **Debugging:** Multi-step agent workflows can fail for many reasons. A decision trace shows each step, tool call, and result it recorded, making it easier to identify where a workflow went off track. The trace shows the exact step where a tool call came back empty, and the agent improvised.
+  * **Compliance and auditing:** Decision traces capture not just what the agent decided but how it got there, creating an audit trail of every step, tool call, and policy the agent consulted. That record meets the transparency demands that regulators and stakeholders increasingly place on automated decisions.
+  * **Consistency:** By retrieving relevant decision traces, an agent applies the same approach to similar cases and produces more consistent outcomes. The next refund request with the same parameters retrieves the earlier trace as precedent, so the agent provides the same answer.
+  * **Learning over time:** Every completed trace adds another example to the graph. As the collection grows, agents can search previous decisions, find similar situations, and reuse approaches that worked well before. Reasoning memory records how decisions get made and why — a compounding loop of institutional intelligence.
+  * **Shared reasoning across agents:** When multiple agents use the same context graph, they can retrieve relevant decision traces from one another and build on prior work. A triage agent can read the resolution agent's past traces before escalating a case, and each sees the decisions it took no part in making.
+
+## What does a decision trace record?
+
+Each decision trace provides the breadcrumbs you need to better understand
+what happened as an agent works through a decision. These include the
+following core elements:
+
+  * **Decision:** What the agent decided on.
+  * **Outcome:** The result of that decision.
+  * **Reasoning steps:** The rationale behind decisions.
+  * **Tool calls:** The tools the agent called, the actions it took, and the results it received.
+  * **Context:** The entities, conversations, and other information used at each step are linked back to the trace.
+
+Take the support agent example. Before approving the refund, it checks the
+order and applies the relevant refund policy. The decision trace connects
+those steps and the policy lookup result to the final approval, so someone
+reviewing the case later can see what information the agent used and what it
+did before making the decision.
+
+![Graph showing a refund request connected to an order, policy check, policy
+lookup result, and refund approval.](https://dist.neo4j.com/wp-
+content/uploads/20260908141819/decision-trace-refund-example.png) Example of a
+decision trace connecting a refund request to the reasoning steps, tool call,
+context, and final outcome.
+
+## Decision traces vs. LLM traces vs. logs
+
+Decision traces, LLM traces, and application logs can all tell you something
+about an agent's activity, but they answer different questions.
+
+| Decision traces| LLM traces| Application logs
+---|---|---|---
+**Primary question**|  Why did the agent make this decision?| What happened
+during this model run?| What happened and when?
+**Records**|  Decisions, outcomes, reasoning steps, tool calls, and context|
+Model inputs, outputs, tool calls, and run details| Events, timestamps,
+errors, and system activity
+**Primary use**|  Explain, audit, and reuse past decisions| Debug and inspect
+model runs| Monitor and troubleshoot application behavior
+**Persistence**|  Reasoning memory that the agent can query and reuse| Scoped
+to a single model run and stored in an observability tool| Stored as an event
+history
+
+You use a log to see the basic actions, while an LLM trace like LangSmith can
+help you inspect the model that produced the actions, but only a decision
+trace connects the dots. The trace lets you walk back from the approval to the
+information, actions, and prior decisions that shaped it. And unlike the other
+two, it persists as memory that the agent itself can retrieve, inside the same
+graph as the knowledge and conversations the decision drew on.
+
+## Decision traces in a context graph
+
+Decision traces are primarily stored in a context graph, a persistent memory
+system for AI agents, where the connections between memories stay traversable.
+It brings together three types of memory. Long-term memory holds enterprise
+knowledge, short-term memory captures conversation history, and reasoning
+memory records decision traces. Together, these layers give an agent access to
+what it knows, what happened in the current interaction, and the decisions it
+made along the way.
+
+![Context graph showing long-term memory for enterprise knowledge, short-term
+memory for conversation history, and reasoning memory for decision
+traces.](https://dist.neo4j.com/wp-content/uploads/20260601090022/context-
+graph-memory-levels.png) Context graphs connect long-term, short-term, and
+reasoning memory for AI agents.
+
+Decision traces form the reasoning memory layer and connect directly to the
+other two types of memory. That means an outcome can connect directly to the
+company facts the agent relied on and the conversation that triggered it.
+Going back to that support agent scenario, that refund approval can connect
+not only to the customer's request but also to the relevant refund policy and
+the other aspects of the decision trace. Following those relationships shows
+the full context around the decision.
+
+Because the three memory layers share the same connected graph, an agent can
+query them together to see the full context.
+
+## How to record decision traces with Neo4j
+
+Neo4j Agent Memory is a memory system for single- and multi-agent systems that
+brings short-term, long-term, and reasoning memory together in a Neo4j graph.
+
+It ships as Python and TypeScript SDKs backed by a hosted memory service, with
+a self-hosted option for teams already running Neo4j. It integrates with agent
+frameworks, including LangChain, Pydantic AI, LlamaIndex, CrewAI, and OpenAI
+Agents SDK, so you can add memory to agents you've already built. Neo4j also
+provides Model Context Protocol (MCP) tools for agent integrations.
+
+Trace capture is explicit: Your code decides what gets recorded and when. In
+practice, you write that wiring once. With LangChain, for example, a callback
+handler opens a trace when a chain starts, records each tool call as it
+happens, and completes the trace when the chain ends. Every agent run after
+that is captured without further work.
+
+The trace lifecycle is a simple block of code using the neo4j-agent-memory
+SDK. For Python, install it with `pip install neo4j-agent-memory`.
+
+
+
+    import asyncio
+
+    from pydantic import SecretStr
+
+    from neo4j_agent_memory import MemoryClient, MemorySettings
+
+
+    async def handle_refund():
+        settings = MemorySettings(
+            neo4j={"uri": "bolt://localhost:7687", "password": SecretStr("password")}
+        )
+
+        async with MemoryClient(settings) as memory:
+            # Open a trace when the agent starts working on a decision
+            trace = await memory.reasoning.start_trace(
+                "refund-4823",
+                task="Handle refund request #4823",
+            )
+
+            # Record a reasoning step
+            step = await memory.reasoning.add_step(
+                trace_id=trace.id,
+                thought="Check refund eligibility against policy",
+            )
+
+            # Record the tool call and its result
+            await memory.reasoning.record_tool_call(
+                step.id,
+                tool_name="refund_policy_lookup",
+                arguments={"order_id": "4823"},
+                result={"eligible": True, "window_days": 30},
+            )
+
+            # Close the trace with the outcome
+            await memory.reasoning.complete_trace(
+                trace.id,
+                outcome="Refund approved",
+                success=True,
+            )
+
+
+    asyncio.run(handle_refund())
+
+Neo4j Agent Memory records decision traces as the agent works. `start_trace()`
+opens a trace, `add_step()` adds each thought and action, and
+`record_tool_call()` captures tool calls and their results. When the task
+ends, `complete_trace()` closes the trace with the outcome.
+
+Once recorded, those traces become part of the context graph, where you can
+inspect reasoning steps, tool calls, and their connections to the surrounding
+context.
+
+Reading a trace is just as direct. `get_trace()` returns the complete record —
+the steps, tool calls, and outcome — and `get_similar_traces()` finds past
+decisions like the one at hand, so an agent or a reviewer can check precedent
+before acting.
+
+
+
+    # Why did the agent approve this refund? Retrieve the complete trace
+    full_trace = await memory.reasoning.get_trace(trace.id)
+
+    # Before the next similar decision, retrieve what worked before
+    precedents = await memory.reasoning.get_similar_traces(
+        "Handle refund request", limit=3
+    )
+
+That first call answers the compliance officer in our earlier support
+scenario: The trace shows the agent checked the order, looked up the refund
+policy, confirmed eligibility within the 30-day window, and approved the
+refund.
+
+![Neo4j Agent Memory interface showing connected conversation, reasoning
+trace, reasoning step, and tool call nodes.](https://dist.neo4j.com/wp-
+content/uploads/20260908140133/memory-graph-interactive-visualization.png)
+Neo4j Agent Memory graph showing short-term and reasoning memory, including
+reasoning traces, steps, and tool calls.
+
+For a faster start, Create Context Graph can scaffold a full-stack agent
+application with a knowledge graph, decision traces, streaming chat, and graph
+visualization built in. If you want to go deeper, you can explore the Neo4j
+Agent Memory documentation and GraphAcademy course.
+
+For a practical example, see how Lenny's Memory uses a context graph to give
+an AI agent persistent memory.
+
+## Give your agents reasoning memory
+
+Decision traces give agents a record of the decisions they've made, the
+context behind them, and the resulting outcomes. As part of a context graph's
+reasoning memory, those traces give you and other teams a way to inspect past
+decisions and why agents made them.
+
+That history becomes more useful as it grows. Agents retrieve relevant past
+decisions when they encounter similar situations, while teams can use the same
+traces to explain decisions, review agent behavior, and support governance
+requirements. Combined with enterprise knowledge and conversation history,
+reasoning memory gives agents the full context they need to make consistent,
+explainable decisions.
+
+Neo4j is the knowledge layer for enterprise AI — connecting the context,
+memory, and reasoning that agents rely on. The next time someone asks why an
+agent made a particular decision, the answer can be a graph query away.
+
+##  Context graphs: Agent memory with Neo4j
+
+Take the free GraphAcademy course to learn how to build agent memory,
+including decision traces, with Neo4j.
+
+Start the free course
+
+## Decision traces: FAQs
+
+What are decision traces?
+
+Decision traces are structured records of how an AI agent reached a decision.
+Each one captures the decision itself, the reasons the agent recorded along
+the way, and the tools it used to reach the outcome.
+
+Why do AI agents need decision traces?
+
+AI agents reason through a task step by step, but once the run ends, much of
+the context behind those choices can disappear. Over a long workflow, an agent
+may also lose track of earlier decisions or drift from the original goal.
+Decision traces give those decisions a durable record for agents to act
+consistently.
+
+What does a decision trace record?
+
+A decision trace records the decision and its outcome, each reasoning step's
+rationale and action, every tool call and its result, and links to the
+entities and conversation the decision drew on.
+
+How are decision traces different from logs and LLM traces?
+
+Logs capture what happened, while LLM traces record the details of a model run
+for debugging. Decision traces capture why an agent made a decision and
+persist as memory the agent can query and reuse in future tasks.
+
+How do AI agents use past decision traces?
+
+Before acting, an AI agent can search past decision traces for similar
+situations and retrieve relevant precedents. It can then reuse approaches that
+worked before, helping it handle similar cases more consistently and improve
+its decisions over time.
+
+How do you record decision traces with Neo4j?
+
+Neo4j Agent Memory records decision traces as an agent works. `start_trace()`
+opens a trace, `add_step()` and `record_tool_call()` capture the reasoning and
+tool use, and `complete_trace()` closes the trace with the outcome.
+
+## Share Article
+
+  *   *   *
+
+![](https://dist.neo4j.com/wp-content/uploads/20250430121502/Aura-1.jpg)
+
+![](https://dist.neo4j.com/wp-content/uploads/20250430121707/GA.jpg)
+
+![](https://dist.neo4j.com/wp-content/uploads/20250430121852/VideoHub.jpg)
+
+## Explore
+
+  * Knowledge graph
+  * Supply chain & logistics
+  * Fraud detection
+  * Graph visualization
+  * AuraDB
+  * Digital twin
+
+* * *
+
+## Related Articles
+
+![](https://dist.neo4j.com/wp-content/uploads/20260930120155/contextual-
+retrieval-1024x536.png)
+
+  * Agentic AI
+
+##  What is contextual retrieval? How AI agents find the right context
+
+
+9 min read
+
+![Graph-grounded Copilots in Microsoft Fabric](https://dist.neo4j.com/wp-
+content/uploads/20260923110005/Gemini_Generated_Image_uemupluemupluemu-1024x594.jpeg)
+
+  * Agentic AI
+  * Knowledge graph
+  * Real-time recommendations
+
+##  Beyond the Banana: Driving real-time recommendations with graph-grounded
+Copilots in Microsoft Fabric
+
+
+5 min read
+
+![](https://dist.neo4j.com/wp-content/uploads/20260923102456/vector-rag-vs-
+graphrag-1024x536.png)
+
+  * Agentic AI
+  * GenAI
+
+##  Vector RAG vs. GraphRAG: Which retrieval do you need?
+
+
+10 min read
+
+![](https://dist.neo4j.com/wp-content/uploads/20260915153345/context-graph-vs-
+knowledge-graph-1024x512.png)
+
+  * Agentic AI
+  * Knowledge graph
+
+##  Graphs, knowledge graphs, & context graphs: Which one do you need?
+
+
+6 min read
+
+![](https://dist.neo4j.com/wp-
+content/uploads/20260909115159/1Hl4-qcQ2e36C7m2f-t3rnQ.png)
+
+  * Agentic AI
+  * Developer
+
+##  Grounding Salesforce Agentforce with Neo4j — multi-agent setup over MCP
+
+
+5 min read
+
+![](https://dist.neo4j.com/wp-content/uploads/20260831123228/karpathy-llm-
+wiki-knowledge-bases-graphs-1024x536.png)
+
+  * Agentic AI
+  * Graph database
+
+##  Scaling Karpathy's LLM wiki: Why your knowledge base needs a graph
+
+
+19 min read
+
+## Knowledge is at your fingertips
+
+Make your AI accurate, explainable, and trustworthy.
+
+Start for free Talk to us
+
+Products
+
+  * AuraDB
+  * Aura Graph Analytics
+  * Aura Agent
+  * Enterprise Studio
+  * Community Edition
+  * Cypher Query Language
+  * Fleet Manager
+  * Graph Analytics
+  * Graph Database
+  * Graph Data Science
+  * GraphQL
+  * Knowledge layer
+  * Pricing
+  * Virtual Graph
+
+Solutions
+
+  * AI systems
+  * AI integrations
+  * Case studies
+  * Financial crime intelligence
+  * GraphRAG
+  * Industries & use cases
+  * Intelligence analysis
+  * Knowledge graphs
+  * Model context protocol (MCP)
+  * Pattern matching
+
+Developers
+
+  * AI + graph
+  * Agent memory
+  * Changelog
+  * Community
+  * Developer home
+  * Documentation
+  * Deployment Center
+  * Developer blog
+  * GraphAcademy
+  * Release notes
+
+Data Scientists
+
+  * Data science community
+  * Data science documentation
+  * Get started with graph data science
+  * Graph data science home
+  * GraphAcademy for data science
+
+For Executives
+
+  * Customer success stories
+  * Executive insights
+  * IDC business value whitepaper
+
+Resources
+
+  * Blog
+  * Events hub
+  * GraphAcademy
+  * GraphSummit
+  * NODES
+  * NODES AI
+  * Resource library
+  * Research center
+  * Video hub
+  * Webinars
+
+Partners
+
+  * Become a partner
+  * Find a partner
+  * OEM partners
+  * Partner portal login
+  * Solution partners
+  * Technology partners
+
+Company
+
+  * About Us
+  * Awards and honors
+  * Careers
+  * Culture
+  * Graphs4Good
+  * Leadership
+  * Newsroom
+  * Support
+  * Trust center
+
+Contact Us ❯
+
+  * US: 1-855-636-4532
+  * Sweden: +46 171 480 113
+  * UK: +44 20 3868 3223
+  * France: +33 (0) 1 88 46 13 20
+  * Singapore: +65 6859 0336
+  * Australia: +61 2 8395 2895
+  * India: +91 6827 521 210
+
+Social Networks
+
+__
+
+__
+
+__
+
+__
+
+__
+
+__
+
+(C) 2026 Neo4j, Inc.
+
+Terms | Privacy Notice | Sitemap
+Anti-Corruption Policy
+
+©2026 Neo4j, Inc., Neo Technology®, Neo4j®, Cypher®, Neo4j Bloom™, Neo4j Graph
+Data Science Library™, Neo4j® Aura™, and Neo4j® AuraDB™ are registered
+trademarks or a trademark of Neo4j, Inc. All other marks are owned by their
+respective companies.
+
+![](https://dist.neo4j.com/wp-content/uploads/20210608133508/icon-tooltip-
+info.svg) Contact Us
+
+Search Neo4j.com
+
+Load more results
+
+↑↓ Navigate ↵ Select Esc Close
+
+Close Previous
+
+Next

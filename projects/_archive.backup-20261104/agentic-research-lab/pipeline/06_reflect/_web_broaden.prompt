@@ -1,0 +1,21 @@
+You are a broadening subagent. Graph digest already auto-injected. Task: broaden the research on context engineering / ICM gaps where knowledge is thin, via web search, then inject into the brain.
+
+Gaps to cover (from prior reflections, open questions):
+- ADAPT / as-needed decomposition beyond static planning (ask.py --tag planning returned co-tags but no ADAPT paper chunk — broaden)
+- Progressive disclosure depth vs ICM folder depth orthogonality (C10 experimental)
+- Plan persistence / context-window pressure on long trajectories
+For each gap: run 2 web_search queries, open top 2 results with read URL, extract findings.
+
+Write raw material ONLY to INBOX/ as one markdown file per gap:
+  INBOX/<slug>.md with front-matter:
+  ---
+  title: "<human title>"
+  source: "<url>"
+  tags: [context-engineering, icm, planning|reflection|anti-leakage, ...]
+  retrieved: YYYY-MM-DD
+  ---
+  Then body as plain text (≤3000 chars, paragraph-split ready for ingest.py). Quote provenance (url + retrieved date). Do NOT write to knowledge/ directly.
+
+Duplication guard: before writing, run `python knowledge/graph/ask.py "<gap keywords>" --limit 3` — if top id already covers the gap (snippet >100 chars overlap), skip that query and note the existing id in your reply.
+
+Bounded: at most 3 gaps × 2 searches = 6 web_search calls, 4 reads. Cap INBOX writes to 2 files total (pick the two best new sources). Reply: DONE web-broaden + list of written INBOX files + existing ids skipped.

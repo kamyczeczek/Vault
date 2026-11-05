@@ -1,0 +1,139 @@
+{
+  "experiment": "F_adversarial_falsification",
+  "timestamp": "2026-09-25T20:02:11.849192",
+  "fingerprint": "44172cafee34",
+  "candidates_tested": 4,
+  "verdicts": [
+    {
+      "candidate_id": "vera-expa-001",
+      "rule": "Promotion gate must require independent external ground truth; self-reported success is unverifiable.",
+      "evidence_ids": [
+        "00_06_self_correction_grounding_requirement",
+        "00_00_software_factory_isolate_build_prove_ship",
+        "00_automated_peer_review_and_self_correction"
+      ],
+      "verdict": "requires_revision",
+      "scores": {
+        "grounding_score": 1.0,
+        "logical_consistency": 1.0,
+        "external_verifiability": 0.667
+      },
+      "falsification": {
+        "F1_counterfactual_ablation": {
+          "nodes_tested": 3,
+          "avg_evidence_retention": 0.0,
+          "fragility_score": 1.0,
+          "status": "fragile"
+        },
+        "F2_counter_evidence": {
+          "counter_nodes_found": 0,
+          "contradictory_queries": 0,
+          "status": "uncontested"
+        },
+        "F3_defect_injection": {
+          "defects_tested": 5,
+          "avg_drift_score": 0.0,
+          "status": "resilient"
+        }
+      }
+    },
+    {
+      "candidate_id": "vera-expa-002",
+      "rule": "Every stored lesson must encode its own eviction predicate; a lesson without an escape hatch compounds confidently wrong guidance.",
+      "evidence_ids": [
+        "00_08_lesson_persistence_eviction_requirement",
+        "00_06_self_correction_grounding_requirement",
+        "00_reflection_retrieval_dominates_write"
+      ],
+      "verdict": "requires_revision",
+      "scores": {
+        "grounding_score": 1.0,
+        "logical_consistency": 1.0,
+        "external_verifiability": 0.667
+      },
+      "falsification": {
+        "F1_counterfactual_ablation": {
+          "nodes_tested": 3,
+          "avg_evidence_retention": 0.233,
+          "fragility_score": 0.767,
+          "status": "fragile"
+        },
+        "F2_counter_evidence": {
+          "counter_nodes_found": 0,
+          "contradictory_queries": 0,
+          "status": "uncontested"
+        },
+        "F3_defect_injection": {
+          "defects_tested": 5,
+          "avg_drift_score": 0.0,
+          "status": "resilient"
+        }
+      }
+    },
+    {
+      "candidate_id": "vera-expa-003",
+      "rule": "Post-promotion audit — run every accepted lesson against held-out trajectories and decrement score when eviction predicate fires.",
+      "evidence_ids": [
+        "00_08_lesson_persistence_eviction_requirement",
+        "00_a_bandit_approach_with_evolutionary_operators_fo"
+      ],
+      "verdict": "pass_falsification",
+      "scores": {
+        "grounding_score": 1.0,
+        "logical_consistency": 1.0,
+        "external_verifiability": 0.667
+      },
+      "falsification": {
+        "F1_counterfactual_ablation": {
+          "nodes_tested": 2,
+          "avg_evidence_retention": 0.5,
+          "fragility_score": 0.5,
+          "status": "partial"
+        },
+        "F2_counter_evidence": {
+          "counter_nodes_found": 0,
+          "contradictory_queries": 0,
+          "status": "uncontested"
+        },
+        "F3_defect_injection": {
+          "defects_tested": 5,
+          "avg_drift_score": 0.0,
+          "status": "resilient"
+        }
+      }
+    },
+    {
+      "candidate_id": "vera-expa-004",
+      "rule": "Add AgentDebug-style root-cause attribution (detect→attribute→correct) to the reflect stage of spawn.py, producing structured error-classified candidates.",
+      "evidence_ids": [
+        "00_agent_error_taxonomy_debugging_web_research",
+        "00_agent_hooks_lifecycle_guardrails",
+        "00_agent_execution_hooks_guardrails"
+      ],
+      "verdict": "requires_revision",
+      "scores": {
+        "grounding_score": 1.0,
+        "logical_consistency": 1.0,
+        "external_verifiability": 0.667
+      },
+      "falsification": {
+        "F1_counterfactual_ablation": {
+          "nodes_tested": 3,
+          "avg_evidence_retention": 0.033,
+          "fragility_score": 0.967,
+          "status": "fragile"
+        },
+        "F2_counter_evidence": {
+          "counter_nodes_found": 0,
+          "contradictory_queries": 0,
+          "status": "uncontested"
+        },
+        "F3_defect_injection": {
+          "defects_tested": 5,
+          "avg_drift_score": 0.0,
+          "status": "resilient"
+        }
+      }
+    }
+  ]
+}

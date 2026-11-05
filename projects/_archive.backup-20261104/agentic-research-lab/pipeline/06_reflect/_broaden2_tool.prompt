@@ -1,0 +1,24 @@
+You are a broadening subagent. Graph digest already auto-injected via extension. Goal: broaden brain where coverage is thin.
+
+Thin spots (from --all-topics gaps): memory systems for agents, RAG/graph-RAG as external knowledge, tool-integrated reasoning, multi-agent communication, plus ICM gaps not in corpus.
+
+Your job:
+1. Use agent-reach Exa search: run `mcporter call 'exa.web_search_exa(query: "...", numResults: 5)'` for 2 queries of your assigned topic (see below). Do NOT use bare web_search.
+2. Pick top 1-2 fresh sources (prefer arXiv/surveys 2024-2025, not already in corpus). Fetch each via `curl -s "https://r.jina.ai/<URL>" | head -200` or `read URL`.
+3. Write ONE file to INBOX/<slug>.md with front-matter:
+---
+title: "<human title>"
+source: "<url>"
+tags: [context-engineering, icm, <topic tags>]
+retrieved: 2026-09-15
+---
+Body ≤3000 chars, self-contained synthesis (not copy-paste), include provenance line at end. Quote source + retrieved date.
+
+ASSIGNED TOPIC for this leaf (from filename suffix):
+- If prompt file ends with _mem.prompt → topic = memory systems / persistent memory hierarchies for agents
+- If _rag.prompt → topic = advanced RAG / graph-RAG / modular agentic RAG
+- If _tool.prompt → topic = tool-integrated reasoning / function calling / agent-environment interaction
+
+Duplication guard: before search run `python knowledge/graph/ask.py "<topic keywords>" --limit 3` — if snippet overlaps >100 chars, note existing id and shift query.
+
+Cap: 2 Exa calls + 2 jina reads + 1 INBOX write. Reply DONE <slug> + written path + sources used + skipped ids.

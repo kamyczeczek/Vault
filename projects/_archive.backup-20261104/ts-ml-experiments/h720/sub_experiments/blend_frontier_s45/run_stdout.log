@@ -1,0 +1,59 @@
+S-45 blend-frontier expansion vs the S-44 incumbent blend (S45_DESIGN.md, binding).
+Binding gate BLEND-based vs the IN-HARNESS S-44 incumbent re-derivation per S-43 P1 / S-44 P2 (D2);
+singleton/regularity conditions demoted to diagnostics (D5); parity block per S-44 P1 (D6).
+Bet 3 encoder imported VERBATIM from the sibling dir (architecture-identical code): C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\patchtst_delta_bet3\patchtst_encoder.py
+S-45 new members from patchtst_cross.py: PatchTSTModelS1 (seed-1 twin, ONE-DELTA mirror of PatchTSTModel.fit — only the fit()-start determinism call differs) + PatchTSTCrossModel (98-token 7-channel cross-attention member, seed 0).
+Multivariate split loaded (Bet 2 path, CHANNELS order OT-first): fit (11425, 7), test (2880, 7) — OT sync asserts PASS
+Verifying S-26 anchor (D6: MAE/RMSE/disjoint/W4 vs results_s44.json, tol 1e-4)...
+S-26 anchor OK: MAE 1.9909 RMSE 2.4710 disjoint 1.9696 W4 1.9579
+Collecting P_val for 6 candidates (val 2161 origins, members frozen on 8545)...
+  nlinear_L336_a1          ok (2161, 720) (1.8s)
+  nlinear_L336_a10         ok (2161, 720) (1.6s)
+  training patchtst_P24_D32_2L on train 8545 (this may take minutes)...
+    [PatchTST P24 D32 L2] ep   0 train 4.3624 val 3.6247 gap +0.7377 ent 2.603
+    [PatchTST P24 D32 L2] ep   1 train 4.0867 val 3.5883 gap +0.4984 ent 2.598
+    [PatchTST P24 D32 L2] ep   2 train 4.0241 val 3.5058 gap +0.5183 ent 2.597
+    [PatchTST P24 D32 L2] ep   3 train 3.9899 val 3.4711 gap +0.5188 ent 2.593
+    [PatchTST P24 D32 L2] ep   5 train 3.9031 val 3.8282 gap +0.0749 ent 2.616
+    [PatchTST P24 D32 L2] ep  10 train 3.6899 val 4.2005 gap -0.5106 ent 2.531
+    [PatchTST P24 D32 L2] ep  15 train 3.5449 val 3.9909 gap -0.4459 ent 2.480
+    [PatchTST P24 D32 L2] ep  20 train 3.5200 val 3.9493 gap -0.4293 ent 2.440
+    [PatchTST P24 D32 L2] ep  25 train 3.4581 val 4.1312 gap -0.6732 ent 2.463
+    [PatchTST P24 D32 L2] ep  30 train 3.4552 val 4.1856 gap -0.7303 ent 2.446
+    [PatchTST P24 D32 L2] ep  35 train 3.4108 val 4.0680 gap -0.6572 ent 2.427
+    [PatchTST P24 D32 L2] ep  40 train 3.3988 val 4.3127 gap -0.9139 ent 2.420
+    early stop ep 43 best_val 3.4711
+  patchtst_P24_D32_2L      ok (2161, 720) (124.4s)
+  training patchtst_P48_D16_1L on train 8545 (this may take minutes)...
+    [PatchTST P48 D16 L1] ep   0 train 4.4629 val 3.5222 gap +0.9407 ent 1.945
+    [PatchTST P48 D16 L1] ep   1 train 4.1590 val 3.4984 gap +0.6607 ent 1.943
+    [PatchTST P48 D16 L1] ep   5 train 3.9650 val 3.5312 gap +0.4338 ent 1.906
+    [PatchTST P48 D16 L1] ep  10 train 3.9123 val 3.5501 gap +0.3622 ent 1.673
+    [PatchTST P48 D16 L1] ep  15 train 3.8926 val 3.5971 gap +0.2954 ent 1.565
+    [PatchTST P48 D16 L1] ep  20 train 3.8705 val 3.5853 gap +0.2852 ent 1.710
+    [PatchTST P48 D16 L1] ep  25 train 3.8000 val 3.7427 gap +0.0574 ent 1.766
+    [PatchTST P48 D16 L1] ep  30 train 3.7680 val 3.7988 gap -0.0308 ent 1.818
+    [PatchTST P48 D16 L1] ep  35 train 3.7087 val 3.9095 gap -0.2008 ent 1.837
+    [PatchTST P48 D16 L1] ep  40 train 3.6733 val 3.8088 gap -0.1355 ent 1.852
+    early stop ep 41 best_val 3.4984
+  patchtst_P48_D16_1L      ok (2161, 720) (45.1s)
+  training patchtst_P24_D32_2L_s1 on train 8545 (this may take minutes)...
+    [PatchTST P24 D32 L2] ep   0 train 4.3802 val 3.5576 gap +0.8226 ent 2.618
+    [PatchTST P24 D32 L2] ep   1 train 4.0943 val 3.5187 gap +0.5756 ent 2.614
+    [PatchTST P24 D32 L2] ep   5 train 3.7979 val 3.9133 gap -0.1153 ent 2.493
+    [PatchTST P24 D32 L2] ep  10 train 3.6421 val 3.6934 gap -0.0513 ent 2.530
+    [PatchTST P24 D32 L2] ep  15 train 3.5264 val 4.0277 gap -0.5013 ent 2.469
+    [PatchTST P24 D32 L2] ep  20 train 3.4784 val 3.9670 gap -0.4886 ent 2.435
+    [PatchTST P24 D32 L2] ep  25 train 3.4566 val 4.2044 gap -0.7478 ent 2.422
+    [PatchTST P24 D32 L2] ep  30 train 3.4233 val 4.2119 gap -0.7886 ent 2.373
+    [PatchTST P24 D32 L2] ep  35 train 3.4162 val 4.1536 gap -0.7374 ent 2.388
+    [PatchTST P24 D32 L2] ep  40 train 3.3790 val 4.4805 gap -1.1015 ent 2.351
+    early stop ep 41 best_val 3.5187
+  patchtst_P24_D32_2L_s1   ok (2161, 720) (124.3s)
+  training patchtst_cross_P24_D32_2L on train 8545 (this may take minutes)...
+    [PatchTST-cross P24 D32 L2] ep   0 train 4.5020 val 3.9225 gap +0.5795 ent 4.483
+    [PatchTST-cross P24 D32 L2] ep   1 train 4.3514 val 3.7598 gap +0.5917 ent 4.344
+    [PatchTST-cross P24 D32 L2] ep   2 train 4.1835 val 3.6562 gap +0.5273 ent 4.233
+    [PatchTST-cross P24 D32 L2] ep   5 train 3.7899 val 3.8712 gap -0.0813 ent 4.104
+    [PatchTST-cross P24 D32 L2] ep   6 train 3.7193 val 3.6511 gap +0.0682 ent 4.078
+    [PatchTST-cross P24 D32 L2] ep   9 train 3.5983 val 3.6351 gap -0.0368 ent 4.091

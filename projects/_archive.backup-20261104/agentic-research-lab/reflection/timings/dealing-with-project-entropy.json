@@ -1,0 +1,11 @@
+{
+  "topic": "dealing-with-project-entropy",
+  "run_id": "reflect-5dad2ba4522e4636",
+  "stages": {
+    "pre_gates": 1383.6,
+    "agent": 181335.7,
+    "validation": 243.7,
+    "attribution": 140.2
+  },
+  "total_ms": 183103.2
+}

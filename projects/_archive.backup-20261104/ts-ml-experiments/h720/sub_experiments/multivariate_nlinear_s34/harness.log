@@ -1,0 +1,60 @@
+collecting P_val for 21 candidates (val 2161 origins)...
+  nlinear_L96_a1            L= 96 multi=False ok (2161, 720)
+  nlinear_L96_a10           L= 96 multi=False ok (2161, 720)
+  nlinear_L96_a100          L= 96 multi=False ok (2161, 720)
+  nlinear_L336_a1           L=336 multi=False ok (2161, 720)
+  nlinear_L336_a10          L=336 multi=False ok (2161, 720)
+  nlinear_L720_a1           L=720 multi=False ok (2161, 720)
+  dlinear_L96_k25_a0        L= 96 multi=False ok (2161, 720)
+  dlinear_L96_k49_a0        L= 96 multi=False ok (2161, 720)
+  dlinear_L336_k25_a0       L=336 multi=False ok (2161, 720)
+  dlinear_L336_k49_a0       L=336 multi=False ok (2161, 720)
+  rlinear_L96_a0            L= 96 multi=False ok (2161, 720)
+  rlinear_L336_a0           L=336 multi=False ok (2161, 720)
+  multivar_nlinear_L96_a1   L= 96 multi=True ok (2161, 720)
+  multivar_nlinear_L96_a10  L= 96 multi=True ok (2161, 720)
+  multivar_nlinear_L96_a100 L= 96 multi=True ok (2161, 720)
+  multivar_nlinear_L336_a1  L=336 multi=True ok (2161, 720)
+  multivar_nlinear_L336_a10 L=336 multi=True ok (2161, 720)
+  multivar_nlinear_L336_a100 L=336 multi=True ok (2161, 720)
+  multivar_nlinear_L720_a1  L=720 multi=True ok (2161, 720)
+  multivar_nlinear_L720_a10 L=720 multi=True ok (2161, 720)
+  multivar_nlinear_L720_a100 L=720 multi=True ok (2161, 720)
+  nlinear_L96_a1            val 2.9742
+  nlinear_L96_a10           val 2.9742
+  nlinear_L96_a100          val 2.9741
+  nlinear_L336_a1           val 2.8970
+  nlinear_L336_a10          val 2.8970
+  nlinear_L720_a1           val 3.0192
+  dlinear_L96_k25_a0        val 3.0108
+  dlinear_L96_k49_a0        val 3.0108
+  dlinear_L336_k25_a0       val 2.9830
+  dlinear_L336_k49_a0       val 2.9830
+  rlinear_L96_a0            val 3.0108
+  rlinear_L336_a0           val 2.9830
+  multivar_nlinear_L96_a1   val 3.9996
+  multivar_nlinear_L96_a10  val 3.9706
+  multivar_nlinear_L96_a100 val 3.7705
+  multivar_nlinear_L336_a1  val 12.2057
+  multivar_nlinear_L336_a10 val 11.9260
+  multivar_nlinear_L336_a100 val 9.9167
+  multivar_nlinear_L720_a1  val 38.9167
+  multivar_nlinear_L720_a10 val 36.0633
+  multivar_nlinear_L720_a100 val 22.0222
+
+init singleton ['nlinear_L336_a10'] fast 2.5787 true 2.5787
+iter  0 cur ['nlinear_L336_a1', 'nlinear_L336_a10'] fast 2.5225 true 2.5191 a=10000.0 best_fast 2.5225 ['nlinear_L336_a1', 'nlinear_L336_a10']
+iter  1 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1'] fast 2.5343 true 2.5343 a=3000.0 best_fast 2.5225 ['nlinear_L336_a1', 'nlinear_L336_a10']
+iter  2 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'multivar_nlinear_L96_a1'] fast 2.5354 true 2.5354 a=3000.0 best_fast 2.5225 ['nlinear_L336_a1', 'nlinear_L336_a10']
+iter  3 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'multivar_nlinear_L96_a10'] fast 2.5360 true 2.5345 a=300.0 best_fast 2.5225 ['nlinear_L336_a1', 'nlinear_L336_a10']
+iter  4 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'multivar_nlinear_L96_a1', 'multivar_nlinear_L96_a10'] fast 2.5383 true 2.5383 a=3000.0 best_fast 2.5225 ['nlinear_L336_a1', 'nlinear_L336_a10']
+iter  5 cur ['nlinear_L336_a1', 'nlinear_L336_a10', 'nlinear_L720_a1', 'multivar_nlinear_L96_a1'] fast 2.5402 true 2.5402 a=3000.0 best_fast 2.5225 ['nlinear_L336_a1', 'nlinear_L336_a10']
+  no improve 5 iters -> stop
+
+best subset fast 2.5225: ['nlinear_L336_a1', 'nlinear_L336_a10']
+refit all val MAE 2.8527 alpha 10000.0
+
+S-26 Incumbent MAE 1.9909 / RMSE 2.4710
+S-34 Multivariate Best Subset: ['nlinear_L336_a1', 'nlinear_L336_a10']
+S-34 Test Disjoint MAE 1.9696, Full Rolling MAE 1.9909 / RMSE 2.4710
+Delta vs S-26: -0.0000

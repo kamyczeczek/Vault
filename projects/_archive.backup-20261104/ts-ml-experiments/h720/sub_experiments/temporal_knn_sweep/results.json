@@ -1,0 +1,1585 @@
+{
+ "experiment": "temporal_knn_sweep",
+ "protocol": "fit train.csv (11,425 rows) via data.py shared split, forecast H=720, score vs test.csv[:720]",
+ "axes": [
+  "neighbors k",
+  "half_life_hours",
+  "history_fraction"
+ ],
+ "fixed": {
+  "q": 3,
+  "delays": [
+   1,
+   2,
+   3,
+   6,
+   12,
+   24
+  ]
+ },
+ "formulation": "w_i = (1/(d_i+eps)) * exp(-decay*age_i); decay=ln(2)/half_life; decay=0 == HeuristicLagKNN distance weights",
+ "anchors_reproduced": [
+  "k3_recent10",
+  "k32_recent10"
+ ],
+ "results": [
+  {
+   "model": "k3_hlinf_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 3,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 2.8565185606535017,
+   "rmse": 3.366315761276101,
+   "status": "ok"
+  },
+  {
+   "model": "k8_hlinf_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 8,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 2.192077701679508,
+   "rmse": 2.6415937980234436,
+   "status": "ok"
+  },
+  {
+   "model": "k16_hlinf_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 16,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 2.0080651042863873,
+   "rmse": 2.453767325432853,
+   "status": "ok"
+  },
+  {
+   "model": "k24_hlinf_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 24,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 1.7552840572680193,
+   "rmse": 2.166274983376823,
+   "status": "ok"
+  },
+  {
+   "model": "k32_hlinf_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 32,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 1.7204022215138708,
+   "rmse": 2.140518059341047,
+   "status": "ok"
+  },
+  {
+   "model": "k64_hlinf_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 64,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 1.79308692185426,
+   "rmse": 2.2221466496703313,
+   "status": "ok"
+  },
+  {
+   "model": "k128_hlinf_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 128,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 1.9299449853832402,
+   "rmse": 2.3708148238067164,
+   "status": "ok"
+  },
+  {
+   "model": "k3_hl720_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 3,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 2.861967909336055,
+   "rmse": 3.370761529291238,
+   "status": "ok"
+  },
+  {
+   "model": "k8_hl720_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 8,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 2.2372405677506872,
+   "rmse": 2.6872585698149782,
+   "status": "ok"
+  },
+  {
+   "model": "k16_hl720_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 16,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 2.104228115086923,
+   "rmse": 2.5598018648208196,
+   "status": "ok"
+  },
+  {
+   "model": "k24_hl720_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 24,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 1.853482272939877,
+   "rmse": 2.282320932529296,
+   "status": "ok"
+  },
+  {
+   "model": "k32_hl720_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 32,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 1.7866364988511012,
+   "rmse": 2.227613276445198,
+   "status": "ok"
+  },
+  {
+   "model": "k64_hl720_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 64,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 1.9424342241392683,
+   "rmse": 2.3900699484613663,
+   "status": "ok"
+  },
+  {
+   "model": "k128_hl720_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 128,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 2.074558088379743,
+   "rmse": 2.536183068806543,
+   "status": "ok"
+  },
+  {
+   "model": "k3_hl240_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 3,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 2.8802744511275473,
+   "rmse": 3.3902336526570127,
+   "status": "ok"
+  },
+  {
+   "model": "k8_hl240_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 8,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 2.3240839594002396,
+   "rmse": 2.7770117721041303,
+   "status": "ok"
+  },
+  {
+   "model": "k16_hl240_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 16,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 2.3381405271591555,
+   "rmse": 2.8083002981211975,
+   "status": "ok"
+  },
+  {
+   "model": "k24_hl240_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 24,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 2.1604360007085153,
+   "rmse": 2.614473002597082,
+   "status": "ok"
+  },
+  {
+   "model": "k32_hl240_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 32,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 2.0334732471231187,
+   "rmse": 2.499600448860676,
+   "status": "ok"
+  },
+  {
+   "model": "k64_hl240_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 64,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 2.3559020208519104,
+   "rmse": 2.830079521323057,
+   "status": "ok"
+  },
+  {
+   "model": "k128_hl240_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 128,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 2.4218741103522916,
+   "rmse": 2.9144702088643273,
+   "status": "ok"
+  },
+  {
+   "model": "k3_hl72_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 3,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 3.0059795037527755,
+   "rmse": 3.5630646805239845,
+   "status": "ok"
+  },
+  {
+   "model": "k8_hl72_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 8,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 2.6173890341006962,
+   "rmse": 3.0868496760891904,
+   "status": "ok"
+  },
+  {
+   "model": "k16_hl72_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 16,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 3.432706093503455,
+   "rmse": 3.931729050831376,
+   "status": "ok"
+  },
+  {
+   "model": "k24_hl72_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 24,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 3.7161296041558374,
+   "rmse": 4.234871259344487,
+   "status": "ok"
+  },
+  {
+   "model": "k32_hl72_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 32,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 3.5054230290820874,
+   "rmse": 4.017755359521957,
+   "status": "ok"
+  },
+  {
+   "model": "k64_hl72_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 64,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 3.937425081789199,
+   "rmse": 4.436688530011146,
+   "status": "ok"
+  },
+  {
+   "model": "k128_hl72_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 128,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 3.6552805404522712,
+   "rmse": 4.147553029719422,
+   "status": "ok"
+  },
+  {
+   "model": "k3_hl24_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 3,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 3.324649017405344,
+   "rmse": 4.043548642919795,
+   "status": "ok"
+  },
+  {
+   "model": "k8_hl24_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 8,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 3.22178897649283,
+   "rmse": 3.8905950896354162,
+   "status": "ok"
+  },
+  {
+   "model": "k16_hl24_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 16,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 5.007602597259903,
+   "rmse": 5.653868218880607,
+   "status": "ok"
+  },
+  {
+   "model": "k24_hl24_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 24,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 5.28348025072553,
+   "rmse": 5.940093838433493,
+   "status": "ok"
+  },
+  {
+   "model": "k32_hl24_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 32,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 5.27017885737736,
+   "rmse": 5.925517958259848,
+   "status": "ok"
+  },
+  {
+   "model": "k64_hl24_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 64,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 5.205350155688,
+   "rmse": 5.7957296033505825,
+   "status": "ok"
+  },
+  {
+   "model": "k128_hl24_recent10",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 128,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 0.1,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 4.984350401677366,
+   "rmse": 5.5295128328382,
+   "status": "ok"
+  },
+  {
+   "model": "k3_hlinf_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 3,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 2.9365217961163106,
+   "rmse": 3.6060581403750516,
+   "status": "ok"
+  },
+  {
+   "model": "k8_hlinf_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 8,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 3.2002051237569256,
+   "rmse": 3.696558590454242,
+   "status": "ok"
+  },
+  {
+   "model": "k16_hlinf_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 16,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 2.5391275296640696,
+   "rmse": 3.0523127701851305,
+   "status": "ok"
+  },
+  {
+   "model": "k24_hlinf_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 24,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 2.24375711787635,
+   "rmse": 2.727623724207763,
+   "status": "ok"
+  },
+  {
+   "model": "k32_hlinf_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 32,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 2.035128663695221,
+   "rmse": 2.4850861025321187,
+   "status": "ok"
+  },
+  {
+   "model": "k64_hlinf_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 64,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 1.97609590447498,
+   "rmse": 2.409593358394426,
+   "status": "ok"
+  },
+  {
+   "model": "k128_hlinf_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 128,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0,
+    "half_life_hours": null
+   },
+   "mae": 1.9637259529351658,
+   "rmse": 2.3821632427537125,
+   "status": "ok"
+  },
+  {
+   "model": "k3_hl720_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 3,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 2.8973396968429515,
+   "rmse": 3.6549163875694086,
+   "status": "ok"
+  },
+  {
+   "model": "k8_hl720_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 8,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 3.08303904435233,
+   "rmse": 3.5167113299161206,
+   "status": "ok"
+  },
+  {
+   "model": "k16_hl720_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 16,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 3.1434532901918475,
+   "rmse": 3.5685488150546694,
+   "status": "ok"
+  },
+  {
+   "model": "k24_hl720_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 24,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 2.73198489614062,
+   "rmse": 3.173841941559396,
+   "status": "ok"
+  },
+  {
+   "model": "k32_hl720_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 32,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 2.5254861252452807,
+   "rmse": 2.957230060887148,
+   "status": "ok"
+  },
+  {
+   "model": "k64_hl720_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 64,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 2.3283461127177167,
+   "rmse": 2.7596224106382583,
+   "status": "ok"
+  },
+  {
+   "model": "k128_hl720_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 128,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0009627044174443685,
+    "half_life_hours": 720.0
+   },
+   "mae": 2.3630063157729952,
+   "rmse": 2.754849172021392,
+   "status": "ok"
+  },
+  {
+   "model": "k3_hl240_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 3,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 3.10557235302418,
+   "rmse": 3.850560656073018,
+   "status": "ok"
+  },
+  {
+   "model": "k8_hl240_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 8,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 3.635414922159583,
+   "rmse": 4.138573967819079,
+   "status": "ok"
+  },
+  {
+   "model": "k16_hl240_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 16,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 3.8705384271118968,
+   "rmse": 4.363232120219693,
+   "status": "ok"
+  },
+  {
+   "model": "k24_hl240_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 24,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 3.339995526995142,
+   "rmse": 3.830802241880884,
+   "status": "ok"
+  },
+  {
+   "model": "k32_hl240_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 32,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 3.300940255263185,
+   "rmse": 3.7885204330895967,
+   "status": "ok"
+  },
+  {
+   "model": "k64_hl240_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 64,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 3.1326586948728115,
+   "rmse": 3.5987676717783996,
+   "status": "ok"
+  },
+  {
+   "model": "k128_hl240_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 128,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.0028881132523331052,
+    "half_life_hours": 240.0
+   },
+   "mae": 2.9510208179324575,
+   "rmse": 3.3727618520623612,
+   "status": "ok"
+  },
+  {
+   "model": "k3_hl72_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 3,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 3.107885192289678,
+   "rmse": 3.8528491319933527,
+   "status": "ok"
+  },
+  {
+   "model": "k8_hl72_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 8,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 4.476562103829616,
+   "rmse": 5.266658646484784,
+   "status": "ok"
+  },
+  {
+   "model": "k16_hl72_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 16,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 4.495072905755444,
+   "rmse": 5.27466785296047,
+   "status": "ok"
+  },
+  {
+   "model": "k24_hl72_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 24,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 4.312796339540694,
+   "rmse": 5.071317614371945,
+   "status": "ok"
+  },
+  {
+   "model": "k32_hl72_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 32,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 4.312719295016486,
+   "rmse": 5.071203852456754,
+   "status": "ok"
+  },
+  {
+   "model": "k64_hl72_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 64,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 4.265303545867424,
+   "rmse": 5.001793571112344,
+   "status": "ok"
+  },
+  {
+   "model": "k128_hl72_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 128,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.009627044174443685,
+    "half_life_hours": 72.0
+   },
+   "mae": 2.944668538051552,
+   "rmse": 3.431723382436183,
+   "status": "ok"
+  },
+  {
+   "model": "k3_hl24_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 3,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 3.107885192638194,
+   "rmse": 3.852849132338835,
+   "status": "ok"
+  },
+  {
+   "model": "k8_hl24_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 8,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 4.652806142471726,
+   "rmse": 5.520854718640494,
+   "status": "ok"
+  },
+  {
+   "model": "k16_hl24_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 16,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 4.652812112120338,
+   "rmse": 5.520856065732673,
+   "status": "ok"
+  },
+  {
+   "model": "k24_hl24_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 24,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 4.651580988721241,
+   "rmse": 5.519444904505665,
+   "status": "ok"
+  },
+  {
+   "model": "k32_hl24_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 32,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 4.651580988720693,
+   "rmse": 5.519444904504843,
+   "status": "ok"
+  },
+  {
+   "model": "k64_hl24_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 64,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 4.651522462111677,
+   "rmse": 5.519366429925347,
+   "status": "ok"
+  },
+  {
+   "model": "k128_hl24_recent100",
+   "horizon": 720,
+   "params": {
+    "q": 3,
+    "neighbors": 128,
+    "delays": [
+     1,
+     2,
+     3,
+     6,
+     12,
+     24
+    ],
+    "history_fraction": 1.0,
+    "decay": 0.028881132523331052,
+    "half_life_hours": 24.0
+   },
+   "mae": 3.250724084061091,
+   "rmse": 3.924668863928407,
+   "status": "ok"
+  }
+ ],
+ "references": [
+  {
+   "model": "persistence",
+   "horizon": 720,
+   "params": null,
+   "mae": 1.7952457486755318,
+   "rmse": 2.2503347360867134,
+   "status": "ok"
+  },
+  {
+   "model": "daily",
+   "horizon": 720,
+   "params": null,
+   "mae": 1.6720180662969748,
+   "rmse": 2.171948042164322,
+   "status": "ok"
+  }
+ ]
+}

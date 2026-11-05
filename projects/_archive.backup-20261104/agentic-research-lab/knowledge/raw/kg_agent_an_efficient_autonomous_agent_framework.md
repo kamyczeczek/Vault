@@ -1,0 +1,19 @@
+---
+type: Concept
+title: "KG-Agent: An Efficient Autonomous Agent Framework for Complex Reasoning over Knowledge Graph"
+source: "http://arxiv.org/abs/2402.11163v1"
+tags: [agentic, scientific-discovery]
+generated: { by: okf-enforcer/0.6, at: 2026-10-24T23:21:09Z }
+---
+
+# KG-Agent: An Efficient Autonomous Agent Framework for Complex Reasoning over Knowledge Graph
+
+**Source:** http://arxiv.org/abs/2402.11163v1
+**Tags:** `agentic, scientific-discovery`
+
+## Core Methodology & Findings
+
+**Authors:** Jinhao Jiang, Kun Zhou, Wayne Xin Zhao, Yang Song, Chen Zhu
+
+### Abstract
+In this paper, we aim to improve the reasoning ability of large language models (LLMs) over knowledge graphs (KGs) to answer complex questions. Inspired by existing methods that design the interaction strategy between LLMs and KG, we propose an autonomous LLM-based agent framework, called KG-Agent, which enables a small LLM to actively make decisions until finishing the reasoning process over KGs. In KG-Agent, we integrate the LLM, multifunctional toolbox, KG-based executor, and knowledge memory, and develop an iteration mechanism that autonomously selects the tool then updates the memory for reasoning over KG. To guarantee the effectiveness, we leverage program language to formulate the multi-hop reasoning process over the KG, and synthesize a code-based instruction dataset to fine-tune the base LLM. Extensive experiments demonstrate that only using 10K samples for tuning LLaMA-7B can outperform state-of-the-art methods using larger LLMs or more data, on both in-domain and out-domain datasets. Our code and data will be publicly released.

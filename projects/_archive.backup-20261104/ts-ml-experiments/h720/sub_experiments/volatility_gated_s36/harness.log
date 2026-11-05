@@ -1,0 +1,53 @@
+collecting P_val 6 members (val 2161 origins, frozen 8545)...
+  nlinear_L96_a1         L= 96 ok (2161, 720)
+  nlinear_L336_a1        L=336 ok (2161, 720)
+  nlinear_L336_a10       L=336 ok (2161, 720)
+  nlinear_L720_a1        L=720 ok (2161, 720)
+  dlinear_L96_k25_a0     L= 96 ok (2161, 720)
+  dlinear_L336_k25_a0    L=336 ok (2161, 720)
+  nlinear_L96_a1         val 2.9742
+  nlinear_L336_a1        val 2.8970
+  nlinear_L336_a10       val 2.8970
+  nlinear_L720_a1        val 3.0192
+  dlinear_L96_k25_a0     val 3.0108
+  dlinear_L336_k25_a0    val 2.9830
+  |nlinear_L336_a1 - nlinear_L336_a10| mean abs 0.0003
+  |nlinear_L96_a1 - nlinear_L336_a1| mean abs 0.7459
+  |nlinear_L336_a1 - nlinear_L720_a1| mean abs 0.7870
+  |nlinear_L336_a1 - dlinear_L336_k25_a0| mean abs 0.4004
+
+S-26 pooled inc [1, 2] held 2.5191 a=10000.0
+  pooled inc          [1, 2] held 2.5191 a=10000.0
+  pooled div96_336    [0, 1] held 2.5617 a=10000.0
+  pooled div336_720   [1, 3] held 2.5227 a=300.0
+  pooled div3         [0, 1, 3] held 2.5618 a=3000.0
+  pooled div_all6     [0, 1, 2, 3, 4, 5] held 2.5644 a=3000.0
+  vol w= 96 mu=2.6548 sd=0.9556 z_range=[-1.88,0.84]
+  vol w=336 mu=3.3570 sd=0.8340 z_range=[-2.23,0.39]
+  vol w=720 mu=3.6967 sd=0.7080 z_range=[-1.88,-0.22]
+  trend w=336 mu=-0.6783 sd=2.7345 z_range=[-1.59,1.47]
+  gate vol96_Dext (z*D_L96_L336) held 2.5214 (a_blend=10000.0, a_gate=10000.0) delta +0.0024
+  gate vol336_Dext (z*D_L96_L336) held 2.5152 (a_blend=10000.0, a_gate=3000.0) delta -0.0038
+  gate vol720_Dext (z*D_L96_L336) held 2.5171 (a_blend=10000.0, a_gate=10000.0) delta -0.0019
+  gate vol96_bias (z broadcast) held 2.5197 (a_blend=10000.0, a_gate=10000.0) delta +0.0006
+  gate vol336_bias (z broadcast) held 2.5240 (a_blend=10000.0, a_gate=10000.0) delta +0.0049
+  gate vol720_bias (z broadcast) held 2.5113 (a_blend=3000.0, a_gate=300.0) delta -0.0078
+  gate trend336_Dext held 2.5213 (a_blend=10000.0, a_gate=10000.0) delta +0.0023
+
+SELECTED gated vol720_bias held 2.5113 beats pooled 2.5191 by 0.0078
+  interior a_blend=3000.0 True
+refit all val MAE 2.7842
+  weight entropy mean 0.9948 / max 1.0986 (90.55%)
+  orthogonality corr(z, |D|_mean) = 0.2703
+  member nlinear_L336_a1        full 2.0571
+  member nlinear_L336_a10       full 2.0571
+
+S-26 incumbent full 1.9909 disjoint 1.9696 W4 stability cap (S-20 reference) 1.8427
+S-36 gated vol720_bias full 2.4724 rmse 3.1834 delta +0.4815
+  disjoint 2.5975  W4 2.7907 (cap 1.8427, S-20 reference)
+    W1(t0): 2.7144
+    W2(t720): 1.4359
+    W3(t1440): 3.4492
+    W4(t2160): 2.7907
+
+wrote C:\Users\Mateusz\Desktop\ROOT\projects\ts-ml-experiments\h720\sub_experiments\volatility_gated_s36\results_s36.json elapsed 137.4s accept=False strong=False

@@ -1,0 +1,111 @@
+{
+  "slice": "S-19",
+  "protocol": {
+    "members": [
+      "nlinear_L336_a1",
+      "nlinear_L96_a1",
+      "dlinear_L96_k25",
+      "cycleesn_N32"
+    ],
+    "cycle_esn_cfg": {
+      "input_length": 336,
+      "n_reservoir": 32,
+      "rc": 0.99,
+      "v": 0.05,
+      "linear_skip": true,
+      "ridge_alpha": 1.0
+    },
+    "members_fit": "frozen; weight search on train 8,545, test fit on 11,425",
+    "weights": "validation windows only (2,161 origins); test never consulted",
+    "selection": "argmin over {L2-blend, L1-blend, best-member} on validation MAE"
+  },
+  "validation": {
+    "member_val_mae": {
+      "nlinear_L336_a1": 2.897,
+      "nlinear_L96_a1": 2.9742,
+      "dlinear_L96_k25": 3.0108,
+      "cycleesn_N32": 2.8593
+    },
+    "w_l2": [
+      0.0,
+      0.538659,
+      0.0,
+      0.461341
+    ],
+    "w_l1": [
+      0.0,
+      0.062319,
+      0.0,
+      0.937681
+    ],
+    "l2_val_mae": 2.889,
+    "l1_val_mae": 2.8588,
+    "best_member": "cycleesn_N32",
+    "best_member_val_mae": 2.8593,
+    "selected_config": "l1_blend",
+    "selected_val_mae": 2.8588,
+    "selected_weights": [
+      0.0,
+      0.062319,
+      0.0,
+      0.937681
+    ]
+  },
+  "residual_pairwise_corr": {
+    "nlinear_L336_a1|nlinear_L96_a1": 0.9667,
+    "nlinear_L336_a1|dlinear_L96_k25": 0.9624,
+    "nlinear_L336_a1|cycleesn_N32": 0.9891,
+    "nlinear_L96_a1|dlinear_L96_k25": 0.9954,
+    "nlinear_L96_a1|cycleesn_N32": 0.9573,
+    "dlinear_L96_k25|cycleesn_N32": 0.9523
+  },
+  "test": {
+    "selected_config": "l1_blend",
+    "selected_weights": [
+      0.0,
+      0.062319,
+      0.0,
+      0.937681
+    ],
+    "rolling_mae": 2.0992,
+    "rolling_rmse": 2.6192,
+    "disjoint_windows": {
+      "window_1": {
+        "mae": 2.170464087579568,
+        "rmse": 2.6255710185899748
+      },
+      "window_2": {
+        "mae": 1.4964635802289028,
+        "rmse": 1.8424078391435377
+      },
+      "window_3": {
+        "mae": 1.9345125812660153,
+        "rmse": 2.415364821071848
+      },
+      "window_4": {
+        "mae": 1.941793915863652,
+        "rmse": 2.507492052485767
+      }
+    },
+    "members": {
+      "nlinear_L336_a1": {
+        "rolling_mae": 2.0571,
+        "rolling_rmse": 2.5624
+      },
+      "nlinear_L96_a1": {
+        "rolling_mae": 2.0925,
+        "rolling_rmse": 2.6209
+      },
+      "dlinear_L96_k25": {
+        "rolling_mae": 2.1163,
+        "rolling_rmse": 2.6728
+      },
+      "cycleesn_N32": {
+        "rolling_mae": 2.1063,
+        "rolling_rmse": 2.6273
+      }
+    },
+    "delta_vs_s17_ensemble": 0.0473,
+    "delta_vs_nlinear": 0.0421
+  }
+}

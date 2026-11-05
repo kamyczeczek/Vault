@@ -1,0 +1,61 @@
+{
+  "slice": "S-28-per-horizon-intercept",
+  "candidates": [
+    "nlinear_L336_a1",
+    "nlinear_L336_a10"
+  ],
+  "alphas_grid": [
+    0.1,
+    1.0,
+    3.0,
+    10.0,
+    30.0,
+    100.0,
+    300.0,
+    1000.0,
+    3000.0,
+    10000.0,
+    30000.0
+  ],
+  "incumbent_mae": 1.9909,
+  "held_out_baseline_ref": 2.51907740175763,
+  "pooled_no_intercept": {
+    "fit_intercept": false,
+    "alpha": 10000.0,
+    "held_out_mae": 2.51907740175763,
+    "val_full": 2.852669942273521,
+    "disjoint": {
+      "mae": 1.969616847749498,
+      "rmse": 2.487586320185094
+    },
+    "full": {
+      "mae": 1.990897385574145,
+      "rmse": 2.470998626872596,
+      "n": 2161
+    }
+  },
+  "pooled_intercept": {
+    "fit_intercept": true,
+    "alpha": 30000.0,
+    "held_out_mae": 5.818966006441527,
+    "val_full": 2.8991469286864566,
+    "disjoint": {
+      "mae": 5.423323886877616,
+      "rmse": 6.087485582685335
+    },
+    "full": {
+      "mae": 5.91156452203914,
+      "rmse": 6.366201676592587,
+      "n": 2161
+    }
+  },
+  "verdict": "REJECT",
+  "reasons": [
+    "intercept full 5.9116 not >0.005 better than 1.9909",
+    "held-out intercept 5.8190 not < no-intercept 2.5191"
+  ],
+  "acceptance": "full 2161 MAE <1.9909 by >0.005 AND held-out intercept < no-intercept (2.5191 ref)",
+  "protocol": "S-20-clean: preds_for_train_fit for val (members frozen 8545), preds_for_full_fit for test (refrozen 11425); 11-alpha grid; chronological n2=1080/1081 split",
+  "graph_note": "_lag_dataset @ base.py:197 d27 \u2014 map-level only, no base.py change; hotspots via ask.py --hotspots",
+  "fingerprint": null
+}

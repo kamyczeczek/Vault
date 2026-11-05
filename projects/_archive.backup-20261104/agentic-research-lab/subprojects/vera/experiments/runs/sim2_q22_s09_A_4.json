@@ -1,0 +1,69 @@
+{
+  "slot": 9,
+  "cond": "A",
+  "session_no": 4,
+  "worktree": "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\.worktrees\\sim2b-A",
+  "packs": [
+    "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\CONTEXT.md",
+    "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\stages\\00_expand\\CONTEXT.md",
+    "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\stages\\00_meta\\CONTEXT.md",
+    "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\stages\\01_inbox\\CONTEXT.md",
+    "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\stages\\02_corpus\\CONTEXT.md",
+    "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\stages\\03_graph\\CONTEXT.md",
+    "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\stages\\04_reflect\\CONTEXT.md",
+    "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\stages\\05_evict\\CONTEXT.md",
+    "C:\\Users\\Mateusz\\Desktop\\PROJECTS\\agentic-research-lab\\stages\\06_meta_evolve\\CONTEXT.md"
+  ],
+  "disqualified": false,
+  "trivialization_hits": [],
+  "lab_state_hits": [
+    "SIM-2",
+    "sim2",
+    "Q1",
+    "Q22",
+    "verdict",
+    "INCONCLUSIVE",
+    "ttfva",
+    "reorient",
+    "falsification"
+  ],
+  "n_calls": 3,
+  "reorient_cum": 2,
+  "ttfva": 3,
+  "ungrounded": 1,
+  "ttfva_tok": 624,
+  "calls": [
+    {
+      "query": "Causal chain: how does reorientation cost convert into performance loss for a fresh agent session?",
+      "rc": 2,
+      "ids": [],
+      "ok": false,
+      "wall_s": 0.145,
+      "stdout_bytes": 0
+    },
+    {
+      "query": "reorientation cost",
+      "rc": 0,
+      "ids": [
+        "00_reflection_reorientation_cost"
+      ],
+      "ok": true,
+      "wall_s": 0.146,
+      "stdout_bytes": 474
+    },
+    {
+      "query": "rapid understanding",
+      "rc": 0,
+      "ids": [
+        "31_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "01_workspace_rapid_understanding",
+        "287_domain_driven_design_tackling_complexity_in_the",
+        "28_the_book_of_why_the_new_science_of_cause_and_eff",
+        "81_graph_databases_new_opportunities_for_connected"
+      ],
+      "ok": true,
+      "wall_s": 0.161,
+      "stdout_bytes": 2023
+    }
+  ]
+}

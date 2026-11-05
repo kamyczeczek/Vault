@@ -1,0 +1,108 @@
+{
+  "fingerprint": "974f61758de8307ee2b74e2af67e252bef33b3fb8767647198bf325c9133c1e1",
+  "passages": [
+    {
+      "char_count": 7002,
+      "domain": "workspace",
+      "id": "trustworthy-agent-tests",
+      "items": [
+        {
+          "answer": "implementation \u2014 re-derives expectations and/or runs mutation/fuzz checks.",
+          "kind": "recall",
+          "prompt": "What does the source state: implementation \u2014 re-derives expectations and/or runs mutation/fuzz checks.?"
+        },
+        {
+          "answer": "Mutation testing \"seed[s] faults into your code, then your tests are run.",
+          "kind": "recall",
+          "prompt": "What does the source state: Mutation testing \"seed[s] faults into your code, then your tests are run.?"
+        },
+        {
+          "answer": "surviving-mutation that removes an observable behavior \u21d2 the gate fails.",
+          "kind": "recall",
+          "prompt": "What does the source state: surviving-mutation that removes an observable behavior \u21d2 the gate fails.?"
+        },
+        {
+          "answer": "Copilot/Claude/ChatGPT \"generate code faster than humans can review it.",
+          "kind": "recall",
+          "prompt": "What does the source state: Copilot/Claude/ChatGPT \"generate code faster than humans can review it.?"
+        },
+        {
+          "answer": "value/invariant derived from the spec *before* the implementation step.",
+          "kind": "recall",
+          "prompt": "What does the source state: value/invariant derived from the spec *before* the implementation step.?"
+        }
+      ],
+      "length_bucket": "long",
+      "split": "test"
+    },
+    {
+      "char_count": 4357,
+      "domain": "workspace",
+      "id": "plain-language-meter",
+      "items": [
+        {
+          "answer": "The evidence must include the task question, source and ingest result, graph query and retrieved chunk IDs, reflection claims linked to sources, implementation diff or output, final verification result, and a human groundedness verdict.",
+          "kind": "recall",
+          "prompt": "What does the source state: The evidence must include the task question, source and ingest result, graph query and retrieved chunk IDs, reflection claims linked to sources, implementation diff or output, final verification result, and a human groundedness verdict.?"
+        },
+        {
+          "answer": "The acceptance check for this project is broader than a sentence-level proxy: run one realistic research task end to end through literature research, ingest, graph retrieval, reflection, and implementation of the resulting knowledge.",
+          "kind": "recall",
+          "prompt": "What does the source state: The acceptance check for this project is broader than a sentence-level proxy: run one realistic research task end to end through literature research, ingest, graph retrieval, reflection, and implementation of the resulting knowledge.?"
+        },
+        {
+          "answer": "A small lay-reader cast independently rates a blinded subset for understandable/not understandable and provides a free-text difficulty note; this is a validity spot check, not a replacement for the oracle-backed task.",
+          "kind": "recall",
+          "prompt": "What does the source state: A small lay-reader cast independently rates a blinded subset for understandable/not understandable and provides a free-text difficulty note; this is a validity spot check, not a replacement for the oracle-backed task.?"
+        },
+        {
+          "answer": "** Add a fixed instruction before generation: use concrete words, explain unavoidable terms, one idea per sentence, preserve qualifiers and numbers, and do not omit decision-relevant facts.",
+          "kind": "recall",
+          "prompt": "What does the source state: ** Add a fixed instruction before generation: use concrete words, explain unavoidable terms, one idea per sentence, preserve qualifiers and numbers, and do not omit decision-relevant facts.?"
+        },
+        {
+          "answer": "Which prompt-layer mechanism best improves reader comprehension of LLM summaries without reducing faithfulness: an always-on style rule, few-shot demonstrations, or post-hoc rewriting?",
+          "kind": "recall",
+          "prompt": "What does the source state: Which prompt-layer mechanism best improves reader comprehension of LLM summaries without reducing faithfulness: an always-on style rule, few-shot demonstrations, or post-hoc rewriting??"
+        }
+      ],
+      "length_bucket": "long",
+      "split": "dev"
+    },
+    {
+      "char_count": 15942,
+      "domain": "workspace",
+      "id": "forge-guardrails-ab",
+      "items": [
+        {
+          "answer": "The Agentic Benchmark Checklist (NeurIPS 2025 D&B) found \u03c4-bench lets a do-nothing agent score 38% because success is \"leave the DB unchanged\" on intentionally unsatisfiable tasks.",
+          "kind": "recall",
+          "prompt": "What does the source state: The Agentic Benchmark Checklist (NeurIPS 2025 D&B) found \u03c4-bench lets a do-nothing agent score 38% because success is \"leave the DB unchanged\" on intentionally unsatisfiable tasks.?"
+        },
+        {
+          "answer": "Family B tasks are chosen so a policy-abiding agent is *expected to fail or refuse*, so completion rate there is uninterpretable by construction \u2014 only the violation rate is read.",
+          "kind": "recall",
+          "prompt": "What does the source state: Family B tasks are chosen so a policy-abiding agent is *expected to fail or refuse*, so completion rate there is uninterpretable by construction \u2014 only the violation rate is read.?"
+        },
+        {
+          "answer": "It cannot measure a gate that verifies claims against the trace, and it cannot separate \"deny\" from \"advise\", which upstream issue #10358 identifies as the missing primitive.",
+          "kind": "recall",
+          "prompt": "What does the source state: It cannot measure a gate that verifies claims against the trace, and it cannot separate \"deny\" from \"advise\", which upstream issue #10358 identifies as the missing primitive.?"
+        },
+        {
+          "answer": "A third arm (plugin absent) is *not* recommended: it removes the state file and the context file too, so it confounds enforcement with \"the model knows nothing\".",
+          "kind": "recall",
+          "prompt": "What does the source state: A third arm (plugin absent) is *not* recommended: it removes the state file and the context file too, so it confounds enforcement with \"the model knows nothing\".?"
+        },
+        {
+          "answer": "Three reward-hacking detectors (held-out tests, LLM judge, test-file-edit detection); the LLM judge was the effective one, held-out tests only marginally better.",
+          "kind": "recall",
+          "prompt": "What does the source state: Three reward-hacking detectors (held-out tests, LLM judge, test-file-edit detection); the LLM judge was the effective one, held-out tests only marginally better.?"
+        }
+      ],
+      "length_bucket": "long",
+      "split": "test"
+    }
+  ],
+  "version": "v1"
+}

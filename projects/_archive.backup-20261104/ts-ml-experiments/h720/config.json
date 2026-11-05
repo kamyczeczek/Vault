@@ -1,0 +1,29 @@
+{
+  "protocol_name": "univariate_ot_h720",
+  "description": "Project univariate OT high-horizon (H=720) evaluation. NOT comparable to the multivariate benchmark.",
+  "dataset": "ETTh1",
+  "features": "S",
+  "mode": "univariate",
+  "target_column": "OT",
+  "columns": ["OT"],
+  "split": {
+    "train_rows": 8545,
+    "validation_rows": 2880,
+    "test_rows": 2880,
+    "scaling": "train-only"
+  },
+  "horizons": [720],
+  "input_length": 96,
+  "metrics": ["mae", "rmse"],
+  "models": [
+    "persistence",
+    "heuristic_lag_knn",
+    "heuristic_lag_knn_recursive",
+    "heuristic_lag_rf",
+    "heuristic_lag_tree",
+    "balanced_lag_ensemble_knn",
+    "dlinear",
+    "nlinear",
+    "heuristic_lag_elm"
+  ]
+}

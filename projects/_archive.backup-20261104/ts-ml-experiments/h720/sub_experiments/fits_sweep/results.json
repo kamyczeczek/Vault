@@ -1,0 +1,405 @@
+{
+  "slice": "S-07",
+  "protocol": {
+    "fit": "frozen, train.csv 11,425 rows, fit once",
+    "origins": 2161,
+    "stride": 1,
+    "horizon": 720,
+    "note": "FITS: rFFT of standardized window -> complex ridge to extended spectrum -> LPF cutoff -> iRFFT; cutoff = rFFT bin of extended length (L+720); daily cycle at bin 60 for L=720"
+  },
+  "results": [
+    {
+      "model": "fits_L720_c8_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1649,
+      "rolling_rmse": 2.653,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.663730421072909,
+          "rmse": 3.147234675659117
+        },
+        "window_2": {
+          "mae": 1.650845110562303,
+          "rmse": 1.9716900334043985
+        },
+        "window_3": {
+          "mae": 1.9105832801898177,
+          "rmse": 2.4116446263457503
+        },
+        "window_4": {
+          "mae": 1.8075504440918564,
+          "rmse": 2.4018937105352136
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "fits_L720_c16_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1962,
+      "rolling_rmse": 2.6805,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.6438646154237535,
+          "rmse": 3.1647634104271747
+        },
+        "window_2": {
+          "mae": 1.7231205804789036,
+          "rmse": 2.061342004239297
+        },
+        "window_3": {
+          "mae": 1.956923017811653,
+          "rmse": 2.4883635512363016
+        },
+        "window_4": {
+          "mae": 1.8251926220313126,
+          "rmse": 2.336767317335107
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "fits_L720_c32_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1973,
+      "rolling_rmse": 2.6761,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.595173184175559,
+          "rmse": 3.1524094588316403
+        },
+        "window_2": {
+          "mae": 1.721122479424655,
+          "rmse": 2.066838864510677
+        },
+        "window_3": {
+          "mae": 1.9318241373076654,
+          "rmse": 2.4555918734482916
+        },
+        "window_4": {
+          "mae": 1.836843399012417,
+          "rmse": 2.355752028296843
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "fits_L720_c64_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1708,
+      "rolling_rmse": 2.6397,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.5346995416766975,
+          "rmse": 3.069406208925317
+        },
+        "window_2": {
+          "mae": 1.6614041298400346,
+          "rmse": 2.0047965677065074
+        },
+        "window_3": {
+          "mae": 1.9413592662391217,
+          "rmse": 2.4667247810253796
+        },
+        "window_4": {
+          "mae": 1.8178168575128943,
+          "rmse": 2.3433228472819034
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "fits_L720_c128_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1691,
+      "rolling_rmse": 2.6352,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.5250834611537325,
+          "rmse": 3.0555605061733915
+        },
+        "window_2": {
+          "mae": 1.6556928109515017,
+          "rmse": 1.9988924190139121
+        },
+        "window_3": {
+          "mae": 1.946766579005985,
+          "rmse": 2.4666766566264875
+        },
+        "window_4": {
+          "mae": 1.8178060585690017,
+          "rmse": 2.346786197823552
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "fits_L720_call_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1685,
+      "rolling_rmse": 2.6348,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.5227148893953184,
+          "rmse": 3.058416211205867
+        },
+        "window_2": {
+          "mae": 1.6573413176881664,
+          "rmse": 2.0001696280080856
+        },
+        "window_3": {
+          "mae": 1.9478212451028867,
+          "rmse": 2.4681760964347865
+        },
+        "window_4": {
+          "mae": 1.8209161562236729,
+          "rmse": 2.349612360558673
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "fits_L336_c8_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1444,
+      "rolling_rmse": 2.6288,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.6807371884014737,
+          "rmse": 3.111510950789927
+        },
+        "window_2": {
+          "mae": 1.5348996162835211,
+          "rmse": 1.8746001261476124
+        },
+        "window_3": {
+          "mae": 1.7904102773273738,
+          "rmse": 2.292086853890307
+        },
+        "window_4": {
+          "mae": 2.0113534226463585,
+          "rmse": 2.6204951206517606
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "fits_L336_c16_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.157,
+      "rolling_rmse": 2.6464,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.6910620268578787,
+          "rmse": 3.1802359257295376
+        },
+        "window_2": {
+          "mae": 1.5361932808875183,
+          "rmse": 1.8634004087834086
+        },
+        "window_3": {
+          "mae": 1.831999226794681,
+          "rmse": 2.316400626794977
+        },
+        "window_4": {
+          "mae": 2.084606497906474,
+          "rmse": 2.6721884576655093
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "fits_L336_c32_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1504,
+      "rolling_rmse": 2.6404,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.652547112024093,
+          "rmse": 3.163434238604816
+        },
+        "window_2": {
+          "mae": 1.5210201076511711,
+          "rmse": 1.8535315741764546
+        },
+        "window_3": {
+          "mae": 1.8340544579390206,
+          "rmse": 2.318390095215821
+        },
+        "window_4": {
+          "mae": 2.019669139052272,
+          "rmse": 2.6304938382882717
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "fits_L336_c64_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1239,
+      "rolling_rmse": 2.6062,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.6054370821410133,
+          "rmse": 3.0635695339093343
+        },
+        "window_2": {
+          "mae": 1.4400951281156817,
+          "rmse": 1.7745074557696376
+        },
+        "window_3": {
+          "mae": 1.8312512250643658,
+          "rmse": 2.3227602898953226
+        },
+        "window_4": {
+          "mae": 2.0140753475837343,
+          "rmse": 2.626285616867296
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "fits_L336_c128_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.1222,
+      "rolling_rmse": 2.6024,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.5977336160367,
+          "rmse": 3.056752745238957
+        },
+        "window_2": {
+          "mae": 1.4346484308094272,
+          "rmse": 1.7710732377393394
+        },
+        "window_3": {
+          "mae": 1.8389414084983486,
+          "rmse": 2.324353100779324
+        },
+        "window_4": {
+          "mae": 2.0078161858565373,
+          "rmse": 2.6178156094669367
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "fits_L336_call_a1e-3",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.122,
+      "rolling_rmse": 2.6023,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 2.594468081479038,
+          "rmse": 3.053343581477228
+        },
+        "window_2": {
+          "mae": 1.4319003834284132,
+          "rmse": 1.7713758660351584
+        },
+        "window_3": {
+          "mae": 1.838940153383136,
+          "rmse": 2.3234735331438037
+        },
+        "window_4": {
+          "mae": 2.0020327647755423,
+          "rmse": 2.61619895746976
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "elm_h64_full_fastlags",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.3092,
+      "rolling_rmse": 2.8046,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.5923309463548625,
+          "rmse": 1.9823129280190273
+        },
+        "window_2": {
+          "mae": 1.8145564224871475,
+          "rmse": 2.236046049143698
+        },
+        "window_3": {
+          "mae": 1.6619488768935646,
+          "rmse": 2.2672602806133835
+        },
+        "window_4": {
+          "mae": 2.1615466427691765,
+          "rmse": 2.872775949016963
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "persistence",
+      "protocol": "rolling stride-1, 2161 origins, frozen fit on train.csv",
+      "rolling_mae": 2.5985,
+      "rolling_rmse": 3.1282,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.7952457486755318,
+          "rmse": 2.2503347360867134
+        },
+        "window_2": {
+          "mae": 2.1462069739898046,
+          "rmse": 2.6324969775393976
+        },
+        "window_3": {
+          "mae": 1.7779138766643074,
+          "rmse": 2.3889429847551824
+        },
+        "window_4": {
+          "mae": 2.180211087150706,
+          "rmse": 2.8509213353302125
+        }
+      },
+      "status": "ok"
+    },
+    {
+      "model": "daily",
+      "protocol": "rolling stride-1, 2161 origins, seasonal-naive lag 24",
+      "rolling_mae": 2.5491,
+      "rolling_rmse": 3.112,
+      "disjoint_windows": {
+        "window_1": {
+          "mae": 1.6720180662969748,
+          "rmse": 2.171948042164322
+        },
+        "window_2": {
+          "mae": 1.9042791694402694,
+          "rmse": 2.3712428720780094
+        },
+        "window_3": {
+          "mae": 1.8620638797266615,
+          "rmse": 2.5054643959241902
+        },
+        "window_4": {
+          "mae": 2.919241687407096,
+          "rmse": 3.6344442181063386
+        }
+      },
+      "status": "ok"
+    }
+  ],
+  "acceptance_comparison": {
+    "best_fits": {
+      "model": "fits_L336_call_a1e-3",
+      "rolling_mae": 2.122,
+      "rolling_rmse": 2.6023
+    },
+    "best_elm_rolling": {
+      "model": "elm_h64_full_fastlags",
+      "rolling_mae": 2.3092
+    },
+    "daily_rolling": {
+      "model": "daily",
+      "rolling_mae": 2.5491
+    },
+    "fits_beats_elm": true,
+    "fits_beats_daily": true,
+    "fits_beats_current_leader_nlinear_L336": false
+  }
+}

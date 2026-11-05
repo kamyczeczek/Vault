@@ -1,0 +1,224 @@
+{
+  "experiment": "F_adversarial_falsification",
+  "timestamp": "2026-09-25T20:05:51.655614",
+  "fingerprint": "44172cafee34",
+  "candidates_tested": 4,
+  "verdicts": [
+    {
+      "candidate_id": "vera-expa-001",
+      "rule": "Promotion gate must require independent external ground truth; self-reported success is unverifiable.",
+      "evidence_ids": [
+        "00_06_self_correction_grounding_requirement",
+        "00_00_software_factory_isolate_build_prove_ship",
+        "00_automated_peer_review_and_self_correction"
+      ],
+      "verdict": "pass_falsification",
+      "scores": {
+        "grounding_score": 1.0,
+        "logical_consistency": 1.0,
+        "external_verifiability": 0.667
+      },
+      "falsification": {
+        "F1_counterfactual_ablation": {
+          "nodes_tested": 3,
+          "avg_evidence_retention": 0.542,
+          "fragility_score": 0.458,
+          "status": "partial",
+          "per_node": {
+            "00_06_self_correction_grounding_requirement": {
+              "lost_in_results": true,
+              "evidence_retention": 1.0,
+              "baseline_size": 8,
+              "after_size": 8,
+              "removed_query": "agentic agents context-engineering evaluation icm memory"
+            },
+            "00_00_software_factory_isolate_build_prove_ship": {
+              "lost_in_results": true,
+              "evidence_retention": 0.5,
+              "baseline_size": 8,
+              "after_size": 7,
+              "removed_query": "agentic agents evaluation memory planning prompt-engineering"
+            },
+            "00_automated_peer_review_and_self_correction": {
+              "lost_in_results": true,
+              "evidence_retention": 0.125,
+              "baseline_size": 8,
+              "after_size": 8,
+              "removed_query": "agentic agents context-engineering icm memory planning"
+            }
+          }
+        },
+        "F2_counter_evidence": {
+          "counter_nodes_found": 0,
+          "contradictory_queries": 0,
+          "status": "uncontested"
+        },
+        "F3_defect_injection": {
+          "defects_tested": 5,
+          "avg_drift_score": 0.0,
+          "status": "resilient"
+        }
+      }
+    },
+    {
+      "candidate_id": "vera-expa-002",
+      "rule": "Every stored lesson must encode its own eviction predicate; a lesson without an escape hatch compounds confidently wrong guidance.",
+      "evidence_ids": [
+        "00_08_lesson_persistence_eviction_requirement",
+        "00_06_self_correction_grounding_requirement",
+        "00_reflection_retrieval_dominates_write"
+      ],
+      "verdict": "requires_revision",
+      "scores": {
+        "grounding_score": 1.0,
+        "logical_consistency": 1.0,
+        "external_verifiability": 0.667
+      },
+      "falsification": {
+        "F1_counterfactual_ablation": {
+          "nodes_tested": 3,
+          "avg_evidence_retention": 0.333,
+          "fragility_score": 0.667,
+          "status": "fragile",
+          "per_node": {
+            "00_08_lesson_persistence_eviction_requirement": {
+              "lost_in_results": true,
+              "evidence_retention": 1.0,
+              "baseline_size": 8,
+              "after_size": 8,
+              "removed_query": "agentic agents context-engineering memory persistence planning"
+            },
+            "00_06_self_correction_grounding_requirement": {
+              "lost_in_results": true,
+              "evidence_retention": 0.0,
+              "baseline_size": 8,
+              "after_size": 6,
+              "removed_query": "context-engineering memory persistence reflection retrieval"
+            },
+            "00_reflection_retrieval_dominates_write": {
+              "lost_in_results": true,
+              "evidence_retention": 0.0,
+              "baseline_size": 8,
+              "after_size": 10,
+              "removed_query": "agentic agents context-engineering memory planning prompt-engineering"
+            }
+          }
+        },
+        "F2_counter_evidence": {
+          "counter_nodes_found": 0,
+          "contradictory_queries": 0,
+          "status": "uncontested"
+        },
+        "F3_defect_injection": {
+          "defects_tested": 5,
+          "avg_drift_score": 0.0,
+          "status": "resilient"
+        }
+      }
+    },
+    {
+      "candidate_id": "vera-expa-003",
+      "rule": "Post-promotion audit — run every accepted lesson against held-out trajectories and decrement score when eviction predicate fires.",
+      "evidence_ids": [
+        "00_08_lesson_persistence_eviction_requirement",
+        "00_a_bandit_approach_with_evolutionary_operators_fo"
+      ],
+      "verdict": "pass_falsification",
+      "scores": {
+        "grounding_score": 1.0,
+        "logical_consistency": 1.0,
+        "external_verifiability": 0.667
+      },
+      "falsification": {
+        "F1_counterfactual_ablation": {
+          "nodes_tested": 2,
+          "avg_evidence_retention": 0.55,
+          "fragility_score": 0.45,
+          "status": "partial",
+          "per_node": {
+            "00_08_lesson_persistence_eviction_requirement": {
+              "lost_in_results": true,
+              "evidence_retention": 0.9,
+              "baseline_size": 10,
+              "after_size": 10,
+              "removed_query": "anti-leakage context-engineering memory planning"
+            },
+            "00_a_bandit_approach_with_evolutionary_operators_fo": {
+              "lost_in_results": true,
+              "evidence_retention": 0.2,
+              "baseline_size": 10,
+              "after_size": 10,
+              "removed_query": "context-engineering memory reflection"
+            }
+          }
+        },
+        "F2_counter_evidence": {
+          "counter_nodes_found": 0,
+          "contradictory_queries": 0,
+          "status": "uncontested"
+        },
+        "F3_defect_injection": {
+          "defects_tested": 5,
+          "avg_drift_score": 0.0,
+          "status": "resilient"
+        }
+      }
+    },
+    {
+      "candidate_id": "vera-expa-004",
+      "rule": "Add AgentDebug-style root-cause attribution (detect→attribute→correct) to the reflect stage of spawn.py, producing structured error-classified candidates.",
+      "evidence_ids": [
+        "00_agent_error_taxonomy_debugging_web_research",
+        "00_agent_hooks_lifecycle_guardrails",
+        "00_agent_execution_hooks_guardrails"
+      ],
+      "verdict": "pass_falsification",
+      "scores": {
+        "grounding_score": 1.0,
+        "logical_consistency": 1.0,
+        "external_verifiability": 0.667
+      },
+      "falsification": {
+        "F1_counterfactual_ablation": {
+          "nodes_tested": 3,
+          "avg_evidence_retention": 0.593,
+          "fragility_score": 0.407,
+          "status": "partial",
+          "per_node": {
+            "00_agent_error_taxonomy_debugging_web_research": {
+              "lost_in_results": true,
+              "evidence_retention": 0.778,
+              "baseline_size": 9,
+              "after_size": 7,
+              "removed_query": "agentic agents context-engineering determinism planning prompt-engineering"
+            },
+            "00_agent_hooks_lifecycle_guardrails": {
+              "lost_in_results": true,
+              "evidence_retention": 0.0,
+              "baseline_size": 9,
+              "after_size": 10,
+              "removed_query": "agentic agents context-engineering memory planning prompt-engineering"
+            },
+            "00_agent_execution_hooks_guardrails": {
+              "lost_in_results": true,
+              "evidence_retention": 1.0,
+              "baseline_size": 9,
+              "after_size": 9,
+              "removed_query": "agentic agents context-engineering determinism memory planning"
+            }
+          }
+        },
+        "F2_counter_evidence": {
+          "counter_nodes_found": 0,
+          "contradictory_queries": 0,
+          "status": "uncontested"
+        },
+        "F3_defect_injection": {
+          "defects_tested": 5,
+          "avg_drift_score": 0.0,
+          "status": "resilient"
+        }
+      }
+    }
+  ]
+}

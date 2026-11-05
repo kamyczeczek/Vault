@@ -1,0 +1,515 @@
+{
+  "experiment": "C_graph_expansion",
+  "timestamp": "2026-09-25T05:09:04.972064",
+  "baseline_overall_recall": 0.5806451612903226,
+  "expansion_overall_recall": 0.6129032258064516,
+  "recall_delta": 0.032258064516129004,
+  "baseline_results": {
+    "Q1": {
+      "retrieved": [
+        "00_okf_methodology_research"
+      ],
+      "seeds": [
+        "00_okf_methodology_research"
+      ],
+      "recall": 1.0,
+      "hits": [
+        "00_okf_methodology_research"
+      ]
+    },
+    "Q2": {
+      "retrieved": [
+        "00_reflection_reorientation_cost",
+        "01_build_faster_by_coding_slower",
+        "12_full_walkthrough_workflow_for_ai_coding_matt_poc",
+        "reflection_rule_of_scars",
+        "00_session_compaction_for_ai_agents"
+      ],
+      "seeds": [
+        "00_reflection_reorientation_cost",
+        "01_session_compaction_for_ai_agents"
+      ],
+      "recall": 0.5,
+      "hits": [
+        "00_reflection_reorientation_cost"
+      ]
+    },
+    "Q4": {
+      "retrieved": [
+        "01_09_mistake_correction_abstraction_level",
+        "00_world_models_long_horizon_web_research",
+        "reflection_rule_of_scars",
+        "00_07_critic_external_tool_verification"
+      ],
+      "seeds": [
+        "00_06_self_correction_grounding_requirement",
+        "00_07_critic_external_tool_verification"
+      ],
+      "recall": 0.5,
+      "hits": [
+        "00_07_critic_external_tool_verification"
+      ]
+    },
+    "Q5": {
+      "retrieved": [
+        "00_persistent_memory_hierarchies_agents",
+        "830_artificial_intelligence_a_modern_approach_4th_ed",
+        "437_multiagent_systems_algorithmic_game_theoretic_an",
+        "00_icm_implementation_pitfalls_and_failure_modes",
+        "00_reflection_retrieval_dominates_write",
+        "reflection_rule_of_scars",
+        "446_harness_starter_kit",
+        "26_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "00_agent_memory_hierarchies"
+      ],
+      "seeds": [
+        "00_reflection_retrieval_dominates_write",
+        "00_reflection_reorientation_cost",
+        "00_agent_memory_hierarchies"
+      ],
+      "recall": 0.6666666666666666,
+      "hits": [
+        "00_reflection_retrieval_dominates_write",
+        "00_agent_memory_hierarchies"
+      ]
+    },
+    "Q6": {
+      "retrieved": [
+        "00_karpathy_minimalist_agentic_coding_harnesses",
+        "02_00_software_factory_isolate_build_prove_ship"
+      ],
+      "seeds": [
+        "00_karpathy_minimalist_agentic_coding_harnesses",
+        "02_00_software_factory_isolate_build_prove_ship"
+      ],
+      "recall": 1.0,
+      "hits": [
+        "00_karpathy_minimalist_agentic_coding_harnesses",
+        "02_00_software_factory_isolate_build_prove_ship"
+      ]
+    },
+    "Q7": {
+      "retrieved": [
+        "00_plan_persistence_context_window_compaction",
+        "00_reflection_reorientation_cost",
+        "00_session_compaction_for_ai_agents"
+      ],
+      "seeds": [
+        "00_session_compaction_for_ai_agents",
+        "01_session_compaction_for_ai_agents",
+        "00_plan_persistence_context_window_compaction",
+        "00_reflection_reorientation_cost"
+      ],
+      "recall": 0.75,
+      "hits": [
+        "00_session_compaction_for_ai_agents",
+        "00_plan_persistence_context_window_compaction",
+        "00_reflection_reorientation_cost"
+      ]
+    },
+    "Q8": {
+      "retrieved": [
+        "01_new_markdown_file",
+        "335_graph_engineering_for_agentic_ai_systems_ken_hua",
+        "01_deep_analysis_popular_autoresearch_projects"
+      ],
+      "seeds": [
+        "01_new_markdown_file",
+        "335_graph_engineering_for_agentic_ai_systems_ken_hua",
+        "00_deep_analysis_popular_autoresearch_projects"
+      ],
+      "recall": 0.6666666666666666,
+      "hits": [
+        "01_new_markdown_file",
+        "335_graph_engineering_for_agentic_ai_systems_ken_hua"
+      ]
+    },
+    "Q10": {
+      "retrieved": [
+        "01_06_self_correction_grounding_requirement",
+        "00_automated_peer_review_and_self_correction"
+      ],
+      "seeds": [
+        "00_automated_peer_review_and_self_correction",
+        "00_06_self_correction_grounding_requirement",
+        "00_07_critic_external_tool_verification"
+      ],
+      "recall": 0.3333333333333333,
+      "hits": [
+        "00_automated_peer_review_and_self_correction"
+      ]
+    },
+    "Q11": {
+      "retrieved": [
+        "bm25_agentic_search_bergum",
+        "00_reflection_retrieval_dominates_write",
+        "00_agent_memory_hierarchies"
+      ],
+      "seeds": [
+        "00_reflection_retrieval_dominates_write",
+        "00_graph_database_architectural_reflection"
+      ],
+      "recall": 0.5,
+      "hits": [
+        "00_reflection_retrieval_dominates_write"
+      ]
+    },
+    "Q12": {
+      "retrieved": [
+        "00_can_an_ai_out_plan_a_senior_engineer",
+        "00_agent_error_taxonomy_debugging_web_research",
+        "00_taxonomy_of_20_ai_research_failure_modes",
+        "03_initial"
+      ],
+      "seeds": [
+        "00_can_an_ai_out_plan_a_senior_engineer",
+        "00_taxonomy_of_20_ai_research_failure_modes"
+      ],
+      "recall": 1.0,
+      "hits": [
+        "00_can_an_ai_out_plan_a_senior_engineer",
+        "00_taxonomy_of_20_ai_research_failure_modes"
+      ]
+    },
+    "Q21": {
+      "retrieved": [],
+      "seeds": [
+        "00_karpathy_minimalist_agentic_coding_harnesses",
+        "00_why_performance_engineering_breaks_ai_coding_agent",
+        "01_00_bend2_vibe_coding_reinventing_wheels"
+      ],
+      "recall": 0.0,
+      "hits": []
+    },
+    "Q22": {
+      "retrieved": [
+        "00_reflection_reorientation_cost"
+      ],
+      "seeds": [
+        "00_reflection_reorientation_cost",
+        "00_workspace_rapid_understanding"
+      ],
+      "recall": 0.5,
+      "hits": [
+        "00_reflection_reorientation_cost"
+      ]
+    },
+    "Q23": {
+      "retrieved": [
+        "00_graph_database_architectural_reflection",
+        "72_graph_databases_new_opportunities_for_connected",
+        "04_icm_ml_research_workflow",
+        "00_01_session_graph_research"
+      ],
+      "seeds": [
+        "00_graph_database_architectural_reflection",
+        "02_00_software_factory_isolate_build_prove_ship"
+      ],
+      "recall": 0.5,
+      "hits": [
+        "00_graph_database_architectural_reflection"
+      ]
+    }
+  },
+  "expansion_results": {
+    "Q1": {
+      "retrieved": [
+        "00_okf_methodology_research",
+        "00_automated_peer_review_and_self_correction",
+        "00_graph_memory_starter_inventory",
+        "00_new_markdown_file"
+      ],
+      "seeds": [
+        "00_okf_methodology_research"
+      ],
+      "recall": 1.0,
+      "hits": [
+        "00_okf_methodology_research"
+      ]
+    },
+    "Q2": {
+      "retrieved": [
+        "00_reflection_reorientation_cost",
+        "01_build_faster_by_coding_slower",
+        "12_full_walkthrough_workflow_for_ai_coding_matt_poc",
+        "reflection_rule_of_scars",
+        "00_session_compaction_for_ai_agents",
+        "00_reflection_invisible_context_manager",
+        "00_reflection_retrieval_dominates_write",
+        "01_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "01_building_a_practical_ai_assembly_line",
+        "12_domain_driven_design_tackling_complexity_in_the",
+        "12_graph_databases_new_opportunities_for_connected",
+        "11_harness_starter_kit",
+        "120_icm_knowledge_big",
+        "67_icm_knowledge_big",
+        "00_self_improvements_in_modern_agentic_systems_a_su",
+        "00_severa_verified_synthesis_of_self_evolving_agent"
+      ],
+      "seeds": [
+        "00_reflection_reorientation_cost",
+        "01_session_compaction_for_ai_agents"
+      ],
+      "recall": 0.5,
+      "hits": [
+        "00_reflection_reorientation_cost"
+      ]
+    },
+    "Q4": {
+      "retrieved": [
+        "01_09_mistake_correction_abstraction_level",
+        "00_world_models_long_horizon_web_research",
+        "reflection_rule_of_scars",
+        "00_07_critic_external_tool_verification",
+        "01_08_lesson_persistence_eviction_requirement",
+        "01_a_bandit_approach_with_evolutionary_operators_fo",
+        "00_grounded_tool_reliability_failure_modes_web_rese",
+        "00_long_horizon_planning_decomposition_web_research",
+        "00_memory_eviction_forgetting_web_research",
+        "11_harness_starter_kit",
+        "120_icm_knowledge_big",
+        "67_icm_knowledge_big",
+        "00_06_self_correction_grounding_requirement",
+        "00_08_lesson_persistence_eviction_requirement"
+      ],
+      "seeds": [
+        "00_06_self_correction_grounding_requirement",
+        "00_07_critic_external_tool_verification"
+      ],
+      "recall": 1.0,
+      "hits": [
+        "00_06_self_correction_grounding_requirement",
+        "00_07_critic_external_tool_verification"
+      ]
+    },
+    "Q5": {
+      "retrieved": [
+        "00_persistent_memory_hierarchies_agents",
+        "830_artificial_intelligence_a_modern_approach_4th_ed",
+        "437_multiagent_systems_algorithmic_game_theoretic_an",
+        "00_icm_implementation_pitfalls_and_failure_modes",
+        "00_reflection_retrieval_dominates_write",
+        "reflection_rule_of_scars",
+        "446_harness_starter_kit",
+        "26_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "00_agent_memory_hierarchies",
+        "00_pending_request_req_20260922_165217",
+        "00_personality_driven_decision_making_in_llm_based",
+        "437_harness_starter_kit",
+        "437_paradigms_of_artificial_intelligence_programming",
+        "00_icm_43_copies_four_moves",
+        "00_icm_knowledge_big",
+        "00_graph_memory_starter_inventory",
+        "00_okf_methodology_research",
+        "00_reflection_closed_vocabulary_before_content",
+        "11_harness_starter_kit",
+        "120_icm_knowledge_big",
+        "67_icm_knowledge_big",
+        "00_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "00_harness_starter_kit",
+        "01_beyond_vibe_coding_from_coder_to_ai_era_develope",
+        "00_agent_hooks_lifecycle_guardrails",
+        "00_agentforce_harnessing_the_agency_of_ai_to_scale"
+      ],
+      "seeds": [
+        "00_reflection_retrieval_dominates_write",
+        "00_reflection_reorientation_cost",
+        "00_agent_memory_hierarchies"
+      ],
+      "recall": 0.6666666666666666,
+      "hits": [
+        "00_reflection_retrieval_dominates_write",
+        "00_agent_memory_hierarchies"
+      ]
+    },
+    "Q6": {
+      "retrieved": [
+        "00_karpathy_minimalist_agentic_coding_harnesses",
+        "02_00_software_factory_isolate_build_prove_ship",
+        "00_04f2f0490be6_agent_reinforcement_learning_via_pi",
+        "00_0d780aefeb5f_low_overhead_transversal_fault_tole",
+        "00_225c8527385d_energy_efficient_quantized_federate",
+        "01_00_bend2_vibe_coding_reinventing_wheels",
+        "02_01_session_graph_research"
+      ],
+      "seeds": [
+        "00_karpathy_minimalist_agentic_coding_harnesses",
+        "02_00_software_factory_isolate_build_prove_ship"
+      ],
+      "recall": 1.0,
+      "hits": [
+        "00_karpathy_minimalist_agentic_coding_harnesses",
+        "02_00_software_factory_isolate_build_prove_ship"
+      ]
+    },
+    "Q7": {
+      "retrieved": [
+        "00_plan_persistence_context_window_compaction",
+        "00_reflection_reorientation_cost",
+        "00_session_compaction_for_ai_agents",
+        "00_plan_compliance_runtime_verification_web_researc",
+        "00_pocock_context_shared_language",
+        "00_reflection_invisible_context_manager",
+        "00_reflection_retrieval_dominates_write",
+        "00_self_improvements_in_modern_agentic_systems_a_su",
+        "00_severa_verified_synthesis_of_self_evolving_agent"
+      ],
+      "seeds": [
+        "00_session_compaction_for_ai_agents",
+        "01_session_compaction_for_ai_agents",
+        "00_plan_persistence_context_window_compaction",
+        "00_reflection_reorientation_cost"
+      ],
+      "recall": 0.75,
+      "hits": [
+        "00_session_compaction_for_ai_agents",
+        "00_plan_persistence_context_window_compaction",
+        "00_reflection_reorientation_cost"
+      ]
+    },
+    "Q8": {
+      "retrieved": [
+        "01_new_markdown_file",
+        "335_graph_engineering_for_agentic_ai_systems_ken_hua",
+        "01_deep_analysis_popular_autoresearch_projects",
+        "01_new_dokument_tekstowy",
+        "01_one_stage_one_job",
+        "00_graph_engineering_for_agentic_ai_systems_ken_hua",
+        "01_graph_engineering_for_agentic_ai_systems_ken_hua",
+        "02_graph_engineering_for_agentic_ai_systems_ken_hua",
+        "00_automated_peer_review_and_self_correction",
+        "00_defensive_failure_mode_hardening",
+        "00_don_t_vibe_code_do_skele_code_interactive_no_cod"
+      ],
+      "seeds": [
+        "01_new_markdown_file",
+        "335_graph_engineering_for_agentic_ai_systems_ken_hua",
+        "00_deep_analysis_popular_autoresearch_projects"
+      ],
+      "recall": 0.6666666666666666,
+      "hits": [
+        "01_new_markdown_file",
+        "335_graph_engineering_for_agentic_ai_systems_ken_hua"
+      ]
+    },
+    "Q10": {
+      "retrieved": [
+        "01_06_self_correction_grounding_requirement",
+        "00_automated_peer_review_and_self_correction",
+        "01_01_session_graph_research",
+        "01_07_critic_external_tool_verification",
+        "00_04f2f0490be6_agent_reinforcement_learning_via_pi",
+        "00_0d780aefeb5f_low_overhead_transversal_fault_tole",
+        "00_225c8527385d_energy_efficient_quantized_federate"
+      ],
+      "seeds": [
+        "00_automated_peer_review_and_self_correction",
+        "00_06_self_correction_grounding_requirement",
+        "00_07_critic_external_tool_verification"
+      ],
+      "recall": 0.3333333333333333,
+      "hits": [
+        "00_automated_peer_review_and_self_correction"
+      ]
+    },
+    "Q11": {
+      "retrieved": [
+        "bm25_agentic_search_bergum",
+        "00_reflection_retrieval_dominates_write",
+        "00_agent_memory_hierarchies",
+        "00_automated_peer_review_and_self_correction",
+        "00_defensive_failure_mode_hardening",
+        "00_don_t_vibe_code_do_skele_code_interactive_no_cod",
+        "00_graph_memory_starter_inventory",
+        "00_okf_methodology_research",
+        "00_reflection_closed_vocabulary_before_content",
+        "00_agent_hooks_lifecycle_guardrails",
+        "00_agentforce_harnessing_the_agency_of_ai_to_scale"
+      ],
+      "seeds": [
+        "00_reflection_retrieval_dominates_write",
+        "00_graph_database_architectural_reflection"
+      ],
+      "recall": 0.5,
+      "hits": [
+        "00_reflection_retrieval_dominates_write"
+      ]
+    },
+    "Q12": {
+      "retrieved": [
+        "00_can_an_ai_out_plan_a_senior_engineer",
+        "00_agent_error_taxonomy_debugging_web_research",
+        "00_taxonomy_of_20_ai_research_failure_modes",
+        "03_initial",
+        "00_caging_the_agents_a_zero_trust_security_architec",
+        "00_cascade_case_based_continual_adaptation_for_larg",
+        "00_adaptive_search_workspace_architecture",
+        "00_agent_execution_hooks_guardrails",
+        "00_structure_and_interpretation_of_computer_program",
+        "00_the_book_of_why_the_new_science_of_cause_and_eff",
+        "03_icm_ml_research_workflow",
+        "03_llm_engineers_handbook_iusztin_paul_labonne_z_li"
+      ],
+      "seeds": [
+        "00_can_an_ai_out_plan_a_senior_engineer",
+        "00_taxonomy_of_20_ai_research_failure_modes"
+      ],
+      "recall": 1.0,
+      "hits": [
+        "00_can_an_ai_out_plan_a_senior_engineer",
+        "00_taxonomy_of_20_ai_research_failure_modes"
+      ]
+    },
+    "Q21": {
+      "retrieved": [],
+      "seeds": [
+        "00_karpathy_minimalist_agentic_coding_harnesses",
+        "00_why_performance_engineering_breaks_ai_coding_agent",
+        "01_00_bend2_vibe_coding_reinventing_wheels"
+      ],
+      "recall": 0.0,
+      "hits": []
+    },
+    "Q22": {
+      "retrieved": [
+        "00_reflection_reorientation_cost",
+        "00_reflection_invisible_context_manager",
+        "00_reflection_retrieval_dominates_write"
+      ],
+      "seeds": [
+        "00_reflection_reorientation_cost",
+        "00_workspace_rapid_understanding"
+      ],
+      "recall": 0.5,
+      "hits": [
+        "00_reflection_reorientation_cost"
+      ]
+    },
+    "Q23": {
+      "retrieved": [
+        "00_graph_database_architectural_reflection",
+        "72_graph_databases_new_opportunities_for_connected",
+        "04_icm_ml_research_workflow",
+        "00_01_session_graph_research",
+        "00_full_walkthrough_workflow_for_ai_coding_matt_poc",
+        "00_graph_databases_new_opportunities_for_connected",
+        "72_domain_driven_design_tackling_complexity_in_the",
+        "72_graph_engineering_for_agentic_ai_systems_ken_hua",
+        "02_icm_map",
+        "04_icm_knowledge_big",
+        "04_llm_engineers_handbook_iusztin_paul_labonne_z_li",
+        "00_00_software_factory_isolate_build_prove_ship",
+        "00_04f2f0490be6_agent_reinforcement_learning_via_pi"
+      ],
+      "seeds": [
+        "00_graph_database_architectural_reflection",
+        "02_00_software_factory_isolate_build_prove_ship"
+      ],
+      "recall": 0.5,
+      "hits": [
+        "00_graph_database_architectural_reflection"
+      ]
+    }
+  },
+  "verdict": "PASS"
+}

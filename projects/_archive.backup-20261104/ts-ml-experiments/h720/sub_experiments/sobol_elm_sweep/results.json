@@ -1,0 +1,285 @@
+{
+  "protocol": "fit train.csv (11,425 rows), forecast H=720, score vs test.csv[:720] \u2014 via data.py shared split",
+  "axes": [
+    "hidden_dim",
+    "weight_init (sobol|sobol_iid|normal)"
+  ],
+  "fixed": {
+    "history_fraction": 1.0,
+    "delays": [
+      1,
+      2,
+      3,
+      6,
+      12
+    ]
+  },
+  "results": [
+    {
+      "model": "sobol_h64_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "sobol",
+        "hidden_dim": 64
+      },
+      "mae": 1.898148285768791,
+      "rmse": 2.3214894099813645,
+      "status": "ok"
+    },
+    {
+      "model": "sobol_iid_h64_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "sobol_iid",
+        "hidden_dim": 64
+      },
+      "mae": 2.031730187300012,
+      "rmse": 2.441922159917886,
+      "status": "ok"
+    },
+    {
+      "model": "normal_h64_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "normal",
+        "hidden_dim": 64
+      },
+      "mae": 1.5923309463548625,
+      "rmse": 1.9823129280190273,
+      "status": "ok"
+    },
+    {
+      "model": "sobol_h256_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "sobol",
+        "hidden_dim": 256
+      },
+      "mae": 1.7133516960973003,
+      "rmse": 2.157318561952623,
+      "status": "ok"
+    },
+    {
+      "model": "sobol_iid_h256_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "sobol_iid",
+        "hidden_dim": 256
+      },
+      "mae": 1.6330071664314396,
+      "rmse": 2.055013669899532,
+      "status": "ok"
+    },
+    {
+      "model": "normal_h256_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "normal",
+        "hidden_dim": 256
+      },
+      "mae": 1.7108028604154608,
+      "rmse": 2.142473125952603,
+      "status": "ok"
+    },
+    {
+      "model": "sobol_h1024_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "sobol",
+        "hidden_dim": 1024
+      },
+      "mae": 1.929280326706331,
+      "rmse": 2.364406389125872,
+      "status": "ok"
+    },
+    {
+      "model": "sobol_iid_h1024_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "sobol_iid",
+        "hidden_dim": 1024
+      },
+      "mae": 1.800473983984061,
+      "rmse": 2.2687753373026713,
+      "status": "ok"
+    },
+    {
+      "model": "normal_h1024_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "normal",
+        "hidden_dim": 1024
+      },
+      "mae": 1.7503682947409476,
+      "rmse": 2.1970915398006414,
+      "status": "ok"
+    },
+    {
+      "model": "sobol_h4096_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "sobol",
+        "hidden_dim": 4096
+      },
+      "mae": 2.2507560034533003,
+      "rmse": 2.691674357973968,
+      "status": "ok"
+    },
+    {
+      "model": "sobol_iid_h4096_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "sobol_iid",
+        "hidden_dim": 4096
+      },
+      "mae": 2.304151855765615,
+      "rmse": 2.737928804737268,
+      "status": "ok"
+    },
+    {
+      "model": "normal_h4096_full_fastlags",
+      "horizon": 720,
+      "params": {
+        "history_fraction": 1.0,
+        "delays": [
+          1,
+          2,
+          3,
+          6,
+          12
+        ],
+        "weight_init": "normal",
+        "hidden_dim": 4096
+      },
+      "mae": 2.2403452947204427,
+      "rmse": 2.6930290554849092,
+      "status": "ok"
+    }
+  ],
+  "matched_pairs": [
+    {
+      "hidden_dim": 64,
+      "sobol_mae": 1.898148285768791,
+      "sobol_iid_mae": 2.031730187300012,
+      "normal_mae": 1.5923309463548625,
+      "sobol_rmse": 2.3214894099813645,
+      "sobol_iid_rmse": 2.441922159917886,
+      "normal_rmse": 1.9823129280190273
+    },
+    {
+      "hidden_dim": 256,
+      "sobol_mae": 1.7133516960973003,
+      "sobol_iid_mae": 1.6330071664314396,
+      "normal_mae": 1.7108028604154608,
+      "sobol_rmse": 2.157318561952623,
+      "sobol_iid_rmse": 2.055013669899532,
+      "normal_rmse": 2.142473125952603
+    },
+    {
+      "hidden_dim": 1024,
+      "sobol_mae": 1.929280326706331,
+      "sobol_iid_mae": 1.800473983984061,
+      "normal_mae": 1.7503682947409476,
+      "sobol_rmse": 2.364406389125872,
+      "sobol_iid_rmse": 2.2687753373026713,
+      "normal_rmse": 2.1970915398006414
+    },
+    {
+      "hidden_dim": 4096,
+      "sobol_mae": 2.2507560034533003,
+      "sobol_iid_mae": 2.304151855765615,
+      "normal_mae": 2.2403452947204427,
+      "sobol_rmse": 2.691674357973968,
+      "sobol_iid_rmse": 2.737928804737268,
+      "normal_rmse": 2.6930290554849092
+    }
+  ]
+}

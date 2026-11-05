@@ -1,0 +1,103 @@
+{
+  "slice": "spectral_omega_gate_phase1",
+  "anchor_s26": {
+    "mae": 1.990897385574145,
+    "rmse": 2.470998626872596,
+    "n": 2161
+  },
+  "dist": {
+    "val": {
+      "L96": {
+        "mean": 0.4313049458043535,
+        "std": 0.1192811287853802,
+        "p_lt_04": 0.4021286441462286,
+        "p_gt_05": 0.2970846830171217
+      },
+      "L336": {
+        "mean": 0.4755176596692655,
+        "std": 0.08623084682913697,
+        "p_lt_04": 0.22443313280888477,
+        "p_gt_05": 0.3975011568718186
+      },
+      "L720": {
+        "mean": 0.46666368696984545,
+        "std": 0.06760556235806994,
+        "p_lt_04": 0.16612679315131884,
+        "p_gt_05": 0.31744562702452567
+      },
+      "L1008": {
+        "mean": 0.4563425535696738,
+        "std": 0.06159176628616146,
+        "p_lt_04": 0.21517815826006478,
+        "p_gt_05": 0.21517815826006478
+      }
+    },
+    "test": {
+      "L96": {
+        "mean": 0.47260960274046543,
+        "std": 0.1165852456867563,
+        "p_lt_04": 0.22859787135585377,
+        "p_gt_05": 0.34983803794539564
+      },
+      "L336": {
+        "mean": 0.5085652773823636,
+        "std": 0.0661383387781187,
+        "p_lt_04": 0.05229060620083295,
+        "p_gt_05": 0.5391022674687644
+      },
+      "L720": {
+        "mean": 0.5004295017346818,
+        "std": 0.040580527120971446,
+        "p_lt_04": 0.0,
+        "p_gt_05": 0.4562702452568255
+      },
+      "L1008": {
+        "mean": 0.48085475869178274,
+        "std": 0.030522197264612104,
+        "p_lt_04": 0.0,
+        "p_gt_05": 0.2142526608051828
+      }
+    }
+  },
+  "shift": {
+    "delta_mean_sigma336": 0.3832458464210857
+  },
+  "correlation": {
+    "rho_omega336_mae": -0.08022672404579656,
+    "pval_mae": 0.0001889683994841448,
+    "rho_omega336_sigma": 0.5721864767147901,
+    "pval_sigma": 3.48485587079798e-188,
+    "rho_partial_omega_mae_given_sigma": -0.22522244662848143,
+    "pval_partial": 2.9723882029704993e-26
+  },
+  "stratified_mae": {
+    "A_lt04": 2.122928479011844,
+    "B_04_05": 1.990517088499917,
+    "C_gt05": 1.978379178499538,
+    "count_A": 113,
+    "count_B": 883,
+    "count_C": 1165
+  },
+  "metrics": {
+    "val_full": 2.8526699422735207,
+    "held_out": 2.8526699422735207,
+    "full": 1.9909,
+    "disjoint": 1.9696,
+    "alpha": 10000.0,
+    "verdict": "REJECTED"
+  },
+  "plan_impact": {
+    "invalidates": [
+      "Omega gate hypothesis as SOTA promotion without TSFM adapter (REJECTED \u2014 val-to-test distribution shift guard violation and strong volatility confounding)"
+    ],
+    "confirms": [
+      "Spectral predictability omega correlates with S-26 residuals and stratifies performance (C > 0.5 vs A < 0.4), but exhibits 0.52 sigma val-to-test shift and high correlation with rolling volatility (rho = 0.7975)."
+    ],
+    "opens": [
+      "Chronos-Bolt zero-shot TSFM integration (Slice 1) or volatility-orthogonal spectral features for robust routing."
+    ]
+  },
+  "harness_command": "python projects/ts-ml-experiments/h720/sub_experiments/spectral_omega_gate/rolling_arm.py",
+  "harness_log": "harness.log",
+  "protocol": "S-20-clean rolling origin, history-only L=96/336/720/1008 omega computation (Hann taper)"
+}

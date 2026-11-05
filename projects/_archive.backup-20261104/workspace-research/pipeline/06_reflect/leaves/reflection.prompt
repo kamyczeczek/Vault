@@ -1,0 +1,804 @@
+You are a leaf reflection agent. You already have the graph digest auto-injected.
+LEAF TOPIC: reflection  (routed deterministically: tags=['reflection'] → 12 chunks, ids=['00_adapt_as_needed_decomposition_and_planning_with', '00_awesome_context_engineering', '00_enhancing_llm_based_agents_via_global', '00_from_plan_to_action_how_well_do_agents_follow_th', '00_icm_knowledge_big', '00_improving_planning_with_large_language', '00_interpretable_context_methodology_folder_structu', '00_is_progressive_disclosure_all_you_need_for_long', '00_memory_for_autonomous_llm_agents_mechanisms_eval', '00_modular_task_decomposition_anddynamiccollaborati', '00_plans_don_t_persist_why_context_management_is_lo', '00_self_evolving_world_models_for_llm_agent_plannin'])
+
+TASK: Reflect ONLY on the 12 chunks below. Every claim must cite one of these ids.
+Do not query further. Do not read other corpus files.
+
+CHUNKS (ground truth, truncated to 4k each):
+### 00_adapt_as_needed_decomposition_and_planning_with
+ADAPT: As-Needed Decomposition and Planning with Language Models
+Archiki Prasad♣ Alexander Koller♡ Mareike Hartmann♡
+Peter Clark♠ Ashish Sabharwal♠ Mohit Bansal♣ Tushar Khot♠
+♣ UNC Chapel Hill ♠ Allen Institute for AI ♡ Saarland University
+Abstract
+Large Language Models (LLMs) are increas-
+ingly being used for interactive decision-
+making tasks requiring planning and adapt-
+ing to the environment. Recent works em-
+ploy LLMs-as-agents in broadly two ways:
+iteratively determining the next action (itera-
+tive executors) or generating plans and execut-
+ing sub-tasks using LLMs (plan-and-execute).
+However, these methods struggle with task
+complexity, as the inability to execute any
+sub-task may lead to task failure. To ad-
+dress these shortcomings, we introduce As-
+Needed Decomposition and Planning for com-
+plex Tasks (ADAPT), an approach that explic-
+itly plans and decomposes complex sub-tasks
+as-needed, i.e., when the LLM is unable to ex-
+ecute them. ADAPT recursively decomposes
+sub-tasks to adapt to both task complexity and
+LLM capability. Our results demonstrate that
+ADAPT substantially outperforms established
+strong baselines, achieving success rates up to
+28.3% higher in ALFWorld, 27% in WebShop,
+and 33% in TextCraft – a novel compositional
+dataset that we introduce. Through extensive
+analysis, we illustrate the importance of multi-
+level decomposition and establish that ADAPT
+dynamically adjusts to the capabilities of the
+executor LLM as well as to task complexity.1
+1 Introduction
+Recent advances in Large Language Models
+(LLMs) have expanded their application beyond
+conventional NLP tasks to more complex tasks
+involving mathematical, symbolic, and common-
+sense reasoning (Wei et al., 2022; Huang and
+Chang, 2023). Recent models have even been ap-
+plied to decision-making tasks, such as performing
+household chores, navigating a webpage, etc., that
+require interactions with external environments or
+tools (Yao et al., 2023b; Qin et al., 2023).
+1Project: https://allenai.github.io/adaptllm
+Prior works on using LLMs for decision-making,
+such as ReAct (Yao et al., 2023b), iteratively gen-
+erate the next action to be executed in the environ-
+ment given the history of actions and observations
+(see Fig. 1; top-left). However, as the tasks become
+more complex, LLMs struggle due to their limited
+composition ability (Dziri et al., 2023) and inability
+to deal with the distractors (Shi et al., 2023) in a
+long action-observation trajectory.
+To mitigate this, modular approaches (Khot et al.,
+2023; Yang et al., 2023; Sun et al., 2023) incorpo-
+rate a separate planner module that utilizes an LLM
+to create a high-level plan.2 The planner then dele-
+gates simpler sub-tasks to an executor LLM module
+thereby reducing the compositional complexity and
+length of action trajectory required by the execu-
+tor. We refer to this category broadly as plan-and-
+execute approaches (see Fig. 1; top-right). While
+the plans enable these methods to guide the execu-
+tion and track progress (Wang et al., 2023b), their
+non-adaptive nature poses a limitation when con-
+fronting unachievable sub-tasks. These approaches
+inherently lack the flexibility to adapt to task com-
+plexity and manage execution failures, as shown
+in Fig. 1(top-right), where just one sub-task that is
+too complex results in overall task failure.
+To address such failures, we proposeAs-Needed
+Decomposition and Planning for complex Tasks
+(ADAPT), a recursive algorithm that further de-
+composes sub-tasks when necessary, to dynami-
+cally accommodate to task complexity. We uti-
+lize separate planner and executor LLM modules
+within our framework but only decompose a task
+using the planner, if the executor LLM detects a
+failure. As shown in Fig. 1, the overall task of
+putting a clean mug on a desk in an unfamiliar
+2By “planning”, we refer to the colloquial concept of
+designing a list of sub-tasks to accomplish a complex task
+rather than its usage in classical AI-planning literature. E.g.,
+a “plan” for prepa
+
+### 00_awesome_context_engineering
+Repository: yzfly/awesome-context-engineering
+Files analyzed: 15
+
+Estimated tokens: 79.8k
+
+Directory structure:
+└── yzfly-awesome-context-engineering/
+    ├── README.md
+    ├── CONTRIBUTING.md
+    ├── LICENSE
+    ├── README_CN.md
+    └── docs/
+        ├── claudecode/
+        │   ├── claude-code-best-practices-zh.md
+        │   ├── claude-code-best-practices.md
+        │   └── effective-context-engineering-for-ai-agents.md
+        ├── dbreunig/
+        │   ├── how-contexts-fail-and-how-to-fix-them.md
+        │   ├── how-to-fix-your-context.md
+        │   ├── 上下文修复的实用指南.md
+        │   └── 长上下文的失效原理及解决方案.md
+        ├── langchain/
+        │   ├── context-engineering-for-agents.md
+        │   └── 智能体的Context工程-中文版.md
+        └── manus/
+            ├── AI智能体的Context工程：构建Manus的经验教训.md
+            └── Context-Engineering-for-AI-Agents-Lessons-from-Building-Manus.md
+
+================================================
+FILE: README.md
+================================================
+# Awesome Context Engineering
+
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+[![GitHub stars](https://img.shields.io/github/stars/yzfly/awesome-context-engineering.svg?style=social&label=Star)](https://github.com/yzfly/awesome-context-engineering)
+[![GitHub forks](https://img.shields.io/github/forks/yzfly/awesome-context-engineering.svg?style=social&label=Fork)](https://github.com/yzfly/awesome-context-engineering)
+
+A curated collection of resources, papers, tools, and best practices for **Context Engineering** in AI agents and Large Language Models (LLMs).
+
+> Context engineering is the art and science of filling the context window with just the right information at each step of an agent's trajectory.
+
+[中文版本](README_CN.md) | [English](README.md)
+
+## 📚 Table of Contents
+
+- [What is Context Engineering?](#what-is-context-engineering)
+- [Featured Articles](#featured-articles)
+- [Research Papers](#research-papers)
+- [Tools & Projects](#tools--projects)
+- [Expert Insights](#expert-insights)
+- [Model Context Protocol (MCP)](#model-context-protocol-mcp)
+- [Contributing](#contributing)
+- [Star History](#star-history)
+
+## What is Context Engineering?
+
+Context Engineering is the systematic optimization of information payloads for Large Language Models (LLMs). It encompasses:
+
+- **Context Retrieval & Generation**: Selecting and creating relevant information
+- **Context Processing**: Organizing and structuring context for optimal consumption
+- **Context Management**: Handling context windows, memory, and state across interactions
+- **Context Compression**: Reducing token usage while preserving essential information
+- **Context Isolation**: Separating concerns across different context spaces
+
+## 📖 Featured Articles
+
+### Context Rot: How Increasing Input Tokens Impacts LLM Performance
+- https://research.trychroma.com/context-rot
+
+### 00_enhancing_llm_based_agents_via_global
+Enhancing LLM-Based Agents via Global
+Planning and Hierarchical Execution
+Junjie Chen1, Haitao Li1, Jingli Yang, Yiqun Liu1, Qingyao Ai1*
+1DCST, Tsinghua University, Beijing, 100084, China.
+*Corresponding author(s). E-mail(s): aiqingyao@gmail.com;
+Abstract
+Intelligent agent systems based on Large Language Models (LLMs) have shown
+great potential in real-world applications. However, existing agent frameworks
+still face critical limitations in task planning and execution, restricting their
+effectiveness and generalizability. Specifically, current planning methods often
+lack clear global goals—leading agents to get stuck in local branches—or pro-
+duce non-executable plans. Meanwhile, existing execution mechanisms struggle
+to balance complexity and stability, and their limited action space restricts
+their ability to handle diverse real-world tasks. To address these limitations,
+we propose GoalAct, a novel agent framework that introduces a continuously
+updated global planning mechanism and integrates a hierarchical execu-
+tion strategy. GoalAct decomposes task execution into high-level skills, including
+searching, coding, writing and more, thereby reducing planning complexity while
+enhancing the agents’ adaptability across diverse task scenarios. We evaluate
+GoalAct on LegalAgentBench, a benchmark with multiple types of legal tasks
+that require the use of multiple types of tools. Experimental results demonstrate
+that GoalAct achieves state-of-the-art (SOTA) performance, with an average
+improvement of 12.22% in success rate. These findings highlight GoalAct’s poten-
+tial to drive the development of more advanced intelligent agent systems, making
+them more effective across complex real-world applications. Our code can be
+found at https://github.com/cjj826/GoalAct.
+Keywords: Large Language Model, Agent, Global Planning, Hierarchical Execution
+1
+arXiv:2504.16563v3  [cs.IR]  29 Apr 2025
+
+### 00_from_plan_to_action_how_well_do_agents_follow_th
+From Plan to Action: How Well Do Agents Follow the Plan?
+Shuyang Liu∗
+University of Illinois
+Urbana-Champaign
+Urbana, USA
+sl225@illinois.edu
+Saman Dehghan∗
+University of Illinois
+Urbana-Champaign
+Urbana, USA
+samand2@illinois.edu
+Jatin Ganhotra
+IBM
+New York, USA
+jatinganhotra@us.ibm.com
+Martin Hirzel
+IBM
+New York, USA
+hirzel@us.ibm.com
+Reyhaneh Jabbarvand✉
+University of Illinois
+Urbana-Champaign
+Urbana, USA
+reyhaneh@illinois.edu
+Abstract
+Agents are commonly instructed to follow a task-specificplanfor
+guidance. However, it is unknown to what extent agents actually
+follow instructed plans. Without such an analysis—determining the
+extent agentscomplywith a given plan—it is impossible to assess
+whether a solution was reached through correct strategic reasoning
+or through other means, e.g., data contamination or overfitting to a
+benchmark. This paper presents the first extensive, systematic anal-
+ysis ofplan compliancein programming agents, examining 21,120
+trajectories from SWE-agent across four LLMs on SWE-bench Veri-
+fied and SWE-bench Pro under eight plan variations. Without an
+explicit plan, agents fall back on internalized workflows during
+training, which are often incomplete, overfit, or inconsistently ap-
+plied. Providing the standard plan improves issue resolution, and
+we observe that periodic plan reminders can mitigate plan viola-
+tions and improve task success. A subpar plan hurts performance
+even more than no plan at all. Surprisingly, inserting additional
+task-relevant phases in the early stage can degrade performance,
+particularly when these phases do not align with the model’s in-
+ternal problem-solving strategy. These findings call for fine-tuning
+paradigms that teach models to follow instructed plans, rather than
+encoding task-specific plans in them, so that they reason and act
+adaptively, rather than memorizing workflows.
+CCS Concepts
+•Software and its engineering→ Software maintenance tools;
+•Computing methodologies→Machine learning approaches.
+Keywords
+Programming Agents, Process-Centric Analysis, Agent Planning
+ACM Reference Format:
+Shuyang Liu, Saman Dehghan, Jatin Ganhotra, Martin Hirzel, and Reyhaneh
+Jabbarvand. 2026. From Plan to Action: How Well Do Agents Follow the
+∗Both authors contributed equally to this work.
+This work is licensed under a Creative Commons Attribution 4.0 International License.
+ASE ’26, Munich, Germany
+©2026 Copyright held by the owner/author(s).
+ACM ISBN 979-8-4007-2882-2/2026/10
+https://doi.org/10.1145/3832783.3834400
+Plan?. InProceedings of the 41st IEEE/ACM International Conference on Auto-
+mated Software Engineering (ASE ’26), October 12–16, 2026, Munich, Germany.
+ACM, New York, NY, USA, 12 pages. https://doi.org/10.1145/3832783.3834400
+1 Introduction
+Agents have emerged as a promising paradigm for automating
+software engineering tasks, from code synthesis and translation to
+end-to-end issue resolution [14, 36, 38]. Central to these systems is
+the use ofstructured instructions, a.k.a. aplan, which decomposes
+a high-level objective of a given task into an ordered sequence of
+steps that the agent can follow to accomplish the task successfully.
+In theory, a plan can help reduce cognitive load for reasoning about
+future steps in the local reason-act-observe loop [39]. As a result,
+planning is commonly used in agentic frameworks, usually encoded
+as step-by-step instructions in the system prompt [1, 4, 28, 34]. For
+example, a plan for fixing GitHub issues will instruct the agent to
+navigate to a potential bug location (based on the issue description),
+reproduce the bug to ensure correct localization, patch the bug, and
+validate the patch’s correctness.
+In practice, the plan is onlyadvisoryand without enforcement.
+At each trajectory step, the model performs local reasoning over its
+current context, and its actions may or may not align with the plan.
+As the trajectory grows and the context fills with error messages,
+file contents, and prior reasoning, the plan’s influence may dimin-
+ish, c
+
+### 00_icm_knowledge_big
+# ICM_knowledge.md
+
+Merged notes — part 1 of the collection.
+
+------
+
+Jake's content\Building Your Stack\1.1 Starting the Build Process.md
+
+What You'll Get From This
+
+A framework for deciding whether to build a custom UI and how to scope it before writing any code.
+
+------
+
+Before You Build Anything: The Tool Ladder
+
+This methodology works at different levels. You don't always need to build custom.
+
+Level 1: Claude Projects (
+
+http://claude.ai/
+
+Use project instructions and knowledge files. Upload your
+
+http://claude.md/
+
+, your context docs, your templates. Claude reads them at the start of every conversation. No code required.
+
+Level 2: Claude Cowork (in-app)
+
+More control, still inside Anthropic's interface. Good for workflows that need more than chat but don't require full file system access.
+
+Level 3: VS Code + Claude Code
+
+Full readability. Quick navigation. You see your folders, your files, your code. Claude operates inside your actual workspace. This is where most people should land.
+
+Level 4: Custom Front-End
+
+Build your own interface around Claude Code. Full control. Designed specifically for your workflow.
+
+#### Each level adds complexity. Each level adds capability. But here's the thing:
+
+Anthropic keeps improving their native UI.
+
+Features that required custom builds a year ago now exist in the default interface. Projects didn't exist. Cowork didn't exist. By the time you finish building a custom front-end, Anthropic might ship something that does the same thing.
+
+#### The philosophy for this course:
+
+know HOW to build custom, so you can when you need to. But always ask whether you need to. The best tool is the simplest one that solves your problem.
+
+------
+
+What This Course Is
+
+This isn't a step-by-step tutorial. This is a behind-the-scenes project.
+
+I'm building a custom front-end for my animation workflow. You're watching me do it. Every decision, every mistake, every time Claude does something unexpected.
+
+The lessons in this course are session recordings with written companions that explain what's happening and why. You'll see:
+
+How I research what already exists before building
+
+How I write a PRD (product requirements document) so Claude knows what we're making
+
+How I set up the workspace so Claude has context
+
+How Claude Code uses plan mode and sub-agents
+
+What happens when things break
+
+How the project evolves session by session
+
+This is the highest-skill content in the community. If some of it feels over your head, that's fine. Watch it anyway. You'll understand more than you think, and the parts that don't click now will click later.
+
+------
+
+The Project: A Control Surface for My Workflow
+
+Here's what I'm building and why.
+
+I have a workflow for turning scripts into animations. It lives in folders. Script Lab holds my scripts. Animation Studio turns them into specs, then builds, then renders. The whole thing runs on Claude Code.
+
+#### VS Code works fine for this. But I want something better. I want:
+
+### 00_improving_planning_with_large_language
+Published atNature Communications(2025) https://doi.org/10.1038/s41467-025-63804-5
+IMPROVINGPLANNING WITHLARGELANGUAGE
+MODELS: A MODULARAGENTICARCHITECTURE
+Shanka Subhra Mondal *†
+Princeton University
+Princeton, NJ
+smondal@princeton.edu
+Taylor W. Webb *
+Microsoft Research
+New York, NY
+taylor.w.webb@gmail.com
+Ida Momennejad
+Microsoft Research
+New York, NY
+idamo@microsoft.com
+ABSTRACT
+Large language models (LLMs) demonstrate impressive performance on a wide
+variety of tasks, but they often struggle with tasks that require multi-step rea-
+soning or goal-directed planning. Both cognitive neuroscience and reinforcement
+learning (RL) have proposed a number of interacting functional components that
+together implement search and evaluation in multi-step decision making. These
+components include conflict monitoring, state prediction, state evaluation, task
+decomposition, and orchestration. To improve planning with LLMs, we propose
+an agentic architecture, the Modular Agentic Planner (MAP), in which planning is
+accomplished via the recurrent interaction of the specialized modules mentioned
+above, each implemented using an LLM. MAP improves planning through the in-
+teraction of specialized modules that break down a larger problem into multiple
+brief automated calls to the LLM. We evaluate MAP on three challenging plan-
+ning tasks – graph traversal, Tower of Hanoi, and the PlanBench benchmark –
+as well as an NLP task requiring multi-step reasoning (strategyQA). We find that
+MAP yields significant improvements over both standard LLM methods (zero-
+shot prompting, in-context learning) and competitive baselines (chain-of-thought,
+multi-agent debate, and tree-of-thought), can be effectively combined with smaller
+and more cost-efficient LLMs (Llama3-70B), and displays superior transfer across
+tasks. These results suggest the benefit of a modular and multi-agent approach to
+planning with LLMs.
+1 INTRODUCTION
+Large Language Models (LLMs) (Devlin et al., 2019; Brown et al., 2020) have become widely
+accepted as highly capable generalist systems with a surprising range of emergent capacities (Sri-
+vastava et al., 2022; Wei et al., 2022a; Webb et al., 2023). They have also sparked broad controversy,
+with some suggesting that they are approaching general intelligence (Bubeck et al., 2023), and others
+noting a number of significant deficiencies (Mahowald et al., 2023). A particularly notable short-
+coming is their poor ability to plan or perform faithful multi-step reasoning (Valmeekam et al., 2023;
+Dziri et al., 2023). Recent work (Momennejad et al., 2023) has evaluated the extent to which LLMs
+might possess an emergent capacity for planning and exploitingcognitive maps, the relational struc-
+tures that humans and other animals utilize to perform planning (Tolman, 1948; Tavares et al., 2015;
+Behrens et al., 2018). This work found that LLMs displayed systematic shortcomings in planning
+tasks that suggested an inability to reason about cognitive maps. Common failure modes included
+a tendency to ‘hallucinate’ (e.g., to use non-existent transitions and paths), and to fall into loops.
+*Equal contribution. Co-first author order is arbitrary and may be swapped when citing this work.
+†Work performed during internship at Microsoft Research.
+1
+arXiv:2310.00194v5  [cs.AI]  14 Oct 2025
+
+### 00_interpretable_context_methodology_folder_structu
+Interpretable Context Methodology: Folder Structure as Agent
+Architecture
+JAKE VAN CLIEF, DAVID MCDERMOTT,Eduba, University of Edinburgh, USA
+Current approaches to AI agent orchestration typically involve building multi-agent frameworks that manage context passing,
+memory, error handling, and step coordination through code. These frameworks work well for complex, concurrent systems.
+But for sequential workflows where a human reviews output at each step, they introduce engineering overhead that the
+problem does not require. This paper presents Interpretable Context Methodology (ICM), a method that replaces framework-
+level orchestration with filesystem structure. Numbered folders represent stages. Plain markdown files carry the prompts
+and context that tell a single AI agent what role to play at each step. Local scripts handle the mechanical work that does not
+need AI at all. The result is a system where one agent, reading the right files at the right moment, does the work that would
+otherwise require a multi-agent framework. This approach applies ideas from Unix pipeline design, modular decomposition,
+multi-pass compilation, and literate programming to the specific problem of structuring context for AI agents. The protocol is
+open source under the MIT license.1
+CCS Concepts:•Human-centered computing → Interactive systems and tools;HCI design and evaluation methods;•
+Computing methodologies→Artificial intelligence;•Software and its engineering→Software design engineering.
+Additional Key Words and Phrases: context engineering, human-AI interaction, AI agent orchestration, filesystem architecture,
+human-in-the-loop, mixed-initiative systems, workflow automation
+1 Introduction
+There are genuinely good agentic frameworks available today. CrewAI, LangChain, AutoGen, and others handle
+multi-step orchestration, memory management, tool use, and error recovery. They work. But they work within
+their own structures, and adjusting those structures requires development work. Changing the order of steps,
+swapping a prompt, adding or removing a stage, skipping something that is not relevant today: these actions
+typically mean editing code, understanding abstractions, and redeploying. For practitioners whose workflows are
+sequential and need human review at each step, the control surface can be much simpler.
+This paper describes Interpretable Context Methodology (ICM), a method for orchestrating AI agent workflows
+using folder structure, markdown files, and local scripts. The central observation is straightforward: if the prompts
+and context for each stage of a workflow already exist as files in a well-organized folder hierarchy, you do not
+need a coordination framework to manage multiple specialized agents. You need one orchestrating agent that
+reads the right files at the right moment. The folder structure tells it what to do at each step, and if the agent
+delegates sub-tasks, the same folder structure determines what context those sub-agents receive. Local Python
+scripts handle the parts that do not need AI: fetching data, moving files, formatting output, sending emails.
+This is going backward before going forward. The principles that made Unix pipelines effective in the 1970s2
+and multi-pass compilers tractable in the 1980s apply directly to AI agent orchestration in the 2020s. ICM applies
+those principles to the specific challenge of structuring context for language models.
+The central question this paper examines is how structuring the context delivery mechanism as a filesystem
+hierarchy affects practitioners’ ability to control, inspect, and edit AI agent behavior across multi-step workflows,
+and what this structure means for the quality of the model’s output at each stage.
+1https://github.com/RinDig/Interpretable-Context-Methodology-ICM-
+2Programs that do one thing. Output of one becomes input of another. Plain text as universal interface. These ideas are over fifty years old
+and they hold up.
+Author’s Contact Information: Jake Van Cli
+
+### 00_is_progressive_disclosure_all_you_need_for_long
+Is Progressive Disclosure All You Need for Long-Context Agents?
+Yifeng He1, Yinzhe Zhao 2*, Jicheng Wang 1, Hao Chen 3
+1University of California, Davis
+2Zhejiang University, 3The University of Hong Kong
+yfhe.cs@gmail.com, chenho@hku.hk
+Abstract
+Long-document question answering usually
+forces a choice between loading the whole doc-
+ument into the context window and bolting
+on a separate retriever. Agentic AI suggests
+a broader option, giving the agent the docu-
+ment path and letting it decide how and what to
+read. Agent Skills, a standard for packaging ex-
+pertise into folders an agent loads on demand,
+supply a ready mechanism:progressive disclo-
+sure, which exposes only what a query needs,
+from a short description down to the specific
+passages. Practitioners rapidly adopted this pat-
+tern for book-length understanding tasks, but
+the evidence for it has been anecdotal. We run
+the first controlled study of the pattern, com-
+paring raw-document navigation and several
+designs of Agent Skills packs against a clas-
+sical hybrid retriever across three agent har-
+nesses and three model families on ∞Bench.
+On a single book, the gain depends on the har-
+ness, running large when the agent navigates
+the raw document poorly but near zero when a
+strong agent harness already locates and reads
+the right passages on its own. When scaling up
+to tasks that span many books, raw-document
+navigation collapses while one-level progres-
+sive disclosure degrades more slowly and pulls
+ahead. A second, deeper routing level never
+helps and sometimes breaks accuracy outright,
+so one level is enough. Progressive disclosure
+buys context, not intelligence: it is redundant
+while a strong agent can locate the right pas-
+sages itself, and decisive once the corpus grows
+too large to navigate by reading.
+1 Introduction
+Long-document question answering (QA) forces a
+choice between two well-studied options: load the
+entire document into the context window and lean
+on the model’s long-context attention, or retrieve
+a small set of chunks with an external retriever.
+Neither option wins outright (Li et al., 2024, 2025),
+*Work done while interning at UC Davis.
+and on long inputs the effective context size falls
+well short of the advertised window (Liu et al.,
+2024; Hsieh et al., 2024). Agentic AI reframes
+the choice: give the agent the document and let it
+decide what to read and when. Claude Code made
+exactly this move, dropping the retrieval index its
+early versions used in favor of letting the agent
+search the code base on demand (Cherny and Wu,
+2025). But its engineers report the switch from
+experience, not a controlled comparison.
+Agent Skills turn that option into a mechanism.
+The standard packages expertise as a directory of in-
+structions and resources (Anthropic, 2025b; Xu and
+Yan, 2026): root the document at aSKILL.md file,
+hand it to the agent, and letprogressive disclosure
+do the retriever’s job, keeping a short description
+of each skill always in context so the agent reads
+a skill’s body and its bundled files only when that
+description matches the task. The pattern spread on
+engineering intuition long before anyone measured
+it (Hacker News, 2025a,b). For book-length mate-
+rial, it is urged as a way to package a whole book
+so that an agent reads only the chapter a question
+needs (Virgilio Jr., 2026; Praison, 2026; PyShine,
+2026). However, whether it should displace re-
+trieval is itself contested (Ewerlöf, 2026), and no
+controlled study has yet tested it with an agent on
+a standardized long-document benchmark.
+This practice raises two open empirical ques-
+tions. First,does progressive disclosure work for
+book-length understanding?Second,what is the
+best way to structure the skill pack?Both are
+sharper than they first appear, because the Agent
+Skills specification bundles two design choices
+the practitioner literature never separates: how
+deep the disclosure recurses, and where the per-
+chunk index physically lives. We pull them apart
+by comparing the three app
+
+### 00_memory_for_autonomous_llm_agents_mechanisms_eval
+Memory for Autonomous LLM Agents:
+Mechanisms, Evaluation, and Emerging Frontiers
+Pengfei Du1
+1 Hong Kong Research Institute of Technology, HongKong, China
+E-mail: lldpf1234@gmail.com
+Abstract
+Large language model (LLM) agents increasingly oper-
+ate in settings where a single context window is far too
+small to capture what has happened, what was learned,
+and what should not be repeated. Memory—the abil-
+ity to persist, organize, and selectively recall information
+across interactions—is what turns a stateless text genera-
+tor into a genuinely adaptive agent. This survey offers
+a structured account of how memory is designed, imple-
+mented, and evaluated in modern LLM-based agents, cov-
+ering work from 2022 through early 2026. We formalize
+agent memory as awrite–manage–readloop tightly cou-
+pled with perception and action, then introduce a three-
+dimensional taxonomy spanning temporal scope, represen-
+tational substrate, and control policy. Five mechanism fam-
+ilies are examined in depth: context-resident compression,
+retrieval-augmented stores, reflective self-improvement, hi-
+erarchical virtual context, and policy-learned management.
+On the evaluation side, we trace the shift from static re-
+call benchmarks to multi-session agentic tests that interleave
+memory with decision-making, analyzing four recent bench-
+marks that expose stubborn gaps in current systems. We
+also survey applications where memory is the differentiat-
+ing factor—personal assistants, coding agents, open-world
+games, scientific reasoning, and multi-agent teamwork—
+and address the engineering realities of write-path filtering,
+contradiction handling, latency budgets, and privacy gover-
+nance. The paper closes with open challenges: continual
+consolidation, causally grounded retrieval, trustworthy re-
+flection, learned forgetting, and multimodal embodied mem-
+ory.
+Keywords:large language model agents; agent memory;
+long-term memory; retrieval-augmented generation; contin-
+ual adaptation; agent evaluation
+1 Introduction
+Scaling large language models has unlocked a new class of
+autonomous software agents—systems that perceive envi-
+ronments, reason about goals, wield tools, and take action
+over extended time horizons [Brown et al., 2020, Achiam
+et al., 2023, Touvron et al., 2023]. What separates these
+agents from a vanilla chatbot is not merely bigger models; it
+is the expectation that theylearn from experience. A coding
+assistant should remember that a particular API is flaky, a
+game-playing agent should recall which crafting recipes it
+already mastered, and a personal scheduler should never ask
+a user’s birthday twice. All of this demands memory.
+1.1 What goes wrong without it
+Picture a debugging assistant that works on a large codebase
+across a week of sessions. Without memory, every Mon-
+day morning it rediscovers the directory layout, re-reads the
+same README, and—worst of all—retries the exact fix
+that crashed the build on Friday. Equip the same agent with
+even a modest memory module and the dynamic shifts: it
+arrives already knowing the hotspots, skips the dead ends,
+and gradually distills project-specific heuristics.
+This is not a marginal improvement; it is a qualitative
+change. Memory transforms a stateless LLM into aself-
+evolvingagent [Zhang et al., 2024a] that can (i) accumu-
+late factual knowledge and user preferences, (ii) develop be-
+havioral patterns grounded in prior experience, (iii) avoid
+repeating costly mistakes, and (iv) continuously improve
+through interaction.
+1.2 A brief history of neural memory
+The ambition to give neural networks external storage dates
+back over a decade. Memory Networks [Weston et al., 2015]
+and their end-to-end variant [Sukhbaatar et al., 2015] intro-
+duced differentiable read-write access to external slots for
+question answering. Neural Turing Machines [Graves et al.,
+2014] and Differentiable Neural Computers [Graves et al.,
+2016] pushed further, supporting both content-based and
+location-based addressing over a memor
+
+### 00_modular_task_decomposition_anddynamiccollaborati
+Modular Task Decomposition and Dynamic
+Collaboration in Multi-Agent Systems Driven by
+Large Language Models
+Shuaidong Pan
+Carnegie Mellon University
+Pittsburgh, USA
+
+Di Wu*
+University of Southern California
+Los Angeles, USA
+
+### 00_plans_don_t_persist_why_context_management_is_lo
+Preprint.
+Plans Don’t Persist: Why Context Management Is Load Bear-
+ing for LLM Agents
+Aman Mehta
+Snowflake AI Research
+aman.mehta@snowflake.com
+Anupam Datta
+Snowflake AI Research
+anupam.datta@snowflake.com
+Abstract
+Long-horizon agents depend on context management: systems compress,
+summarize, and evict old tokens so tasks can continue beyond finite win-
+dows. That is safe only when dropped information is no longer needed
+or has been internalized. Plans are the stress case: they are written early,
+used for many steps, and first to be evicted. We introducereplay pairing,
+a diagnostic that runs the same trajectory with and without the plan in
+history and measures hidden-state cosine distance. On Llama-3.1-70B,
+plan signal spikes to 0.453 one step after the plan, then falls 4.1 × in a
+single action-observation step; HotpotQA falls 12.4 ×. This is evidence
+that standard LLM agents do not carry plans forward as persistent state,
+and instead depend on the plan remaining in context. A layer- L32 probe
+detects this decay as a diagnostic, not as proof that it reads plan content
+itself. Reasoning models add a measurement confound: their <think>
+traces re-derive plan content, so standard stripping leaves plan evidence
+in the stripped condition. We name this thereasoning-trace confoundand
+fix it with strict stripping, which removes prior <think> blocks from the
+stripped run only. It recovers +163% of the step+1 signal in-sample and
++153% held out, while not meaningfully changing non-reasoning Llama
+(+4.8%). On DeepSeek-R1-Distill-Llama-70B, a Llama-trained probe trans-
+fers at AUROC 0.748 ( p=6×10−4), while R1-specific probes reach 1.000,
+suggesting R1 encodes plan signal in a different hidden-state direction. Fi-
+nally, a compression stress test shows the practical cost: naive plan eviction
+cuts ALFWorld success by 34.7pp, while probe-gated re-surfacing does not
+recover it. The contribution is a measurement and stress-test framework
+showing that agent-critical information can be context-resident rather than
+persistent. Context management is load bearing, but plan protection alone
+is not enough.
+1 Introduction
+Context management is becoming load-bearing for LLM agents. To run long horizons
+within a finite window, deployments compress, summarize, and evict old context, betting
+that dropped tokens do not change behavior. Whether that bet is safe depends on where
+information lives: incontext-timememory (text in the window, re-read each step) or in
+persistent internal state that survives once the text is gone. The agent’splanis the sharpest
+case. It is written once, early, so it is first to be evicted. If the plan is held in internal state,
+dropping its text is free; if it is only re-read each step, dropping it silently breaks an agent
+that passed every behavioral test while the text was still visible. This did not matter when
+contexts were short and nothing scrolled away; modern context management makes it
+matter. Which mechanism holds is the question this paper answers.
+Planning frameworks like ReAct (Yao et al., 2022), Chain-of-Thought (Wei et al., 2022), Tree
+of Thoughts (Yao et al., 2023), and Reflexion (Shinn et al., 2023) all assume the same thing:
+the agent writes a plan, and the plan guides what it does next. Behavioral alignment metrics
+confirm that it does. But behavior alone cannot tell two mechanisms apart. The plan could
+be held in hidden state across the trajectory (internalized), or it could live only as text in
+1
+arXiv:2606.22953v1  [cs.AI]  22 Jun 2026
+
+### 00_self_evolving_world_models_for_llm_agent_plannin
+Self-Evolving World Models for LLM Agent Planning
+Xuan Zhang1 Wenxuan Zhang2 See-Kiong Ng1 Yang Deng3,∗
+1National University of Singapore
+2Singapore University of Technology and Design 3Singapore Management University
+xuanzhang@u.nus.edu
+Abstract
+World models offer a principled way to
+equip long-horizon LLM agents withfore-
+sight: predictions of action consequences be-
+fore execution. However, unreliable fore-
+sight can be ignored, misused, or even de-
+grade downstream decision-making. In this
+paper, we introduce WORLDEVOLVER, a self-
+evolving world model framework that revises
+its deployment-time context while keeping the
+downstream agent and all model parameters
+frozen. WORLDEVOLVERintegrates three
+modules: (i) Episodic Memory, which exploits
+real action transitions through retrieval-based
+simulation; (ii) Semantic Memory, which ex-
+tracts persistent heuristic rules from prediction-
+observation mismatches; and (iii) Selective
+Foresight, which filters low-confidence pre-
+dictions before integrating them into agent
+reasoning context. We evaluate WORLDE-
+VOLVERon ALFWorld and ScienceWorld, mea-
+suring world model prediction accuracy on
+Word2World and downstream agent success
+rate on AgentBoard. Extensive experiments
+show that WORLDEVOLVERachieves the high-
+est prediction accuracy across three backbones
+and leads other world model baselines on down-
+stream agent success rate, demonstrating that
+test-time memory revision enhances both pre-
+dictive fidelity and planning performance.
+1 Introduction
+LLM agents are typically improved through mem-
+ory: reusing verbal feedback, retrieved experiences,
+skill libraries, or persistent context across interac-
+tions (Shinn et al., 2023; Wang et al., 2024a; Packer
+et al., 2023). A complementary paradigm is emerg-
+ing through world models (Li et al., 2025a; Ding
+et al., 2025; Maes et al., 2026), where agents im-
+prove not only by recalling past interaction expe-
+rience, but also by anticipating future outcomes
+*Corresponding author.
+(a) Frozen World Model
+World Model
+frozen
+Agent
+frozen
+Environment
+external world
+predicted signal action
+observation
+(b) Offline-tuned World Model
+offline trajectories
+...
+parameter update online deploymentdistribution
+shift
+(c) Self-evolving World Model
+Mismatch
+!=
+prediction observation
+revision
+training
+World Model
+frozen
+Agent
+frozen
+Environment
+external worldaction
+observation
+Figure 1: Contrast of different world models. Frozen (a)
+and offline-tuned (b) world models supply predictions
+to the agent without revising from deployment-time in-
+teraction; self-evolving (c) world models accumulate
+realized transitions and evolve through mismatches be-
+tween predicted and observed outcomes.
+under candidate actions, analogous to learned en-
+vironment models in model-based reinforcement
+learning (Ha and Schmidhuber, 2018; Hafner et al.,
+2025). Recent LLM-agent work follows this intu-
+ition through next-state prediction for web naviga-
+tion (Chae et al., 2025), one-step visual web looka-
+head (Gu et al., 2025), explicit prediction before
+ReAct-style action (Fu et al., 2025), and task knowl-
+edge models for text-game planning (Qiao et al.,
+2024). These works suggest that world-modelfore-
+sightcan serve as a useful complement to memory-
+based adaptation, particularly for planning and de-
+cision making in long-horizon tasks.
+However, the reliability offoresightis not static.
+Deployed agents continually face evolving envi-
+ronments and new task instances, creating distri-
+1
+arXiv:2606.30639v2  [cs.AI]  1 Sep 2026
+
+OUTPUT (write exactly these two files, no other writes):
+1. reflection/digests/reflection.md — sections: Claim / Evidence (cite among ['00_adapt_as_needed_decomposition_and_planning_with', '00_awesome_context_engineering', '00_enhancing_llm_based_agents_via_global', '00_from_plan_to_action_how_well_do_agents_follow_th', '00_icm_knowledge_big', '00_improving_planning_with_large_language', '00_interpretable_context_methodology_folder_structu', '00_is_progressive_disclosure_all_you_need_for_long', '00_memory_for_autonomous_llm_agents_mechanisms_eval', '00_modular_task_decomposition_anddynamiccollaborati', '00_plans_don_t_persist_why_context_management_is_lo', '00_self_evolving_world_models_for_llm_agent_plannin']) / Decision / Next bet. One claim per leaf.
+2. reflection/candidates/reflection.jsonl — one JSON object: {"id":"reflection","state":"proposed","claim":"...","evidence":[...subset of ['00_adapt_as_needed_decomposition_and_planning_with', '00_awesome_context_engineering', '00_enhancing_llm_based_agents_via_global', '00_from_plan_to_action_how_well_do_agents_follow_th', '00_icm_knowledge_big', '00_improving_planning_with_large_language', '00_interpretable_context_methodology_folder_structu', '00_is_progressive_disclosure_all_you_need_for_long', '00_memory_for_autonomous_llm_agents_mechanisms_eval', '00_modular_task_decomposition_anddynamiccollaborati', '00_plans_don_t_persist_why_context_management_is_lo', '00_self_evolving_world_models_for_llm_agent_plannin']...],"bet":"..."}
+
+When both files are written, reply exactly: DONE reflection

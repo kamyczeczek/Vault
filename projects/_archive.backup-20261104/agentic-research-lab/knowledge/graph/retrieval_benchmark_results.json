@@ -1,0 +1,158 @@
+{
+  "benchmark": "retrieval_quality_v1",
+  "graph_fingerprint": "0a5b47437367",
+  "summary": {
+    "cases": 8,
+    "mean_exact_precision": 0.175,
+    "mean_exact_recall": 0.312,
+    "mean_family_precision": 0.654,
+    "mean_family_recall": 0.938,
+    "mean_concept_coverage": 1.0,
+    "mean_latency_ms": 100.188
+  },
+  "results": [
+    {
+      "id": "causal-intervention",
+      "hits": [
+        "40_the_book_of_why_the_new_science_of_cause_and_eff"
+      ],
+      "gold_sources": [
+        "25_the_book_of_why_the_new_science_of_cause_and_eff"
+      ],
+      "exact_precision": 0.0,
+      "exact_recall": 0.0,
+      "family_precision": 1.0,
+      "family_recall": 1.0,
+      "concept_coverage": 1.0,
+      "latency_ms": 66.358
+    },
+    {
+      "id": "scientific-discovery",
+      "hits": [
+        "00_seed_ai_scientist",
+        "00_agentic_auto_research_frontier_10_sources",
+        "00_the_future_of_scientific_publishing_automated_ar",
+        "00_hephaestus_toward_a_cybersecurity_ai_scientist",
+        "166_automated_machine_learning_methods_systems_chall"
+      ],
+      "gold_sources": [
+        "00_agentic_auto_research_frontier_10_sources",
+        "00_seed_ai_scientist"
+      ],
+      "exact_precision": 0.4,
+      "exact_recall": 1.0,
+      "family_precision": 0.4,
+      "family_recall": 1.0,
+      "concept_coverage": 1.0,
+      "latency_ms": 122.728
+    },
+    {
+      "id": "production-reliability",
+      "hits": [
+        "345_building_llms_for_production_enhancing_llm_abili",
+        "00_do_llm_generated_skills_make_better_ai_data_scie",
+        "12_llm_engineers_handbook_iusztin_paul_labonne_z_li"
+      ],
+      "gold_sources": [
+        "05_building_llms_for_production_enhancing_llm_abili"
+      ],
+      "exact_precision": 0.0,
+      "exact_recall": 0.0,
+      "family_precision": 0.333,
+      "family_recall": 1.0,
+      "concept_coverage": 1.0,
+      "latency_ms": 77.795
+    },
+    {
+      "id": "agent-memory",
+      "hits": [
+        "00_plan_persistence_context_window_compaction",
+        "00_persistent_memory_hierarchies_agents",
+        "00_memory_eviction_forgetting_web_research",
+        "00_session_compaction_for_ai_agents",
+        "00_agent_memory_hierarchies"
+      ],
+      "gold_sources": [
+        "00_agent_memory_hierarchies",
+        "00_persistent_memory_hierarchies_agents",
+        "00_memory_eviction_forgetting_web_research",
+        "00_plan_persistence_context_window_compaction"
+      ],
+      "exact_precision": 0.8,
+      "exact_recall": 1.0,
+      "family_precision": 0.8,
+      "family_recall": 1.0,
+      "concept_coverage": 1.0,
+      "latency_ms": 136.355
+    },
+    {
+      "id": "planning-workflow",
+      "hits": [
+        "00_long_horizon_planning_decomposition_web_research",
+        "00_world_models_long_horizon_web_research",
+        "00_plan_compliance_runtime_verification_web_researc",
+        "02_slop_code_bench",
+        "00_plan_persistence_context_window_compaction"
+      ],
+      "gold_sources": [
+        "06_full_walkthrough_workflow_for_ai_coding_matt_poc",
+        "00_plan_compliance_runtime_verification_web_researc"
+      ],
+      "exact_precision": 0.2,
+      "exact_recall": 0.5,
+      "family_precision": 0.2,
+      "family_recall": 0.5,
+      "concept_coverage": 1.0,
+      "latency_ms": 91.549
+    },
+    {
+      "id": "graph-scaling",
+      "hits": [
+        "142_graph_databases_new_opportunities_for_connected"
+      ],
+      "gold_sources": [
+        "02_graph_databases_new_opportunities_for_connected"
+      ],
+      "exact_precision": 0.0,
+      "exact_recall": 0.0,
+      "family_precision": 1.0,
+      "family_recall": 1.0,
+      "concept_coverage": 1.0,
+      "latency_ms": 105.23
+    },
+    {
+      "id": "automl-experiment",
+      "hits": [
+        "34_automated_machine_learning_methods_systems_chall"
+      ],
+      "gold_sources": [
+        "31_automated_machine_learning_methods_systems_chall"
+      ],
+      "exact_precision": 0.0,
+      "exact_recall": 0.0,
+      "family_precision": 1.0,
+      "family_recall": 1.0,
+      "concept_coverage": 1.0,
+      "latency_ms": 102.598
+    },
+    {
+      "id": "multiagent-coordination",
+      "hits": [
+        "10_multiagent_systems_algorithmic_game_theoretic_an",
+        "609_artificial_intelligence_a_modern_approach_4th_ed"
+      ],
+      "gold_sources": [
+        "55_multiagent_systems_algorithmic_game_theoretic_an"
+      ],
+      "exact_precision": 0.0,
+      "exact_recall": 0.0,
+      "family_precision": 0.5,
+      "family_recall": 1.0,
+      "concept_coverage": 1.0,
+      "latency_ms": 98.894
+    }
+  ],
+  "status": "VALID — measured over the searchable corpus; 2 damaged chunks excluded at query time",
+  "corpus_artifacts_quarantined": 3,
+  "corpus_chunks_quarantined": 2
+}
