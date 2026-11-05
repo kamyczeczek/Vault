@@ -40,6 +40,13 @@ not checked: działanie pozostałych darmowych modeli z listy opencode poza deep
 
 not checked: brak.
 
+<!-- handoff/flags/context-contracts-slimming-2026-11-05.md · owner: mateusz · agent: omp · model: omniroute/cx/gpt-5.6-luna-low -->
+`context-contracts-slimming-2026-11-05` — 2026-11-05: odchudzono zamknięty kontrakt L1 projektu `the-pragmatic-programmer-retrieval`, a następnie zamknięty kontrakt `etth1-h720`. `etth1-h720/CONTEXT.md` skrócono z 9,266 B / 183 linii do 7,049 B / 136 linii; zachowano protokół, wyniki S49, audyt porównywalności progów, regułę zakazu tuningu locked origins oraz trwałe zasady ścieżek/importów. Usunięto powtórzoną historię napraw i skondensowano zamknięte decyzje.
+
+Weryfikacja: `python.exe preflight.py` w projekcie READY (0 hard missing); `python.exe scripts/check_workspace_integrity.py` OK (38 declared entries, 7 projects); `python.exe scripts/build_handoff.py --check` OK; `git diff --check` OK. `build_state.py --check` nie obsługuje tej opcji; stan zostanie przebudowany bez flagi.
+
+not checked: brak.
+
 <!-- handoff/flags/pi-subagents-hardening-and-e2e-2026-11-04.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-low -->
 `pi-subagents-hardening-and-e2e-2026-11-04` — 2026-11-04: Hardened preflight_agent.py (read-only by default, --clean-stale-locks explicit flag, active git process protection before removing index.lock, git hook configuration check HOOK_ACTIVE/HOOK_INACTIVE). Updated CLAUDE.md to resolve gate caller contradiction and updated .pi/agents definitions for preflight-runner and handoff-closer. Added support in close.py for multiple --include flags. Added unit tests in test_preflight_agent.py (9/9 pass) and created hermetic E2E test in test_handoff_closer_e2e.py verifying dirty tree stray detection and full transaction execution. Subagent handoff-closer live run verified.
 not checked: —

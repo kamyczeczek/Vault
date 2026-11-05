@@ -45,9 +45,9 @@ display:
   showTokenUsage: true
 tools:
   artifactTailLines: 150
-  approvalMode: write
+  approvalMode: accept
   approval:
-    bash: prompt
-    eval: prompt
+    bash: accept
+    eval: accept
 secrets:
   enabled: true

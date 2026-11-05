@@ -123,61 +123,14 @@ Consistency control: the identical S44 frozen test reproduces 1.978126 (rel diff
 `results/s44_calibration.json`, `results/s44_calibration_reproduction.json`,
 pre-registration `GATES-s44-calibration.md` (Amendment A1). S49 stays closed; no
 model is promoted and nothing is re-tuned.
+## Resolved implementation history
 
-### The project could not run its own entry points — RESOLVED 2026-09-27
+The project entry points were repaired and verified on 2026-09-27. `_workspace_paths.py` is the single owner of the archived ETTh1 data path, result/plot directories, and cross-project imports. Do not add `__init__.py` to either sibling `members/` directory: both are namespace packages, and package initialization hides borrowed benchmark-core modules.
 
-All three causes were real; each is now fixed and each fix is verified by a run
-that produced artifacts, not by an inspection.
+The canonical run directory is this project. `H2K_H720_RESULT.md` was moved here on 2026-10-27 so H2K and the other S49 records resolve locally. The fixes produced artifacts and 11 passing tests; this history is closed, not an invitation to rerun locked-origin work.
 
-- **Data.** There was no `data/` directory, so every script failed on
-  `ROOT / "data" / "ETTh1_h1.csv"`. The only copy in the workspace is
-  `../../_archive/datasets/data/ETTh1_h1.csv`, and it is archived, not vendored.
-  `_workspace_paths.data_csv()` returns that path and, if the file is ever
-  missing, exits naming the fetch step
-  (`python ../../_archive/datasets/fetch_etth1.py`) instead of raising `FileNotFoundError`
-  from deep inside a runner. Fetching it back is a deliberate act, not a
-  side effect of running a benchmark.
-- **Outputs.** Nothing created `results/`, and `run_etth1_h720_multi_origin.py`
-  also wrote a plot into an uncreated `plots/`. `_workspace_paths.bootstrap()`
-  creates `results/` at import, and the plot path creates `plots/` before
-  `savefig`. Every artifact of record now lands in *this* project's `results/`,
-  not in `../benchmark-core/results/`.
-- **Members.** `members/` here holds only `h2k.py`, `sab_l.py` and
-  `amr_24_168.py`, but the runners also import `big_dict_elm`, `knn_feature_forecaster`,
-  `amr_fbs` and `sota_baselines`, which live only in `../benchmark-core/members/`.
-  Both `members/` directories are namespace packages, so putting both project
-  roots on `sys.path` resolves local and borrowed modules together. Do not add
-  `__init__.py` to either directory: that hides one project's modules from the
-  other and re-breaks exactly these imports.
+## Not open, deliberately
 
-`_workspace_paths.py` is the single place any of this is configured; entry
-points import it and nothing else. `conftest.py` does the same for pytest.
-`run_bigdict_std_control.py` no longer hardcodes `sys.path.insert(0, "members")`
-relative to the CWD.
-
-Verified after the change: all 8 entry points import; `diag_h2k_ablation.py` and
-`diag_h2k_early_dev.py` run end-to-end and write `results/*.json` + `*.log`;
-`python -m pytest` is 11 passed, including `test_amr_24_168.py`, which could not
-previously resolve its base class.
-
-The canonical run directory is **this project**, not `../benchmark-core`.
-
-### `H2K_H720_RESULT.md` is now in this project — RESOLVED 2026-10-27
-
-`LONGTERM_ETTH1_H720_DESIGN.md` and `CONTEXT.md` point at `H2K_H720_RESULT.md`
-for the H2K record. It had been filed as a dataset inbox item
-(`the archived dataset inbox`), off-project. It is now
-consolidated next to `SAB_L_H720_RESULT.md` in this project, so both references
-resolve locally.
-
-### Not open, deliberately
-
-- SAB-L: closed. Kill budget exhausted, 0/12 origins. No third iteration.
-- H2K: closed as an S49 specialist at 2.7270 locked mean raw MAE, 5/12 vs
-  BigDictELM. It beats plain KNN on 8/12, so the blockwise level-relative idea
-  is not worthless — but it must not be re-tuned against the locked late
-  origins. Any revival needs explicitly new early dev origins or a separately
-  registered protocol.
-- Meta-H (per-horizon-block selector over {H2K, SAB-L, AMR-24/168}) was
-  pre-registered as optional and last. With H2K and SAB-L killed it has two
-  rejected inputs; it stays unbuilt unless a third member earns its place.
+- SAB-L: closed; kill budget exhausted, 0/12 origins. No third iteration.
+- H2K: closed at 2.7270 locked mean raw MAE; any revival needs new early development origins or a separately registered protocol.
+- Meta-H: not built; two of its three pre-registered inputs were rejected. It stays unbuilt unless a third member earns its place.

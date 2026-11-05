@@ -186,6 +186,7 @@ ALLOWED_ROOT = {
     "SCARS.md",       # operational scars from real failures; pointer target of the L0 router, trigger in handoff/CONTEXT.md
     "TASKS.md",
     "PLAN.md",
+    "GATES.md",
     "brain",
     "wayfinder",
     "logs",

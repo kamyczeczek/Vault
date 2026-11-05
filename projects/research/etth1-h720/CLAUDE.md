@@ -74,3 +74,12 @@ the project. What each sibling is used for: see `Dependencies` above.
 - H720 is 30 days ahead. Level-relative error dominates; a model that fits
   absolute level will lose to one that anchors on the last observation.
 - A candidate gets two iterations. After that it is killed, not tuned further.
+## CodeGraph (eksploracja kodu)
+
+Ten projekt ma zbudowany indeks CodeGraph (katalog `.codegraph/`).
+
+**Zasada:** Przy pytaniach o strukturę kodu, zależności, wywołania lub przed refaktoryzacją **najpierw użyj narzędzia `codegraph_explore`** (MCP), a dopiero w drugiej kolejności sięgaj po `grep`, `find` lub `Read`.
+
+- `codegraph_explore` zwraca źródło symboli, ścieżki wywołań i podsumowanie blast-radius w jednym wywołaniu.
+- Domyślnie serwer udostępnia tylko `codegraph_explore`; pozostałe narzędzia (`codegraph_impact`, `codegraph_callers` itp.) można włączyć przez zmienną `CODEGRAPH_MCP_TOOLS`.
+- Jeśli w odpowiedzi pojawi się banner `⚠️ staleness`, plik został właśnie edytowany – wtedy użyj `Read` dla tego konkretnego pliku.

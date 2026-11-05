@@ -228,6 +228,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | --- | --- | --- | --- |
 | `opencode-free-models-and-shell-perm-2026-11-05` | 2026-11-05 | mateusz | pi-bolt |
 | `l1-contracts-slimming-2026-11-05` | 2026-11-05 | mateusz | omp |
+| `context-contracts-slimming-2026-11-05` | 2026-11-05 | mateusz | omp |
 | `pi-subagents-hardening-and-e2e-2026-11-04` | 2026-11-04 | mateusz | opencode |
 | `pi-agents-preflight-and-closer-2026-11-04` | 2026-11-04 | mateusz | opencode |
 | `orchestrator-worker-recursion-2026-11-03` | 2026-11-03 | mateusz | opencode |
