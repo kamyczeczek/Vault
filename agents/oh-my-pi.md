@@ -6,10 +6,11 @@ Specyfikacja konfiguracji agenta **Oh My Pi (omp)** dla repozytorium `Vault`.
 
 - **Globalny profil użytkownika:** `%USERPROFILE%\.omp\agent\`
 - **Lokalna konfiguracja w repozytorium:** `.omp/`
-  - `.omp/config.yml` — główne parametry zachowania agenta, role modeli, pamięć, auto-compaction (śledzony w git).
-  - `.omp/mcp.json` — rejestr serwerów MCP (śledzony w git).
+  - `.omp/config.yml` — projektowe parametry zachowania agenta, pamięć i auto-compaction (śledzony w git).
+  - `.omp/mcp.json` — rejestr serwerów MCP; polecenia używają PATH (śledzony w git).
+  - `.omp/agents/*.md` — role agentów i uprawnienia bez przypisania modelu (śledzony w git).
   - `.omp/models.yml` — dostawcy modeli z prywatnymi kluczami API (**ignorowany w git** przez `.gitignore`).
-  - `.omp/models.example.yml` — szablon referencyjny dostawców modeli bez sekretów (śledzony w git).
+  - `.omp/models.example.yml` — szablon dostawców modeli bez sekretów (śledzony w git).
 
 ---
 
@@ -18,53 +19,51 @@ Specyfikacja konfiguracji agenta **Oh My Pi (omp)** dla repozytorium `Vault`.
 Zdefiniowane w `.omp/mcp.json`:
 
 1. **`jcodemunch`**:
-   - Wywołanie: `C:\Users\Mateusz\.local\bin\jcodemunch-mcp.exe` (tryb `stdio`).
+   - Wywołanie: `jcodemunch-mcp` z PATH (tryb `stdio`); dostępność zależy od lokalnej instalacji.
    - Przeznaczenie: Precyzyjna analiza symboli, graf wywołań, blast radius, detekcja martwego kodu i bezpieczne refaktoryzacje bez wczytywania całych plików źródłowych.
+
 2. **`jdocmunch`**:
    - Wywołanie: `uvx jdocmunch-mcp` (tryb `stdio`).
-   - Przeznaczenie: Przeszukiwanie bazy dokumentacji markdown/rst/pdf, sprawdzanie integralności linków, health radar, ekstrakcja wycinków i nawigacja po strukturze sekcji.
+   - Przeznaczenie: Przeszukiwanie dokumentacji, sprawdzanie linków i nawigacja po sekcjach.
 
 ---
-
 ## 3. Rozszerzenia i wtyczki (Plugins / Marketplaces)
 
-Agent korzysta z marketplace `omp-cli-tools` (`dathtd119/omp-cli-tools`):
-
-1. **`omp-rtk`** (`v0.1.0`):
-   - Automatyczne przepisywanie komend shella przez RTK w celu minimalizacji liczby tokenów w wynikach poleceń CLI.
-2. **`omp-witr`** (`v0.1.0`):
-   - Inspekcja uruchomionych procesów i portów sieciowych.
+Agent korzysta z marketplace `omp-cli-tools` (`dathtd119/omp-cli-tools`), gdy lokalnie zainstalowany.
 
 ---
 
 ## 4. Pamięć długoterminowa (Memory Backend)
 
 - **Backend:** `Mnemopi`
-- **Scoping:** `global`
-- **Mechanizm:** Automatyczne odpytywanie pamięci przed działaniami (`autoRecall: true`) oraz zapisywanie kluczowych faktów po sesji (`autoRetain: true`).
+- **Scoping:** `per-project`
+- **Mechanizm:** `autoRecall: true`, `autoRetain: true`; istniejąca globalna baza pozostaje na miejscu, a rollback polega na przywróceniu `scoping: global`.
 - **Embeddingi:** Model lokalny ONNX (`fast-bge-base-en-v1.5`).
 
 ---
 
-## 5. Role modeli i budżety myślenia
+## 5. Role agentów i dynamiczny model sesji
 
-Zdefiniowane w `.omp/config.yml`:
+Podagent bez pola `model` dziedziczy `activeModelPattern` aktualnej sesji OMP. Dotyczy to researcher, implementer, reviewer, tester i scout, także przy dozwolonej rekurencji. Role definiują odpowiedzialność i narzędzia, nie dostawcę modelu.
 
-| Rola | Model | Zastosowanie |
+| Agent | Uprawnienia | Delegowanie |
 |---|---|---|
-| `default` | `omniroute/agy/gemini-3.8-flash-low:low` | Główny model roboczy sesji |
-| `smol` | `omniroute/gemini/gemini-3.5-flash-lite` | Lekkie zapytania, preflight, szybkie klasyfikacje |
-| `fast` | `omniroute/gemini/gemini-3.5-flash-lite` | Szybkie operacje narzędziowe |
-| `plan` | `google-ai-studio/gemini-3.7-flash` | Planowanie wieloetapowe i dekompozycja |
-| `slow` | `omniroute/cx/gpt-5.6-luna-medium` | Głęboka analiza, trudne błędy i falsyfikacje |
-| `commit`| `omniroute/gemini/gemini-3.5-flash-lite` | Generowanie wiadomości commitów |
+| researcher | read-only | brak |
+| implementer | edycja i testy | brak |
+| reviewer | read-only | tester, scout |
+| tester | uruchamianie testów, bez edycji | brak |
+| scout | read-only | brak |
 
-### Budżety myślenia (Thinking Budgets)
+### Budżety myślenia
 - Minimal: 512 tokenów
 - Low: 1024 tokeny
 - Medium: 4096 tokenów
+- `defaultThinkingLevel: auto`; `task.maxEffort` nie jest ustawiony projektowo, więc pozostaje domyślne `max` OMP.
 
-### Zarządzanie kontekstem (Compaction)
-- Próg kompresji (`thresholdTokens`): 160 000 tokenów
-- Bufor rezerwowy (`reserveTokens`): 32 000 tokenów
-- Kolejność metod: `snapcompact` → `shake` → `remote` → `soft`
+### Zarządzanie kontekstem
+- Próg: `thresholdPercent: 75`, skalowany względem okna modelu; brak sztywnego `thresholdTokens`.
+- Kolejność: `shake` → `remote` → `soft` → `snapcompact`. `remote` i `snapcompact` są opcjonalne; OMP przechodzi dalej, gdy metoda nie jest dostępna.
+
+### Delegowanie
+- `task.maxRecursionDepth` pozostaje domyślnie `2`.
+- `spawns: "none"` blokuje dalsze delegowanie; jawna lista ogranicza agentów, których worker może uruchomić.

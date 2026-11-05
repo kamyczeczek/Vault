@@ -3,7 +3,7 @@
   "mcpServers": {
     "jcodemunch": {
       "type": "stdio",
-      "command": "C:\\Users\\Mateusz\\.local\\bin\\jcodemunch-mcp.exe",
+      "command": "jcodemunch-mcp",
       "instructions": false
     },
     "jdocmunch": {

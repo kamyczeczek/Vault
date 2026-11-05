@@ -8,26 +8,15 @@ composer:
 theme:
   dark: titanium
 setupVersion: 2
-modelRoles:
-  smol: omniroute/gemini/gemini-3.5-flash-lite
-  slow: omniroute/cx/gpt-5.6-luna-medium
-  plan: google-ai-studio/gemini-3.7-flash
-  fast: omniroute/gemini/gemini-3.5-flash-lite
-  commit: omniroute/gemini/gemini-3.5-flash-lite
-  default: omniroute/agy/gemini-3.8-flash-low:low
-defaultThinkingLevel: low
-cycleOrder:
-  - smol
-  - default
-  - slow
+defaultThinkingLevel: auto
+cycleOrder: []
 memory:
   backend: mnemopi
 mnemopi:
-  scoping: global
+  scoping: per-project
   autoRecall: true
   autoRetain: true
 task:
-  maxEffort: low
   enableEffort: true
 dev:
   autoqaConsent: denied
@@ -38,13 +27,12 @@ thinkingBudgets:
   low: 1024
   medium: 4096
 compaction:
-  thresholdTokens: 160000
-  reserveTokens: 32000
+  thresholdPercent: 75
   methodOrder:
-    - snapcompact
     - shake
     - remote
     - soft
+    - snapcompact
 cacheRetention: long
 read:
   defaultLimit: 200
