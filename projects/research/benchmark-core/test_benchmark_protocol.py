@@ -126,3 +126,11 @@ def test_fev_fallback_is_stamped_and_kept_off_the_s47_artifact():
     assert payload["data_source"] == "synthetic_fallback"
     assert payload["confirmatory"] is False
     assert payload["fev_attempt"]["achieved"] == "synthetic_fallback"
+
+def test_fev_full_guard_exits_before_data_access():
+    result = subprocess.run(
+        [sys.executable, "bench.py", "--fev-full"],
+        cwd=ROOT, capture_output=True, text=True, timeout=30,
+    )
+    assert result.returncode == 2
+    assert "--fev-full is disabled" in result.stderr

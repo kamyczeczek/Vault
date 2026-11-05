@@ -4,6 +4,9 @@
 
 | flag | since | owner | agent | summary |
 | --- | --- | --- | --- | --- |
+| `benchmark-core-phase1b-freeze-2026-11-02` | 2026-11-02 | mateusz | opencode | Phase 1 + 1b of the v2 |
+| `benchmark-core-phase1b-dev-analysis-2026-11-02` | 2026-11-02 | mateusz | opencode | Faza 1b na Dev (suchy przebieg baselines: SeasonalNaive, NLinear, DLinear) zakończona i zweryfikowana. |
+| `benchmark-core-lockbox-a6-disclosure-2026-11-02` | 2026-11-02 | mateusz | opencode | A6 ujawnia |
 | `etth1-h720-s44-calibration-2026-10-30` | 2026-11-01 | mateusz | opencode | The ADR 0001 threshold-comparability |
 | `divide-and-conquer-skill-2026-11-01` | 2026-11-01 | mateusz | opencode | The Divide-and-Conquer skill |
 | `kb-knowledge-split-2026-10-29` | 2026-10-29 | mateusz | opencode | warstwa wiedzy schodzi do `kb/`, root repo zostaje `Desktop\vault` (ADR-008 zastępuje ADR-006). |

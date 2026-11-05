@@ -29,37 +29,16 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/fev-full-guard-implemented.md · owner: coding-assistant · agent: omp · model: omp/current -->
+`fev-full-guard-implemented` — 2026-11-06: `projects/research/benchmark-core/bench.py` odrzuca `--fev-full` kodem 2 przed dostępem do danych. Test: `test_benchmark_protocol.py::test_fev_full_guard_exits_before_data_access` (subprocess).
+
+not checked: —
+
 <!-- handoff/flags/opencode-free-models-and-shell-perm-2026-11-05.md · owner: mateusz · agent: pi-bolt · model: google/gemini-2.5-pro -->
 `opencode-free-models-and-shell-perm-2026-11-05` — 2026-11-05: Rozwiązano dwa problemy środowiskowe:
 1. Przyczyna problemu 1 (`Permission denied: shell`): harness Pi blokował wywołania shella przez regułę `workspaceGuard: block` w `.pi/settings.json` (w OpenCode reguły `permission.bash` miały już `git commit*`: allow i `git push*`: allow). Ustawiono `workspaceGuard: "off"` w `.pi/settings.json`, po czym testowy commit i push (`git commit --allow-empty -m "test: shell permission check" && git push origin master`) wykonał się z exit code 0 (commit 57fe56f).
 2. Przyczyna problemu 2 (`stream went silent for 120s` / brak darmowych modeli): zapytania szły przez proxy omniroute do płatnych/niestabilnych endpointów zamiast natywnego darmowego providera opencode. Wykonano kopię zapasową configu do `C:/Users/Mateusz/.config/opencode/opencode.jsonc.bak.20261105`. Zaktualizowano `opencode.jsonc` ustawiając domyślny model i mały model na `opencode/deepseek-v4.1-flash-free`. Przeładowano konfigurację (`opencode reload`, exit code 0) i wykonano smoke test poza UI: `opencode run --model opencode/deepseek-v4.1-flash-free "hi"` zakończony sukcesem (exit code 0, odpowiedź: "Hey! What are we working on today?").
 not checked: działanie pozostałych darmowych modeli z listy opencode poza deepseek-v4.1-flash-free; zachowanie proxy omniroute pod długimi zapytaniami.
-
-<!-- handoff/flags/l1-contracts-slimming-2026-11-05.md · owner: mateusz · agent: omp · model: omniroute/cx/gpt-5.6-luna-low -->
-`l1-contracts-slimming-2026-11-05` — 2026-11-05: domknięto techniczną ścieżkę odchudzenia kontraktu L1. `scripts/build_handoff.py` inline'uje tylko flagi z ostatnich 3 dni, starsze przenosi do `handoff/flags/INDEX.md`; bieżący `HANDOFF.md` ma 26,807 B. Weryfikacja: test_build_handoff 17/17, integrity OK, build_handoff/build_status checks OK, git diff --check OK. Cudze zmiany zostały odłożone poza ten commit.
-
-not checked: brak.
-
-<!-- handoff/flags/l0-contract-clarification-2026-11-05.md · owner: mateusz · agent: omp · model: omniroute/agy/gemini-3.8-flash-low -->
-`l0-contract-clarification-2026-11-05` — 2026-11-05: sformalizowano kontrakt poziomu zero (L0). `AGENTS.md` zdefiniowano jako jedyny obowiązkowy router L0 (<2K tokenów) ładowany na cold start; `HANDOFF.md` oznaczono jako stan aktywny przy wznawianiu/zmianie stanu; root `CLAUDE.md` sklasyfikowano jako L1 (katalog wpisów repozytorium do ładowania on-demand). Zachowano niezmiennik 133 linii w `AGENTS.md` (R13).
-
-Weryfikacja: `python scripts/audit_agents_md.py --check` OK; `python scripts/test_audit_agents_md.py` 29/29 OK; `git diff --check` OK; `python scripts/check_workspace_integrity.py` OK (38 declared entries, 7 projects).
-
-not checked: brak.
-
-<!-- handoff/flags/decisions-dedup-and-renumber-2026-11-05.md · owner: mateusz · agent: omp · model: omniroute/agy/gemini-3.8-flash-low -->
-`decisions-dedup-and-renumber-2026-11-05` — 2026-11-05: usunięto kolizję numeracji w `DECISIONS.md`. Dwie decyzje z nagłówka (`D16 — tool chunks` i `D17 — workspace gate`) przeniesiono na koniec jako D26 i D27; odchudzono D13 usuwając redundantną listę 6 reguł z `AGENTS.md`/`CONTEXT-MAP.md`. Baza `brain.db` po `scripts/ingest_brain.py` ma teraz kompletne 27 decyzji (zamiast 25 z cichym nadpisywaniem).
-
-Weryfikacja: `python scripts/ingest_brain.py --check` OK (27 decisions); `python scripts/memory/eval_brain.py --check` OK (hit@5=9/10, refusal=3/4, MRR=0.900); `git diff --check` OK; `python scripts/check_workspace_integrity.py` OK.
-
-not checked: brak.
-
-<!-- handoff/flags/context-contracts-slimming-2026-11-05.md · owner: mateusz · agent: omp · model: omniroute/cx/gpt-5.6-luna-low -->
-`context-contracts-slimming-2026-11-05` — 2026-11-05: odchudzono zamknięty kontrakt L1 projektu `the-pragmatic-programmer-retrieval`, a następnie zamknięty kontrakt `etth1-h720`. `etth1-h720/CONTEXT.md` skrócono z 9,266 B / 183 linii do 7,049 B / 136 linii; zachowano protokół, wyniki S49, audyt porównywalności progów, regułę zakazu tuningu locked origins oraz trwałe zasady ścieżek/importów. Usunięto powtórzoną historię napraw i skondensowano zamknięte decyzje.
-
-Weryfikacja: `python.exe preflight.py` w projekcie READY (0 hard missing); `python.exe scripts/check_workspace_integrity.py` OK (38 declared entries, 7 projects); `python.exe scripts/build_handoff.py --check` OK; `git diff --check` OK. `build_state.py --check` nie obsługuje tej opcji; stan zostanie przebudowany bez flagi.
-
-not checked: brak.
 
 <!-- handoff/flags/pi-subagents-hardening-and-e2e-2026-11-04.md · owner: mateusz · agent: opencode · model: omniroute/agy/gemini-3.8-flash-low -->
 `pi-subagents-hardening-and-e2e-2026-11-04` — 2026-11-04: Hardened preflight_agent.py (read-only by default, --clean-stale-locks explicit flag, active git process protection before removing index.lock, git hook configuration check HOOK_ACTIVE/HOOK_INACTIVE). Updated CLAUDE.md to resolve gate caller contradiction and updated .pi/agents definitions for preflight-runner and handoff-closer. Added support in close.py for multiple --include flags. Added unit tests in test_preflight_agent.py (9/9 pass) and created hermetic E2E test in test_handoff_closer_e2e.py verifying dirty tree stray detection and full transaction execution. Subagent handoff-closer live run verified.
@@ -77,120 +56,7 @@ not checked: provider key rotation and repeat E2E.
 `latest-session-export` — 2026-11-03: Exporter now merges Pi, OpenCode, OMP, and DSH sessions and selects the requested count globally by last activity; Drive wrapper syncs the generated file to G:\My Drive.
 not checked: remote Google Drive propagation latency after local copy.
 
-<!-- handoff/flags/fev-full-guard-implemented.md · owner: mateusz · agent: opencode · model: omniroute/gemini-flash-lite-latest -->
-`fev-full-guard-implemented` — 2026-11-03: Implemented and tested FEV-full guard / hard stop protocol in benchmark-core (bench.py & test_benchmark_protocol.py), all 42 tests passing successfully.
-
-not checked: none — all protocol tests executed and passed.
-
-<!-- handoff/flags/benchmark-core-phase1b-freeze-2026-11-02.md · owner: mateusz · agent: opencode · model: omniroute/agy/claude-opus-4-6-thinking -->
-`benchmark-core-phase1b-freeze-2026-11-02` — 2026-11-02: Phase 1 + 1b of the v2
-multi-domain generalization protocol is complete and frozen.
-
-Stan:
-- **PROTOCOL.md** (304 linie, §0–§15): normatywny dokument v2 zamrożony. Hierarchia
-  normatywna (Protokół > Proces > Raport), 3 bramki decyzyjne, populacja N≤8,
-  budżet czasu 20 min/metoda, lockbox 42 zadań z limitem 3 użyć, reguły STOP,
-  audyt niezależny w §9, rejestr poprawek A1–A4.
-- **Manifest zamrożony** (`manifest_sha256 = 34b35abc…b42da`): 20 Dev / 38 kwarantanna /
-  42 Lockbox = 100 zadań pełnego zbioru fev-bench. Twarde odcięcie rodzeństwa (15 rodzin
-  Dev ∩ Lockbox = ∅, ETT ∉ Lockbox). Lockbox pokrywa 5 z 7 domen (brak cloud, nature).
-  247 kolumn targetu × 3 okna = 741 jednostek; 2767 serii, 8301 ewaluacji item × okno.
-- **Ledger** (`ledger.jsonl`): Genesis + A1–A4, łańcuch SHA-256 integralny (audit_v2 CLEAN).
-- **Moduły bazowe**: `manifest.py` (klasyfikacja rodzin/domen, odcięcie rodzeństwa,
-  3 ostatnie okna), `metrics.py` (MASE, clipping [0.01,100], skill score),
-  `bootstrap.py` (klaster po 15 rodzinach B=10000, iid, stratyfikowany),
-  `ledger.py` (append-only kanoniczny JSON, SHA-256 chain), `guards.py` (Gate 1–3,
-  populacja, STOP), `audit_v2.py` (niezależny audyt proceduralny §9).
-- **Skan mianowników MASE** (`scan_denominator_anomalies.py`): 20/20 zadań, 0 itemów
-  z zerowym błędem sezonowym → brak wykluczeń w manifeście.
-- **Testy**: 11 passed (`test_benchmark_v2.py`), czas <4s.
-- **Poprawki docs**: CLAUDE.md (9 nowych wpisów w tabelach Where/Route), CONTEXT.md
-  (bench.py --fev RESOLVED), MAP.md (10 nowych modułów w mapie).
-- Dwie wycofane flagi: `benchmark-core-fev-honest-2026-10-26` (zastąpiona pełną fazą 1b),
-  `benchmark-core-full-tests-2026-10-29` (zastąpiona bieżącą fazą).
-- Wszystkie punkty z recenzji planu v2 wprowadzone: r=100 dla timeoutów (§6), kontrast
-  vs Champion (§4 Bramka 2/3), §9 „ma zakaz", MDE w Fazie 1b (§14), Amendment A2,
-  „46 konfiguracji" → 42 zadania (A1).
-
-Weryfikacja:
-- `python audit_v2.py` → verdict: CLEAN (0 hard findings), chain intact, partition 100.
-- `pytest test_benchmark_v2.py` → 11 passed in 3.13s.
-- `python scripts/check_workspace_integrity.py` → OK (36 declared entries, 7 projects).
-- `git diff --check` → exit 0.
-
-not checked: mapowanie domen vs papier fev-bench (Appendix E/Tabela 15) — weryfikacja
-manualna; pełen suchy przebieg SNaive/NLinear/DLinear na Dewie (Faza 1b checklist §14);
-analiza mocy i MDE; budżet ściany Lockboxa; `s44_calib_insample_failed.log` nie został
-skopiowany z $env:TEMP do etth1-h720/results/ (plik istnieje, 4520B, nie jest w repozytorium).
-
-Next step: suchy przebieg Seasonal Naive + NLinear + DLinear na 20 zadaniach Dev (3 okna
-każde), pomiar czasu i wyznaczenie MDE. To otwiera Fazę 2 (populacja startowa, dashboard).
-
-<!-- handoff/flags/benchmark-core-phase1b-dev-analysis-2026-11-02.md · owner: mateusz · agent: opencode · model: omniroute/gemini/gemini-flash-lite-latest -->
-`benchmark-core-phase1b-dev-analysis-2026-11-02` — 2026-11-02: Faza 1b na Dev (suchy przebieg baselines: SeasonalNaive, NLinear, DLinear) zakończona i zweryfikowana.
-
-Stan:
-- Przebieg 20/20 zadań Dev (3 okna każde, total 1359.0 s) wykonany w pełni; 19 wspólnych zadań bit-identycznych z Run 1 (`compare_runs.py` OK).
-- Czasy dopasowań i budżet: SeasonalNaive (11.1 s, mediana 0.015 ms), NLinear (233.5 s, mediana 10.9 ms, p95 144.2 ms), DLinear (712.2 s, mediana 35.9 ms, p95 478.5 ms). Wszystkie mieszczą się w budżecie 20 min/model.
-- Skill score vs SNaive: NLinear +14.88% (dolne CI +3.75%, passes gate), DLinear +12.08% (dolne CI -0.63%).
-- Analiza MDE i Bootstrap: Klaster bootstrap (B=10,000, 15 rodzin, alpha=0.05). MDE dla NLinear vs SNaive = 0.1781 (halfwidth 0.1114).
-- Weryfikacja mianowników MASE: Zadania z MASE > 3 zweryfikowane — zero itemów z zerowym błędem.
-
-Weryfikacja:
-- python scripts/check_workspace_integrity.py → OK.
-- git diff --cached --check → exit 0.
-
-not checked: pełny lockbox (skażony A6); optymalizacja hiperparametrów NLinear/DLinear; przebieg testowy (quarantine/test partition).
-
-Next step: Decyzja o przejściu do Fazy 2 (populacja startowa, dashboard) lub dalsze kroki badawcze.
-
-<!-- handoff/flags/benchmark-core-lockbox-a6-disclosure-2026-11-02.md · owner: mateusz · agent: opencode · model: omniroute/agy/claude-opus-4-6-thinking -->
-`benchmark-core-lockbox-a6-disclosure-2026-11-02` — 2026-11-02: A6 ujawnia
-skażenie Lockboxa (36/42 zadań) i unieważnia możliwość przesegregowania.
-
-Stan:
-- **A5 kłamało w punkcie (ii)**: twierdziło, że nie da się ustalić, co policzył
-  przerwany legacy przebieg `--fev-full` z 2026-10-30. Da się — log przeżył
-  w `%TEMP%/fev-full.log` (959 linii, zapis 00:26–01:50), z nagłówkami
-  `-- task N/100` do pozycji 74. Przebieg policzył 73 zadania w całości
-  i zadanie 74 częściowo.
-- **Skala skażenia**: po `task_id` z `results/manifest.json` (indeks == pozycja−1)
-  to **36 z 42 zadań Lockboxa**, 17 z 21 rodzin, wszystkie 5 domen. Skażone
-  indeksy: 7–9, 17–30, 35–37, 40–42, 45–49, 56, 62, 63, 65–69.
-  Nietknięte: `task_id` 76, 92, 93, 94, 95, 99 (4 rodziny: `ecdc_ili`,
-  `fred_md`, `fred_qd`, `gvar`; 2 domeny: econ, healthcare).
-- **Przesegregowanie jest niewykonalne** i nie zostało wykonane: `verify_manifest`
-  wymaga, by kwarantanna zawierała wyłącznie rodzeństwo rodzin Dev, a Lockbox
-  wyłącznie rodziny nie-Dev (plus zakaz ETT). Skażone zadanie Lockboxa nie może
-  więc trafić do kwarantanny, a w kwarantannie nie ma czym uzupełnić Lockboxa.
-  Próba obejścia tego wymagałaby zmiany niezmiennika, nie danych — dlatego STOP.
-- **A6 w ledgerze** (7 wpisów, łańcuch SHA-256 zweryfikowany, manifest
-  `34b35abc…b42da` bez zmian) + wiersz A6 w rejestrze §15 `PROTOCOL.md`
-  i akapit o zakazie używania Lockboxa do czasu A7.
-- Skrypt zapisujący A6 leży w `projects/_archive/benchmark-core-apply-a6.py`,
-  bo audyt `isolation.no_lockbox_configs_in_runtime` słusznie zgłosił nazwy
-  konfiguracji Lockboxa w kodzie runtime — audyt **nie** został poszerzony.
-
-Weryfikacja:
-- `python audit_v2.py` → `verdict: CLEAN (0 hard findings)`, 56 plików runtime.
-- `pytest test_benchmark_v2.py` → 18 passed in 2.97s.
-- `ledger.verify_integrity(expected_manifest_sha256=…)` → OK, 7 wpisów.
-- `git diff --check` → exit 0.
-
-Next: decyzja właściciela o §8 jako A7, jeden z trzech wariantów:
-(a) Lockbox = 6 nietkniętych zadań, świadomie bez mocy statystycznej;
-(b) 42 zadania zostają jako diagnostyka post-hoc, bez prawa do twierdzenia
-konfirmacyjnego; (c) nowe dane spoza fev-bench-100 odbudowują ślepy Lockbox.
-Niezależnie od wyboru: zaległy suchy przebieg Fazy 1b na Dev
-(SNaive/NLinear/DLinear, 3 okna, czas p95, MDE) — jedyny pomiar, który
-odblokowuje Fazę 2.
-
-not checked: mapowanie domen vs papier fev (Appendix E/Tabela 15) — nadal manualne;
-czas p95 na `boomlet_1676`; budżet ściany Lockboxa; brak guarda w `bench.py`
-przed ponownym `--fev-full` (audyt zgłasza to jako ryzyko proceduralne,
-świadomie nietknięte w tym commicie, bo to zmiana zachowania, nie dysclosure).
-
-Starsze flagi (253): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
+Starsze flagi (256): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
 
 ## where-the-work-landed
 

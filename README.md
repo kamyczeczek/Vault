@@ -12,7 +12,7 @@ infrastructure.
 3. Choose one project under [`projects/research/`](projects/research/).
 4. Run that project's `preflight.py` before changing or running experiments.
 
-ETTh1 H720 – S49 CLOSED (REJECT): history kept in , archives in :
+For the current ETTh1 H720 study:
 
 ```powershell
 cd projects/research/etth1-h720

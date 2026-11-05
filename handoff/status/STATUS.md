@@ -16,6 +16,8 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 ## Stale
 
+- `session-digest-design-2026-10-22` — since 2026-10-22 (older than 14 days)
+- `obsidian-vault-2026-10-22` — since 2026-10-22 (older than 14 days)
 - `sessions-lab-icm-restructure-2026-10-21` — since 2026-10-21 (older than 14 days)
 - `raw-did-session-extractors-2026-10-20` — since 2026-10-20 (older than 14 days)
 - `transcript-fix-p1-p6-2026-10-19` — since 2026-10-19 (older than 14 days)
@@ -226,16 +228,12 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `fev-full-guard-implemented` | 2026-11-06 | coding-assistant | omp |
 | `opencode-free-models-and-shell-perm-2026-11-05` | 2026-11-05 | mateusz | pi-bolt |
-| `l1-contracts-slimming-2026-11-05` | 2026-11-05 | mateusz | omp |
-| `l0-contract-clarification-2026-11-05` | 2026-11-05 | mateusz | omp |
-| `decisions-dedup-and-renumber-2026-11-05` | 2026-11-05 | mateusz | omp |
-| `context-contracts-slimming-2026-11-05` | 2026-11-05 | mateusz | omp |
 | `pi-subagents-hardening-and-e2e-2026-11-04` | 2026-11-04 | mateusz | opencode |
 | `pi-agents-preflight-and-closer-2026-11-04` | 2026-11-04 | mateusz | opencode |
 | `orchestrator-worker-recursion-2026-11-03` | 2026-11-03 | mateusz | opencode |
 | `latest-session-export` | 2026-11-03 | mateusz | opencode |
-| `fev-full-guard-implemented` | 2026-11-02 | mateusz | opencode |
 | `benchmark-core-phase1b-freeze-2026-11-02` | 2026-11-02 | mateusz | opencode |
 | `benchmark-core-phase1b-dev-analysis-2026-11-02` | 2026-11-02 | mateusz | opencode |
 | `benchmark-core-lockbox-a6-disclosure-2026-11-02` | 2026-11-02 | mateusz | opencode |

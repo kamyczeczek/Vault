@@ -633,3 +633,23 @@ state and would turn the gate into an advisory list.
 **Rejected.** Per-check debt exemptions and `--no-verify`; both hide a known
 failure and weaken the single source of truth. The report blocker was instead
 fixed at its source and recorded in `docs_reviews_stale_quote`.
+
+## D28 — NLinear incumbent on Dev (vs SNaive)
+
+**Decision.** NLinear is incumbent on Dev (vs SNaive +14,88%, dolne CI +3,75%). DLinear (+12,08%, dolne CI −0,63%) is comparator. No claims of generalization. Source: results/phase1b_dev_analysis.json.
+
+**Why.** The phase 1b dry run established NLinear as the benchmark incumbent with statistically significant improvement over Seasonal Naive. DLinear's lower CI crosses zero, making it inconclusive. These results inform the Dev population selection for Phase 2.
+
+**Rejected.** DLinear as incumbent — its lower CI (−0.63%) does not pass the gate. Attributing generalization without further data.
+
+---
+
+## D29 — Lockbox tasks to post-hoc diagnostics
+
+**Decision.** 42 zadania starego Lockboxa (36/42 skażone biegiem fev-full 2026-10-30) idą do diagnostyki post-hoc, poza bramkami konfirmacyjnymi. Nowy Lockbox ze świeżych danych spoza fev-bench-100.
+
+**Why.** A6 ujawniło skażenie 36/42 zadań; nie mogą wspierać twierdzeń konfirmacyjnych.
+
+**Rejected.** Ponowne uruchomienie fev-full na skażonych danych oraz użycie skażonego Lockboxa do twierdzeń konfirmacyjnych.
+
+---

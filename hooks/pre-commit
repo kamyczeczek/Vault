@@ -4,7 +4,7 @@ set -u
 
 ROOT=$(git rev-parse --show-toplevel) || exit 1
 cd "$ROOT" || exit 1
-
+PYTHON=${PYTHON:-python.exe}
 echo "pre-commit: checking staged whitespace"
 if ! git diff --cached --check; then
   echo "pre-commit: staged whitespace check failed" >&2
@@ -12,9 +12,14 @@ if ! git diff --cached --check; then
 fi
 
 echo "pre-commit: scanning staged files for secrets"
-PYTHON=${PYTHON:-python.exe}
 "$PYTHON" scripts/scan_secrets.py --staged || {
   echo "pre-commit: secrets detected in staged files - commit blocked" >&2
+  exit 1
+}
+
+echo "pre-commit: checking workspace integrity"
+"$PYTHON" scripts/check_workspace_integrity.py || {
+  echo "pre-commit: workspace integrity check failed - commit blocked" >&2
   exit 1
 }
 

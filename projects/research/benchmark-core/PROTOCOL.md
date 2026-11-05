@@ -308,3 +308,10 @@ Protokół jest zamrożony kryptograficznie; każda zmiana normatywna wymaga wpi
 Amendment A5 (2026-11-02) jest ujawnieniem (disclosure): nie zmienia manifestu ani jego SHA-256. Ujawnia, że Faza 0 nie wykonała reguły wtórnej (sparowany bootstrap po originach), że legacy przebieg `--fev-full` nie pozostawił artefaktu, oraz że budżet i progi Gate 1–3 pozostają tymczasowe do czasu realnego pomiaru 1b.
 
 Amendment A6 (2026-11-02) jest również ujawnieniem: nie zmienia manifestu ani jego SHA-256, tylko prostuje punkt (ii) A5 i nazywa skalę skażenia Lockboxa. **Do czasu rozstrzygnięcia §8 (A7) obowiązuje zakaz używania Lockboxa**: 36 z 42 zadań jest skażonych, a pozostałe 6 ma znikomą moc (4 rodziny, 2 domeny). Warianty rozstrzygnięcia: (a) Lockbox = 6 nietkniętych zadań, świadomie bez mocy; (b) 42 zadania zostają jako diagnostyka post-hoc bez prawa do twierdzenia konfirmacyjnego; (c) nowe dane spoza fev-bench-100 odbudowują ślepy Lockbox z realną mocą.
+
+Amendment A7 (2026-11-05):
+NLinear jest incumbentem na Dev (vs SNaive +14,88%, dolne CI +3,75%). DLinear (+12,08%, dolne CI −0,63%) jest komparatorem. Bez twierdzeń o generalizacji. Źródło: `results/phase1b_dev_analysis.json`.
+
+42 zadania starego Lockboxa (36/42 skażone biegiem `fev-full` 2026-10-30) idą do diagnostyki post-hoc poza bramkami konfirmacyjnymi. Nowy Lockbox ze świeżych danych spoza `fev-bench-100`.
+
+Manifest zawiera 20 zadań Dev, a analiza obejmuje 20; liczba 21 w tekście protokołu v2 jest błędem. Brak konkretnego zadania do wskazania.

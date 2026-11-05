@@ -694,6 +694,9 @@ def main():
     ap.add_argument("--seed-base", type=int, default=42, help="first seed; the sweep runs base, base+1, …")
     ap.add_argument("--out-dir", default=None, help="write results_s47.json and harness.log here instead of the project root; use it so a test run cannot overwrite the committed evidence")
     args=ap.parse_args()
+    if args.fev_full:
+        print("ERROR: --fev-full is disabled. Use --fev for fev-bench-mini (20 tasks) only.", file=sys.stderr)
+        sys.exit(2)
     if args.seeds < 1: raise SystemExit("--seeds must be >= 1")
     data_source="builtin_suite"
     fev_attempt=None
