@@ -1,3 +1,0 @@
-# Untyped
-
-* [MANIFEST](MANIFEST.md)

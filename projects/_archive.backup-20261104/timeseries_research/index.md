@@ -1,3 +1,0 @@
-# Concepts
-
-* [reflection](reflection.md)

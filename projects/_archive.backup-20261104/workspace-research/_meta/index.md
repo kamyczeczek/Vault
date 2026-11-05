@@ -1,3 +1,0 @@
-# Untyped
-
-* [schema](schema.md)

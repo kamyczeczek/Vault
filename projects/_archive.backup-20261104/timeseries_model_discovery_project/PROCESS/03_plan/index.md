@@ -1,3 +1,0 @@
-# Untyped
-
-* [slices](slices.md)

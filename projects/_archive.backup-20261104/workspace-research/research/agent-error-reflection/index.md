@@ -1,3 +1,0 @@
-# Untyped
-
-* [PROGRESS](PROGRESS.md)

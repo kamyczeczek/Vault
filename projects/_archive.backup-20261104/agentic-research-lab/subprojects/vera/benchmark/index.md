@@ -1,3 +1,0 @@
-# Untyped
-
-* [QUESTIONS](QUESTIONS.md)

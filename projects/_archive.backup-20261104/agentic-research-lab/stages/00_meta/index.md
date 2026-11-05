@@ -1,3 +1,0 @@
-# Untyped
-
-* [CONTEXT](CONTEXT.md)

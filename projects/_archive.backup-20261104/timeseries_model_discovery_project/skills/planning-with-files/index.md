@@ -1,3 +1,0 @@
-# Untyped
-
-* [SKILL](SKILL.md)
