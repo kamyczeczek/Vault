@@ -40,6 +40,20 @@ not checked: działanie pozostałych darmowych modeli z listy opencode poza deep
 
 not checked: brak.
 
+<!-- handoff/flags/l0-contract-clarification-2026-11-05.md · owner: mateusz · agent: omp · model: omniroute/agy/gemini-3.8-flash-low -->
+`l0-contract-clarification-2026-11-05` — 2026-11-05: sformalizowano kontrakt poziomu zero (L0). `AGENTS.md` zdefiniowano jako jedyny obowiązkowy router L0 (<2K tokenów) ładowany na cold start; `HANDOFF.md` oznaczono jako stan aktywny przy wznawianiu/zmianie stanu; root `CLAUDE.md` sklasyfikowano jako L1 (katalog wpisów repozytorium do ładowania on-demand). Zachowano niezmiennik 133 linii w `AGENTS.md` (R13).
+
+Weryfikacja: `python scripts/audit_agents_md.py --check` OK; `python scripts/test_audit_agents_md.py` 29/29 OK; `git diff --check` OK; `python scripts/check_workspace_integrity.py` OK (38 declared entries, 7 projects).
+
+not checked: brak.
+
+<!-- handoff/flags/decisions-dedup-and-renumber-2026-11-05.md · owner: mateusz · agent: omp · model: omniroute/agy/gemini-3.8-flash-low -->
+`decisions-dedup-and-renumber-2026-11-05` — 2026-11-05: usunięto kolizję numeracji w `DECISIONS.md`. Dwie decyzje z nagłówka (`D16 — tool chunks` i `D17 — workspace gate`) przeniesiono na koniec jako D26 i D27; odchudzono D13 usuwając redundantną listę 6 reguł z `AGENTS.md`/`CONTEXT-MAP.md`. Baza `brain.db` po `scripts/ingest_brain.py` ma teraz kompletne 27 decyzji (zamiast 25 z cichym nadpisywaniem).
+
+Weryfikacja: `python scripts/ingest_brain.py --check` OK (27 decisions); `python scripts/memory/eval_brain.py --check` OK (hit@5=9/10, refusal=3/4, MRR=0.900); `git diff --check` OK; `python scripts/check_workspace_integrity.py` OK.
+
+not checked: brak.
+
 <!-- handoff/flags/context-contracts-slimming-2026-11-05.md · owner: mateusz · agent: omp · model: omniroute/cx/gpt-5.6-luna-low -->
 `context-contracts-slimming-2026-11-05` — 2026-11-05: odchudzono zamknięty kontrakt L1 projektu `the-pragmatic-programmer-retrieval`, a następnie zamknięty kontrakt `etth1-h720`. `etth1-h720/CONTEXT.md` skrócono z 9,266 B / 183 linii do 7,049 B / 136 linii; zachowano protokół, wyniki S49, audyt porównywalności progów, regułę zakazu tuningu locked origins oraz trwałe zasady ścieżek/importów. Usunięto powtórzoną historię napraw i skondensowano zamknięte decyzje.
 

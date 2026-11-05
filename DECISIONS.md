@@ -11,43 +11,10 @@ Each entry records the decision, the reason, and what was rejected — the rejec
 options are the part a future reader needs, because they will otherwise propose
 one again.
 
----
-## D16 — Keep tool chunks indexed but filter diagnostic evaluation by type
-
-**Decision.** Keep `tool` chunks in the derived FTS5 corpus for drill-down, but
-retrieval evaluations for failures use `--type error` and evaluations for choices
-use `--type decision`. Do not silently delete tool chunks.
-
-**Why.** The full corpus contains 40,756 tool chunks out of 100,173 (40.7%).
-The three previously failing evaluation cases become attributable to ranking
-noise when evaluated without a type filter; the error-focused query is the
-actual contract for failure recall. Keeping the chunks preserves context while
-making the measurement answer the intended question.
-
-**Rejected.** Deleting tool chunks at ingest, which loses command evidence and
-cannot be reversed without a rebuild. Global rank weighting is deferred until a
-separate mixed-type benchmark demonstrates a benefit rather than being guessed.
-
----
-## D17 — Keep the workspace gate all-or-nothing
-
-**Decision.** A stale workspace-wide report blocks all commits. Fix the report or
-its source data; do not allow a known-dirty check to be bypassed for unrelated
-staged work.
-
-**Why.** The gate protects generated views and live numeric claims. Allowing a
-known debt would make the next commit carry an explicitly unverified workspace
-state and would turn the gate into an advisory list.
-
-**Rejected.** Per-check debt exemptions and `--no-verify`; both hide a known
-failure and weaken the single source of truth. The report blocker was instead
-fixed at its source and recorded in `docs_reviews_stale_quote`.
-
 This file is a **catalog of decisions**, not a log of work. The portfolio map is
 `CONTEXT-MAP.md`; the promotion rubric is `TOOLS.md`.
 
 ---
-
 ## D1 — A tool is a project, not a staging area
 
 **Decision.** Anything being built, tested, or polished for effectiveness is a
@@ -358,27 +325,10 @@ cannot fail on what it claims), premature promotion (unresolved lessons
 filed as verified practices). A thin root with asserted boundaries turns
 each of these from a convention into a check.
 
-**Rules (all already gated or stated; this entry names them together).**
-
-1. Root stays a router: `AGENTS.md` / L0 pack points to exactly one project.
-   Root holds `CONTEXT-MAP.md`, `DECISIONS.md`, `GLOSSARY.md`,
-   `PHILOSOPHY.md`, `TOOLS.md`, and the integrity gate. L1 root pack is on
-   demand, never always-loaded — one project's L1/L2 per session.
-2. Every project has one contract (`CONTEXT.md`): one job, one interface,
-   one `## Open work`. A project serving two subjects is two projects.
-3. Cross-project only by link + contract test in the owner. Never copy;
-   graduation is copy-then-delete in one commit (D3).
-4. Generated artifacts are never hand-edited: `MAP.md`,
-   `graph.db`, `graph_index.json`, `GRAPH-DIGEST.md`, fingerprints — rebuilt
-   by scripts, freshness advisory (R7, 2026-10-01 gate trim); every file route named in a
-   routing section must resolve (R9) — a cold agent follows routes, it
-   does not remember workflows, so a dead route is how built work gets
-   "forgotten". Mutation-tested: R9 fails on a dead file route.
-5. Evidence before promotion: `EXPERIENCE.md` holds only verified practices;
-   `## Known-unresolved` stays unresolved until a gate that fails on the
-   defect passes. A gate must be mutation-tested on what it claims.
-6. One project per session: read its `CLAUDE.md`, then its `CONTEXT.md`;
-   load one contract + inputs only (~2–8K tokens).
+**Rules (authoritative in `AGENTS.md` and `CONTEXT-MAP.md`).** The operational
+rules (thin router, single contract per project, link rather than copy, generated
+views without hand edits, evidence-gated promotion, one project per session) are
+enforced mechanically by `scripts/check_workspace_integrity.py`.
 
 **Priority order.** Root integrity first (gate fails → stop and fix). Then
 the most-depended-on contract (`benchmark-core`). Then derived truth
@@ -516,7 +466,7 @@ measure the auxiliary model's savings.
 
 ## D19 — Mixed type evaluation in `eval_queries.json`
 
-**Decision.** Keep type asymmetry in `scripts/memory/eval_queries.json`: failure/error retrieval evaluation cases explicitly specify `"type": "error"` (per D16), while general or decision retrieval cases run unfiltered (`type: None`).
+**Decision.** Keep type asymmetry in `scripts/memory/eval_queries.json`: failure/error retrieval evaluation cases explicitly specify `"type": "error"` (per D26), while general or decision retrieval cases run unfiltered (`type: None`).
 
 **Why.** Measured empirically:
 - Asymmetric mixed type (filters on error queries, unfiltered on general/decision queries): **`hit@5=1.000 MRR=0.697 (15/15)`**.
@@ -525,7 +475,7 @@ measure the auxiliary model's savings.
 Therefore, the asymmetry is load-bearing and empirically verified.
 
 **Rejected.**
-- Removing type filters entirely (rejected: drops hit rate to `0.800 (12/15)` per D16).
+- Removing type filters entirely (rejected: drops hit rate to `0.800 (12/15)` per D26).
 - Forcing all queries to carry a uniform type filter (rejected: causes recall drops on conceptual/benchmark queries).
 
 ---
@@ -649,3 +599,37 @@ what changed is that the split is no longer visible to git in this tree.
 **Rejected.**
 - Implicitly assuming worker subagents inherit all root tools without explicit override.
 - Marking implementation complete before E2E recursion verification passes.
+
+---
+
+## D26 — Keep tool chunks indexed but filter diagnostic evaluation by type
+
+**Decision.** Keep `tool` chunks in the derived FTS5 corpus for drill-down, but
+retrieval evaluations for failures use `--type error` and evaluations for choices
+use `--type decision`. Do not silently delete tool chunks.
+
+**Why.** The full corpus contains 40,756 tool chunks out of 100,173 (40.7%).
+The three previously failing evaluation cases become attributable to ranking
+noise when evaluated without a type filter; the error-focused query is the
+actual contract for failure recall. Keeping the chunks preserves context while
+making the measurement answer the intended question.
+
+**Rejected.** Deleting tool chunks at ingest, which loses command evidence and
+cannot be reversed without a rebuild. Global rank weighting is deferred until a
+separate mixed-type benchmark demonstrates a benefit rather than being guessed.
+
+---
+
+## D27 — Keep the workspace gate all-or-nothing
+
+**Decision.** A stale workspace-wide report blocks all commits. Fix the report or
+its source data; do not allow a known-dirty check to be bypassed for unrelated
+staged work.
+
+**Why.** The gate protects generated views and live numeric claims. Allowing a
+known debt would make the next commit carry an explicitly unverified workspace
+state and would turn the gate into an advisory list.
+
+**Rejected.** Per-check debt exemptions and `--no-verify`; both hide a known
+failure and weaken the single source of truth. The report blocker was instead
+fixed at its source and recorded in `docs_reviews_stale_quote`.

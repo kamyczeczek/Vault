@@ -6,32 +6,27 @@ generated: { by: okf-enforcer/0.6, at: 2026-10-25T02:18:55Z }
 
 # STATE — root workspace (generated)
 
-> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-11-05 20:25 · HEAD `6cba6d8` (master).
+> Nie edytuj ręcznie. Przebuduj: `python scripts/build_state.py`. Narracja: `HANDOFF.md`. Stan na: 2026-11-05 21:38 · HEAD `58c12cc` (master).
 
 ## Drzewo
 
-brudne pliki (13):
-- `M .omp/config.yml`
+brudne pliki (8):
+- `M AGENTS.md`
 - ` M CLAUDE.md`
+- ` M DECISIONS.md`
 - ` M HANDOFF.md`
 - ` M STATE.md`
 - ` M handoff/status/STATUS.md`
-- ` M projects/research/etth1-h720/.gitignore`
-- ` M projects/research/etth1-h720/CLAUDE.md`
-- ` M projects/research/etth1-h720/CONTEXT.md`
-- ` M projects/research/the-pragmatic-programmer-retrieval/CONTEXT.md`
-- ` M scripts/check_workspace_integrity.py`
-- `?? GATES.md`
-- `?? handoff/flags/context-contracts-slimming-2026-11-05.md`
-- `?? projects/research/etth1-h720/.omp/`
+- `?? handoff/flags/decisions-dedup-and-renumber-2026-11-05.md`
+- `?? handoff/flags/l0-contract-clarification-2026-11-05.md`
 
 ## Ostatnie commity
 
+- `58c12cc chore: sync workspace and slim contracts`
 - `6cba6d8 l1-contracts-slimming-2026-11-05: `l1-contracts-slimming-2026-11-05` — 2026-11-05: domknięto techniczną ścieżkę odchudzenia kontra`
 - `6ce469f feat(omp): harden project config`
 - `b439e93 chore: sync remaining workspace state`
 - `75c35c9 feat(omp): make project agents model-neutral`
-- `cc0bdea feat(omp): add public local omp configuration and documentation`
 
 ## Runy (`.dgc-evidence/runs/`)
 LATEST (czeka na werdykt): `goose-pstack-2026-10-03`

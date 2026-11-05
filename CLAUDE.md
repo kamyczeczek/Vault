@@ -14,16 +14,16 @@ file routes; it holds no content.
 
 | Path | Role | Description |
 |---|---|---|
-| `CLAUDE.md` | Catalog (L0) | This file — identity and routing |
+| `CLAUDE.md` | Catalog (L1) | Root entry catalog (R1 single source of truth); loaded on demand, not at root L0 |
 | `README.md` | Human entry point | 30-second workspace orientation and first commands |
-| `AGENTS.md` | Router (L0) | Terse agent entry (<2K tokens): intent → project. Points here for detail |
+| `AGENTS.md` | Router (L0) | Terse agent entry (<2K tokens): intent → project. Mandatory root L0 router |
 | `CONTEXT-MAP.md` | Map (L1) | The portfolio map: bounded contexts, what each project owns, relationships, what is shared, the routing procedure |
 | `TOOLS.md` | Rubric (L1) | Tool lifecycle: the promotion bar and the three verdicts |
 | `SCARS.md` | Lessons | Operational scars from real failures: Windows tooling, executable, verification-tool, metric-design. Read before editing `scripts/**`, `hooks/**`, `skills/**`, `check_workspace_integrity.py`, `audit_*.py`; trigger: `handoff/CONTEXT.md` |
 | `DECISIONS.md` | Record (L1) | Why the portfolio looks the way it does, with rejected options |
 | `PHILOSOPHY.md` | Principles (L1) | First read: why small working systems compose; what the workspace proved |
 | `GLOSSARY.md` | Vocabulary (L1) | One definition per shared term; projects narrow, never redefine |
-| `HANDOFF.md` | Cold start (L0) | Where the work stands and what is open, at the level a fresh session needs. Links project handoffs, never copies them (D12) |
+| `HANDOFF.md` | Active state | Where the work stands and what is open; read on session start or state change (D12) |
 | `STATE.md` | Snapshot (generated) | Machine-derived right-now: HEAD, dirty files, last commits, runs + verdicts. Rebuild via `python scripts/build_state.py`, never hand-edit (ICM inv. 9) |
 | `handoff/` | Handoff state (one flag = one file) | `flags/<flag>.md` (one writer per flag, frontmatter `flag`/`since`/`owner`/`agent`/`model`) + `deep/*.md` for prose. `HANDOFF.md` is the generated view: rebuild via `python scripts/build_handoff.py`, `--check` gates staleness. Contract: `handoff/CONTEXT.md` |
 | `skills/` | Factory (L3) | Upstream catalog of agent workflow skills — the full set, kept redundant for root-level changes. Projects vendor their own subsets from here (D8) |
@@ -112,8 +112,7 @@ Single home per fact: intent → entry file routes live in `AGENTS.md`
 
 ## Conventions
 
-- Entry file: `CLAUDE.md` (L0, under ~60 lines for projects; root catalog
-  exempt per D9 amendment, routes only).
+- Entry file: `CLAUDE.md` (L0 for projects, under ~60 lines; root catalog is L1 on demand, routes only).
 - Root `CONTEXT-MAP.md` (L1): the portfolio map — what the projects share,
   how they relate; one home, nothing at the root restates it.
 - Stage contracts: `CONTEXT.md` inside each working folder — inputs, process,
