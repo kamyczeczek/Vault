@@ -4,6 +4,8 @@
 
 | flag | since | owner | agent | summary |
 | --- | --- | --- | --- | --- |
+| `etth1-h720-s44-calibration-2026-10-30` | 2026-11-01 | mateusz | opencode | The ADR 0001 threshold-comparability |
+| `divide-and-conquer-skill-2026-11-01` | 2026-11-01 | mateusz | opencode | The Divide-and-Conquer skill |
 | `kb-knowledge-split-2026-10-29` | 2026-10-29 | mateusz | opencode | warstwa wiedzy schodzi do `kb/`, root repo zostaje `Desktop\vault` (ADR-008 zastępuje ADR-006). |
 | `kb-cleanup-residue-2026-10-29` | 2026-10-29 | mateusz | opencode | domknięcie residue po kb-knowledge-split. |
 | `etth1-h720-s49-honest-closeout-2026-10-29` | 2026-10-29 | mateusz | opencode | S49 ETTh1 H720 zamknięta (REJECT) po audycie zgodności protokołu. |
