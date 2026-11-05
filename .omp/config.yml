@@ -1,5 +1,11 @@
+session:
+  warnCost: 5
+  maxCost: 10
+
 providers:
   autoThinkingMaxEffort: xhigh
+  cacheRetention: long
+
 disabledProviders:
   - ollama
 symbolPreset: nerd
@@ -33,10 +39,15 @@ compaction:
     - remote
     - soft
     - snapcompact
-cacheRetention: long
 read:
   defaultLimit: 200
 display:
   showTokenUsage: true
 tools:
   artifactTailLines: 150
+  approvalMode: write
+  approval:
+    bash: prompt
+    eval: prompt
+secrets:
+  enabled: true
