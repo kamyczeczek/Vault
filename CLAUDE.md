@@ -1,29 +1,40 @@
 ---
 type: Concept
 title: CLAUDE
-generated: { by: okf-enforcer/0.6, at: 2026-11-05T23:00:00Z }
+generated: { by: omp, at: 2026-11-06 }
 ---
 
-# CLAUDE.md — workspace (pointer)
+# CLAUDE.md — workspace
 
-This file now pointers to the root router  per ICM invariant #2 (small, stable entry file).
+Root catalog. Read `AGENTS.md` first for routing and `HANDOFF.md` for current state.
 
-## Where to go
-
-For agent routing, read  first. This file is retained for compatibility but its content is now defined in .
-
-## Legacy routing (preserved for reference)
+## Where things live
 
 | Path | Role |
 |---|---|
-|  | Root L0 router (single source of truth) |
-|  | Portfolio map |
-|  | Why the portfolio looks the way it does |
+| `AGENTS.md` | Root L0 router |
+| `README.md` | Human entry point |
+| `CONTEXT-MAP.md` | Portfolio map |
+| `DECISIONS.md` | Decision record |
+| `HANDOFF.md` | Active generated state |
+| `STATE.md` | Generated workspace snapshot |
+| `projects/research/` | Research projects |
+| `projects/_archive/` | Archived work |
+| `scripts/check_workspace_integrity.py` | Workspace gate |
+| `hooks/` | Git hooks |
 
-## ICM compliance
+## Projects
 
-- **Invariant #2:** Small, stable entry file at root — answered by  (<2K tokens)
-- **Invariant #8:** Plain text + YAML frontmatter — this file is generated
-- **Invariant #9:** Filesystem is the state machine — status derivable from  +
+| Project | Entry |
+|---|---|
+| `projects/research/benchmark-core/` | `projects/research/benchmark-core/CLAUDE.md` |
+| `projects/research/knowledge-retrieval/` | `projects/research/knowledge-retrieval/CLAUDE.md` |
+| `projects/research/etth1-h720/` | `projects/research/etth1-h720/CLAUDE.md` |
+| `projects/research/research-engine/` | `projects/research/research-engine/CLAUDE.md` |
+| `projects/research/brain/` | `projects/research/brain/CLAUDE.md` |
 
-This file was restructured on 2026-11-05 to consolidate the entry point.
+## Rules
+
+- Root routes; project files own project detail.
+- Generated views: run their builder, never hand-edit.
+- New root entries require declaration here and in `ALLOWED_ROOT`.

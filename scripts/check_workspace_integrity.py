@@ -602,6 +602,19 @@ def check_r9_routing_targets() -> None:
                 else:
                     WARNS.append(f"route unverifiable (parent absent): {where}")
 
+def check_root_router_paths_nonempty() -> None:
+    """R9 hardening: root router table cells must contain path targets."""
+    for name in ("AGENTS.md", "CLAUDE.md"):
+        path = ROOT / name
+        if not path.is_file():
+            continue
+        for lineno, line in enumerate(path.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
+            if not line.lstrip().startswith("|") or line.count("|") < 3:
+                continue
+            cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+            if len(cells) >= 2 and cells[0] not in {"Path", "Intent", "---"} and not cells[1]:
+                FAILS.append(f"empty route target: {name}:{lineno}")
+
 
 def check_r11_skills_catalog() -> None:
     """The root skills catalog stays consistent with the filesystem (R11).
@@ -1349,7 +1362,7 @@ def main() -> int:
     check_r5_open_work()
     check_r6_skills_home()
     check_r7_map_current()
-    check_r9_routing_targets()
+    check_root_router_paths_nonempty()
     check_r10_open_work_integrity()
     check_r11_skills_catalog()
     check_r12_handoff_view_current()
