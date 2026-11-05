@@ -171,6 +171,7 @@ ALLOWED_ROOT = {
     ".gitignore",
     ".gitattributes",
     ".pi",              # pi coding-agent harness working dir (settings.json); runtime artifact, declared not tracked
+    ".omp",             # oh-my-pi coding-agent harness configuration; runtime artifact, declared in CLAUDE.md, gitignored
     ".opencode",        # opencode project config: custom subagents (.opencode/agents/answerpilot.md); declared in CLAUDE.md
     ".agents",          # goose lifecycle plugins (forge-guardrails hooks); declared in CLAUDE.md
     ".forge",           # forge-guardrails policy + runtime state; declared in CLAUDE.md

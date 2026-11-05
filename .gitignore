@@ -39,7 +39,11 @@ __pycache__/
 **/secrets.json
 # 24 agent-data zips (13.6 MB) plus the secrets.json above: dumps, not sources.
 agents/backup/
-
+# Machine-local agent configuration / API keys
+.omp/models.yml
+.omp/**/sessions/
+.omp/**/*.db*
+.pi/
 # --- Generated in place: rerunning the producer is the source of truth ------
 scripts/_scratch/
 # Raw session exports may contain secrets; never publish them.

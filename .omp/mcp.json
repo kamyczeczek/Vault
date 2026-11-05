@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/can1357/oh-my-pi/main/packages/coding-agent/src/config/mcp-schema.json",
+  "mcpServers": {
+    "jcodemunch": {
+      "type": "stdio",
+      "command": "C:\\Users\\Mateusz\\.local\\bin\\jcodemunch-mcp.exe",
+      "instructions": false
+    },
+    "jdocmunch": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": ["jdocmunch-mcp"],
+      "instructions": false
+    }
+  }
+}

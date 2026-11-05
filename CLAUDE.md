@@ -31,6 +31,7 @@ file routes; it holds no content.
 | `projects/_archive/` | Graveyard | Finished work, ungated and unrouted (D10) |
 | `.ralph/` | Index (generated) | ralph-loop navigation projection: `INDEX.md` + `registry.json`, rebuilt by `skills/ralph-loop/scripts/ralph.py` from each project's local `.ralph/STATE.json`; never hand-edited (projects keep their own `.ralph/` as source of truth) |
 | `.pi/` | Harness (generated) | pi coding-agent working settings (empty default `settings.json`, auto-created by the harness; never hand-edited) |
+| `.omp/` | Harness (runtime) | oh-my-pi harness configuration: `config.yml`, `mcp.json`, `models.yml`; machine-local, listed in `.gitignore`, never committed |
 | `.opencode/` | Config | opencode project config: custom subagents (`.opencode/agents/answerpilot.md` — answer-layer pilot, tools denied via permissions + corpus read-block); declared in ALLOWED_ROOT |
 | `.commit-approved` | Gate token (runtime) | Commit-approval token. Minted by `scripts/close.py` after validation and immediately before its own commit; read by `scripts/commit_gate_guard.py`, which `hooks/pre-commit` calls before the integrity gate. A token older than 300 s authorizes nothing. Listed in `.gitignore`, never committed |
 | `.agents/` | Plugins | goose lifecycle plugins (e.g. `forge-guardrails` hooks); auto-load from project dir |

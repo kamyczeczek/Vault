@@ -1,0 +1,75 @@
+# Example models.yml configuration for Oh My Pi (omp)
+# Copy this file to models.yml and insert your own API keys.
+# models.yml is gitignored to protect sensitive credentials.
+
+providers:
+
+  nara:
+    baseUrl: https://router.bynara.id/v1
+    apiKey: YOUR_NARA_API_KEY
+    api: openai-completions
+    models:
+      - id: nemotron-3.5-lightning-free
+        name: nemotron-3.5-lightning-free
+      - id: step-5-preview
+        name: step-5-preview
+      - id: agnes-2.5-flash
+        name: agnes-2.5-flash
+      - id: agnes-3-flash
+        name: agnes-3-flash
+      - id: step-5-preview
+        name: step-5-preview
+
+  9router:
+    baseUrl: http://localhost:20128/v1
+    apiKey: YOUR_9ROUTER_API_KEY
+    api: openai-completions
+    models:
+      - id: kr/claude-haiku-4.5
+        name: kr/claude-haiku-4.5
+      - id: gemini/gemini-3.5-flash-lite
+        name: gemini/gemini-3.5-flash-lite
+
+  google-ai-studio:
+    baseUrl: https://generativelanguage.googleapis.com/v1beta
+    apiKey: YOUR_GOOGLE_AI_STUDIO_API_KEY
+    api: google-generative-ai
+    models:
+      - id: gemini-3.7-flash
+        name: gemini-3.7-flash
+      - id: gemini/gemma-4-31b-it
+        name: gemini/gemma-4-31b-it
+      - id: gemini-3.5-flash-lite
+        name: gemini-3.5-flash-lite
+
+  omniroute:
+    baseUrl: http://localhost:20128/v1
+    apiKey: YOUR_OMNIROUTE_API_KEY
+    api: openai-completions
+    models:
+      - id: gemini/gemini-3.1-flash-lite
+        name: gemini/gemini-3.1-flash-lite
+      - id: cx/gpt-5.6-luna-low
+        name: cx/gpt-5.6-luna-low
+      - id: gemini/gemma-4-26b-a4b-it
+        name: gemini/gemma-4-26b-a4b-it
+      - id: trk/z-ai/glm-5.3-free
+        name: trk/z-ai/glm-5.3-free
+      - id: gemini/gemini-flash-lite-latest
+        name: gemini/gemini-flash-lite-latest
+      - id: agy/gemini-3.8-flash-low
+        name: agy/gemini-3.8-flash-low
+      - id: gemini/gemini-3.8-flash
+        name: gemini/gemini-3.8-flash
+      - id: gemini/gemini-3.6-flash
+        name: gemini/gemini-3.6-flash
+      - id: openrouter/openrouter/free
+        name: openrouter/openrouter/free
+
+  opencode:
+    baseUrl: http://localhost:4000/v1
+    apiKey: YOUR_OPENCODE_API_KEY
+    api: openai-completions
+    models:
+      - id: opencode/deepseek-v4.1-flash-free
+        name: opencode/deepseek-v4.1-flash-free

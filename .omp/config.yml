@@ -1,0 +1,54 @@
+providers:
+  autoThinkingMaxEffort: xhigh
+disabledProviders:
+  - ollama
+symbolPreset: nerd
+composer:
+  shape: box
+theme:
+  dark: titanium
+setupVersion: 2
+modelRoles:
+  smol: omniroute/gemini/gemini-3.5-flash-lite
+  slow: omniroute/cx/gpt-5.6-luna-medium
+  plan: google-ai-studio/gemini-3.7-flash
+  fast: omniroute/gemini/gemini-3.5-flash-lite
+  commit: omniroute/gemini/gemini-3.5-flash-lite
+  default: omniroute/agy/gemini-3.8-flash-low:low
+defaultThinkingLevel: low
+cycleOrder:
+  - smol
+  - default
+  - slow
+memory:
+  backend: mnemopi
+mnemopi:
+  scoping: global
+  autoRecall: true
+  autoRetain: true
+task:
+  maxEffort: low
+  enableEffort: true
+dev:
+  autoqaConsent: denied
+inlineToolDescriptors: "off"
+pruneToolDescriptions: true
+thinkingBudgets:
+  minimal: 512
+  low: 1024
+  medium: 4096
+compaction:
+  thresholdTokens: 160000
+  reserveTokens: 32000
+  methodOrder:
+    - snapcompact
+    - shake
+    - remote
+    - soft
+cacheRetention: long
+read:
+  defaultLimit: 200
+display:
+  showTokenUsage: true
+tools:
+  artifactTailLines: 150
