@@ -37,7 +37,11 @@ resolved in reality, update its file and rebuild. `verified_at` lives in the
 consuming manual files, not here.
 
 ## Not checked
-- No decisions migrated from `handoff/flags/` yet beyond the PLAN.md pointer
-  question (see `plan-md-migration.md`).
+- 2026-11-06: the six owner decisions raised by the closed 5-session plan
+  (rotation, filter-repo, dead-script deletions, retrieval-v2 preflight,
+  `agent_commit.py` ref cascade, `.bat` eol) were migrated from flag prose
+  into this folder as `status: open` files (flag
+  `owner-decisions-registered-2026-11-06`). Older flags still hold their own
+  decision-shaped prose; migrating all of them is not done.
 - `workspace-skills.md` symlink vs copy decision not captured here
   (P3 optional; tracked as not-checked in `handoff/status/CONTEXT.md`).

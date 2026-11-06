@@ -129,7 +129,10 @@ def collect(flags_dir: Path = FLAGS, decisions_dir: Path = DECISIONS,
 
     if decisions_dir.is_dir():
         for p in sorted(decisions_dir.glob("*.md")):
-            if p.name == "CONTEXT.md":
+            # CONTEXT.md is the folder contract and index.md the navigation
+            # index; neither is a decision. Before this skip, index.md parsed
+            # as a phantom open decision (`owner: ?`) in STATUS.md.
+            if p.name in ("CONTEXT.md", "index.md"):
                 continue
             decisions.append(parse_decision(p))
 

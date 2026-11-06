@@ -8,11 +8,16 @@ Machine snapshot: `STATE.md` (integrity gate + git state; rebuild with `python s
 
 ## Next
 
-NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`, zmigruj `plan.md`/`goals.md`/`history.md` jeśli pojawią się w rootcie.
+NEXT: Owner calls the six open decisions in `handoff/decisions/` (rendered in `handoff/status/STATUS.md` → `## Open decisions`), starting with `dead-script-deletions` and `bat-files-eol-crlf`, which need no investigation — only a yes.
 
 ## Open decisions
 
-- **`index`** — recommendation:  (owner: ?, decided_at: pending)
+- **`agents-md-agent-commit-ref`** — recommendation: requalify the reference to the archived path, bundled as its own R13 cascade — new review report version + docs/reviews/README.md row + EXEMPT baseline entries + view rebuild, one commit; never a bare 1-line AGENTS.md edit (owner: mateusz, decided_at: pending)
+- **`bat-files-eol-crlf`** — recommendation: extend the eol=crlf fix (already proven on raw_sessions_drive.bat) to raw_sessions.bat, session_brief.bat, session_digest.bat — one commit, renormalize, hook gates apply (owner: mateusz, decided_at: pending)
+- **`dead-script-deletions`** — recommendation: approve the 4 DELETE candidates from the report, then remove one script per commit with check_workspace_integrity.py + build_handoff.py --check after each (owner: mateusz, decided_at: pending)
+- **`history-rewrite-filter-repo`** — recommendation: do not rewrite — no secret grounds (scan clean), and a size-only rewrite invalidates all 147 public SHAs for ~184MB of legitimate artifacts (owner: mateusz, decided_at: pending)
+- **`openai-key-rotation`** — recommendation: rotation not required by evidence — key never entered either repo's history or tree; owner's call, precautionary only (owner: mateusz, decided_at: pending)
+- **`retrieval-v2-preflight`** — recommendation: add a stdlib preflight.py to projects/research/retrieval-v2/ — the invariant "every project ships a preflight.py" is the structural fix; grade correction is the alternative if the project is stalled (owner: mateusz, decided_at: pending)
 
 ## Stale
 
@@ -234,6 +239,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `raw-sessions-dsh-included-2026-11-06` | 2026-11-06 | mateusz | deepseek-harness |
 | `raw-sessions-count-ownership-2026-11-06` | 2026-11-06 | Mateusz | deepseek-harness |
 | `r9-routing-check-restored-2026-11-06` | 2026-11-06 | Mateusz | omp |
+| `owner-decisions-registered-2026-11-06` | 2026-11-06 | mateusz | deepseek-harness |
 | `opencode-shell-permission-key-2026-11-06` | 2026-11-06 | mateusz | dsh |
 | `omp-token-profile-20261106` | 2026-11-06 | Mateusz | opencode |
 | `final-walk-test-2026-11-06` | 2026-11-06 | Mateusz | deepseek-harness |
