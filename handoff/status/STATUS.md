@@ -232,11 +232,11 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `raw-sessions-github-push-2026-11-06` | 2026-11-06 | mateusz | opencode |
 | `raw-sessions-dsh-included-2026-11-06` | 2026-11-06 | mateusz | deepseek-harness |
 | `r9-routing-check-restored-2026-11-06` | 2026-11-06 | Mateusz | omp |
+| `opencode-shell-permission-key-2026-11-06` | 2026-11-06 | mateusz | dsh |
 | `omp-token-profile-20261106` | 2026-11-06 | Mateusz | opencode |
 | `fev-full-guard-implemented` | 2026-11-06 | coding-assistant | omp |
 | `dsh-opencode2dsh-free-models-2026-11-06` | 2026-11-06 | mateusz | deepseek-harness |
 | `dependency-map-2026-11-06` | 2026-11-06 | coding-assistant | antigravity |
-| `opencode-free-models-and-shell-perm-2026-11-05` | 2026-11-05 | mateusz | pi-bolt |
 | `pi-subagents-hardening-and-e2e-2026-11-04` | 2026-11-04 | mateusz | opencode |
 | `pi-agents-preflight-and-closer-2026-11-04` | 2026-11-04 | mateusz | opencode |
 | `orchestrator-worker-recursion-2026-11-03` | 2026-11-03 | mateusz | opencode |
