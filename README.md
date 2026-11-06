@@ -12,16 +12,15 @@ infrastructure.
 3. Choose one project under [`projects/research/`](projects/research/).
 4. Run that project's `preflight.py` before changing or running experiments.
 
-For the current ETTh1 H720 study:
+The ETTh1 H720 study (`projects/research/etth1-h720`) is closed — the S49 H720
+line was rejected. It stays in `projects/research/` for reference; do not start
+new work there. Every active project runs the same pattern:
 
 ```powershell
-cd projects/research/etth1-h720
+cd projects/research/<project>
 python preflight.py
 python -m pytest -q
 ```
-
-The project contract is in [`CLAUDE.md`](projects/research/etth1-h720/CLAUDE.md);
-its protocol and open work are in [`CONTEXT.md`](projects/research/etth1-h720/CONTEXT.md).
 
 ## Repository map
 

@@ -50,7 +50,6 @@ Root catalog. Read `AGENTS.md` first for routing and `HANDOFF.md` for current st
 | `.export/` | Generated Repomix exports |
 | `WORKFLOW_GOOSE_ICM.md` | Goose ICM design |
 | `.commit-approved` | Temporary commit approval token |
-| `logs/` | Workspace runtime logs |
 
 ## Projects
 
