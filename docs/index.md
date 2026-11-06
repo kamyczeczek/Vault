@@ -10,6 +10,7 @@
 * [audit-vault-simplification-2026-11-05](audit-vault-simplification-2026-11-05.md)
 * [audit-vault-simplification-final-2026-11-05](audit-vault-simplification-final-2026-11-05.md)
 * [codegraph-routing-GATES](codegraph-routing-GATES.md)
+* [dead-script-candidates-2026-11-06](dead-script-candidates-2026-11-06.md)
 * [dependency-map-2026-11-06](dependency-map-2026-11-06.md)
 * [kb-cleanup-GATES](kb-cleanup-GATES.md)
 * [local-rag-GATES](local-rag-GATES.md)
