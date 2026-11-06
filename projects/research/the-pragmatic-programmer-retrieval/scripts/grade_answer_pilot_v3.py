@@ -1,8 +1,8 @@
 """Session 6 deterministic grader (fresh grader — no history, no tuning).
 
-Reads frozen terms from handoff/_history/session-6-briefs/term-validation.json (pre-spawn validated),
-raw answers from handoff/_history/session-6-briefs/answers-raw.json. Match rule frozen in
-handoff/_history/session-6-briefs/preregistration.md: term in spaCy lemmas of the answer.
+Reads frozen terms from handoff/session-6/term-validation.json (pre-spawn validated),
+raw answers from handoff/session-6/answers-raw.json. Match rule frozen in
+handoff/session-6/preregistration.md: term in spaCy lemmas of the answer.
 Pinned: spacy==3.8.16, en_core_web_sm==3.8.0.
 """
 import json

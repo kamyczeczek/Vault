@@ -1,7 +1,7 @@
 """Session 6: dump top-8 chunks (Tier 3 retrieve(), NOT full_retrieve) for EN answer-layer pilot.
 
 Sample: 15 answerable (q001-q015) + 8 unanswerable (u001-u008) + 1 canary (q001 question + q003 chunks).
-Timing per question. Output: handoff/_history/session-6-briefs/dumps/*.json + input-stage topics report.
+Timing per question. Output: handoff/session-6/dumps/*.json + input-stage topics report.
 Frozen pre-registration: retrieve() = Tier 3, top_k=8, chunks verbatim, no filtering.
 """
 import json
