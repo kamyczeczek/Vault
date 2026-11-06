@@ -47,6 +47,9 @@ retired 2026-11-06: commit i push potwierdzone (`origin/master` == HEAD, commit 
 `r9-routing-check-restored-2026-11-06` — 2026-11-06: przywrócono wywołanie `check_r9_routing_targets()` w `scripts/check_workspace_integrity.py`; integrity, mutacja R9, commit `e60296f` i push zakończone.
 not checked: kompletność root entries w nowym `CLAUDE.md` względem wcześniejszego katalogu.
 
+<!-- handoff/flags/omp-token-profile-20261106.md · owner: Mateusz · agent: opencode · model: opencode/deepseek-v4.1-flash -->
+`omp-token-profile-20261106` — 2026-11-06: `.omp/config.yml` przepisany na realny schemat OMP v18.16.0. Usunięto martwe/niepoprawne klucze (`pruneToolDescriptions`, `approvalMode: accept`), dodano kapsle outputu (`artifactSpillThreshold: 20`, `artifactTailBytes: 5`, `artifactHeadBytes: 2.5`, `outputMaxColumns: 512`), jawne lazy tools (`tools.xdev: true`, `xdevDocs: catalog`), read summaries i politykę kompakcji. Weryfikacja: `omp config get` zwraca nowe wartości, `omp config list --scope project` nie ma nieznanych kluczy, `check_workspace_integrity.py` przechodzi. Commit `2aa729f` wypchnięty.
+
 <!-- handoff/flags/fev-full-guard-implemented.md · owner: coding-assistant · agent: omp · model: omp/current -->
 `fev-full-guard-implemented` — 2026-11-06: `projects/research/benchmark-core/bench.py` odrzuca `--fev-full` kodem 2 przed dostępem do danych. Test: `test_benchmark_protocol.py::test_fev_full_guard_exits_before_data_access` (subprocess).
 
