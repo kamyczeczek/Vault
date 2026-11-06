@@ -27,27 +27,56 @@ task:
 dev:
   autoqaConsent: denied
 inlineToolDescriptors: "off"
-pruneToolDescriptions: true
 thinkingBudgets:
   minimal: 512
   low: 1024
   medium: 4096
+
+# Context budget: compact at 75% of the model window, keep a recent tail.
 compaction:
+  enabled: true
   thresholdPercent: 75
+  keepRecentTokens: 20000
+  dropUseless: true
+  supersedeReads: true
   methodOrder:
     - shake
     - remote
     - soft
     - snapcompact
+
+# Read less by default; summarize large files structurally.
 read:
   defaultLimit: 200
+  summarize:
+    enabled: true
+    prose: false
+    unfoldUntil: 50
+    unfoldLimit: 100
+
 display:
   showTokenUsage: true
+
 tools:
-  artifactTailLines: 150
-  approvalMode: accept
+  approvalMode: yolo
   approval:
-    bash: accept
-    eval: accept
+    bash: allow
+    eval: allow
+  # No per-call intent prose: pure output-token saving.
+  intentTracing: false
+  abortOnFabricatedResult: true
+  # Cap what reaches the model. Full output still lands in an artifact file.
+  artifactSpillThreshold: 20
+  artifactTailBytes: 5
+  artifactHeadBytes: 2.5
+  artifactTailLines: 150
+  artifactMaxBytes: 16
+  outputMaxColumns: 512
+  # Lazy tool discovery: rare/MCP tools live behind xd:// instead of
+  # shipping every schema in the system prompt.
+  xdev: true
+  xdevDocs: catalog
+  xdevNotices: false
+
 secrets:
   enabled: true
