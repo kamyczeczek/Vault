@@ -228,6 +228,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `root-catalog-complete-2026-11-06` | 2026-11-06 | Mateusz | omp |
 | `r9-routing-check-restored-2026-11-06` | 2026-11-06 | Mateusz | omp |
 | `fev-full-guard-implemented` | 2026-11-06 | coding-assistant | omp |
 | `opencode-free-models-and-shell-perm-2026-11-05` | 2026-11-05 | mateusz | pi-bolt |

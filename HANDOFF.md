@@ -29,6 +29,10 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/root-catalog-complete-2026-11-06.md · owner: Mateusz · agent: omp · model: omniroute/cx/gpt-5.6-luna-low -->
+`root-catalog-complete-2026-11-06` — 2026-11-06: `CLAUDE.md` uzupełniono o katalog dozwolonych wpisów root zgodny z `ALLOWED_ROOT`; integrity przechodzi, routing rozwiązuje się poprawnie.
+not checked: commit i push zmian katalogu; pozostawione lokalne resztki poprzedniej sesji nie zostały ruszone.
+
 <!-- handoff/flags/r9-routing-check-restored-2026-11-06.md · owner: Mateusz · agent: omp · model: omniroute/cx/gpt-5.6-luna-low -->
 `r9-routing-check-restored-2026-11-06` — 2026-11-06: przywrócono wywołanie `check_r9_routing_targets()` w `scripts/check_workspace_integrity.py`; integrity, mutacja R9, commit `e60296f` i push zakończone.
 not checked: kompletność root entries w nowym `CLAUDE.md` względem wcześniejszego katalogu.

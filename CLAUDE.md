@@ -18,10 +18,39 @@ Root catalog. Read `AGENTS.md` first for routing and `HANDOFF.md` for current st
 | `DECISIONS.md` | Decision record |
 | `HANDOFF.md` | Active generated state |
 | `STATE.md` | Generated workspace snapshot |
-| `projects/research/` | Research projects |
-| `projects/_archive/` | Archived work |
-| `scripts/check_workspace_integrity.py` | Workspace gate |
+| `projects/` | Research projects and archive |
+| `scripts/` | Workspace automation and gates |
+| `skills/` | Shared agent skills |
+| `tools/` | Small workspace tools |
+| `agents/` | Agent registry and tooling |
 | `hooks/` | Git hooks |
+| `handoff/` | Flags and handoff source state |
+| `docs/` | Workspace audit reports |
+| `brain/` | Curated brain layer |
+| `wayfinder/` | Wayfinder state and resources |
+| `logs/` | Workspace logs |
+| `kb/` | Knowledge layer |
+| `SCARS.md` | Operational scars |
+| `TASKS.md` | Workspace task list |
+| `PLAN.md` | Workspace plan |
+| `GATES.md` | Gate reference |
+| `GLOSSARY.md` | Term definitions |
+| `PHILOSOPHY.md` | Workspace principles |
+| `TOOLS.md` | Tool grading bar |
+| `TOKEN-EFFICIENCY.md` | Token and cache evidence |
+| `.gitignore` | Ignore rules |
+| `.gitattributes` | Git attributes |
+| `.pi/` | Pi runtime configuration |
+| `.omp/` | Oh My Pi configuration |
+| `.opencode/` | OpenCode project configuration |
+| `.agents/` | Goose lifecycle plugins |
+| `.forge/` | Forge policy and runtime state |
+| `.ralph/` | Ralph generated projection |
+| `.dgc-evidence/` | Review evidence products |
+| `.export/` | Generated Repomix exports |
+| `WORKFLOW_GOOSE_ICM.md` | Goose ICM design |
+| `.commit-approved` | Temporary commit approval token |
+| `logs/` | Workspace runtime logs |
 
 ## Projects
 
