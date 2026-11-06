@@ -57,6 +57,7 @@
 * [pi_context_growth.py](pi_context_growth.py)
 * [pi_token_audit.py](pi_token_audit.py)
 * [pre_close_check.py](pre_close_check.py)
+* [push_sessions_github.py](push_sessions_github.py)
 * [raw_sessions.bat](raw_sessions.bat)
 * [render_review.py](render_review.py)
 * [read_after_edit_guard.py](read_after_edit_guard.py)

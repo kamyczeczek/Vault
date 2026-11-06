@@ -69,6 +69,61 @@ not checked:
 not checked: —
 retired 2026-11-06: commit i push potwierdzone (`origin/master` == HEAD, commit `422069c`, log `origin/master..HEAD` pusty). Ślad obcy: `scripts/raw_sessions_drive.bat` ma niezacommitowaną zmianę `COUNT=5 → 1` od innego właściciela — nie moja, nienaruszona.
 
+<!-- handoff/flags/raw-sessions-github-push-2026-11-06.md · owner: mateusz · agent: opencode · model: nvidia/stepfun-ai/step-5-preview -->
+`raw-sessions-github-push-2026-11-06` — 2026-11-06: `scripts/raw_sessions_drive.bat`
+po eksporcie (N najnowszych sesji, domyślnie 5) pushuje `raw_sessions.md` do
+**osobnego, prywatnego** repo archiwum `kamyczeczek/raw-sessions` (domyślnie
+`main`; nadpisywany plik = okno N sesji, historia w git). Sync do Google Drive
+został bez zmian i działa obok. Nowy helper `scripts/push_sessions_github.py`
+(stdlib-only): clone-or-init `scripts/_scratch/sessions-github/` (gitignored) →
+fast-forward do remote → kopiuj → `scan_secrets.py` jako bramka → commit tylko
+gdy treść nowa → push. Repo: `--repo` > env `SESSIONS_GITHUB_REPO` > default.
+Exit codes: 0 ok (również "nic do pushowania"), 2 repo, 3 źródło, 4 git, 5 sekrety.
+
+## Wykonane
+- Repo `kamyczeczek/raw-sessions` utworzone jako PRIVATE (`gh repo create
+  --private --add-readme`); eksport NIGDY nie trafia do publicznego Vault.
+- Bramka sekretów: `scan_secrets.py` odpala się na kopii w clone'ie przed
+  `git add`; hit = exit 5 i brak commita (wiadomość mówi wprost, by bramki nie
+  omijać). Zweryfikowano: sztuczny plik z `sk-nry-…` → `SECRETS_FOUND=1`, RC=5,
+  bez push. Oczyszczony eksport (226 KB) → `SECRETS_CLEAN`.
+- Weryfikacja E2E: `cmd /c scripts\raw_sessions_drive.bat 3` → 171 KB eksport →
+  Drive `md5=836acdcf…` → `PUSHED: raw_sessions.md -> … [main]`, RC=0; commit
+  `4c1f9587` "chore: refresh raw sessions export (3 sessions)" na remote.
+- Idempotentność: ponowny push tego samego pliku → `EXPORT_UNCHANGED … nic do
+  pushowania` (brak pustych commitów).
+- `scripts/index.md` uzupełniony o `push_sessions_github.py`.
+
+## Usterka naprawiona po drodze (pre-existing, nie spowodowana przeze mnie)
+`.gitattributes` miał `* text=auto eol=lf`, więc `.bat` checkoutuje się z LF, a
+`cmd.exe` na LF **zjada pierwszy znak każdej linii** (`'hcp' is not recognized`,
+`'etlocal'`, `'cho'`). Dowód, że plik był LF i przed edycją:
+`git ls-files --eol` → `i/lf`. Czyli `raw_sessions_drive.bat` był niedziałający
+wcześniej — a „weryfikacja" z flagi `raw-sessions-dsh-included-2026-11-06`
+(`python scripts/raw_sessions_drive.bat 3`) nie mogła się udać jako Python
+(`SyntaxError: invalid syntax`, odtworzone). Fix: targeted rule
+`scripts/raw_sessions_drive.bat text eol=crlf` (blob w repo zostaje
+LF-normalized, checkout CRLF) + renormalizacja worktree. `git diff --check`
+czysty; diff .bat = tylko moje 15 linii.
+
+## Ryzyka / not checked
+not checked: push z maszyny bez zapisanych credentiali GitHub; zachowanie przy
+nieśledzonym stanie clone'u; repo z domyślnym branchem innym niż `main`
+(wykrywane dynamicznie przez `ls-remote --symref`, ścieżka niepokryta testem);
+test jednostkowy `push_sessions_github.py` (weryfikacja tylko E2E).
+- Inne `.bat` w repo (`raw_sessions.bat`, `session_brief.bat`,
+  `session_digest.bat`) mają ten sam defect LF — NIE naprawione (poza zakresem
+  tego zlecenia; kwalifikują się do tego samego leczenia `eol=crlf`).
+- Nie przetestowano: push z maszyny bez zapisanych credentiali GitHub
+  (git-credential-manager); zachowanie przy niepustym, nieśledzonym stanie
+  clone'u (skrypt hard-resetuje do FETCH_HEAD — udokumentowane single-writer);
+  repo z domyślnym branchem innym niż `main` póki co (wykrywane dynamicznie
+  przez `ls-remote --symref`, ścieżka niepokryta testem).
+
+## Następny krok
+Dodać regułę `eol=crlf` dla pozostałych `.bat` (osobny commit) albo potwierdzić,
+że tylko ten jeden ma być naprawiony.
+
 <!-- handoff/flags/raw-sessions-dsh-included-2026-11-06.md · owner: mateusz · agent: deepseek-harness · model: nvidia/stepfun-ai/step-5-preview -->
 `flag` — 2026-11-06: `scripts/raw_sessions_drive.bat` teraz eksportuje też sesje DeepSeek Harness.
 Przyczyna, dla której ich nie uwzględniał: `scripts/extract_exact_sessions.py` (ten, który napędza .bat)
@@ -99,6 +154,47 @@ not checked: kompletność root entries w nowym `CLAUDE.md` względem wcześniej
 `fev-full-guard-implemented` — 2026-11-06: `projects/research/benchmark-core/bench.py` odrzuca `--fev-full` kodem 2 przed dostępem do danych. Test: `test_benchmark_protocol.py::test_fev_full_guard_exits_before_data_access` (subprocess).
 
 not checked: —
+
+<!-- handoff/flags/dsh-opencode2dsh-free-models-2026-11-06.md · owner: mateusz · agent: deepseek-harness · model: nvidia/stepfun-ai/step-5-preview -->
+`flag` — 2026-11-06: darmowe modele OpenCode Zen są teraz dostępne w DeepSeek
+Harness (DSH).
+
+Przyczyna, dla której nie były: `@opencode2dsh/dsh-plugin` 0.3.14 był
+zainstalowany w `node_modules` profilu desktop (instalacje 2026-11-04 ~22:09,
+logi `.plugin-manager/logs/operation-1g8spJ|bODNgh|5vhunk/pnpm.log`), ale NIE
+był wymieniony w `dsh.profile.bundles` w
+`C:\Users\Mateusz\.dsh\profiles\desktop\package.json` — bundle patch pluginu
+(kordis `insert` wiersza `id: opencode2dsh`) nigdy nie był komponowany, więc
+cordis nie montował pluginu i dostawca `opencode2dsh` nie istniał w pickerze
+modeli. Taki sam objaw miał dzisiejszy `dsh-opencode-free-models` 0.1.0
+(instalacja 18:47, log `operation-zR36Bz`, też tylko w dependencies).
+
+Zmiana: dopisano `"@opencode2dsh/dsh-plugin"` do tablicy `dsh.profile.bundles`
+w `package.json` profilu desktop (backup: `package.json.bak-20261106-191418`,
+`cordis.patch.yml.bak-20261106-191418` — ten drugi bez zmian). Walidacja przed
+restartem: JSON parsuje się, bundle patch pluginu daje dokładnie jeden wiersz
+`insert` (`id: opencode2dsh`, `name: @opencode2dsh/dsh-plugin`, `config: {}`),
+`name` resolwi się z `node_modules` profilu. Mechanizm potwierdzony na
+wzorcowym bundle `billion-context` (`dsh.bundle.patch.yml`: "mounted
+automatically when the profile's package.json lists … in dsh.profile.bundles").
+
+Obserwacja po zmianie: host DSH (PID 23768, start 19:00:33) podniósł warstwę
+pluginu w ciągu ~26 s od edycji — `~/.opencode2dsh/adapter-status.json`
+(napisaany 19:14:46 lokalnie) ma `status: ready`, `total: 80`, `exposed: 10`,
+`lastError: ""`. Katalog models.dev cache: `agent-config.json.models.dev.json`.
+
+Next step: potwierdź grupę `opencode2dsh` w pickerze modeli GUI; jeśli bieżąca
+sesja jej nie widzi (rejestr providerów buduje się przy starcie hosta),
+zrestartuj DSH całkowicie (quit + relaunch) i wybierz model `-free`.
+
+not checked:
+- widoczność grupy `opencode2dsh` w pickerze modeli w działającej sesji GUI
+  (list_subagent_models po zmianie zwraca wciąż tylko `nvidia` — rejestr
+  subagentów jest snapshotem z rozpoczęcia sesji 19:00, przed montażem pluginu);
+- realne wywołanie modelu free end-to-end z DSH (lane anonimowa Zen, quota
+  per-IP, ewentualne 429 przy kontencji);
+- drugi plugin `dsh-opencode-free-models` 0.1.0 (panel UI, inny autor) —
+  zainstalowany, niewiringowany; decyzja enable/remove niepodjęta.
 
 <!-- handoff/flags/dependency-map-2026-11-06.md · owner: coding-assistant · agent: antigravity · model: omniroute/agy/claude-sonnet-4-6 -->
 `dependency-map-2026-11-06` — 2026-11-06: Zbudowano mapę zależności bez kasowania plików.

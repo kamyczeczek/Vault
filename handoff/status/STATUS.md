@@ -229,10 +229,12 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `vault-simplification-recon-2026-11-06` | 2026-11-06 | coding-assistant | pi-bolt |
 | `root-slimming-tranche-2026-11-06` | 2026-11-06 | Mateusz | omp |
 | `root-catalog-complete-2026-11-06` | 2026-11-06 | Mateusz | omp |
+| `raw-sessions-github-push-2026-11-06` | 2026-11-06 | mateusz | opencode |
 | `raw-sessions-dsh-included-2026-11-06` | 2026-11-06 | mateusz | deepseek-harness |
 | `r9-routing-check-restored-2026-11-06` | 2026-11-06 | Mateusz | omp |
 | `omp-token-profile-20261106` | 2026-11-06 | Mateusz | opencode |
 | `fev-full-guard-implemented` | 2026-11-06 | coding-assistant | omp |
+| `dsh-opencode2dsh-free-models-2026-11-06` | 2026-11-06 | mateusz | deepseek-harness |
 | `dependency-map-2026-11-06` | 2026-11-06 | coding-assistant | antigravity |
 | `opencode-free-models-and-shell-perm-2026-11-05` | 2026-11-05 | mateusz | pi-bolt |
 | `pi-subagents-hardening-and-e2e-2026-11-04` | 2026-11-04 | mateusz | opencode |

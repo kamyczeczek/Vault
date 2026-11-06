@@ -9,13 +9,16 @@ set OUT=%2
 if "%OUT%"=="" set OUT=scripts\_scratch\sessions\02_products\raw_sessions.md
 set DRIVE_TARGET=%~3
 if "%DRIVE_TARGET%"=="" set DRIVE_TARGET=G:\My Drive
+set GITHUB_REPO=%SESSIONS_GITHUB_REPO%
+if "%GITHUB_REPO%"=="" set GITHUB_REPO=https://github.com/kamyczeczek/raw-sessions.git
 
 echo.
-echo === Raw sessions export + sync do Google Drive (G:\My Drive) ===
+echo === Raw sessions export + push do GitHub + sync do Google Drive ===
 echo Workspace: %CD%
 echo Liczba sesji: %COUNT%
 echo Cel lokalny: %OUT%
 echo Folder Google Drive: %DRIVE_TARGET%
+echo Repo GitHub: %GITHUB_REPO%
 echo.
 
 where python >nul 2>&1
@@ -44,7 +47,17 @@ if errorlevel 1 (
 )
 
 echo.
-echo Zapisano i zsynchronizowano z Google Drive: %OUT%
+echo === Push do GitHub: %GITHUB_REPO% ===
+python scripts\push_sessions_github.py "%OUT%" --repo "%GITHUB_REPO%" --count %COUNT%
+if errorlevel 1 (
+    echo.
+    echo [ERROR] push_sessions_github.py exited with error.
+    set FAILED=1
+    goto :end
+)
+
+echo.
+echo Zapisano, wypchnięto na GitHub i zsynchronizowano z Google Drive: %OUT%
 echo.
 
 :end
