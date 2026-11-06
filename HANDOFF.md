@@ -29,6 +29,10 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/r9-routing-check-restored-2026-11-06.md · owner: Mateusz · agent: omp · model: omniroute/cx/gpt-5.6-luna-low -->
+`r9-routing-check-restored-2026-11-06` — 2026-11-06: przywrócono wywołanie `check_r9_routing_targets()` w `scripts/check_workspace_integrity.py`; integrity, mutacja R9, commit `e60296f` i push zakończone.
+not checked: kompletność root entries w nowym `CLAUDE.md` względem wcześniejszego katalogu.
+
 <!-- handoff/flags/fev-full-guard-implemented.md · owner: coding-assistant · agent: omp · model: omp/current -->
 `fev-full-guard-implemented` — 2026-11-06: `projects/research/benchmark-core/bench.py` odrzuca `--fev-full` kodem 2 przed dostępem do danych. Test: `test_benchmark_protocol.py::test_fev_full_guard_exits_before_data_access` (subprocess).
 
