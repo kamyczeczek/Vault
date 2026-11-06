@@ -57,7 +57,7 @@ Polyrepo + root coordination layer (D12). Read this first, then exactly one proj
   until the whitespace issue is fixed. This is the workspace's only whitespace
   authority, including spaces before CRLF.
 - **Never change a gate to let a commit pass.** If a gate fails, fix the data it
-  flagged. An exemption (e.g. `agent_commit.py`'s whitespace scope) is its own
+  flagged. An exemption (e.g. `projects/_archive/agentic-research-lab/scripts/agent_commit.py`'s whitespace scope) is its own
   commit with the rationale in the message — never inside a "finish everything"
   commit, and never as silent scope widening. Same rule as `ALLOWED_ROOT`.
 - Gate before done: `python scripts/check_workspace_integrity.py`.
