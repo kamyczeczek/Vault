@@ -227,6 +227,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
 | `vault-simplification-recon-2026-11-06` | 2026-11-06 | coding-assistant | pi-bolt |
+| `security-verification-2026-11-06` | 2026-11-06 | Mateusz | deepseek-harness |
 | `root-slimming-tranche-2026-11-06` | 2026-11-06 | Mateusz | omp |
 | `root-catalog-complete-2026-11-06` | 2026-11-06 | Mateusz | omp |
 | `raw-sessions-github-push-2026-11-06` | 2026-11-06 | mateusz | opencode |
