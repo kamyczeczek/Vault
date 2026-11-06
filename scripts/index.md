@@ -30,7 +30,6 @@
 * [ctx_root_L0.bat](ctx_root_L0.bat)
 * [ctx_root_L2.bat](ctx_root_L2.bat)
 * [debug.py](debug.py)
-* [debug_skill_resources.mjs](debug_skill_resources.mjs)
 * [deepseek_harness.py](deepseek_harness.py)
 * [did_sessions.bat](did_sessions.bat)
 * [did_sessions_drive.bat](did_sessions_drive.bat)
