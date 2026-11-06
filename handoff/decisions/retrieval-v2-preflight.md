@@ -1,7 +1,7 @@
 ---
-status: open
+status: decided
 recommendation: add a stdlib preflight.py to projects/research/retrieval-v2/ — the invariant "every project ships a preflight.py" is the structural fix; grade correction is the alternative if the project is stalled
-decided_at:
+decided_at: 2026-11-06
 owner: mateusz
 ---
 

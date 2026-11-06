@@ -1,7 +1,7 @@
 ---
-status: open
+status: decided
 recommendation: requalify the reference to the archived path, bundled as its own R13 cascade — new review report version + docs/reviews/README.md row + EXEMPT baseline entries + view rebuild, one commit; never a bare 1-line AGENTS.md edit
-decided_at:
+decided_at: 2026-11-06
 owner: mateusz
 ---
 

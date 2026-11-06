@@ -1,7 +1,7 @@
 ---
-status: open
+status: decided
 recommendation: rotation not required by evidence — key never entered either repo's history or tree; owner's call, precautionary only
-decided_at:
+decided_at: 2026-11-06
 owner: mateusz
 ---
 

@@ -1,7 +1,7 @@
 ---
-status: open
+status: decided
 recommendation: approve the 4 DELETE candidates from the report, then remove one script per commit with check_workspace_integrity.py + build_handoff.py --check after each
-decided_at:
+decided_at: 2026-11-06
 owner: mateusz
 ---
 

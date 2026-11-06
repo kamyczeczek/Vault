@@ -1,7 +1,7 @@
 ---
-status: open
+status: decided
 recommendation: do not rewrite — no secret grounds (scan clean), and a size-only rewrite invalidates all 147 public SHAs for ~184MB of legitimate artifacts
-decided_at:
+decided_at: 2026-11-06
 owner: mateusz
 ---
 

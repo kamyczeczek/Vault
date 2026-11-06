@@ -1,7 +1,7 @@
 ---
-status: open
+status: decided
 recommendation: extend the eol=crlf fix (already proven on raw_sessions_drive.bat) to raw_sessions.bat, session_brief.bat, session_digest.bat — one commit, renormalize, hook gates apply
-decided_at:
+decided_at: 2026-11-06
 owner: mateusz
 ---
 
