@@ -174,6 +174,22 @@ innym rozwiązaniem).
 | ARL | `projects/_archive/agentic-research-lab/` | archiwizacja (demoted) |
 | datasets | `projects/_archive/datasets/` | archiwizacja (demoted) |
 
+## Gdzie szukać surowej historii sesji (diagnostyka)
+
+`HISTORY.md` to syntetyczna narracja. Surowy materiał diagnostyczny (problemy
+w pracy agenta, błędy, próby) znajduje się w:
+
+- `scripts/_scratch/sessions/02_products/raw_sessions.md` — eksport ostatnich
+  sesji (388 KB).
+- `scripts/_scratch/sessions/02_products/did_sessions.md` — ostatnie 20 sesji
+  z mutującymi narzędziami (387 KB).
+- `scripts/_scratch/sessions/90_archive/` — archiwalne eksporty (101 plików
+  `last_sessions/`, 23 w `ARCHIVE/`).
+- `scripts/memory/CONTEXT.md` — indeks 2171 sesji (FTS5), zapytania przez
+  `memory_index.py query`.
+
+To źródła do debugowania i analizy pracy agenta, nie do narracji.
+
 ## Niepewności (jawnie)
 
 1. Daty startu/zakończenia 9 projektów w `_archive/` — większość bez dat.
