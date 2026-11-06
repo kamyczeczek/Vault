@@ -1362,6 +1362,7 @@ def main() -> int:
     check_r5_open_work()
     check_r6_skills_home()
     check_r7_map_current()
+    check_r9_routing_targets()
     check_root_router_paths_nonempty()
     check_r10_open_work_integrity()
     check_r11_skills_catalog()
