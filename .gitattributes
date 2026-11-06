@@ -13,6 +13,9 @@
 # cmd.exe needs CRLF: with eol=lf it eats the first byte of every line
 # ("'chcp' is not recognized"). Blob stays LF-normalized; checkout is CRLF.
 scripts/raw_sessions_drive.bat text eol=crlf
+scripts/raw_sessions.bat       text eol=crlf
+scripts/session_brief.bat      text eol=crlf
+scripts/session_digest.bat     text eol=crlf
 
 # Binary: never touched
 *.db   binary
