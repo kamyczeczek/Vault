@@ -1,8 +1,10 @@
 #!/usr/bin/env python
 """Generate an EXACT (no truncation) transcript of the last N agent sessions.
 
-Sources: Pi, OpenCode, OMP, and DSH sessions. All sources are merged by each
-session's last recorded timestamp, newest first; agent type does not affect order.
+Sources: Pi, OpenCode, OMP, and DSH (DeepSeek Harness) sessions. All sources are
+merged by each session's last recorded timestamp, newest first; agent type does
+not affect order. DSH sessions are read via agent_sessions.load_deepseek_sessions
+(handles the v4 store: ~/.dsh/sessions/**/*.jsonl.zstd).
 Output: one markdown file, streaming.
 """
 
@@ -19,7 +21,6 @@ OUTDIR = ROOT / "scripts" / "_scratch" / "sessions" / "02_products"
 OC_DB = Path.home() / ".local" / "share" / "opencode" / "opencode.db"
 OMP_DIR = Path.home() / ".omp" / "agent" / "sessions"
 PI_DIR = Path.home() / ".pi" / "agent" / "sessions"
-DSH_DIR = Path.home() / ".deepseek-harness" / "sessions"
 
 
 def load_oc_sessions(limit):
@@ -289,6 +290,35 @@ def render_omp(path: Path, f):
     f.write("---\n\n")
 
 
+def render_dsh(session, f):
+    """Render a SessionItem produced by agent_sessions.load_deepseek_sessions.
+
+    That loader already parses the DSH v4 store (zstd-compressed
+    session.v4.jsonl.zstd, records keyed type/data/time) into
+    session.text_markdown, so this is a header + body passthrough.
+    """
+    provider = ""
+    try:
+        provider = session.extra.get("provider", "")
+    except AttributeError:
+        provider = ""
+    model = f"{provider}/{session.model}" if (provider or session.model) else session.model
+    f.write(f"## Sesja dsh — {session.id}\n")
+    f.write(f"- agent/model: dsh/{model}\n")
+    f.write(f"- cwd: {session.directory}\n")
+    f.write(f"- id: {session.id}\n")
+    f.write(f"- msgs: {session.message_count} · czas: {session.created_at} → {session.updated_at}\n")
+    f.write(f"- file: {session.raw_path}\n\n")
+    body = session.text_markdown or ""
+    if not body:
+        f.write("*[brak treści sesji]*\n")
+    else:
+        # text_markdown starts with its own "# [deepseek] <prompt>" header and
+        # "## [role]" turn markers; keep the body verbatim (EXACT contract).
+        f.write(body + "\n")
+    f.write("\n---\n\n")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--count", type=int, default=10)
@@ -313,7 +343,21 @@ def main():
             stamp = 0.0
         combined.append((stamp, "oc", s))
 
-    for agent_name, directory in (("pi", PI_DIR), ("omp", OMP_DIR), ("dsh", DSH_DIR)):
+    # DeepSeek Harness (DSH) lives in a separate store (~/.dsh/sessions) whose
+    # files are session.v4.jsonl.zstd — a raw rglob("*.jsonl") scan cannot read
+    # them, so use the tracked loader that parses the v4 format. It is already
+    # workspace-filtered (current vault only) and mtime-sorted, newest first.
+    for s in m.load_deepseek_sessions(args.count):
+        try:
+            stamp = datetime.fromisoformat(str(s.updated_at).replace("Z", "+00:00")).timestamp()
+        except (ValueError, TypeError):
+            try:
+                stamp = Path(s.raw_path).stat().st_mtime
+            except OSError:
+                stamp = 0.0
+        combined.append((stamp, "dsh", s))
+
+    for agent_name, directory in (("pi", PI_DIR), ("omp", OMP_DIR)):
         if directory.is_dir():
             for path in directory.rglob("*.jsonl"):
                 combined.append((session_last_timestamp(path), agent_name, path))
@@ -329,6 +373,8 @@ def main():
                 render_oc(session, f)
             elif kind == "omp":
                 render_omp(session, f)
+            elif kind == "dsh":
+                render_dsh(session, f)
             else:
                 render_jsonl(session, f, kind)
     print(f"Wrote {out} ({out.stat().st_size // 1024} KB)")

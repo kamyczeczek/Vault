@@ -29,6 +29,32 @@ stopped holding (delete the file), and compress closed threads into
 
 ## Status
 
+<!-- handoff/flags/vault-simplification-recon-2026-11-06.md · owner: coding-assistant · agent: pi-bolt · model: nvidia/stepfun-ai/step-5-preview -->
+`vault-simplification-recon-2026-11-06` — wykonano rekonesans bez zmian merytorycznych i bez kasowania plików.
+
+## Wykonane
+- Potwierdzono HEAD: `7caaf48 chore: add handoff flag, audit docs and rebuild all views`.
+- `git status` był czysty; branch `master` był zgodny z `origin/master` w momencie sprawdzenia.
+- Przeczytano `HANDOFF.md`, `STATE.md`, `README.md`, `AGENTS.md`, `CLAUDE.md`, oba audyty uproszczenia oraz flagę `root-slimming-tranche-2026-11-06`.
+- Ustalono aktualne rozmiary orientacyjne: 142 śledzone pliki w `scripts/` poza `_scratch/`, w tym 95 bezpośrednich plików Python; `projects/_archive/` zawiera 3154 śledzone pliki; katalog `projects/_archive.backup-20261104/` nie istnieje w bieżącym drzewie.
+- `AGENTS.md` ma 133 linie, `CLAUDE.md` 68 linii. Istnieje kilka projektowych i archiwalnych plików `CONTEXT.md`; nie redukowano ich bez mapy zależności.
+
+not checked: GitHub API PR/Issues status; complete per-script dependency audit; archive provenance beyond current tree.
+
+## Niewykonane
+- Nie usuwano plików.
+- Nie zmieniano `AGENTS.md`, `CLAUDE.md`, `CONTEXT.md` ani skryptów.
+- Nie audytowano każdego skryptu ani danych archiwum.
+- Nie sprawdzano otwartych PR/Issues przez API GitHub; lokalny rekonesans nie obejmował zdalnego API.
+
+## Ryzyka
+- `STATE.md` i `HANDOFF.md` zawierają starsze snapshoty oraz historię, więc nie należy traktować każdej liczby jako bieżącej bez ponownego pomiaru.
+- Audyty z 2026-11-05 zawierają sprzeczne twierdzenia o katalogu `projects/_archive.backup-20261104/`; bieżący checkout pokazuje 0 śledzonych plików w tej ścieżce. Wymaga to wyjaśnienia przez `git log`/`git ls-tree`, nie zgadywania.
+- W poprzedniej fladze zapisano obcą zmianę `scripts/raw_sessions_drive.bat`; przed dalszą pracą ponownie sprawdź `git status` i nie nadpisuj jej.
+
+## Następny krok
+Zbudować małą mapę zależności: aktywne punkty wejścia, walidatory oraz odwołania do `AGENTS.md`, `CLAUDE.md`, `CONTEXT.md` i krytycznych skryptów — bez kasowania.
+
 <!-- handoff/flags/root-slimming-tranche-2026-11-06.md · owner: Mateusz · agent: omp · model: nvidia/stepfun-ai/step-5-preview -->
 `root-slimming-tranche-2026-11-06` — 2026-11-06: domknięto pozostałe punkty po C1–C3 z audytów `docs/audit-vault-simplification-*-2026-11-05.md`. (a) `README.md` nie przedstawia już odrzuconego projektu S49 (`etth1-h720`) jako "current study" — wskazuje generyczny wzorzec `preflight.py` + `pytest` dla każdego aktywnego projektu; commit `0f6a352`. (b) `CLAUDE.md` listował `logs/` dwa razy (linie 31 i 53, dwa różne opisy) — duplikat usunięty, gate `check_workspace_integrity.py` nie waliduje unikalności katalogu, więc błąd przeszedł; commit `0f6a352`. (c) Flaga `root-catalog-complete-2026-11-06` miała fałszywy `not checked: commit i push` — zweryfikowano (`origin/master..HEAD` pusty, commit `422069c` wypchnięty) i zamknięto.
 
@@ -43,6 +69,25 @@ not checked:
 not checked: —
 retired 2026-11-06: commit i push potwierdzone (`origin/master` == HEAD, commit `422069c`, log `origin/master..HEAD` pusty). Ślad obcy: `scripts/raw_sessions_drive.bat` ma niezacommitowaną zmianę `COUNT=5 → 1` od innego właściciela — nie moja, nienaruszona.
 
+<!-- handoff/flags/raw-sessions-dsh-included-2026-11-06.md · owner: mateusz · agent: deepseek-harness · model: nvidia/stepfun-ai/step-5-preview -->
+`flag` — 2026-11-06: `scripts/raw_sessions_drive.bat` teraz eksportuje też sesje DeepSeek Harness.
+Przyczyna, dla której ich nie uwzględniał: `scripts/extract_exact_sessions.py` (ten, który napędza .bat)
+szukał sesji DSH w `~/.deepseek-harness/sessions` — katalog istnieje, ale jest pusty (0 plików).
+Prawdziwy store to `~/.dsh/sessions/`, a sesje są zapisane jako `session.v4.jsonl.zstd`
+(zstd + format v4 z kluczami `type`/`data`/`time`), których stary skan `rglob("*.jsonl")`
+i tak by nie odczytał. Naprawa nie polega więc na samej ścieżce, ale na użyciu
+sprawdzonego loadera `agent_sessions.load_deepseek_sessions` (ten obsługuje zstd, v4
+oraz filtrowanie do aktualnego workspace'u).
+Zmiany w `scripts/extract_exact_sessions.py`: nowy `render_dsh(session, f)` wypisujący
+`text_markdown` z SessionItem (border agent/model/cwd/msgs/czas/file), merge DSH do
+wspólnej listy z timestampem (`updated_at`, fallback na `mtime` raw_path), dispatch
+`elif kind == "dsh"`, usunięcie martwego `DSH_DIR` i wpisu `"dsh"` ze skanu katalogów.
+Weryfikacja: `python scripts/raw_sessions_drive.bat 3` → 148 KB, 3 najnowsze sesje to
+wszystkie DSH (`session-d3c98f6d…`, `session-9f4cae1b…`, `session-f98d7c1e…`),
+206 wyrenderowanych tur `## [role]` w `scripts/_scratch/sessions/02_products/raw_sessions.md`.
+Next step: brak — działa end-to-end wraz ze sync do `G:\My Drive`.
+not checked: pełna suite testów dla agent_sessions.py; sesje spoza bieżącego workspace'u.
+
 <!-- handoff/flags/r9-routing-check-restored-2026-11-06.md · owner: Mateusz · agent: omp · model: omniroute/cx/gpt-5.6-luna-low -->
 `r9-routing-check-restored-2026-11-06` — 2026-11-06: przywrócono wywołanie `check_r9_routing_targets()` w `scripts/check_workspace_integrity.py`; integrity, mutacja R9, commit `e60296f` i push zakończone.
 not checked: kompletność root entries w nowym `CLAUDE.md` względem wcześniejszego katalogu.
@@ -54,6 +99,62 @@ not checked: kompletność root entries w nowym `CLAUDE.md` względem wcześniej
 `fev-full-guard-implemented` — 2026-11-06: `projects/research/benchmark-core/bench.py` odrzuca `--fev-full` kodem 2 przed dostępem do danych. Test: `test_benchmark_protocol.py::test_fev_full_guard_exits_before_data_access` (subprocess).
 
 not checked: —
+
+<!-- handoff/flags/dependency-map-2026-11-06.md · owner: coding-assistant · agent: antigravity · model: omniroute/agy/claude-sonnet-4-6 -->
+`dependency-map-2026-11-06` — 2026-11-06: Zbudowano mapę zależności bez kasowania plików.
+
+## Wykonane
+
+- Napisano helper `scripts/_scratch/dependency_map.py` (gitignore'd) — buduje
+  mapę inbound-ref dla każdego śledzonego pliku w `scripts/` + mapę doc-referencji
+  dla `AGENTS.md`, `CLAUDE.md`, `CONTEXT.md`, `MAP.md`.
+- Dodano detektor call-site'ów (`call_sites()`) wykrywający split-path subprocess
+  calls (`root / "scripts" / "ask.py"`), których grep ścieżki nie łapie.
+- Napisano helper `scripts/_scratch/dead_routes.py` — szuka ścieżek wymienionych
+  w instrukcjach (skills/, .pi/agents/, AGENTS.md, CLAUDE.md, SCARS.md, itd.)
+  które nie istnieją w drzewie.
+- Wyniki zapisane w `docs/dependency-map-2026-11-06.md` i w JSON/TXT w
+  `scripts/_scratch/` (gitignored).
+- `docs/index.md` zaktualizowany o nowe pliki.
+
+## Kluczowe ustalenia
+
+### Wiring ukryty przed grep:
+- `scripts/ask.py` i `scripts/debug.py` wywoływane przez
+  `.agents/plugins/forge-guardrails/scripts/forge_hook.py:230,238`
+  metodą `subprocess.run([..., root / "scripts" / "ask.py", ...])`.
+  Klasyfikacja: **ENTRY/GATE**, nie DOC-ONLY.
+
+### Klasyfikacja (142 skrypty):
+- ENTRY/GATE = 20 (check_workspace_integrity.py refs=127, close.py=86, memory_index.py=54, …)
+- INTERNAL = 85
+- INSTRUCTION = 1 (scripts/index.md)
+- DOC-ONLY = 9 (brak aktywnych wywołań kodu)
+- ZERO = 27 (wyłącznie index.md stuby i fixtures testów)
+
+### Dead routes z powierzchni instrukcji:
+- 14 brakujących ścieżek — wszystkie uzasadnione (scar docs, archiwa ARL,
+  placeholdery, wzorce konwencji jeszcze nie zrealizowane). Żadna wymagana
+  ścieżka nie zniknęła ze workspace.
+
+### DOC REFERENCE MAP — zerowe referencje:
+- `handoff/decisions/CONTEXT.md`, `kb/Notes/OKF-rag/CONTEXT.md` — brak live refs.
+- Wszystkie `projects/research/*/CONTEXT.md` (5 projektów) poza etth1-h720 i
+  the-pragmatic-programmer-retrieval — brak live refs.
+- Wszystkie `projects/research/*/MAP.md` (7 projektów) — brak live refs.
+
+## Niewykonane
+
+- Nie usuwano żadnych plików.
+- Nie zmieniano `AGENTS.md`, `CLAUDE.md`, `CONTEXT.md` ani żadnych skryptów.
+- Nie podjęto decyzji o usunięciu DOC-ONLY / ZERO scripts — wymaga osobnej sesji.
+- not checked: GitHub API PR/Issues; archiwum provenance beyond current tree; faktyczne użycie DOC-ONLY scripts przez agentów zewnętrznych.
+
+## Następny krok
+
+Na podstawie tej mapy: ocenić, czy 9 skryptów DOC-ONLY (bez aktywnych wywołań)
+lub 27 ZERO (stuby) można bezpiecznie usunąć. Każda decyzja = osobny commit
+z uzasadnieniem.
 
 <!-- handoff/flags/opencode-free-models-and-shell-perm-2026-11-05.md · owner: mateusz · agent: pi-bolt · model: google/gemini-2.5-pro -->
 `opencode-free-models-and-shell-perm-2026-11-05` — 2026-11-05: Rozwiązano dwa problemy środowiskowe:
