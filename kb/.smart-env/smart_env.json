@@ -14,7 +14,7 @@
     },
     "excluded_headings": "",
     "file_exclusions": "Untitled",
-    "folder_exclusions": "scripts/_scratch,scripts/out,projects,logs,agents,handoff/flags,handoff/session-6-briefs",
+    "folder_exclusions": "scripts/_scratch,scripts/out,projects,logs,agents,handoff/flags,handoff/_history/session-6-briefs",
     "folder_exclusions_list": [
       "scripts/_scratch",
       "scripts/out",
@@ -22,7 +22,7 @@
       "logs",
       "agents",
       "handoff/flags",
-      "handoff/session-6-briefs"
+      "handoff/_history/session-6-briefs"
     ]
   },
   "gitignore_exclusions": [

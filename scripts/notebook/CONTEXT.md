@@ -6,7 +6,7 @@ form: pipeline
 job: run — push work state to NotebookLM, ask a defined problem, bring guidance back
 unit: one run (pack + problem + answer, promoted or archived)
 owner: every agent in the root workspace
-derived: scripts/out/ (gitignored packs/sessions); handoff/notebook-runs/ (tracked runs)
+derived: scripts/out/ (gitignored packs/sessions); handoff/_history/notebook-runs/ (tracked runs)
 title: CONTEXT
 generated: { by: okf-enforcer/0.6, at: 2026-10-24T23:45:28Z }
 ---
@@ -20,7 +20,7 @@ A **pipeline** (ICM form 1). Each run pushes work state to the fixed notebook
 problem, and brings the answer back as a tracked run. Factory lives in
 `scripts/` (never move it — `notebook_push.py` does
 `sys.path.insert(ROOT / "scripts")`); product lands in `scripts/out/` (derived,
-gitignored) and `handoff/notebook-runs/` (primary, tracked).
+gitignored) and `handoff/_history/notebook-runs/` (primary, tracked).
 
 | Part | Path | Role |
 |---|---|---|
@@ -44,7 +44,7 @@ less noise, sharper citations. L2 is escalation, not default.
 
 ## Run schema (Q3 — tracked, because answers are primary)
 
-`handoff/notebook-runs/<YYYY-MM-DD-slug>/`:
+`handoff/_history/notebook-runs/<YYYY-MM-DD-slug>/`
 
 - `problem.md` — the defined problem (template: context / decisions to take /
   constraints). Uploaded as a source alongside the pack, so NotebookLM can cite it.

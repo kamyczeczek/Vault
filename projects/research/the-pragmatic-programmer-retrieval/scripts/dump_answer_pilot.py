@@ -1,7 +1,7 @@
 """answer-layer pilot: dump top-8 chunks verbatim per question.
 
 Dump only — no grading, no model calls. One file per question under
-handoff/pilot-answer-layer-2026-10-18/dumps/. Verification is done by the
+handoff/_history/pilot-answer-layer-2026-10-18/dumps/. Verification is done by the
 parent session using eval/gold_set_extended.json topics (input-stage check).
 """
 from __future__ import annotations

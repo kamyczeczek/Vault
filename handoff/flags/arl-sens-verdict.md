@@ -9,7 +9,7 @@ title: arl-sens-verdict
 generated: { by: okf-enforcer/0.6, at: 2026-10-24T23:45:31Z }
 ---
 
-`arl-sens-verdict` — 2026-10-08: NotebookLM run `handoff/notebook-runs/2026-10-08-sens-arl/`
+`arl-sens-verdict` — 2026-10-08: NotebookLM run `handoff/_history/notebook-runs/2026-10-08-sens-arl/`
 (problem + answer, pack project L2 agentic-research-lab + 5 sesji, notebook `root_workspace`).
 Werdykt: TAK, ale tylko jako warunkowy eksperyment weryfikacyjny — zamrozić rozbudowę
 infrastruktury/korpusu, jeden pomiar falsyfikujący hipotezę B; przy braku liftu archiwizacja.

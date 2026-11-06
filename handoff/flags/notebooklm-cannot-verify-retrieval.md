@@ -5,7 +5,7 @@ since: 2026-10-10
 owner: Mateusz
 agent: opencode
 model: opencode/muse-spark-1.3-contributor-free
-origin: handoff/notebook-runs/2026-10-10-root-retrieval-check/
+origin: handoff/_history/notebook-runs/2026-10-10-root-retrieval-check/
 title: notebooklm-cannot-verify-retrieval
 generated: { by: okf-enforcer/0.6, at: 2026-10-24T23:45:31Z }
 ---

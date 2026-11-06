@@ -24,4 +24,4 @@ akceptacyjne), Faza 2 pilot w 1 projekcie-kandydacie (NIE root), Faza 3 promocja
 do roota z ADR+rollbackiem. Gate'y: A perf-8000, B ralph reviewer-vs-bramka
 (3 iteracje, false-SHIP), C pamięć sesji (hook debug.py po 2. failu, check po
 10 sesjach), D transfer (brak poprawy cold-start/handoff => brak promocji).
-Ewidencja: `handoff/notebook-runs/2026-10-08-sens-arl/` (problem, answer, answer2).
+Ewidencja: `handoff/_history/notebook-runs/2026-10-08-sens-arl/` (problem, answer, answer2).

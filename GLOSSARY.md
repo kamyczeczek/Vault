@@ -98,7 +98,7 @@ reproducible. Not a run: the pack carries no question.
 _Avoid_: dump, export (too vague), source (that is the NotebookLM side)
 
 **Run** (notebook run):
-One tracked pipeline execution: `handoff/notebook-runs/<YYYY-MM-DD-slug>/`
+One tracked pipeline execution: `handoff/_history/notebook-runs/<YYYY-MM-DD-slug>/`
 with `problem.md` (the defined problem, uploaded as a citable source) +
 `answer.md` (the raw NotebookLM answer with citations). Primary, tracked —
 NotebookLM is nondeterministic, so a run cannot be rebuilt from the pack.

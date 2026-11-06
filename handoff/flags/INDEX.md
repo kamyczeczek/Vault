@@ -211,7 +211,7 @@
 | `tools-first-arl-split` | 2026-10-08 | Mateusz | goose | ARL w `_archive/` (`grade: demoted`); 4 narzedzia `tools/` 4/4 `--selftest` PASS; R13 ZIELONY (`--check`,… |
 | `decision-brief-hypothesis-D` | 2026-10-08 | Mateusz | goose | 2026-10-08: Closed session at D-002 implementation decision. |
 | `arl-transfer-pivot` | 2026-10-08 | mateusz | opencode | ARL przekształcony z projektu badawczego |
-| `arl-sens-verdict` | 2026-10-08 | mateusz | opencode | NotebookLM run `handoff/notebook-runs/2026-10-08-sens-arl/` |
+| `arl-sens-verdict` | 2026-10-08 | mateusz | opencode | NotebookLM run `handoff/_history/notebook-runs/2026-10-08-sens-arl/` |
 | `arl-gate-a-result` | 2026-10-08 | mateusz | opencode | Tani test hipotezy B (perf ON @ 8000 znaków) wykonany. Wynik: ON macro = 0.0 vs baseline 0.083. Werdykt: hipoteza B… |
 | `session-memory-r16-docstring-closeout` | 2026-10-07 | mateusz | agnes-3-flash | ## Stan |
 | `session-memory-r15-resolved` | 2026-10-07 | mateusz | agnes-3-flash | ## Stan |

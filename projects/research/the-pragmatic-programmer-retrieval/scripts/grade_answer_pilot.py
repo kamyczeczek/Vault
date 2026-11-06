@@ -1,6 +1,6 @@
 """Deterministic grading for the answer-layer pilot (2026-10-18).
 
-Two counts are reported per pre-registered terms (S56, handoff/pilot-answer-layer-2026-10-18/preregistration.md):
+Two counts are reported per pre-registered terms (S56, handoff/_history/pilot-answer-layer-2026-10-18/preregistration.md):
 - strict: case-insensitive substring of the registered (English) stem;
 - semantic: the stem concept present in the Polish translation/inflection
   (documented post-hoc equivalence judgment by the parent; reported separately

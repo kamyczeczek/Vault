@@ -39,7 +39,7 @@ Project closed by owner decision D on 2026-10-18. Full measurements, traceabilit
 - Production path: Tier 3 Hybrid RRF. EN query improves Recall@8 from 0.827 to 0.981; PL+EN fusion reached 1.000 at higher latency. Cross-encoder remains excluded: ~9.6 s median for +0.038 recall.
 - Answer-layer EN pilot: 10/13 answerable strict pass, 8/8 unanswerable refusal, canary clean. Term-presence grading is lexical evidence, not semantic quality.
 - R15 traceability repair completed; `hit@5=1.000`, `MRR=0.654` on 15 cases.
-- Known audit gap: session 10 pre-registration was not preserved in Git; reconstruction is forbidden. Gap is documented in `handoff/session-10-known-gap.md`.
+- Known audit gap: session 10 pre-registration was not preserved in Git; reconstruction is forbidden. Gap is documented in `handoff/_history/session-10-known-gap.md`.
 
 ## Post-closure backlog
 
