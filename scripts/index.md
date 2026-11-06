@@ -3,7 +3,6 @@
 * [handoff](handoff/index.md)
 * [memory](memory/index.md)
 * [notebook](notebook/index.md)
-* [oneoff](oneoff/index.md)
 * [out](out/index.md)
 * [verify_report_tests](verify_report_tests/index.md)
 * [_scratch](_scratch/index.md)
