@@ -64,7 +64,7 @@ not checked: provider key rotation and repeat E2E.
 `latest-session-export` — 2026-11-03: Exporter now merges Pi, OpenCode, OMP, and DSH sessions and selects the requested count globally by last activity; Drive wrapper syncs the generated file to G:\My Drive.
 not checked: remote Google Drive propagation latency after local copy.
 
-Starsze flagi (256): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
+Starsze flagi (254): [handoff/flags/INDEX.md](handoff/flags/INDEX.md)
 
 ## where-the-work-landed
 

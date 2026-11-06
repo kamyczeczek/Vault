@@ -139,8 +139,6 @@
 | `chain-non-convergence-2026-10-14` | 2026-10-14 | mateusz | opencode | 11 sesji, dwa otwarte tematy, zero konwergencji. Eksport: 4 sesje, L1-contracts 506 KB (winowajcy: HANDOFF.md 174 KB +… |
 | `chain-closed-2026-10-14` | 2026-10-14 | mateusz | opencode | łańcuch 12 sesji zamknięty jako finding governance. Trzy tematy zamknięte: |
 | `T402-walk-test-2026-10-14` | 2026-10-14 | fresh-agent | worker | # T402: Walk Test Report |
-| `T102` | 2026-10-14 | mateusz | pi-bolt | Zweryfikowano strukturę workspace w ramach T102, uzupełniono brakujący katalog `brain/problems/` z plikiem `README.md`,… |
-| `T101` | 2026-10-14 | mateusz | pi-bolt | Zaimplementowano inicjalizację bazy SQLite `brain/brain.db` ze schematem FTS5 i triggerami dla tabel `lessons`,… |
 | `workflow-verification-retired-2026-10-13` | 2026-10-13 | mateusz | opencode | Flaga `workflow-verification-2026-10-13.md` została wycofana. Powód: brak commita w `git log --since=2026-10-13` o… |
 | `workflow-verification-fix-2026-10-13` | 2026-10-13 | mateusz | opencode | Zweryfikowano twierdzenia poprzedniej sesji (commit fd9cb99, flaga, close.py) przez jawne tool calls; wykryto… |
 | `workflow-fix-hardening-2026-10-13` | 2026-10-13 | mateusz | opencode | query: Zakończono naprawę workflow po 10 sesjach. Wprowadzono walidacje w close.py (--explain, --include zagnieżdżonych… |

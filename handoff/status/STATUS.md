@@ -102,8 +102,6 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 - `chain-non-convergence-2026-10-14` — since 2026-10-14 (older than 14 days)
 - `chain-closed-2026-10-14` — since 2026-10-14 (older than 14 days)
 - `T402-walk-test-2026-10-14` — since 2026-10-14 (older than 14 days)
-- `T102` — since 2026-10-14 (older than 14 days)
-- `T101` — since 2026-10-14 (older than 14 days)
 - `workflow-verification-retired-2026-10-13` — since 2026-10-13 (older than 14 days)
 - `workflow-verification-fix-2026-10-13` — since 2026-10-13 (older than 14 days)
 - `workflow-fix-hardening-2026-10-13` — since 2026-10-13 (older than 14 days)
@@ -371,8 +369,6 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `chain-non-convergence-2026-10-14` | 2026-10-14 | mateusz | opencode |
 | `chain-closed-2026-10-14` | 2026-10-14 | mateusz | opencode |
 | `T402-walk-test-2026-10-14` | 2026-10-14 | fresh-agent | worker |
-| `T102` | 2026-10-14 | mateusz | pi-bolt |
-| `T101` | 2026-10-14 | mateusz | pi-bolt |
 | `workflow-verification-retired-2026-10-13` | 2026-10-13 | mateusz | opencode |
 | `workflow-verification-fix-2026-10-13` | 2026-10-13 | mateusz | opencode |
 | `workflow-fix-hardening-2026-10-13` | 2026-10-13 | mateusz | opencode |
