@@ -236,6 +236,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `r9-routing-check-restored-2026-11-06` | 2026-11-06 | Mateusz | omp |
 | `opencode-shell-permission-key-2026-11-06` | 2026-11-06 | mateusz | dsh |
 | `omp-token-profile-20261106` | 2026-11-06 | Mateusz | opencode |
+| `final-walk-test-2026-11-06` | 2026-11-06 | Mateusz | deepseek-harness |
 | `fev-full-guard-implemented` | 2026-11-06 | coding-assistant | omp |
 | `dsh-opencode2dsh-free-models-2026-11-06` | 2026-11-06 | mateusz | deepseek-harness |
 | `dependency-map-2026-11-06` | 2026-11-06 | coding-assistant | antigravity |
