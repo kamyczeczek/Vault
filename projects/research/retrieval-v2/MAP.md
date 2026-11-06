@@ -11,6 +11,7 @@ the set of sibling modules that import it.
 
 | Module | Role | Inputs | Outputs | Used by |
 |---|---|---|---|---|
+| `preflight.py` | Standalone preflight for retrieval-v2. | main() | main → expr | — |
 | `scripts/calibrate_and_eval.py` | Fast calibration and evaluation script for retrieval-v2. | run_q(query, oracle); eval_group(items) | run_q → dict; eval_group → dict | — |
 | `scripts/calibrate_cross_encoder.py` | Kalibracja cross-encodera jako drugiego etapu abstention. | get_candidates(query, k); get_documents(query, k); cross_encoder_score(query); eval_group(questions, name) | get_candidates → expr; get_documents → docs; cross_encoder_score → expr; eval_group → dict | — |
 | `scripts/calibration_sets.py` | Positive (in-corpus) and negative (out-of-corpus) sets for calibration. | — | — | calibrate_cross_encoder |
