@@ -24,12 +24,16 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import shutil
 import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+from scan_secrets import PATTERNS  # noqa: E402
+
 DEFAULT_REPO = "https://github.com/kamyczeczek/raw-sessions.git"
 CLONE_DIR = ROOT / "scripts" / "_scratch" / "sessions-github"
 DEST_NAME = "raw_sessions.md"
@@ -98,6 +102,28 @@ def ensure_clone(url: str) -> tuple[Path, str]:
     return CLONE_DIR, branch
 
 
+def sanitize_file(dest: Path) -> int:
+    """Sanitize secrets using PATTERNS from scan_secrets.py."""
+    if not dest.is_file():
+        return 0
+    try:
+        text = dest.read_text(encoding="utf-8", errors="replace")
+    except Exception:
+        return 0
+
+    count = 0
+    for name, rx in PATTERNS:
+        matches = rx.findall(text)
+        if matches:
+            count += len(matches)
+            text = rx.sub(f"[REDACTED_SECRET:{name}]", text)
+
+    if count > 0:
+        dest.write_text(text, encoding="utf-8")
+        print(f"[INFO] zredagowano {count} sekret(ów) przed pushem na GitHub")
+    return count
+
+
 def scan_clean(dest: Path) -> bool:
     """Reuse the workspace secrets gate; True means clean."""
     cp = run(sys.executable, str(SCANNER), str(dest))
@@ -130,6 +156,7 @@ def main() -> int:
 
     dest = clone / DEST_NAME
     shutil.copyfile(source, dest)
+    sanitize_file(dest)
 
     if not scan_clean(dest):
         fail(
