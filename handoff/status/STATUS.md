@@ -232,6 +232,7 @@ NEXT: Domknij `handoff/status/`: napisz `build_status.py`, utwórz `decisions/`,
 | `root-catalog-complete-2026-11-06` | 2026-11-06 | Mateusz | omp |
 | `raw-sessions-github-push-2026-11-06` | 2026-11-06 | mateusz | opencode |
 | `raw-sessions-dsh-included-2026-11-06` | 2026-11-06 | mateusz | deepseek-harness |
+| `raw-sessions-count-ownership-2026-11-06` | 2026-11-06 | Mateusz | deepseek-harness |
 | `r9-routing-check-restored-2026-11-06` | 2026-11-06 | Mateusz | omp |
 | `opencode-shell-permission-key-2026-11-06` | 2026-11-06 | mateusz | dsh |
 | `omp-token-profile-20261106` | 2026-11-06 | Mateusz | opencode |
