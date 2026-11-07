@@ -3,6 +3,7 @@
 * [CONTEXT](CONTEXT.md)
 * [agents-md-agent-commit-ref](agents-md-agent-commit-ref.md)
 * [bat-files-eol-crlf](bat-files-eol-crlf.md)
+* [benchmark-core-a7-lockbox](benchmark-core-a7-lockbox.md)
 * [dead-script-deletions](dead-script-deletions.md)
 * [history-rewrite-filter-repo](history-rewrite-filter-repo.md)
 * [openai-key-rotation](openai-key-rotation.md)

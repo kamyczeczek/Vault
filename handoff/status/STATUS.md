@@ -8,7 +8,7 @@ Machine snapshot: `STATE.md` (integrity gate + git state; rebuild with `python s
 
 ## Next
 
-NEXT: All six owner decisions in `handoff/decisions/` are now `status: decided` (2026-11-06). Final step: run the final integrity gate and push.
+NEXT: A7 (benchmark-core §8 Lockbox remedy) is decided — (b) post-hoc diagnostics now, (c) fresh blind Lockbox before final promotion; Phase 2 starts on Dev (N ≤ 8, Champion = NLinear, 20-min/method budget, dashboard). Before any (c) data selection, confirm GIFT-Eval does not overlap fev-bench-100.
 
 ## Open decisions
 
@@ -232,6 +232,7 @@ NEXT: All six owner decisions in `handoff/decisions/` are now `status: decided` 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
 | `bigdict-lasso-rerun-stopped-2026-11-07` | 2026-11-07 | mateusz | dsh |
+| `a7-lockbox-decision-registered-2026-11-07` | 2026-11-07 | mateusz | agnes-code |
 | `vault-simplification-recon-2026-11-06` | 2026-11-06 | coding-assistant | pi-bolt |
 | `vault-simplification-complete-2026-11-06` | 2026-11-06 | mateusz | deepseek-harness |
 | `security-verification-2026-11-06` | 2026-11-06 | Mateusz | deepseek-harness |
