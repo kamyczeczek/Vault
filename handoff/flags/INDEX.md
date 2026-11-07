@@ -4,6 +4,8 @@
 
 | flag | since | owner | agent | summary |
 | --- | --- | --- | --- | --- |
+| `orchestrator-worker-recursion-2026-11-03` | 2026-11-03 | mateusz | opencode | D25 PENDING: recursion E2E did not reach GRANDCHILD-OK-7731; observed 401 provider authentication error via local… |
+| `latest-session-export` | 2026-11-03 | mateusz | opencode | Exporter now merges Pi, OpenCode, OMP, and DSH sessions and selects the requested count globally by last activity;… |
 | `benchmark-core-phase1b-freeze-2026-11-02` | 2026-11-02 | mateusz | opencode | Phase 1 + 1b of the v2 |
 | `benchmark-core-phase1b-dev-analysis-2026-11-02` | 2026-11-02 | mateusz | opencode | Faza 1b na Dev (suchy przebieg baselines: SeasonalNaive, NLinear, DLinear) zakończona i zweryfikowana. |
 | `benchmark-core-lockbox-a6-disclosure-2026-11-02` | 2026-11-02 | mateusz | opencode | A6 ujawnia |

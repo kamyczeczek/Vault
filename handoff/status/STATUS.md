@@ -16,6 +16,11 @@ NEXT: All six owner decisions in `handoff/decisions/` are now `status: decided` 
 
 ## Stale
 
+- `test-memory-index-format-restored-2026-10-23` — since 2026-10-23 (older than 14 days)
+- `session-digest-ab-2026-10-23` — since 2026-10-23 (older than 14 days)
+- `session-brief-valuable-2026-10-23` — since 2026-10-23 (older than 14 days)
+- `memory-meta-session-exclusion-durable-2026-10-23` — since 2026-10-23 (older than 14 days)
+- `did-sessions-default-5-2026-10-23` — since 2026-10-23 (older than 14 days)
 - `session-digest-design-2026-10-22` — since 2026-10-22 (older than 14 days)
 - `obsidian-vault-2026-10-22` — since 2026-10-22 (older than 14 days)
 - `sessions-lab-icm-restructure-2026-10-21` — since 2026-10-21 (older than 14 days)
@@ -226,6 +231,7 @@ NEXT: All six owner decisions in `handoff/decisions/` are now `status: decided` 
 
 | flag | since | owner | agent |
 | --- | --- | --- | --- |
+| `bigdict-lasso-rerun-stopped-2026-11-07` | 2026-11-07 | mateusz | dsh |
 | `vault-simplification-recon-2026-11-06` | 2026-11-06 | coding-assistant | pi-bolt |
 | `vault-simplification-complete-2026-11-06` | 2026-11-06 | mateusz | deepseek-harness |
 | `security-verification-2026-11-06` | 2026-11-06 | Mateusz | deepseek-harness |
