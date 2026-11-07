@@ -205,6 +205,8 @@ def main() -> int:
     ap.add_argument("--alphas", nargs="*", type=float, default=[0.01],
                     help="BigDict-LASSO alpha (regularization) values")
     ap.add_argument("--out", default=str(DEFAULT_OUT))
+    ap.add_argument("--resume", action="store_true",
+                    help="keep arms already recorded in --out and run only the missing ones")
     ap.add_argument("--smoke", action="store_true",
                     help="one task, one arm: measure wall time before committing")
     a = ap.parse_args()
@@ -216,7 +218,7 @@ def main() -> int:
         arms = build_arms(profiles, alphas)
     else:
         if a.all_tasks:
-            tasks = [t for t in ALL_TASKS if t in horizons]
+            tasks = list(horizons)
         else:
             tasks = [t for t in (a.tasks or DOCUMENTED_TASKS) if t in horizons]
         arms = build_arms(a.profiles, a.alphas)
@@ -244,29 +246,48 @@ def main() -> int:
 
     t_start = time.time()
     out_path = Path(a.out)
+    previous = {}
+    if a.resume and out_path.exists():
+        prev = json.loads(out_path.read_text(encoding="utf-8"))
+        artifact["tasks"] = prev.get("tasks", [])
+        for task in artifact["tasks"]:
+            previous[task["task_id"]] = {r["arm"]: r for r in task.get("arms", [])}
+        print(f"resume: {sum(len(v) for v in previous.values())} recorded arm results in {out_path}")
+
     for name in tasks:
         H = horizons[name]
         series = series_for(name)
-        record = {
-            "task_id": name,
-            "horizon": H,
-            "n_points": int(series.size),
-            "arms": [],
-        }
+        record = next((t for t in artifact["tasks"] if t["task_id"] == name), None)
+        if record is None:
+            record = {
+                "task_id": name,
+                "horizon": H,
+                "n_points": int(series.size),
+                "arms": [],
+            }
+            artifact["tasks"].append(record)
+        done = previous.get(name, {})
         for arm in arms:
+            kept = done.get(arm["name"])
+            if kept is not None and "error" not in kept and not a.smoke:
+                print(f"{name:16s} {arm['name']:34s} skip (recorded mae={kept.get('mae')!r})",
+                      flush=True)
+                continue
             t0 = time.time()
             try:
                 rec = run_arm(series[:2000], series, H, arm)
             except Exception as err:
                 rec = {"arm": arm["name"], "error": f"{type(err).__name__}: {err}"}
             rec["wall_seconds"] = round(time.time() - t0, 2)
+            record["arms"] = [r for r in record["arms"] if r["arm"] != arm["name"]]
             record["arms"].append(rec)
+            artifact["elapsed_seconds"] = round(time.time() - t_start, 1)
+            out_path.write_text(json.dumps(artifact, indent=1), encoding="utf-8")
             status = rec.get("mae", rec.get("error"))
             extra = (f" feats={rec.get('selected_features')}/{rec.get('feature_width')}"
                      f" conv={rec.get('converged')}" if "selected_features" in rec else "")
             print(f"{name:16s} {arm['name']:34s} mae={status!r:>22} fit={rec['fit_seconds'] if 'fit_seconds' in rec else '-'}s{extra}",
                   flush=True)
-        artifact["tasks"].append(record)
         artifact["elapsed_seconds"] = round(time.time() - t_start, 1)
         out_path.write_text(json.dumps(artifact, indent=1), encoding="utf-8")
         if a.smoke:

@@ -76,23 +76,21 @@ All values are MAE point estimates under the runner's protocol. `bigdict_elm_def
 | full α=.01 | 0.130991 | 239.13 | 322/1824 |
 | full α=.1 | 0.153026 | 74.99 | 79/1824 |
 
-### multiscale_H96 (partial)
+### multiscale_H96 (partial — 8/10 arms)
 
-The artifact has the BigDictELM result and at least compact α=.001, compact α=.01, compact α=.1, and approx α=.001/ongoing output. The process was killed before task completion; do not use the task as a final comparison until the artifact is inspected and the stopping state is explicitly documented.
+The artifact has `bigdict_elm_default`, compact α=.001/.01/.1, approx α=.001/.01/.1, and **full α=.001** recorded (8 of 10 arms). Missing: `full α=.01` and `full α=.1`. The process was re-run with the new `--resume` path (commit `0365dee` added `--resume`; this session completed `full α=.001` for multiscale and then the runner process exited before the two remaining heavy-light full arms were written) — so the multiscale task remains incomplete and must not be used as a final 3-task comparison until `full α=.01` and `full α=.1` are backfilled. `elapsed_seconds` for the partial artifact is 3880 s.
 
 ## Important conclusion / next step
 
-The original “full grid ≈ 76s” smoke projection was wrong because it projected only the thomas smoke task and assumed comparable fit times. Seasonal fits reached ~448s and multiscale approx α=.001 reached ~703s; low-alpha fits also emitted convergence warnings. The planned three-task × ten-arm run was therefore not a bounded quick rerun. Do not update stale result documents with an incomplete grid. Next owner decision: either use the complete two-task evidence plus a deliberately reduced, converged configuration, or retire/correct the stale claims without claiming a completed 3-task regeneration.
+The original “full grid ≈ 76s” smoke projection was wrong because it projected only the thomas smoke task and assumed comparable fit times. Seasonal fits reached ~448s and multiscale approx α=.001 reached ~703s; low-alpha fits also emitted convergence warnings. The planned three-task × ten-arm run was therefore not a bounded quick rerun. Do not update stale result documents with an incomplete grid. Next owner decision: either backfill the two missing multiscale full arms (`full α=.01`, `full α=.1`) to complete the 3-task grid, or use the complete two-task evidence (thomas_H24, seasonal_H48) plus a deliberately reduced, converged configuration.
 
 The old documents remain stale and intentionally were not overwritten: `projects/research/benchmark-core/results_bigdict_lasso_final.md`, `projects/research/benchmark-core/results_ultimate_summary.md`, and `projects/research/benchmark-core/CONTEXT.md` still require an owner-approved evidence policy.
 
-not checked: the multiscale_H96 grid was not completed after the owner requested the process stop; stale result documents were not rewritten; no commit or push was made.
-
 ## Not checked
 
-- The multiscale_H96 grid was not completed after the owner requested the process stop.
+- multiscale_H96 is at 8/10 arms; the two missing heavy arms (`full α=.01`, `full α=.1`) need a targeted `--resume` backfill to complete the 3-task grid.
 - The stale result documents were not rewritten because the 3-task evidence is incomplete.
-- No commit or push was made; the working tree remains for owner review.
+- The `--resume` capability and this partial artifact are now committed and pushed for owner review; completing the grid remains the next run step.
 
 <!-- handoff/flags/a7-lockbox-decision-registered-2026-11-07.md · owner: mateusz · agent: agnes-code · model: sapiens/agnes-3.0-flash -->
 `a7-lockbox-decision-registered-2026-11-07` — 2026-11-07: zarejestrowano decyzję A7
